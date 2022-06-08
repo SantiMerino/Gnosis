@@ -6,10 +6,14 @@
 package Vista;
 
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import static java.time.Clock.system;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -142,7 +146,11 @@ public class FrmLogin extends javax.swing.JFrame {
             }
         });
     }
+    
+      
+    
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
