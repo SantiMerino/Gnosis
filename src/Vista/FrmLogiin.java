@@ -8,6 +8,7 @@ package Vista;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.TextField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -25,9 +26,8 @@ public class FrmLogiin extends javax.swing.JFrame {
     public FrmLogiin() {
         initComponents();
         this.setLocationRelativeTo(null);
-        String sub1="<html><u>olvidaste la contraseña?<u><html>";
-        LblOlvidarClave.setText(sub1);
-
+        LblOlvidarClave.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
     }
     
 
@@ -37,9 +37,7 @@ public class FrmLogiin extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        Clave = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        TxtUsuario = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         LblOlvidarClave = new javax.swing.JLabel();
@@ -48,6 +46,8 @@ public class FrmLogiin extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        TxtClave = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -67,29 +67,15 @@ public class FrmLogiin extends javax.swing.JFrame {
             }
         });
 
-        Clave.setBackground(new java.awt.Color(51, 51, 51));
-        Clave.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        Clave.setForeground(new java.awt.Color(255, 255, 255));
-        Clave.setText("Ingresa tu contraseña");
-        Clave.setSelectedTextColor(new java.awt.Color(153, 153, 153));
-        Clave.setSelectionColor(new java.awt.Color(51, 51, 51));
-        Clave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClaveActionPerformed(evt);
-            }
-        });
-
-        jTextField1.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("Ingresa tu usuario o correo electrónico");
-        jTextField1.setCaretColor(new java.awt.Color(51, 51, 51));
-        jTextField1.setDisabledTextColor(new java.awt.Color(51, 51, 51));
-        jTextField1.setSelectedTextColor(new java.awt.Color(153, 153, 153));
-        jTextField1.setSelectionColor(new java.awt.Color(51, 51, 51));
-        jTextField1.setVerifyInputWhenFocusTarget(false);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/EXPO chiquita.png"))); // NOI18N
+        TxtUsuario.setBackground(new java.awt.Color(51, 51, 51));
+        TxtUsuario.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        TxtUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        TxtUsuario.setText("Ingresa tu usuario o correo electrónico");
+        TxtUsuario.setCaretColor(new java.awt.Color(51, 51, 51));
+        TxtUsuario.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        TxtUsuario.setSelectedTextColor(new java.awt.Color(153, 153, 153));
+        TxtUsuario.setSelectionColor(new java.awt.Color(51, 51, 51));
+        TxtUsuario.setVerifyInputWhenFocusTarget(false);
 
         jButton2.setBackground(new java.awt.Color(153, 153, 153));
         jButton2.setText("Salir");
@@ -103,7 +89,7 @@ public class FrmLogiin extends javax.swing.JFrame {
 
         LblOlvidarClave.setBackground(new java.awt.Color(255, 255, 255));
         LblOlvidarClave.setForeground(new java.awt.Color(255, 255, 255));
-        LblOlvidarClave.setText("se te olvido la contra va mono pendejo?");
+        LblOlvidarClave.setText("¿Se te olvido la contraseña?");
         LblOlvidarClave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 LblOlvidarClaveMousePressed(evt);
@@ -132,86 +118,85 @@ public class FrmLogiin extends javax.swing.JFrame {
             }
         });
 
+        TxtClave.setBackground(new java.awt.Color(51, 51, 51));
+        TxtClave.setForeground(new java.awt.Color(255, 255, 255));
+        TxtClave.setText("jPasswordField1");
+        TxtClave.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        TxtClave.setSelectionColor(new java.awt.Color(51, 51, 51));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/EXPO chiquita.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 124, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(244, 244, 244)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(156, 156, 156)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Clave, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LblOlvidarClave))
-                        .addGap(128, 128, 128))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(TxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LblOlvidarClave)
+                                .addComponent(TxtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jButton2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(256, 256, 256)
-                                .addComponent(jLabel4)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel3))
-                                    .addComponent(jLabel2))
-                                .addGap(194, 194, 194))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(249, 249, 249)))))
+                        .addGap(45, 45, 45)
+                        .addComponent(jButton2)
+                        .addGap(161, 161, 161)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(262, 262, 262)
+                        .addComponent(jLabel4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(22, 22, 22))
+                .addGap(15, 15, 15))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel3)
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(43, 43, 43)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Clave, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TxtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(LblOlvidarClave)
-                        .addGap(44, 44, 44)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addComponent(jButton2))
+                        .addGap(18, 18, 18)
+                        .addComponent(LblOlvidarClave))
                     .addComponent(jLabel1))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72))
         );
 
         getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ClaveActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.exit(0);
@@ -268,6 +253,7 @@ public class FrmLogiin extends javax.swing.JFrame {
         UIManager.put( "ProgressBar.arc" , 999 );
         UIManager.put( "TextComponent.arc" , 999 );
         UIManager.put( "Button.arc" , 999 );
+        
 
 
       
@@ -275,8 +261,9 @@ public class FrmLogiin extends javax.swing.JFrame {
 }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Clave;
     private javax.swing.JLabel LblOlvidarClave;
+    private javax.swing.JPasswordField TxtClave;
+    private javax.swing.JTextField TxtUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -287,6 +274,5 @@ public class FrmLogiin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
