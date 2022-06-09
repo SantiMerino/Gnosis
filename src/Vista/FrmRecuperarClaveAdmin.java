@@ -119,7 +119,7 @@ public class FrmRecuperarClaveAdmin extends javax.swing.JFrame {
 
         botonRedondeado1.setBackground(new java.awt.Color(255, 255, 0));
         botonRedondeado1.setForeground(new java.awt.Color(0, 0, 0));
-        botonRedondeado1.setText("botonRedondeado1");
+        botonRedondeado1.setText("Confirmar");
         botonRedondeado1.setToolTipText("");
         botonRedondeado1.setBorderColor(new java.awt.Color(255, 255, 0));
         botonRedondeado1.setColor(new java.awt.Color(255, 255, 0));
@@ -129,7 +129,7 @@ public class FrmRecuperarClaveAdmin extends javax.swing.JFrame {
 
         botonRedondeado2.setBackground(new java.awt.Color(153, 255, 153));
         botonRedondeado2.setForeground(new java.awt.Color(0, 0, 0));
-        botonRedondeado2.setText("botonRedondeado2");
+        botonRedondeado2.setText("Reestablecer");
         botonRedondeado2.setBorderColor(new java.awt.Color(153, 255, 153));
         botonRedondeado2.setColor(new java.awt.Color(153, 255, 153));
         botonRedondeado2.setColorClick(new java.awt.Color(153, 255, 153));
