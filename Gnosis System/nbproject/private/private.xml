@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/Model/MTeacher.java</file>
-            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/frmCalendarEventosCRUD.java</file>
-            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/Model/MCalendar.java</file>
-            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/Controller/CCalendar.java</file>
-            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/Controller/CTeacher.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/frmTeacherCRUD.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/panConfig.java</file>
             <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/frmLogin.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/panTasks.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/frmTasks.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/frmCalendarEventosCRUD.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/Model/MConnection.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/Model/MLogin.java</file>
         </group>
     </open-files>
 </project-private>
