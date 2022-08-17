@@ -13,6 +13,7 @@ import Controller.CConnection;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 /**
  *
@@ -439,7 +440,7 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void buttonRound3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound3ActionPerformed
         // TODO add your handling code here:
-        
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         
     }//GEN-LAST:event_buttonRound3ActionPerformed
 

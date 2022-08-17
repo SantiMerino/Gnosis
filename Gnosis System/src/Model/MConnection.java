@@ -40,7 +40,7 @@ public class MConnection {
             String url = "jdbc:sqlserver://localhost:1433;"
                     + "database = Task1;"
                     + "user = sa;"
-                    + "password = itr2022;"
+                    + "password = santi123;"
                     + "loginTimeOut = 10";
             //Asignación de valores a objeto conexión
             con = DriverManager.getConnection(url);
