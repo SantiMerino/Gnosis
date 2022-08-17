@@ -53,57 +53,58 @@ public class panConfig extends javax.swing.JPanel {
 
         setBackground(java.awt.Color.white);
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("IP:");
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(32, 32, 32));
         jLabel2.setText("Database:");
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(32, 32, 32));
         jLabel3.setText("Username:");
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(32, 32, 32));
         jLabel5.setText("Port:");
 
         jTextField2.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jTextField2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(32, 32, 32));
         jTextField2.setMargin(new java.awt.Insets(0, 2, 0, 1));
         jTextField2.setPreferredSize(new java.awt.Dimension(73, 30));
 
         jTextField3.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jTextField3.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(32, 32, 32));
         jTextField3.setMargin(new java.awt.Insets(0, 2, 0, 1));
         jTextField3.setPreferredSize(new java.awt.Dimension(100, 30));
 
         jTextField4.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jTextField4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(32, 32, 32));
         jTextField4.setMargin(new java.awt.Insets(0, 2, 0, 1));
         jTextField4.setPreferredSize(new java.awt.Dimension(73, 30));
 
         jTextField5.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jTextField5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(32, 32, 32));
         jTextField5.setMargin(new java.awt.Insets(0, 2, 0, 1));
         jTextField5.setPreferredSize(new java.awt.Dimension(73, 30));
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(32, 32, 32));
         jLabel6.setText("Password:");
 
         jTextField6.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jTextField6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(32, 32, 32));
         jTextField6.setMargin(new java.awt.Insets(0, 2, 0, 1));
         jTextField6.setPreferredSize(new java.awt.Dimension(73, 30));
 
         buttonRound1.setText("Guardar");
+        buttonRound1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         buttonRound1.setRound(20);
         buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
 
