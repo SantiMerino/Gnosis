@@ -4,18 +4,173 @@
  */
 package gnosis.system;
 
+import Controller.CProfiles;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author josec
  */
 public class frmProfiles extends javax.swing.JFrame {
 
+    CProfiles obj = new CProfiles();
+    DefaultTableModel TablaPerfilmodelo;
+    DefaultComboBoxModel<String> TipoPerfilcombo;
+    DefaultComboBoxModel<String> GradoPerfilcombo;
+    DefaultComboBoxModel<String> SeccionesPerfilcombo;
+    private List TipoPerfilList;
+    private List GradoPerfilList;
+    private List SeccionesPerfilList;
+    private Calendar Cal1;
+    private Calendar Cal2;
+    private String ruta_archivo = " ";
+    
     /**
      * Creates new form frmProfiles
      */
     public frmProfiles() {
         initComponents();
+        CargarCmbTipoPerfil();
+        CargarCmbGradoPerfil();
+        CargarCmbSeccionPerfil();
+        
+        //Tabla
+        String [] TitulosPerfil = {"ID", "Nombre", "Rubrica de evaluacion", "Fecha de inicio", "Fecha de vencimiento", "Porcentaje de valoracion",  "Descripcion", "Tipo Perfil", "Grado", "Seccione"};
+        TablaPerfilmodelo = new DefaultTableModel(null, TitulosPerfil);
+        JTPerfil.setModel(TablaPerfilmodelo);
+        CargarTabla();
     }
+    
+    void LimpiarCampos() {
+        txtNombre.setText("");
+        txtPonderacion.setText("");
+        txtPonderacion.setText("");
+        txtId.setText("");
+        dtInicio.setDate(null);
+        dtVencimiento.setDate(null);
+        CmbTipoPerfil.setSelectedIndex(0);
+        CmbGrado.setSelectedIndex(0);
+        CmbSecciones.setSelectedIndex(0);
+    }
+    
+    final void CargarTabla(){
+        CProfiles Perfil = new CProfiles();
+        while (TablaPerfilmodelo.getRowCount() > 0) {
+            TablaPerfilmodelo.removeRow(0);           
+        }
+        try {
+            ResultSet rs = Perfil.CargarPerfilResultSet();
+            while (rs.next()) {                
+                Object [] oValores = {rs.getInt("idtperfil"), rs.getString("nombre"), rs.getString("rubricadeevaluacion"), rs.getString("fechadeinicio"), rs.getString("fechadevencimiento"), rs.getString("porcentajedevaloracion"), rs.getString("descripcion"), rs.getInt("idtipoperfil"), rs.getInt("idgrado"), rs.getInt("idseccion")};
+                TablaPerfilmodelo.addRow(oValores);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se cargo la tabla");
+        }
+    }
+    
+    final void CargarCmbTipoPerfil() {
+        //Crear objetos de la clase ControllerBiblioteca
+        CProfiles objCargarTipoPerfil;
+        objCargarTipoPerfil = new CProfiles();
+        //Lista donde se guardarán los IDs
+        TipoPerfilList = new ArrayList();
+        try {
+            //Guardar en la variable rs los valores retornados por el modelo
+            ResultSet rs;
+            rs = objCargarTipoPerfil.CargarTipoPerfilResultSet();
+            //Verificamos si el resultset tiene datos
+            if (rs.next()) {
+                //Instanaciamos modelo combo para el combobox
+                TipoPerfilcombo = new DefaultComboBoxModel<>();
+                //Se agrega opción por defecto
+                TipoPerfilcombo.addElement("Elija una opción");
+                do {
+                    //Se guarda en la lista el id tipo de archivo
+                    TipoPerfilList.add(rs.getInt("idtipoperfil"));
+                    //Se agrega en el combobox el valor del campo tipo de archivo
+                    TipoPerfilcombo.addElement(rs.getString("tipoperfil"));
+                    //Se asigna el modelo combo al combobox
+                    CmbTipoPerfil.setModel(TipoPerfilcombo);
+                } while (rs.next());
+            } else {
+                JOptionPane.showMessageDialog(BtnEliminar, "No existen grados por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
+        }//End catch
+    }//End method
+    
+    final void CargarCmbGradoPerfil() {
+        //Crear objetos de la clase ControllerBiblioteca
+        CProfiles objCargarGradoPerfil;
+        objCargarGradoPerfil = new CProfiles();
+        //Lista donde se guardarán los IDs
+        GradoPerfilList = new ArrayList();
+        try {
+            //Guardar en la variable rs los valores retornados por el modelo
+            ResultSet rs;
+            rs = objCargarGradoPerfil.CargarGradoPerfilResultSet();
+            //Verificamos si el resultset tiene datos
+            if (rs.next()) {
+                //Instanaciamos modelo combo para el combobox
+                GradoPerfilcombo = new DefaultComboBoxModel<>();
+                //Se agrega opción por defecto
+                GradoPerfilcombo.addElement("Elija una opción");
+                do {
+                    //Se guarda en la lista el id tipo de archivo
+                    GradoPerfilList.add(rs.getInt("idgrado"));
+                    //Se agrega en el combobox el valor del campo tipo de archivo
+                    GradoPerfilcombo.addElement(rs.getString("grado"));
+                    //Se asigna el modelo combo al combobox
+                    CmbGrado.setModel(GradoPerfilcombo);
+                } while (rs.next());
+            } else {
+                JOptionPane.showMessageDialog(BtnEliminar, "No existen grados por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
+        }//End catch
+    }//End method
+    
+    final void CargarCmbSeccionPerfil() {
+        //Crear objetos de la clase ControllerBiblioteca
+        CProfiles objCargarSeccionPerfil;
+        objCargarSeccionPerfil = new CProfiles();
+        //Lista donde se guardarán los IDs
+        SeccionesPerfilList = new ArrayList();
+        try {
+            //Guardar en la variable rs los valores retornados por el modelo
+            ResultSet rs;
+            rs = objCargarSeccionPerfil.CargarSeccionesPefilResultSet();
+            //Verificamos si el resultset tiene datos
+            if (rs.next()) {
+                //Instanaciamos modelo combo para el combobox
+                SeccionesPerfilcombo = new DefaultComboBoxModel<>();
+                //Se agrega opción por defecto
+                SeccionesPerfilcombo.addElement("Elija una opción");
+                do {
+                    //Se guarda en la lista el id tipo de archivo
+                    SeccionesPerfilList.add(rs.getInt("idseccion"));
+                    //Se agrega en el combobox el valor del campo tipo de archivo
+                    SeccionesPerfilcombo.addElement(rs.getString("seccion"));
+                    //Se asigna el modelo combo al combobox
+                    CmbSecciones.setModel(SeccionesPerfilcombo);
+                } while (rs.next());
+            } else {
+                JOptionPane.showMessageDialog(BtnEliminar, "No existen grados por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
+        }//End catch
+    }//End method
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,6 +208,11 @@ public class frmProfiles extends javax.swing.JFrame {
         BtnSubir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         JTPerfil = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
+        txtTipoPerfil = new javax.swing.JTextField();
+        txtGrado = new javax.swing.JTextField();
+        txtSecciones = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,6 +302,13 @@ public class frmProfiles extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 857, 264));
 
+        jLabel11.setText("Id perfil:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 50, -1));
+        jPanel1.add(txtTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, 20, -1));
+        jPanel1.add(txtGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, 20, -1));
+        jPanel1.add(txtSecciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, 20, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,6 +329,7 @@ public class frmProfiles extends javax.swing.JFrame {
 
     private void BtnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSubirActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_BtnSubirActionPerformed
 
     /**
@@ -213,6 +381,7 @@ public class frmProfiles extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dtVencimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -225,7 +394,11 @@ public class frmProfiles extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea txtDescripcion;
+    private javax.swing.JTextField txtGrado;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPonderacion;
+    private javax.swing.JTextField txtSecciones;
+    private javax.swing.JTextField txtTipoPerfil;
     // End of variables declaration//GEN-END:variables
 }

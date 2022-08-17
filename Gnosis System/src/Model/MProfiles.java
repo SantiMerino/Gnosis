@@ -97,4 +97,40 @@ public class MProfiles {
             return false;
         }
     }
+    
+    public boolean ActualizarProfilesModel(int ID, String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int tipoperfil,int grado, int seccion, Connection con){
+         try {
+             String query = "UPDATE Tareas SET nombre = ?, rubricadeevaluacion = ?, fechadeinicio = ?, fechadevencimiento = ?, ponderacion = ?, porcentajedevaloracion = ?, descripcion = ?, idtipoarchivo = ?, idgrado = ?, idseccion = ? WHERE idperfil = ?";
+            ps = con.prepareStatement(query);
+            ps = con.prepareStatement(query);
+            ps.setString(1, nombre);
+            ps.setString(2, rubricadeevaluacion);
+            ps.setString(3, fechadeinicio);
+            ps.setString(4, fechadevencimiento);
+            ps.setString(5, porcentajedevaloracion);
+            ps.setString(6, descripcion);
+            ps.setInt(7, tipoperfil);
+            ps.setInt(8, grado);
+            ps.setInt(9, seccion);
+            ps.setInt(10, ID);
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar el registro" + e.toString());
+            return false;
+        }
+    }
+    
+    public boolean EliminarProfileModel(int ID, Connection con) {     
+        try {
+             String query = "DELETE Tareas WHERE idperfil = ?";
+             ps = con.prepareStatement(query);
+             ps.setInt(1, ID);
+             ps.execute();
+             return true;
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion");
+             return false;
+        }        
+    }
 }
