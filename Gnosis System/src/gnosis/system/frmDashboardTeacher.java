@@ -64,10 +64,10 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         custoObj.changeIcon(briefcaseButton, "/resources/briefcase.png");
         pageButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
         custoObj.changeIcon(pageButton, "/resources/document-text.png");
-        medalButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(medalButton, "/resources/medal.png");
-        bookButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(bookButton, "/resources/book-saved.png");
+        teachersButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
+        custoObj.changeIcon(teachersButton, "/resources/admindocente.png");
+        studentsButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
+        custoObj.changeIcon(studentsButton, "/resources/teacher-white.png");
         
         //Y justo al final cambio el boton que es al estado de seleccionado :P
         btn.setStyle(ButtonRound.ButtonStyle.BLANCO);
@@ -121,8 +121,8 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         briefcaseButton = new roundObjects.ButtonRound();
         pageButton = new roundObjects.ButtonRound();
         calendarButton = new roundObjects.ButtonRound();
-        bookButton = new roundObjects.ButtonRound();
-        medalButton = new roundObjects.ButtonRound();
+        studentsButton = new roundObjects.ButtonRound();
+        teachersButton = new roundObjects.ButtonRound();
         moodPanel = new roundObjects.PanelRound();
         moodPic = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -169,7 +169,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         namePan.setPreferredSize(new java.awt.Dimension(300, 100));
         namePan.setLayout(new javax.swing.BoxLayout(namePan, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel1.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Santi's Dashboard");
         namePan.add(jLabel1);
@@ -356,27 +356,27 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         });
         sideBar.add(calendarButton);
 
-        bookButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/book-saved.png"))); // NOI18N
-        bookButton.setPreferredSize(new java.awt.Dimension(60, 60));
-        bookButton.setRound(15);
-        bookButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
-        bookButton.addActionListener(new java.awt.event.ActionListener() {
+        studentsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/teacher-white.png"))); // NOI18N
+        studentsButton.setPreferredSize(new java.awt.Dimension(60, 60));
+        studentsButton.setRound(15);
+        studentsButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        studentsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bookButtonActionPerformed(evt);
+                studentsButtonActionPerformed(evt);
             }
         });
-        sideBar.add(bookButton);
+        sideBar.add(studentsButton);
 
-        medalButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/medal.png"))); // NOI18N
-        medalButton.setPreferredSize(new java.awt.Dimension(60, 60));
-        medalButton.setRound(15);
-        medalButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
-        medalButton.addActionListener(new java.awt.event.ActionListener() {
+        teachersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/admindocente.png"))); // NOI18N
+        teachersButton.setPreferredSize(new java.awt.Dimension(60, 60));
+        teachersButton.setRound(15);
+        teachersButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        teachersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medalButtonActionPerformed(evt);
+                teachersButtonActionPerformed(evt);
             }
         });
-        sideBar.add(medalButton);
+        sideBar.add(teachersButton);
 
         moodPanel.setBackground(new java.awt.Color(120, 220, 90));
         moodPanel.setPreferredSize(new java.awt.Dimension(75, 140));
@@ -515,16 +515,16 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_calendarButtonActionPerformed
 
-    private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
+    private void studentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentsButtonActionPerformed
         // TODO add your handling code here:
         if(panContainer.getComponentCount()== 0) {
-            cambiarColorBotonesMenu(bookButton, "/resources/home-selec.png");
+            cambiarColorBotonesMenu(studentsButton, "/resources/teacher-white.png");
             panContainer.add(new panBiblioteca());
             panContainer.repaint();
             panContainer.revalidate();
         } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panBiblioteca()) {
-            if (bookButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
-                cambiarColorBotonesMenu(bookButton, "/resources/home-selec.png");
+            if (studentsButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
+                cambiarColorBotonesMenu(studentsButton, "/resources/teacher.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
@@ -537,18 +537,18 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
             }
      
         }
-    }//GEN-LAST:event_bookButtonActionPerformed
+    }//GEN-LAST:event_studentsButtonActionPerformed
 
-    private void medalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medalButtonActionPerformed
+    private void teachersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teachersButtonActionPerformed
         // TODO add your handling code here:
         if(panContainer.getComponentCount()== 0) {
-            cambiarColorBotonesMenu(medalButton, "/resources/home-selec.png");
+            cambiarColorBotonesMenu(teachersButton, "/resources/admindocente.png");
             panContainer.add(new panGrades());
             panContainer.repaint();
             panContainer.revalidate();
         } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panGrades()) {
-                    if (medalButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
-                cambiarColorBotonesMenu(medalButton, "/resources/home-selec.png");
+                    if (teachersButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
+                cambiarColorBotonesMenu(teachersButton, "/resources/admindocente-black.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
@@ -560,7 +560,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
                 notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
             }  
         }
-    }//GEN-LAST:event_medalButtonActionPerformed
+    }//GEN-LAST:event_teachersButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:
@@ -604,7 +604,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound bookButton;
     private roundObjects.ButtonRound briefcaseButton;
     private roundObjects.ButtonRound btnMood;
     private roundObjects.ButtonRound btnStopMood;
@@ -625,7 +624,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel mainPanel;
-    private roundObjects.ButtonRound medalButton;
     private roundObjects.PanelRound moodPanel;
     private javax.swing.JLabel moodPic;
     private javax.swing.JPanel namePan;
@@ -644,6 +642,8 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private javax.swing.JPanel searchPan;
     private javax.swing.JTextField searchbar;
     private javax.swing.JPanel sideBar;
+    private roundObjects.ButtonRound studentsButton;
+    private roundObjects.ButtonRound teachersButton;
     private javax.swing.JPanel upGap;
     private javax.swing.JPanel upperPanel;
     // End of variables declaration//GEN-END:variables
