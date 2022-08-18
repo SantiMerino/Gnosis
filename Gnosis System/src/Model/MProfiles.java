@@ -123,7 +123,7 @@ public class MProfiles {
     
     public boolean EliminarProfileModel(int ID, Connection con) {     
         try {
-             String query = "DELETE Tareas WHERE idperfil = ?";
+             String query = "DELETE Perfil WHERE idperfil = ?";
              ps = con.prepareStatement(query);
              ps.setInt(1, ID);
              ps.execute();
