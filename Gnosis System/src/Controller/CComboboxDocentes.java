@@ -17,6 +17,7 @@ public class CComboboxDocentes {
     Connection con = CConnection.getConnectionControllerWithoutParameters();
     MTeacher modeloGeneros = new MTeacher();
     MTeacher modeloUsuarios = new MTeacher();
+    MTeacher modeloGrados = new MTeacher();
     MTeacher modeloDocentesC = new MTeacher();
     
     public ResultSet CCargarGeneros(){
@@ -25,6 +26,10 @@ public class CComboboxDocentes {
     
     public ResultSet CCargarUsuarios() {
         return modeloUsuarios.MCargarUsuarios(con);
+    }
+    
+    public ResultSet CCargarGrados() {
+        return modeloUsuarios.MCargarGrado(con);
     }
     
     public ResultSet CCargarDocentes(){

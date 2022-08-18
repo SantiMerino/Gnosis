@@ -19,7 +19,7 @@ public class MTeacher {
     
     public ResultSet MCargarGenero(Connection con){
         try {
-            String query = "SELECT * FROM tbGenerosDocentes";
+            String query = "SELECT * FROM tbGeneros";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -31,7 +31,19 @@ public class MTeacher {
     
     public ResultSet MCargarUsuarios(Connection con){
         try {
-            String query = "SELECT * FROM tbUsuarios";
+            String query = "SELECT * FROM tbUsuario";
+            ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se cargo los usuarios: " + e.toString());
+            return null;
+        }
+    }
+    
+     public ResultSet MCargarGrado(Connection con){
+        try {
+            String query = "SELECT * FROM tbGrados";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
