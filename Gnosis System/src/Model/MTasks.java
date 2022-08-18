@@ -64,13 +64,9 @@ public class MTasks {
             String query = "INSERT INTO tbTareas VALUES (?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, nombretarea);
-            JOptionPane.showMessageDialog(null, nombretarea);
             ps.setString(2, fechainicio);
-            JOptionPane.showMessageDialog(null, fechainicio);
             ps.setString(3, fechavencimiento);
-            JOptionPane.showMessageDialog(null, fechavencimiento);
             ps.setInt(4, idperfil);
-            JOptionPane.showMessageDialog(null, idperfil);
             ps.setString(5, rubrica);
             ps.setInt(6, idtipotarea);
             JOptionPane.showMessageDialog(null, idtipotarea);
