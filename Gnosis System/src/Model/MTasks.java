@@ -61,12 +61,13 @@ public class MTasks {
     
     public boolean SubirTareasModel(String nombretarea, String fechainicio, String fechavencimiento, int idperfil, String rubrica, int idtipotarea, Connection con) {
         try {            
-            String query = "INSERT INTO tbTarea VALUES (?,?,?,?,?,?)";
+            String query = "INSERT INTO tbTareas VALUES (?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, nombretarea);
             ps.setString(2, fechainicio);
             ps.setString(3, fechavencimiento);
             ps.setInt(4, idperfil);
+            JOptionPane.showMessageDialog(null, idperfil);
             ps.setString(5, rubrica);
             ps.setInt(6, idtipotarea);
             if (ps.executeUpdate () == 1) {
@@ -85,7 +86,7 @@ public class MTasks {
     
     public boolean ActualizarTareasModel(int ID, String nombre, String nombretarea, String fechadeinicio, String fechadevencimiento, int idperfil, String rubrica, int idtipotarea, Connection con){
          try {
-             String query = "UPDATE tbTarea SET nombretarea = ?, fechadeinicio = ?, fechavencimiento = ?, idperfil = ?, rubrica = ?, idtipotarea = ? WHERE idtarea = ?";
+             String query = "UPDATE tbTareas SET nombretarea = ?, fechadeinicio = ?, fechavencimiento = ?, idperfil = ?, rubrica = ?, idtipotarea = ? WHERE idtarea = ?";
             ps = con.prepareStatement(query);
             ps = con.prepareStatement(query);
             ps.setString(1, nombretarea);
@@ -106,7 +107,7 @@ public class MTasks {
     public boolean EliminarTareaModel(int ID, Connection con) {
          
         try {
-             String query = "DELETE tbTarea WHERE idtarea = ?";
+             String query = "DELETE tbTareas WHERE idtarea = ?";
              ps = con.prepareStatement(query);
              ps.setInt(1, ID);
              ps.execute();
