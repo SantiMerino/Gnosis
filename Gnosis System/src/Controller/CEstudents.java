@@ -6,6 +6,7 @@
 package Controller;
 import Model.MEstudents;
 import java.sql.Connection;
+import java.sql.ResultSet;
 /**
  *
  * @author PC
@@ -15,6 +16,7 @@ public class CEstudents {
     private MEstudents mdlEstu = new MEstudents();
     
     protected int ID;
+    public static int idalumno;
     private String apellidosalumno;
     private String nombresalumno;
     private int idgenero;
@@ -139,10 +141,18 @@ public class CEstudents {
         this.codigocarnet = codigocarnet;
     }
 
+    public ResultSet idAlumnoforUsuario(){
+        return mdlEstu.idAlumnoParaUsuario(correo, con);
+    }
     
+    
+    public boolean CrearUsuarioAlumnoController (){
+        
+        return mdlEstu.RegistrarUsuarioAlumno(1, correo,idalumno , con);
+    }
     
     public boolean AlumnoNuevoController(){
-        return mdlEstu.RegistrarDocenteModel(apellidosalumno, nombresalumno, idgenero, idgrado, correo, direccion, contacto, dui, fecha_nac, idusuario, codigocarnet, con);
+        return mdlEstu.RegistrarDocenteModel(apellidosalumno, nombresalumno, idgenero, idgrado, correo, direccion, contacto, dui, fecha_nac, codigocarnet, con);
     }
 
     public CEstudents(String apellidosalumno, String nombresalumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, int idusuario, String codigocarnet) {

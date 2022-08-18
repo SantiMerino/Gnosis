@@ -67,14 +67,52 @@ public class MEstudents {
             return null;
         }
     }
+     
+    public ResultSet idAlumnoParaUsuario(String correo,Connection con){
+        try {
+            String query = "SELECT (idalumno) FROM tbAlumnos WHERE correo = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, correo);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se consiguio el id del alumnos: " + e.toString());
+            return null;
+        }
+    }
     
+     
+     public boolean RegistrarUsuarioAlumno(int nivel, String correo,int idalumno ,Connection con){
+         String clavedefault = "gnosis123";
+         int estadouser = 2;
+         int pindefault = 12345;
+         try {
+             String query = "EXEC crearUsuarioEstudiante ?, ?, ?, ?, ?, ?";
+             ps = con.prepareStatement(query);
+             ps.setEscapeProcessing(true);
+             ps.setInt(1, nivel);
+             ps.setString(2, correo);
+             ps.setString(3 , clavedefault);
+             ps.setInt(4, pindefault);
+             ps.setInt(5, estadouser);
+             ps.setInt(6,idalumno);
+             ResultSet rs = ps.executeQuery();
+             if (rs.next()) {
+                 return true;
+             }else{
+                 return false;
+             }
+         } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, "error" + e.toString());
+             return false;
+         }
+     }
+     
      /*Insercion de datos*/
      
-     public boolean RegistrarDocenteModel(String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac,
-             int idusuario, String codigocarnet,  Connection con) {
+     public boolean RegistrarDocenteModel(String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, String codigocarnet,  Connection con) {
          try {
-             
-             String query = "INSERT INTO tbAlumnos VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+             String query = "INSERT INTO tbAlumnos VALUES (?,?,?,?,?,?,?,?,?,?)";
              ps = con.prepareStatement(query);
              ps.setString(1, ApellidosAlumno);
              ps.setString(2, NombresAlumno);
@@ -85,8 +123,8 @@ public class MEstudents {
              ps.setString(7, contacto);
              ps.setString(8, dui);
              ps.setString(9, fecha_nac);
-             ps.setInt(10, idusuario);
-             ps.setString(11, codigocarnet);
+//             ps.setInt(10, idusuario);
+             ps.setString(10, codigocarnet);
              if (ps.executeUpdate () == 1) {
                  return true;
              }else {
