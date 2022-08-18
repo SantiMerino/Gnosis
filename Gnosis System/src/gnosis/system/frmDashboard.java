@@ -528,7 +528,7 @@ public class frmDashboard extends javax.swing.JFrame {
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
-
+                
                 panContainer.add(new panBiblioteca());
                 panContainer.repaint();
                 panContainer.revalidate();

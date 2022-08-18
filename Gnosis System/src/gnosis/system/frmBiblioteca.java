@@ -48,7 +48,9 @@ public class frmBiblioteca extends javax.swing.JFrame {
         initComponents();
         CargarCmbClasificacion();
         CargarCmbTipoRecurso();
-     
+        txtId.setVisible(false);
+        txtTipoClasificacion.setVisible(false);
+        txtTipoRecurso.setVisible(false);
         //Tabla
         String [] TitulosBiblioteca = {"ID", "Nombre recurso", "Tipo recurso", "Clasificacion", "link", "PDF", "Alumno"};
         TablaBiBliotecamodelo = new DefaultTableModel(null, TitulosBiblioteca);
@@ -245,7 +247,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTBiblioteca);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 720, 150));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 650, 150));
 
         jLabel7.setText("Id Biblioteca:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));

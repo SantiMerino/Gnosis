@@ -35,6 +35,7 @@ public class panBiblioteca extends javax.swing.JPanel {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
+        buttonRound1 = new roundObjects.ButtonRound();
         mainPanel = new javax.swing.JPanel();
 
         setBackground(java.awt.Color.white);
@@ -85,6 +86,18 @@ public class panBiblioteca extends javax.swing.JPanel {
         jComboBox2.setPreferredSize(new java.awt.Dimension(100, 30));
         jPanel5.add(jComboBox2);
 
+        buttonRound1.setText("+");
+        buttonRound1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        buttonRound1.setPreferredSize(new java.awt.Dimension(30, 30));
+        buttonRound1.setRound(10);
+        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        buttonRound1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(buttonRound1);
+
         northPanel.add(jPanel5);
 
         add(northPanel, java.awt.BorderLayout.PAGE_START);
@@ -94,8 +107,14 @@ public class panBiblioteca extends javax.swing.JPanel {
         add(mainPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
+        // TODO add your handling code here:
+        new frmBiblioteca().setVisible(true);
+    }//GEN-LAST:event_buttonRound1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private roundObjects.ButtonRound buttonRound1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
