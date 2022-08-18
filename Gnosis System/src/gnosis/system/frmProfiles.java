@@ -106,7 +106,7 @@ public class frmProfiles extends javax.swing.JFrame {
                     CmbTipoPerfil.setModel(TipoPerfilcombo);
                 } while (rs.next());
             } else {
-                JOptionPane.showMessageDialog(BtnEliminar, "No existen grados por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(BtnEliminar, "No existen tipos perfil por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
@@ -170,7 +170,7 @@ public class frmProfiles extends javax.swing.JFrame {
                     CmbSecciones.setModel(SeccionesPerfilcombo);
                 } while (rs.next());
             } else {
-                JOptionPane.showMessageDialog(BtnEliminar, "No existen grados por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(BtnEliminar, "No existen secciones por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
@@ -287,6 +287,11 @@ public class frmProfiles extends javax.swing.JFrame {
         jPanel1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 105, 110, -1));
 
         BtnEliminar.setText("Eliminar");
+        BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEliminarActionPerformed(evt);
+            }
+        });
         jPanel1.add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 155, 110, -1));
 
         BtnSubir.setText("Subir");
@@ -474,6 +479,7 @@ public class frmProfiles extends javax.swing.JFrame {
         String vencimiento = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + (Cal1.get(Calendar.MONTH) + 1)+ "/" + Cal1.get(Calendar.DAY_OF_MONTH));
 
         //Update
+        obj.ID = Integer.parseInt(txtId.getText());
         obj.nombre = txtNombre.getText();
         obj.rubricadeevaluacion = ruta_archivo;
         obj.fechadeinicio = inicio;
@@ -489,6 +495,26 @@ public class frmProfiles extends javax.swing.JFrame {
             LimpiarCampos();
         }
     }//GEN-LAST:event_BtnModificarActionPerformed
+
+    private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
+        // TODO add your handling code here:
+        if (txtId.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un registro", "Informacion incompleta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int confirmacion = JOptionPane.YES_NO_OPTION;
+            JOptionPane.showMessageDialog(this, "Esta seguro de eliminar este registro?", "Confirmar Accion", confirmacion);
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                CProfiles objProfDel = new CProfiles(Integer.parseInt(txtId.getText()));
+
+                boolean valor = objProfDel.EliminarTareaController();
+                if ( valor == true) {
+                    JOptionPane.showMessageDialog(this, "Perfil eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+                    CargarTabla();
+                    LimpiarCampos();
+                }
+            }
+        }
+    }//GEN-LAST:event_BtnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
