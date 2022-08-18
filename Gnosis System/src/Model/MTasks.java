@@ -123,7 +123,7 @@ public class MTasks {
             ps.setString(1, nombre);
             ps.setString(2, etapa);
             ps.setString(3, fechadeinicio);
-            ps.setString(4, fechadevencimiento);
+            ps.setString(4, fechadevencimiento); 
             ps.setString(5, ponderacion);
             ps.setString(6, instrumentodeevaluacion);
             ps.setInt(7, tipoarchivo);

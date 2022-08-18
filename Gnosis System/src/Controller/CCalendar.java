@@ -34,7 +34,7 @@ public class CCalendar {
     
     
     
-    protected int ID;
+    public int ID;
     public String NombreEvento;
     public String FechaEvento;
     public String HoraInicioEvento;
@@ -160,6 +160,10 @@ public class CCalendar {
     
     public boolean EliminarEventoController(){
         return mdlAsp.EliminarEventoModelo(ID, con);
+    }
+    
+    public boolean ActualizarEvento(){
+        return mdlAsp.ActualizarEventoModelo(ID, NombreEvento, FechaEvento, HoraInicioEvento, FechaFinalEvento, HoraFinalizarEvento, idtipoevento, idgrado, idseccion, con);
     }
 
     public CCalendar(int ID) {

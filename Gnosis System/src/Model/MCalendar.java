@@ -111,5 +111,26 @@ public class MCalendar {
         return false;
     }
     
-    
+    public boolean ActualizarEventoModelo(int ID, String NombreEvento, String FechaEvento, String HoraInicioEvento, String FechaFinEvento, String HoraFinalizarEvento, int tipoevento, int grado, int seccion, Connection con){
+        try {
+            String query = "UPDATE Eventos SET NombreEvento =?, FechaEvento =?, HoraInicioEvento =?, FechaFinEvento =?, HoraFinalizarEvento =?, idtipoevento =?, idgrado =?, idseccion =?  WHERE idevento =? ";
+            ps = con.prepareStatement(query);
+            ps = con.prepareStatement(query);
+            ps.setString(1, NombreEvento);
+            ps.setString(2, FechaEvento);
+            ps.setString(3, HoraInicioEvento);
+            ps.setString(4, FechaFinEvento);
+            ps.setString(5, HoraFinalizarEvento);
+            ps.setInt(6, tipoevento);
+            ps.setInt(7, grado);
+            ps.setInt(8, seccion);
+            ps.setInt(9, ID);
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar el registro" + e.toString());
+            return false;
+        }
+    }
+  
 }
