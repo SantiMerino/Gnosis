@@ -181,7 +181,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                 do {                    
                     usuarioArrayList.add(rs.getInt("idUsuario"));
                     modeloUsuario.addElement(rs.getString("Username"));
-                    cmbUsuario.setModel(modeloUsuario);
+//                    cmbUsuario.setModel(modeloUsuario);
                 } while (rs.next());
             } else{
                 JOptionPane.showMessageDialog(null, "No se pudo cargar los usuarios");
@@ -695,7 +695,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
 //            
             cmbGenero.setSelectedIndex(respuesta + 1);
             cmbGrado.setSelectedIndex(respuesta2 + 1);
-            cmbUsuario.setSelectedIndex(respuesta4 + 1);
+//            cmbUsuario.setSelectedIndex(respuesta4 + 1);
         }
         
     }//GEN-LAST:event_tbEstudiantesMouseClicked
