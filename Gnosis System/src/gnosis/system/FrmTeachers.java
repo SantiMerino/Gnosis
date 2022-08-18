@@ -463,6 +463,7 @@ public class FrmTeachers extends javax.swing.JFrame {
                 if ( valor == true) {
                     JOptionPane.showMessageDialog(this, "Docente eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
                     CargarTabla();
+                    LimpiarCampos();
                 }
             }
         }
