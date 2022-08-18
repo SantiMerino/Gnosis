@@ -84,7 +84,7 @@ public class MProfiles {
     
     public boolean ActualizarProfilesModel(int ID, String nombre, String descripcion, String porcentajedevaloracion, String fechadeinicio, String fechadevencimiento, int tipoperfil,int grado, Connection con){
          try {
-            String query = "UPDATE tbPerfiles SET nombre = ?, descripcion = ?, porcentajedevaloracion = ?, fechadeinicio = ?, fechadevencimiento = ?, idestadoperfil = ?, nota = ?, idtipoperfil = ?, idfase = ?, idgrado = ?, WHERE idperfil = ?";
+            String query = "UPDATE tbPerfiles SET nombreperfil = ?, descripcion = ?, porcentajeValoracion = ?, fechainicio = ?, fechavencimiento = ?, idtipoperfil = ?, idgrados = ? WHERE idperfil = ?";
             ps = con.prepareStatement(query);
             ps = con.prepareStatement(query);
             ps.setString(1, nombre);
@@ -92,9 +92,9 @@ public class MProfiles {
             ps.setString(3, porcentajedevaloracion);
             ps.setString(4, fechadeinicio);
             ps.setString(5, fechadevencimiento);
-            ps.setInt(8, tipoperfil);
-            ps.setInt(11, grado);
-            ps.setInt(12, ID);
+            ps.setInt(6, tipoperfil);
+            ps.setInt(7, grado);
+            ps.setInt(8, ID);
             ps.execute();
             return true;
         } catch (Exception e) {
