@@ -169,7 +169,7 @@ public class frmDashboard extends javax.swing.JFrame {
         namePan.setPreferredSize(new java.awt.Dimension(300, 100));
         namePan.setLayout(new javax.swing.BoxLayout(namePan, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel1.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Santi's Dashboard");
         namePan.add(jLabel1);
@@ -247,7 +247,7 @@ public class frmDashboard extends javax.swing.JFrame {
 
         jComboBox1.setBackground(new java.awt.Color(32, 32, 32));
         jComboBox1.setForeground(new java.awt.Color(32, 32, 32));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cerrar sesión", "" }));
         jComboBox1.setPreferredSize(new java.awt.Dimension(23, 26));
         panelRound2.add(jComboBox1);
 
