@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -60,8 +62,7 @@ public class FrmEstudents extends javax.swing.JFrame {
         
         CargarDatos();
         
-        String [] TitulosDocentes = {"ID", "Apellidos", "Nombres", "Genero", "Grado", "Correo",  "Direccion", "Contacto", "DUI", "Nacimiento", 
-            "Usuario", "Carnet"};
+        String [] TitulosDocentes = {"ID", "Apellidos", "Nombres", "Genero", "Grado", "Correo",  "Direccion", "Contacto", "DUI", "Nacimiento", "Carnet"};
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tbEstudiantes.setModel(tablaModel);
         CargarTabla();
@@ -100,7 +101,7 @@ public class FrmEstudents extends javax.swing.JFrame {
                 Object [] oValores = {rs.getInt("idalumno"), rs.getString("apellidos_alumno"), rs.getString("nombres_alumno"), rs.getInt("idgenero"), 
                     rs.getInt("idgrado"), rs.getString("correo"), rs.getString("direccion"), rs.getString("contacto"), 
                     rs.getString("dui"), 
-                    rs.getString("fecha_nac"), rs.getInt("idusuario"), rs.getString("codigocarnet")};
+                    rs.getString("fecha_nac"), rs.getString("codigocarnet")};
                 tablaModel.addRow(oValores);
             }
         } catch (Exception e) {
@@ -229,6 +230,8 @@ public class FrmEstudents extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
+        jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Nombres del estudiantes:");
 
         txtNombres.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -237,6 +240,8 @@ public class FrmEstudents extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(32, 32, 32));
         jLabel2.setText("Apellidos del estudiante:");
 
         txtApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -245,8 +250,12 @@ public class FrmEstudents extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(32, 32, 32));
         jLabel3.setText("Direccion del estudiante:");
 
+        jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(32, 32, 32));
         jLabel4.setText("Telefono del estudiante:");
 
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -255,12 +264,20 @@ public class FrmEstudents extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(32, 32, 32));
         jLabel5.setText("Fecha de nacimiento:");
 
+        jLabel6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(32, 32, 32));
         jLabel6.setText("Documento del estudiante:");
 
+        jLabel7.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(32, 32, 32));
         jLabel7.setText("Correo del alumno:");
 
+        jLabel8.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(32, 32, 32));
         jLabel8.setText("Codigo de carnet:");
 
         txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -269,6 +286,8 @@ public class FrmEstudents extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(32, 32, 32));
         jLabel9.setText("Genero:");
 
         cmbGenero.addItemListener(new java.awt.event.ItemListener() {
@@ -290,8 +309,12 @@ public class FrmEstudents extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(32, 32, 32));
         jLabel10.setText("Grado");
 
+        jLabel12.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(32, 32, 32));
         jLabel12.setText("Usuario:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -390,7 +413,7 @@ public class FrmEstudents extends javax.swing.JFrame {
                     .addComponent(cmbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
@@ -487,7 +510,7 @@ public class FrmEstudents extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(72, Short.MAX_VALUE))
+                        .addContainerGap(108, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -515,7 +538,24 @@ public class FrmEstudents extends javax.swing.JFrame {
             boolean respuesta = objEstu.AlumnoNuevoController();
             if (respuesta == true) {
             JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente");
+            boolean usuariores = false;
                 CargarTabla();
+                ResultSet idalumno = objEstu.idAlumnoforUsuario();
+                try {
+                    if (idalumno.next()) {
+                        CEstudents.idalumno = idalumno.getInt("idalumno");
+                        JOptionPane.showMessageDialog(null, CEstudents.idalumno);
+                        usuariores = objEstu.CrearUsuarioAlumnoController();
+                    }
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "adios id" + ex.toString());
+                }           
+                if ( usuariores == true ) {
+                    JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Usuario ingresado");
+                }
         }  else {
                 JOptionPane.showMessageDialog(this, "Estudiante no pudo ser ingresado");
             }
