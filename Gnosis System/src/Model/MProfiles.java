@@ -47,7 +47,7 @@ public class MProfiles {
     
     public ResultSet mostrarPerfiles(Connection con){
         try {
-            String query = "SELECT nombreperfil,descripcion,porcentajevaloracion,fechainicio,fechavencimiento,tipoperfil,grado FROM tbPerfil";
+            String query = "SELECT * FROM viewPerfiles;";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;

@@ -70,7 +70,7 @@ public class frmProfiles extends javax.swing.JFrame {
         try {
             ResultSet rs = Perfil.CargarPerfilResultSet();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"), rs.getString("porcentajevaloracion"), rs.getString("fechainicio"), rs.getString("fechavencimiento"), rs.getInt("tipoperfil"), rs.getInt("grado")};
+                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"), rs.getString("porcentajeValoracion"), rs.getString("fechainicio"), rs.getString("fechavencimiento"), rs.getString("tipoperfil"), rs.getString("grado")};
                 TablaPerfilmodelo.addRow(oValores);
             }
         } catch (Exception e) {
