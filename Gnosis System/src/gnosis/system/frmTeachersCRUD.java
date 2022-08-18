@@ -641,8 +641,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         c = new GregorianCalendar();
         c.setTime(date);
         String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + (c.get(Calendar.MONTH) + 1)+ "/" + c.get(Calendar.DAY_OF_MONTH));
-        CTeacher objcontrollerDocentes = new CTeacher(Integer.parseInt(txtId.getText()), txtNombres.getText(), txtApellidos.getText(), txtDireccion.getText(), txtTelefono.getText(), nacimiento, txtDui.getText(), 
-                txtCorreo.getText(), idGenero, idUsuario);
+        CTeacher objcontrollerDocentes = new CTeacher(Integer.parseInt(txtId.getText()), txtApellidos.getText(), txtNombres.getText(), txtDireccion.getText(), txtDui.getText(), txtCorreo.getText(), nacimiento, idGrado, idGenero, txtTelefono.getText(), idUsuario);
         boolean valor = objcontrollerDocentes.ActualizarDocente();
         if (valor == true) {
             JOptionPane.showMessageDialog(this, "Docente actualizado correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);

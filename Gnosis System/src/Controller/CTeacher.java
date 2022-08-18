@@ -186,20 +186,21 @@ public class CTeacher {
     }
 
     public boolean ActualizarDocente() {
-        return mdlDocen.ActualizarDocenteModel(ID, NombresDocente, ApellidosDocente, DireccionDocente, TelefonoDocente, FechaNacimiento, DUI, Correo, idGeneroDocente, idUsuario, con);
+        return mdlDocen.ActualizarDocenteModel(ID, apellidosdocente, nombresdocente, direccion, dui, correo, fecha_nac, idgrado, idgenero, contacto, idusuario, con);
     } 
 
-    public CTeacher(int ID, String NombresDocente, String ApellidosDocente, String DireccionDocente, String TelefonoDocente, String FechaNacimiento, String DUI, String Correo, int idGeneroDocente, int idUsuario) {
+    public CTeacher(int ID, String apellidosdocente, String nombresdocente, String direccion, String dui, String correo, String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario) {
         this.ID = ID;
-        this.NombresDocente = NombresDocente;
-        this.ApellidosDocente = ApellidosDocente;
-        this.DireccionDocente = DireccionDocente;
-        this.TelefonoDocente = TelefonoDocente;
-        this.FechaNacimiento = FechaNacimiento;
-        this.DUI = DUI;
-        this.Correo = Correo;
-        this.idGeneroDocente = idGeneroDocente;
-        this.idUsuario = idUsuario;
+        this.apellidosdocente = apellidosdocente;
+        this.nombresdocente = nombresdocente;
+        this.direccion = direccion;
+        this.dui = dui;
+        this.correo = correo;
+        this.fecha_nac = fecha_nac;
+        this.idgrado = idgrado;
+        this.idgenero = idgenero;
+        this.contacto = contacto;
+        this.idusuario = idusuario;
     }
     
     MTeacher modeloGeneros = new MTeacher();
