@@ -82,6 +82,8 @@ public class MBiblioteca {
     }
     
     public boolean ActualizarBibliotecasModel(int ID,String nombrerecurso, int idtiporecurso, int idclasificacion, String link, String pdf, Connection con){
+        JOptionPane.showMessageDialog(null, idtiporecurso);
+        JOptionPane.showMessageDialog(null, idclasificacion);
          try {
              String query = "UPDATE tbBiblioteca SET nombrerecurso = ?, idtiporecurso = ?, idclasificacion = ?, link = ?, pdf = ? WHERE idbiblioteca = ?";
             ps = con.prepareStatement(query);

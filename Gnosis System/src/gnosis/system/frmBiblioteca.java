@@ -362,7 +362,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
             JTable rcp = (JTable) evt.getSource();
             BtnModificar.setEnabled(true);
             BtnEliminar.setEnabled(true);
-            BtnSubir.setEnabled(false);
+//            BtnSubir.setEnabled(false);
             txtId.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
             txtNombreRecurso.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
             txtLink.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString());

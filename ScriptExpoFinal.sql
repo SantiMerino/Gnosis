@@ -517,3 +517,8 @@ INSERT INTO tbMaterias VALUES ('Matematicas'), ('Sociales'), ('Ciencias'), ('Len
 INSERT INTO tbNivelUsuarios VALUES ('Estudiante'), ('Docente'), ('Admin')
 
 INSERT INTO tbPortafolioCategoria VALUES ('Clases'), ('Examenes'), ('Tareas')
+
+USE dbGnosis
+GO
+
+INSERT INTO tbClasificaciones VALUES ('Libro'), ('Presentación'), ('Clase')
