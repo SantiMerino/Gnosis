@@ -104,7 +104,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
             while (rs.next()) {                
                 Object [] oValores = {rs.getInt("iddocente"), rs.getString("apellidos_docente"), rs.getString("nombres_docente"), 
                     rs.getString("direccion"), rs.getString("dui"), rs.getString("correo"), rs.getString("fecha_nac"), rs.getInt("idgrado"), 
-                    rs.getInt("idgenero"), rs.getString("idusuario")};
+                    rs.getInt("idgenero"),rs.getString("contacto"), rs.getInt("idusuario")};
                 tablaModel.addRow(oValores);
             }
         } catch (Exception e) {
