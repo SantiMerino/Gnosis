@@ -26,6 +26,7 @@ public class frmLogin extends javax.swing.JFrame {
      */
     int xMouse;
     int yMouse;
+    int niveldeusuario;
     
     customization objCusto = new customization();
     
@@ -68,6 +69,8 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         buttonRound4 = new roundObjects.ButtonRound();
+        cmbNivel = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
         wContainer = new roundObjects.PanelRound();
         loginWhitePan = new roundObjects.PanelRound();
         topGap = new roundObjects.PanelRound();
@@ -115,15 +118,15 @@ public class frmLogin extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
-        bContainer.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 131, 48));
+        bContainer.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 131, 48));
 
         jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel1.setForeground(java.awt.Color.white);
         jLabel1.setText("Username:");
-        bContainer.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
+        bContainer.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
 
         jTextField1.setPreferredSize(new java.awt.Dimension(150, 30));
-        bContainer.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 228, -1));
+        bContainer.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 228, -1));
 
         buttonRound5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/eye.png"))); // NOI18N
         buttonRound5.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -137,23 +140,23 @@ public class frmLogin extends javax.swing.JFrame {
                 buttonRound5MouseExited(evt);
             }
         });
-        bContainer.add(buttonRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, -1, -1));
+        bContainer.add(buttonRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, -1));
 
         txtPassword.setPreferredSize(new java.awt.Dimension(150, 30));
-        bContainer.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 228, -1));
+        bContainer.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 228, -1));
 
         jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel2.setForeground(java.awt.Color.white);
         jLabel2.setText("Password:");
-        bContainer.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, -1, -1));
+        bContainer.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Poppins Black", 0, 48)); // NOI18N
         jLabel4.setForeground(java.awt.Color.white);
         jLabel4.setText("GNOSIS");
-        bContainer.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, 60));
+        bContainer.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, 60));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/brainLogin.png"))); // NOI18N
-        bContainer.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
+        bContainer.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
 
         buttonRound4.setText("Olvidaste tu contraseña?");
         buttonRound4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -165,7 +168,21 @@ public class frmLogin extends javax.swing.JFrame {
                 buttonRound4ActionPerformed(evt);
             }
         });
-        bContainer.add(buttonRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, 170, 30));
+        bContainer.add(buttonRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 170, 30));
+
+        cmbNivel.setBackground(new java.awt.Color(69, 73, 74));
+        cmbNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Estudiante", "Docente", "Administrador" }));
+        cmbNivel.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbNivelItemStateChanged(evt);
+            }
+        });
+        bContainer.add(cmbNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 170, -1));
+
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel5.setForeground(java.awt.Color.white);
+        jLabel5.setText("Eres un:");
+        bContainer.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
         LoginPanel.add(bContainer);
 
@@ -507,6 +524,23 @@ public class frmLogin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_returnLoginActionPerformed
 
+    private void cmbNivelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbNivelItemStateChanged
+        // TODO add your handling code here:
+        if (cmbNivel.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Selecciona que tipo de usuario eres");
+            niveldeusuario = 0;
+        } else if (cmbNivel.getSelectedIndex() == 1) {
+            JOptionPane.showMessageDialog(null, "Estudiante");
+            niveldeusuario = 1;
+        } else if (cmbNivel.getSelectedIndex() == 2) {
+            JOptionPane.showMessageDialog(null, "Docente");
+            niveldeusuario = 2;
+        } else  if (cmbNivel.getSelectedIndex() == 3) {
+            JOptionPane.showMessageDialog(null, "Admin");
+            niveldeusuario = 3;
+        }
+    }//GEN-LAST:event_cmbNivelItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -557,12 +591,14 @@ public class frmLogin extends javax.swing.JFrame {
     private roundObjects.ButtonRound buttonRound3;
     private roundObjects.ButtonRound buttonRound4;
     private roundObjects.ButtonRound buttonRound5;
+    private javax.swing.JComboBox<String> cmbNivel;
     private roundObjects.PanelRound container;
     private roundObjects.PanelRound controlsPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField1;
     private roundObjects.PanelRound leftGap;
     private roundObjects.PanelRound leftWGap;
