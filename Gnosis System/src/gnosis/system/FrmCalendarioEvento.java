@@ -334,6 +334,7 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
                 boolean valor = objCEliminarEvento.EliminarEventoController();
                 if (valor == true) {
                     JOptionPane.showMessageDialog(this, "Evento Eliminado exitosamente.", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+                    Cargartabla();
                 }
             }
         }
@@ -361,12 +362,18 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
             } catch (Exception e) {
                         
             }
-            //int idevento = Integer.parseInt(Txtidtipo.getText());
+            int idevento = Integer.parseInt(Txtidtipo.getText());
+            int idGrado = Integer.parseInt(TxtGrado.getText());
+            int idSeccion = Integer.parseInt(Txtseccion.getText());
             
             
-            //int respuesta = BuscarTipoEveSeleccionado(idtipoevento);
+            int respuesta = BuscarTipoEveSeleccionado(idtipoevento);
+            int respuesta2 = BuscarTipoEveSeleccionado(idgrado);
+            int respuesta3 = BuscarTipoEveSeleccionado(idseccion);
             
             //CmbTipo.getSelectedIndex(respuesta + 1);
+            //CmbGrado.getSelectedIndex(respuesta2 + 1);
+            //CmbSeccion.getSelectedIndex(respuesta3 + 1);
         }
     }//GEN-LAST:event_TablaEventosMouseClicked
     

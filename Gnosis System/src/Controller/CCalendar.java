@@ -19,12 +19,7 @@ public class CCalendar {
     private MCalendar mdlAsp = new MCalendar();
     private Connection con = MConnection.getConnectionWithoutParameters();
 
-    public CCalendar(String text, String text0, String text1, int idtipoevento, int idgrado, int idseccion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-    
+ 
     public ResultSet CargarTipoEventoResultSet(){
         return mdlAsp.CargarComboTipoEvento(con);
     }
@@ -39,7 +34,7 @@ public class CCalendar {
     
     
     
-    public static int ID;
+    protected int ID;
     public String NombreEvento;
     public String FechaEvento;
     public String HoraInicioEvento;
@@ -49,12 +44,36 @@ public class CCalendar {
     public int idgrado;
     public int idseccion;
 
-    public static int getID() {
+    public MCalendar getMdlAsp() {
+        return mdlAsp;
+    }
+
+    public void setMdlAsp(MCalendar mdlAsp) {
+        this.mdlAsp = mdlAsp;
+    }
+
+    public Connection getCon() {
+        return con;
+    }
+
+    public void setCon(Connection con) {
+        this.con = con;
+    }
+
+    public int getID() {
         return ID;
     }
 
-    public static void setID(int ID) {
-        CCalendar.ID = ID;
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getNombreEvento() {
+        return NombreEvento;
+    }
+
+    public void setNombreEvento(String NombreEvento) {
+        this.NombreEvento = NombreEvento;
     }
 
     public String getFechaEvento() {
@@ -115,6 +134,8 @@ public class CCalendar {
 
     
 
+    
+
     public CCalendar() {
     }
 
@@ -139,5 +160,9 @@ public class CCalendar {
     
     public boolean EliminarEventoController(){
         return mdlAsp.EliminarEventoModelo(ID, con);
+    }
+
+    public CCalendar(int ID) {
+        this.ID = ID;
     }
 }

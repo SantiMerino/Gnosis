@@ -96,9 +96,11 @@ public class MCalendar {
         }     
     }
     
+
+    
     public boolean EliminarEventoModelo(int ID, Connection con){
         try {
-            String query = "DELETE Eventos WHERE idevente = ?";
+            String query = "DELETE Eventos WHERE idevento = ?";
             ps = con.prepareStatement(query);
             ps.setInt(1, ID);
             ps.execute();
