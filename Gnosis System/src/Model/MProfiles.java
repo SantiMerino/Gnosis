@@ -73,7 +73,7 @@ public class MProfiles {
     
     public boolean SubirPerfilesModel(String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int tipoperfil,int grado, int seccion, Connection con) {
         try {            
-            String query = "INSERT INTO Tareas VALUES (?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO Perfil VALUES (?,?,?,?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, nombre);
             ps.setString(2, rubricadeevaluacion);
@@ -82,8 +82,8 @@ public class MProfiles {
             ps.setString(5, porcentajedevaloracion);
             ps.setString(6, descripcion);
             ps.setInt(7, tipoperfil);
-            ps.setInt(9, grado);
-            ps.setInt(10, seccion);
+            ps.setInt(8, grado);
+            ps.setInt(9, seccion);
             if (ps.executeUpdate () == 1) {
                 return true;
             } else {
@@ -100,7 +100,7 @@ public class MProfiles {
     
     public boolean ActualizarProfilesModel(int ID, String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int tipoperfil,int grado, int seccion, Connection con){
          try {
-             String query = "UPDATE Tareas SET nombre = ?, rubricadeevaluacion = ?, fechadeinicio = ?, fechadevencimiento = ?, ponderacion = ?, porcentajedevaloracion = ?, descripcion = ?, idtipoarchivo = ?, idgrado = ?, idseccion = ? WHERE idperfil = ?";
+             String query = "UPDATE Perfil SET nombre = ?, rubricadeevaluacion = ?, fechadeinicio = ?, fechadevencimiento = ?, porcentajedevaloracion = ?, descripcion = ?, idtipoperfil = ?, idgrado = ?, idseccion = ? WHERE idperfil = ?";
             ps = con.prepareStatement(query);
             ps = con.prepareStatement(query);
             ps.setString(1, nombre);
