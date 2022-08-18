@@ -21,7 +21,7 @@ public class MProfiles {
         Connection con;
         try {
             con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT * FROM TipoPerfil";
+            String query = "SELECT * FROM tbTipoPerfiles";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -35,21 +35,7 @@ public class MProfiles {
         Connection con;
         try {
             con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT * FROM Grados";
-            ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            return rs;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-            return null;
-        }
-    }
-    
-    public ResultSet CargaCmbSeccionesPerfil() {
-        Connection con;
-        try {
-            con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT * FROM Secciones";
+            String query = "SELECT * FROM tbGrados";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -61,7 +47,7 @@ public class MProfiles {
     
     public ResultSet mostrarPerfiles(Connection con){
         try {
-            String query = "SELECT * FROM Perfil";
+            String query = "SELECT nombreperfil,descripcion,porcentajevaloracion,fechainicio,fechavencimiento,tipoperfil,grado FROM tbPerfil";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -71,19 +57,17 @@ public class MProfiles {
         }
     }
     
-    public boolean SubirPerfilesModel(String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int tipoperfil,int grado, int seccion, Connection con) {
+    public boolean SubirPerfilesModel(String nombre, String descripcion, String porcentajedevaloracion, String fechadeinicio, String fechadevencimiento, int tipoperfil,int grado, Connection con) {
         try {            
-            String query = "INSERT INTO Perfil VALUES (?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO tbPerfiles(nombreperfil,descripcion,porcentajevaloracion,fechainicio,fechavencimiento,idtipoperfil,idgrados) VALUES (?,?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, nombre);
-            ps.setString(2, rubricadeevaluacion);
-            ps.setString(3, fechadeinicio);
-            ps.setString(4, fechadevencimiento);
-            ps.setString(5, porcentajedevaloracion);
-            ps.setString(6, descripcion);
-            ps.setInt(7, tipoperfil);
-            ps.setInt(8, grado);
-            ps.setInt(9, seccion);
+            ps.setString(2, descripcion);
+            ps.setString(3, porcentajedevaloracion);
+            ps.setString(4, fechadeinicio);
+            ps.setString(5, fechadevencimiento);
+            ps.setInt(6, tipoperfil);
+            ps.setInt(7, grado);
             if (ps.executeUpdate () == 1) {
                 return true;
             } else {
@@ -98,21 +82,19 @@ public class MProfiles {
         }
     }
     
-    public boolean ActualizarProfilesModel(int ID, String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int tipoperfil,int grado, int seccion, Connection con){
+    public boolean ActualizarProfilesModel(int ID, String nombre, String descripcion, String porcentajedevaloracion, String fechadeinicio, String fechadevencimiento, int tipoperfil,int grado, Connection con){
          try {
-             String query = "UPDATE Perfil SET nombre = ?, rubricadeevaluacion = ?, fechadeinicio = ?, fechadevencimiento = ?, porcentajedevaloracion = ?, descripcion = ?, idtipoperfil = ?, idgrado = ?, idseccion = ? WHERE idperfil = ?";
+            String query = "UPDATE tbPerfiles SET nombre = ?, descripcion = ?, porcentajedevaloracion = ?, fechadeinicio = ?, fechadevencimiento = ?, idestadoperfil = ?, nota = ?, idtipoperfil = ?, idfase = ?, idgrado = ?, WHERE idperfil = ?";
             ps = con.prepareStatement(query);
             ps = con.prepareStatement(query);
             ps.setString(1, nombre);
-            ps.setString(2, rubricadeevaluacion);
-            ps.setString(3, fechadeinicio);
-            ps.setString(4, fechadevencimiento);
-            ps.setString(5, porcentajedevaloracion);
-            ps.setString(6, descripcion);
-            ps.setInt(7, tipoperfil);
-            ps.setInt(8, grado);
-            ps.setInt(9, seccion);
-            ps.setInt(10, ID);
+            ps.setString(2, descripcion);
+            ps.setString(3, porcentajedevaloracion);
+            ps.setString(4, fechadeinicio);
+            ps.setString(5, fechadevencimiento);
+            ps.setInt(8, tipoperfil);
+            ps.setInt(11, grado);
+            ps.setInt(12, ID);
             ps.execute();
             return true;
         } catch (Exception e) {
@@ -123,7 +105,7 @@ public class MProfiles {
     
     public boolean EliminarProfileModel(int ID, Connection con) {     
         try {
-             String query = "DELETE Perfil WHERE idperfil = ?";
+             String query = "DELETE tbPerfiles WHERE idperfil = ?";
              ps = con.prepareStatement(query);
              ps.setInt(1, ID);
              ps.execute();

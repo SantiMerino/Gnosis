@@ -532,9 +532,9 @@ public class frmTasks extends javax.swing.JFrame {
         String inicio = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + (Cal1.get(Calendar.MONTH) + 1)+ "/" + Cal1.get(Calendar.DAY_OF_MONTH));
         //fecha de vencimiento update
         Date date2 = dtInicio.getDate();
-        Cal1 = new GregorianCalendar();
-        Cal1.setTime(date2);
-        String vencimiento = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + (Cal1.get(Calendar.MONTH) + 1)+ "/" + Cal1.get(Calendar.DAY_OF_MONTH));
+        Cal2 = new GregorianCalendar();
+        Cal2.setTime(date2);
+        String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + (Cal2.get(Calendar.MONTH) + 1)+ "/" + Cal2.get(Calendar.DAY_OF_MONTH));
 
         //Update
         obj.ID = Integer.parseInt(txtId.getText());

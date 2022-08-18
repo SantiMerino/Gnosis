@@ -24,7 +24,6 @@ public class CProfiles {
     public String descripcion;
     public int idperfil;
     public int idgrado;
-    public int idseccion;
 
     public int getID() {
         return ID;
@@ -98,15 +97,8 @@ public class CProfiles {
         this.idgrado = idgrado;
     }
 
-    public int getIdseccion() {
-        return idseccion;
-    }
 
-    public void setIdseccion(int idseccion) {
-        this.idseccion = idseccion;
-    }
-
-    public CProfiles(String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int idperfil, int idgrado, int idseccion) {
+    public CProfiles(String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int idperfil, int idgrado) {
         this.nombre = nombre;
         this.rubricadeevaluacion = rubricadeevaluacion;
         this.fechadeinicio = fechadeinicio;
@@ -115,10 +107,9 @@ public class CProfiles {
         this.descripcion = descripcion;
         this.idperfil = idperfil;
         this.idgrado = idgrado;
-        this.idseccion = idseccion;
     }
 
-    public CProfiles(int ID, String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int idperfil, int idgrado, int idseccion) {
+    public CProfiles(int ID, String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int idperfil, int idgrado) {
         this.ID = ID;
         this.nombre = nombre;
         this.rubricadeevaluacion = rubricadeevaluacion;
@@ -128,7 +119,6 @@ public class CProfiles {
         this.descripcion = descripcion;
         this.idperfil = idperfil;
         this.idgrado = idgrado;
-        this.idseccion = idseccion;
     }
 
     public CProfiles(int ID) {
@@ -149,20 +139,16 @@ public class CProfiles {
         return mdlPerfil.CargaCmbGradoPerfil();
     }
     
-    public ResultSet CargarSeccionesPefilResultSet() {
-        return mdlPerfil.CargaCmbSeccionesPerfil();
-    }
-    
     public ResultSet CargarPerfilResultSet() {
         return mdlPerfil.mostrarPerfiles(con);
     }
     
      public boolean PerfilNuevaResultSet(){
-        return mdlPerfil.SubirPerfilesModel(nombre, rubricadeevaluacion, fechadeinicio, fechadevencimiento, porcentajedevaloracion, descripcion, idperfil, idgrado, idseccion, con);
+        return mdlPerfil.SubirPerfilesModel(nombre, descripcion, porcentajedevaloracion, fechadeinicio, fechadevencimiento, idperfil, idgrado, con);
     }
     
     public boolean ActualizarPerfil() {
-       return mdlPerfil.ActualizarProfilesModel(ID, nombre, rubricadeevaluacion, fechadeinicio, fechadevencimiento, porcentajedevaloracion, descripcion, idperfil, idgrado, idseccion, con);
+       return mdlPerfil.ActualizarProfilesModel(ID, nombre, descripcion, porcentajedevaloracion, fechadeinicio, fechadevencimiento, idperfil, idgrado, con);
     }
     
     public boolean EliminarTareaController() {
