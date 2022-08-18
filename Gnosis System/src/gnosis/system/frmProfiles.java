@@ -59,7 +59,7 @@ public class frmProfiles extends javax.swing.JFrame {
         dtInicio.setDate(null);
         dtVencimiento.setDate(null);
         CmbTipoPerfil.setSelectedIndex(0);
-        CmbGrado.setSelectedIndex(0);
+//        CmbGrado.setSelectedIndex(0);
     }
     
     final void CargarTabla(){
@@ -132,7 +132,7 @@ public class frmProfiles extends javax.swing.JFrame {
                     //Se agrega en el combobox el valor del campo tipo de archivo
                     GradoPerfilcombo.addElement(rs.getString("grado"));
                     //Se asigna el modelo combo al combobox
-                    CmbGrado.setModel(GradoPerfilcombo);
+//                    CmbGrado.setModel(GradoPerfilcombo);
                 } while (rs.next());
             } else {
                 JOptionPane.showMessageDialog(BtnEliminar, "No existen grados por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
@@ -164,7 +164,6 @@ public class frmProfiles extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtPonderacion = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        CmbGrado = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
@@ -176,6 +175,11 @@ public class frmProfiles extends javax.swing.JFrame {
         JTPerfil = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -204,22 +208,19 @@ public class frmProfiles extends javax.swing.JFrame {
 
         jLabel7.setText("Ponderacion:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 352, -1, -1));
-        jPanel1.add(txtPonderacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 374, 165, -1));
+        jPanel1.add(txtPonderacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 374, 100, -1));
 
         jLabel8.setText("Grado:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
-
-        CmbGrado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(CmbGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 221, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, -1, -1));
 
         jLabel10.setText("Descripcion o indicaciones:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtDescripcion);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, 136));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, 136));
 
         BtnVaciarCampos.setText("Vaciar campos");
         jPanel1.add(BtnVaciarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 33, -1, -1));
@@ -230,7 +231,7 @@ public class frmProfiles extends javax.swing.JFrame {
                 BtnModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 105, 110, -1));
+        jPanel1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, 110, -1));
 
         BtnEliminar.setText("Eliminar");
         BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -272,6 +273,21 @@ public class frmProfiles extends javax.swing.JFrame {
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
         jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 50, -1));
 
+        jLabel3.setText("Materia:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, -1, -1));
+
+        jLabel9.setText("Docente:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
+
+        jTextField1.setText("jTextField1");
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 220, -1));
+
+        jTextField2.setText("jTextField2");
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 220, -1));
+
+        jTextField3.setText("jTextField3");
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 220, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -296,9 +312,12 @@ public class frmProfiles extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
         }else if(CmbTipoPerfil.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Seleccione un tipo de perfil", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        } else if(CmbGrado.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(this, "Seleccione un grado", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        } else {
+        } 
+//        else if(CmbGrado.getSelectedIndex() == 0){
+//            JOptionPane.showMessageDialog(this, "Seleccione un grado", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+//        } 
+        
+        else {
             //fecha de inicio
             Date date = dtInicio.getDate();
             Cal1 = new GregorianCalendar();
@@ -317,7 +336,7 @@ public class frmProfiles extends javax.swing.JFrame {
             obj.porcentajedevaloracion = txtPonderacion.getText();
             obj.descripcion = txtDescripcion.getText();
             obj.idperfil = CmbTipoPerfil.getSelectedIndex();
-            obj.idgrado = CmbGrado.getSelectedIndex();
+//            obj.idgrado = CmbGrado.getSelectedIndex();
             if (obj.PerfilNuevaResultSet()== true) {
                 JOptionPane.showMessageDialog(this, "Perfil ingresado correctamente");
             } else {
@@ -378,8 +397,8 @@ public class frmProfiles extends javax.swing.JFrame {
 
             }
             
-            CmbGrado.setSelectedItem(grado);
-            int cmbgrado = CmbGrado.getSelectedIndex();
+//            CmbGrado.setSelectedItem(grado);
+//            int cmbgrado = CmbGrado.getSelectedIndex();
             CmbTipoPerfil.setSelectedItem(tipoperfil);
             int cmbtipoperfil = CmbTipoPerfil.getSelectedIndex();
 
@@ -409,7 +428,7 @@ public class frmProfiles extends javax.swing.JFrame {
         obj.porcentajedevaloracion = txtPonderacion.getText();
         obj.descripcion = txtDescripcion.getText();
         obj.idperfil = CmbTipoPerfil.getSelectedIndex();
-        obj.idgrado = CmbGrado.getSelectedIndex();
+//        obj.idgrado = CmbGrado.getSelectedIndex();
         if (obj.ActualizarPerfil()== true) {
             JOptionPane.showMessageDialog(this, "Docente actualizado correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
             CargarTabla();
@@ -457,7 +476,6 @@ public class frmProfiles extends javax.swing.JFrame {
     private javax.swing.JButton BtnModificar;
     private javax.swing.JButton BtnSubir;
     private javax.swing.JButton BtnVaciarCampos;
-    private javax.swing.JComboBox<String> CmbGrado;
     private javax.swing.JComboBox<String> CmbTipoPerfil;
     private javax.swing.JTable JTPerfil;
     private com.toedter.calendar.JDateChooser dtInicio;
@@ -466,14 +484,19 @@ public class frmProfiles extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
