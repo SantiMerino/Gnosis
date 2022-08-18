@@ -542,8 +542,9 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         if (new frmTeachersCRUD()!= null ) {
             frmStudentsCRUD frame = new frmStudentsCRUD();
             Container c = frame.getContentPane();
-            
             panContainer.removeAll();
+            panContainer.repaint();
+            panContainer.revalidate();
             panContainer.add(BorderLayout.CENTER,c);
             panContainer.repaint();
             panContainer.revalidate();

@@ -442,3 +442,51 @@ ALTER TABLE tbTareas
 ADD CONSTRAINT fk_tareasperfiles
 FOREIGN KEY (idperfil)
 REFERENCES tbPerfiles (idperfil)
+
+
+USE dbGnosis
+CREATE TABLE tbEventos(
+    idevento int not null primary key identity (1,1),
+    nombreevento varchar(50) not null,
+    fechaevento date null,
+    horainicioevento varchar(20) not null,
+    fechafinalevento date null,
+    horafinalizarevento varchar(20) not null,
+    idtipoevento int not null,
+    idgrado int not null
+);
+
+
+
+CREATE TABLE tbTipoEventos(
+    idtipoevento int not null primary key identity (1,1),
+    tipoevento varchar(50) not null
+);
+
+
+
+--CREATE TABLE tbGrado(
+--    idgrado int not null primary key identity (1,1),
+--    grado varchar(50) not null
+--);
+
+
+
+CREATE TABLE tbSecciones(
+    idseccion int not null primary key identity (1,1),
+    seccion varchar(50) not null
+);
+
+
+ALTER TABLE tbEventos
+ADD CONSTRAINT fk_eventotipoevento
+FOREIGN KEY (idtipoevento)
+REFERENCES tbTipoEventos (idtipoevento)
+
+
+
+ALTER TABLE tbEventos
+ADD CONSTRAINT fk_eventogrados
+FOREIGN KEY (idgrado)
+REFERENCES tbGrados (idgrado)
+
