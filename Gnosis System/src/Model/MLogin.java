@@ -19,7 +19,7 @@ public class MLogin {
         Connection conexion = MConnection.getConnectionWithoutParameters();
         PreparedStatement ps;
         try {
-            ps = conexion.prepareStatement("SELECT idnivelusuario FROM tbUsuarios WHERE username = ? AND clave = ?");
+            ps = conexion.prepareStatement("SELECT * FROM tbUsuarios WHERE username = ? AND clave = ?");
             ps.setString(1, user);
             ps.setString(2, clave);
             ResultSet rs = ps.executeQuery();
@@ -30,7 +30,7 @@ public class MLogin {
             }
             return i;
         } catch (Exception e) {
-            return i;
+            return 0;
         }
     }
 }
