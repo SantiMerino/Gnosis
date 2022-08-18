@@ -10,6 +10,7 @@ import Controller.CEstudents;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatMonocaiIJTheme;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.sql.ResultSet;
@@ -23,6 +24,7 @@ import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
@@ -63,7 +65,9 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         txtIdGenero.setVisible(false);
         txtIdGrado.setVisible(false);
         txtIdUsuario.setVisible(false);
-        
+        for(Component c : dtNacimiento.getComponents()){
+            ((JComponent)c).setBackground(new Color (217,217,217));
+        }
         
         CargarDatos();
         
@@ -231,6 +235,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         txtIdUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(java.awt.Color.white);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel1.setBackground(java.awt.Color.white);
@@ -283,7 +288,8 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jLabel5.setText("Fecha de nacimiento:");
 
         dtNacimiento.setBackground(new java.awt.Color(217, 217, 217));
-        dtNacimiento.setForeground(new java.awt.Color(50, 50, 50));
+        dtNacimiento.setForeground(new java.awt.Color(218, 217, 217));
+        dtNacimiento.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(32, 32, 32));
@@ -454,8 +460,8 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
 
         jPanel2.setBackground(java.awt.Color.white);
 
-        tbEstudiantes.setBackground(new java.awt.Color(32, 32, 32));
-        tbEstudiantes.setForeground(java.awt.Color.white);
+        tbEstudiantes.setBackground(new java.awt.Color(217, 217, 217));
+        tbEstudiantes.setForeground(new java.awt.Color(32, 32, 32));
         tbEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -467,6 +473,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbEstudiantes.setGridColor(new java.awt.Color(32, 32, 32));
         tbEstudiantes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbEstudiantesMouseClicked(evt);
