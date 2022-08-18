@@ -21,7 +21,7 @@ public class MEstudents {
     
     public ResultSet MCargarGenero(Connection con){
         try {
-            String query = "SELECT * FROM tbGenerosAlumnos";
+            String query = "SELECT * FROM tbGeneros";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -31,9 +31,9 @@ public class MEstudents {
         }
     }
     
-    public ResultSet MCargarEstado(Connection con){
+    public ResultSet MCargarGrados(Connection con){
         try {
-            String query = "SELECT * FROM tbEstadosAlumnos";
+            String query = "SELECT * FROM tbGrados";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -43,21 +43,9 @@ public class MEstudents {
         }
     }
     
-    public ResultSet MCargarConjunto(Connection con){
-        try {
-            String query = "SELECT * FROM tbConjuntoNiveles";
-            ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            return rs;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se cargaron los conjuntos: " + e.toString());
-            return null;
-        }
-    }
-    
     public ResultSet MCargarUsuarios(Connection con){
         try {
-            String query = "SELECT * FROM tbUsuarios";
+            String query = "SELECT * FROM tbUsuario";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -82,24 +70,23 @@ public class MEstudents {
     
      /*Insercion de datos*/
      
-     public boolean RegistrarDocenteModel(String NombresAlumno, String ApellidosAlumno, String DireccionAlumno, String TelefonoAlumno, String FechaNacimiento, 
-             String DUIAlumno, String CorreoAlumno, String CodigoCarnet, int idGeneroALumno, int idEstadoAlumno, int idConjuntoNiveles, int idUsuario, Connection con) {
+     public boolean RegistrarDocenteModel(String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac,
+             int idusuario, String codigocarnet,  Connection con) {
          try {
              
-             String query = "INSERT INTO tbAlumnos VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+             String query = "INSERT INTO tbAlumnos VALUES (?,?,?,?,?,?,?,?,?,?,?)";
              ps = con.prepareStatement(query);
-             ps.setString(1, NombresAlumno);
-             ps.setString(2, ApellidosAlumno);
-             ps.setString(3, DireccionAlumno);
-             ps.setString(4, TelefonoAlumno);
-             ps.setString(5, FechaNacimiento);
-             ps.setString(6, DUIAlumno);
-             ps.setString(7, CorreoAlumno);
-             ps.setString(8, CodigoCarnet);
-             ps.setInt(9, idGeneroALumno);
-             ps.setInt(10, idEstadoAlumno);
-             ps.setInt(11, idConjuntoNiveles);
-             ps.setInt(12, idUsuario);
+             ps.setString(1, ApellidosAlumno);
+             ps.setString(2, NombresAlumno);
+             ps.setInt(3, idgenero);
+             ps.setInt(4, idgrado);
+             ps.setString(5, correo);
+             ps.setString(6, direccion);
+             ps.setString(7, contacto);
+             ps.setString(8, dui);
+             ps.setString(9, fecha_nac);
+             ps.setInt(10, idusuario);
+             ps.setString(11, codigocarnet);
              if (ps.executeUpdate () == 1) {
                  return true;
              }else {
@@ -117,25 +104,24 @@ public class MEstudents {
     }
      
     /*Actualizacion*/ 
-     public boolean ActualizarEstudianteModel(int ID, String NombresAlumno, String ApellidosAlumno, String DireccionAlumno, String TelefonoAlumno, String FechaNacimiento, 
-             String DUIAlumno, String CorreoAlumno, String CodigoCarnet, int idGeneroALumno, int idEstadoAlumno, int idConjuntoNiveles, int idUsuario, Connection con){
+     public boolean ActualizarEstudianteModel(int ID, String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac,
+             int idusuario, String codigocarnet, Connection con){
          try {
-             String query = "UPDATE tbAlumnos SET NombresAlumno = ?, ApellidosAlumno = ?, DireccionAlumnos = ?, TelefonoAlumno = ?, FechaNacimiento = ?, DUIAlumno = ?, CorreoAlumno = ?, CodigoCarnet = ?, "
-                     + "idGeneroAlumno = ?, idEstadoAlumno = ?, idConjuntoNiveles = ?, idUsuario = ? WHERE idAlumno = ?";
+             String query = "UPDATE tbAlumnos SET apellidos_alumno = ?, nombres_alumno = ?, idgenero = ?, idgrado = ?, correo = ?, direccion = ?, "
+                     + "contacto = ?, dui = ?, fecha_nac = ?, idusuario = ?, codigocarnet = ? WHERE idalumno = ?";
             ps = con.prepareStatement(query);
-             ps.setString(1, NombresAlumno);
-             ps.setString(2, ApellidosAlumno);
-             ps.setString(3, DireccionAlumno);
-             ps.setString(4, TelefonoAlumno);
-             ps.setString(5, FechaNacimiento);
-             ps.setString(6, DUIAlumno);
-             ps.setString(7, CorreoAlumno);
-             ps.setString(8, CodigoCarnet);
-             ps.setInt(9, idGeneroALumno);
-             ps.setInt(10, idEstadoAlumno);
-             ps.setInt(11, idConjuntoNiveles);
-             ps.setInt(12, idUsuario);
-             ps.setInt(13, ID);
+             ps.setString(1, ApellidosAlumno);
+             ps.setString(2, NombresAlumno);
+             ps.setInt(3, idgenero);
+             ps.setInt(4, idgrado);
+             ps.setString(5, correo);
+             ps.setString(6, direccion);
+             ps.setString(7, contacto);
+             ps.setString(8, dui);
+             ps.setString(9, fecha_nac);
+             ps.setInt(10, idusuario);
+             ps.setString(11, codigocarnet);
+             ps.setInt(12, ID);
              ps.execute();
              return true;
          } catch (Exception e) {

@@ -15,18 +15,17 @@ public class CEstudents {
     private MEstudents mdlEstu = new MEstudents();
     
     protected int ID;
-    private String NombresAlumno;
-    private String ApellidosAlumno;
-    private String DireccionAlumno;
-    private String TelefonoAlumno;
-    private String FechaNacimiento;
-    private String DUIAlumno;
-    private String CorreoAlumno;
-    private String CodigoCarnet;
-    private int idGeneroAlumno;
-    private int idEstadoAlumno;
-    private int idConjuntoNiveles;
-    private int idUsuario;
+    private String apellidosalumno;
+    private String nombresalumno;
+    private int idgenero;
+    private int idgrado;
+    private String correo;
+    private String direccion;
+    private String contacto;
+    private String dui;
+    private String fecha_nac;
+    private int idusuario;
+    private String codigocarnet;
 
     public Connection getCon() {
         return con;
@@ -52,140 +51,134 @@ public class CEstudents {
         this.ID = ID;
     }
 
-    public String getNombresAlumno() {
-        return NombresAlumno;
+    public String getApellidosalumno() {
+        return apellidosalumno;
     }
 
-    public void setNombresAlumno(String NombresAlumno) {
-        this.NombresAlumno = NombresAlumno;
+    public void setApellidosalumno(String apellidosalumno) {
+        this.apellidosalumno = apellidosalumno;
     }
 
-    public String getApellidosAlumno() {
-        return ApellidosAlumno;
+    public String getNombresalumno() {
+        return nombresalumno;
     }
 
-    public void setApellidosAlumno(String ApellidosAlumno) {
-        this.ApellidosAlumno = ApellidosAlumno;
+    public void setNombresalumno(String nombresalumno) {
+        this.nombresalumno = nombresalumno;
     }
 
-    public String getDireccionAlumno() {
-        return DireccionAlumno;
+    public int getIdgenero() {
+        return idgenero;
     }
 
-    public void setDireccionAlumno(String DireccionAlumno) {
-        this.DireccionAlumno = DireccionAlumno;
+    public void setIdgenero(int idgenero) {
+        this.idgenero = idgenero;
     }
 
-    public String getTelefonoAlumno() {
-        return TelefonoAlumno;
+    public int getIdgrado() {
+        return idgrado;
     }
 
-    public void setTelefonoAlumno(String TelefonoAlumno) {
-        this.TelefonoAlumno = TelefonoAlumno;
+    public void setIdgrado(int idgrado) {
+        this.idgrado = idgrado;
     }
 
-    public String getFechaNacimiento() {
-        return FechaNacimiento;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setFechaNacimiento(String FechaNacimiento) {
-        this.FechaNacimiento = FechaNacimiento;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getDUIAlumno() {
-        return DUIAlumno;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDUIAlumno(String DUIAlumno) {
-        this.DUIAlumno = DUIAlumno;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getCorreoAlumno() {
-        return CorreoAlumno;
+    public String getContacto() {
+        return contacto;
     }
 
-    public void setCorreoAlumno(String CorreoAlumno) {
-        this.CorreoAlumno = CorreoAlumno;
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
     }
 
-    public String getCodigoCarnet() {
-        return CodigoCarnet;
+    public String getDui() {
+        return dui;
     }
 
-    public void setCodigoCarnet(String CodigoCarnet) {
-        this.CodigoCarnet = CodigoCarnet;
+    public void setDui(String dui) {
+        this.dui = dui;
     }
 
-    public int getIdGeneroAlumno() {
-        return idGeneroAlumno;
+    public String getFecha_nac() {
+        return fecha_nac;
     }
 
-    public void setIdGeneroAlumno(int idGeneroAlumno) {
-        this.idGeneroAlumno = idGeneroAlumno;
+    public void setFecha_nac(String fecha_nac) {
+        this.fecha_nac = fecha_nac;
     }
 
-    public int getIdEstadoAlumno() {
-        return idEstadoAlumno;
+    public int getIdusuario() {
+        return idusuario;
     }
 
-    public void setIdEstadoAlumno(int idEstadoAlumno) {
-        this.idEstadoAlumno = idEstadoAlumno;
+    public void setIdusuario(int idusuario) {
+        this.idusuario = idusuario;
     }
 
-    public int getIdConjuntoNiveles() {
-        return idConjuntoNiveles;
+    public String getCodigocarnet() {
+        return codigocarnet;
     }
 
-    public void setIdConjuntoNiveles(int idConjuntoNiveles) {
-        this.idConjuntoNiveles = idConjuntoNiveles;
+    public void setCodigocarnet(String codigocarnet) {
+        this.codigocarnet = codigocarnet;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+    
     
     public boolean AlumnoNuevoController(){
-        return mdlEstu.RegistrarDocenteModel(NombresAlumno, ApellidosAlumno, DireccionAlumno, TelefonoAlumno, FechaNacimiento, DUIAlumno, CorreoAlumno, CodigoCarnet, idGeneroAlumno, idEstadoAlumno, idConjuntoNiveles, idUsuario, con);
+        return mdlEstu.RegistrarDocenteModel(apellidosalumno, nombresalumno, idgenero, idgrado, correo, direccion, contacto, dui, fecha_nac, idusuario, codigocarnet, con);
     }
 
-    public CEstudents(String NombresAlumno, String ApellidosAlumno, String DireccionAlumno, String TelefonoAlumno, String FechaNacimiento, String DUIAlumno, String CorreoAlumno, String CodigoCarnet, int idGeneroAlumno, int idEstadoAlumno, int idConjuntoNiveles, int idUsuario) {
-        this.NombresAlumno = NombresAlumno;
-        this.ApellidosAlumno = ApellidosAlumno;
-        this.DireccionAlumno = DireccionAlumno;
-        this.TelefonoAlumno = TelefonoAlumno;
-        this.FechaNacimiento = FechaNacimiento;
-        this.DUIAlumno = DUIAlumno;
-        this.CorreoAlumno = CorreoAlumno;
-        this.CodigoCarnet = CodigoCarnet;
-        this.idGeneroAlumno = idGeneroAlumno;
-        this.idEstadoAlumno = idEstadoAlumno;
-        this.idConjuntoNiveles = idConjuntoNiveles;
-        this.idUsuario = idUsuario;
+    public CEstudents(String apellidosalumno, String nombresalumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, int idusuario, String codigocarnet) {
+        this.apellidosalumno = apellidosalumno;
+        this.nombresalumno = nombresalumno;
+        this.idgenero = idgenero;
+        this.idgrado = idgrado;
+        this.correo = correo;
+        this.direccion = direccion;
+        this.contacto = contacto;
+        this.dui = dui;
+        this.fecha_nac = fecha_nac;
+        this.idusuario = idusuario;
+        this.codigocarnet = codigocarnet;
     }
     
     public boolean ActualizarEstudiante() {
-        return mdlEstu.ActualizarEstudianteModel(ID, NombresAlumno, ApellidosAlumno, DireccionAlumno, TelefonoAlumno, FechaNacimiento, DUIAlumno, CorreoAlumno, CodigoCarnet, idGeneroAlumno, idEstadoAlumno, idConjuntoNiveles, idUsuario, con);
+        return mdlEstu.ActualizarEstudianteModel(ID, apellidosalumno, nombresalumno, idgenero, idgrado, correo, direccion, contacto, dui, fecha_nac, idusuario, codigocarnet, con);
     }
 
-    public CEstudents(int ID, String NombresAlumno, String ApellidosAlumno, String DireccionAlumno, String TelefonoAlumno, String FechaNacimiento, String DUIAlumno, String CorreoAlumno, String CodigoCarnet, int idGeneroAlumno, int idEstadoAlumno, int idConjuntoNiveles, int idUsuario) {
+    public CEstudents(int ID, String apellidosalumno, String nombresalumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, int idusuario, String codigocarnet) {
         this.ID = ID;
-        this.NombresAlumno = NombresAlumno;
-        this.ApellidosAlumno = ApellidosAlumno;
-        this.DireccionAlumno = DireccionAlumno;
-        this.TelefonoAlumno = TelefonoAlumno;
-        this.FechaNacimiento = FechaNacimiento;
-        this.DUIAlumno = DUIAlumno;
-        this.CorreoAlumno = CorreoAlumno;
-        this.CodigoCarnet = CodigoCarnet;
-        this.idGeneroAlumno = idGeneroAlumno;
-        this.idEstadoAlumno = idEstadoAlumno;
-        this.idConjuntoNiveles = idConjuntoNiveles;
-        this.idUsuario = idUsuario;
+        this.apellidosalumno = apellidosalumno;
+        this.nombresalumno = nombresalumno;
+        this.idgenero = idgenero;
+        this.idgrado = idgrado;
+        this.correo = correo;
+        this.direccion = direccion;
+        this.contacto = contacto;
+        this.dui = dui;
+        this.fecha_nac = fecha_nac;
+        this.idusuario = idusuario;
+        this.codigocarnet = codigocarnet;
     }
+    
+    
     
     public boolean EliminarEstudiante() {
         return mdlEstu.EliminarEstudianteModel(ID, con);

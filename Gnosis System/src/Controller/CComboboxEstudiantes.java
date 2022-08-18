@@ -14,8 +14,7 @@ import java.sql.ResultSet;
 public class CComboboxEstudiantes {
     Connection con = CConnection.getConnectionControllerWithoutParameters();
     MEstudents modeloGeneros = new MEstudents();
-    MEstudents modeloEstados = new MEstudents();
-    MEstudents modeloConjunto = new MEstudents();
+    MEstudents modeloGrados = new MEstudents();
     MEstudents modeloUsuarios = new MEstudents();
     MEstudents modeloAlumnos = new MEstudents();
     
@@ -23,12 +22,8 @@ public class CComboboxEstudiantes {
        return modeloGeneros.MCargarGenero(con);
     }
     
-    public ResultSet CCargarEstados(){
-       return modeloEstados.MCargarEstado(con);
-    }
-    
-    public ResultSet CCargarConjuntos(){
-       return modeloConjunto.MCargarConjunto(con);
+    public ResultSet CCargarGrados(){
+       return modeloGrados.MCargarGrados(con);
     }
     
     public ResultSet CCargarUsuarios(){
