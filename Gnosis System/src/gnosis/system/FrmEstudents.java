@@ -69,6 +69,9 @@ public class FrmEstudents extends javax.swing.JFrame {
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tbEstudiantes.setModel(tablaModel);
         CargarTabla();
+        
+        btnActualizar.setEnabled(false);
+        btnEliminar.setEnabled(false);
     }
     
     void LimpiarCampos(){
@@ -86,6 +89,9 @@ public class FrmEstudents extends javax.swing.JFrame {
         txtIdConjunto.setText("");
         txtIdUsuario.setText("");
         CargarDatos();
+        btnGuardar.setEnabled(true);
+        btnActualizar.setEnabled(false);
+        btnEliminar.setEnabled(false);
     }
     
      final void CargarTabla(){
@@ -682,6 +688,11 @@ public class FrmEstudents extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if (evt.getClickCount() == 1) {
+            
+            btnActualizar.setEnabled(true);
+            btnEliminar.setEnabled(true);
+            btnGuardar.setEnabled(false);
+            
             JTable rcp = (JTable) evt.getSource();
             txtId.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
             txtNombres.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
@@ -734,6 +745,7 @@ public class FrmEstudents extends javax.swing.JFrame {
         if (valor == true) {
             JOptionPane.showMessageDialog(this, "Estudiante actualizado correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
             CargarTabla();
+            LimpiarCampos();
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
@@ -751,6 +763,7 @@ public class FrmEstudents extends javax.swing.JFrame {
                 if ( valor == true) {
                     JOptionPane.showMessageDialog(this, "Estudiante eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
                     CargarTabla();
+                    LimpiarCampos();
                 }
             }
         }

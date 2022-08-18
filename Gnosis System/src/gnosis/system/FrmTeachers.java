@@ -60,6 +60,8 @@ public class FrmTeachers extends javax.swing.JFrame {
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tbDocentes.setModel(tablaModel);
         CargarTabla();
+        btnActualizar.setEnabled(false);
+        btnEliminar.setEnabled(false);
     }
     
     /*Limpiar campos*/
@@ -75,6 +77,9 @@ public class FrmTeachers extends javax.swing.JFrame {
         txtIdGenero.setText("");
         txtIdUsuario.setText("");
         CargarCombobox();
+        btnGuardar.setEnabled(true);
+        btnActualizar.setEnabled(false);
+        btnEliminar.setEnabled(false);
     }
     
     
@@ -554,6 +559,9 @@ public class FrmTeachers extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getClickCount() == 1) {
             JTable rcp = (JTable) evt.getSource();
+            btnActualizar.setEnabled(true);
+            btnEliminar.setEnabled(true);
+            btnGuardar.setEnabled(false);
             txtId.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
             txtNombres.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
             txtApellidos.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 2).toString());
