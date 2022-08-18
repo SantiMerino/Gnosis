@@ -121,7 +121,6 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     void CargarDatos(){
         CargarGeneros();
         CargarGrados();
-        CargarUsuarios();
     }
     
     /*Llenado de combobox*/

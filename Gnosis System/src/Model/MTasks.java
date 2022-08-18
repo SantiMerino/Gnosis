@@ -70,6 +70,7 @@ public class MTasks {
             JOptionPane.showMessageDialog(null, idperfil);
             ps.setString(5, rubrica);
             ps.setInt(6, idtipotarea);
+            JOptionPane.showMessageDialog(null, idtipotarea);
             if (ps.executeUpdate () == 1) {
                 return true;
             } else {

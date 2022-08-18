@@ -5,6 +5,7 @@
  */
 package gnosis.system;
 
+import Controller.CLogin;
 import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -21,12 +22,20 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
      */
     public customization custoObj = new customization();
     panGrades grades = new panGrades();
+    CLogin log = new CLogin();
     
     public frmDashboardTeacher() {
         initComponents();
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
+        if (log.niveluser == 3) {
+            teachersButton.setVisible(true);
+            studentsButton.setVisible(true);
+        } else{
+            teachersButton.setVisible(false);
+            studentsButton.setVisible(false);        
+        }
         
     }
     
