@@ -176,8 +176,6 @@ public class frmProfiles extends javax.swing.JFrame {
         JTPerfil = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
-        txtTipoPerfil = new javax.swing.JTextField();
-        txtGrado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -273,8 +271,6 @@ public class frmProfiles extends javax.swing.JFrame {
         jLabel11.setText("Id perfil:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
         jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 50, -1));
-        jPanel1.add(txtTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, 0, -1));
-        jPanel1.add(txtGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, 0, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -365,8 +361,8 @@ public class frmProfiles extends javax.swing.JFrame {
             txtNombre.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
             txtPonderacion.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
             txtDescripcion.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 2).toString());
-            txtTipoPerfil.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 6).toString());
-            txtGrado.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
+            String tipoperfil = (rcp.getModel().getValueAt(rcp.getSelectedRow(), 6).toString());
+            String grado = (rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
 
             DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             try {
@@ -381,15 +377,12 @@ public class frmProfiles extends javax.swing.JFrame {
             } catch (Exception e) {
 
             }
+            
+            CmbGrado.setSelectedItem(grado);
+            int cmbgrado = CmbGrado.getSelectedIndex();
+            CmbTipoPerfil.setSelectedItem(tipoperfil);
+            int cmbtipoperfil = CmbTipoPerfil.getSelectedIndex();
 
-            int idTipoPerfil = Integer.parseInt(txtTipoPerfil.getText());
-            int idGrado = Integer.parseInt(txtGrado.getText());
-
-            int respuesta = BuscarTipoPerfilSeleccionado(idTipoPerfil);
-            int respuesta2 = BuscarGradoSeleccionado(idGrado);
-
-            CmbTipoPerfil.setSelectedIndex(respuesta + 1);
-            CmbGrado.setSelectedIndex(respuesta2 + 1);
         }
     }//GEN-LAST:event_JTPerfilMouseClicked
 
@@ -502,10 +495,8 @@ public class frmProfiles extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea txtDescripcion;
-    private javax.swing.JTextField txtGrado;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPonderacion;
-    private javax.swing.JTextField txtTipoPerfil;
     // End of variables declaration//GEN-END:variables
 }
