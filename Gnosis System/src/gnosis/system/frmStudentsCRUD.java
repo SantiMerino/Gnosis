@@ -27,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author PC
  */
-public class FrmEstudents extends javax.swing.JFrame {
+public class frmStudentsCRUD extends javax.swing.JFrame {
 
     /*Variables a utilizar*/
     DefaultComboBoxModel<String> modeloGenero;
@@ -51,7 +51,7 @@ public class FrmEstudents extends javax.swing.JFrame {
     /**
      * Creates new form FrmEstudiantes
      */
-    public FrmEstudents() {
+    public frmStudentsCRUD() {
         initComponents();
         
         txtId.setEditable(false);
@@ -811,7 +811,7 @@ public class FrmEstudents extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmEstudents().setVisible(true);
+                new frmStudentsCRUD().setVisible(true);
             }
         });
     }
