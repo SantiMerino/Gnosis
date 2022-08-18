@@ -38,9 +38,9 @@ public class MConnection {
         try {
             //Valores de conexión
             String url = "jdbc:sqlserver://localhost:1433;"
-                    + "database = dbGnosis;"
+                    + "database = alagranputa;"
                     + "user = sa;"
-                    + "password = itr2022;"
+                    + "password = stuka.v1;"
                     + "loginTimeOut = 10";
             //Asignación de valores a objeto conexión
             con = DriverManager.getConnection(url);
