@@ -17,15 +17,16 @@ public class CTeacher {
     private MTeacher mdlDocen = new MTeacher();
     
     protected int ID;
-    private String NombresDocente;
-    private String ApellidosDocente;
-    private String DireccionDocente;
-    private String TelefonoDocente;
-    private String FechaNacimiento;
-    private String DUI;
-    private String Correo;
-    private int idGeneroDocente;
-    private int idUsuario;
+    private String apellidosdocente;
+    private String nombresdocente;
+    private String direccion;
+    private String dui;
+    private String correo;
+    private String fecha_nac;
+    private int idgrado;
+    private int idgenero;
+    private String contacto;
+    private int idusuario;
 
     public Connection getCon() {
         return con;
@@ -51,93 +52,130 @@ public class CTeacher {
         this.ID = ID;
     }
 
-    public String getNombresDocente() {
-        return NombresDocente;
+    public String getApellidosdocente() {
+        return apellidosdocente;
     }
 
-    public void setNombresDocente(String NombresDocente) {
-        this.NombresDocente = NombresDocente;
+    public void setApellidosdocente(String apellidosdocente) {
+        this.apellidosdocente = apellidosdocente;
     }
 
-    public String getApellidosDocente() {
-        return ApellidosDocente;
+    public String getNombresdocente() {
+        return nombresdocente;
     }
 
-    public void setApellidosDocente(String ApellidosDocente) {
-        this.ApellidosDocente = ApellidosDocente;
+    public void setNombresdocente(String nombresdocente) {
+        this.nombresdocente = nombresdocente;
     }
 
-    public String getDireccionDocente() {
-        return DireccionDocente;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDireccionDocente(String DireccionDocente) {
-        this.DireccionDocente = DireccionDocente;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getTelefonoDocente() {
-        return TelefonoDocente;
+    public String getDui() {
+        return dui;
     }
 
-    public void setTelefonoDocente(String TelefonoDocente) {
-        this.TelefonoDocente = TelefonoDocente;
-    }
-
-    public String getFechaNacimiento() {
-        return FechaNacimiento;
-    }
-
-    public void setFechaNacimiento(String FechaNacimiento) {
-        this.FechaNacimiento = FechaNacimiento;
-    }
-
-    public String getDUI() {
-        return DUI;
-    }
-
-    public void setDUI(String DUI) {
-        this.DUI = DUI;
+    public void setDui(String dui) {
+        this.dui = dui;
     }
 
     public String getCorreo() {
-        return Correo;
+        return correo;
     }
 
-    public void setCorreo(String Correo) {
-        this.Correo = Correo;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public int getIdGeneroDocente() {
-        return idGeneroDocente;
+    public String getFecha_nac() {
+        return fecha_nac;
     }
 
-    public void setIdGeneroDocente(int idGeneroDocente) {
-        this.idGeneroDocente = idGeneroDocente;
+    public void setFecha_nac(String fecha_nac) {
+        this.fecha_nac = fecha_nac;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public int getIdgrado() {
+        return idgrado;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdgrado(int idgrado) {
+        this.idgrado = idgrado;
     }
+
+    public int getIdgenero() {
+        return idgenero;
+    }
+
+    public void setIdgenero(int idgenero) {
+        this.idgenero = idgenero;
+    }
+
+    public String getContacto() {
+        return contacto;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
+    }
+
+    public int getIdusuario() {
+        return idusuario;
+    }
+
+    public void setIdusuario(int idusuario) {
+        this.idusuario = idusuario;
+    }
+
+    public MTeacher getModeloGeneros() {
+        return modeloGeneros;
+    }
+
+    public void setModeloGeneros(MTeacher modeloGeneros) {
+        this.modeloGeneros = modeloGeneros;
+    }
+
+    public MTeacher getModeloUsuarios() {
+        return modeloUsuarios;
+    }
+
+    public void setModeloUsuarios(MTeacher modeloUsuarios) {
+        this.modeloUsuarios = modeloUsuarios;
+    }
+
+    public MTeacher getModeloDocentesC() {
+        return modeloDocentesC;
+    }
+
+    public void setModeloDocentesC(MTeacher modeloDocentesC) {
+        this.modeloDocentesC = modeloDocentesC;
+    }
+
+    
     
     public boolean DocenteNuevoController() {
-        return mdlDocen.RegistrarDocenteModel(NombresDocente, ApellidosDocente, DireccionDocente, TelefonoDocente, FechaNacimiento, DUI, Correo, idGeneroDocente, idUsuario, con);
+        return mdlDocen.RegistrarDocenteModel(apellidosdocente, nombresdocente, direccion, dui, correo, fecha_nac, idgrado, idgenero, contacto, idusuario, con);
     }
 
-    public CTeacher(String NombresDocente, String ApellidosDocente, String DireccionDocente, String TelefonoDocente, String FechaNacimiento, String DUI, String Correo, int idGeneroDocente, int idUsuario) {
-        this.NombresDocente = NombresDocente;
-        this.ApellidosDocente = ApellidosDocente;
-        this.DireccionDocente = DireccionDocente;
-        this.TelefonoDocente = TelefonoDocente;
-        this.FechaNacimiento = FechaNacimiento;
-        this.DUI = DUI;
-        this.Correo = Correo;
-        this.idGeneroDocente = idGeneroDocente;
-        this.idUsuario = idUsuario;
+    public CTeacher(String apellidosdocente, String nombresdocente, String direccion, String dui, String correo, String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario) {
+        this.apellidosdocente = apellidosdocente;
+        this.nombresdocente = nombresdocente;
+        this.direccion = direccion;
+        this.dui = dui;
+        this.correo = correo;
+        this.fecha_nac = fecha_nac;
+        this.idgrado = idgrado;
+        this.idgenero = idgenero;
+        this.contacto = contacto;
+        this.idusuario = idusuario;
     }
+    
+    
     
     public boolean EliminarDocenteController() {
         return mdlDocen.EliminarDocenteModel(ID, con);

@@ -67,28 +67,28 @@ public class MTeacher {
     }
      
     /*Inserción de datos*/
-     public boolean RegistrarDocenteModel(String NombresDocente, String ApellidosDocente, String DireccionDocente, String TelefonoDocente, String FechaNacimiento, 
-             String DUI, String Correo, int idGeneroDocente, int idUsuario, Connection con) {
+     public boolean RegistrarDocenteModel(String apellidosdocente, String nombresdocente, String direccion, String dui, 
+             String correo, 
+             String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario, Connection con) {
          try {
              
              String query = "INSERT INTO tbDocentes VALUES (?,?,?,?,?,?,?,?,?)";
              ps = con.prepareStatement(query);
-             ps.setString(1, NombresDocente);
-             ps.setString(2, ApellidosDocente);
-             ps.setString(3, DireccionDocente);
-             ps.setString(4, TelefonoDocente);
-             ps.setString(5, FechaNacimiento);
-             ps.setString(6, DUI);
-             ps.setString(7, Correo);
-             ps.setInt(8, idGeneroDocente);
-             ps.setInt(9, idUsuario);
+             ps.setString(1, apellidosdocente);
+             ps.setString(2, nombresdocente);
+             ps.setString(3, direccion);
+             ps.setString(4, dui);
+             ps.setString(5, correo);
+             ps.setString(6, fecha_nac);
+             ps.setInt(7, idgrado);
+             ps.setInt(8, idgenero);
+             ps.setString(9, contacto);
+             ps.setInt(10, idusuario);
              if (ps.executeUpdate () == 1) {
                  return true;
              }else {
                  return false;
              }
- 
-             
          } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al ingresar los datos, verifique la conexion. " + e.toString());
             return false;
@@ -99,20 +99,23 @@ public class MTeacher {
     }
      
      /*Actualizacion de datos*/
-     public boolean ActualizarDocenteModel(int ID, String NombresDocente, String ApellidosDocente, String DireccionDocente, String TelefonoDocente, String FechaNacimiento, String DUI, String Correo, int idGeneroDocente, int idUsuario, Connection con){
+     public boolean ActualizarDocenteModel(int ID, String apellidosdocente, String nombresdocente, String direccion, String dui, 
+             String correo, 
+             String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario, Connection con){
          try {
-             String query = "UPDATE tbDocentes SET NombresDocente = ?, ApellidosDocente = ?, DireccionDocente = ?, TelefonoDocente = ?, FechaNacimiento = ?, DUI = ?, Correo = ?, idGeneroDocente = ?, idUsuario = ? WHERE idDocente = ?";
+             String query = "UPDATE tbDocentes SET apellidos_docente = ?, nombres_docente = ?, direccion = ?, dui = ?, correo = ?, fecha_nac = ?, idgrado = ?, idgenero = ?, contacto = ?, idusuario = ? WHERE iddocente = ?";
              ps = con.prepareStatement(query);
-             ps.setString(1, NombresDocente);
-             ps.setString(2, ApellidosDocente);
-             ps.setString(3, DireccionDocente);
-             ps.setString(4, TelefonoDocente);
-             ps.setString(5, FechaNacimiento);
-             ps.setString(6, DUI);
-             ps.setString(7, Correo);
-             ps.setInt(8, idGeneroDocente);
-             ps.setInt(9, idUsuario);
-             ps.setInt(10, ID);
+             ps.setString(1, apellidosdocente);
+             ps.setString(2, nombresdocente);
+             ps.setString(3, direccion);
+             ps.setString(4, dui);
+             ps.setString(5, correo);
+             ps.setString(6, fecha_nac);
+             ps.setInt(7, idgrado);
+             ps.setInt(8, idgenero);
+             ps.setString(9, contacto);
+             ps.setInt(10, idusuario);
+             ps.setInt(11, ID);
              ps.execute();
              return true;
          } catch (Exception e) {

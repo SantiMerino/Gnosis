@@ -557,8 +557,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
             c = new GregorianCalendar();
             c.setTime(date);
             String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.DAY_OF_MONTH));
-            CTeacher objDocente = new CTeacher(txtNombres.getText(), txtApellidos.getText(), txtDireccion.getText(), txtTelefono.getText(), nacimiento, 
-                    txtDui.getText(), txtCorreo.getText(), idGenero, idUsuario);
+            CTeacher objDocente = new CTeacher(txtApellidos.getText(), txtNombres.getText(), txtDireccion.getText(), txtDui.getText(), txtCorreo.getText(), nacimiento, idGrado, idGenero, txtTelefono.getText(), idUsuario);
             boolean respuesta = objDocente.DocenteNuevoController();
             if (respuesta == true) {
                 JOptionPane.showMessageDialog(this, "Docente ingresado correctamente");
