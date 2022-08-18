@@ -9,7 +9,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
-import Controller.CConnection;
+import Controller.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.geom.RoundRectangle2D;
@@ -27,6 +27,7 @@ public class frmLogin extends javax.swing.JFrame {
     int xMouse;
     int yMouse;
     int niveldeusuario;
+    JFrame framepornivel;
     
     customization objCusto = new customization();
     
@@ -62,7 +63,7 @@ public class frmLogin extends javax.swing.JFrame {
         bContainer = new roundObjects.PanelRound();
         btnLogin = new roundObjects.ButtonRound();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
         buttonRound5 = new roundObjects.ButtonRound();
         txtPassword = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
@@ -125,8 +126,8 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel1.setText("Username:");
         bContainer.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(150, 30));
-        bContainer.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 228, -1));
+        txtUsername.setPreferredSize(new java.awt.Dimension(150, 30));
+        bContainer.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 228, -1));
 
         buttonRound5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/eye.png"))); // NOI18N
         buttonRound5.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -492,8 +493,25 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        new frmDashboard().setVisible(true);
-        this.dispose();
+        CLogin clog = new CLogin();
+        if (txtPassword.equals("") || txtUsername.getText().equals("") || cmbNivel.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Campos incompletos");
+        } else {
+            CLogin.usuario = txtUsername.getText();
+            clog.password = CValidaciones.getMD5(String.valueOf(txtPassword.getPassword()));
+            JOptionPane.showMessageDialog(null, clog.password);
+            clog.niveluser = niveldeusuario;
+            int respuesta = clog.ValidarLogin();
+            if (respuesta == 1) {
+                framepornivel.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Credenciales erroneas");
+            }
+        }
+        
+        
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void buttonRound4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound4ActionPerformed
@@ -530,13 +548,13 @@ public class frmLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecciona que tipo de usuario eres");
             niveldeusuario = 0;
         } else if (cmbNivel.getSelectedIndex() == 1) {
-            JOptionPane.showMessageDialog(null, "Estudiante");
+            framepornivel = new frmDashboard();
             niveldeusuario = 1;
         } else if (cmbNivel.getSelectedIndex() == 2) {
-            JOptionPane.showMessageDialog(null, "Docente");
+            framepornivel = new frmDashboardTeacher();
             niveldeusuario = 2;
         } else  if (cmbNivel.getSelectedIndex() == 3) {
-            JOptionPane.showMessageDialog(null, "Admin");
+            framepornivel = new frmDashboardTeacher();
             niveldeusuario = 3;
         }
     }//GEN-LAST:event_cmbNivelItemStateChanged
@@ -599,7 +617,6 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
     private roundObjects.PanelRound leftGap;
     private roundObjects.PanelRound leftWGap;
     private roundObjects.PanelRound loginWhitePan;
@@ -613,6 +630,7 @@ public class frmLogin extends javax.swing.JFrame {
     private roundObjects.PanelRound southGap;
     private roundObjects.PanelRound topGap;
     private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsername;
     private roundObjects.PanelRound wContainer;
     // End of variables declaration//GEN-END:variables
 }

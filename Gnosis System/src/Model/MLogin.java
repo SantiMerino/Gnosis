@@ -14,14 +14,15 @@ import java.sql.ResultSet;
  */
 public class MLogin {
       
-    public static int InciarSesion (String user, String clave){
+    public static int InciarSesion (String user, String clave, int nivel){
         int i = 0;
         Connection conexion = MConnection.getConnectionWithoutParameters();
         PreparedStatement ps;
         try {
-            ps = conexion.prepareStatement("SELECT * FROM tbUsuarios WHERE username = ? AND clave = ?");
+            ps = conexion.prepareStatement("SELECT * FROM tbUsuario WHERE username = ? AND clave = ? AND idnivelusuario = ?");
             ps.setString(1, user);
             ps.setString(2, clave);
+            ps.setInt(3, nivel);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 i = 1;

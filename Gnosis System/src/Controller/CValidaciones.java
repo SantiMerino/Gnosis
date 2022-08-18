@@ -13,6 +13,7 @@ import java.security.NoSuchAlgorithmException;
  * @author santi
  */
 public class CValidaciones {
+    
     public static String getMD5(String input){
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
