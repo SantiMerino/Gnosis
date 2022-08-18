@@ -15,13 +15,13 @@ import java.sql.ResultSet;
  */
 public class CTasks {
 
-    protected int ID;
-    private String nombretarea;
-    private String fechadeinicio;
-    private String fechavencimiento;
-    private int idperfil;
-    private String rubrica;
-    private int idtipotarea;
+    public int ID;
+    public String nombretarea;
+    public String fechadeinicio;
+    public String fechavencimiento;
+    public int idperfil;
+    public String rubrica;
+    public int idtipotarea;
 
     public int getID() {
         return ID;
