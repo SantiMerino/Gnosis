@@ -72,7 +72,7 @@ public class MTeacher {
              String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario, Connection con) {
          try {
              
-             String query = "INSERT INTO tbDocentes VALUES (?,?,?,?,?,?,?,?,?)";
+             String query = "INSERT INTO tbDocentes VALUES (?,?,?,?,?,?,?,?,?,?)";
              ps = con.prepareStatement(query);
              ps.setString(1, apellidosdocente);
              ps.setString(2, nombresdocente);
