@@ -80,6 +80,7 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
         Txtidtipo = new javax.swing.JTextField();
         TxtGrado = new javax.swing.JTextField();
         Txtseccion = new javax.swing.JTextField();
+        BtnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
@@ -148,6 +149,13 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
             }
         });
 
+        BtnLimpiar.setText("Limpiar");
+        BtnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -157,10 +165,6 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(233, 233, 233)
-                                .addComponent(jLabel4))
                             .addComponent(jLabel6)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -173,8 +177,11 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(90, 90, 90)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(TxtHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(TxtHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(BtnLimpiar))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -194,7 +201,11 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(BtnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(BtnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                            .addComponent(BtnElimionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                            .addComponent(BtnElimionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(233, 233, 233)
+                                .addComponent(jLabel4))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(BtnConectar)))
@@ -216,7 +227,7 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TxtNombreEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,7 +253,9 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(CfechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18))
-                            .addComponent(TxtHoraFin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(TxtHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BtnLimpiar)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
@@ -313,9 +326,10 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Evento no pudo ser ingresada");
             }
             Cargartabla();
+            LimpiarCampos();
         }
     }//GEN-LAST:event_BtnAgregarActionPerformed
-
+    
     private void BtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarActionPerformed
         // TODO add your handling code here:
         
@@ -329,14 +343,14 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
         Date date2 = CfechaVencimiento.getDate();
         cl2 = new GregorianCalendar();
         cl2.setTime(date2);
-        String Fin = String.valueOf(cl2.get(Calendar.YEAR) + "/" + (cl2.get(Calendar.MONTH) + 1)+ "/" + cl2.get(Calendar.DAY_OF_MONTH));
+        String vencimiento = String.valueOf(cl2.get(Calendar.YEAR) + "/" + (cl2.get(Calendar.MONTH) + 1)+ "/" + cl2.get(Calendar.DAY_OF_MONTH));
         
         //UPDATE
         obj.ID  = Integer.parseInt(txtID.getText());
         obj.NombreEvento = TxtNombreEvento.getText();
         obj.FechaEvento = inicio;
         obj.HoraInicioEvento = TxtHoraInicio.getText();
-        obj.FechaEvento = Fin;
+        obj.FechaEvento = vencimiento;
         obj.HoraFinalizarEvento = TxtHoraFin.getText();
         obj.idtipoevento = CmbTipo.getSelectedIndex();
         obj.idgrado = CmbGrado.getSelectedIndex();
@@ -344,10 +358,23 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
         if (obj.ActualizarEvento() == true) {
             JOptionPane.showMessageDialog(this, "Tarea Actualizada exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
             Cargartabla();
+            LimpiarCampos();
         }
         
     }//GEN-LAST:event_BtnActualizarActionPerformed
 
+    void LimpiarCampos(){
+        txtID.setText("");
+        TxtNombreEvento.setText("");
+        TxtHoraInicio.setText("");
+        TxtHoraFin.setText("");
+        CfechaInicio.setDate(null);
+        CfechaVencimiento.setDate(null);
+        CmbTipo.setSelectedIndex(0);
+        CmbGrado.setSelectedIndex(0);
+        CmbSeccion.setSelectedIndex(0);   
+    }
+    
     private void BtnElimionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnElimionarActionPerformed
         if (txtID.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Seleccione un registro.", "informacion incompleta",JOptionPane.WARNING_MESSAGE);
@@ -382,7 +409,7 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
                         
             }
             
-            DateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-mm-dd");
+            DateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-mm-dd");
             try {
                 CfechaVencimiento.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString()));
             } catch (Exception e) {
@@ -394,14 +421,19 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
             
             
             int respuesta = BuscarTipoEveSeleccionado(idevento);
-            int respuesta2 = BuscarTipoEveSeleccionado(idGrado);
-            int respuesta3 = BuscarTipoEveSeleccionado(idSeccion);
+            int respuesta2 = BuscarGradoSeleccionado(idGrado);
+            int respuesta3 = BuscarSeccionSeleccionado(idSeccion);
             
             CmbTipo.setSelectedIndex(respuesta + 1);
             CmbGrado.setSelectedIndex(respuesta2 + 1);
             CmbSeccion.setSelectedIndex(respuesta3 + 1);
         }
     }//GEN-LAST:event_TablaEventosMouseClicked
+
+    private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
+        // TODO add your handling code here:
+        LimpiarCampos();
+    }//GEN-LAST:event_BtnLimpiarActionPerformed
     
     final int BuscarTipoEveSeleccionado(int idtipoevento){
         int size = eventos.size();
@@ -608,17 +640,18 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
     }
    
     final void Cargartabla(){
+        CCalendar Task = new CCalendar();
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);       
         }
         try {
-            ResultSet rs = obj.CargarCalendarioResultSet();
+            ResultSet rs = Task.CargarCalendarioResultSet();
             while (rs.next()){
                 Object[] oValores = {rs.getInt("idevento"), rs.getString("NombreEvento"), rs.getString("FechaEvento"), rs.getString("HoraInicioEvento"), rs.getString("FechaFinEvento"), rs.getString("HoraFinalizarEvento"), rs.getInt("idtipoevento"), rs.getInt("idgrado"), rs.getInt("idseccion")};
                 modelo.addRow(oValores);
             }
         } catch (Exception e) {
-            
+            JOptionPane.showMessageDialog(null, "No se cargo la tabla");
         }
     }
     
@@ -629,6 +662,7 @@ public class FrmCalendarioEvento extends javax.swing.JFrame {
     private javax.swing.JButton BtnAgregar;
     private javax.swing.JButton BtnConectar;
     private javax.swing.JButton BtnElimionar;
+    private javax.swing.JButton BtnLimpiar;
     private com.toedter.calendar.JDateChooser CfechaInicio;
     private com.toedter.calendar.JDateChooser CfechaVencimiento;
     private javax.swing.JComboBox<String> CmbGrado;

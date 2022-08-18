@@ -149,6 +149,18 @@ public class CCalendar {
         this.idgrado = idgrado;
         this.idseccion = idseccion;
     }
+    
+    public CCalendar(int idevento, String NombreEvento, String FechaEvento, String HoraInicioEvento, String FechaFinalEvento, String HoraFinalizarEvento, int idtipoevento, int idgrado, int idseccion) {
+        this.ID = ID;
+        this.NombreEvento = NombreEvento;
+        this.FechaEvento = FechaEvento;
+        this.HoraInicioEvento = HoraInicioEvento;
+        this.FechaFinalEvento = FechaFinalEvento;
+        this.HoraFinalizarEvento = HoraFinalizarEvento;
+        this.idtipoevento = idtipoevento;
+        this.idgrado = idgrado;
+        this.idseccion = idseccion;
+    }
        
     public boolean EventoNuevoControladorResultset(){
         return mdlAsp.RegistrarEvento(NombreEvento, FechaEvento, HoraInicioEvento, FechaFinalEvento, HoraFinalizarEvento, idtipoevento, idgrado, idseccion);
