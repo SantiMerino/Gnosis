@@ -6,6 +6,7 @@ package gnosis.system;
 
 import Controller.CConnection;
 import Controller.CTasks;
+import java.awt.event.ItemEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -32,6 +33,8 @@ public class frmTasks extends javax.swing.JFrame {
     DefaultTableModel Tablamodelo;
     DefaultComboBoxModel<String> TipoPerfilcombo;
     DefaultComboBoxModel<String> TipoTareacombo;
+    private int idTipoPerfil;
+    private int idTipoTarea;
     private List TipoPerfilList;
     private List TipoTareaList;
     private Calendar Cal1;
@@ -328,32 +331,36 @@ public class frmTasks extends javax.swing.JFrame {
 
     private void CmbTipoPerfilItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbTipoPerfilItemStateChanged
         // TODO add your handling code here:
-        //        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            //            int pos = CmbCategoria.getSelectedIndex();
-            //            if (pos == 0) {
-                //                Categoria = 0;
-                //            } else {
-                //                int dim = CategoriaList.size();
-                //                for (int i = 0; i < dim; i++) {
-                    //                    Categoria = (int) CategoriaList.get(i);
-                    //                }
-                //            }
-            //        }
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            int pos = CmbTipoPerfil.getSelectedIndex();
+            if (pos == 0) {
+                idTipoPerfil = 0;
+            } else {
+                int dim = TipoPerfilList.size();
+                for (int i = 0; i < dim; i++) {
+                    if (i == pos - 1) {
+                        idTipoPerfil = (int) TipoPerfilList.get(i);
+                    }
+                }
+            }           
+        }
     }//GEN-LAST:event_CmbTipoPerfilItemStateChanged
 
     private void CmbTipoTareaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbTipoTareaItemStateChanged
         // TODO add your handling code here:
-        //        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            //            int pos = CmbGrado.getSelectedIndex();
-            //            if (pos == 0) {
-                //                Grado = 0;
-                //            } else {
-                //                int dim = GradoList.size();
-                //                for (int i = 0; i < dim; i++) {
-                    //                    Grado = (int) GradoList.get(i);
-                    //                }
-                //            }
-            //        }
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            int pos = CmbTipoTarea.getSelectedIndex();
+            if (pos == 0) {
+                idTipoTarea = 0;
+            } else {
+                int dim = TipoTareaList.size();
+                for (int i = 0; i < dim; i++) {
+                    if (i == pos - 1) {
+                        idTipoTarea = (int) TipoTareaList.get(i);
+                    }
+                }
+            }           
+        }
     }//GEN-LAST:event_CmbTipoTareaItemStateChanged
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
@@ -390,13 +397,7 @@ public class frmTasks extends javax.swing.JFrame {
         String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + (Cal2.get(Calendar.MONTH) + 1)+ "/" + Cal2.get(Calendar.DAY_OF_MONTH));
 
         //Update
-        obj.ID = Integer.parseInt(txtId.getText());
-        obj.nombretarea = txtNombre.getText();
-        obj.fechavencimiento = inicio;
-        obj.fechavencimiento = vencimiento;
-        obj.idperfil = CmbTipoPerfil.getSelectedIndex();
-        obj.rubrica = ruta_archivo;
-        obj.idtipotarea = CmbTipoTarea.getSelectedIndex();
+        CTasks objTaskUpd = new CTasks(Integer.parseInt(txtId.getText()), txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
         if (obj.ActualizarTarea() == true) {
             JOptionPane.showMessageDialog(this, "Tarea actualizada correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
             CargarTabla();
@@ -424,13 +425,9 @@ public class frmTasks extends javax.swing.JFrame {
             Cal2.setTime(date2);
             String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + Cal2.get(Calendar.MONTH) + "/" + Cal2.get(Calendar.DAY_OF_MONTH));
             // Envio
-            obj.nombretarea = txtNombre.getText();
-            obj.fechadeinicio = inicio;
-            obj.fechavencimiento = vencimiento;
-            obj.idperfil = CmbTipoPerfil.getSelectedIndex();
-            obj.rubrica = ruta_archivo;
-            obj.idtipotarea = CmbTipoTarea.getSelectedIndex();
-            if (obj.TareaNuevaResultSet() == true) {
+            CTasks objTaskAdd = new CTasks(txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
+            boolean respuesta = objTaskAdd.TareaNuevaResultSet();
+            if (respuesta == true) {
                 JOptionPane.showMessageDialog(this, "Tarea ingresado correctamente");
             } else {
                 JOptionPane.showMessageDialog(this, "Tarea no pudo ser ingresado");
