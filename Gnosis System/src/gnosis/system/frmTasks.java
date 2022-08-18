@@ -400,10 +400,7 @@ public class frmTasks extends javax.swing.JFrame {
         String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + (Cal2.get(Calendar.MONTH) + 1)+ "/" + Cal2.get(Calendar.DAY_OF_MONTH));
 
         //Update
-//        CTasks controller = new CTasks();
-        String rubrica = "No disponible";
-        int idtask = Integer.parseInt(txtId.getText());
-        CTasks objupdate =new CTasks(idtask, txtNombre.getText(), inicio, vencimiento, idTipoPerfil, rubrica, idTipoTarea);
+        CTasks objupdate =new CTasks(Integer.parseInt(txtId.getText()), txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
         boolean res = obj.ActualizarTarea();
         if (res == true) {
             JOptionPane.showMessageDialog(this, "Tarea actualizada correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
@@ -432,15 +429,9 @@ public class frmTasks extends javax.swing.JFrame {
             Cal2.setTime(date2);
             String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + Cal2.get(Calendar.MONTH) + "/" + Cal2.get(Calendar.DAY_OF_MONTH));
             // Envio
-            CTasks controller = new CTasks();
-            controller.idperfil = idTipoPerfil;
-            controller.idtipotarea = idTipoTarea;
-            controller.fechadeinicio = inicio;
-            controller.fechavencimiento = vencimiento;
-            controller.nombretarea = txtNombre.getText();
-            controller.rubrica = "No disponible";
+            CTasks controller = new CTasks(txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
             boolean respuesta = controller.TareaNuevaResultSet();
-            if ( respuesta == true) {
+            if ( respuesta = true) {
                 JOptionPane.showMessageDialog(this, "Tarea ingresado correctamente");
             } else {
                 JOptionPane.showMessageDialog(this, "Tarea no pudo ser ingresado");
