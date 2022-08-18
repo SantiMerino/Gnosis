@@ -86,7 +86,6 @@ public class MProfiles {
          try {
             String query = "UPDATE tbPerfiles SET nombreperfil = ?, descripcion = ?, porcentajeValoracion = ?, fechainicio = ?, fechavencimiento = ?, idtipoperfil = ?, idgrados = ? WHERE idperfil = ?";
             ps = con.prepareStatement(query);
-            ps = con.prepareStatement(query);
             ps.setString(1, nombre);
             ps.setString(2, descripcion);
             ps.setString(3, porcentajedevaloracion);
