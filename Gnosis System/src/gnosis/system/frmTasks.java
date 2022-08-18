@@ -50,7 +50,7 @@ public class frmTasks extends javax.swing.JFrame {
         CargarCmbTipoPerfil();
      
         //Tabla
-        String [] TitulosTarea = {"ID", "Nombre", "Fecha de inicio", "Fecha de vencimiento", "Instrumento de evaluacion", "Perfil", "Grado", "Especialidad"};
+        String [] TitulosTarea = {"ID", "Nombre", "Fecha de inicio", "Fecha de vencimiento", "Perfil", "Rubrica", "Tipo Tarea"};
         Tablamodelo = new DefaultTableModel(null, TitulosTarea);
         JTTask.setModel(Tablamodelo);
         CargarTabla();
@@ -340,6 +340,7 @@ public class frmTasks extends javax.swing.JFrame {
                 for (int i = 0; i < dim; i++) {
                     if (i == pos - 1) {
                         idTipoPerfil = (int) TipoPerfilList.get(i);
+//                        JOptionPane.showMessageDialog(null, idTipoPerfil);
                     }
                 }
             }
@@ -357,6 +358,8 @@ public class frmTasks extends javax.swing.JFrame {
                 for (int i = 0; i < dim; i++) {
                     if (i == pos - 1) {
                         idTipoTarea = (int) TipoTareaList.get(i);
+//                        JOptionPane.showMessageDialog(null, idTipoTarea);
+
                     }
                 }
             }
@@ -397,8 +400,12 @@ public class frmTasks extends javax.swing.JFrame {
         String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + (Cal2.get(Calendar.MONTH) + 1)+ "/" + Cal2.get(Calendar.DAY_OF_MONTH));
 
         //Update
-        CTasks objTaskUpdate = new CTasks(Integer.parseInt(txtId.getText()), txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
-        if (obj.ActualizarTarea() == true) {
+//        CTasks controller = new CTasks();
+        String rubrica = "No disponible";
+        int idtask = Integer.parseInt(txtId.getText());
+        CTasks objupdate =new CTasks(idtask, txtNombre.getText(), inicio, vencimiento, idTipoPerfil, rubrica, idTipoTarea);
+        boolean res = obj.ActualizarTarea();
+        if (res == true) {
             JOptionPane.showMessageDialog(this, "Tarea actualizada correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
             CargarTabla();
             LimpiarCampos();
@@ -425,8 +432,15 @@ public class frmTasks extends javax.swing.JFrame {
             Cal2.setTime(date2);
             String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + Cal2.get(Calendar.MONTH) + "/" + Cal2.get(Calendar.DAY_OF_MONTH));
             // Envio
-            CTasks objTaskAdd = new CTasks(txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
-            if (obj.TareaNuevaResultSet() == true) {
+            CTasks controller = new CTasks();
+            controller.idperfil = idTipoPerfil;
+            controller.idtipotarea = idTipoTarea;
+            controller.fechadeinicio = inicio;
+            controller.fechavencimiento = vencimiento;
+            controller.nombretarea = txtNombre.getText();
+            controller.rubrica = "No disponible";
+            boolean respuesta = controller.TareaNuevaResultSet();
+            if ( respuesta == true) {
                 JOptionPane.showMessageDialog(this, "Tarea ingresado correctamente");
             } else {
                 JOptionPane.showMessageDialog(this, "Tarea no pudo ser ingresado");

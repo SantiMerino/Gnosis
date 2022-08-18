@@ -8,6 +8,7 @@ package Controller;
 import Model.MTasks;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,13 +16,13 @@ import java.sql.ResultSet;
  */
 public class CTasks {
 
-    protected int ID;
-    private String nombretarea;
-    private String fechadeinicio;
-    private String fechavencimiento;
-    private int idperfil;
-    private String rubrica;
-    private int idtipotarea;
+    public int ID;
+    public String nombretarea;
+    public String fechadeinicio;
+    public String fechavencimiento;
+    public int idperfil;
+    public String rubrica;
+    public int idtipotarea;
 
     public int getID() {
         return ID;
@@ -106,18 +107,21 @@ public class CTasks {
     }
   
     MTasks mdlTask = new MTasks();
+    MTasks mdlcmbperfil = new MTasks();
+    MTasks mdlcmbtipotarea = new MTasks();
+    MTasks mdlTaskTable = new MTasks();
     private Connection con = CConnection.getConnectionControllerWithoutParameters();
     
     public ResultSet CargarTipoPerfilResultSet() {
-        return mdlTask.CargaCmbTipoPerfil();
+        return mdlcmbperfil.CargaCmbTipoPerfil();
     }
     
     public ResultSet CargarTipoTaraeResultSet() {
-        return mdlTask.CargaCmbTipoTarea();
+        return mdlcmbtipotarea.CargaCmbTipoTarea();
     }
     
     public ResultSet CCargarTareas(){
-        return mdlTask.mostrarTareas(con);
+        return mdlTaskTable.mostrarTareas(con);
     }
     
     public boolean TareaNuevaResultSet(){
@@ -125,7 +129,7 @@ public class CTasks {
     }
     
     public boolean ActualizarTarea() {
-       return mdlTask.ActualizarTareasModel(ID, nombretarea, nombretarea, fechadeinicio, fechavencimiento, idperfil, rubrica, idtipotarea, con);
+       return mdlTask.ActualizarTareasModel(ID, nombretarea, fechadeinicio, fechavencimiento, idperfil, rubrica, idtipotarea, con);
     }
     
     public boolean EliminarTareaController() {

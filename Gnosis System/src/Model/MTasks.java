@@ -64,14 +64,17 @@ public class MTasks {
             String query = "INSERT INTO tbTareas VALUES (?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, nombretarea);
+            JOptionPane.showMessageDialog(null, nombretarea);
             ps.setString(2, fechainicio);
+            JOptionPane.showMessageDialog(null, fechainicio);
             ps.setString(3, fechavencimiento);
+            JOptionPane.showMessageDialog(null, fechavencimiento);
             ps.setInt(4, idperfil);
             JOptionPane.showMessageDialog(null, idperfil);
             ps.setString(5, rubrica);
             ps.setInt(6, idtipotarea);
             JOptionPane.showMessageDialog(null, idtipotarea);
-            if (ps.executeUpdate () == 1) {
+            if (ps.executeUpdate() == 1) {
                 return true;
             } else {
                 return false;
@@ -85,12 +88,12 @@ public class MTasks {
         }
     }
     
-    public boolean ActualizarTareasModel(int ID, String nombre, String nombretarea, String fechadeinicio, String fechadevencimiento, int idperfil, String rubrica, int idtipotarea, Connection con){
+    public boolean ActualizarTareasModel(int ID, String nombretarea, String fechadeinicio, String fechadevencimiento, int idperfil, String rubrica, int idtipotarea, Connection con){
          try {
              String query = "UPDATE tbTareas SET nombretarea = ?, fechadeinicio = ?, fechavencimiento = ?, idperfil = ?, rubrica = ?, idtipotarea = ? WHERE idtarea = ?";
             ps = con.prepareStatement(query);
-            ps = con.prepareStatement(query);
             ps.setString(1, nombretarea);
+            JOptionPane.showMessageDialog(null,nombretarea);
             ps.setString(2, fechadeinicio);
             ps.setString(3, fechadevencimiento);
             ps.setInt(4, idperfil);
