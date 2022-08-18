@@ -1,5 +1,3 @@
-CREATE DATABASE dbGnosis
-GO
 
 USE dbGnosis
 GO
@@ -369,16 +367,78 @@ ADD CONSTRAINT fk_estadisticaalumno
 FOREIGN KEY (idalumno)
 REFERENCES tbAlumnos (idalumno)
 
+ALTER TABLE tbUsuario
+ADD idalumno int
+
+ALTER TABLE tbUsuario
+ADD CONSTRAINT fk_usuarioalumno
+FOREIGN KEY (idalumno)
+REFERENCES tbAlumnos (idalumno)
+
+ALTER TABLE tbDocentes
+DROP CONSTRAINT fk_docenteusuario
+
+ALTER TABLE tbUsuario
+ADD iddocente int
+
+ALTER TABLE tbUsuario
+ADD CONSTRAINT fk_usuariodocente
+FOREIGN KEY (iddocente)
+REFERENCES tbDocentes(iddocente)
+ALTER TABLE tbAlumnos
+DROP CONSTRAINT fk_alumnousuario
+
+ALTER TABLE tbAlumnos
+DROP COLUMN idusuario
+
+
+use dbGnosis
+go
 
 GO
 CREATE PROCEDURE crearUsuarioEstudiante
-@anio varchar (4),
 @nivel int,
-@num int
+@correo varchar (150),
+@clavedefault varchar (20),
+@b int, --12345
+@c int, --2
+@id int
 AS
 BEGIN
-SELECT * FROM tbAlumnos
-
-
+INSERT INTO tbUsuario(idnivelusuario,username, clave, pin, idestadousuario, idalumno)
+VALUES  (@nivel, @correo, @clavedefault, @b , @c, @id);
 END
 GO
+
+GO
+CREATE PROCEDURE crearUsuarioDocente
+@nivel int,
+@correo varchar (150),
+@clavedefault varchar (20),
+@b int, --12345
+@c int, --2
+@id int
+AS
+BEGIN
+INSERT INTO tbUsuario(idnivelusuario,username, clave, pin, idestadousuario, iddocente)
+VALUES  (@nivel, @correo, @clavedefault, @b , @c, @id);
+END
+GO
+
+
+
+EXECUTE crearUsuarioEstudiante 1, 'santiago.merino2004', 'gnosis123', 12345, 2, 1;
+
+
+CREATE VIEW viewPerfiles
+AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.porcentajeValoracion, a.fechainicio, a.fechavencimiento, b.tipoperfil, c.grado
+FROM tbPerfiles a, tbTipoPerfiles b, tbGrados c
+WHERE a.idtipoperfil = b.idtipoperfil AND a.idgrados = c.idgrado; 
+Go
+
+SELECT * FROM viewPerfiles;
+
+ALTER TABLE tbTareas
+ADD CONSTRAINT fk_tareasperfiles
+FOREIGN KEY (idperfil)
+REFERENCES tbPerfiles (idperfil)
