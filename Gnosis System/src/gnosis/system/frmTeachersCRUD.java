@@ -512,7 +512,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
 
     private void cmbGeneroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGeneroItemStateChanged
         // TODO add your handling code here:
-         if (evt.getStateChange() == ItemEvent.SELECTED) {
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
             int pos = cmbGenero.getSelectedIndex();
             if (pos == 0) {
                 idGenero = 0;
