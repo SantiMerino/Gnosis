@@ -16,25 +16,13 @@ import java.sql.ResultSet;
 public class CTasks {
 
     public int ID;
-    public String nombre;
-    public String etapa;
+    public String nombretarea;
     public String fechadeinicio;
-    public String fechadevencimiento;
-    public String ponderacion;
-    public String instrumentodeevaluacion;
-    public int idtipoarchivo;
-    public int idcategoria;
-    public int idgrado;
-    public int idespecialidad;
+    public String fechavencimiento;
+    public int idperfil;
+    public String rubrica;
+    public int idtipotarea;
 
-    public MTasks getMdlTask() {
-        return mdlTask;
-    }
-
-    public void setMdlTask(MTasks mdlTask) {
-        this.mdlTask = mdlTask;
-    }
-   
     public int getID() {
         return ID;
     }
@@ -43,28 +31,12 @@ public class CTasks {
         this.ID = ID;
     }
 
-    public Connection getCon() {
-        return con;
+    public String getNombretarea() {
+        return nombretarea;
     }
 
-    public void setCon(Connection con) {
-        this.con = con;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEtapa() {
-        return etapa;
-    }
-
-    public void setEtapa(String etapa) {
-        this.etapa = etapa;
+    public void setNombretarea(String nombretarea) {
+        this.nombretarea = nombretarea;
     }
 
     public String getFechadeinicio() {
@@ -75,113 +47,73 @@ public class CTasks {
         this.fechadeinicio = fechadeinicio;
     }
 
-    public String getFechadevencimiento() {
-        return fechadevencimiento;
+    public String getFechavencimiento() {
+        return fechavencimiento;
     }
 
-    public void setFechadevencimiento(String fechadevencimiento) {
-        this.fechadevencimiento = fechadevencimiento;
+    public void setFechavencimiento(String fechavencimiento) {
+        this.fechavencimiento = fechavencimiento;
     }
 
-    public String getPonderacion() {
-        return ponderacion;
+    public int getIdperfil() {
+        return idperfil;
     }
 
-    public void setPonderacion(String ponderacion) {
-        this.ponderacion = ponderacion;
+    public void setIdperfil(int idperfil) {
+        this.idperfil = idperfil;
     }
 
-    public String getInstrumentodeevaluacion() {
-        return instrumentodeevaluacion;
+    public String getRubrica() {
+        return rubrica;
     }
 
-    public void setInstrumentodeevaluacion(String instrumentodeevaluacion) {
-        this.instrumentodeevaluacion = instrumentodeevaluacion;
+    public void setRubrica(String rubrica) {
+        this.rubrica = rubrica;
     }
 
-    public int getIdtipoarchivo() {
-        return idtipoarchivo;
+    public int getIdtipotarea() {
+        return idtipotarea;
     }
 
-    public void setIdtipoarchivo(int idtipoarchivo) {
-        this.idtipoarchivo = idtipoarchivo;
+    public void setIdtipotarea(int idtipotarea) {
+        this.idtipotarea = idtipotarea;
     }
 
-    public int getIdcategoria() {
-        return idcategoria;
-    }
-
-    public void setIdcategoria(int idcategoria) {
-        this.idcategoria = idcategoria;
-    }
-
-    public int getIdgrado() {
-        return idgrado;
-    }
-
-    public void setIdgrado(int idgrado) {
-        this.idgrado = idgrado;
-    }
-
-    public int getIdespecialidad() {
-        return idespecialidad;
-    }
-
-    public void setIdespecialidad(int idespecialidad) {
-        this.idespecialidad = idespecialidad;
-    }
-
-    public CTasks() {
-    }
-
-    public CTasks(String nombre, String etapa, String fechadeinicio, String fechadevencimiento, String ponderacion, String instrumentodeevaluacion, int idtipoarchivo, int idcategoria, int idgrado, int idespecialidad) {
-        this.nombre = nombre;
-        this.etapa = etapa;
+    public CTasks(String nombretarea, String fechadeinicio, String fechavencimiento, int idperfil, String rubrica, int idtipotarea) {
+        this.nombretarea = nombretarea;
         this.fechadeinicio = fechadeinicio;
-        this.fechadevencimiento = fechadevencimiento;
-        this.ponderacion = ponderacion;
-        this.instrumentodeevaluacion = instrumentodeevaluacion;
-        this.idtipoarchivo = idtipoarchivo;
-        this.idcategoria = idcategoria;
-        this.idgrado = idgrado;
-        this.idespecialidad = idespecialidad;
+        this.fechavencimiento = fechavencimiento;
+        this.idperfil = idperfil;
+        this.rubrica = rubrica;
+        this.idtipotarea = idtipotarea;
     }
 
-    public CTasks(int ID, String nombre, String etapa, String fechadeinicio, String fechadevencimiento, String ponderacion, String instrumentodeevaluacion, int idtipoarchivo, int idcategoria, int idgrado, int idespecialidad) {
+    public CTasks(int ID, String nombretarea, String fechadeinicio, String fechavencimiento, int idperfil, String rubrica, int idtipotarea) {
         this.ID = ID;
-        this.nombre = nombre;
-        this.etapa = etapa;
+        this.nombretarea = nombretarea;
         this.fechadeinicio = fechadeinicio;
-        this.fechadevencimiento = fechadevencimiento;
-        this.ponderacion = ponderacion;
-        this.instrumentodeevaluacion = instrumentodeevaluacion;
-        this.idtipoarchivo = idtipoarchivo;
-        this.idcategoria = idcategoria;
-        this.idgrado = idgrado;
-        this.idespecialidad = idespecialidad;
+        this.fechavencimiento = fechavencimiento;
+        this.idperfil = idperfil;
+        this.rubrica = rubrica;
+        this.idtipotarea = idtipotarea;
     }
 
     public CTasks(int ID) {
         this.ID = ID;
     }
-         
+
+    public CTasks() {
+    }
+    
     MTasks mdlTask = new MTasks();
     private Connection con = CConnection.getConnectionControllerWithoutParameters();
     
-    public ResultSet CargarCatergoriaResultSet() {
-        return mdlTask.CargaCmbCategoria();
+    public ResultSet CargarTipoPerfilResultSet() {
+        return mdlTask.CargaCmbTipoPerfil();
     }
     
-    public ResultSet CargarEspecialidadesResultSet() {
-        return mdlTask.CargaCmbEspecialidad();
-    }
-    
-    public ResultSet CargarGradosResultSet() {
-        return mdlTask.CargaCmbGrado();
-    }
-    
-    public ResultSet CargarTipoArchivoResultSet() {
-        return mdlTask.CargaCmbTipoArchivo();
+    public ResultSet CargarTipoTaraeResultSet() {
+        return mdlTask.CargaCmbTipoTarea();
     }
     
     public ResultSet CCargarTareas(){
@@ -189,11 +121,11 @@ public class CTasks {
     }
     
     public boolean TareaNuevaResultSet(){
-        return mdlTask.SubirTareasModel(nombre, etapa, fechadeinicio, fechadevencimiento, ponderacion, instrumentodeevaluacion, idtipoarchivo, idcategoria, idgrado, idespecialidad, con);
+        return mdlTask.SubirTareasModel(nombretarea, fechadeinicio, fechavencimiento, idperfil, rubrica, idtipotarea, con);
     }
     
     public boolean ActualizarTarea() {
-       return mdlTask.ActualizarTareasModel(ID, nombre, etapa, fechadeinicio, fechadevencimiento, ponderacion, instrumentodeevaluacion, idtipoarchivo, idcategoria, idgrado, idespecialidad, con);
+       return mdlTask.ActualizarTareasModel(ID, nombretarea, nombretarea, fechadeinicio, fechavencimiento, idperfil, rubrica, idtipotarea, con);
     }
     
     public boolean EliminarTareaController() {

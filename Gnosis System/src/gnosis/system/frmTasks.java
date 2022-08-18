@@ -30,14 +30,10 @@ public class frmTasks extends javax.swing.JFrame {
 
     CTasks obj = new CTasks();
     DefaultTableModel Tablamodelo;
-    DefaultComboBoxModel<String> TipoArchivocombo;
-    DefaultComboBoxModel<String> Categoriacombo;
-    DefaultComboBoxModel<String> Gradocombo;
-    DefaultComboBoxModel<String> Especialidadcombo;
-    private List TipoArchivoList;
-    private List CategoriaList;
-    private List GradoList;
-    private List EspecialidadList;
+    DefaultComboBoxModel<String> TipoPerfilcombo;
+    DefaultComboBoxModel<String> TipoTareacombo;
+    private List TipoPerfilList;
+    private List TipoTareaList;
     private Calendar Cal1;
     private Calendar Cal2;
     private String ruta_archivo = " ";
@@ -47,13 +43,11 @@ public class frmTasks extends javax.swing.JFrame {
      */
     public frmTasks() {
         initComponents();
-        CargarCmbCategoria();
-        CargarCmbEspecialidades();
-        CargarCmbGrados();
-        CargarCmbTipoArchivo();
-        
+        CargarCmbTipoTarea();
+        CargarCmbTipoPerfil();
+     
         //Tabla
-        String [] TitulosTarea = {"ID", "Nombre", "Etapa", "Fecha de inicio", "Fecha de vencimiento", "Ponderacion",  "Instrumento de evaluacion", "Tipo Archivo", "Categoria", "Grado", "Especialidad"};
+        String [] TitulosTarea = {"ID", "Nombre", "Fecha de inicio", "Fecha de vencimiento", "Instrumento de evaluacion", "Perfil", "Grado", "Especialidad"};
         Tablamodelo = new DefaultTableModel(null, TitulosTarea);
         JTTask.setModel(Tablamodelo);
         CargarTabla();
@@ -61,15 +55,11 @@ public class frmTasks extends javax.swing.JFrame {
     
     void LimpiarCampos() {
         txtNombre.setText("");
-        txtEtapa.setText("");
-        txtPonderacion.setText("");
         txtId.setText("");
         dtInicio.setDate(null);
         dtVencimiento.setDate(null);
-        CmbTipoArchivo.setSelectedIndex(0);
-        CmbCategoria.setSelectedIndex(0);
-        CmbGrado.setSelectedIndex(0);
-        CmbEspecialidad.setSelectedIndex(0);
+        CmbTipoPerfil.setSelectedIndex(0);
+        CmbTipoTarea.setSelectedIndex(0);
     }
     
     final void CargarTabla(){
@@ -80,7 +70,7 @@ public class frmTasks extends javax.swing.JFrame {
         try {
             ResultSet rs = Task.CCargarTareas();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idtarea"), rs.getString("nombre"), rs.getString("etapa"), rs.getString("fechadeinicio"), rs.getString("fechadevencimiento"), rs.getString("ponderacion"), rs.getString("instrumentodeevaluacion"), rs.getInt("idtipoarchivo"), rs.getInt("idcategoria"), rs.getInt("idgrado"), rs.getInt("idespecialidad")};
+                Object [] oValores = {rs.getInt("idtarea"), rs.getString("nombretarea"), rs.getString("fechadeinicio"), rs.getString("fechavencimiento"), rs.getInt("idperfil"), rs.getString("rubrica"), rs.getInt("idtipotarea")};
                 Tablamodelo.addRow(oValores);
             }
         } catch (Exception e) {
@@ -99,128 +89,64 @@ public class frmTasks extends javax.swing.JFrame {
         }
     }
     
-    final void CargarCmbTipoArchivo() {
+    final void CargarCmbTipoPerfil(){
         //Crear objetos de la clase ControllerBiblioteca
-        CTasks objCargarTipoArchivo;
-        objCargarTipoArchivo = new CTasks();
+        CTasks objCargarTipoPerfil;
+        objCargarTipoPerfil = new CTasks();
         //Lista donde se guardarán los IDs
-        TipoArchivoList = new ArrayList();
+        TipoPerfilList = new ArrayList();
         try {
             //Guardar en la variable rs los valores retornados por el modelo
             ResultSet rs;
-            rs = objCargarTipoArchivo.CargarTipoArchivoResultSet();
+            rs = objCargarTipoPerfil.CargarTipoPerfilResultSet();
             //Verificamos si el resultset tiene datos
             if (rs.next()) {
                 //Instanaciamos modelo combo para el combobox
-                TipoArchivocombo = new DefaultComboBoxModel<>();
+                TipoPerfilcombo = new DefaultComboBoxModel<>();
                 //Se agrega opción por defecto
-                TipoArchivocombo.addElement("Elija una opción");
+                TipoPerfilcombo.addElement("Elija una opción");
                 do {
                     //Se guarda en la lista el id tipo de archivo
-                    TipoArchivoList.add(rs.getInt("idtipoarchivo"));
+                    TipoPerfilList.add(rs.getInt("idperfil"));
                     //Se agrega en el combobox el valor del campo tipo de archivo
-                    TipoArchivocombo.addElement(rs.getString("tipoarchivo"));
+                    TipoPerfilcombo.addElement(rs.getString("nombreperfil"));
                     //Se asigna el modelo combo al combobox
-                    CmbTipoArchivo.setModel(TipoArchivocombo);
+                    CmbTipoPerfil.setModel(TipoPerfilcombo);
                 } while (rs.next());
             } else {
-                JOptionPane.showMessageDialog(BtnEliminar, "No existen grados por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(BtnEliminar, "No existen tipos de perfil por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
         }//End catch
     }//End method
     
-    final void CargarCmbCategoria() {
+    final void CargarCmbTipoTarea() {
         //Crear objetos de la clase ControllerBiblioteca
-        CTasks objCargarCategoria;
-        objCargarCategoria = new CTasks();
+        CTasks objCargarTipoTaraes;
+        objCargarTipoTaraes = new CTasks();
         //Lista donde se guardarán los IDs
-        CategoriaList = new ArrayList();
+        TipoTareaList = new ArrayList();
         try {
             //Guardar en la variable rs los valores retornados por el modelo
             ResultSet rs;
-            rs = objCargarCategoria.CargarCatergoriaResultSet();
+            rs = objCargarTipoTaraes.CargarTipoTaraeResultSet();
             //Verificamos si el resultset tiene datos
             if (rs.next()) {
                 //Instanaciamos modelo combo para el combobox
-                Categoriacombo = new DefaultComboBoxModel<>();
+                TipoTareacombo = new DefaultComboBoxModel<>();
                 //Se agrega opción por defecto
-                Categoriacombo.addElement("Elija una opción");
+                TipoTareacombo.addElement("Elija una opción");
                 do {
                     //Se guarda en la lista el id tipo de archivo
-                    CategoriaList.add(rs.getInt("idcategoria"));
+                    TipoTareaList.add(rs.getInt("idtipotarea"));
                     //Se agrega en el combobox el valor del campo tipo de archivo
-                    Categoriacombo.addElement(rs.getString("categoria"));
+                    TipoTareacombo.addElement(rs.getString("tipotarea"));
                     //Se asigna el modelo combo al combobox
-                    CmbCategoria.setModel(Categoriacombo);
+                    CmbTipoTarea.setModel(TipoTareacombo);
                 } while (rs.next());
             } else {
-                JOptionPane.showMessageDialog(BtnEliminar, "No existen categorias por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
-        }//End catch
-    }//End method
-    
-    final void CargarCmbGrados() {
-        //Crear objetos de la clase ControllerBiblioteca
-        CTasks objCargarGrados;
-        objCargarGrados = new CTasks();
-        //Lista donde se guardarán los IDs
-        GradoList = new ArrayList();
-        try {
-            //Guardar en la variable rs los valores retornados por el modelo
-            ResultSet rs;
-            rs = objCargarGrados.CargarGradosResultSet();
-            //Verificamos si el resultset tiene datos
-            if (rs.next()) {
-                //Instanaciamos modelo combo para el combobox
-                Gradocombo = new DefaultComboBoxModel<>();
-                //Se agrega opción por defecto
-                Gradocombo.addElement("Elija una opción");
-                do {
-                    //Se guarda en la lista el id tipo de archivo
-                    GradoList.add(rs.getInt("idgrado"));
-                    //Se agrega en el combobox el valor del campo tipo de archivo
-                    Gradocombo.addElement(rs.getString("grado"));
-                    //Se asigna el modelo combo al combobox
-                    CmbGrado.setModel(Gradocombo);
-                } while (rs.next());
-            } else {
-                JOptionPane.showMessageDialog(BtnEliminar, "No existen grados por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
-        }//End catch
-    }//End method
-    
-    final void CargarCmbEspecialidades() {
-        //Crear objetos de la clase ControllerBiblioteca
-        CTasks objCargarEspecialidades;
-        objCargarEspecialidades = new CTasks();
-        //Lista donde se guardarán los IDs
-        EspecialidadList = new ArrayList();
-        try {
-            //Guardar en la variable rs los valores retornados por el modelo
-            ResultSet rs;
-            rs = objCargarEspecialidades.CargarEspecialidadesResultSet();
-            //Verificamos si el resultset tiene datos
-            if (rs.next()) {
-                //Instanaciamos modelo combo para el combobox
-                Especialidadcombo = new DefaultComboBoxModel<>();
-                //Se agrega opción por defecto
-                Especialidadcombo.addElement("Elija una opción");
-                do {
-                    //Se guarda en la lista el id tipo de archivo
-                    EspecialidadList.add(rs.getInt("idespecialidad"));
-                    //Se agrega en el combobox el valor del campo tipo de archivo
-                    Especialidadcombo.addElement(rs.getString("especialidad"));
-                    //Se asigna el modelo combo al combobox
-                    CmbEspecialidad.setModel(Especialidadcombo);
-                } while (rs.next());
-            } else {
-                JOptionPane.showMessageDialog(BtnEliminar, "No existen especialidades por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(BtnEliminar, "No existen tipos de tarea por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
@@ -240,24 +166,16 @@ public class frmTasks extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtEtapa = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         dtVencimiento = new com.toedter.calendar.JDateChooser();
         dtInicio = new com.toedter.calendar.JDateChooser();
-        jLabel6 = new javax.swing.JLabel();
-        CmbTipoArchivo = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        txtPonderacion = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         BtnSeleccionar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        CmbCategoria = new javax.swing.JComboBox<>();
+        CmbTipoPerfil = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        CmbGrado = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        CmbEspecialidad = new javax.swing.JComboBox<>();
+        CmbTipoTarea = new javax.swing.JComboBox<>();
         BtnEliminar = new javax.swing.JButton();
         BtnModificar = new javax.swing.JButton();
         BtnSubir = new javax.swing.JButton();
@@ -267,11 +185,8 @@ public class frmTasks extends javax.swing.JFrame {
         BtnConectare = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtTipoArchvo = new javax.swing.JTextField();
-        txtCategoria = new javax.swing.JTextField();
-        txtGrado = new javax.swing.JTextField();
-        txtEspecialidad = new javax.swing.JTextField();
-        txtRuta = new javax.swing.JTextField();
+        txtTipoPerfil = new javax.swing.JTextField();
+        txtTipoTarea = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -284,10 +199,6 @@ public class frmTasks extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 14, -1, -1));
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 33, 252, -1));
 
-        jLabel3.setText("etapa:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
-        jPanel1.add(txtEtapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 33, 274, -1));
-
         jLabel4.setText("fecha de inicio:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 92, -1, -1));
 
@@ -296,22 +207,8 @@ public class frmTasks extends javax.swing.JFrame {
         jPanel1.add(dtVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 183, 268, -1));
         jPanel1.add(dtInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 120, 268, -1));
 
-        jLabel6.setText("Tipo de archivo admitido:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 92, -1, -1));
-
-        CmbTipoArchivo.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CmbTipoArchivoItemStateChanged(evt);
-            }
-        });
-        jPanel1.add(CmbTipoArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 120, 141, -1));
-
-        jLabel7.setText("Ponderacion:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 92, -1, -1));
-        jPanel1.add(txtPonderacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 121, 75, -1));
-
         jLabel8.setText("Intrumento de evualcion:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, -1));
 
         BtnSeleccionar.setText("Seleccionar rubrica");
         BtnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
@@ -319,39 +216,28 @@ public class frmTasks extends javax.swing.JFrame {
                 BtnSeleccionarActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 240, -1));
+        jPanel1.add(BtnSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 240, -1));
 
-        jLabel9.setText("Categoria:");
+        jLabel9.setText("Tipo perfil:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
-        CmbCategoria.addItemListener(new java.awt.event.ItemListener() {
+        CmbTipoPerfil.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CmbCategoriaItemStateChanged(evt);
+                CmbTipoPerfilItemStateChanged(evt);
             }
         });
-        jPanel1.add(CmbCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 200, -1));
+        jPanel1.add(CmbTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 200, -1));
 
-        jLabel10.setText("Grado:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
+        jLabel10.setText("Tipo Tarea:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
 
-        CmbGrado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CmbGrado.addItemListener(new java.awt.event.ItemListener() {
+        CmbTipoTarea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CmbTipoTarea.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CmbGradoItemStateChanged(evt);
+                CmbTipoTareaItemStateChanged(evt);
             }
         });
-        jPanel1.add(CmbGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 180, -1));
-
-        jLabel11.setText("Especialidad:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
-
-        CmbEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CmbEspecialidad.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CmbEspecialidadItemStateChanged(evt);
-            }
-        });
-        jPanel1.add(CmbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 200, -1));
+        jPanel1.add(CmbTipoTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 180, -1));
 
         BtnEliminar.setText("Eliminar");
         BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -411,16 +297,13 @@ public class frmTasks extends javax.swing.JFrame {
                 BtnConectareActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnConectare, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 110, -1, -1));
-        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, 70, -1));
+        jPanel1.add(BtnConectare, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, -1, -1));
+        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 70, -1));
 
         jLabel12.setText("Id tarea");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, -1));
-        jPanel1.add(txtTipoArchvo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, -1, -1));
-        jPanel1.add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 210, -1, -1));
-        jPanel1.add(txtGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, -1, -1));
-        jPanel1.add(txtEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 290, -1, -1));
-        jPanel1.add(txtRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 260, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
+        jPanel1.add(txtTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, -1, -1));
+        jPanel1.add(txtTipoTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 210, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -438,27 +321,12 @@ public class frmTasks extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CmbTipoArchivoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbTipoArchivoItemStateChanged
-        // TODO add your handling code here:
-        //        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            //            int pos = CmbTipoArchivo.getSelectedIndex();
-            //            if (pos == 0) {
-                //                TipoArchivo = 0;
-                //            } else {
-                //                int dim = TipoArchivoList.size();
-                //                for (int i = 0; i < dim; i++) {
-                    //                    TipoArchivo = (int) TipoArchivoList.get(i);
-                    //                }
-                //            }
-            //        }
-    }//GEN-LAST:event_CmbTipoArchivoItemStateChanged
-
     private void BtnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeleccionarActionPerformed
         // TODO add your handling code here:
         seleccionar_pdf();
     }//GEN-LAST:event_BtnSeleccionarActionPerformed
 
-    private void CmbCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbCategoriaItemStateChanged
+    private void CmbTipoPerfilItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbTipoPerfilItemStateChanged
         // TODO add your handling code here:
         //        if (evt.getStateChange() == ItemEvent.SELECTED) {
             //            int pos = CmbCategoria.getSelectedIndex();
@@ -471,9 +339,9 @@ public class frmTasks extends javax.swing.JFrame {
                     //                }
                 //            }
             //        }
-    }//GEN-LAST:event_CmbCategoriaItemStateChanged
+    }//GEN-LAST:event_CmbTipoPerfilItemStateChanged
 
-    private void CmbGradoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbGradoItemStateChanged
+    private void CmbTipoTareaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbTipoTareaItemStateChanged
         // TODO add your handling code here:
         //        if (evt.getStateChange() == ItemEvent.SELECTED) {
             //            int pos = CmbGrado.getSelectedIndex();
@@ -486,22 +354,7 @@ public class frmTasks extends javax.swing.JFrame {
                     //                }
                 //            }
             //        }
-    }//GEN-LAST:event_CmbGradoItemStateChanged
-
-    private void CmbEspecialidadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbEspecialidadItemStateChanged
-        // TODO add your handling code here:
-        //        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            //            int pos = CmbEspecialidad.getSelectedIndex();
-            //            if (pos == 0) {
-                //                Especialidad = 0;
-                //            } else {
-                //                int dim = EspecialidadList.size();
-                //                for (int i = 0; i < dim; i++) {
-                    //                    Especialidad = (int) EspecialidadList.get(i);
-                    //                }
-                //            }
-            //        }
-    }//GEN-LAST:event_CmbEspecialidadItemStateChanged
+    }//GEN-LAST:event_CmbTipoTareaItemStateChanged
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
         // TODO add your handling code here:
@@ -515,7 +368,7 @@ public class frmTasks extends javax.swing.JFrame {
 
                 boolean valor = objTaskDel.EliminarTareaController();
                 if ( valor == true) {
-                    JOptionPane.showMessageDialog(this, "Docente eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Tarea eliminada exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
                     CargarTabla();
                     LimpiarCampos();
                 }
@@ -538,16 +391,12 @@ public class frmTasks extends javax.swing.JFrame {
 
         //Update
         obj.ID = Integer.parseInt(txtId.getText());
-        obj.nombre = txtNombre.getText();
-        obj.etapa = txtEtapa.getText();
-        obj.fechadeinicio = inicio;
-        obj.fechadevencimiento = vencimiento;
-        obj.ponderacion = txtPonderacion.getText();
-        obj.instrumentodeevaluacion = ruta_archivo;
-        obj.idtipoarchivo = CmbTipoArchivo.getSelectedIndex();
-        obj.idcategoria = CmbCategoria.getSelectedIndex();
-        obj.idgrado = CmbGrado.getSelectedIndex();
-        obj.idespecialidad = CmbEspecialidad.getSelectedIndex();
+        obj.nombretarea = txtNombre.getText();
+        obj.fechavencimiento = inicio;
+        obj.fechavencimiento = vencimiento;
+        obj.idperfil = CmbTipoPerfil.getSelectedIndex();
+        obj.rubrica = ruta_archivo;
+        obj.idtipotarea = CmbTipoTarea.getSelectedIndex();
         if (obj.ActualizarTarea() == true) {
             JOptionPane.showMessageDialog(this, "Tarea actualizada correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
             CargarTabla();
@@ -557,16 +406,12 @@ public class frmTasks extends javax.swing.JFrame {
 
     private void BtnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSubirActionPerformed
         // TODO add your handling code here:
-        if (txtNombre.getText().trim().isEmpty() || txtEtapa.getText().trim().isEmpty() || txtPonderacion.getText().trim().isEmpty()) {
+        if (txtNombre.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        }else if(CmbTipoArchivo.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Seleccione un tipo archivo", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        }else if(CmbCategoria.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Seleccione una categoria", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        } else if(CmbGrado.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(this, "Seleccione un grado", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        } else if(CmbEspecialidad.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(this, "Seleccione una especialidad", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else if(CmbTipoPerfil.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione un tipo de perfil", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        } else if(CmbTipoTarea.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this, "Seleccione un tipo de tarea", "Campos vacios", JOptionPane.WARNING_MESSAGE);
         } else {
             //fecha de inicio
             Date date = dtInicio.getDate();
@@ -579,16 +424,12 @@ public class frmTasks extends javax.swing.JFrame {
             Cal2.setTime(date2);
             String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + Cal2.get(Calendar.MONTH) + "/" + Cal2.get(Calendar.DAY_OF_MONTH));
             // Envio
-            obj.nombre = txtNombre.getText();
-            obj.etapa = txtEtapa.getText();
+            obj.nombretarea = txtNombre.getText();
             obj.fechadeinicio = inicio;
-            obj.fechadevencimiento = vencimiento;
-            obj.ponderacion = txtPonderacion.getText();
-            obj.instrumentodeevaluacion = ruta_archivo;
-            obj.idtipoarchivo = CmbTipoArchivo.getSelectedIndex();
-            obj.idcategoria = CmbCategoria.getSelectedIndex();
-            obj.idgrado = CmbGrado.getSelectedIndex();
-            obj.idespecialidad = CmbEspecialidad.getSelectedIndex();
+            obj.fechavencimiento = vencimiento;
+            obj.idperfil = CmbTipoPerfil.getSelectedIndex();
+            obj.rubrica = ruta_archivo;
+            obj.idtipotarea = CmbTipoTarea.getSelectedIndex();
             if (obj.TareaNuevaResultSet() == true) {
                 JOptionPane.showMessageDialog(this, "Tarea ingresado correctamente");
             } else {
@@ -604,48 +445,24 @@ public class frmTasks extends javax.swing.JFrame {
         LimpiarCampos();
     }//GEN-LAST:event_BtnVaciarCamposActionPerformed
 
-    final int BuscarTipoArchvoSeleccionado(int TipoArch){
-        int size = TipoArchivoList.size();
+    final int BuscarTipoTareaSeleccionado(int TipoTarea){
+        int size = TipoTareaList.size();
         int retorno = -1;
         for(int i = 0; i < size; i++) {
-            int valor = (Integer) TipoArchivoList.get(i);
-            if (valor == TipoArch) {
+            int valor = (Integer) TipoTareaList.get(i);
+            if (valor == TipoTarea) {
                 retorno = i;
             }
         }
         return retorno;
     }
     
-    final int BuscarCategoriaSeleccionado(int Categoria){
-        int size = CategoriaList.size();
+    final int BuscarTipoPerfilSeleccionado(int TipoPerfil){
+        int size = TipoPerfilList.size();
         int retorno = -1;
         for(int i = 0; i < size; i++) {
-            int valor = (Integer) CategoriaList.get(i);
-            if (valor == Categoria) {
-                retorno = i;
-            }
-        }
-        return retorno;
-    }
-    
-    final int BuscarGradoSeleccionado(int Grado){
-        int size = GradoList.size();
-        int retorno = -1;
-        for(int i = 0; i < size; i++) {
-            int valor = (Integer) GradoList.get(i);
-            if (valor == Grado) {
-                retorno = i;
-            }
-        }
-        return retorno;
-    }
-    
-    final int BuscarEspecialidadSeleccionado(int Grado){
-        int size = EspecialidadList.size();
-        int retorno = -1;
-        for(int i = 0; i < size; i++) {
-            int valor = (Integer) EspecialidadList.get(i);
-            if (valor == Grado) {
+            int valor = (Integer) TipoPerfilList.get(i);
+            if (valor == TipoPerfil) {
                 retorno = i;
             }
         }
@@ -658,41 +475,31 @@ public class frmTasks extends javax.swing.JFrame {
             JTable rcp = (JTable) evt.getSource();
             txtId.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
             txtNombre.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
-            txtEtapa.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 2).toString());
-            txtPonderacion.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 5).toString());
-            txtTipoArchvo.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
-            txtCategoria.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 8).toString());
-            txtGrado.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 9).toString());
-            txtEspecialidad.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 10).toString());
+            txtTipoPerfil.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString());
+            txtTipoTarea.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 6).toString());
 
             DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             try {
-                dtInicio.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString()));
+                dtInicio.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 2).toString()));
             } catch (Exception e) {
 
             }
 
             DateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
             try {
-                dtVencimiento.setDate((Date) simpleDateFormat2.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString()));
+                dtVencimiento.setDate((Date) simpleDateFormat2.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString()));
             } catch (Exception e) {
 
             }
 
-            int idTipoArchivo = Integer.parseInt(txtTipoArchvo.getText());
-            int idCategoria = Integer.parseInt(txtCategoria.getText());
-            int idGrado = Integer.parseInt(txtGrado.getText());
-            int idEspecialidad = Integer.parseInt(txtEspecialidad.getText());
+            int idTipoPerfil = Integer.parseInt(txtTipoPerfil.getText());
+            int idTipoTarea = Integer.parseInt(txtTipoTarea.getText());
 
-            int respuesta = BuscarTipoArchvoSeleccionado(idTipoArchivo);
-            int respuesta2 = BuscarCategoriaSeleccionado(idCategoria);
-            int respuesta3 = BuscarGradoSeleccionado(idGrado);
-            int respuesta4 = BuscarEspecialidadSeleccionado(idEspecialidad);
+            int respuesta = BuscarTipoPerfilSeleccionado(idTipoPerfil);
+            int respuesta2 = BuscarTipoTareaSeleccionado(idTipoTarea);
 
-            CmbTipoArchivo.setSelectedIndex(respuesta + 1);
-            CmbCategoria.setSelectedIndex(respuesta2 + 1);
-            CmbGrado.setSelectedIndex(respuesta3 + 1);
-            CmbEspecialidad.setSelectedIndex(respuesta4 + 1);
+            CmbTipoPerfil.setSelectedIndex(respuesta + 1);
+            CmbTipoTarea.setSelectedIndex(respuesta2 + 1);
         }
     }//GEN-LAST:event_JTTaskMouseClicked
 
@@ -745,35 +552,24 @@ public class frmTasks extends javax.swing.JFrame {
     private javax.swing.JButton BtnSeleccionar;
     private javax.swing.JButton BtnSubir;
     private javax.swing.JButton BtnVaciarCampos;
-    private javax.swing.JComboBox<String> CmbCategoria;
-    private javax.swing.JComboBox<String> CmbEspecialidad;
-    private javax.swing.JComboBox<String> CmbGrado;
-    private javax.swing.JComboBox<String> CmbTipoArchivo;
+    private javax.swing.JComboBox<String> CmbTipoPerfil;
+    private javax.swing.JComboBox<String> CmbTipoTarea;
     private javax.swing.JTable JTTask;
     private com.toedter.calendar.JDateChooser dtInicio;
     private com.toedter.calendar.JDateChooser dtVencimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtCategoria;
-    private javax.swing.JTextField txtEspecialidad;
-    private javax.swing.JTextField txtEtapa;
-    private javax.swing.JTextField txtGrado;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPonderacion;
-    private javax.swing.JTextField txtRuta;
-    private javax.swing.JTextField txtTipoArchvo;
+    private javax.swing.JTextField txtTipoPerfil;
+    private javax.swing.JTextField txtTipoTarea;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,11 +19,11 @@ public class MTasks {
 
     PreparedStatement ps;
     
-    public ResultSet CargaCmbCategoria() {
+    public ResultSet CargaCmbTipoPerfil() {
         Connection con;
         try {
             con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT * FROM Categorias";
+            String query = "SELECT * FROM tbPerfiles";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -33,39 +33,11 @@ public class MTasks {
         }
     }
     
-    public ResultSet CargaCmbTipoArchivo() {
+    public ResultSet CargaCmbTipoTarea() {
         Connection con;
         try {
             con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT * FROM TipoArchivo";
-            ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            return rs;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-            return null;
-        }
-    }
-    
-    public ResultSet CargaCmbEspecialidad() {
-        Connection con;
-        try {
-            con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT * FROM Especialidades";
-            ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            return rs;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-            return null;
-        }
-    }
-    
-    public ResultSet CargaCmbGrado() {
-        Connection con;
-        try {
-            con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT * FROM Grados";
+            String query = "SELECT * FROM tbTipoTarea";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -77,7 +49,7 @@ public class MTasks {
     
     public ResultSet mostrarTareas(Connection con){
         try {
-            String query = "SELECT * FROM Tareas";
+            String query = "SELECT * FROM tbTareas";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -87,20 +59,16 @@ public class MTasks {
         }
     }
     
-    public boolean SubirTareasModel(String nombre, String etapa, String fechadeinicio, String fechadevencimiento, String ponderacion, String instrumentodeevaluacion, int tipoarchivo, int categoria, int grado, int especialidad, Connection con) {
+    public boolean SubirTareasModel(String nombretarea, String fechainicio, String fechavencimiento, int idperfil, String rubrica, int idtipotarea, Connection con) {
         try {            
-            String query = "INSERT INTO Tareas VALUES (?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO tbTarea VALUES (?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
-            ps.setString(1, nombre);
-            ps.setString(2, etapa);
-            ps.setString(3, fechadeinicio);
-            ps.setString(4, fechadevencimiento);
-            ps.setString(5, ponderacion);
-            ps.setString(6, instrumentodeevaluacion);
-            ps.setInt(7, tipoarchivo);
-            ps.setInt(8, categoria);
-            ps.setInt(9, grado);
-            ps.setInt(10, especialidad);
+            ps.setString(1, nombretarea);
+            ps.setString(2, fechainicio);
+            ps.setString(3, fechavencimiento);
+            ps.setInt(4, idperfil);
+            ps.setString(5, rubrica);
+            ps.setInt(6, idtipotarea);
             if (ps.executeUpdate () == 1) {
                 return true;
             } else {
@@ -115,22 +83,18 @@ public class MTasks {
         }
     }
     
-    public boolean ActualizarTareasModel(int ID, String nombre, String etapa, String fechadeinicio, String fechadevencimiento, String ponderacion, String instrumentodeevaluacion, int tipoarchivo, int categoria, int grado, int especialidad, Connection con){
+    public boolean ActualizarTareasModel(int ID, String nombre, String nombretarea, String fechadeinicio, String fechadevencimiento, int idperfil, String rubrica, int idtipotarea, Connection con){
          try {
-             String query = "UPDATE Tareas SET nombre = ?, etapa = ?, fechadeinicio = ?, fechadevencimiento = ?, ponderacion = ?, instrumentodeevaluacion = ?, idtipoarchivo = ?, idcategoria = ?, idgrado = ?, idespecialidad = ? WHERE idtarea = ?";
+             String query = "UPDATE tbTarea SET nombretarea = ?, fechadeinicio = ?, fechavencimiento = ?, idperfil = ?, rubrica = ?, idtipotarea = ? WHERE idtarea = ?";
             ps = con.prepareStatement(query);
             ps = con.prepareStatement(query);
-            ps.setString(1, nombre);
-            ps.setString(2, etapa);
-            ps.setString(3, fechadeinicio);
-            ps.setString(4, fechadevencimiento); 
-            ps.setString(5, ponderacion);
-            ps.setString(6, instrumentodeevaluacion);
-            ps.setInt(7, tipoarchivo);
-            ps.setInt(8, categoria);
-            ps.setInt(9, grado);
-            ps.setInt(10, especialidad);
-            ps.setInt(11, ID);
+            ps.setString(1, nombretarea);
+            ps.setString(2, fechadeinicio);
+            ps.setString(3, fechadevencimiento);
+            ps.setInt(4, idperfil);
+            ps.setString(5, rubrica);
+            ps.setInt(6, idtipotarea);
+            ps.setInt(7, ID);
             ps.execute();
             return true;
         } catch (Exception e) {
@@ -142,7 +106,7 @@ public class MTasks {
     public boolean EliminarTareaModel(int ID, Connection con) {
          
         try {
-             String query = "DELETE Tareas WHERE idtarea = ?";
+             String query = "DELETE tbTarea WHERE idtarea = ?";
              ps = con.prepareStatement(query);
              ps.setInt(1, ID);
              ps.execute();
