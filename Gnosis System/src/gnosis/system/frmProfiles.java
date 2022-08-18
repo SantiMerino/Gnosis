@@ -7,11 +7,16 @@ package gnosis.system;
 import Controller.CProfiles;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -68,7 +73,7 @@ public class frmProfiles extends javax.swing.JFrame {
         try {
             ResultSet rs = Perfil.CargarPerfilResultSet();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idtperfil"), rs.getString("nombre"), rs.getString("rubricadeevaluacion"), rs.getString("fechadeinicio"), rs.getString("fechadevencimiento"), rs.getString("porcentajedevaloracion"), rs.getString("descripcion"), rs.getInt("idtipoperfil"), rs.getInt("idgrado"), rs.getInt("idseccion")};
+                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombre"), rs.getString("rubricadeevaluacion"), rs.getString("fechadeinicio"), rs.getString("fechadevencimiento"), rs.getString("porcentajedevaloracion"), rs.getString("descripcion"), rs.getInt("idtipoperfil"), rs.getInt("idgrado"), rs.getInt("idseccion")};
                 TablaPerfilmodelo.addRow(oValores);
             }
         } catch (Exception e) {
@@ -274,6 +279,11 @@ public class frmProfiles extends javax.swing.JFrame {
         jPanel1.add(BtnVaciarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 33, -1, -1));
 
         BtnModificar.setText("Modificar");
+        BtnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificarActionPerformed(evt);
+            }
+        });
         jPanel1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 105, 110, -1));
 
         BtnEliminar.setText("Eliminar");
@@ -298,6 +308,11 @@ public class frmProfiles extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        JTPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTPerfilMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(JTPerfil);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 857, 264));
@@ -329,8 +344,151 @@ public class frmProfiles extends javax.swing.JFrame {
 
     private void BtnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSubirActionPerformed
         // TODO add your handling code here:
-        
+       if (txtNombre.getText().trim().isEmpty() || txtDescripcion.getText().trim().isEmpty() || txtPonderacion.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else if(CmbTipoPerfil.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione un tipo de perfil", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        } else if(CmbGrado.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this, "Seleccione un grado", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        } else if(CmbSecciones.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this, "Seleccione una seccion", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        } else {
+            //fecha de inicio
+            Date date = dtInicio.getDate();
+            Cal1 = new GregorianCalendar();
+            Cal1.setTime(date);
+            String inicio = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + Cal1.get(Calendar.MONTH) + "/" + Cal1.get(Calendar.DAY_OF_MONTH));
+            //fecha de vencimiento
+            Date date2 = dtVencimiento.getDate();
+            Cal2 = new GregorianCalendar();
+            Cal2.setTime(date2);
+            String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + Cal2.get(Calendar.MONTH) + "/" + Cal2.get(Calendar.DAY_OF_MONTH));
+            // Envio
+            obj.nombre = txtNombre.getText();
+            obj.rubricadeevaluacion = ruta_archivo;
+            obj.fechadeinicio = inicio;
+            obj.fechadevencimiento = vencimiento;
+            obj.porcentajedevaloracion = txtPonderacion.getText();
+            obj.descripcion = txtDescripcion.getText();
+            obj.idperfil = CmbTipoPerfil.getSelectedIndex();
+            obj.idgrado = CmbGrado.getSelectedIndex();
+            obj.idseccion = CmbSecciones.getSelectedIndex();
+            if (obj.PerfilNuevaResultSet()== true) {
+                JOptionPane.showMessageDialog(this, "Perfil ingresado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(this, "Perfil no pudo ser ingresado");
+            }
+            CargarTabla();
+            LimpiarCampos();
+        } 
     }//GEN-LAST:event_BtnSubirActionPerformed
+
+    final int BuscarTipoPerfilSeleccionado(int TipoPerfil){
+        int size = TipoPerfilList.size();
+        int retorno = -1;
+        for(int i = 0; i < size; i++) {
+            int valor = (Integer) TipoPerfilList.get(i);
+            if (valor == TipoPerfil) {
+                retorno = i;
+            }
+        }
+        return retorno;
+    }
+    
+    final int BuscarGradoSeleccionado(int Grado){
+        int size = GradoPerfilList.size();
+        int retorno = -1;
+        for(int i = 0; i < size; i++) {
+            int valor = (Integer) GradoPerfilList.get(i);
+            if (valor == Grado) {
+                retorno = i;
+            }
+        }
+        return retorno;
+    }
+    
+    final int BuscarSeccionesSeleccionado(int Seccion){
+        int size = SeccionesPerfilList.size();
+        int retorno = -1;
+        for(int i = 0; i < size; i++) {
+            int valor = (Integer) SeccionesPerfilList.get(i);
+            if (valor == Seccion) {
+                retorno = i;
+            }
+        }
+        return retorno;
+    }
+    
+    private void JTPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTPerfilMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 1) {
+            JTable rcp = (JTable) evt.getSource();
+            txtId.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
+            txtNombre.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
+            txtPonderacion.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 5).toString());
+            txtDescripcion.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 6).toString());
+            txtTipoPerfil.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
+            txtGrado.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 8).toString());
+            txtSecciones.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 9).toString());
+
+            DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                dtInicio.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString()));
+            } catch (Exception e) {
+
+            }
+
+            DateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                dtVencimiento.setDate((Date) simpleDateFormat2.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString()));
+            } catch (Exception e) {
+
+            }
+
+            int idTipoPerfil = Integer.parseInt(txtTipoPerfil.getText());
+            int idGrado = Integer.parseInt(txtGrado.getText());
+            int idSecciones = Integer.parseInt(txtSecciones.getText());
+
+            int respuesta = BuscarTipoPerfilSeleccionado(idTipoPerfil);
+            int respuesta2 = BuscarGradoSeleccionado(idGrado);
+            int respuesta3 = BuscarSeccionesSeleccionado(idSecciones);
+
+            CmbTipoPerfil.setSelectedIndex(respuesta + 1);
+            CmbGrado.setSelectedIndex(respuesta2 + 1);
+            CmbSecciones.setSelectedIndex(respuesta3 + 1);
+        }
+    }//GEN-LAST:event_JTPerfilMouseClicked
+
+    private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        //fecha de inicio update
+        Date date = dtInicio.getDate();
+        Cal1 = new GregorianCalendar();
+        Cal1.setTime(date);
+        String inicio = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + (Cal1.get(Calendar.MONTH) + 1)+ "/" + Cal1.get(Calendar.DAY_OF_MONTH));
+        //fecha de vencimiento update
+        Date date2 = dtInicio.getDate();
+        Cal1 = new GregorianCalendar();
+        Cal1.setTime(date2);
+        String vencimiento = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + (Cal1.get(Calendar.MONTH) + 1)+ "/" + Cal1.get(Calendar.DAY_OF_MONTH));
+
+        //Update
+        obj.nombre = txtNombre.getText();
+        obj.rubricadeevaluacion = ruta_archivo;
+        obj.fechadeinicio = inicio;
+        obj.fechadevencimiento = vencimiento;
+        obj.porcentajedevaloracion = txtPonderacion.getText();
+        obj.descripcion = txtDescripcion.getText();
+        obj.idperfil = CmbTipoPerfil.getSelectedIndex();
+        obj.idgrado = CmbGrado.getSelectedIndex();
+        obj.idseccion = CmbSecciones.getSelectedIndex();
+        if (obj.ActualizarPerfil()== true) {
+            JOptionPane.showMessageDialog(this, "Docente actualizado correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+            CargarTabla();
+            LimpiarCampos();
+        }
+    }//GEN-LAST:event_BtnModificarActionPerformed
 
     /**
      * @param args the command line arguments

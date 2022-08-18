@@ -549,7 +549,7 @@ public class frmTasks extends javax.swing.JFrame {
         obj.idgrado = CmbGrado.getSelectedIndex();
         obj.idespecialidad = CmbEspecialidad.getSelectedIndex();
         if (obj.ActualizarTarea() == true) {
-            JOptionPane.showMessageDialog(this, "Docente actualizado correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Tarea actualizada correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
             CargarTabla();
             LimpiarCampos();
         }
