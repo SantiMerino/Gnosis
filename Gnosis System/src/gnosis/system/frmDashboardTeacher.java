@@ -571,8 +571,15 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 //            }  
 //        }
         if (new frmTeachersCRUD()!= null ) {
-            new frmTeachersCRUD().setVisible(true);
-            this.setState(JFrame.ICONIFIED);
+            frmTeachersCRUD frame = new frmTeachersCRUD();
+            Container c = frame.getContentPane();
+            
+            panContainer.removeAll();
+            panContainer.add(BorderLayout.CENTER,c);
+            panContainer.repaint();
+            panContainer.revalidate();
+//            new frmTeachersCRUD().setVisible(true);
+//            this.setState(JFrame.ICONIFIED);
         } else{
             JOptionPane.showMessageDialog(null, "Ya esta abierta esta interfazz");
         }
