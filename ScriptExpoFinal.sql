@@ -1,4 +1,5 @@
-
+CREATE DATABASE dbGnosis
+GO
 USE dbGnosis
 GO
 
@@ -429,7 +430,7 @@ GO
 
 EXECUTE crearUsuarioEstudiante 1, 'santiago.merino2004', 'gnosis123', 12345, 2, 1;
 
-
+Go
 CREATE VIEW viewPerfiles
 AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.porcentajeValoracion, a.fechainicio, a.fechavencimiento, b.tipoperfil, c.grado
 FROM tbPerfiles a, tbTipoPerfiles b, tbGrados c
@@ -472,11 +473,6 @@ CREATE TABLE tbTipoEventos(
 
 
 
-CREATE TABLE tbSecciones(
-    idseccion int not null primary key identity (1,1),
-    seccion varchar(50) not null
-);
-
 
 ALTER TABLE tbEventos
 ADD CONSTRAINT fk_eventotipoevento
@@ -490,3 +486,34 @@ ADD CONSTRAINT fk_eventogrados
 FOREIGN KEY (idgrado)
 REFERENCES tbGrados (idgrado)
 
+INSERT INTO tbGeneros VALUES ('Masculino'),('Femenino'),('Genere'); --
+
+INSERT INTO tbSeccionAca VALUES ('A'), ('B')
+
+INSERT INTO tbSeccionTec VALUES ('A'), ('B')
+
+INSERT INTO tbEstadoUsuarios VALUES ('Activo') ,('Inactivo')
+
+INSERT INTO tbEstadoPerfiles VALUES ('Completad'),('Calificado'), ('No entregado'), ('En proceso'), ('Urgente'), ('No disponible')
+
+INSERT INTO tbTipoTarea VALUES ('Evaludada'), ('No Evaluada')
+
+INSERT INTO tbTipoEventos VALUES  ('Tareas'), ('Clases'), ('Defensa'), ('Personal'), ('Eventos salesianos')
+
+INSERT INTO tbFases VALUES  ('Fase de preparación'), ('Fase de ejecución'),('Fase de valoración')
+
+INSERT INTO tbTipoRecursos VALUES  ('PDF'), ('Link')
+
+INSERT INTO tbTipoPerfiles VALUES ('Cotidianas'), ('Proyecto Formativo'), ('Recuperacion')
+
+INSERT INTO tbEspecialidades VALUES ('Desarrollo de software'), ('Electronica'), ('Electromecanica'), ('Contaduria'), ('Automotriz'), ('Arquitectura')
+
+INSERT INTO tbGrupos VALUES (1), (2)
+
+INSERT INTO tbGrados VALUES ('Septimo',1,null, 1, 1), ('Octavo',1,null, 1, 1), ('Noveno',1,null, 1, 1), ('Primer Año',1,1, 1, 1), ('Segundo Año',1,1, 1, 1), ('Tercer Año',1,1, 1, 1)
+
+INSERT INTO tbMaterias VALUES ('Matematicas'), ('Sociales'), ('Ciencias'), ('Lenguaje'), ('Formacion Cristiana'), ('Orientacion para la vida')
+
+INSERT INTO tbNivelUsuarios VALUES ('Estudiante'), ('Docente'), ('Admin')
+
+INSERT INTO tbPortafolioCategoria VALUES ('Clases'), ('Examenes'), ('Tareas')
