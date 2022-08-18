@@ -519,17 +519,17 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(panContainer.getComponentCount()== 0) {
             cambiarColorBotonesMenu(studentsButton, "/resources/teacher-white.png");
-            panContainer.add(new FrmEstudents());
+            panContainer.add(new frmStudentsCRUD());
             panContainer.repaint();
             panContainer.revalidate();
-        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new FrmEstudents()) {
+        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new frmStudentsCRUD()) {
             if (studentsButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
                 cambiarColorBotonesMenu(studentsButton, "/resources/teacher.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
 
-                panContainer.add(new FrmEstudents());
+                panContainer.add(new frmStudentsCRUD());
                 panContainer.repaint();
                 panContainer.revalidate();
             } else{ 
