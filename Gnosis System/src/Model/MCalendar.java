@@ -35,7 +35,7 @@ public class MCalendar {
     
     public ResultSet CargarComboTipoEvento(Connection con){
         try {
-            String query = "SELECT * FROM TipoEventos";
+            String query = "SELECT * FROM tbTipoEvento";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -47,7 +47,7 @@ public class MCalendar {
     
     public ResultSet CargarComboGrado(Connection con){
         try {
-            String query = "SELECT * FROM Grado";
+            String query = "SELECT * FROM tbGrado";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -59,7 +59,7 @@ public class MCalendar {
     
     public ResultSet CargarComboSeccion(Connection con){
         try {
-            String query = "SELECT * FROM Seccion";
+            String query = "SELECT * FROM tbSecciones";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -69,16 +69,16 @@ public class MCalendar {
         }
     }
     
-    public boolean RegistrarEvento(String NombreEvento, String FechaEvento, String HoraInicioEvento, String FechaFinEvento, String HoraFinalizarEvento, int idtipoevento, int idgrado, int idseccion){
+    public boolean RegistrarEvento(String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado, int idseccion){
         try {
             Connection con = MConnection.getConnectionWithoutParameters();
-            String query = "INSERT INTO Eventos VALUES (?,?,?,?,?,?,?,?)";  
+            String query = "INSERT INTO tbEventos VALUES (?,?,?,?,?,?,?,?)";  
             ps = con.prepareStatement(query);
-            ps.setString(1, NombreEvento);
-            ps.setString(2, FechaEvento);
-            ps.setString(3, HoraInicioEvento);
-            ps.setString(4, FechaFinEvento);
-            ps.setString(5, HoraFinalizarEvento);
+            ps.setString(1, nombreevento);
+            ps.setString(2, fechaevento);
+            ps.setString(3, horainicioevento);
+            ps.setString(4, fechafinalevento);
+            ps.setString(5, horafinalizarevento);
             ps.setInt(6, idtipoevento);
             ps.setInt(7, idgrado);
             ps.setInt(8, idseccion);
@@ -96,15 +96,15 @@ public class MCalendar {
         }     
     }
  
-    public boolean ActualizarEventoModelo(int ID, String NombreEvento, String FechaEvento, String HoraInicioEvento, String FechaFinEvento, String HoraFinalizarEvento, int idtipoevento, int idgrado, int idseccion, Connection con){
+    public boolean ActualizarEventoModelo(int ID, String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado, int idseccion, Connection con){
         try {
-            String query = "UPDATE Eventos SET NombreEvento = ?, FechaEvento = ?, HoraInicioEvento = ?, FechaFinEvento = ?, HoraFinalizarEvento = ?, idtipoevento = ?, idgrado = ?, idseccion = ?  WHERE idevento = ? ";
+            String query = "UPDATE tbEventos SET nombreevento = ?, fechaevento = ?, horainicioevento = ?, fechafinalevento = ?, horafinalizarevento = ?, idtipoevento = ?, idgrado = ?, idseccion = ?  WHERE idevento = ? ";
             ps = con.prepareStatement(query);
-            ps.setString(1, NombreEvento);
-            ps.setString(2, FechaEvento);
-            ps.setString(3, HoraInicioEvento);
-            ps.setString(4, FechaFinEvento);
-            ps.setString(5, HoraFinalizarEvento);
+            ps.setString(1, nombreevento);
+            ps.setString(2, fechaevento);
+            ps.setString(3, horainicioevento);
+            ps.setString(4, fechafinalevento);
+            ps.setString(5, horafinalizarevento);
             ps.setInt(6, idtipoevento);
             ps.setInt(7, idgrado);
             ps.setInt(8, idseccion);

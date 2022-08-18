@@ -139,24 +139,24 @@ public class CCalendar {
     public CCalendar() {
     }
 
-    public CCalendar(String NombreEvento, String FechaEvento, String HoraInicioEvento, String FechaFinalEvento, String HoraFinalizarEvento, int idtipoevento, int idgrado, int idseccion) {
-        this.NombreEvento = NombreEvento;
-        this.FechaEvento = FechaEvento;
-        this.HoraInicioEvento = HoraInicioEvento;
-        this.FechaFinalEvento = FechaFinalEvento;
-        this.HoraFinalizarEvento = HoraFinalizarEvento;
+    public CCalendar(String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado, int idseccion) {
+        this.NombreEvento = nombreevento;
+        this.FechaEvento = fechaevento;
+        this.HoraInicioEvento = horainicioevento;
+        this.FechaFinalEvento = fechafinalevento;
+        this.HoraFinalizarEvento = horafinalizarevento;
         this.idtipoevento = idtipoevento;
         this.idgrado = idgrado;
         this.idseccion = idseccion;
     }
     
-    public CCalendar(int idevento, String NombreEvento, String FechaEvento, String HoraInicioEvento, String FechaFinalEvento, String HoraFinalizarEvento, int idtipoevento, int idgrado, int idseccion) {
+    public CCalendar(int idevento, String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado, int idseccion) {
         this.ID = ID;
-        this.NombreEvento = NombreEvento;
-        this.FechaEvento = FechaEvento;
-        this.HoraInicioEvento = HoraInicioEvento;
-        this.FechaFinalEvento = FechaFinalEvento;
-        this.HoraFinalizarEvento = HoraFinalizarEvento;
+        this.NombreEvento = nombreevento;
+        this.FechaEvento = fechaevento;
+        this.HoraInicioEvento = horainicioevento;
+        this.FechaFinalEvento = fechafinalevento;
+        this.HoraFinalizarEvento = horafinalizarevento;
         this.idtipoevento = idtipoevento;
         this.idgrado = idgrado;
         this.idseccion = idseccion;
