@@ -179,8 +179,8 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                 modeloUsuario = new DefaultComboBoxModel<>();
                 modeloUsuario.addElement("Elige una opcion");
                 do {                    
-                    usuarioArrayList.add(rs.getInt("idUsuario"));
-                    modeloUsuario.addElement(rs.getString("Username"));
+                    usuarioArrayList.add(rs.getInt("idusuario"));
+                    modeloUsuario.addElement(rs.getString("username"));
 //                    cmbUsuario.setModel(modeloUsuario);
                 } while (rs.next());
             } else{
