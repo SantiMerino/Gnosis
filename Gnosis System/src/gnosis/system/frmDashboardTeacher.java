@@ -6,6 +6,8 @@
 package gnosis.system;
 
 import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import roundObjects.ButtonRound;
 
 /**
@@ -517,48 +519,62 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 
     private void studentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentsButtonActionPerformed
         // TODO add your handling code here:
-        if(panContainer.getComponentCount()== 0) {
-            cambiarColorBotonesMenu(studentsButton, "/resources/teacher-white.png");
-            panContainer.add(new frmStudentsCRUD());
-            panContainer.repaint();
-            panContainer.revalidate();
-        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new frmStudentsCRUD()) {
-            if (studentsButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
-                cambiarColorBotonesMenu(studentsButton, "/resources/teacher.png");
-                panContainer.removeAll();
-                panContainer.repaint();
-                panContainer.revalidate();
+//        if(panContainer.getComponentCount()== 0) {
+//            cambiarColorBotonesMenu(studentsButton, "/resources/teacher-white.png");
+//            panContainer.add(new frmStudentsCRUD());
+//            panContainer.repaint();
+//            panContainer.revalidate();
+//        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new frmStudentsCRUD()) {
+//            if (studentsButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
+//                cambiarColorBotonesMenu(studentsButton, "/resources/teacher.png");
+//                panContainer.removeAll();
+//                panContainer.repaint();
+//                panContainer.revalidate();
+//
+//                panContainer.add(new frmStudentsCRUD());
+//                panContainer.repaint();
+//                panContainer.revalidate();
+//            } else{ 
+//                notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
+//            }
+//     
+//        }
 
-                panContainer.add(new frmStudentsCRUD());
-                panContainer.repaint();
-                panContainer.revalidate();
-            } else{ 
-                notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
-            }
-     
+        if (new frmStudentsCRUD() != null ) {
+            new frmStudentsCRUD().setVisible(true);
+            this.setState(JFrame.ICONIFIED);
+        } else{
+            JOptionPane.showMessageDialog(null, "Ya esta abierta esta interfazz");
         }
+          
     }//GEN-LAST:event_studentsButtonActionPerformed
 
     private void teachersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teachersButtonActionPerformed
         // TODO add your handling code here:
-        if(panContainer.getComponentCount()== 0) {
-            cambiarColorBotonesMenu(teachersButton, "/resources/admindocente.png");
-            panContainer.add(new panGrades());
-            panContainer.repaint();
-            panContainer.revalidate();
-        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panGrades()) {
-                    if (teachersButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
-                cambiarColorBotonesMenu(teachersButton, "/resources/admindocente-black.png");
-                panContainer.removeAll();
-                panContainer.repaint();
-                panContainer.revalidate();
-
-                panContainer.add(new panGrades());
-                panContainer.repaint();
-                panContainer.revalidate();
-            } else{ 
-                notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
-            }  
+//        if(panContainer.getComponentCount()== 0) {
+//            cambiarColorBotonesMenu(teachersButton, "/resources/admindocente.png");
+//            panContainer.add(new panGrades());
+//            panContainer.repaint();
+//            panContainer.revalidate();
+//        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panGrades()) {
+//                    if (teachersButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
+//                cambiarColorBotonesMenu(teachersButton, "/resources/admindocente-black.png");
+//                panContainer.removeAll();
+//                panContainer.repaint();
+//                panContainer.revalidate();
+//
+//                panContainer.add(new panGrades());
+//                panContainer.repaint();
+//                panContainer.revalidate();
+//            } else{ 
+//                notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
+//            }  
+//        }
+        if (new frmTeachersCRUD()!= null ) {
+            new frmTeachersCRUD().setVisible(true);
+            this.setState(JFrame.ICONIFIED);
+        } else{
+            JOptionPane.showMessageDialog(null, "Ya esta abierta esta interfazz");
         }
     }//GEN-LAST:event_teachersButtonActionPerformed
 

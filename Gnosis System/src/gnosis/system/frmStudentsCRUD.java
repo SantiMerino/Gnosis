@@ -7,6 +7,10 @@ package gnosis.system;
 
 import Controller.CComboboxEstudiantes;
 import Controller.CEstudents;
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatMonocaiIJTheme;
+import java.awt.Color;
+import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +25,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -53,7 +58,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
      */
     public frmStudentsCRUD() {
         initComponents();
-        
+        dtNacimiento.setBackground(new Color (217,217,217));
         txtId.setEditable(false);
         txtIdGenero.setVisible(false);
         txtIdGrado.setVisible(false);
@@ -228,12 +233,14 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(java.awt.Color.white);
 
         jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Nombres del estudiantes:");
 
+        txtNombres.setBackground(new java.awt.Color(217, 217, 217));
+        txtNombres.setForeground(new java.awt.Color(50, 50, 50));
         txtNombres.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombresKeyTyped(evt);
@@ -244,6 +251,8 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(32, 32, 32));
         jLabel2.setText("Apellidos del estudiante:");
 
+        txtApellidos.setBackground(new java.awt.Color(217, 217, 217));
+        txtApellidos.setForeground(new java.awt.Color(50, 50, 50));
         txtApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtApellidosKeyTyped(evt);
@@ -254,10 +263,15 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(32, 32, 32));
         jLabel3.setText("Direccion del estudiante:");
 
+        txtDireccion.setBackground(new java.awt.Color(217, 217, 217));
+        txtDireccion.setForeground(new java.awt.Color(50, 50, 50));
+
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(32, 32, 32));
         jLabel4.setText("Telefono del estudiante:");
 
+        txtTelefono.setBackground(new java.awt.Color(217, 217, 217));
+        txtTelefono.setForeground(new java.awt.Color(50, 50, 50));
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtTelefonoKeyTyped(evt);
@@ -268,18 +282,30 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(32, 32, 32));
         jLabel5.setText("Fecha de nacimiento:");
 
+        dtNacimiento.setBackground(new java.awt.Color(217, 217, 217));
+        dtNacimiento.setForeground(new java.awt.Color(50, 50, 50));
+
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(32, 32, 32));
         jLabel6.setText("Documento del estudiante:");
+
+        txtDui.setBackground(new java.awt.Color(217, 217, 217));
+        txtDui.setForeground(new java.awt.Color(50, 50, 50));
 
         jLabel7.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(32, 32, 32));
         jLabel7.setText("Correo del alumno:");
 
+        txtCorreo.setBackground(new java.awt.Color(217, 217, 217));
+        txtCorreo.setForeground(new java.awt.Color(50, 50, 50));
+
         jLabel8.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(32, 32, 32));
         jLabel8.setText("Codigo de carnet:");
 
+        txtCodigo.setEditable(false);
+        txtCodigo.setBackground(new java.awt.Color(217, 217, 217));
+        txtCodigo.setForeground(new java.awt.Color(50, 50, 50));
         txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodigoKeyTyped(evt);
@@ -290,12 +316,16 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(32, 32, 32));
         jLabel9.setText("Genero:");
 
+        cmbGenero.setBackground(new java.awt.Color(217, 217, 217));
+        cmbGenero.setForeground(new java.awt.Color(50, 50, 50));
         cmbGenero.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbGeneroItemStateChanged(evt);
             }
         });
 
+        cmbGrado.setBackground(new java.awt.Color(217, 217, 217));
+        cmbGrado.setForeground(new java.awt.Color(50, 50, 50));
         cmbGrado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         cmbGrado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -303,6 +333,8 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
             }
         });
 
+        cmbUsuario.setBackground(new java.awt.Color(217, 217, 217));
+        cmbUsuario.setForeground(new java.awt.Color(50, 50, 50));
         cmbUsuario.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbUsuarioItemStateChanged(evt);
@@ -388,7 +420,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -416,10 +448,14 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        dtNacimiento.setForeground(java.awt.Color.white);
+
         getContentPane().add(jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel2.setBackground(java.awt.Color.white);
 
+        tbEstudiantes.setBackground(new java.awt.Color(32, 32, 32));
+        tbEstudiantes.setForeground(java.awt.Color.white);
         tbEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -805,7 +841,21 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        customization.mainUtilities();
+        try {
+            UIManager.setLookAndFeel(new FlatArcIJTheme());           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        UIManager.put( "Component.focusWidth", 0 );
+        UIManager.put( "Component.innerFocusWidth",0 );
+        UIManager.put( "TextComponent.arc", 20);
+        UIManager.put( "Component.arc", 20);
+        UIManager.put( "ProgressBar.arc", 20);
+        UIManager.put( "ScrollBar.trackArc", 999 );
+        UIManager.put( "ScrollBar.thumbArc", 999 );
+        UIManager.put( "ScrollBar.trackInsets", new Insets( 2, 4, 2, 4 ) );
+        UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
+        UIManager.put( "Component.arrowType", "chevron" );
         
 
         /* Create and display the form */
