@@ -54,7 +54,7 @@ public class frmTasks extends javax.swing.JFrame {
         initComponents();
         CargarCmbTipoTarea();
         CargarCmbTipoPerfil();
-        customization.centrarFrame(this);  
+//        customization.centrarFrame(this);  
      
         //Tabla
         String [] TitulosTarea = {"ID", "Nombre", "Fecha de inicio", "Fecha de vencimiento", "Perfil", "Rubrica", "Tipo Tarea"};

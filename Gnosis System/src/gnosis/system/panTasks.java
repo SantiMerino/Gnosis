@@ -155,7 +155,8 @@ public class panTasks extends javax.swing.JPanel {
 
     private void btnAgregarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTareaActionPerformed
         // TODO add your handling code here:
-        new frmTasks().setVisible(true);
+        frmTasks task =new frmTasks();
+        task.setVisible(true);
     }//GEN-LAST:event_btnAgregarTareaActionPerformed
 
 

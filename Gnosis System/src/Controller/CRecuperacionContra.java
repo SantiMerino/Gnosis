@@ -5,6 +5,7 @@
 package Controller;
 import Model.MRecuperacionContra;
 import java.sql.Connection;
+import java.sql.ResultSet;
 
 /**
  *
@@ -31,7 +32,7 @@ public class CRecuperacionContra {
         return MRecu.ConsultarPINporCorreo(correo, pin, con);
     }
     
-    public boolean recuADMIN(){
+    public ResultSet recuADMIN(){
         String clavemd5 = CValidaciones.getMD5(claveADMIN);
         return MRecu.ConsultarADMIN(correoADMIN, clavemd5, con);
     }

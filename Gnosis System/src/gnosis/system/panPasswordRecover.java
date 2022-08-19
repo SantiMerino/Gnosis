@@ -42,6 +42,12 @@ public class panPasswordRecover extends javax.swing.JPanel {
         btnGuardarPIN.setEnabled(false);
         txtNuevaPIN.setEnabled(false);
         txtNConfirmarPIN.setEnabled(false);
+        
+        //Componentes ADMIN
+        btnGuardarADMIN.setEnabled(false);
+        txtCorreoRecuperar.setEnabled(false);
+        txtNuevaADMIN.setEnabled(false);
+        txtNConfirmarADMIN.setEnabled(false);
     }
     
     public boolean enviarCorreo(String mensaje, String asunto, String correo){
@@ -868,8 +874,15 @@ public class panPasswordRecover extends javax.swing.JPanel {
             CRecuperacionContra control = new CRecuperacionContra();
             control.claveADMIN = txtClaveADMIN.getText();
             control.correoADMIN = txtCorreoADMIN.getText();
-            if (control.recuADMIN() == true) {
-                    customization.notificacion("Contraseña reestablecida exitosamente", 1, "Recuperación contraseña");
+            if (control.recuADMIN() != null) {
+                    customization.notificacion("Creedenciales confirmadas continua el proceso", 1, "Recuperación contraseña");
+                        btnGuardarADMIN.setEnabled(true);
+                        txtCorreoRecuperar.setEnabled(true);
+                        txtNuevaADMIN.setEnabled(true);
+                        txtNConfirmarADMIN.setEnabled(true);
+                        
+                        txtCorreoADMIN.setEditable(false);
+                        txtClaveADMIN.setEditable(false);
 //                    new frmLogin().setVisible(true);
             }
             else {

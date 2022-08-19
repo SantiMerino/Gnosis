@@ -6,6 +6,7 @@ package Model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,7 +46,7 @@ public class MRecuperacionContra {
         }
     }
     
-    public boolean ConsultarADMIN(String correo, String contra, Connection con){
+    public ResultSet ConsultarADMIN(String correo, String contra, Connection con){
         try {
             int nivelusuario = 3;
             String query = "SELECT * FROM tbUsuario WHERE username = ? AND clave = ? AND idnivelusuario = ?";
@@ -54,10 +55,16 @@ public class MRecuperacionContra {
             ps.setString(2, contra);
             ps.setInt(3, nivelusuario);           
             ps.execute();
-            return true;
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs;
+            }else{
+                JOptionPane.showMessageDialog(null, "nose que esta mal jij");
+                return null;
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Las credenciales no son correctas" + e.toString());
-            return false;
+            return null;
         }
     }
 }
