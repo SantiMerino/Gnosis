@@ -5,6 +5,8 @@
 package gnosis.system;
 
 import Controller.CProfiles;
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import java.awt.Insets;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -17,6 +19,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -103,10 +106,10 @@ public class frmProfiles extends javax.swing.JFrame {
                     CmbTipoPerfil.setModel(TipoPerfilcombo);
                 } while (rs.next());
             } else {
-                JOptionPane.showMessageDialog(BtnEliminar, "No existen tipos perfil por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(btnEliminar, "No existen tipos perfil por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(btnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
         }//End catch
     }//End method
     
@@ -135,10 +138,10 @@ public class frmProfiles extends javax.swing.JFrame {
 //                    CmbGrado.setModel(GradoPerfilcombo);
                 } while (rs.next());
             } else {
-                JOptionPane.showMessageDialog(BtnEliminar, "No existen grados por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(btnEliminar, "No existen grados por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(btnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
         }//End catch
     }//End method
     
@@ -167,10 +170,6 @@ public class frmProfiles extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
-        BtnVaciarCampos = new javax.swing.JButton();
-        BtnModificar = new javax.swing.JButton();
-        BtnEliminar = new javax.swing.JButton();
-        BtnSubir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         JTPerfil = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
@@ -180,6 +179,10 @@ public class frmProfiles extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
+        btnSubir = new roundObjects.ButtonRound();
+        btnEliminar = new roundObjects.ButtonRound();
+        btnVaciar = new roundObjects.ButtonRound();
+        btnModificar = new roundObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -222,33 +225,6 @@ public class frmProfiles extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, 136));
 
-        BtnVaciarCampos.setText("Vaciar campos");
-        jPanel1.add(BtnVaciarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 33, -1, -1));
-
-        BtnModificar.setText("Modificar");
-        BtnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnModificarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, 110, -1));
-
-        BtnEliminar.setText("Eliminar");
-        BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEliminarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 155, 110, -1));
-
-        BtnSubir.setText("Subir");
-        BtnSubir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSubirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 224, 110, -1));
-
         JTPerfil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -279,14 +255,52 @@ public class frmProfiles extends javax.swing.JFrame {
         jLabel9.setText("Docente:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setEditable(false);
+        jTextField1.setToolTipText("");
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 220, -1));
 
-        jTextField2.setText("jTextField2");
+        jTextField2.setEditable(false);
+        jTextField2.setToolTipText("");
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 220, -1));
 
-        jTextField3.setText("jTextField3");
+        jTextField3.setEditable(false);
+        jTextField3.setToolTipText("");
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 220, -1));
+
+        btnSubir.setText("Subir");
+        btnSubir.setRound(20);
+        btnSubir.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnSubir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, 130, 30));
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setRound(20);
+        btnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 130, 30));
+
+        btnVaciar.setText("Vaciar Campos");
+        btnVaciar.setRound(20);
+        btnVaciar.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        jPanel1.add(btnVaciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, 130, 30));
+
+        btnModificar.setText("Modificar");
+        btnModificar.setRound(20);
+        btnModificar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 130, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -305,47 +319,6 @@ public class frmProfiles extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BtnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSubirActionPerformed
-        // TODO add your handling code here:
-       if (txtNombre.getText().trim().isEmpty() || txtDescripcion.getText().trim().isEmpty() || txtPonderacion.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        }else if(CmbTipoPerfil.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Seleccione un tipo de perfil", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        } 
-//        else if(CmbGrado.getSelectedIndex() == 0){
-//            JOptionPane.showMessageDialog(this, "Seleccione un grado", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-//        } 
-        
-        else {
-            //fecha de inicio
-            Date date = dtInicio.getDate();
-            Cal1 = new GregorianCalendar();
-            Cal1.setTime(date);
-            String inicio = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + Cal1.get(Calendar.MONTH) + "/" + Cal1.get(Calendar.DAY_OF_MONTH));
-            //fecha de vencimiento
-            Date date2 = dtVencimiento.getDate();
-            Cal2 = new GregorianCalendar();
-            Cal2.setTime(date2);
-            String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + Cal2.get(Calendar.MONTH) + "/" + Cal2.get(Calendar.DAY_OF_MONTH));
-            // Envio
-            obj.nombre = txtNombre.getText();
-            obj.rubricadeevaluacion = ruta_archivo;
-            obj.fechadeinicio = inicio;
-            obj.fechadevencimiento = vencimiento;
-            obj.porcentajedevaloracion = txtPonderacion.getText();
-            obj.descripcion = txtDescripcion.getText();
-            obj.idperfil = CmbTipoPerfil.getSelectedIndex();
-//            obj.idgrado = CmbGrado.getSelectedIndex();
-            if (obj.PerfilNuevaResultSet()== true) {
-                JOptionPane.showMessageDialog(this, "Perfil ingresado correctamente");
-            } else {
-                JOptionPane.showMessageDialog(this, "Perfil no pudo ser ingresado");
-            }
-            CargarTabla();
-            LimpiarCampos();
-        } 
-    }//GEN-LAST:event_BtnSubirActionPerformed
 
     final int BuscarTipoPerfilSeleccionado(int TipoPerfil){
         int size = TipoPerfilList.size();
@@ -405,8 +378,48 @@ public class frmProfiles extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JTPerfilMouseClicked
 
-    private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
+    private void btnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirActionPerformed
         // TODO add your handling code here:
+        if (txtNombre.getText().trim().isEmpty() || txtDescripcion.getText().trim().isEmpty() || txtPonderacion.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else if(CmbTipoPerfil.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione un tipo de perfil", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        } 
+//        else if(CmbGrado.getSelectedIndex() == 0){
+//            JOptionPane.showMessageDialog(this, "Seleccione un grado", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+//        } 
+        
+        else {
+            //fecha de inicio
+            Date date = dtInicio.getDate();
+            Cal1 = new GregorianCalendar();
+            Cal1.setTime(date);
+            String inicio = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + Cal1.get(Calendar.MONTH) + "/" + Cal1.get(Calendar.DAY_OF_MONTH));
+            //fecha de vencimiento
+            Date date2 = dtVencimiento.getDate();
+            Cal2 = new GregorianCalendar();
+            Cal2.setTime(date2);
+            String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + Cal2.get(Calendar.MONTH) + "/" + Cal2.get(Calendar.DAY_OF_MONTH));
+            // Envio
+            obj.nombre = txtNombre.getText();
+            obj.rubricadeevaluacion = ruta_archivo;
+            obj.fechadeinicio = inicio;
+            obj.fechadevencimiento = vencimiento;
+            obj.porcentajedevaloracion = txtPonderacion.getText();
+            obj.descripcion = txtDescripcion.getText();
+            obj.idperfil = CmbTipoPerfil.getSelectedIndex();
+//            obj.idgrado = CmbGrado.getSelectedIndex();
+            if (obj.PerfilNuevaResultSet()== true) {
+                JOptionPane.showMessageDialog(this, "Perfil ingresado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(this, "Perfil no pudo ser ingresado");
+            }
+            CargarTabla();
+            LimpiarCampos();
+        } 
+    }//GEN-LAST:event_btnSubirActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         //fecha de inicio update
         Date date = dtInicio.getDate();
@@ -434,9 +447,9 @@ public class frmProfiles extends javax.swing.JFrame {
             CargarTabla();
             LimpiarCampos();
         }
-    }//GEN-LAST:event_BtnModificarActionPerformed
+    }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         if (txtId.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Seleccione un registro", "Informacion incompleta", JOptionPane.WARNING_MESSAGE);
@@ -454,14 +467,30 @@ public class frmProfiles extends javax.swing.JFrame {
                 }
             }
         }
-    }//GEN-LAST:event_BtnEliminarActionPerformed
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        customization.mainUtilities();
+             try {
+            UIManager.setLookAndFeel(new FlatArcIJTheme());           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        UIManager.put( "Component.focusWidth", 0 );
+        UIManager.put( "Component.innerFocusWidth",0 );
+        UIManager.put( "TextComponent.arc", 15);
+        UIManager.put( "Component.arc", 15);
+        UIManager.put( "ProgressBar.arc", 20);
+        UIManager.put( "ScrollBar.trackArc", 999 );
+        UIManager.put( "ScrollBar.thumbArc", 999 );
+        UIManager.put( "ScrollBar.trackInsets", new Insets( 2, 4, 2, 4 ) );
+        UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
+        UIManager.put( "Component.arrowType", "chevron" );
+        
+//        customization.mainUtilities();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -472,12 +501,12 @@ public class frmProfiles extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnEliminar;
-    private javax.swing.JButton BtnModificar;
-    private javax.swing.JButton BtnSubir;
-    private javax.swing.JButton BtnVaciarCampos;
     private javax.swing.JComboBox<String> CmbTipoPerfil;
     private javax.swing.JTable JTPerfil;
+    private roundObjects.ButtonRound btnEliminar;
+    private roundObjects.ButtonRound btnModificar;
+    private roundObjects.ButtonRound btnSubir;
+    private roundObjects.ButtonRound btnVaciar;
     private com.toedter.calendar.JDateChooser dtInicio;
     private com.toedter.calendar.JDateChooser dtVencimiento;
     private javax.swing.JLabel jLabel1;

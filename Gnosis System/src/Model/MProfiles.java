@@ -57,17 +57,26 @@ public class MProfiles {
         }
     }
     
-    public boolean SubirPerfilesModel(String nombre, String descripcion, String porcentajedevaloracion, String fechadeinicio, String fechadevencimiento, int tipoperfil,int grado, Connection con) {
+    public boolean SubirPerfilesModel(String nombre, String descripcion, String porcentajedevaloracion, String fechadeinicio, String fechadevencimiento, int tipoperfil, Connection con) {
+        double nota = 7.5;
+        int idestadoperfil = 1;
+        int idfase = 1;
+        int idmateriadocente = 1;
+        int idgrado = 8;
         try {            
-            String query = "INSERT INTO tbPerfiles(nombreperfil,descripcion,porcentajevaloracion,fechainicio,fechavencimiento,idtipoperfil,idgrados) VALUES (?,?,?,?,?,?,?)";
+            String query = "INSERT INTO tbPerfiles VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, nombre);
             ps.setString(2, descripcion);
             ps.setString(3, porcentajedevaloracion);
             ps.setString(4, fechadeinicio);
             ps.setString(5, fechadevencimiento);
-            ps.setInt(6, tipoperfil);
-            ps.setInt(7, grado);
+            ps.setInt(6, idestadoperfil);
+            ps.setDouble(7, nota);
+            ps.setInt(8, tipoperfil);
+            ps.setInt(9, idfase);
+            ps.setInt(10, idmateriadocente);
+            ps.setInt(11, idgrado);
             if (ps.executeUpdate () == 1) {
                 return true;
             } else {

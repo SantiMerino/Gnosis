@@ -144,7 +144,7 @@ public class CProfiles {
     }
     
      public boolean PerfilNuevaResultSet(){
-        return mdlPerfil.SubirPerfilesModel(nombre, descripcion, porcentajedevaloracion, fechadeinicio, fechadevencimiento, idperfil, idgrado, con);
+        return mdlPerfil.SubirPerfilesModel(nombre, descripcion, porcentajedevaloracion, fechadeinicio, fechadevencimiento, idperfil, con);
     }
     
     public boolean ActualizarPerfil() {
