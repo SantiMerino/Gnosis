@@ -93,6 +93,12 @@ public class frmEventoCRUD extends javax.swing.JFrame {
             }
         });
 
+        TxtNombreEvento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtNombreEventoKeyTyped(evt);
+            }
+        });
+
         jLabel1.setText("Nombre de evento");
 
         jLabel2.setText("Fecha de inicio");
@@ -432,6 +438,20 @@ public class frmEventoCRUD extends javax.swing.JFrame {
         // TODO add your handling code here:
         LimpiarCampos();
     }//GEN-LAST:event_BtnLimpiarActionPerformed
+
+    private void TxtNombreEventoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtNombreEventoKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+    boolean mayusculas = key >= 65 && key <= 90;
+    boolean minusculas = key >= 97 && key <= 122;
+    boolean espacio = key == 32;
+            
+     if (!(minusculas || mayusculas || espacio))
+    {
+        evt.consume();
+    }
+    }//GEN-LAST:event_TxtNombreEventoKeyTyped
 
     final int BuscarTipoEveSeleccionado(int idtipoevento) {
         int size = eventos.size();

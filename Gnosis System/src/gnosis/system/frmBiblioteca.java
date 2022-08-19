@@ -195,6 +195,12 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre del recurso:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 23, -1, -1));
+
+        txtNombreRecurso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreRecursoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNombreRecurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 51, 207, -1));
 
         jLabel3.setText("Archivo:");
@@ -433,6 +439,20 @@ public class frmBiblioteca extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_BtnEliminarActionPerformed
+
+    private void txtNombreRecursoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreRecursoKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+    boolean mayusculas = key >= 65 && key <= 90;
+    boolean minusculas = key >= 97 && key <= 122;
+    boolean espacio = key == 32;
+            
+     if (!(minusculas || mayusculas || espacio))
+    {
+        evt.consume();
+    }
+    }//GEN-LAST:event_txtNombreRecursoKeyTyped
 
     
     
