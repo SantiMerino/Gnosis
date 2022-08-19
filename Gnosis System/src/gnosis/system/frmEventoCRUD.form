@@ -199,6 +199,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="TxtNombreEvento">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtNombreEventoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>

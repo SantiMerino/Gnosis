@@ -246,6 +246,11 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
 
         txtNombres.setBackground(new java.awt.Color(217, 217, 217));
         txtNombres.setForeground(new java.awt.Color(50, 50, 50));
+        txtNombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombresActionPerformed(evt);
+            }
+        });
         txtNombres.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombresKeyTyped(evt);
@@ -799,6 +804,10 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         evt.consume();
     }
     }//GEN-LAST:event_txtCodigoKeyTyped
+
+    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombresActionPerformed
 
     /**
      * @param args the command line arguments
