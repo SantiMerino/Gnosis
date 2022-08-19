@@ -141,10 +141,9 @@ public class MEstudents {
     }
      
     /*Actualizacion*/ 
-     public boolean ActualizarEstudianteModel(int ID, String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac,
-             int idusuario, String codigocarnet, Connection con){
+     public boolean ActualizarEstudianteModel(int ID, String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, String codigocarnet, Connection con){
          try {
-             JOptionPane.showMessageDialog(null, idgenero);
+//             JOptionPane.showMessageDialog(null, idgenero);
              String query = "UPDATE tbAlumnos SET apellidos_alumno = ?, nombres_alumno = ?, idgenero = ?, idgrado = ?, correo = ?, direccion = ?, contacto = ?, dui = ?, fecha_nac = ? WHERE idalumno = ?";
             ps = con.prepareStatement(query);
              ps.setString(1, ApellidosAlumno);

@@ -170,7 +170,7 @@ public class CEstudents {
     }
     
     public boolean ActualizarEstudiante() {
-        return mdlEstu.ActualizarEstudianteModel(ID, apellidosalumno, nombresalumno, idgenero, idgrado, correo, direccion, contacto, dui, fecha_nac, idusuario, codigocarnet, con);
+        return mdlEstu.ActualizarEstudianteModel(ID, apellidosalumno, nombresalumno, idgenero, idgrado, correo, direccion, contacto, dui, fecha_nac, codigocarnet, con);
     }
 
     public CEstudents(int ID, String apellidosalumno, String nombresalumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, int idusuario, String codigocarnet) {

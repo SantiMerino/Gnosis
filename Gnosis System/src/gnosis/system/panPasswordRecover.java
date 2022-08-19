@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package gnosis.system;
+//import Controller.CEstudents;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
 import Controller.CValidaciones;
 import javax.swing.JOptionPane;
+import Controller.CRecuperacionContra;
 
 /**
  *
@@ -28,11 +30,18 @@ public class panPasswordRecover extends javax.swing.JPanel {
     
     public panPasswordRecover() {
         initComponents();
+        
+        //Componentes EMAIL
         btnConfirmar.setEnabled(false);
         btnGuardar.setEnabled(false);
         txtCodigo.setEnabled(false);
         txtNConfirmar.setEnabled(false);
         txtNueva.setEnabled(false);
+        
+        //Componentes PIN
+        btnGuardarPIN.setEnabled(false);
+        txtNuevaPIN.setEnabled(false);
+        txtNConfirmarPIN.setEnabled(false);
     }
     
     public boolean enviarCorreo(String mensaje, String asunto, String correo){
@@ -116,29 +125,31 @@ public class panPasswordRecover extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtCorreoPIN = new javax.swing.JTextField();
+        txtNuevaPIN = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        buttonRound1 = new roundObjects.ButtonRound();
-        buttonRound2 = new roundObjects.ButtonRound();
+        txtPIN = new javax.swing.JTextField();
+        txtNConfirmarPIN = new javax.swing.JTextField();
+        btnConfirmarPIN = new roundObjects.ButtonRound();
+        btnGuardarPIN = new roundObjects.ButtonRound();
         buttonRound3 = new roundObjects.ButtonRound();
         panADMIN = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtCorreoADMIN = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtNuevaADMIN = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        txtClaveADMIN = new javax.swing.JTextField();
+        txtNConfirmarADMIN = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        buttonRound4 = new roundObjects.ButtonRound();
-        buttonRound5 = new roundObjects.ButtonRound();
+        btnConfirmarADMIN = new roundObjects.ButtonRound();
+        btnGuardarADMIN = new roundObjects.ButtonRound();
         buttonRound6 = new roundObjects.ButtonRound();
+        txtCorreoRecuperar = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
         panEMAIL = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -153,7 +164,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         buttonRound9 = new roundObjects.ButtonRound();
         jLabel21 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
-        buttonRound10 = new roundObjects.ButtonRound();
+        btnEnviar = new roundObjects.ButtonRound();
         wContainer = new roundObjects.PanelRound();
         loginWhitePan = new roundObjects.PanelRound();
         lblInterfaz = new javax.swing.JLabel();
@@ -254,7 +265,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         panPIN.setBackground(new java.awt.Color(32, 32, 32));
         panPIN.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel5.setForeground(java.awt.Color.white);
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Paso 1 - Ingresa tu correo y tu PIN de seguridad");
@@ -262,7 +273,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         panPIN.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 48, 168, 43));
         jLabel5.setText("<html><center>" + "Paso 1 - Ingresa tu correo y tu PIN de seguridad" + "</center></html>");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel6.setForeground(java.awt.Color.white);
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Paso 2 - Crea una nueva contraseña:");
@@ -270,52 +281,58 @@ public class panPasswordRecover extends javax.swing.JPanel {
         panPIN.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 48, 195, 43));
         jLabel6.setText("<html><center>" + "Paso 2 - Crea una nueva contraseña:" + "</center></html>");
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel7.setText("Usuario o correo:");
         panPIN.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 141, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel8.setText("Contraseña nueva:");
         panPIN.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 141, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(77, 77, 77));
-        jTextField1.setText("jTextField1");
-        jTextField1.setPreferredSize(new java.awt.Dimension(100, 30));
-        panPIN.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 183, 162, -1));
+        txtCorreoPIN.setBackground(new java.awt.Color(77, 77, 77));
+        txtCorreoPIN.setPreferredSize(new java.awt.Dimension(100, 30));
+        panPIN.add(txtCorreoPIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 183, 162, -1));
 
-        jTextField2.setBackground(new java.awt.Color(77, 77, 77));
-        jTextField2.setText("jTextField2");
-        jTextField2.setPreferredSize(new java.awt.Dimension(100, 30));
-        panPIN.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 183, 195, -1));
+        txtNuevaPIN.setBackground(new java.awt.Color(77, 77, 77));
+        txtNuevaPIN.setPreferredSize(new java.awt.Dimension(100, 30));
+        panPIN.add(txtNuevaPIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 183, 195, -1));
 
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel9.setText("PIN:");
         panPIN.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 272, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel10.setText("Confirmar contraseña:");
         panPIN.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 272, -1, -1));
 
-        jTextField3.setBackground(new java.awt.Color(77, 77, 77));
-        jTextField3.setText("jTextField3");
-        jTextField3.setPreferredSize(new java.awt.Dimension(100, 30));
-        panPIN.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 306, 162, -1));
+        txtPIN.setBackground(new java.awt.Color(77, 77, 77));
+        txtPIN.setPreferredSize(new java.awt.Dimension(100, 30));
+        panPIN.add(txtPIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 306, 162, -1));
 
-        jTextField4.setBackground(new java.awt.Color(77, 77, 77));
-        jTextField4.setText("jTextField4");
-        jTextField4.setPreferredSize(new java.awt.Dimension(100, 30));
-        panPIN.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 306, 195, -1));
+        txtNConfirmarPIN.setBackground(new java.awt.Color(77, 77, 77));
+        txtNConfirmarPIN.setPreferredSize(new java.awt.Dimension(100, 30));
+        panPIN.add(txtNConfirmarPIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 306, 195, -1));
 
-        buttonRound1.setText("Confirmar");
-        buttonRound1.setPreferredSize(new java.awt.Dimension(130, 40));
-        buttonRound1.setRound(20);
-        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
-        panPIN.add(buttonRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 391, -1, -1));
+        btnConfirmarPIN.setText("Confirmar");
+        btnConfirmarPIN.setPreferredSize(new java.awt.Dimension(130, 40));
+        btnConfirmarPIN.setRound(20);
+        btnConfirmarPIN.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnConfirmarPIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarPINActionPerformed(evt);
+            }
+        });
+        panPIN.add(btnConfirmarPIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 391, -1, -1));
 
-        buttonRound2.setText("Guardar contraseña");
-        buttonRound2.setPreferredSize(new java.awt.Dimension(130, 40));
-        buttonRound2.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
-        panPIN.add(buttonRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 391, -1, -1));
+        btnGuardarPIN.setText("Guardar contraseña");
+        btnGuardarPIN.setPreferredSize(new java.awt.Dimension(130, 40));
+        btnGuardarPIN.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnGuardarPIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarPINActionPerformed(evt);
+            }
+        });
+        panPIN.add(btnGuardarPIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 391, -1, -1));
 
         buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-right.png"))); // NOI18N
         buttonRound3.setText("Atras");
@@ -335,7 +352,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         panADMIN.setBackground(new java.awt.Color(32, 32, 32));
         panADMIN.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel11.setForeground(java.awt.Color.white);
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Paso 1 - Ingresa las credenciales de un administrador:");
@@ -343,7 +360,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         panADMIN.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 48, 168, 43));
         jLabel5.setText("<html><center>" + "Paso 1 - Ingresa tu correo y tu PIN de seguridad" + "</center></html>");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel12.setForeground(java.awt.Color.white);
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Paso 2 - Crea una nueva contraseña:");
@@ -351,52 +368,62 @@ public class panPasswordRecover extends javax.swing.JPanel {
         panADMIN.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 48, 195, 43));
         jLabel6.setText("<html><center>" + "Paso 2 - Crea una nueva contraseña:" + "</center></html>");
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jLabel13.setText("Usuario o correo:");
+        jLabel13.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel13.setText("Usuario o correo: de admin:");
         panADMIN.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 141, -1, -1));
 
-        jTextField5.setBackground(new java.awt.Color(77, 77, 77));
-        jTextField5.setText("jTextField1");
-        jTextField5.setPreferredSize(new java.awt.Dimension(100, 30));
-        panADMIN.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 183, 162, -1));
+        txtCorreoADMIN.setBackground(new java.awt.Color(77, 77, 77));
+        txtCorreoADMIN.setToolTipText("");
+        txtCorreoADMIN.setPreferredSize(new java.awt.Dimension(100, 30));
+        panADMIN.add(txtCorreoADMIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 183, 162, -1));
 
-        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel14.setText("Contraseña nueva:");
-        panADMIN.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 141, -1, -1));
+        panADMIN.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, -1));
 
-        jTextField6.setBackground(new java.awt.Color(77, 77, 77));
-        jTextField6.setText("jTextField2");
-        jTextField6.setPreferredSize(new java.awt.Dimension(100, 30));
-        panADMIN.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 183, 195, -1));
+        txtNuevaADMIN.setBackground(new java.awt.Color(77, 77, 77));
+        txtNuevaADMIN.setToolTipText("");
+        txtNuevaADMIN.setPreferredSize(new java.awt.Dimension(100, 30));
+        panADMIN.add(txtNuevaADMIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 195, -1));
 
-        jLabel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel15.setText("Contraseña:");
         panADMIN.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 272, -1, -1));
 
-        jTextField7.setBackground(new java.awt.Color(77, 77, 77));
-        jTextField7.setText("jTextField3");
-        jTextField7.setPreferredSize(new java.awt.Dimension(100, 30));
-        panADMIN.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 306, 162, -1));
+        txtClaveADMIN.setBackground(new java.awt.Color(77, 77, 77));
+        txtClaveADMIN.setToolTipText("");
+        txtClaveADMIN.setPreferredSize(new java.awt.Dimension(100, 30));
+        panADMIN.add(txtClaveADMIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 306, 162, -1));
 
-        jTextField8.setBackground(new java.awt.Color(77, 77, 77));
-        jTextField8.setText("jTextField4");
-        jTextField8.setPreferredSize(new java.awt.Dimension(100, 30));
-        panADMIN.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 306, 195, -1));
+        txtNConfirmarADMIN.setBackground(new java.awt.Color(77, 77, 77));
+        txtNConfirmarADMIN.setToolTipText("");
+        txtNConfirmarADMIN.setPreferredSize(new java.awt.Dimension(100, 30));
+        panADMIN.add(txtNConfirmarADMIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 195, -1));
 
-        jLabel16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel16.setText("Confirmar contraseña:");
-        panADMIN.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 272, -1, -1));
+        panADMIN.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
 
-        buttonRound4.setText("Confirmar");
-        buttonRound4.setPreferredSize(new java.awt.Dimension(130, 40));
-        buttonRound4.setRound(20);
-        buttonRound4.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
-        panADMIN.add(buttonRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 391, -1, -1));
+        btnConfirmarADMIN.setText("Confirmar");
+        btnConfirmarADMIN.setPreferredSize(new java.awt.Dimension(130, 40));
+        btnConfirmarADMIN.setRound(20);
+        btnConfirmarADMIN.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnConfirmarADMIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarADMINActionPerformed(evt);
+            }
+        });
+        panADMIN.add(btnConfirmarADMIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 391, -1, -1));
 
-        buttonRound5.setText("Guardar contraseña");
-        buttonRound5.setPreferredSize(new java.awt.Dimension(130, 40));
-        buttonRound5.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
-        panADMIN.add(buttonRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 391, -1, -1));
+        btnGuardarADMIN.setText("Guardar contraseña");
+        btnGuardarADMIN.setPreferredSize(new java.awt.Dimension(130, 40));
+        btnGuardarADMIN.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnGuardarADMIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarADMINActionPerformed(evt);
+            }
+        });
+        panADMIN.add(btnGuardarADMIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, -1, -1));
 
         buttonRound6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-right.png"))); // NOI18N
         buttonRound6.setText("Atras");
@@ -410,26 +437,31 @@ public class panPasswordRecover extends javax.swing.JPanel {
             }
         });
         panADMIN.add(buttonRound6, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 511, 112, -1));
+        panADMIN.add(txtCorreoRecuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 195, 30));
+
+        jLabel23.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel23.setText("Usuario o correo a recuperar:");
+        panADMIN.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
 
         cardLayoutPan.add(panADMIN, "card4");
 
         panEMAIL.setBackground(new java.awt.Color(32, 32, 32));
         panEMAIL.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel17.setFont(new java.awt.Font("Poppins Medium", 1, 12)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel17.setForeground(java.awt.Color.white);
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Paso 2 - Ingresa el codigo que recibiste en tu correo:");
         jLabel17.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panEMAIL.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 227, 168, 43));
+        panEMAIL.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 217, 168, 70));
         jLabel17.setText("<html><center>" + "Paso 2 - Ingresa el codigo enviado a tu correo" + "</center></html>");
 
-        jLabel18.setFont(new java.awt.Font("Poppins Medium", 1, 12)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel18.setForeground(java.awt.Color.white);
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("Paso 3- Crea una nueva contraseña:");
         jLabel18.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panEMAIL.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 227, 200, 43));
+        panEMAIL.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 200, 60));
         jLabel18.setText("<html><center>" + "Paso 3 - Crea una nueva contraseña:" + "</center></html>");
 
         jLabel19.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -493,7 +525,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         });
         panEMAIL.add(buttonRound9, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 496, 112, -1));
 
-        jLabel21.setFont(new java.awt.Font("Poppins Medium", 1, 12)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel21.setForeground(java.awt.Color.white);
         jLabel21.setText("Paso 1 - Ingresa el correo electronico vinculado a la cuenta");
         jLabel21.setToolTipText("");
@@ -503,15 +535,15 @@ public class panPasswordRecover extends javax.swing.JPanel {
         txtCorreo.setPreferredSize(new java.awt.Dimension(100, 30));
         panEMAIL.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 84, 200, -1));
 
-        buttonRound10.setText("Enviar codigo");
-        buttonRound10.setPreferredSize(new java.awt.Dimension(130, 40));
-        buttonRound10.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
-        buttonRound10.addActionListener(new java.awt.event.ActionListener() {
+        btnEnviar.setText("Enviar codigo");
+        btnEnviar.setPreferredSize(new java.awt.Dimension(130, 40));
+        btnEnviar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRound10ActionPerformed(evt);
+                btnEnviarActionPerformed(evt);
             }
         });
-        panEMAIL.add(buttonRound10, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 141, -1, -1));
+        panEMAIL.add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 141, -1, -1));
 
         cardLayoutPan.add(panEMAIL, "card5");
 
@@ -529,7 +561,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         loginWhitePan.setToolTipText("");
         loginWhitePan.setPreferredSize(new java.awt.Dimension(420, 430));
 
-        lblInterfaz.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        lblInterfaz.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
         lblInterfaz.setForeground(new java.awt.Color(32, 32, 32));
         lblInterfaz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInterfaz.setText("Recuperación de Contraseña");
@@ -547,7 +579,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
             .addGroup(loginWhitePanLayout.createSequentialGroup()
                 .addGap(201, 201, 201)
                 .addComponent(lblInterfaz)
-                .addContainerGap(276, Short.MAX_VALUE))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
 
         wContainer.add(loginWhitePan, java.awt.BorderLayout.CENTER);
@@ -731,7 +763,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         lblInterfaz.setText("<html><center>" + "Recuperación de contraseña: Correo electrónico" + "</center></html>");
     }//GEN-LAST:event_btnEMAILActionPerformed
 
-    private void buttonRound10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound10ActionPerformed
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         // TODO add your handling code here:
         if (txtCorreo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "vacio");
@@ -741,13 +773,14 @@ public class panPasswordRecover extends javax.swing.JPanel {
             correoRecu = txtCorreo.getText();
             JOptionPane.showMessageDialog(null, correoRecu);
             if (enviarCorreo(mensajeCortesia + codigoRandom, asuntoDefaultRecover, correoRecu)== true) {
+                txtCorreo.setEditable(false);
                 txtCodigo.setEnabled(true);
-                btnConfirmar.setEnabled(true);
+                btnConfirmar.setEnabled(true);             
             }
             
         }
         
-    }//GEN-LAST:event_buttonRound10ActionPerformed
+    }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
@@ -755,11 +788,11 @@ public class panPasswordRecover extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "vacio");
         } else {
             String codigoIngresado = txtCodigo.getText();
-            if (codigoRandom == codigoIngresado ) {
-                customization.notificacion("Codigo Confirmado", 1, "Recuperació de contraseña");
-                btnGuardar.setEnabled(true);
+            if (codigoIngresado.equals(codigoRandom)) {
+                txtCodigo.setEditable(false);
+                txtNConfirmar.setEnabled(true);
                 txtNueva.setEnabled(true);
-                txtNConfirmar.setEditable(true);
+                btnGuardar.setEnabled(true);
             }
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
@@ -770,24 +803,118 @@ public class panPasswordRecover extends javax.swing.JPanel {
         if (txtNConfirmar.getText().isEmpty() && txtNueva.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,"vacio como tu corazón");
         } else{
-            
+            if (txtNueva.getText().equals(txtNConfirmar.getText())) {
+                CRecuperacionContra control = new CRecuperacionContra();
+                control.clave = txtNueva.getText();
+                control.correo = txtCorreo.getText();
+                if (control.recu() == true) {
+                    customization.notificacion("Contraseña reestablecida exitosamente", 1, "Recuperación contraseña");
+//                    new frmLogin().setVisible(true);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "algo salio mal :P");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coninciden");
+            }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnConfirmarPINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarPINActionPerformed
+        // TODO add your handling code here:
+        CRecuperacionContra control = new CRecuperacionContra();
+        control.correo = txtCorreoPIN.getText();
+        control.pin = Integer.parseInt(txtPIN.getText());
+        if (control.recuPIN() == true) {
+            customization.notificacion("Creedenciales confirmadas", 1, "PIN validado");
+            txtNConfirmarPIN.setEnabled(true);
+            txtNuevaPIN.setEnabled(true);
+            btnGuardarPIN.setEnabled(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Las credenciales fracasaron");
+        }
+       
+    }//GEN-LAST:event_btnConfirmarPINActionPerformed
+
+    private void btnGuardarPINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPINActionPerformed
+        // TODO add your handling code here:
+        if (txtNConfirmarPIN.getText().isEmpty() && txtNuevaPIN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"vacio como tu corazón");
+        } else{
+            if (txtNConfirmarPIN.getText().equals(txtNuevaPIN.getText())) {
+                CRecuperacionContra control = new CRecuperacionContra();
+                control.clave = txtNuevaPIN.getText();
+                control.correo = txtCorreoPIN.getText();
+                if (control.recu() == true) {
+                    customization.notificacion("Contraseña reestablecida exitosamente", 1, "Recuperación contraseña");
+//                    new frmLogin().setVisible(true);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "algo salio mal :P");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coninciden");
+            }
+        }
+    }//GEN-LAST:event_btnGuardarPINActionPerformed
+
+    private void btnConfirmarADMINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarADMINActionPerformed
+        // TODO add your handling code here:
+        
+        if (txtCorreoADMIN.getText().isEmpty() && txtClaveADMIN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos vacios");
+        } else{
+            CRecuperacionContra control = new CRecuperacionContra();
+            control.claveADMIN = txtClaveADMIN.getText();
+            control.correoADMIN = txtCorreoADMIN.getText();
+            if (control.recuADMIN() == true) {
+                    customization.notificacion("Contraseña reestablecida exitosamente", 1, "Recuperación contraseña");
+//                    new frmLogin().setVisible(true);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "algo salio mal :P");
+            }
+    }
+    }//GEN-LAST:event_btnConfirmarADMINActionPerformed
+
+    private void btnGuardarADMINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarADMINActionPerformed
+        // TODO add your handling code here:
+        
+        if (txtNuevaADMIN.getText().isEmpty() && txtNConfirmarADMIN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"vacio como tu corazón");
+        } else{
+            if (txtNuevaADMIN.getText().equals(txtNConfirmarADMIN.getText())) {
+                CRecuperacionContra control = new CRecuperacionContra();
+                control.clave = txtNuevaADMIN.getText();
+                control.correo = txtCorreoRecuperar.getText();
+                if (control.recu() == true) {
+                    customization.notificacion("Contraseña reestablecida exitosamente", 1, "Recuperación contraseña");
+//                    new frmLogin().setVisible(true);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "algo salio mal :P");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coninciden");
+            }
+        }
+    }//GEN-LAST:event_btnGuardarADMINActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private roundObjects.PanelRound LoginPanel;
     private roundObjects.ButtonRound btnADMIN;
     private roundObjects.ButtonRound btnConfirmar;
+    private roundObjects.ButtonRound btnConfirmarADMIN;
+    private roundObjects.ButtonRound btnConfirmarPIN;
     private roundObjects.ButtonRound btnEMAIL;
+    private roundObjects.ButtonRound btnEnviar;
     private roundObjects.ButtonRound btnGuardar;
+    private roundObjects.ButtonRound btnGuardarADMIN;
+    private roundObjects.ButtonRound btnGuardarPIN;
     private roundObjects.ButtonRound btnPIN;
-    private roundObjects.ButtonRound buttonRound1;
-    private roundObjects.ButtonRound buttonRound10;
-    private roundObjects.ButtonRound buttonRound2;
     private roundObjects.ButtonRound buttonRound3;
-    private roundObjects.ButtonRound buttonRound4;
-    private roundObjects.ButtonRound buttonRound5;
     private roundObjects.ButtonRound buttonRound6;
     private roundObjects.ButtonRound buttonRound9;
     private roundObjects.PanelRound cardLayoutPan;
@@ -806,6 +933,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -813,14 +941,6 @@ public class panPasswordRecover extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel lblInterfaz;
     private roundObjects.PanelRound leftWGap;
     private roundObjects.PanelRound loginWhitePan;
@@ -830,10 +950,19 @@ public class panPasswordRecover extends javax.swing.JPanel {
     private javax.swing.JPanel panPIN;
     private roundObjects.PanelRound rightWGap;
     private roundObjects.PanelRound topGap;
+    private javax.swing.JTextField txtClaveADMIN;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtCorreoADMIN;
+    private javax.swing.JTextField txtCorreoPIN;
+    private javax.swing.JTextField txtCorreoRecuperar;
     private javax.swing.JTextField txtNConfirmar;
+    private javax.swing.JTextField txtNConfirmarADMIN;
+    private javax.swing.JTextField txtNConfirmarPIN;
     private javax.swing.JTextField txtNueva;
+    private javax.swing.JTextField txtNuevaADMIN;
+    private javax.swing.JTextField txtNuevaPIN;
+    private javax.swing.JTextField txtPIN;
     private roundObjects.PanelRound wContainer;
     // End of variables declaration//GEN-END:variables
 }
