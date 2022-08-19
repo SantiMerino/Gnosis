@@ -5,6 +5,8 @@
  */
 package gnosis.system;
 
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -15,10 +17,14 @@ public class frmMood extends javax.swing.JFrame {
     /**
      * Creates new form frmMood
      */
+    int moodSelect = 0;
+    
     public frmMood() {
         initComponents();
         customization.centrarFrame(this);
+        
     }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,14 +40,15 @@ public class frmMood extends javax.swing.JFrame {
         buttonRound1 = new roundObjects.ButtonRound();
         jComboBox3 = new javax.swing.JComboBox<>();
         btnActivarMood = new roundObjects.ButtonRound();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        rbtnLibre = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rbtnPomodoro = new javax.swing.JRadioButton();
         buttonRound5 = new roundObjects.ButtonRound();
+        jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(java.awt.Color.white);
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(600, 400));
@@ -76,13 +83,13 @@ public class frmMood extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setBackground(java.awt.Color.white);
-        jRadioButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(32, 32, 32));
-        jRadioButton1.setText("Enfoque libre");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        rbtnLibre.setBackground(java.awt.Color.white);
+        rbtnLibre.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        rbtnLibre.setForeground(new java.awt.Color(32, 32, 32));
+        rbtnLibre.setText("Enfoque libre");
+        rbtnLibre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rbtnLibreActionPerformed(evt);
             }
         });
 
@@ -96,10 +103,15 @@ public class frmMood extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Deseas activar el modo concentración?");
 
-        jRadioButton2.setBackground(java.awt.Color.white);
-        jRadioButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(32, 32, 32));
-        jRadioButton2.setText("Pomodoros");
+        rbtnPomodoro.setBackground(java.awt.Color.white);
+        rbtnPomodoro.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        rbtnPomodoro.setForeground(new java.awt.Color(32, 32, 32));
+        rbtnPomodoro.setText("Pomodoros");
+        rbtnPomodoro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnPomodoroActionPerformed(evt);
+            }
+        });
 
         buttonRound5.setPreferredSize(new java.awt.Dimension(10, 10));
         buttonRound5.setRound(20);
@@ -109,6 +121,8 @@ public class frmMood extends javax.swing.JFrame {
                 buttonRound5ActionPerformed(evt);
             }
         });
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Tomato.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,6 +138,9 @@ public class frmMood extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(58, 58, 58)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,17 +151,17 @@ public class frmMood extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(117, 117, 117)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jRadioButton2, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(buttonRound1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnActivarMood, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(84, 84, 84)
-                                .addComponent(jLabel2)))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(rbtnLibre)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(rbtnPomodoro)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btnActivarMood, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                         .addGap(0, 51, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -167,15 +184,22 @@ public class frmMood extends javax.swing.JFrame {
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActivarMood, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton2))
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(44, 44, 44)
+                            .addComponent(rbtnLibre)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(rbtnPomodoro)
+                                .addComponent(btnActivarMood, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel4)))
+                .addGap(40, 40, 40))
         );
 
         jLabel1.setText("<html><center>" + "Deseas activar el modo concentración?" + "</center></html>");
@@ -185,22 +209,42 @@ public class frmMood extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void rbtnLibreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnLibreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+        moodSelect = 1;
+        rbtnPomodoro.setSelected(false);
+        
+    }//GEN-LAST:event_rbtnLibreActionPerformed
 
     private void buttonRound5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound5ActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_buttonRound5ActionPerformed
 
     private void btnActivarMoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarMoodActionPerformed
         // TODO add your handling code here:
+        if (moodSelect == 0) {
+            JOptionPane.showMessageDialog(null, "Escoge un modo de concetración", "Activar Modo", JOptionPane.WARNING_MESSAGE);
+        }else{
+            new frmDashboard().dispose();
+            frmDashboard dashmood = new frmDashboard(moodSelect);
+            if (new frmDashboard(moodSelect) == new frmDashboard(1)) {
+                
+            }
+            new frmDashboard(moodSelect).setVisible(true);
+            this.dispose();
+        }      
     }//GEN-LAST:event_btnActivarMoodActionPerformed
 
     private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonRound1ActionPerformed
+
+    private void rbtnPomodoroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnPomodoroActionPerformed
+        // TODO add your handling code here:
+        moodSelect = 2;
+        rbtnLibre.setSelected(false);
+    }//GEN-LAST:event_rbtnPomodoroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,8 +271,9 @@ public class frmMood extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton rbtnLibre;
+    private javax.swing.JRadioButton rbtnPomodoro;
     // End of variables declaration//GEN-END:variables
 }

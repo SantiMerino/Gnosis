@@ -19,6 +19,9 @@ public class frmDashboard extends javax.swing.JFrame {
      */
     public customization custoObj = new customization();
     panGrades grades = new panGrades();
+    customization custo = new customization();
+
+    private int mood = 0;
     
     public frmDashboard() {
         initComponents();
@@ -26,6 +29,19 @@ public class frmDashboard extends javax.swing.JFrame {
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
         
+    }
+    
+    public frmDashboard(int moodstate){
+        initComponents();
+        this.mood = moodstate;
+        if (mood == 1) {
+            moodPanel.setVisible(true);
+        } else {
+            moodPanel.setBackground(Color.red);
+            custo.changeIconlbl(moodPic, "/resources/Tomato-white.png");
+            lblmood.setForeground(Color.white);
+            btnStopMood.setStyle(ButtonRound.ButtonStyle.NEGRO);
+        }
     }
     
     public void notificacion(String mensaje,int tipo_mensaje, String tipo_men){
@@ -125,7 +141,7 @@ public class frmDashboard extends javax.swing.JFrame {
         medalButton = new roundObjects.ButtonRound();
         moodPanel = new roundObjects.PanelRound();
         moodPic = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblmood = new javax.swing.JLabel();
         btnStopMood = new roundObjects.ButtonRound();
         buttonRound1 = new roundObjects.ButtonRound();
 
@@ -389,10 +405,10 @@ public class frmDashboard extends javax.swing.JFrame {
         moodPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/glasses.png"))); // NOI18N
         moodPanel.add(moodPic);
 
-        jLabel2.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel2.setText("00:00:00");
-        moodPanel.add(jLabel2);
+        lblmood.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
+        lblmood.setForeground(new java.awt.Color(32, 32, 32));
+        lblmood.setText("00:00:00");
+        moodPanel.add(lblmood);
 
         btnStopMood.setText("STOP");
         btnStopMood.setFont(new java.awt.Font("Poppins Black", 0, 12)); // NOI18N
@@ -617,13 +633,13 @@ public class frmDashboard extends javax.swing.JFrame {
     private roundObjects.ButtonRound homeButton;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblmood;
     private javax.swing.JPanel mainPanel;
     private roundObjects.ButtonRound medalButton;
     private roundObjects.PanelRound moodPanel;

@@ -95,6 +95,11 @@ public class customization {
         button.setIcon(aimg);
     }
     
+        public void changeIconlbl (JLabel lbl, String resimg){
+        ImageIcon aimg = new ImageIcon(getClass().getResource(resimg));
+        lbl.setIcon(aimg);
+    }
+    
     public static void mainUtilities (){
         try {
             UIManager.setLookAndFeel(new FlatMonocaiIJTheme());           
