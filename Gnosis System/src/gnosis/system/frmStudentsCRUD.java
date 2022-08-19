@@ -227,10 +227,10 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbEstudiantes = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
-        btnGuardar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
+        btnGuardar = new roundObjects.ButtonRound();
+        btnActualizar = new roundObjects.ButtonRound();
+        btnEliminar = new roundObjects.ButtonRound();
+        buttonRound4 = new roundObjects.ButtonRound();
         jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -482,34 +482,38 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jPanel4.setBackground(java.awt.Color.white);
 
         btnGuardar.setText("Guardar");
-        btnGuardar.setPreferredSize(new java.awt.Dimension(120, 30));
+        btnGuardar.setRound(20);
+        btnGuardar.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
 
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setPreferredSize(new java.awt.Dimension(120, 30));
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
         btnActualizar.setText("Actualizar");
-        btnActualizar.setPreferredSize(new java.awt.Dimension(120, 30));
+        btnActualizar.setRound(20);
+        btnActualizar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
             }
         });
 
-        btnLimpiar.setText("Limpiar Campos");
-        btnLimpiar.setPreferredSize(new java.awt.Dimension(120, 30));
-        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setRound(20);
+        btnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        buttonRound4.setText("Vaciar Campos");
+        buttonRound4.setRound(20);
+        buttonRound4.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound4ActionPerformed(evt);
             }
         });
 
@@ -517,29 +521,29 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(87, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(92, 92, 92)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonRound4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(87, 87, 87))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonRound4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel4, java.awt.BorderLayout.SOUTH);
@@ -555,7 +559,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 459, Short.MAX_VALUE)
+            .addGap(0, 463, Short.MAX_VALUE)
         );
 
         jPanel2.add(jPanel5, java.awt.BorderLayout.EAST);
@@ -566,41 +570,6 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
-        
-        Date date = dtNacimiento.getDate();
-            c = new GregorianCalendar();
-            c.setTime(date);
-            String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.DAY_OF_MONTH));
-            CEstudents objEstu = new CEstudents(txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario, 
-                    txtCodigo.getText());
-            boolean respuesta = objEstu.AlumnoNuevoController();
-            if (respuesta == true) {
-            JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente");
-            boolean usuariores = false;
-                CargarTabla();
-                ResultSet idalumno = objEstu.idAlumnoforUsuario();
-                try {
-                    if (idalumno.next()) {
-                        CEstudents.idalumno = idalumno.getInt("idalumno");
-                        JOptionPane.showMessageDialog(null, CEstudents.idalumno);
-                        usuariores = objEstu.CrearUsuarioAlumnoController();
-                    }
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "adios id" + ex.toString());
-                }           
-                if ( usuariores == true ) {
-                    JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Usuario ingresado");
-                }
-        }  else {
-                JOptionPane.showMessageDialog(this, "Estudiante no pudo ser ingresado");
-            }
-    }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void cmbGeneroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGeneroItemStateChanged
         // TODO add your handling code here:
@@ -725,47 +694,6 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tbEstudiantesMouseClicked
 
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
-        Date date = dtNacimiento.getDate();
-        c = new GregorianCalendar();
-        c.setTime(date);
-        String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + (c.get(Calendar.MONTH) + 1)+ "/" + c.get(Calendar.DAY_OF_MONTH));
-        CEstudents objControllerEstudiantes = new CEstudents(Integer.parseInt(txtId.getText()), txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario, 
-                    txtCodigo.getText());
-        boolean valor = objControllerEstudiantes.ActualizarEstudiante();
-        if (valor == true) {
-            JOptionPane.showMessageDialog(this, "Estudiante actualizado correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
-            CargarTabla();
-            LimpiarCampos();
-        }
-    }//GEN-LAST:event_btnActualizarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        if (txtId.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Seleccione un registro", "Informacion incompleta", JOptionPane.WARNING_MESSAGE);
-        } else {
-            int confirmacion = JOptionPane.YES_NO_OPTION;
-            JOptionPane.showMessageDialog(this, "Esta seguro de eliminar este registro?", "Confirmar Accion", confirmacion);
-            if (confirmacion == JOptionPane.YES_OPTION) {
-                CEstudents objcontrolalumdell = new CEstudents(Integer.parseInt(txtId.getText()));
-                
-                boolean valor = objcontrolalumdell.EliminarEstudiante();
-                if ( valor == true) {
-                    JOptionPane.showMessageDialog(this, "Estudiante eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
-                    CargarTabla();
-                    LimpiarCampos();
-                }
-            }
-        }
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
-        LimpiarCampos();
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-
     private void txtNombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombresKeyTyped
         // TODO add your handling code here:
          int key = evt.getKeyChar();
@@ -830,6 +758,83 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombresActionPerformed
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        
+        Date date = dtNacimiento.getDate();
+            c = new GregorianCalendar();
+            c.setTime(date);
+            String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.DAY_OF_MONTH));
+            CEstudents objEstu = new CEstudents(txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario, 
+                    txtCodigo.getText());
+            boolean respuesta = objEstu.AlumnoNuevoController();
+            if (respuesta == true) {
+            JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente");
+            boolean usuariores = false;
+                CargarTabla();
+                ResultSet idalumno = objEstu.idAlumnoforUsuario();
+                try {
+                    if (idalumno.next()) {
+                        CEstudents.idalumno = idalumno.getInt("idalumno");
+                        JOptionPane.showMessageDialog(null, CEstudents.idalumno);
+                        usuariores = objEstu.CrearUsuarioAlumnoController();
+                    }
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "adios id" + ex.toString());
+                }           
+                if ( usuariores == true ) {
+                    JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Usuario ingresado");
+                }
+        }  else {
+                JOptionPane.showMessageDialog(this, "Estudiante no pudo ser ingresado");
+            }                                     
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+         if (txtId.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un registro", "Informacion incompleta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int confirmacion = JOptionPane.YES_NO_OPTION;
+            JOptionPane.showMessageDialog(this, "Esta seguro de eliminar este registro?", "Confirmar Accion", confirmacion);
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                CEstudents objcontrolalumdell = new CEstudents(Integer.parseInt(txtId.getText()));
+                
+                boolean valor = objcontrolalumdell.EliminarEstudiante();
+                if ( valor == true) {
+                    JOptionPane.showMessageDialog(this, "Estudiante eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+                    CargarTabla();
+                    LimpiarCampos();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void buttonRound4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound4ActionPerformed
+        // TODO add your handling code here:
+        LimpiarCampos();
+    }//GEN-LAST:event_buttonRound4ActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        
+               Date date = dtNacimiento.getDate();
+        c = new GregorianCalendar();
+        c.setTime(date);
+        String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + (c.get(Calendar.MONTH) + 1)+ "/" + c.get(Calendar.DAY_OF_MONTH));
+        CEstudents objControllerEstudiantes = new CEstudents(Integer.parseInt(txtId.getText()), txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario, 
+                    txtCodigo.getText());
+        boolean valor = objControllerEstudiantes.ActualizarEstudiante();
+        if (valor == true) {
+            JOptionPane.showMessageDialog(this, "Estudiante actualizado correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+            CargarTabla();
+            LimpiarCampos();
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -842,8 +847,8 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         }
         UIManager.put( "Component.focusWidth", 0 );
         UIManager.put( "Component.innerFocusWidth",0 );
-        UIManager.put( "TextComponent.arc", 20);
-        UIManager.put( "Component.arc", 20);
+        UIManager.put( "TextComponent.arc", 15);
+        UIManager.put( "Component.arc", 15);
         UIManager.put( "ProgressBar.arc", 20);
         UIManager.put( "ScrollBar.trackArc", 999 );
         UIManager.put( "ScrollBar.thumbArc", 999 );
@@ -861,10 +866,10 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnLimpiar;
+    private roundObjects.ButtonRound btnActualizar;
+    private roundObjects.ButtonRound btnEliminar;
+    private roundObjects.ButtonRound btnGuardar;
+    private roundObjects.ButtonRound buttonRound4;
     private javax.swing.JComboBox<String> cmbGenero;
     private javax.swing.JComboBox<String> cmbGrado;
     private com.toedter.calendar.JDateChooser dtNacimiento;

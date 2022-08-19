@@ -69,10 +69,10 @@ public class MTeacher {
     /*Inserción de datos*/
     public boolean RegistrarDocenteModel(String apellidosdocente, String nombresdocente, String direccion, String dui, 
             String correo, 
-            String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario, Connection con) {
+            String fecha_nac, int idgrado, int idgenero, String contacto, Connection con) {
         try {
              
-            String query = "INSERT INTO tbDocentes VALUES (?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO tbDocentes VALUES (?,?,?,?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, apellidosdocente);
             ps.setString(2, nombresdocente);
@@ -83,7 +83,7 @@ public class MTeacher {
             ps.setInt(7, idgrado);
             ps.setInt(8, idgenero);
             ps.setString(9, contacto);
-            ps.setInt(10, idusuario);
+//            ps.setInt(10, idusuario);
             if (ps.executeUpdate () == 1) {
                 return true;
             }else {
@@ -101,9 +101,9 @@ public class MTeacher {
      /*Actualizacion de datos*/
      public boolean ActualizarDocenteModel(int ID, String apellidosdocente, String nombresdocente, String direccion, String dui, 
             String correo, 
-            String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario, Connection con){
+            String fecha_nac, int idgrado, int idgenero, String contacto, Connection con){
          try {
-            String query = "UPDATE tbDocentes SET apellidos_docente = ?, nombres_docente = ?, direccion = ?, dui = ?, correo = ?, fecha_nac = ?, idgrado = ?, idgenero = ?, contacto = ?, idusuario = ? WHERE iddocente = ?";
+            String query = "UPDATE tbDocentes SET apellidos_docente = ?, nombres_docente = ?, direccion = ?, dui = ?, correo = ?, fecha_nac = ?, idgrado = ?, idgenero = ?, contacto = ? WHERE iddocente = ?";
             ps = con.prepareStatement(query);
             ps.setString(1, apellidosdocente);
             ps.setString(2, nombresdocente);
@@ -114,8 +114,8 @@ public class MTeacher {
             ps.setInt(7, idgrado);
             ps.setInt(8, idgenero);
             ps.setString(9, contacto);
-            ps.setInt(10, idusuario);
-            ps.setInt(11, ID);
+//            ps.setInt(10, idusuario);
+            ps.setInt(10, ID);
             ps.execute();
             return true;
         } catch (Exception e) {

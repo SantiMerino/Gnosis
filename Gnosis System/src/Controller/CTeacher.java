@@ -159,10 +159,10 @@ public class CTeacher {
     
     
     public boolean DocenteNuevoController() {
-        return mdlDocen.RegistrarDocenteModel(apellidosdocente, nombresdocente, direccion, dui, correo, fecha_nac, idgrado, idgenero, contacto, idusuario, con);
+        return mdlDocen.RegistrarDocenteModel(apellidosdocente, nombresdocente, direccion, dui, correo, fecha_nac, idgrado, idgenero, contacto, con);
     }
 
-    public CTeacher(String apellidosdocente, String nombresdocente, String direccion, String dui, String correo, String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario) {
+    public CTeacher(String apellidosdocente, String nombresdocente, String direccion, String dui, String correo, String fecha_nac, int idgrado, int idgenero, String contacto) {
         this.apellidosdocente = apellidosdocente;
         this.nombresdocente = nombresdocente;
         this.direccion = direccion;
@@ -172,7 +172,6 @@ public class CTeacher {
         this.idgrado = idgrado;
         this.idgenero = idgenero;
         this.contacto = contacto;
-        this.idusuario = idusuario;
     }
     
     
@@ -186,10 +185,10 @@ public class CTeacher {
     }
 
     public boolean ActualizarDocente() {
-        return mdlDocen.ActualizarDocenteModel(ID, apellidosdocente, nombresdocente, direccion, dui, correo, fecha_nac, idgrado, idgenero, contacto, idusuario, con);
+        return mdlDocen.ActualizarDocenteModel(ID, apellidosdocente, nombresdocente, direccion, dui, correo, fecha_nac, idgrado, idgenero, contacto, con);
     } 
 
-    public CTeacher(int ID, String apellidosdocente, String nombresdocente, String direccion, String dui, String correo, String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario) {
+    public CTeacher(int ID, String apellidosdocente, String nombresdocente, String direccion, String dui, String correo, String fecha_nac, int idgrado, int idgenero, String contacto) {
         this.ID = ID;
         this.apellidosdocente = apellidosdocente;
         this.nombresdocente = nombresdocente;
@@ -200,7 +199,6 @@ public class CTeacher {
         this.idgrado = idgrado;
         this.idgenero = idgenero;
         this.contacto = contacto;
-        this.idusuario = idusuario;
     }
     
     MTeacher modeloGeneros = new MTeacher();

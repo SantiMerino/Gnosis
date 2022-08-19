@@ -6,6 +6,8 @@ package gnosis.system;
 
 import Controller.CBiblioteca;
 import Controller.CTeacher;
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,6 +22,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -40,6 +43,8 @@ public class frmBiblioteca extends javax.swing.JFrame {
     private Calendar Cal1;
     private Calendar Cal2;
     private String ruta_archivo = " ";
+    int yMouse;
+    int xMouse;
     
     /**
      * Creates new form frmBiblioteca
@@ -56,6 +61,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         TablaBiBliotecamodelo = new DefaultTableModel(null, TitulosBiblioteca);
         JTBiblioteca.setModel(TablaBiBliotecamodelo);
         CargarTabla();
+        customization.centrarFrame(this);
     }
     
     void LimpiarCampos(){
@@ -177,7 +183,6 @@ public class frmBiblioteca extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTBiblioteca = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         txtTipoClasificacion = new javax.swing.JTextField();
         txtTipoRecurso = new javax.swing.JTextField();
@@ -185,23 +190,27 @@ public class frmBiblioteca extends javax.swing.JFrame {
         BtnSubir = new roundObjects.ButtonRound();
         BtnEliminar = new roundObjects.ButtonRound();
         BtnVaciarCampos = new roundObjects.ButtonRound();
+        panelRound1 = new roundObjects.PanelRound();
+        btnDispose = new roundObjects.ButtonRound();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(600, 550));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Recurso:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 55, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
         jLabel2.setText("Nombre del recurso:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 23, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
         txtNombreRecurso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreRecursoKeyTyped(evt);
             }
         });
-        jPanel1.add(txtNombreRecurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 51, 207, -1));
+        jPanel1.add(txtNombreRecurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 390, -1));
 
         jLabel3.setText("Archivo:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 108, -1, -1));
@@ -214,7 +223,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         jPanel1.add(txtLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 207, 205, -1));
 
         jLabel5.setText("Tipo de clasificacion:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 108, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
 
         CmbClasificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CmbClasificacion.addItemListener(new java.awt.event.ItemListener() {
@@ -222,7 +231,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 CmbClasificacionItemStateChanged(evt);
             }
         });
-        jPanel1.add(CmbClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 158, -1));
+        jPanel1.add(CmbClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 158, -1));
 
         CmbTipoRecurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CmbTipoRecurso.addItemListener(new java.awt.event.ItemListener() {
@@ -230,10 +239,10 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 CmbTipoRecursoItemStateChanged(evt);
             }
         });
-        jPanel1.add(CmbTipoRecurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 206, 158, -1));
+        jPanel1.add(CmbTipoRecurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 158, -1));
 
         jLabel6.setText("Tipo de recurso:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 184, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, -1, -1));
 
         JTBiblioteca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -253,13 +262,10 @@ public class frmBiblioteca extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTBiblioteca);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 650, 150));
-
-        jLabel7.setText("Id Biblioteca:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
-        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
-        jPanel1.add(txtTipoClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 50, -1, -1));
-        jPanel1.add(txtTipoRecurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, -1, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 550, 180));
+        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, -1, -1));
+        jPanel1.add(txtTipoClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
+        jPanel1.add(txtTipoRecurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
 
         BtnModificar.setText("Modificar");
         BtnModificar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
@@ -292,16 +298,35 @@ public class frmBiblioteca extends javax.swing.JFrame {
         BtnVaciarCampos.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         jPanel1.add(BtnVaciarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_END);
+
+        panelRound1.setBackground(new java.awt.Color(220, 220, 220));
+        panelRound1.setPreferredSize(new java.awt.Dimension(600, 20));
+        panelRound1.setRoundTopLeft(20);
+        panelRound1.setRoundTopRight(20);
+        panelRound1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panelRound1MouseDragged(evt);
+            }
+        });
+        panelRound1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelRound1MousePressed(evt);
+            }
+        });
+        panelRound1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 5));
+
+        btnDispose.setPreferredSize(new java.awt.Dimension(10, 10));
+        btnDispose.setRound(20);
+        btnDispose.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        btnDispose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDisposeActionPerformed(evt);
+            }
+        });
+        panelRound1.add(btnDispose);
+
+        getContentPane().add(panelRound1, java.awt.BorderLayout.NORTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -454,6 +479,25 @@ public class frmBiblioteca extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_txtNombreRecursoKeyTyped
 
+    private void btnDisposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisposeActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnDisposeActionPerformed
+
+    private void panelRound1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound1MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_panelRound1MouseDragged
+
+    private void panelRound1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound1MousePressed
+        // TODO add your handling code here:
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_panelRound1MousePressed
+
     
     
     /**
@@ -461,27 +505,22 @@ public class frmBiblioteca extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmBiblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+             try {
+            UIManager.setLookAndFeel(new FlatArcIJTheme());           
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        //</editor-fold>
+        UIManager.put( "Component.focusWidth", 0 );
+        UIManager.put( "Component.innerFocusWidth",0 );
+        UIManager.put( "TextComponent.arc", 15);
+        UIManager.put( "Component.arc", 15);
+        UIManager.put( "ProgressBar.arc", 20);
+        UIManager.put( "ScrollBar.trackArc", 999 );
+        UIManager.put( "ScrollBar.thumbArc", 999 );
+        UIManager.put( "ScrollBar.trackInsets", new Insets( 2, 4, 2, 4 ) );
+        UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
+        UIManager.put( "Component.arrowType", "chevron" );
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -500,15 +539,16 @@ public class frmBiblioteca extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CmbClasificacion;
     private javax.swing.JComboBox<String> CmbTipoRecurso;
     private javax.swing.JTable JTBiblioteca;
+    private roundObjects.ButtonRound btnDispose;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private roundObjects.PanelRound panelRound1;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLink;
     private javax.swing.JTextField txtNombreRecurso;

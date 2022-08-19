@@ -4,6 +4,11 @@
  */
 package gnosis.system;
 
+import Controller.CComboboxDocentes;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author santi
@@ -13,10 +18,34 @@ public class panTeachers extends javax.swing.JPanel {
     /**
      * Creates new form panTeachers
      */
+    
+    DefaultTableModel tablaModel;
     public panTeachers() {
         initComponents();
+        
+        String [] TitulosDocentes = {"ID", "Apellidos", "Nombres", "Direccion", "Dui", "Correo",  "Nacimiento", "Grado", "Genero", "Contacto", "Usuario"};
+        tablaModel = new DefaultTableModel(null, TitulosDocentes);
+        tbDocentes.setModel(tablaModel);
+        CargarTabla();
     }
 
+    final void CargarTabla(){
+        CComboboxDocentes docent = new CComboboxDocentes();
+        while (tablaModel.getRowCount() > 0) {
+            tablaModel.removeRow(0);           
+        }
+        try {
+            ResultSet rs = docent.CCargarDocentes();
+            while (rs.next()) {                
+                Object [] oValores = {rs.getInt("iddocente"), rs.getString("apellidos_docente"), rs.getString("nombres_docente"), 
+                    rs.getString("direccion"), rs.getString("dui"), rs.getString("correo"), rs.getString("fecha_nac"), rs.getInt("idgrado"), 
+                    rs.getInt("idgenero"),rs.getString("contacto"), rs.getInt("idusuario")};
+                tablaModel.addRow(oValores);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se cargo la tabla");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,19 +56,20 @@ public class panTeachers extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbDocentes = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         buttonRound1 = new roundObjects.ButtonRound();
         buttonRound2 = new roundObjects.ButtonRound();
         buttonRound3 = new roundObjects.ButtonRound();
-        buttonRound4 = new roundObjects.ButtonRound();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbDocentes.setBackground(java.awt.Color.white);
+        tbDocentes.setForeground(new java.awt.Color(32, 32, 32));
+        tbDocentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -50,10 +80,11 @@ public class panTeachers extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbDocentes);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
+        jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setPreferredSize(new java.awt.Dimension(741, 50));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
@@ -80,14 +111,9 @@ public class panTeachers extends javax.swing.JPanel {
         buttonRound3.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
         jPanel1.add(buttonRound3);
 
-        buttonRound4.setText("Vaciar Campos");
-        buttonRound4.setPreferredSize(new java.awt.Dimension(130, 30));
-        buttonRound4.setRound(20);
-        buttonRound4.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
-        jPanel1.add(buttonRound4);
-
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
+        jPanel2.setBackground(java.awt.Color.white);
         jPanel2.setPreferredSize(new java.awt.Dimension(741, 20));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -103,6 +129,7 @@ public class panTeachers extends javax.swing.JPanel {
 
         add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
+        jPanel3.setBackground(java.awt.Color.white);
         jPanel3.setPreferredSize(new java.awt.Dimension(20, 424));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -118,6 +145,7 @@ public class panTeachers extends javax.swing.JPanel {
 
         add(jPanel3, java.awt.BorderLayout.LINE_END);
 
+        jPanel4.setBackground(java.awt.Color.white);
         jPanel4.setPreferredSize(new java.awt.Dimension(20, 424));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -144,12 +172,11 @@ public class panTeachers extends javax.swing.JPanel {
     private roundObjects.ButtonRound buttonRound1;
     private roundObjects.ButtonRound buttonRound2;
     private roundObjects.ButtonRound buttonRound3;
-    private roundObjects.ButtonRound buttonRound4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbDocentes;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,10 @@ package gnosis.system;
 
 import Controller.CConnection;
 import Controller.CTasks;
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,9 +21,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -48,12 +54,23 @@ public class frmTasks extends javax.swing.JFrame {
         initComponents();
         CargarCmbTipoTarea();
         CargarCmbTipoPerfil();
+        customization.centrarFrame(this);  
      
         //Tabla
         String [] TitulosTarea = {"ID", "Nombre", "Fecha de inicio", "Fecha de vencimiento", "Perfil", "Rubrica", "Tipo Tarea"};
         Tablamodelo = new DefaultTableModel(null, TitulosTarea);
         JTTask.setModel(Tablamodelo);
         CargarTabla();
+        
+        txtId.setVisible(false);
+        txtTipoPerfil.setVisible(false);
+        txtTipoTarea.setVisible(false);
+        for(Component c : dtInicio.getComponents()){
+            ((JComponent)c).setBackground(new Color (217,217,217));
+        }
+        for(Component c : dtVencimiento.getComponents()){
+            ((JComponent)c).setBackground(new Color (217,217,217));
+        }
     }
     
     void LimpiarCampos() {
@@ -117,10 +134,10 @@ public class frmTasks extends javax.swing.JFrame {
                     CmbTipoPerfil.setModel(TipoPerfilcombo);
                 } while (rs.next());
             } else {
-                JOptionPane.showMessageDialog(BtnEliminar, "No existen tipos de perfil por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(btnEliminar, "No existen tipos de perfil por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(btnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
         }//End catch
     }//End method
     
@@ -149,10 +166,10 @@ public class frmTasks extends javax.swing.JFrame {
                     CmbTipoTarea.setModel(TipoTareacombo);
                 } while (rs.next());
             } else {
-                JOptionPane.showMessageDialog(BtnEliminar, "No existen tipos de tarea por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(btnEliminar, "No existen tipos de tarea por cargar.", "Mensaje", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(BtnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(btnEliminar, "No se ha podido cargar datos, favor consulta con el adminstrador del sistema.", "Error crítico", JOptionPane.ERROR_MESSAGE);
         }//End catch
     }//End method
 
@@ -179,16 +196,15 @@ public class frmTasks extends javax.swing.JFrame {
         CmbTipoPerfil = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         CmbTipoTarea = new javax.swing.JComboBox<>();
-        BtnEliminar = new javax.swing.JButton();
-        BtnModificar = new javax.swing.JButton();
-        BtnSubir = new javax.swing.JButton();
-        BtnVaciarCampos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTTask = new javax.swing.JTable();
         txtId = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
         txtTipoPerfil = new javax.swing.JTextField();
         txtTipoTarea = new javax.swing.JTextField();
+        btnSubir = new roundObjects.ButtonRound();
+        btnModificar = new roundObjects.ButtonRound();
+        btnLimpiarCampos = new roundObjects.ButtonRound();
+        btnEliminar = new roundObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -206,6 +222,7 @@ public class frmTasks extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 14, -1, -1));
 
         txtNombre.setBackground(new java.awt.Color(210, 210, 210));
+        txtNombre.setForeground(new java.awt.Color(32, 32, 32));
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
@@ -249,6 +266,7 @@ public class frmTasks extends javax.swing.JFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
         CmbTipoPerfil.setBackground(new java.awt.Color(210, 210, 210));
+        CmbTipoPerfil.setForeground(new java.awt.Color(32, 32, 32));
         CmbTipoPerfil.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CmbTipoPerfilItemStateChanged(evt);
@@ -269,38 +287,8 @@ public class frmTasks extends javax.swing.JFrame {
         });
         jPanel1.add(CmbTipoTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 180, -1));
 
-        BtnEliminar.setText("Eliminar");
-        BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEliminarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 140, -1));
-
-        BtnModificar.setText("Modificar");
-        BtnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnModificarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 140, -1));
-
-        BtnSubir.setText("Subir");
-        BtnSubir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSubirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 140, -1));
-
-        BtnVaciarCampos.setText("Vaciar campos");
-        BtnVaciarCampos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnVaciarCamposActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnVaciarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 140, -1));
-
+        JTTask.setBackground(java.awt.Color.white);
+        JTTask.setForeground(new java.awt.Color(32, 32, 32));
         JTTask.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -323,13 +311,48 @@ public class frmTasks extends javax.swing.JFrame {
 
         txtId.setBackground(new java.awt.Color(210, 210, 210));
         jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 70, -1));
-
-        jLabel12.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel12.setText("Id tarea");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
         jPanel1.add(txtTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, -1, -1));
         jPanel1.add(txtTipoTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
+
+        btnSubir.setText("Subir");
+        btnSubir.setRound(20);
+        btnSubir.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnSubir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 130, 30));
+
+        btnModificar.setText("Modificar");
+        btnModificar.setRound(20);
+        btnModificar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 130, 30));
+
+        btnLimpiarCampos.setText("Vaciar Campos");
+        btnLimpiarCampos.setRound(20);
+        btnLimpiarCampos.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        btnLimpiarCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarCamposActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLimpiarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 130, 30));
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setRound(20);
+        btnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 130, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -386,86 +409,6 @@ public class frmTasks extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_CmbTipoTareaItemStateChanged
-
-    private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
-        // TODO add your handling code here:
-        if (txtId.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Seleccione un registro", "Informacion incompleta", JOptionPane.WARNING_MESSAGE);
-        } else {
-            int confirmacion = JOptionPane.YES_NO_OPTION;
-            JOptionPane.showMessageDialog(this, "Esta seguro de eliminar este registro?", "Confirmar Accion", confirmacion);
-            if (confirmacion == JOptionPane.YES_OPTION) {
-                CTasks objTaskDel = new CTasks(Integer.parseInt(txtId.getText()));
-
-                boolean valor = objTaskDel.EliminarTareaController();
-                if ( valor == true) {
-                    JOptionPane.showMessageDialog(this, "Tarea eliminada exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
-                    CargarTabla();
-                    LimpiarCampos();
-                }
-            }
-        }
-    }//GEN-LAST:event_BtnEliminarActionPerformed
-
-    private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
-        // TODO add your handling code here:
-        //fecha de inicio update
-        Date date = dtInicio.getDate();
-        Cal1 = new GregorianCalendar();
-        Cal1.setTime(date);
-        String inicio = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + (Cal1.get(Calendar.MONTH) + 1)+ "/" + Cal1.get(Calendar.DAY_OF_MONTH));
-        //fecha de vencimiento update
-        Date date2 = dtInicio.getDate();
-        Cal2 = new GregorianCalendar();
-        Cal2.setTime(date2);
-        String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + (Cal2.get(Calendar.MONTH) + 1)+ "/" + Cal2.get(Calendar.DAY_OF_MONTH));
-
-        //Update
-        CTasks objupdate =new CTasks(Integer.parseInt(txtId.getText()), txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
-        boolean res = objupdate.ActualizarTareaController();
-        if (res == true) {
-            JOptionPane.showMessageDialog(this, "Tarea actualizada correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
-            CargarTabla();
-            LimpiarCampos();
-        }
-    }//GEN-LAST:event_BtnModificarActionPerformed
-
-    private void BtnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSubirActionPerformed
-        // TODO add your handling code here:
-        if (txtNombre.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        }else if(CmbTipoPerfil.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Seleccione un tipo de perfil", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        } else if(CmbTipoTarea.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(this, "Seleccione un tipo de tarea", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        } else {
-            //fecha de inicio
-            Date date = dtInicio.getDate();
-            Cal1 = new GregorianCalendar();
-            Cal1.setTime(date);
-            String inicio = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + Cal1.get(Calendar.MONTH) + "/" + Cal1.get(Calendar.DAY_OF_MONTH));
-            //fecha de vencimiento
-            Date date2 = dtVencimiento.getDate();
-            Cal2 = new GregorianCalendar();
-            Cal2.setTime(date2);
-            String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + Cal2.get(Calendar.MONTH) + "/" + Cal2.get(Calendar.DAY_OF_MONTH));
-            // Envio
-            CTasks controller = new CTasks(txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
-            boolean respuesta = controller.TareaNuevaResultSet();
-            if ( respuesta = true) {
-                JOptionPane.showMessageDialog(this, "Tarea ingresado correctamente");
-            } else {
-                JOptionPane.showMessageDialog(this, "Tarea no pudo ser ingresado");
-            }
-            CargarTabla();
-            LimpiarCampos();
-        }
-    }//GEN-LAST:event_BtnSubirActionPerformed
-
-    private void BtnVaciarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVaciarCamposActionPerformed
-        // TODO add your handling code here:
-        LimpiarCampos();
-    }//GEN-LAST:event_BtnVaciarCamposActionPerformed
 
     final int BuscarTipoTareaSeleccionado(int TipoTarea){
         int size = TipoTareaList.size();
@@ -545,33 +488,109 @@ public class frmTasks extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_txtNombreKeyTyped
 
+    private void btnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirActionPerformed
+        // TODO add your handling code here:
+        if (txtNombre.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else if(CmbTipoPerfil.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione un tipo de perfil", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        } else if(CmbTipoTarea.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this, "Seleccione un tipo de tarea", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        } else {
+            //fecha de inicio
+            Date date = dtInicio.getDate();
+            Cal1 = new GregorianCalendar();
+            Cal1.setTime(date);
+            String inicio = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + Cal1.get(Calendar.MONTH) + "/" + Cal1.get(Calendar.DAY_OF_MONTH));
+            //fecha de vencimiento
+            Date date2 = dtVencimiento.getDate();
+            Cal2 = new GregorianCalendar();
+            Cal2.setTime(date2);
+            String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + Cal2.get(Calendar.MONTH) + "/" + Cal2.get(Calendar.DAY_OF_MONTH));
+            // Envio
+            CTasks controller = new CTasks(txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
+            boolean respuesta = controller.TareaNuevaResultSet();
+            if ( respuesta = true) {
+                JOptionPane.showMessageDialog(this, "Tarea ingresado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(this, "Tarea no pudo ser ingresado");
+            }
+            CargarTabla();
+            LimpiarCampos();
+        }
+    }//GEN-LAST:event_btnSubirActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        //fecha de inicio update
+        Date date = dtInicio.getDate();
+        Cal1 = new GregorianCalendar();
+        Cal1.setTime(date);
+        String inicio = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + (Cal1.get(Calendar.MONTH) + 1)+ "/" + Cal1.get(Calendar.DAY_OF_MONTH));
+        //fecha de vencimiento update
+        Date date2 = dtInicio.getDate();
+        Cal2 = new GregorianCalendar();
+        Cal2.setTime(date2);
+        String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + (Cal2.get(Calendar.MONTH) + 1)+ "/" + Cal2.get(Calendar.DAY_OF_MONTH));
+
+        //Update
+        CTasks objupdate =new CTasks(Integer.parseInt(txtId.getText()), txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
+        boolean res = objupdate.ActualizarTareaController();
+        if (res == true) {
+            JOptionPane.showMessageDialog(this, "Tarea actualizada correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+            CargarTabla();
+            LimpiarCampos();
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnLimpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarCamposActionPerformed
+        // TODO add your handling code here:
+        LimpiarCampos();
+    }//GEN-LAST:event_btnLimpiarCamposActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        if (txtId.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un registro", "Informacion incompleta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int confirmacion = JOptionPane.YES_NO_OPTION;
+            JOptionPane.showMessageDialog(this, "Esta seguro de eliminar este registro?", "Confirmar Accion", confirmacion);
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                CTasks objTaskDel = new CTasks(Integer.parseInt(txtId.getText()));
+
+                boolean valor = objTaskDel.EliminarTareaController();
+                if ( valor == true) {
+                    JOptionPane.showMessageDialog(this, "Tarea eliminada exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+                    CargarTabla();
+                    LimpiarCampos();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmTasks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmTasks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmTasks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmTasks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        customization.mainUtilities();
+     try {
+            UIManager.setLookAndFeel(new FlatArcIJTheme());           
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        //</editor-fold>
-
+        UIManager.put( "Component.focusWidth", 0 );
+        UIManager.put( "Component.innerFocusWidth",0 );
+        UIManager.put( "TextComponent.arc", 15);
+        UIManager.put( "Component.arc", 15);
+        UIManager.put( "ProgressBar.arc", 20);
+        UIManager.put( "ScrollBar.trackArc", 999 );
+        UIManager.put( "ScrollBar.thumbArc", 999 );
+        UIManager.put( "ScrollBar.trackInsets", new Insets( 2, 4, 2, 4 ) );
+        UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
+        UIManager.put( "Component.arrowType", "chevron" );
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -581,19 +600,18 @@ public class frmTasks extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnEliminar;
-    private javax.swing.JButton BtnModificar;
     private javax.swing.JButton BtnSeleccionar;
-    private javax.swing.JButton BtnSubir;
-    private javax.swing.JButton BtnVaciarCampos;
     private javax.swing.JComboBox<String> CmbTipoPerfil;
     private javax.swing.JComboBox<String> CmbTipoTarea;
     private javax.swing.JTable JTTask;
+    private roundObjects.ButtonRound btnEliminar;
+    private roundObjects.ButtonRound btnLimpiarCampos;
+    private roundObjects.ButtonRound btnModificar;
+    private roundObjects.ButtonRound btnSubir;
     private com.toedter.calendar.JDateChooser dtInicio;
     private com.toedter.calendar.JDateChooser dtVencimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

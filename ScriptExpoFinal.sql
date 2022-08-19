@@ -471,7 +471,8 @@ CREATE TABLE tbTipoEventos(
 --    grado varchar(50) not null
 --);
 
-
+ALTER TABLE tbDocentes
+DROP COLUMN idusuario
 
 
 ALTER TABLE tbEventos

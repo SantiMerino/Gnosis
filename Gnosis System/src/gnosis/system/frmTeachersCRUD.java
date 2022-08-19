@@ -44,6 +44,9 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     
     DefaultTableModel tablaModel;
     
+    int xMouse;
+    int yMouse;
+    
     private int idGenero = 0;
     private int idUsuario = 0;
     private int idGrado = 0;
@@ -65,7 +68,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         txtIdGrado.setVisible(false);      
         
         //Titulos de la tabla 
-        String [] TitulosDocentes = {"ID", "Apellidos", "Nombres", "Direccion", "Dui", "Correo",  "Nacimiento", "Grado", "Genero", "Contacto", "Usuario"};
+        String [] TitulosDocentes = {"ID", "Apellidos", "Nombres", "Direccion", "Dui", "Correo",  "Nacimiento", "Grado", "Genero", "Contacto"};
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tbDocentes.setModel(tablaModel);
         CargarTabla();
@@ -114,7 +117,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
             while (rs.next()) {                
                 Object [] oValores = {rs.getInt("iddocente"), rs.getString("apellidos_docente"), rs.getString("nombres_docente"), 
                     rs.getString("direccion"), rs.getString("dui"), rs.getString("correo"), rs.getString("fecha_nac"), rs.getInt("idgrado"), 
-                    rs.getInt("idgenero"),rs.getString("contacto"), rs.getInt("idusuario")};
+                    rs.getInt("idgenero"),rs.getString("contacto")};
                 tablaModel.addRow(oValores);
             }
         } catch (Exception e) {
@@ -158,7 +161,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
                 do {                    
                     usuarioArrayList.add(rs.getInt("idusuario"));
                     modeloUsuario.addElement(rs.getString("username"));
-                    cmbUsuario.setModel(modeloUsuario);
+//                    cmbUsuario.setModel(modeloUsuario);
                 } while (rs.next());
             } else{
                 JOptionPane.showMessageDialog(null, "No se pudo cargar los usuarios");
@@ -202,6 +205,8 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelRound1 = new roundObjects.PanelRound();
+        btnDispose = new roundObjects.ButtonRound();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDocentes = new javax.swing.JTable();
@@ -226,14 +231,13 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         txtCorreo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         cmbGenero = new javax.swing.JComboBox<>();
-        cmbUsuario = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         txtIdGenero = new javax.swing.JTextField();
         txtIdUsuario = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cmbGrado = new javax.swing.JComboBox<>();
         txtIdGrado = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
@@ -242,6 +246,32 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 700));
+
+        panelRound1.setBackground(new java.awt.Color(230, 230, 230));
+        panelRound1.setPreferredSize(new java.awt.Dimension(1000, 20));
+        panelRound1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panelRound1MouseDragged(evt);
+            }
+        });
+        panelRound1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelRound1MousePressed(evt);
+            }
+        });
+        panelRound1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 5));
+
+        btnDispose.setPreferredSize(new java.awt.Dimension(10, 10));
+        btnDispose.setRound(20);
+        btnDispose.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        btnDispose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDisposeActionPerformed(evt);
+            }
+        });
+        panelRound1.add(btnDispose);
+
+        getContentPane().add(panelRound1, java.awt.BorderLayout.PAGE_START);
 
         jPanel3.setPreferredSize(new java.awt.Dimension(100, 100));
         jPanel3.setLayout(new java.awt.BorderLayout());
@@ -293,7 +323,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         );
         rightGapLayout.setVerticalGroup(
             rightGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 682, Short.MAX_VALUE)
+            .addGap(0, 662, Short.MAX_VALUE)
         );
 
         jPanel3.add(rightGap, java.awt.BorderLayout.EAST);
@@ -405,19 +435,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
             }
         });
 
-        cmbUsuario.setBackground(new java.awt.Color(217, 217, 217));
-        cmbUsuario.setEditable(true);
-        cmbUsuario.setForeground(new java.awt.Color(32, 32, 32));
-        cmbUsuario.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbUsuarioItemStateChanged(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel9.setText("Usuario");
-
         jLabel11.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(32, 32, 32));
         jLabel11.setText("Grado:");
@@ -461,11 +478,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel8)
                                             .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(28, 28, 28)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cmbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel9))
-                                        .addGap(33, 33, 33)
+                                        .addGap(141, 141, 141)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel11)
                                             .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -477,7 +490,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
                                         .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtIdGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 61, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -514,14 +527,12 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -531,6 +542,22 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         );
 
         jPanel2.add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        jPanel6.setBackground(java.awt.Color.white);
+        jPanel6.setPreferredSize(new java.awt.Dimension(10, 582));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 582, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel6, java.awt.BorderLayout.WEST);
 
         jPanel4.setBackground(java.awt.Color.white);
         jPanel4.setPreferredSize(new java.awt.Dimension(400, 120));
@@ -616,38 +643,19 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbGeneroItemStateChanged
 
-    private void cmbUsuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbUsuarioItemStateChanged
-        // TODO add your handling code here:
-        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            int pos = cmbUsuario.getSelectedIndex();
-            if (pos == 0) {
-                idUsuario = 0;
-            } else {
-                int dim = usuarioArrayList.size();
-                for (int i = 0; i < dim; i++) {
-                    if (i == pos - 1) {
-                        idUsuario = (int) usuarioArrayList.get(i);
-                    }
-                }
-            }
-            
-        }
-    }//GEN-LAST:event_cmbUsuarioItemStateChanged
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         if (txtNombres.getText().trim().isEmpty() || txtApellidos.getText().trim().isEmpty() || txtDireccion.getText().trim().isEmpty() || txtTelefono.getText().trim().isEmpty() || txtDui.getText().trim().isEmpty() || txtCorreo.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
         }else if(cmbGenero.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Seleccione un genero", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        }else if(cmbUsuario.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Seleccione un usuario", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        } else {
+        }
+         else {
             Date date = dtNacimiento.getDate();
             c = new GregorianCalendar();
             c.setTime(date);
             String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.DAY_OF_MONTH));
-            CTeacher objDocente = new CTeacher(txtApellidos.getText(), txtNombres.getText(), txtDireccion.getText(), txtDui.getText(), txtCorreo.getText(), nacimiento, idGrado, idGenero, txtTelefono.getText(), idUsuario);
+            CTeacher objDocente = new CTeacher(txtApellidos.getText(), txtNombres.getText(), txtDireccion.getText(), txtDui.getText(), txtCorreo.getText(), nacimiento, idGrado, idGenero, txtTelefono.getText());
             boolean respuesta = objDocente.DocenteNuevoController();
             if (respuesta == true) {
                 JOptionPane.showMessageDialog(this, "Docente ingresado correctamente");
@@ -732,7 +740,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
             int respuesta3 = BuscarGradoSeleccionado(idGrado);
             
             cmbGenero.setSelectedIndex(respuesta + 1);
-            cmbUsuario.setSelectedIndex(respuesta2 + 1);
+//            cmbUsuario.setSelectedIndex(respuesta2 + 1);
             cmbGrado.setSelectedIndex(respuesta3 + 1);
         }
     }//GEN-LAST:event_tbDocentesMouseClicked
@@ -748,7 +756,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         c = new GregorianCalendar();
         c.setTime(date);
         String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + (c.get(Calendar.MONTH) + 1)+ "/" + c.get(Calendar.DAY_OF_MONTH));
-        CTeacher objcontrollerDocentes = new CTeacher(Integer.parseInt(txtId.getText()), txtApellidos.getText(), txtNombres.getText(), txtDireccion.getText(), txtDui.getText(), txtCorreo.getText(), nacimiento, idGrado, idGenero, txtTelefono.getText(), idUsuario);
+        CTeacher objcontrollerDocentes = new CTeacher(Integer.parseInt(txtId.getText()), txtApellidos.getText(), txtNombres.getText(), txtDireccion.getText(), txtDui.getText(), txtCorreo.getText(), nacimiento, idGrado, idGenero, txtTelefono.getText());
         boolean valor = objcontrollerDocentes.ActualizarDocente();
         if (valor == true) {
             JOptionPane.showMessageDialog(this, "Docente actualizado correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
@@ -825,6 +833,25 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cmbGradoItemStateChanged
 
+    private void btnDisposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisposeActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnDisposeActionPerformed
+
+    private void panelRound1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound1MousePressed
+        // TODO add your handling code here:
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_panelRound1MousePressed
+
+    private void panelRound1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound1MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_panelRound1MouseDragged
+
     /**
      * @param args the command line arguments
      */
@@ -837,9 +864,9 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         }
         UIManager.put( "Component.focusWidth", 0 );
         UIManager.put( "Component.innerFocusWidth",0 );
-        UIManager.put( "TextComponent.arc", 20);
-        UIManager.put( "Component.arc", 20);
-        UIManager.put( "ProgressBar.arc", 20);
+        UIManager.put( "TextComponent.arc", 15);
+        UIManager.put( "Component.arc", 15);
+        UIManager.put( "ProgressBar.arc", 15);
         UIManager.put( "ScrollBar.trackArc", 999 );
         UIManager.put( "ScrollBar.thumbArc", 999 );
         UIManager.put( "ScrollBar.trackInsets", new Insets( 2, 4, 2, 4 ) );
@@ -857,12 +884,12 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private roundObjects.ButtonRound btnDispose;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox<String> cmbGenero;
     private javax.swing.JComboBox<String> cmbGrado;
-    private javax.swing.JComboBox<String> cmbUsuario;
     private com.toedter.calendar.JDateChooser dtNacimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -873,13 +900,14 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private roundObjects.PanelRound panelRound1;
     private javax.swing.JPanel rightGap;
     private javax.swing.JTable tbDocentes;
     private javax.swing.JPanel topGap;
