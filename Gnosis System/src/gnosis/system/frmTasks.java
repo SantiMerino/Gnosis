@@ -185,7 +185,6 @@ public class frmTasks extends javax.swing.JFrame {
         BtnVaciarCampos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTTask = new javax.swing.JTable();
-        BtnConectare = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtTipoPerfil = new javax.swing.JTextField();
@@ -193,14 +192,20 @@ public class frmTasks extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Tareas:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 37, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(32, 32, 32));
         jLabel2.setText("Nombre:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 14, -1, -1));
 
+        txtNombre.setBackground(new java.awt.Color(210, 210, 210));
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
@@ -213,14 +218,20 @@ public class frmTasks extends javax.swing.JFrame {
         });
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 33, 252, -1));
 
-        jLabel4.setText("fecha de inicio:");
+        jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel4.setText("Fecha de inicio:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 92, -1, -1));
 
-        jLabel5.setText("fecha de vencimiento:");
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel5.setText("Fecha de vencimiento:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 161, -1, -1));
         jPanel1.add(dtVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 183, 268, -1));
         jPanel1.add(dtInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 120, 268, -1));
 
+        jLabel8.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(32, 32, 32));
         jLabel8.setText("Intrumento de evualcion:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, -1));
 
@@ -232,9 +243,12 @@ public class frmTasks extends javax.swing.JFrame {
         });
         jPanel1.add(BtnSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 240, -1));
 
-        jLabel9.setText("Tipo perfil:");
+        jLabel9.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel9.setText("Perfil vinculado:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
+        CmbTipoPerfil.setBackground(new java.awt.Color(210, 210, 210));
         CmbTipoPerfil.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CmbTipoPerfilItemStateChanged(evt);
@@ -242,9 +256,12 @@ public class frmTasks extends javax.swing.JFrame {
         });
         jPanel1.add(CmbTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 200, -1));
 
+        jLabel10.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(32, 32, 32));
         jLabel10.setText("Tipo Tarea:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
 
+        CmbTipoTarea.setBackground(null);
         CmbTipoTarea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CmbTipoTarea.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -259,7 +276,7 @@ public class frmTasks extends javax.swing.JFrame {
                 BtnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 140, -1));
+        jPanel1.add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 140, -1));
 
         BtnModificar.setText("Modificar");
         BtnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +284,7 @@ public class frmTasks extends javax.swing.JFrame {
                 BtnModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 140, -1));
+        jPanel1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 140, -1));
 
         BtnSubir.setText("Subir");
         BtnSubir.addActionListener(new java.awt.event.ActionListener() {
@@ -275,7 +292,7 @@ public class frmTasks extends javax.swing.JFrame {
                 BtnSubirActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 140, -1));
+        jPanel1.add(BtnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 140, -1));
 
         BtnVaciarCampos.setText("Vaciar campos");
         BtnVaciarCampos.addActionListener(new java.awt.event.ActionListener() {
@@ -303,21 +320,17 @@ public class frmTasks extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTTask);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 880, 200));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 690, 200));
 
-        BtnConectare.setText("Conexion");
-        BtnConectare.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnConectareActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnConectare, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, -1, -1));
+        txtId.setBackground(new java.awt.Color(210, 210, 210));
         jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 70, -1));
 
+        jLabel12.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(32, 32, 32));
         jLabel12.setText("Id tarea");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
-        jPanel1.add(txtTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, -1, -1));
-        jPanel1.add(txtTipoTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 210, -1, -1));
+        jPanel1.add(txtTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, -1, -1));
+        jPanel1.add(txtTipoTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -515,13 +528,6 @@ public class frmTasks extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JTTaskMouseClicked
 
-    private void BtnConectareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConectareActionPerformed
-        // TODO add your handling code here:
-        if (CConnection.getConnectionControllerWithoutParameters()!= null) {
-            JOptionPane.showMessageDialog(null, "Conexión establecida con éxito uwu");
-        }
-    }//GEN-LAST:event_BtnConectareActionPerformed
-
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
         
@@ -578,7 +584,6 @@ public class frmTasks extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnConectare;
     private javax.swing.JButton BtnEliminar;
     private javax.swing.JButton BtnModificar;
     private javax.swing.JButton BtnSeleccionar;

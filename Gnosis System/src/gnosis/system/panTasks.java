@@ -30,6 +30,19 @@ public class panTasks extends javax.swing.JPanel {
         initComponents();
         custo.CrearTarea("Proyecto Formativo", "Ciencias", "Joaquin Sanchez", "12/10/2022", 1, mainPan );
     }
+    
+    public panTasks(int nivel) {
+        initComponents();
+        if (nivel == 1) {
+            custo.CrearTarea("Proyecto Formativo", "Ciencias", "Joaquin Sanchez", "12/10/2022", 1, mainPan );
+            btnAgregarTarea.setVisible(false);
+        } else if (nivel == 2){
+            btnAgregarTarea.setVisible(true);
+            custo.CrearTarea("Proyecto Formativo", "Ciencias", "Joaquin Sanchez", "12/10/2022", 1, mainPan );
+        } else {
+            btnAgregarTarea.setVisible(false);        
+        }
+    }
        
 
     /**
@@ -47,7 +60,7 @@ public class panTasks extends javax.swing.JPanel {
         namePan = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         filtersPan = new javax.swing.JPanel();
-        buttonRound1 = new roundObjects.ButtonRound();
+        btnAgregarTarea = new roundObjects.ButtonRound();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -88,15 +101,15 @@ public class panTasks extends javax.swing.JPanel {
         filtersPan.setPreferredSize(new java.awt.Dimension(500, 50));
         filtersPan.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 15, 10));
 
-        buttonRound1.setText("Cargar Tareas");
-        buttonRound1.setRound(15);
-        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
-        buttonRound1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarTarea.setText("Agregar Tareas");
+        btnAgregarTarea.setRound(15);
+        btnAgregarTarea.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnAgregarTarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRound1ActionPerformed(evt);
+                btnAgregarTareaActionPerformed(evt);
             }
         });
-        filtersPan.add(buttonRound1);
+        filtersPan.add(btnAgregarTarea);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(32, 32, 32));
@@ -140,14 +153,14 @@ public class panTasks extends javax.swing.JPanel {
         add(upperPan, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
+    private void btnAgregarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTareaActionPerformed
         // TODO add your handling code here:
-        custo.CrearTarea("Proyecto Formativo", "Ciencias", "Joaquin Sanchez", "12/10/2022", 1, mainPan );       
-    }//GEN-LAST:event_buttonRound1ActionPerformed
+        new frmTasks().setVisible(true);
+    }//GEN-LAST:event_btnAgregarTareaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound buttonRound1;
+    private roundObjects.ButtonRound btnAgregarTarea;
     private javax.swing.JPanel filtersPan;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;

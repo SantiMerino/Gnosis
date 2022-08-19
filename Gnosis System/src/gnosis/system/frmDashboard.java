@@ -444,7 +444,7 @@ public class frmDashboard extends javax.swing.JFrame {
         //Cambio el color del boton y el icono
             cambiarColorBotonesMenu(briefcaseButton, "/resources/home-selec.png");
         //Agrego el panel que corresponde
-            panContainer.add(new panTasks());
+            panContainer.add(new panTasks(1));
             panContainer.repaint();
             panContainer.revalidate();
         //Si el componentCount es 1 es que uno esta abierto
@@ -457,7 +457,7 @@ public class frmDashboard extends javax.swing.JFrame {
             panContainer.repaint();
             panContainer.revalidate();
 
-            panContainer.add(new panTasks());
+            panContainer.add(new panTasks(1));
             panContainer.repaint();
             panContainer.revalidate(); 
             }else {
