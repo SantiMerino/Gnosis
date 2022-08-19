@@ -10,12 +10,15 @@ import Controller.CTeacher;
 import java.awt.event.ItemEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -40,8 +43,11 @@ public class frmEvento extends javax.swing.JFrame {
      */
     public frmEvento() {
         initComponents();
-        CargarCmbTipoEvento();
-        CargarCmbGrado();
+        CargarCombobox();
+        
+        txtId.setVisible(false);
+        txtTipoEvento.setVisible(false);
+        txtGrado.setVisible(false);
         
         //Titulos de la tabla 
         String [] TitulosEventos = {"ID", "Nombre evento", "Fecha de evento", "Hora de inicio", "Fecha final evento", "Hora final",  "Tipo Evento", "Grado"};
@@ -57,6 +63,12 @@ public class frmEvento extends javax.swing.JFrame {
         dtInicio.setDate(null);
         dtVencimiento.setDate(null);
         txtId.setText("");
+        CargarCombobox();
+    }
+    
+    final void CargarCombobox() {
+        CargarCmbTipoEvento();
+        CargarCmbGrado();
     }
     
     final void CargarTabla(){
@@ -67,7 +79,7 @@ public class frmEvento extends javax.swing.JFrame {
         try {
             ResultSet rs = Evento.CargarEventos();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idevento"), rs.getString("nombreevento"), rs.getString("fechaevento"), rs.getString("horainicioevento"), rs.getString("fechafinalevento"), rs.getString("horafinalzarevento"), rs.getInt("idtipoevento"), rs.getInt("idgrado")};
+                Object [] oValores = {rs.getInt("idevento"), rs.getString("nombreevento"), rs.getString("fechaevento"), rs.getString("horainicioevento"), rs.getString("fechafinalevento"), rs.getString("horafinalizarevento"), rs.getInt("idtipoevento"), rs.getInt("idgrado")};
                 tablaEventoModel.addRow(oValores);
             }
         } catch (Exception e) {
@@ -97,17 +109,17 @@ public class frmEvento extends javax.swing.JFrame {
     }
     
     final void CargarCmbGrado(){
-        CEvento eventoCmb = new CEvento();
+        CEvento eventoGrado = new CEvento();
         GradoArrayList = new ArrayList();       
         try {
-            ResultSet rs = eventoCmb.CargarTipoEventoResultSet();
+            ResultSet rs = eventoGrado.CargarGradoResultSet();
             if (rs.next()) {
                 modeloGrado = new DefaultComboBoxModel<>();
                 modeloGrado.addElement("Elige una opcion");
                 do {                    
                     GradoArrayList.add(rs.getInt("idgrado"));
                     modeloGrado.addElement(rs.getString("grado"));
-                    CmbTipoEvento.setModel(modeloGrado);
+                    CmbGrado.setModel(modeloGrado);
                 } while (rs.next());
             } else{
                 JOptionPane.showMessageDialog(null, "No se pudo cargar los grados");
@@ -150,7 +162,6 @@ public class frmEvento extends javax.swing.JFrame {
         JTEventos = new javax.swing.JTable();
         txtTipoEvento = new javax.swing.JTextField();
         txtGrado = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -208,10 +219,20 @@ public class frmEvento extends javax.swing.JFrame {
 
         BtnEliminar.setText("Eliminar evento");
         BtnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEliminarActionPerformed(evt);
+            }
+        });
         panelRound1.add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, -1));
 
         BtnModificar.setText("Modificar evento");
         BtnModificar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        BtnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificarActionPerformed(evt);
+            }
+        });
         panelRound1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, -1, -1));
 
         BtnAgregar.setText("Agregar evento");
@@ -234,14 +255,16 @@ public class frmEvento extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        JTEventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTEventosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(JTEventos);
 
         panelRound1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 870, 170));
         panelRound1.add(txtTipoEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, -1, -1));
         panelRound1.add(txtGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 120, -1, -1));
-
-        jLabel9.setText("Id evento:");
-        panelRound1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
         panelRound1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 20, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -271,20 +294,20 @@ public class frmEvento extends javax.swing.JFrame {
             Date date = dtInicio.getDate();
             Cal1 = new GregorianCalendar();
             Cal1.setTime(date);
-            String nacimiento = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + Cal1.get(Calendar.MONTH) + "/" + Cal1.get(Calendar.DAY_OF_MONTH));
+            String inicio = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + Cal1.get(Calendar.MONTH) + "/" + Cal1.get(Calendar.DAY_OF_MONTH));
             //Segunda fecha.
-            Date date = dtInicio.getDate();
-            Cal1 = new GregorianCalendar();
-            Cal1.setTime(date);
-            String nacimiento = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + Cal1.get(Calendar.MONTH) + "/" + Cal1.get(Calendar.DAY_OF_MONTH));
-            CTeacher objDocente = new CTeacher(txtApellidos.getText(), txtNombres.getText(), txtDireccion.getText(), txtDui.getText(), txtCorreo.getText(), nacimiento, idGrado, idGenero, txtTelefono.getText(), idUsuario);
-            boolean respuesta = objDocente.DocenteNuevoController();
+            Date date2 = dtInicio.getDate();
+            Cal2 = new GregorianCalendar();
+            Cal2.setTime(date2);
+            String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + Cal2.get(Calendar.MONTH) + "/" + Cal2.get(Calendar.DAY_OF_MONTH));
+            CEvento objAdd = new CEvento(txtNombreEvento.getText(), inicio, txtHoraInicio.getText(), vencimiento, txtHoraFinal.getText(), idTipoEvento, idGrado);
+            boolean respuesta = objAdd.EventoNuevoResultSet();
             if (respuesta == true) {
-                JOptionPane.showMessageDialog(this, "Docente ingresado correctamente");
+                JOptionPane.showMessageDialog(this, "Evento ingresado correctamente");
                 CargarTabla();
                 LimpiarCampos();
             } else {
-                JOptionPane.showMessageDialog(this, "Docente no pudo ser ingresado");
+                JOptionPane.showMessageDialog(this, "Evento no pudo ser ingresado");
             }
         }
     }//GEN-LAST:event_BtnAgregarActionPerformed
@@ -322,6 +345,112 @@ public class frmEvento extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_CmbGradoItemStateChanged
+
+    final int BuscarTipoEventoSeleccionado(int Evento){
+        int size = TipoEventoArrayList.size();
+        int retorno = -1;
+        for(int i = 0; i < size; i++) {
+            int valor = (Integer) TipoEventoArrayList.get(i);
+            if (valor == Evento) {
+                retorno = i;
+            }
+        }
+        return retorno;
+    }
+    
+    final int BuscarGradoSeleccionado(int Grado){
+        int size = GradoArrayList.size();
+        int retorno = -1;
+        for(int i = 0; i < size; i++) {
+            int valor = (Integer) GradoArrayList.get(i);
+            if (valor == Grado) {
+                retorno = i;
+            }
+        }
+        return retorno;
+    }
+    
+    private void JTEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTEventosMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 1) {
+            JTable rcp = (JTable) evt.getSource();
+            txtId.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
+            txtNombreEvento.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
+            txtHoraInicio.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
+            txtHoraFinal.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 5).toString());
+            
+            txtGrado.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
+            txtTipoEvento.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 6).toString());
+           
+            DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                dtInicio.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 2).toString()));
+            } catch (Exception e) {
+                
+            }
+            
+            DateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                dtVencimiento.setDate((Date) simpleDateFormat2.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString()));
+            } catch (Exception e) {
+                
+            }
+            
+            int idTipoEvento = Integer.parseInt(txtTipoEvento.getText());
+            int idGrado = Integer.parseInt(txtGrado.getText());
+            
+            int respuesta = BuscarTipoEventoSeleccionado(idTipoEvento);
+            JOptionPane.showMessageDialog(null, respuesta);
+            int respuesta2 = BuscarGradoSeleccionado(idGrado);
+            JOptionPane.showMessageDialog(null, respuesta2);
+            
+            CmbTipoEvento.setSelectedIndex(respuesta + 1);
+            CmbGrado.setSelectedIndex(respuesta2 + 1);
+        }
+    }//GEN-LAST:event_JTEventosMouseClicked
+
+    private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
+        // TODO add your handling code here:
+        //primera fecha.
+        Date date = dtInicio.getDate();
+        Cal1 = new GregorianCalendar();
+        Cal1.setTime(date);
+        String inicio = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + Cal1.get(Calendar.MONTH) + "/" + Cal1.get(Calendar.DAY_OF_MONTH));
+        //Segunda fecha.
+        Date date2 = dtVencimiento.getDate();
+        Cal2 = new GregorianCalendar();
+        Cal2.setTime(date2);
+        String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + Cal2.get(Calendar.MONTH) + "/" + Cal2.get(Calendar.DAY_OF_MONTH));
+        CEvento objUpdate = new CEvento(Integer.parseInt(txtId.getText()), txtNombreEvento.getText(), inicio, txtHoraInicio.getText(), vencimiento, txtHoraFinal.getText(), idTipoEvento, idGrado);
+        boolean valor = objUpdate.ActualizarEventoResultSet();
+        if (valor == true) {
+            JOptionPane.showMessageDialog(this, "Evento actualizado correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+            CargarTabla();
+            LimpiarCampos();
+        } else {
+            JOptionPane.showMessageDialog(this, "Evento no pudo ser ingresado");
+        }
+    }//GEN-LAST:event_BtnModificarActionPerformed
+
+    private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
+        // TODO add your handling code here:
+        if (txtId.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un registro", "Informacion incompleta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int confirmacion = JOptionPane.YES_NO_OPTION;
+            JOptionPane.showMessageDialog(this, "Esta seguro de eliminar este registro?", "Confirmar Accion", confirmacion);
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                CEvento objDell = new CEvento(Integer.parseInt(txtId.getText()));
+                
+                boolean valor = objDell.EliminarEventoResultSet();
+                if ( valor == true) {
+                    JOptionPane.showMessageDialog(this, "Evento eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+                    CargarTabla();
+                    LimpiarCampos();
+                }
+            }
+        }
+    }//GEN-LAST:event_BtnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,7 +505,6 @@ public class frmEvento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private roundObjects.PanelRound panelRound1;
     private javax.swing.JTextField txtGrado;

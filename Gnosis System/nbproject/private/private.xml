@@ -5,10 +5,9 @@
         <group>
             <file>file:/C:/Users/josec/Documents/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/frmTeachersCRUD.java</file>
             <file>file:/C:/Users/josec/Documents/GitHub/Gnosis/Gnosis%20System/src/Controller/CTeacher.java</file>
+            <file>file:/C:/Users/josec/Documents/GitHub/Gnosis/Gnosis%20System/src/Model/MEvento.java</file>
             <file>file:/C:/Users/josec/Documents/GitHub/Gnosis/Gnosis%20System/src/Model/MTeacher.java</file>
-            <file>file:/C:/Users/josec/Documents/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/frmTasks.java</file>
-            <file>file:/C:/Users/josec/Documents/GitHub/Gnosis/Gnosis%20System/src/Model/MTasks.java</file>
-            <file>file:/C:/Users/josec/Documents/GitHub/Gnosis/Gnosis%20System/src/Controller/CTasks.java</file>
+            <file>file:/C:/Users/josec/Documents/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/frmEvento.java</file>
         </group>
     </open-files>
 </project-private>
