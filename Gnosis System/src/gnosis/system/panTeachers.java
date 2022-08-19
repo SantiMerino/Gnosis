@@ -26,19 +26,130 @@ public class panTeachers extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        buttonRound1 = new roundObjects.ButtonRound();
+        buttonRound2 = new roundObjects.ButtonRound();
+        buttonRound3 = new roundObjects.ButtonRound();
+        buttonRound4 = new roundObjects.ButtonRound();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+
+        setLayout(new java.awt.BorderLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(741, 50));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+
+        buttonRound1.setText("Agregar");
+        buttonRound1.setPreferredSize(new java.awt.Dimension(130, 30));
+        buttonRound1.setRound(20);
+        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        buttonRound1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonRound1);
+
+        buttonRound2.setText("Modificar");
+        buttonRound2.setPreferredSize(new java.awt.Dimension(130, 30));
+        buttonRound2.setRound(20);
+        buttonRound2.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        jPanel1.add(buttonRound2);
+
+        buttonRound3.setText("Eliminar");
+        buttonRound3.setPreferredSize(new java.awt.Dimension(130, 30));
+        buttonRound3.setRound(20);
+        buttonRound3.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        jPanel1.add(buttonRound3);
+
+        buttonRound4.setText("Vaciar Campos");
+        buttonRound4.setPreferredSize(new java.awt.Dimension(130, 30));
+        buttonRound4.setRound(20);
+        buttonRound4.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        jPanel1.add(buttonRound4);
+
+        add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(741, 20));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 741, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 494, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
+
+        add(jPanel2, java.awt.BorderLayout.PAGE_END);
+
+        jPanel3.setPreferredSize(new java.awt.Dimension(20, 424));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 424, Short.MAX_VALUE)
+        );
+
+        add(jPanel3, java.awt.BorderLayout.LINE_END);
+
+        jPanel4.setPreferredSize(new java.awt.Dimension(20, 424));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 424, Short.MAX_VALUE)
+        );
+
+        add(jPanel4, java.awt.BorderLayout.LINE_START);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
+        // TODO add your handling code here:
+        new frmTeachersCRUD().setVisible(true);
+    }//GEN-LAST:event_buttonRound1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private roundObjects.ButtonRound buttonRound1;
+    private roundObjects.ButtonRound buttonRound2;
+    private roundObjects.ButtonRound buttonRound3;
+    private roundObjects.ButtonRound buttonRound4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

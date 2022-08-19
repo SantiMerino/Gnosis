@@ -584,38 +584,38 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 
     private void teachersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teachersButtonActionPerformed
         // TODO add your handling code here:
-//        if(panContainer.getComponentCount()== 0) {
-//            cambiarColorBotonesMenu(teachersButton, "/resources/admindocente.png");
-//            panContainer.add(new panGrades());
-//            panContainer.repaint();
-//            panContainer.revalidate();
-//        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panGrades()) {
-//                    if (teachersButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
-//                cambiarColorBotonesMenu(teachersButton, "/resources/admindocente-black.png");
-//                panContainer.removeAll();
-//                panContainer.repaint();
-//                panContainer.revalidate();
-//
-//                panContainer.add(new panGrades());
-//                panContainer.repaint();
-//                panContainer.revalidate();
-//            } else{ 
-//                notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
-//            }  
-//        }
-        if (new frmTeachersCRUD()!= null ) {
-            frmTeachersCRUD frame = new frmTeachersCRUD();
-            Container c = frame.getContentPane();
-            
-            panContainer.removeAll();
-            panContainer.add(BorderLayout.CENTER,c);
+        if(panContainer.getComponentCount()== 0) {
+            cambiarColorBotonesMenu(teachersButton, "/resources/admindocente.png");
+            panContainer.add(new panTeachers());
             panContainer.repaint();
             panContainer.revalidate();
-//            new frmTeachersCRUD().setVisible(true);
-//            this.setState(JFrame.ICONIFIED);
-        } else{
-            JOptionPane.showMessageDialog(null, "Ya esta abierta esta interfazz");
+        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panTeachers()) {
+                    if (teachersButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
+                cambiarColorBotonesMenu(teachersButton, "/resources/admindocente-black.png");
+                panContainer.removeAll();
+                panContainer.repaint();
+                panContainer.revalidate();
+
+                panContainer.add(new panTeachers());
+                panContainer.repaint();
+                panContainer.revalidate();
+            } else{ 
+                notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
+            }  
         }
+//        if (new frmTeachersCRUD()!= null ) {
+//            frmTeachersCRUD frame = new frmTeachersCRUD();
+//            Container c = frame.getContentPane();
+//            
+//            panContainer.removeAll();
+//            panContainer.add(BorderLayout.CENTER,c);
+//            panContainer.repaint();
+//            panContainer.revalidate();
+////            new frmTeachersCRUD().setVisible(true);
+////            this.setState(JFrame.ICONIFIED);
+//        } else{
+//            JOptionPane.showMessageDialog(null, "Ya esta abierta esta interfazz");
+//        }
     }//GEN-LAST:event_teachersButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed

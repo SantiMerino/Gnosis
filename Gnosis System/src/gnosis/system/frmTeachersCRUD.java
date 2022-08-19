@@ -13,13 +13,19 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Controller.CComboboxDocentes;
 import Controller.CTeacher;
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import javax.swing.JComponent;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 
 /**
  *
@@ -53,10 +59,10 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         
         CargarCombobox();
         
-        txtId.setEditable(false);
+        txtId.setVisible(false);
         txtIdGenero.setVisible(false);
         txtIdUsuario.setVisible(false);
-        
+        txtIdGrado.setVisible(false);      
         
         //Titulos de la tabla 
         String [] TitulosDocentes = {"ID", "Apellidos", "Nombres", "Direccion", "Dui", "Correo",  "Nacimiento", "Grado", "Genero", "Contacto", "Usuario"};
@@ -65,6 +71,10 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         CargarTabla();
         btnActualizar.setEnabled(false);
         btnEliminar.setEnabled(false);
+        
+        for(Component c : dtNacimiento.getComponents()){
+            ((JComponent)c).setBackground(new Color (217,217,217));
+        }
     }
     
     /*Limpiar campos*/
@@ -192,13 +202,13 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDocentes = new javax.swing.JTable();
-        btnGuardar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
+        topGap = new javax.swing.JPanel();
+        rightGap = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
@@ -218,18 +228,23 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         cmbGenero = new javax.swing.JComboBox<>();
         cmbUsuario = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         txtIdGenero = new javax.swing.JTextField();
         txtIdUsuario = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cmbGrado = new javax.swing.JComboBox<>();
         txtIdGrado = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        btnEliminar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+        setPreferredSize(new java.awt.Dimension(1000, 700));
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setPreferredSize(new java.awt.Dimension(100, 100));
+        jPanel3.setLayout(new java.awt.BorderLayout());
 
         tbDocentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -249,94 +264,167 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbDocentes);
 
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
+        jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
+        topGap.setBackground(java.awt.Color.white);
+        topGap.setPreferredSize(new java.awt.Dimension(600, 20));
 
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout topGapLayout = new javax.swing.GroupLayout(topGap);
+        topGap.setLayout(topGapLayout);
+        topGapLayout.setHorizontalGroup(
+            topGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        topGapLayout.setVerticalGroup(
+            topGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
 
-        btnLimpiar.setText("Limpiar Campos");
-        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarActionPerformed(evt);
-            }
-        });
+        jPanel3.add(topGap, java.awt.BorderLayout.PAGE_START);
 
+        rightGap.setBackground(java.awt.Color.white);
+        rightGap.setPreferredSize(new java.awt.Dimension(20, 622));
+
+        javax.swing.GroupLayout rightGapLayout = new javax.swing.GroupLayout(rightGap);
+        rightGap.setLayout(rightGapLayout);
+        rightGapLayout.setHorizontalGroup(
+            rightGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        rightGapLayout.setVerticalGroup(
+            rightGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 682, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(rightGap, java.awt.BorderLayout.EAST);
+
+        jPanel5.setBackground(java.awt.Color.white);
+        jPanel5.setPreferredSize(new java.awt.Dimension(600, 20));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel5, java.awt.BorderLayout.PAGE_END);
+
+        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setPreferredSize(new java.awt.Dimension(400, 100));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setPreferredSize(new java.awt.Dimension(394, 0));
 
+        jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Nombres del docente:");
 
+        txtNombres.setBackground(new java.awt.Color(217, 217, 217));
+        txtNombres.setForeground(new java.awt.Color(32, 32, 32));
         txtNombres.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombresKeyTyped(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(32, 32, 32));
         jLabel2.setText("Apellidos del docente:");
 
+        txtApellidos.setBackground(new java.awt.Color(217, 217, 217));
+        txtApellidos.setForeground(new java.awt.Color(32, 32, 32));
         txtApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtApellidosKeyTyped(evt);
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(32, 32, 32));
         jLabel3.setText("Direccion del docente:");
 
+        txtDireccion.setBackground(new java.awt.Color(217, 217, 217));
+        txtDireccion.setForeground(new java.awt.Color(32, 32, 32));
+
+        jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(32, 32, 32));
         jLabel4.setText("Telefono del docente:");
 
+        txtTelefono.setBackground(new java.awt.Color(217, 217, 217));
+        txtTelefono.setForeground(new java.awt.Color(32, 32, 32));
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtTelefonoKeyTyped(evt);
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(32, 32, 32));
         jLabel5.setText("Fecha de nacimiento del docente:");
 
+        dtNacimiento.setBackground(java.awt.Color.white);
+        dtNacimiento.setForeground(new java.awt.Color(32, 32, 32));
+
+        jLabel6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(32, 32, 32));
         jLabel6.setText("Numero de DUI del docente:");
 
+        txtDui.setBackground(new java.awt.Color(217, 217, 217));
+        txtDui.setForeground(new java.awt.Color(32, 32, 32));
         txtDui.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDuiKeyTyped(evt);
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(32, 32, 32));
         jLabel7.setText("Correo del docente:");
 
+        txtCorreo.setBackground(new java.awt.Color(217, 217, 217));
+        txtCorreo.setForeground(new java.awt.Color(32, 32, 32));
+
+        jLabel8.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(32, 32, 32));
         jLabel8.setText("Elegir genero");
 
+        cmbGenero.setBackground(new java.awt.Color(217, 217, 217));
+        cmbGenero.setEditable(true);
+        cmbGenero.setForeground(new java.awt.Color(32, 32, 32));
         cmbGenero.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbGeneroItemStateChanged(evt);
             }
         });
 
+        cmbUsuario.setBackground(new java.awt.Color(217, 217, 217));
+        cmbUsuario.setEditable(true);
+        cmbUsuario.setForeground(new java.awt.Color(32, 32, 32));
         cmbUsuario.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbUsuarioItemStateChanged(evt);
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(32, 32, 32));
         jLabel9.setText("Usuario");
 
-        jLabel10.setText("ID:");
-
+        jLabel11.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(32, 32, 32));
         jLabel11.setText("Grado:");
 
+        cmbGrado.setBackground(new java.awt.Color(217, 217, 217));
+        cmbGrado.setEditable(true);
+        cmbGrado.setForeground(new java.awt.Color(32, 32, 32));
         cmbGrado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbGradoItemStateChanged(evt);
@@ -367,8 +455,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(26, 26, 26)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,7 +477,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
                                         .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtIdGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 59, Short.MAX_VALUE)))
+                        .addGap(0, 61, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -434,9 +521,8 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
                     .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIdGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -444,48 +530,51 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnEliminar))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActualizar)
-                    .addComponent(btnLimpiar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPanel2.add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(jPanel2);
+        jPanel4.setBackground(java.awt.Color.white);
+        jPanel4.setPreferredSize(new java.awt.Dimension(400, 120));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setPreferredSize(new java.awt.Dimension(130, 30));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnEliminar);
+
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setPreferredSize(new java.awt.Dimension(130, 30));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnActualizar);
+
+        btnLimpiar.setText("Limpiar Campos");
+        btnLimpiar.setPreferredSize(new java.awt.Dimension(130, 30));
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnLimpiar);
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.setPreferredSize(new java.awt.Dimension(130, 30));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnGuardar);
+
+        jPanel2.add(jPanel4, java.awt.BorderLayout.SOUTH);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.WEST);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -741,7 +830,22 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        customization.mainUtilities();
+               try {
+            UIManager.setLookAndFeel(new FlatArcIJTheme());           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        UIManager.put( "Component.focusWidth", 0 );
+        UIManager.put( "Component.innerFocusWidth",0 );
+        UIManager.put( "TextComponent.arc", 20);
+        UIManager.put( "Component.arc", 20);
+        UIManager.put( "ProgressBar.arc", 20);
+        UIManager.put( "ScrollBar.trackArc", 999 );
+        UIManager.put( "ScrollBar.thumbArc", 999 );
+        UIManager.put( "ScrollBar.trackInsets", new Insets( 2, 4, 2, 4 ) );
+        UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
+        UIManager.put( "Component.arrowType", "chevron" );
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -761,7 +865,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbUsuario;
     private com.toedter.calendar.JDateChooser dtNacimiento;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -773,8 +876,13 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel rightGap;
     private javax.swing.JTable tbDocentes;
+    private javax.swing.JPanel topGap;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDireccion;
