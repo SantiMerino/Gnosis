@@ -69,7 +69,6 @@ public class MTasks {
             ps.setInt(4, idperfil);
             ps.setString(5, rubrica);
             ps.setInt(6, idtipotarea);
-            JOptionPane.showMessageDialog(null, idtipotarea);
             if (ps.executeUpdate() == 1) {
                 return true;
             } else {
@@ -84,14 +83,13 @@ public class MTasks {
         }
     }
     
-    public boolean ActualizarTareasModel(int ID, String nombretarea, String fechadeinicio, String fechadevencimiento, int idperfil, String rubrica, int idtipotarea, Connection con){
-         try {
-             String query = "UPDATE tbTareas SET nombretarea = ?, fechadeinicio = ?, fechavencimiento = ?, idperfil = ?, rubrica = ?, idtipotarea = ? WHERE idtarea = ?";
+    public boolean ActualizarTareasModel(int ID, String nombretarea, String fechadeinicio, String fechavencimiento, int idperfil, String rubrica, int idtipotarea, Connection con){
+        try {
+            String query = "UPDATE tbTareas SET nombretarea = ?, fechadeinicio = ?, fechavencimiento = ?, idperfil = ?, rubrica = ?, idtipotarea = ? WHERE idtarea = ?";
             ps = con.prepareStatement(query);
             ps.setString(1, nombretarea);
-            JOptionPane.showMessageDialog(null,nombretarea);
             ps.setString(2, fechadeinicio);
-            ps.setString(3, fechadevencimiento);
+            ps.setString(3, fechavencimiento);
             ps.setInt(4, idperfil);
             ps.setString(5, rubrica);
             ps.setInt(6, idtipotarea);

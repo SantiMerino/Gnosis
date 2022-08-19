@@ -401,7 +401,7 @@ public class frmTasks extends javax.swing.JFrame {
 
         //Update
         CTasks objupdate =new CTasks(Integer.parseInt(txtId.getText()), txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
-        boolean res = obj.ActualizarTarea();
+        boolean res = objupdate.ActualizarTareaController();
         if (res == true) {
             JOptionPane.showMessageDialog(this, "Tarea actualizada correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
             CargarTabla();

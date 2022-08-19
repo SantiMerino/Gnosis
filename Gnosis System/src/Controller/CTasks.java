@@ -125,8 +125,8 @@ public class CTasks {
         return mdlTask.SubirTareasModel(nombretarea, fechadeinicio, fechavencimiento, idperfil, rubrica, idtipotarea, con);
     }
     
-    public boolean ActualizarTarea() {
-       return mdlTask.ActualizarTareasModel(ID, nombretarea, fechadeinicio, fechavencimiento, idperfil, rubrica, idtipotarea, con);
+    public boolean ActualizarTareaController(){
+        return mdlTask.ActualizarTareasModel(ID, nombretarea, fechadeinicio, fechavencimiento, idperfil, rubrica, idtipotarea, con);
     }
     
     public boolean EliminarTareaController() {
