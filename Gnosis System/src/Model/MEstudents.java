@@ -82,8 +82,7 @@ public class MEstudents {
     }
     
      
-     public boolean RegistrarUsuarioAlumno(int nivel, String correo,int idalumno ,Connection con){
-         String clavedefault = "gnosis123";
+     public boolean RegistrarUsuarioAlumno(int nivel, String correo,int idalumno , String clavedefault,Connection con){
          int estadouser = 2;
          int pindefault = 12345;
          try {

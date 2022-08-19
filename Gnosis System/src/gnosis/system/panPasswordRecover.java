@@ -8,6 +8,8 @@ import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
+import Controller.CValidaciones;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,53 +20,77 @@ public class panPasswordRecover extends javax.swing.JPanel {
     /**
      * Creates new form panPasswordRecover
      */
+    
+    String codigoRandom;
+    String correoRecu;
+    String mensajeCortesia = "Tu codigo de recuperación de contraseña es: ";
+    String asuntoDefaultRecover = "Recuperación de contraseña Gnosis System";
+    
     public panPasswordRecover() {
         initComponents();
-        
+        btnConfirmar.setEnabled(false);
+        btnGuardar.setEnabled(false);
+        txtCodigo.setEnabled(false);
+        txtNConfirmar.setEnabled(false);
+        txtNueva.setEnabled(false);
     }
     
-    public static void SendEmail() {    
-      // Recipient's email ID needs to be mentioned.
-      String to = "20190016@ricaldone.edu.sv";
+    public boolean enviarCorreo(String mensaje, String asunto, String correo){
+    boolean enviado = false;
+        try{
+            String de = "systemgnosis@gmail.com"; 
+            String clave = "mvjmcsymrrypmnjc";
+            String para = correo;
+            String host = "smtp.gmail.com";
 
-      // Sender's email ID needs to be mentioned
-      String from = "santiago.merino2004@gmail.com";
+            Properties prop = System.getProperties();
 
-      // Assuming you are sending email from localhost
-      String host = "localhost";
+            prop.put("mail.smtp.starttls.enable","true");
+            prop.put("mail.smtp.host", host);
+            prop.put("mail.smtp.user",de);
+            prop.put("mail.smtp.password", clave);
+            prop.put("mail.smtp.port",587);
+            prop.put("mail.smtp.auth","true");
 
-      // Get system properties
-      Properties properties = System.getProperties();
+            Session sesion = Session.getDefaultInstance(prop,null);
 
-      // Setup mail server
-      properties.setProperty("mail.smtp.host", host);
+            MimeMessage message = new MimeMessage(sesion);
 
-      // Get the default Session object.
-      Session session = Session.getDefaultInstance(properties);
+            message.setFrom(new InternetAddress(de));
 
-      try {
-         // Create a default MimeMessage object.
-         MimeMessage message = new MimeMessage(session);
+            message.setRecipient(Message.RecipientType.TO, new 
+            InternetAddress(para));
 
-         // Set From: header field of the header.
-         message.setFrom(new InternetAddress(from));
+            message.setSubject(asunto);
+            message.setText(mensaje);
 
-         // Set To: header field of the header.
-         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            Transport transport = sesion.getTransport("smtp");
 
-         // Set Subject: header field
-         message.setSubject("This is the Subject Line!");
+            transport.connect(host,de,clave);
 
-         // Now set the actual message
-         message.setText("This is actual message");
+            transport.sendMessage(message, message.getAllRecipients());
 
-         // Send message
-         Transport.send(message);
-         System.out.println("Sent message successfully....");
-      } catch (MessagingException mex) {
-         mex.printStackTrace();
-      }
-   }
+            transport.close();
+
+            enviado = true;
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    return enviado;
+    
+    
+}
+    public static String getRandomNumberString() {
+    // It will generate 6 digit random Number.
+    // from 0 to 999999
+    Random rnd = new Random();
+    int number = rnd.nextInt(999999);
+
+    // this will convert any number sequence into 6 character.
+    return String.format("%06d", number);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,16 +143,16 @@ public class panPasswordRecover extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+        txtNueva = new javax.swing.JTextField();
+        txtNConfirmar = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        buttonRound7 = new roundObjects.ButtonRound();
-        buttonRound8 = new roundObjects.ButtonRound();
+        btnConfirmar = new roundObjects.ButtonRound();
+        btnGuardar = new roundObjects.ButtonRound();
         buttonRound9 = new roundObjects.ButtonRound();
         jLabel21 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
         buttonRound10 = new roundObjects.ButtonRound();
         wContainer = new roundObjects.PanelRound();
         loginWhitePan = new roundObjects.PanelRound();
@@ -393,7 +419,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         jLabel17.setFont(new java.awt.Font("Poppins Medium", 1, 12)); // NOI18N
         jLabel17.setForeground(java.awt.Color.white);
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("Paso 2 - Ingresa las credenciales de un administrador:");
+        jLabel17.setText("Paso 2 - Ingresa el codigo que recibiste en tu correo:");
         jLabel17.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panEMAIL.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 227, 168, 43));
         jLabel17.setText("<html><center>" + "Paso 2 - Ingresa el codigo enviado a tu correo" + "</center></html>");
@@ -408,41 +434,51 @@ public class panPasswordRecover extends javax.swing.JPanel {
 
         jLabel19.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel19.setForeground(java.awt.Color.white);
-        jLabel19.setText("Usuario o correo:");
+        jLabel19.setText("Codigo:");
         panEMAIL.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 293, -1, -1));
 
-        jTextField9.setBackground(new java.awt.Color(77, 77, 77));
-        jTextField9.setPreferredSize(new java.awt.Dimension(100, 30));
-        panEMAIL.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 315, 162, -1));
+        txtCodigo.setBackground(new java.awt.Color(77, 77, 77));
+        txtCodigo.setPreferredSize(new java.awt.Dimension(100, 30));
+        panEMAIL.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 315, 162, -1));
 
         jLabel20.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel20.setForeground(java.awt.Color.white);
         jLabel20.setText("Contraseña nueva:");
         panEMAIL.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 381, -1, -1));
 
-        jTextField10.setBackground(new java.awt.Color(77, 77, 77));
-        jTextField10.setPreferredSize(new java.awt.Dimension(100, 30));
-        panEMAIL.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 315, 200, -1));
+        txtNueva.setBackground(new java.awt.Color(77, 77, 77));
+        txtNueva.setPreferredSize(new java.awt.Dimension(100, 30));
+        panEMAIL.add(txtNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 315, 200, -1));
 
-        jTextField12.setBackground(new java.awt.Color(77, 77, 77));
-        jTextField12.setPreferredSize(new java.awt.Dimension(100, 30));
-        panEMAIL.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 407, 200, -1));
+        txtNConfirmar.setBackground(new java.awt.Color(77, 77, 77));
+        txtNConfirmar.setPreferredSize(new java.awt.Dimension(100, 30));
+        panEMAIL.add(txtNConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 407, 200, -1));
 
         jLabel22.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel22.setForeground(java.awt.Color.white);
         jLabel22.setText("Confirmar contraseña:");
         panEMAIL.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 293, -1, -1));
 
-        buttonRound7.setText("Confirmar");
-        buttonRound7.setPreferredSize(new java.awt.Dimension(130, 40));
-        buttonRound7.setRound(20);
-        buttonRound7.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
-        panEMAIL.add(buttonRound7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 402, -1, -1));
+        btnConfirmar.setText("Confirmar");
+        btnConfirmar.setPreferredSize(new java.awt.Dimension(130, 40));
+        btnConfirmar.setRound(20);
+        btnConfirmar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarActionPerformed(evt);
+            }
+        });
+        panEMAIL.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 402, -1, -1));
 
-        buttonRound8.setText("Guardar contraseña");
-        buttonRound8.setPreferredSize(new java.awt.Dimension(130, 40));
-        buttonRound8.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
-        panEMAIL.add(buttonRound8, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 496, -1, -1));
+        btnGuardar.setText("Guardar contraseña");
+        btnGuardar.setPreferredSize(new java.awt.Dimension(130, 40));
+        btnGuardar.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        panEMAIL.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 496, -1, -1));
 
         buttonRound9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-right.png"))); // NOI18N
         buttonRound9.setText("Atras");
@@ -463,9 +499,9 @@ public class panPasswordRecover extends javax.swing.JPanel {
         jLabel21.setToolTipText("");
         panEMAIL.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 55, 350, -1));
 
-        jTextField11.setBackground(new java.awt.Color(77, 77, 77));
-        jTextField11.setPreferredSize(new java.awt.Dimension(100, 30));
-        panEMAIL.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 84, 200, -1));
+        txtCorreo.setBackground(new java.awt.Color(77, 77, 77));
+        txtCorreo.setPreferredSize(new java.awt.Dimension(100, 30));
+        panEMAIL.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 84, 200, -1));
 
         buttonRound10.setText("Enviar codigo");
         buttonRound10.setPreferredSize(new java.awt.Dimension(130, 40));
@@ -697,14 +733,54 @@ public class panPasswordRecover extends javax.swing.JPanel {
 
     private void buttonRound10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound10ActionPerformed
         // TODO add your handling code here:
-        SendEmail();
+        if (txtCorreo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "vacio");
+        }
+        else   {
+            codigoRandom = getRandomNumberString();
+            correoRecu = txtCorreo.getText();
+            JOptionPane.showMessageDialog(null, correoRecu);
+            if (enviarCorreo(mensajeCortesia + codigoRandom, asuntoDefaultRecover, correoRecu)== true) {
+                txtCodigo.setEnabled(true);
+                btnConfirmar.setEnabled(true);
+            }
+            
+        }
+        
     }//GEN-LAST:event_buttonRound10ActionPerformed
+
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        // TODO add your handling code here:
+        if (txtCodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "vacio");
+        } else {
+            String codigoIngresado = txtCodigo.getText();
+            if (codigoRandom == codigoIngresado ) {
+                customization.notificacion("Codigo Confirmado", 1, "Recuperació de contraseña");
+                btnGuardar.setEnabled(true);
+                txtNueva.setEnabled(true);
+                txtNConfirmar.setEditable(true);
+            }
+        }
+    }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        
+        if (txtNConfirmar.getText().isEmpty() && txtNueva.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"vacio como tu corazón");
+        } else{
+            
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private roundObjects.PanelRound LoginPanel;
     private roundObjects.ButtonRound btnADMIN;
+    private roundObjects.ButtonRound btnConfirmar;
     private roundObjects.ButtonRound btnEMAIL;
+    private roundObjects.ButtonRound btnGuardar;
     private roundObjects.ButtonRound btnPIN;
     private roundObjects.ButtonRound buttonRound1;
     private roundObjects.ButtonRound buttonRound10;
@@ -713,8 +789,6 @@ public class panPasswordRecover extends javax.swing.JPanel {
     private roundObjects.ButtonRound buttonRound4;
     private roundObjects.ButtonRound buttonRound5;
     private roundObjects.ButtonRound buttonRound6;
-    private roundObjects.ButtonRound buttonRound7;
-    private roundObjects.ButtonRound buttonRound8;
     private roundObjects.ButtonRound buttonRound9;
     private roundObjects.PanelRound cardLayoutPan;
     private javax.swing.JLabel jLabel1;
@@ -740,9 +814,6 @@ public class panPasswordRecover extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -750,7 +821,6 @@ public class panPasswordRecover extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lblInterfaz;
     private roundObjects.PanelRound leftWGap;
     private roundObjects.PanelRound loginWhitePan;
@@ -760,6 +830,10 @@ public class panPasswordRecover extends javax.swing.JPanel {
     private javax.swing.JPanel panPIN;
     private roundObjects.PanelRound rightWGap;
     private roundObjects.PanelRound topGap;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtNConfirmar;
+    private javax.swing.JTextField txtNueva;
     private roundObjects.PanelRound wContainer;
     // End of variables declaration//GEN-END:variables
 }

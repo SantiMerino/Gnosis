@@ -147,8 +147,8 @@ public class CEstudents {
     
     
     public boolean CrearUsuarioAlumnoController (){
-        
-        return mdlEstu.RegistrarUsuarioAlumno(1, correo,idalumno , con);
+        String clave = CValidaciones.getMD5("gnosis123");
+        return mdlEstu.RegistrarUsuarioAlumno(1, correo,idalumno ,clave, con);
     }
     
     public boolean AlumnoNuevoController(){
