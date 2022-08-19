@@ -548,14 +548,14 @@ public class frmLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecciona que tipo de usuario eres");
             niveldeusuario = 0;
         } else if (cmbNivel.getSelectedIndex() == 1) {
-            framepornivel = new frmDashboard();
-            niveldeusuario = 1;
+            niveldeusuario = 1;   
+            framepornivel = new frmDashboardTeacher(niveldeusuario);
         } else if (cmbNivel.getSelectedIndex() == 2) {
-            framepornivel = new frmDashboardTeacher();
             niveldeusuario = 2;
+            framepornivel =  new frmDashboardTeacher(niveldeusuario);
         } else  if (cmbNivel.getSelectedIndex() == 3) {
-            framepornivel = new frmDashboardTeacher();
             niveldeusuario = 3;
+            framepornivel = new frmDashboardTeacher(niveldeusuario);
         }
     }//GEN-LAST:event_cmbNivelItemStateChanged
 

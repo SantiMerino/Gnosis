@@ -7,7 +7,6 @@ package gnosis.system;
 
 import Controller.CLogin;
 import java.awt.*;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import roundObjects.ButtonRound;
 
@@ -17,9 +16,20 @@ import roundObjects.ButtonRound;
  */
 public class frmDashboardTeacher extends javax.swing.JFrame {
 
+
+
     /**
      * Creates new form frmDashboard
      */
+    public void setNiveluser(int niveluser) {
+        this.niveluser = niveluser;
+    }
+        public int getNiveluser() {
+        return niveluser;
+    }
+
+    private int niveluser;
+    
     public customization custoObj = new customization();
     panGrades grades = new panGrades();
     CLogin log = new CLogin();
@@ -29,15 +39,22 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
-        if (log.niveluser == 3) {
-            teachersButton.setVisible(true);
-            studentsButton.setVisible(true);
-        } else{
-            teachersButton.setVisible(false);
-            studentsButton.setVisible(false);        
-        }
         
     }
+
+    public frmDashboardTeacher(int niveluser) {
+        this.niveluser = niveluser;
+        initComponents();
+        moodPanel.setVisible(false);
+        searchbar.putClientProperty("innerFocusWidth", 0);
+        searchbar.putClientProperty("focusWidth", 0);
+        teachersButton.setVisible(false);
+        studentsButton.setVisible(false);
+        if (this.niveluser == 3) {
+            teachersButton.setVisible(true);
+            studentsButton.setVisible(true);
+        }
+    }   
     
     public void notificacion(String mensaje,int tipo_mensaje, String tipo_men){
         try{
