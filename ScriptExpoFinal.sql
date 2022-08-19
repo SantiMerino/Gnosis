@@ -522,3 +522,12 @@ USE dbGnosis
 GO
 
 INSERT INTO tbClasificaciones VALUES ('Libro'), ('Presentación'), ('Clase')
+
+CREATE VIEW viewAlumnos
+AS SELECT a.apellidos_alumno, a.nombres_alumno, b.genero, c.grado, d.especialidad, f.seccionAca, h.grupo ,g.seccionTec, a.correo, a.direccion, a.contacto, a.dui, a.fecha_nac, a.codigocarnet
+FROM tbAlumnos a, tbGeneros b, tbGrados c, tbEspecialidades d, tbSeccionAca f, tbSeccionTec g, tbGrupos h
+WHERE a.idgenero = b.idgenero AND a.idgrado = c.idgrado AND c.idespecialidad = d.idespecialidad AND c.idgrupo = h.idgrupo AND c.idseccionAca = f.idseccionAca AND c.idseccionTec = g.idseccionTec
+
+
+DROP VIEW viewAlumnos;
+SELECT * FROM viewAlumnos;

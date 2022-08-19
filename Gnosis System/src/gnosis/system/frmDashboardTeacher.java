@@ -545,40 +545,40 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 
     private void studentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentsButtonActionPerformed
         // TODO add your handling code here:
-//        if(panContainer.getComponentCount()== 0) {
-//            cambiarColorBotonesMenu(studentsButton, "/resources/teacher-white.png");
-//            panContainer.add(new frmStudentsCRUD());
+        if(panContainer.getComponentCount()== 0) {
+            cambiarColorBotonesMenu(studentsButton, "/resources/teacher-white.png");
+            panContainer.add(new panStudents());
+            panContainer.repaint();
+            panContainer.revalidate();
+        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panStudents()) {
+            if (studentsButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
+                cambiarColorBotonesMenu(studentsButton, "/resources/teacher.png");
+                panContainer.removeAll();
+                panContainer.repaint();
+                panContainer.revalidate();
+
+                panContainer.add(new panStudents());
+                panContainer.repaint();
+                panContainer.revalidate();
+            } else{ 
+                notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
+            }
+     
+        }
+//        if (new frmTeachersCRUD()!= null ) {
+//            frmStudentsCRUD frame = new frmStudentsCRUD();
+//            Container c = frame.getContentPane();
+//            panContainer.removeAll();
 //            panContainer.repaint();
 //            panContainer.revalidate();
-//        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new frmStudentsCRUD()) {
-//            if (studentsButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
-//                cambiarColorBotonesMenu(studentsButton, "/resources/teacher.png");
-//                panContainer.removeAll();
-//                panContainer.repaint();
-//                panContainer.revalidate();
-//
-//                panContainer.add(new frmStudentsCRUD());
-//                panContainer.repaint();
-//                panContainer.revalidate();
-//            } else{ 
-//                notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
-//            }
-//     
+//            panContainer.add(BorderLayout.CENTER,c);
+//            panContainer.repaint();
+//            panContainer.revalidate();
+////            new frmTeachersCRUD().setVisible(true);
+////            this.setState(JFrame.ICONIFIED);
+//        } else{
+//            JOptionPane.showMessageDialog(null, "Ya esta abierta esta interfazz");
 //        }
-        if (new frmTeachersCRUD()!= null ) {
-            frmStudentsCRUD frame = new frmStudentsCRUD();
-            Container c = frame.getContentPane();
-            panContainer.removeAll();
-            panContainer.repaint();
-            panContainer.revalidate();
-            panContainer.add(BorderLayout.CENTER,c);
-            panContainer.repaint();
-            panContainer.revalidate();
-//            new frmTeachersCRUD().setVisible(true);
-//            this.setState(JFrame.ICONIFIED);
-        } else{
-            JOptionPane.showMessageDialog(null, "Ya esta abierta esta interfazz");
-        }
           
     }//GEN-LAST:event_studentsButtonActionPerformed
 
