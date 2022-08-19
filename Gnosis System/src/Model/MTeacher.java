@@ -67,29 +67,29 @@ public class MTeacher {
     }
      
     /*Inserción de datos*/
-     public boolean RegistrarDocenteModel(String apellidosdocente, String nombresdocente, String direccion, String dui, 
-             String correo, 
-             String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario, Connection con) {
-         try {
+    public boolean RegistrarDocenteModel(String apellidosdocente, String nombresdocente, String direccion, String dui, 
+            String correo, 
+            String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario, Connection con) {
+        try {
              
-             String query = "INSERT INTO tbDocentes VALUES (?,?,?,?,?,?,?,?,?,?)";
-             ps = con.prepareStatement(query);
-             ps.setString(1, apellidosdocente);
-             ps.setString(2, nombresdocente);
-             ps.setString(3, direccion);
-             ps.setString(4, dui);
-             ps.setString(5, correo);
-             ps.setString(6, fecha_nac);
-             ps.setInt(7, idgrado);
-             ps.setInt(8, idgenero);
-             ps.setString(9, contacto);
-             ps.setInt(10, idusuario);
-             if (ps.executeUpdate () == 1) {
-                 return true;
-             }else {
-                 return false;
-             }
-         } catch (SQLException e) {
+            String query = "INSERT INTO tbDocentes VALUES (?,?,?,?,?,?,?,?,?,?)";
+            ps = con.prepareStatement(query);
+            ps.setString(1, apellidosdocente);
+            ps.setString(2, nombresdocente);
+            ps.setString(3, direccion);
+            ps.setString(4, dui);
+            ps.setString(5, correo);
+            ps.setString(6, fecha_nac);
+            ps.setInt(7, idgrado);
+            ps.setInt(8, idgenero);
+            ps.setString(9, contacto);
+            ps.setInt(10, idusuario);
+            if (ps.executeUpdate () == 1) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al ingresar los datos, verifique la conexion. " + e.toString());
             return false;
         } catch (Exception ex){
@@ -100,44 +100,43 @@ public class MTeacher {
      
      /*Actualizacion de datos*/
      public boolean ActualizarDocenteModel(int ID, String apellidosdocente, String nombresdocente, String direccion, String dui, 
-             String correo, 
-             String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario, Connection con){
+            String correo, 
+            String fecha_nac, int idgrado, int idgenero, String contacto, int idusuario, Connection con){
          try {
-             String query = "UPDATE tbDocentes SET apellidos_docente = ?, nombres_docente = ?, direccion = ?, dui = ?, correo = ?, fecha_nac = ?, idgrado = ?, idgenero = ?, contacto = ?, idusuario = ? WHERE iddocente = ?";
-             ps = con.prepareStatement(query);
-             ps.setString(1, apellidosdocente);
-             ps.setString(2, nombresdocente);
-             ps.setString(3, direccion);
-             ps.setString(4, dui);
-             ps.setString(5, correo);
-             ps.setString(6, fecha_nac);
-             ps.setInt(7, idgrado);
-             ps.setInt(8, idgenero);
-             ps.setString(9, contacto);
-             ps.setInt(10, idusuario);
-             ps.setInt(11, ID);
-             ps.execute();
-             return true;
-         } catch (Exception e) {
-             JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar el registro" + e.toString());
-             return false;
-         }
+            String query = "UPDATE tbDocentes SET apellidos_docente = ?, nombres_docente = ?, direccion = ?, dui = ?, correo = ?, fecha_nac = ?, idgrado = ?, idgenero = ?, contacto = ?, idusuario = ? WHERE iddocente = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, apellidosdocente);
+            ps.setString(2, nombresdocente);
+            ps.setString(3, direccion);
+            ps.setString(4, dui);
+            ps.setString(5, correo);
+            ps.setString(6, fecha_nac);
+            ps.setInt(7, idgrado);
+            ps.setInt(8, idgenero);
+            ps.setString(9, contacto);
+            ps.setInt(10, idusuario);
+            ps.setInt(11, ID);
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar el registro" + e.toString());
+            return false;
+        }
      }
      
      /*Eliminacion de datos*/
      
      public boolean EliminarDocenteModel(int ID, Connection con) {
          
-         try {
-             String query = "DELETE tbDocentes WHERE idDocente = ?";
-             ps = con.prepareStatement(query);
-             ps.setInt(1, ID);
-             ps.execute();
-             return true;
-         } catch (SQLException e) {
-             JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion");
-             return false;
-         }
-         
+        try {
+            String query = "DELETE tbDocentes WHERE idDocente = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, ID);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion");
+            return false;
+        }        
      } 
 }
