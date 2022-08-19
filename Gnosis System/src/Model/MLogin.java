@@ -7,6 +7,7 @@ package Model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +17,9 @@ public class MLogin {
       
     public static int InciarSesion (String user, String clave, int nivel){
         int i = 0;
+        JOptionPane.showMessageDialog(null, user);
+        JOptionPane.showMessageDialog(null, clave);
+        JOptionPane.showMessageDialog(null, nivel);
         Connection conexion = MConnection.getConnectionWithoutParameters();
         PreparedStatement ps;
         try {

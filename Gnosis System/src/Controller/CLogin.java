@@ -11,25 +11,13 @@ import Model.MLogin;
  * @author santi
  */
 public class CLogin {
-    public static String usuario;
-    public String password;
-    public int niveluser;
-    
 
-    public int getNiveluser() {
-        return niveluser;
-    }
-
-    public void setNiveluser(int niveluser) {
-        this.niveluser = niveluser;
-    }
-
-    public static String getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
-    public static void setUsuario(String usuario) {
-        CLogin.usuario = usuario;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getPassword() {
@@ -40,15 +28,28 @@ public class CLogin {
         this.password = password;
     }
 
-    public CLogin() {
+    public int getNiveluser() {
+        return niveluser;
     }
 
-    public CLogin(String password) {
-        this.password = password;
+    public void setNiveluser(int niveluser) {
+        this.niveluser = niveluser;
     }
-       
+    private String usuario;
+    private String password;
+    private int niveluser;
+
+    public CLogin(String usuario, String password, int niveluser) {
+        this.usuario = usuario;
+        this.password = password;
+        this.niveluser = niveluser;
+    }
+
+    public CLogin() {
+    }
     
-    public int ValidarLogin(){
+    public int CIniciarSesion(){
         return MLogin.InciarSesion(usuario, password, niveluser);
     }
+        
 }

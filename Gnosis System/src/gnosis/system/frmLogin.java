@@ -497,11 +497,10 @@ public class frmLogin extends javax.swing.JFrame {
         if (txtPassword.equals("") || txtUsername.getText().equals("") || cmbNivel.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Campos incompletos");
         } else {
-            CLogin.usuario = txtUsername.getText();
-            clog.password = CValidaciones.getMD5(String.valueOf(txtPassword.getPassword()));
-            JOptionPane.showMessageDialog(null, clog.password);
-            clog.niveluser = niveldeusuario;
-            int respuesta = clog.ValidarLogin();
+            int nivel = cmbNivel.getSelectedIndex();
+            String clave = CValidaciones.getMD5(String.valueOf(txtPassword.getPassword()));
+            CLogin constructor = new CLogin(txtUsername.getText(), clave, nivel);
+            int respuesta = constructor.CIniciarSesion();
             if (respuesta == 1) {
                 framepornivel.setVisible(true);
                 this.dispose();
@@ -549,7 +548,7 @@ public class frmLogin extends javax.swing.JFrame {
             niveldeusuario = 0;
         } else if (cmbNivel.getSelectedIndex() == 1) {
             niveldeusuario = 1;   
-            framepornivel = new frmDashboardTeacher(niveldeusuario);
+            framepornivel = new frmDashboard();
         } else if (cmbNivel.getSelectedIndex() == 2) {
             niveldeusuario = 2;
             framepornivel =  new frmDashboardTeacher(niveldeusuario);
