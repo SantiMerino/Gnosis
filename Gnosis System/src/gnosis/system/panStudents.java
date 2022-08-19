@@ -27,6 +27,8 @@ public class panStudents extends javax.swing.JPanel {
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tbEstudiantes.setModel(tablaModel);
         CargarTabla();
+        
+        
     }
     
     final void CargarTabla(){
@@ -60,6 +62,10 @@ public class panStudents extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbEstudiantes = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
+        btnAgregar = new roundObjects.ButtonRound();
+        btnModificar = new roundObjects.ButtonRound();
+        btnEliminar = new roundObjects.ButtonRound();
+        btnVaciar = new roundObjects.ButtonRound();
         jPanel2 = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
@@ -77,23 +83,47 @@ public class panStudents extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbEstudiantes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbEstudiantesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbEstudiantes);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setPreferredSize(new java.awt.Dimension(726, 50));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 726, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
+        btnAgregar.setText("Agregar");
+        btnAgregar.setPreferredSize(new java.awt.Dimension(120, 30));
+        btnAgregar.setRound(20);
+        btnAgregar.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregar);
+
+        btnModificar.setText("Modificar");
+        btnModificar.setPreferredSize(new java.awt.Dimension(120, 30));
+        btnModificar.setRound(20);
+        btnModificar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        jPanel1.add(btnModificar);
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setPreferredSize(new java.awt.Dimension(120, 30));
+        btnEliminar.setRound(20);
+        btnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        jPanel1.add(btnEliminar);
+
+        btnVaciar.setText("Vaciar Campos");
+        btnVaciar.setPreferredSize(new java.awt.Dimension(120, 30));
+        btnVaciar.setRound(20);
+        btnVaciar.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        jPanel1.add(btnVaciar);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -114,8 +144,27 @@ public class panStudents extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        new frmStudentsCRUD().setVisible(true);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void tbEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEstudiantesMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 1) {
+            
+            btnModificar.setEnabled(true);
+            btnEliminar.setEnabled(true);
+            btnAgregar.setEnabled(false);
+        }
+    }//GEN-LAST:event_tbEstudiantesMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private roundObjects.ButtonRound btnAgregar;
+    private roundObjects.ButtonRound btnEliminar;
+    private roundObjects.ButtonRound btnModificar;
+    private roundObjects.ButtonRound btnVaciar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

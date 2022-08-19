@@ -145,8 +145,8 @@ public class MEstudents {
      public boolean ActualizarEstudianteModel(int ID, String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac,
              int idusuario, String codigocarnet, Connection con){
          try {
-             String query = "UPDATE tbAlumnos SET apellidos_alumno = ?, nombres_alumno = ?, idgenero = ?, idgrado = ?, correo = ?, direccion = ?, "
-                     + "contacto = ?, dui = ?, fecha_nac = ?, idusuario = ?, codigocarnet = ? WHERE idalumno = ?";
+             JOptionPane.showMessageDialog(null, idgenero);
+             String query = "UPDATE tbAlumnos SET apellidos_alumno = ?, nombres_alumno = ?, idgenero = ?, idgrado = ?, correo = ?, direccion = ?, contacto = ?, dui = ?, fecha_nac = ? WHERE idalumno = ?";
             ps = con.prepareStatement(query);
              ps.setString(1, ApellidosAlumno);
              ps.setString(2, NombresAlumno);
@@ -157,9 +157,9 @@ public class MEstudents {
              ps.setString(7, contacto);
              ps.setString(8, dui);
              ps.setString(9, fecha_nac);
-             ps.setInt(10, idusuario);
-             ps.setString(11, codigocarnet);
-             ps.setInt(12, ID);
+//             ps.setInt(10, idusuario);
+//             ps.setString(10, codigocarnet);
+             ps.setInt(10, ID);
              ps.execute();
              return true;
          } catch (Exception e) {

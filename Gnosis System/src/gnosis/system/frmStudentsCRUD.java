@@ -64,7 +64,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         txtId.setEditable(false);
         txtIdGenero.setVisible(false);
         txtIdGrado.setVisible(false);
-        txtIdUsuario.setVisible(false);
+//        txtIdUsuario.setVisible(false);
         for(Component c : dtNacimiento.getComponents()){
             ((JComponent)c).setBackground(new Color (217,217,217));
         }
@@ -92,7 +92,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         txtId.setText("");
         txtIdGenero.setText("");
         txtIdGrado.setText("");
-        txtIdUsuario.setText("");
+//        txtIdUsuario.setText("");
         CargarDatos();
         btnGuardar.setEnabled(true);
         btnActualizar.setEnabled(false);
@@ -221,7 +221,6 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         cmbGrado = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
-        txtIdUsuario = new javax.swing.JTextField();
         txtIdGenero = new javax.swing.JTextField();
         txtIdGrado = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -390,9 +389,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                                     .addComponent(jLabel10)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(38, 38, 38)
                                 .addComponent(txtIdGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtIdGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -446,7 +443,6 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                     .addComponent(txtIdGrado, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtIdGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -523,7 +519,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -679,7 +675,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
             
             txtIdGenero.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
             txtIdGrado.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString());
-            txtIdUsuario.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 10).toString());
+//            txtIdUsuario.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 10).toString());
             
             
             DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -691,12 +687,14 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
             
             int idGenero = Integer.parseInt(txtIdGenero.getText());
             int idGrado = Integer.parseInt(txtIdGrado.getText());
-            int idUsuario = Integer.parseInt(txtIdUsuario.getText());
+//            int idUsuario = Integer.parseInt(txtIdUsuario.getText());
             
             int respuesta = BuscarGeneroSeleccionado(idGenero);
             int respuesta2 = BuscarGradoSeleccionado(idGrado);
-            int respuesta4 = BuscarUsuarioSeleccionado(idUsuario);
-//            
+//            int respuesta4 = BuscarUsuarioSeleccionado(idUsuario);
+            
+            JOptionPane.showMessageDialog(null, respuesta);
+            JOptionPane.showMessageDialog(null, respuesta2);
             cmbGenero.setSelectedIndex(respuesta + 1);
             cmbGrado.setSelectedIndex(respuesta2 + 1);
 //            cmbUsuario.setSelectedIndex(respuesta4 + 1);
@@ -870,7 +868,6 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtIdGenero;
     private javax.swing.JTextField txtIdGrado;
-    private javax.swing.JTextField txtIdUsuario;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
