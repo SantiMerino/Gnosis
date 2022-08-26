@@ -159,6 +159,15 @@ FROM
 				</textElement>
 				<text><![CDATA[Instituto Técnico Ricaldone]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="225" y="34" width="80" height="20" uuid="51b112e0-0e98-45dc-8396-6738640213d3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="305" y="34" width="40" height="20" uuid="96858354-21f3-4e22-80a1-98ffbb3b7469"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 	<summary>

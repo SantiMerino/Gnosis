@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="28b97fa6-5528-4f9e-a2c4-5de57e855c05">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="pcodigocarnet" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     tbAlumnos."idalumno" AS tbAlumnos_idalumno,
+     tbAlumnos."apellidos_alumno" AS tbAlumnos_apellidos_alumno,
+     tbAlumnos."nombres_alumno" AS tbAlumnos_nombres_alumno,
+     tbAlumnos."idgenero" AS tbAlumnos_idgenero,
+     tbAlumnos."idgrado" AS tbAlumnos_idgrado,
+     tbAlumnos."correo" AS tbAlumnos_correo,
+     tbAlumnos."direccion" AS tbAlumnos_direccion,
+     tbAlumnos."contacto" AS tbAlumnos_contacto,
+     tbAlumnos."dui" AS tbAlumnos_dui,
+     tbAlumnos."fecha_nac" AS tbAlumnos_fecha_nac,
+     tbAlumnos."codigocarnet" AS tbAlumnos_codigocarnet,
+     tbGrados."grado" AS tbGrados_grado,
+     tbGrados."idseccionAca" AS tbGrados_idseccionAca,
+     tbGrados."idespecialidad" AS tbGrados_idespecialidad,
+     tbGrados."idgrupo" AS tbGrados_idgrupo,
+     tbGrados."idseccionTec" AS tbGrados_idseccionTec
+FROM
+     "dbo"."tbGrados" tbGrados INNER JOIN "dbo"."tbAlumnos" tbAlumnos ON tbGrados."idgrado" = tbAlumnos."idgrado"
+WHERE
+     tbAlumnos."codigocarnet" = $P{pcodigocarnet}
+ AND tbAlumnos."idgrado" = tbGrados."idgrado"]]>
+	</queryString>
+	<field name="tbAlumnos_idalumno" class="java.lang.Integer"/>
+	<field name="tbAlumnos_apellidos_alumno" class="java.lang.String"/>
+	<field name="tbAlumnos_nombres_alumno" class="java.lang.String"/>
+	<field name="tbAlumnos_idgenero" class="java.lang.Integer"/>
+	<field name="tbAlumnos_idgrado" class="java.lang.Integer"/>
+	<field name="tbAlumnos_correo" class="java.lang.String"/>
+	<field name="tbAlumnos_direccion" class="java.lang.String"/>
+	<field name="tbAlumnos_contacto" class="java.lang.String"/>
+	<field name="tbAlumnos_dui" class="java.lang.String"/>
+	<field name="tbAlumnos_fecha_nac" class="java.lang.String"/>
+	<field name="tbAlumnos_codigocarnet" class="java.lang.String"/>
+	<field name="tbGrados_grado" class="java.lang.String"/>
+	<field name="tbGrados_idseccionAca" class="java.lang.Integer"/>
+	<field name="tbGrados_idespecialidad" class="java.lang.Integer"/>
+	<field name="tbGrados_idgrupo" class="java.lang.Integer"/>
+	<field name="tbGrados_idseccionTec" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="255" y="46" width="100" height="20" uuid="6feafe2a-b926-45d4-a117-7276d78a1814"/>
+				<text><![CDATA[Static text]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="455" y="0" width="100" height="20" uuid="b61af1c0-a11c-48bc-8fea-883fa5d43381"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="66" y="22" width="100" height="20" uuid="05a850e1-bb8b-4566-a160-9887f0ded485"/>
+				<text><![CDATA[tbAlumnos_apellidos_alumno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="22" width="100" height="20" uuid="85eb7cac-7847-41b1-9cf4-339b8ec5012d"/>
+				<text><![CDATA[tbAlumnos_nombres_alumno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="22" width="100" height="20" uuid="5dcd8363-9425-4951-bfd9-34ec7c2a10d0"/>
+				<text><![CDATA[tbGrados_grado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="44" y="44" width="100" height="20" uuid="d1757adc-02b5-49d5-93a3-fa3bbe0b7f0b"/>
+				<textFieldExpression><![CDATA[$F{tbAlumnos_apellidos_alumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="209" y="44" width="100" height="20" uuid="609f9a6c-833d-4226-a6c4-c6518c0be2e6"/>
+				<textFieldExpression><![CDATA[$F{tbAlumnos_nombres_alumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="44" width="100" height="20" uuid="d34acb7c-25d3-4a12-afb9-853d4efab750"/>
+				<textFieldExpression><![CDATA[$F{tbGrados_grado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="218" y="29" width="80" height="20" uuid="997f35bb-40c7-491f-9155-0c95a8838dbc"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="298" y="29" width="40" height="20" uuid="ce304285-d617-45a1-b234-a4718563df03"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
