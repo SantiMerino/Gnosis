@@ -25,25 +25,41 @@ public class panTasks extends javax.swing.JPanel {
      * Creates new form frmprueba
      */
     customization custo = new customization();
-    
+
     public panTasks() {
         initComponents();
-        custo.CrearTarea("Proyecto Formativo", "Ciencias", "Joaquin Sanchez", "12/10/2022", 1, mainPan );
+        CargarTareas();
+        //while () {
+            //custo.CrearTarea(rs.getString("nombre_tarea"), rs.get, "Joaquin Sanchez", "12/10/2022", 1, mainPan);
+        
+//}
+
     }
     
+    final void CargarTareas(){
+        CTasks controller = new CTasks();
+        ResultSet datos = controller.CargarTareasPreview();
+        try {
+            while (datos.next()) {                
+                custo.CrearTarea(datos.getString(1), datos.getString(4), datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas cerote feo");
+        }
+        
+    }
+
+    //Constructor para habilitar los botones de agregar tareas
     public panTasks(int nivel) {
         initComponents();
         if (nivel == 1) {
-            custo.CrearTarea("Proyecto Formativo", "Ciencias", "Joaquin Sanchez", "12/10/2022", 1, mainPan );
             btnAgregarTarea.setVisible(false);
-        } else if (nivel == 2){
+        } else if (nivel == 2) {
             btnAgregarTarea.setVisible(true);
-            custo.CrearTarea("Proyecto Formativo", "Ciencias", "Joaquin Sanchez", "12/10/2022", 1, mainPan );
-        } else {
-            btnAgregarTarea.setVisible(false);        
+        } else if (nivel == 3){
+            btnAgregarTarea.setVisible(false);
         }
     }
-       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -155,7 +171,7 @@ public class panTasks extends javax.swing.JPanel {
 
     private void btnAgregarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTareaActionPerformed
         // TODO add your handling code here:
-        frmTasks task =new frmTasks();
+        frmTasks task = new frmTasks();
         task.setVisible(true);
     }//GEN-LAST:event_btnAgregarTareaActionPerformed
 

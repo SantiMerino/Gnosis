@@ -121,13 +121,14 @@ public class customization {
     
     
     //Pruba para crear un componente en otro form parte 1 xd
-    public void CrearTarea(String nombre_tarea, String nombre_materia, String nombre_docente, String fecha_v, int estado, JPanel container){
-    for (int i = 0; i < 5; i++) {
+    public void CrearTarea(String nombre_tarea, String nombre_materia, String nombre_docente,String fecha_i ,String fecha_v, String estado, JPanel container){
             //Crear labels   
         JLabel nTarea = new JLabel();
         JLabel nMateria = new JLabel();
         JLabel nDocente = new JLabel();
-        JLabel nFecha = new JLabel();
+        JLabel nFechaV = new JLabel();
+        //No se usa jeje
+        JLabel nFechaI = new JLabel();
         
         //Crear botones redondeados
         ButtonRound btnCarpeta = new ButtonRound();
@@ -151,19 +152,22 @@ public class customization {
         nTarea.setText(nombre_tarea);
         nMateria.setText(nombre_materia);
         nDocente.setText(nombre_docente);
-        nFecha.setText(fecha_v);
+        nFechaV.setText(fecha_v);
+        nFechaI.setText(fecha_i);
         
         //Asignar tipo de letra a cada label
         nTarea.setFont(new Font("Poppins", Font.BOLD,25));
         nMateria.setFont(new Font("Poppins", Font.PLAIN, 12));
         nDocente.setFont(new Font("Poppins", Font.PLAIN, 12));
-        nFecha.setFont(new Font("Poppins", Font.PLAIN, 12));
+        nFechaV.setFont(new Font("Poppins", Font.PLAIN, 12));
+        nFechaI.setFont(new Font("Poppins", Font.PLAIN, 12));
         
         //Asignar color de letra a cada label
         nTarea.setForeground(new Color(32,32,32));
         nMateria.setForeground(new Color(32,32,32));
         nDocente.setForeground(new Color(32,32,32));
-        nFecha.setForeground(new Color(32,32,32));
+        nFechaV.setForeground(new Color(32,32,32));
+        nFechaI.setForeground(new Color(32,32,32));
         
         //Se agregan los dos paneles principales al que va a contener todos o el panel contenedor en si
         pan1.setLayout(new BorderLayout(10, 0));
@@ -202,11 +206,11 @@ public class customization {
         
         pan4.add(BorderLayout.WEST , nMateria);
         nMateria.setPreferredSize(new Dimension(150, 40));
-        nMateria.setHorizontalAlignment(JLabel.LEFT);
+        nMateria.setHorizontalAlignment(JLabel.LEFT);      
         
-        pan4.add(BorderLayout.EAST , nFecha);
-        nFecha.setHorizontalAlignment(JLabel.LEFT);
-        nFecha.setPreferredSize(new Dimension(200, 40));
+        pan4.add(BorderLayout.EAST , nFechaV);
+        nFechaV.setHorizontalAlignment(JLabel.LEFT);
+        nFechaV.setPreferredSize(new Dimension(200, 40));
         
         pan4.add(BorderLayout.CENTER , nDocente);
         nDocente.setPreferredSize(new Dimension(150, 40));
@@ -285,7 +289,7 @@ public class customization {
         
         //Tengo que hacer un metodo para dependiendo el id del estado se asigne un icono :3
         //Tengo que hacer que dependiendo la materia el color de los paneles vería :P
-        }        
+              
     }
     
     

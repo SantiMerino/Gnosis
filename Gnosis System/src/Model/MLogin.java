@@ -15,26 +15,29 @@ import javax.swing.JOptionPane;
  */
 public class MLogin {
       
-    public static int InciarSesion (String user, String clave, int nivel){
+    public static int InciarSesion (String user, String clave){
         int i = 0;
 //        JOptionPane.showMessageDialog(null, user);
 //        JOptionPane.showMessageDialog(null, clave);
 //        JOptionPane.showMessageDialog(null, nivel);
         Connection conexion = MConnection.getConnectionWithoutParameters();
         PreparedStatement ps;
+        int nivel;
         try {
-            ps = conexion.prepareStatement("SELECT * FROM tbUsuario WHERE username = ? AND clave = ? AND idnivelusuario = ?");
+            ps = conexion.prepareStatement("SELECT * FROM tbUsuario WHERE username = ? AND clave = ?");
             ps.setString(1, user);
             ps.setString(2, clave);
-            ps.setInt(3, nivel);
+//            ps.setInt(3, nivel);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                i = 1;
-            } else {
-                i = 0;
+                nivel = rs.getInt(2);
+                return nivel;
+            }else {
+                JOptionPane.showMessageDialog(null, "Las credenciales  son incorrectas o no existen", "Creedenciales", JOptionPane.ERROR_MESSAGE);
+                return 0;
             }
-            return i;
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error " + e.toString());
             return 0;
         }
     }

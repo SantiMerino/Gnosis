@@ -530,5 +530,16 @@ FROM tbAlumnos a, tbGeneros b, tbGrados c, tbEspecialidades d, tbSeccionAca f, t
 WHERE a.idgenero = b.idgenero AND a.idgrado = c.idgrado AND c.idespecialidad = d.idespecialidad AND c.idgrupo = h.idgrupo AND c.idseccionAca = f.idseccionAca AND c.idseccionTec = g.idseccionTec
 
 
-DROP VIEW viewAlumnos;
-SELECT * FROM viewAlumnos;
+select * from VwTareasDocentes;
+
+SELECT a.nombretarea as [Tarea] , c.tipotarea as [Tipo],a.fechadeinicio  as [Fecha I.], a.fechavencimiento AS [Fecha V.], CONCAT(f.materia, i.modulo) AS [Materia], CONCAT(g.nombres_docente, ' ', g.apellidos_docente) AS [Docente],h.estadoperfil as [Estado]
+--Hago un concat con la materia porque si es tecnica quedaría vacia entonces lo que se uniria sería la materia con nada y asi se mostraría :3 y viceversa
+FROM tbTareas a, tbPerfiles b, tbTipoTarea c, tbTipoPerfiles d, tbMateriaDocentes e, tbMaterias f, tbDocentes g, tbEstadoPerfiles h, tbModulos i
+WHERE a.idperfil = b.idperfil AND b.idmateriadocente = e.idmateriadocente AND a.idtipotarea = c.idtipotarea AND e.idmateria = f.idmateria AND e.idmodulo = i.idmodulo AND e.iddocente = g.iddocente AND b.idestadoperfil = h.idestadoperfil
+
+
+SELECT * FROM tbDocentes;
+SELECT * FROM tbPerfiles;
+SELECT * FROM tbTareas
+SELECT * FROM tbMateriaDocentes
+SELECT * FROM viewPerfiles;

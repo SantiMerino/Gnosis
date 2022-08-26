@@ -13,6 +13,12 @@ import Controller.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.geom.RoundRectangle2D;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 /**
@@ -28,6 +34,8 @@ public class frmLogin extends javax.swing.JFrame {
     int yMouse;
     int niveldeusuario;
     JFrame framepornivel;
+    ArrayList datosuser;
+    DefaultListModel<String> modelodatos;
     
     customization objCusto = new customization();
     
@@ -70,8 +78,6 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         buttonRound4 = new roundObjects.ButtonRound();
-        cmbNivel = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
         wContainer = new roundObjects.PanelRound();
         loginWhitePan = new roundObjects.PanelRound();
         topGap = new roundObjects.PanelRound();
@@ -170,20 +176,6 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         bContainer.add(buttonRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 170, 30));
-
-        cmbNivel.setBackground(new java.awt.Color(69, 73, 74));
-        cmbNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Estudiante", "Docente", "Administrador" }));
-        cmbNivel.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbNivelItemStateChanged(evt);
-            }
-        });
-        bContainer.add(cmbNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 170, -1));
-
-        jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel5.setForeground(java.awt.Color.white);
-        jLabel5.setText("Eres un:");
-        bContainer.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
         LoginPanel.add(bContainer);
 
@@ -494,18 +486,24 @@ public class frmLogin extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         CLogin clog = new CLogin();
-        if (txtPassword.equals("") || txtUsername.getText().equals("") || cmbNivel.getSelectedIndex() == 0) {
+        if (txtPassword.equals("") || txtUsername.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campos incompletos");
         } else {
-            int nivel = cmbNivel.getSelectedIndex();
             String clave = CValidaciones.getMD5(String.valueOf(txtPassword.getPassword()));
-            CLogin constructor = new CLogin(txtUsername.getText(), clave, nivel);
-            int respuesta = constructor.CIniciarSesion();
-            if (respuesta == 1) {
+            CLogin constructor = new CLogin(txtUsername.getText(), clave);
+            niveldeusuario = constructor.CIniciarSesion();
+            if (niveldeusuario == 1 ) {
+                framepornivel = new frmDashboard();
                 framepornivel.setVisible(true);
                 this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Credenciales erroneas");
+            }else if(niveldeusuario == 2){
+                framepornivel = new frmDashboardTeacher(2);
+                framepornivel.setVisible(true);
+                this.dispose();         
+            }else if(niveldeusuario == 3){ 
+                framepornivel = new frmDashboardTeacher(3);
+                framepornivel.setVisible(true);
+                this.dispose(); 
             }
         }
         
@@ -540,23 +538,6 @@ public class frmLogin extends javax.swing.JFrame {
         returnLogin.setVisible(false);
         
     }//GEN-LAST:event_returnLoginActionPerformed
-
-    private void cmbNivelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbNivelItemStateChanged
-        // TODO add your handling code here:
-        if (cmbNivel.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Selecciona que tipo de usuario eres");
-            niveldeusuario = 0;
-        } else if (cmbNivel.getSelectedIndex() == 1) {
-            niveldeusuario = 1;   
-            framepornivel = new frmDashboard();
-        } else if (cmbNivel.getSelectedIndex() == 2) {
-            niveldeusuario = 2;
-            framepornivel =  new frmDashboardTeacher(niveldeusuario);
-        } else  if (cmbNivel.getSelectedIndex() == 3) {
-            niveldeusuario = 3;
-            framepornivel = new frmDashboardTeacher(niveldeusuario);
-        }
-    }//GEN-LAST:event_cmbNivelItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -608,14 +589,12 @@ public class frmLogin extends javax.swing.JFrame {
     private roundObjects.ButtonRound buttonRound3;
     private roundObjects.ButtonRound buttonRound4;
     private roundObjects.ButtonRound buttonRound5;
-    private javax.swing.JComboBox<String> cmbNivel;
     private roundObjects.PanelRound container;
     private roundObjects.PanelRound controlsPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private roundObjects.PanelRound leftGap;
     private roundObjects.PanelRound leftWGap;
     private roundObjects.PanelRound loginWhitePan;

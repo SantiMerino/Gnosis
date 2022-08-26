@@ -132,4 +132,8 @@ public class CTasks {
     public boolean EliminarTareaController() {
         return mdlTask.EliminarTareaModel(ID, con);
     }
+    
+    public ResultSet CargarTareasPreview(){
+        return mdlTask.CargarTareasPrev();
+    }
 }

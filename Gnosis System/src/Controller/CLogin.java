@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.MLogin;
+import java.sql.ResultSet;
 
 /**
  *
@@ -39,17 +40,17 @@ public class CLogin {
     private String password;
     private int niveluser;
 
-    public CLogin(String usuario, String password, int niveluser) {
+    public CLogin(String usuario, String password) {
         this.usuario = usuario;
         this.password = password;
-        this.niveluser = niveluser;
+//        this.niveluser = niveluser;
     }
 
     public CLogin() {
     }
     
     public int CIniciarSesion(){
-        return MLogin.InciarSesion(usuario, password, niveluser);
+        return MLogin.InciarSesion(usuario, password);
     }
         
 }

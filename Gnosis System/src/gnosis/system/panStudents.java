@@ -5,9 +5,19 @@
 package gnosis.system;
 
 import Controller.CComboboxEstudiantes;
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -65,7 +75,7 @@ public class panStudents extends javax.swing.JPanel {
         btnAgregar = new roundObjects.ButtonRound();
         btnModificar = new roundObjects.ButtonRound();
         btnEliminar = new roundObjects.ButtonRound();
-        btnVaciar = new roundObjects.ButtonRound();
+        btnReporte = new roundObjects.ButtonRound();
         jPanel2 = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
@@ -119,11 +129,17 @@ public class panStudents extends javax.swing.JPanel {
         btnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
         jPanel1.add(btnEliminar);
 
-        btnVaciar.setText("Vaciar Campos");
-        btnVaciar.setPreferredSize(new java.awt.Dimension(120, 30));
-        btnVaciar.setRound(20);
-        btnVaciar.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
-        jPanel1.add(btnVaciar);
+        btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square-27x27.png"))); // NOI18N
+        btnReporte.setText(" Reporte");
+        btnReporte.setPreferredSize(new java.awt.Dimension(96, 30));
+        btnReporte.setRound(20);
+        btnReporte.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
+        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnReporte);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -134,7 +150,7 @@ public class panStudents extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 726, Short.MAX_VALUE)
+            .addGap(0, 801, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,12 +175,33 @@ public class panStudents extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tbEstudiantesMouseClicked
 
+    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+        // TODO add your handling code here:
+        Connection conexion = Controller.CConnection.getConnectionControllerWithoutParameters();
+        try {
+            JasperReport reporte = null;
+            String path = "src\\Reportes\\ReporteAlumnos.jasper";
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path); 
+            
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, conexion);         
+            JasperViewer view = new JasperViewer(jprint, false);
+            
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+            
+        } catch (JRException ex) {
+           JOptionPane.showMessageDialog(null, "cagaste");
+        }
+        
+        
+    }//GEN-LAST:event_btnReporteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private roundObjects.ButtonRound btnAgregar;
     private roundObjects.ButtonRound btnEliminar;
     private roundObjects.ButtonRound btnModificar;
-    private roundObjects.ButtonRound btnVaciar;
+    private roundObjects.ButtonRound btnReporte;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

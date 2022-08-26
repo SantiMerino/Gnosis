@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ca8001b6-c4b5-4895-b8d4-d913a4a79789">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbAlumnos."apellidos_alumno" AS tbAlumnos_apellidos_alumno,
+     tbAlumnos."nombres_alumno" AS tbAlumnos_nombres_alumno,
+     tbAlumnos."idgenero" AS tbAlumnos_idgenero,
+     tbAlumnos."idgrado" AS tbAlumnos_idgrado,
+     tbAlumnos."correo" AS tbAlumnos_correo,
+     tbAlumnos."direccion" AS tbAlumnos_direccion,
+     tbAlumnos."contacto" AS tbAlumnos_contacto,
+     tbAlumnos."dui" AS tbAlumnos_dui,
+     tbAlumnos."fecha_nac" AS tbAlumnos_fecha_nac,
+     tbAlumnos."codigocarnet" AS tbAlumnos_codigocarnet,
+     tbGeneros."genero" AS tbGeneros_genero,
+     tbGrados."grado" AS tbGrados_grado,
+     tbGrados."idseccionAca" AS tbGrados_idseccionAca,
+     tbGrados."idespecialidad" AS tbGrados_idespecialidad,
+     tbGrados."idgrupo" AS tbGrados_idgrupo,
+     tbGrados."idseccionTec" AS tbGrados_idseccionTec,
+     tbSeccionTec."seccionTec" AS tbSeccionTec_seccionTec,
+     tbSeccionAca."seccionAca" AS tbSeccionAca_seccionAca,
+     tbEspecialidades."especialidad" AS tbEspecialidades_especialidad,
+     tbGrupos."grupo" AS tbGrupos_grupo,
+     tbAlumnos."idalumno" AS tbAlumnos_idalumno
+FROM
+     "dbo"."tbGeneros" tbGeneros INNER JOIN "dbo"."tbAlumnos" tbAlumnos ON tbGeneros."idgenero" = tbAlumnos."idgenero"
+     INNER JOIN "dbo"."tbGrados" tbGrados ON tbAlumnos."idgrado" = tbGrados."idgrado"
+     INNER JOIN "dbo"."tbSeccionTec" tbSeccionTec ON tbGrados."idseccionTec" = tbSeccionTec."idseccionTec"
+     INNER JOIN "dbo"."tbSeccionAca" tbSeccionAca ON tbGrados."idseccionAca" = tbSeccionAca."idseccionAca"
+     INNER JOIN "dbo"."tbEspecialidades" tbEspecialidades ON tbGrados."idespecialidad" = tbEspecialidades."idespecialidad"
+     INNER JOIN "dbo"."tbGrupos" tbGrupos ON tbGrados."idgrupo" = tbGrupos."idgrupo"]]>
+	</queryString>
+	<field name="tbAlumnos_apellidos_alumno" class="java.lang.String"/>
+	<field name="tbAlumnos_nombres_alumno" class="java.lang.String"/>
+	<field name="tbAlumnos_idgenero" class="java.lang.Integer"/>
+	<field name="tbAlumnos_idgrado" class="java.lang.Integer"/>
+	<field name="tbAlumnos_correo" class="java.lang.String"/>
+	<field name="tbAlumnos_direccion" class="java.lang.String"/>
+	<field name="tbAlumnos_contacto" class="java.lang.String"/>
+	<field name="tbAlumnos_dui" class="java.lang.String"/>
+	<field name="tbAlumnos_fecha_nac" class="java.lang.String"/>
+	<field name="tbAlumnos_codigocarnet" class="java.lang.String"/>
+	<field name="tbGeneros_genero" class="java.lang.String"/>
+	<field name="tbGrados_grado" class="java.lang.String"/>
+	<field name="tbGrados_idseccionAca" class="java.lang.Integer"/>
+	<field name="tbGrados_idespecialidad" class="java.lang.Integer"/>
+	<field name="tbGrados_idgrupo" class="java.lang.Integer"/>
+	<field name="tbGrados_idseccionTec" class="java.lang.Integer"/>
+	<field name="tbSeccionTec_seccionTec" class="java.lang.String"/>
+	<field name="tbSeccionAca_seccionAca" class="java.lang.String"/>
+	<field name="tbEspecialidades_especialidad" class="java.lang.String"/>
+	<field name="tbGrupos_grupo" class="java.lang.String"/>
+	<field name="tbAlumnos_idalumno" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="77" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="455" y="0" width="100" height="20" uuid="5fc11d6c-b899-4cbc-a84a-a0a382cec643"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="143" y="20" width="259" height="43" uuid="32b2310e-7a46-4e35-859e-b79a344e448c"/>
+				<textElement>
+					<font fontName="Poppins Black" size="28"/>
+				</textElement>
+				<text><![CDATA[Nomina Alumnos]]></text>
+			</staticText>
+			<image>
+				<reportElement x="78" y="10" width="45" height="53" uuid="36545d22-1d19-4e0d-8d4d-d05e483b4e04"/>
+				<imageExpression><![CDATA["C:\\Users\\santi\\OneDrive\\Imágenes\\Saved Pictures\\Gojo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="18" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="8ff5d1a7-9281-4fff-9dcd-43e0ceedc573"/>
+				<textElement>
+					<font fontName="Poppins Medium"/>
+				</textElement>
+				<text><![CDATA[Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="6c07a388-23cd-401f-9483-0edfa532fc3e"/>
+				<textElement>
+					<font fontName="Poppins Medium"/>
+				</textElement>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="66" height="20" uuid="e2cc4517-a268-4cc2-a495-b4d75ee1a81a"/>
+				<textElement>
+					<font fontName="Poppins Medium"/>
+				</textElement>
+				<text><![CDATA[Genero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="266" y="0" width="100" height="20" uuid="6cac42b3-3d10-49a6-a63f-943d9ff50e37"/>
+				<textElement>
+					<font fontName="Poppins Medium"/>
+				</textElement>
+				<text><![CDATA[Fecha N.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="366" y="0" width="100" height="20" uuid="0e2bdda9-a1c2-461a-9e38-1fd80664ac17"/>
+				<textElement>
+					<font fontName="Poppins Medium"/>
+				</textElement>
+				<text><![CDATA[Especialidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="48" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="47" uuid="f8263757-cb07-4f2d-921d-bd095a434f7d"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbAlumnos_apellidos_alumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="1" width="100" height="47" uuid="5bfdbd1d-2bcd-4420-a37c-968bea72f40f"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbAlumnos_nombres_alumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="66" height="47" uuid="c2c24c68-1d50-49c9-b9b6-fffd0388afa0"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbGeneros_genero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="266" y="0" width="100" height="47" uuid="8f07468f-532a-4b02-bb61-52dc4655e755"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbAlumnos_fecha_nac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="366" y="0" width="100" height="47" uuid="df27904d-e92b-413b-80f5-18c9a0796970"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbEspecialidades_especialidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="416" y="34" width="139" height="20" uuid="a9edbbcc-47e9-4b39-8335-164bb6d9aa2d"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
+				<text><![CDATA[Instituto Técnico Ricaldone]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="1" splitType="Stretch"/>
+	</summary>
+</jasperReport>
