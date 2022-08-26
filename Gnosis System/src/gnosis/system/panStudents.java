@@ -7,9 +7,10 @@ package gnosis.system;
 import Controller.CComboboxEstudiantes;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
@@ -28,6 +29,7 @@ public class panStudents extends javax.swing.JPanel {
     /**
      * Creates new form panStudents
      */
+    String idSeleccionado;
     
     DefaultTableModel tablaModel;
     public panStudents() {
@@ -72,6 +74,7 @@ public class panStudents extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbEstudiantes = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
+        txtCarnet = new javax.swing.JTextField();
         btnAgregar = new roundObjects.ButtonRound();
         btnModificar = new roundObjects.ButtonRound();
         btnEliminar = new roundObjects.ButtonRound();
@@ -107,6 +110,11 @@ public class panStudents extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(726, 50));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
+        txtCarnet.setBackground(new java.awt.Color(255, 255, 255));
+        txtCarnet.setForeground(new java.awt.Color(0, 0, 0));
+        txtCarnet.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel1.add(txtCarnet);
+
         btnAgregar.setText("Agregar");
         btnAgregar.setPreferredSize(new java.awt.Dimension(100, 40));
         btnAgregar.setRound(20);
@@ -133,6 +141,11 @@ public class panStudents extends javax.swing.JPanel {
         btnReporteEsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square.png"))); // NOI18N
         btnReporteEsc.setPreferredSize(new java.awt.Dimension(40, 40));
         btnReporteEsc.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
+        btnReporteEsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteEscActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnReporteEsc);
 
         btnNomina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text.png"))); // NOI18N
@@ -173,10 +186,12 @@ public class panStudents extends javax.swing.JPanel {
     private void tbEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEstudiantesMouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 1) {
-            
-            btnModificar.setEnabled(true);
-            btnEliminar.setEnabled(true);
-            btnAgregar.setEnabled(false);
+            JTable rcp = (JTable) evt.getSource();
+            txtCarnet.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 10).toString());
+            idSeleccionado = txtCarnet.getText();
+//            btnModificar.setEnabled(true);
+//            btnEliminar.setEnabled(true);
+//            btnAgregar.setEnabled(false);
         }
     }//GEN-LAST:event_tbEstudiantesMouseClicked
 
@@ -201,6 +216,31 @@ public class panStudents extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnNominaActionPerformed
 
+    private void btnReporteEscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteEscActionPerformed
+        // TODO add your handling code here:
+               Connection conexion = Controller.CConnection.getConnectionControllerWithoutParameters();
+               String carnet = idSeleccionado;
+        try {
+            JasperReport reporte = null;
+            String path = "src\\Reportes\\ReporteAlumnoEspe.jasper";
+            Map param = new HashMap();
+            param.put("codigocarnet", carnet);
+//            JOptionPane.showMessageDialog(null, idSeleccionado);
+            
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path); 
+            
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, param, conexion);         
+            JasperViewer view = new JasperViewer(jprint, false);
+            
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+            
+        } catch (JRException ex) {
+           JOptionPane.showMessageDialog(null, "cagaste");
+        }
+        
+    }//GEN-LAST:event_btnReporteEscActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private roundObjects.ButtonRound btnAgregar;
@@ -212,5 +252,6 @@ public class panStudents extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbEstudiantes;
+    private javax.swing.JTextField txtCarnet;
     // End of variables declaration//GEN-END:variables
 }
