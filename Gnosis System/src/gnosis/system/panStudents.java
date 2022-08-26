@@ -75,7 +75,8 @@ public class panStudents extends javax.swing.JPanel {
         btnAgregar = new roundObjects.ButtonRound();
         btnModificar = new roundObjects.ButtonRound();
         btnEliminar = new roundObjects.ButtonRound();
-        btnReporte = new roundObjects.ButtonRound();
+        btnReporteEsc = new roundObjects.ButtonRound();
+        btnNomina = new roundObjects.ButtonRound();
         jPanel2 = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
@@ -107,7 +108,7 @@ public class panStudents extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         btnAgregar.setText("Agregar");
-        btnAgregar.setPreferredSize(new java.awt.Dimension(120, 30));
+        btnAgregar.setPreferredSize(new java.awt.Dimension(100, 40));
         btnAgregar.setRound(20);
         btnAgregar.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -118,28 +119,32 @@ public class panStudents extends javax.swing.JPanel {
         jPanel1.add(btnAgregar);
 
         btnModificar.setText("Modificar");
-        btnModificar.setPreferredSize(new java.awt.Dimension(120, 30));
+        btnModificar.setPreferredSize(new java.awt.Dimension(100, 40));
         btnModificar.setRound(20);
         btnModificar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
         jPanel1.add(btnModificar);
 
         btnEliminar.setText("Eliminar");
-        btnEliminar.setPreferredSize(new java.awt.Dimension(120, 30));
+        btnEliminar.setPreferredSize(new java.awt.Dimension(100, 40));
         btnEliminar.setRound(20);
         btnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
         jPanel1.add(btnEliminar);
 
-        btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square-27x27.png"))); // NOI18N
-        btnReporte.setText(" Reporte");
-        btnReporte.setPreferredSize(new java.awt.Dimension(96, 30));
-        btnReporte.setRound(20);
-        btnReporte.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
-        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+        btnReporteEsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square.png"))); // NOI18N
+        btnReporteEsc.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnReporteEsc.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
+        jPanel1.add(btnReporteEsc);
+
+        btnNomina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text.png"))); // NOI18N
+        btnNomina.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnNomina.setRound(20);
+        btnNomina.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
+        btnNomina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReporteActionPerformed(evt);
+                btnNominaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnReporte);
+        jPanel1.add(btnNomina);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -175,7 +180,7 @@ public class panStudents extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tbEstudiantesMouseClicked
 
-    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+    private void btnNominaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNominaActionPerformed
         // TODO add your handling code here:
         Connection conexion = Controller.CConnection.getConnectionControllerWithoutParameters();
         try {
@@ -194,14 +199,15 @@ public class panStudents extends javax.swing.JPanel {
         }
         
         
-    }//GEN-LAST:event_btnReporteActionPerformed
+    }//GEN-LAST:event_btnNominaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private roundObjects.ButtonRound btnAgregar;
     private roundObjects.ButtonRound btnEliminar;
     private roundObjects.ButtonRound btnModificar;
-    private roundObjects.ButtonRound btnReporte;
+    private roundObjects.ButtonRound btnNomina;
+    private roundObjects.ButtonRound btnReporteEsc;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

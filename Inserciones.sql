@@ -1,5 +1,6 @@
 CREATE DATABASE dbGnosis
 GO
+
 USE dbGnosis
 GO
 
@@ -445,7 +446,7 @@ FOREIGN KEY (idperfil)
 REFERENCES tbPerfiles (idperfil)
 
 
-USE dbGnosis
+
 CREATE TABLE tbEventos(
     idevento int not null primary key identity (1,1),
     nombreevento varchar(50) not null,
@@ -471,8 +472,7 @@ CREATE TABLE tbTipoEventos(
 --    grado varchar(50) not null
 --);
 
-ALTER TABLE tbDocentes
-DROP COLUMN idusuario
+
 
 
 ALTER TABLE tbEventos
@@ -487,7 +487,7 @@ ADD CONSTRAINT fk_eventogrados
 FOREIGN KEY (idgrado)
 REFERENCES tbGrados (idgrado)
 
-INSERT INTO tbGeneros VALUES ('Masculino'),('Femenino'),('Genere'); --
+INSERT INTO tbGeneros VALUES ('Masculino'),('Femenino'); --
 
 INSERT INTO tbSeccionAca VALUES ('A'), ('B')
 
@@ -509,7 +509,7 @@ INSERT INTO tbTipoPerfiles VALUES ('Cotidianas'), ('Proyecto Formativo'), ('Recu
 
 INSERT INTO tbEspecialidades VALUES ('Desarrollo de software'), ('Electronica'), ('Electromecanica'), ('Contaduria'), ('Automotriz'), ('Arquitectura')
 
-INSERT INTO tbGrupos VALUES (1), (2)
+INSERT INTO tbGrupos VALUES ('1'), ('2')
 
 INSERT INTO tbGrados VALUES ('Septimo',1,null, 1, 1), ('Octavo',1,null, 1, 1), ('Noveno',1,null, 1, 1), ('Primer Año',1,1, 1, 1), ('Segundo Año',1,1, 1, 1), ('Tercer Año',1,1, 1, 1)
 
@@ -519,9 +519,6 @@ INSERT INTO tbNivelUsuarios VALUES ('Estudiante'), ('Docente'), ('Admin')
 
 INSERT INTO tbPortafolioCategoria VALUES ('Clases'), ('Examenes'), ('Tareas')
 
-USE dbGnosis
-GO
-
 INSERT INTO tbClasificaciones VALUES ('Libro'), ('Presentación'), ('Clase')
 
 CREATE VIEW viewAlumnos
@@ -529,17 +526,92 @@ AS SELECT a.apellidos_alumno, a.nombres_alumno, b.genero, c.grado, d.especialida
 FROM tbAlumnos a, tbGeneros b, tbGrados c, tbEspecialidades d, tbSeccionAca f, tbSeccionTec g, tbGrupos h
 WHERE a.idgenero = b.idgenero AND a.idgrado = c.idgrado AND c.idespecialidad = d.idespecialidad AND c.idgrupo = h.idgrupo AND c.idseccionAca = f.idseccionAca AND c.idseccionTec = g.idseccionTec
 
+--Inserciones en la tabla tbUsuario
+INSERT INTO tbAlumnos VALUES ('Merino Herrera', 'José Santiago', 1, 1, 'jose@gmail.com', 'Colonia la zacamil', '34540987', '123213', '2004-08-15', '20190016'),
+('Gonzales Castillo', 'Jose Ernesto', 1, 1, 'josecas@gmail.com', 'Apopa', '09124567', '213412', '2004-12-03', '20210590'),
+('Castillo Monterrosa', 'Luis Alfredo', 1, 2, 'luisalfredo@gmail.com', 'San Marcos', '76099812', '213141', '2003-11-09', '20210680'),
+('Melendez Altano', 'Alexandra Fernanda', 2, 3, 'Alexaa@gmail.com', 'Final Colonia escalon', '78674456', '12345', '2003-08-16', '20180067'),
+('Trujillo Aleman', 'Andrea Melisa', 2, 4, 'Andreaalemaan@gmail.com', 'Soyapango colonia las margaritas', '6783-0943', '45242', '2003-05-10', '20201345') 
 
-select * from VwTareasDocentes;
+INSERT INTO tbDocentes VALUES ('Guinea Henriquez', 'Josue Alberto', 'Final calle el algodon', '09891231', 'josue_guinea@gmail.com', '1990-09-12', 3, 1, '7708-6545', 1),
+('Sanchez Sanchez', 'Alexander Armando', 'Final calle motrocros', '98765430', 'alexander_sanchez@gmail.com', '1992-10-07', 2, 1, '8076-4564', 2),
+('Hernandez Henriquez', 'Pablo José', 'Colonia los almendros, San Salvador', '5463780 ', 'hernandez_jose@gmail.com', '1989-07-15', 1, 1, '7612-0989', 3),
+('Castillo Campos', 'Luis Armando', 'Final colonia miralvalle', '34758911', 'castillo_armando@gmail.com', '1995-09-12', 1, 1, '7705-1231', 3),
+('Flores Molina', 'Pedro Orlando', 'Calle los granados', '12436401', 'flores_pedro@gmail.com', '1999-10-03', 1, 2, '7906-6898', 1)
 
-SELECT a.nombretarea as [Tarea] , c.tipotarea as [Tipo],a.fechadeinicio  as [Fecha I.], a.fechavencimiento AS [Fecha V.], CONCAT(f.materia, i.modulo) AS [Materia], CONCAT(g.nombres_docente, ' ', g.apellidos_docente) AS [Docente],h.estadoperfil as [Estado]
---Hago un concat con la materia porque si es tecnica quedaría vacia entonces lo que se uniria sería la materia con nada y asi se mostraría :3 y viceversa
-FROM tbTareas a, tbPerfiles b, tbTipoTarea c, tbTipoPerfiles d, tbMateriaDocentes e, tbMaterias f, tbDocentes g, tbEstadoPerfiles h, tbModulos i
-WHERE a.idperfil = b.idperfil AND b.idmateriadocente = e.idmateriadocente AND a.idtipotarea = c.idtipotarea AND e.idmateria = f.idmateria AND e.idmodulo = i.idmodulo AND e.iddocente = g.iddocente AND b.idestadoperfil = h.idestadoperfil
+INSERT INTO tbUsuario VALUES(3, 'root', 'c6f00988430dbc8e83a7bc7ab5256346', '123', 1, 1, 1),
+(2, 'Luis Castillo', '81dc9bdb52d04dc20036dbd8313ed055', '123', 1, 2, 4),
+(1, 'Jose Gonzalez', 'd93591bdf7860e1e4ee2fca799911215', '123', 1, 2, 2)
+
+INSERT INTO tbModulos VALUES ('Programacion orientada a objetos'),
+('Introduccion al diseño grafico'),
+('Bases de arquitectura'),
+('Diseño de circuitos'),
+('Arte semirealista')
+
+INSERT INTO tbMateriaDocentes VALUES (1, 1, 1),
+(2, 3, 2),
+(3, 2, 3),
+(4, 4, 4),
+(5, 5, 5)
+
+INSERT INTO tbPortafolio VALUES ('Investigacion de los numeros pares e impares', 1, 2, 1),
+('Clase informativa sobre la segunda guerra mundial' , 1, 2, 2),
+('Tarea investigativa sobre los genes humanos', 2, 3, 3),
+('Tarea de ingestigacion sobre el barroco', 3, 3, 4),
+('Clase de la vida de Don Bosco', 1, 4, 5)
+
+INSERT INTO tbPerfiles VALUES ('Prueba teorica', 'Prueba teorica de unidad 5 de matematicas', 30.00 , '2022-08-08', '2022-08-10', 1, 10.00 , 1, 1, 1, 1),
+            ('Perfil 1', 'Crear una infografia', 35.00 , '2022-08-15', '2022-08-20', 2, 10.00 , 2, 2, 2, 2),
+            ('Practica de laboratorio', 'Hacer un experimento con agua', 35.00 , '2022-08-21', '2022-08-24', 3, 10.00 , 3, 3, 3, 3),
+            ('Prueba objetiva', 'Prueba sobre el surrealismo clasico', 30.00 , '2022-08-25', '2022-08-25', 1, 10.00 , 3, 3, 4, 4),
+            ('Guia practica', 'Guia sobre la ingenieria en sistemas xD', 15.00 , '2022-08-30', '2022-08-31', 2, 10.00 , 3, 3, 5, 5)
+
+INSERT INTO tbClasificaciones VALUES ('Libro'),
+('Presentacion'),
+('Clase')
+
+--Inserciones en la tabla Biblioteca.
+INSERT INTO tbBiblioteca VALUES('Revista de clases sociles', 1, 1, 'www.canva.com', 'No disponible', 1),
+('Clase N3', 2, 3, 'www.canva.com', 'No disponible', 2),
+('Presentacion de clase matematicas', 1, 3, 'No disponible', 'PtNumero1.pdf', 3),
+('Unidades de poder', 1, 1, 'No disponible', 'UnidadesDePoder.pdf', 4),
+('Collage flores', 2, 2, 'https://www.canva.com/design/DAFJcOoa_JM/N7lqEgjv7qf9D5tXDxj2Sg/edit', 'No disponible', 4)
+
+--Inserciones en la tabla eventos
+INSERT INTO tbEventos VALUES('Pausa pedagogica', '2021-05-26','00:00 am', '2021-05-31','23:59 pm', 4, 4),
+('Defensa expo', '2022-08-14', '00:00 am', '2022-08-19', '16:00 am', 3, 5),
+('Entrega tarea', '2022-08-01', '07:00 am', '2022-08-19', '19:00 am', 1,2),
+('Ausencia por consulta', '2022-03-17', '00:00 am', '2022-03-17', '23:59 pm', 4, 1),
+('Reunion expo', '2022-06-15', '17:00 pm', '2022-06-15', '21:00 pm', 4, 2)
+
+--Inserciones en la tabla Tareas
+INSERT INTO tbTareas VALUES('Campos magneticos', '2022-03-07', '2022-03-11', 2, 'No disponible',1),
+('Actividades cotidianas', '2022-05-07', '2022-05-10', 5, 'No disponible', 1),
+('Quizz', '2022-04-04', '2022-04-04', 4, 'No disponible', 2),
+('Examen de periodo', '2022-08-16', '2022-08-16', 4, 'No disponible', 1),
+('Album de fotografias', '2022-05-16', '2022-05-20', 1, 'No disponible', 1)
+
+--Vamo gente
+--Se pudo
+use dbGnosis
+go
+SELECT * FROM tbUsuario WHERE username = 'root' AND clave = 'c6f00988430dbc8e83a7bc7ab5256346' AND idnivelusuario = 3
+
+SELECT * FROM viewTareas
+--DROP VIEW viewTareas
+
+CREATE VIEW viewTareas
+AS 
+SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I.], a.fechavencimiento as [Fecha V.], CONCAT(e.materia,' ',f.modulo) as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado]
+FROM tbTareas a, tbPerfiles b, tbMateriaDocentes c, tbDocentes d, tbMaterias e, tbModulos f, tbEstadoPerfiles g
+WHERE a.idperfil = b.idperfil 
+	AND b.idmateriadocente = c.idmateriadocente
+	AND c.iddocente = d.iddocente
+	AND c.idmateria = e.idmateria
+	AND c.idmodulo = f.idmodulo
+	AND b.idestadoperfil = g.idestadoperfil
+GO
 
 
-SELECT * FROM tbDocentes;
-SELECT * FROM tbPerfiles;
-SELECT * FROM tbTareas
-SELECT * FROM tbMateriaDocentes
-SELECT * FROM viewPerfiles;
+

@@ -74,7 +74,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[120, 30]"/>
+              <Dimension value="[100, 40]"/>
             </Property>
             <Property name="round" type="int" value="20"/>
             <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
@@ -89,7 +89,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[120, 30]"/>
+              <Dimension value="[100, 40]"/>
             </Property>
             <Property name="round" type="int" value="20"/>
             <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
@@ -101,7 +101,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[120, 30]"/>
+              <Dimension value="[100, 40]"/>
             </Property>
             <Property name="round" type="int" value="20"/>
             <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
@@ -109,14 +109,26 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="roundObjects.ButtonRound" name="btnReporte">
+        <Component class="roundObjects.ButtonRound" name="btnReporteEsc">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/resources/user-square-27x27.png"/>
+              <Image iconType="3" name="/resources/user-square.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value=" Reporte"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[96, 30]"/>
+              <Dimension value="[40, 40]"/>
+            </Property>
+            <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="GRIS_ROJO"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="roundObjects.ButtonRound" name="btnNomina">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/document-text.png"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[40, 40]"/>
             </Property>
             <Property name="round" type="int" value="20"/>
             <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
@@ -124,7 +136,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReporteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNominaActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
