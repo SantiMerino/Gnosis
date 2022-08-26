@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportesDocentes" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dda20c66-3e6d-449a-a39a-2b000fe2a7e2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbDocentes."iddocente" AS tbDocentes_iddocente,
+     tbDocentes."apellidos_docente" AS tbDocentes_apellidos_docente,
+     tbDocentes."nombres_docente" AS tbDocentes_nombres_docente,
+     tbDocentes."direccion" AS tbDocentes_direccion,
+     tbDocentes."dui" AS tbDocentes_dui,
+     tbDocentes."correo" AS tbDocentes_correo,
+     tbDocentes."fecha_nac" AS tbDocentes_fecha_nac,
+     tbDocentes."idgrado" AS tbDocentes_idgrado,
+     tbDocentes."idgenero" AS tbDocentes_idgenero,
+     tbDocentes."contacto" AS tbDocentes_contacto,
+     tbGrados."grado" AS tbGrados_grado,
+     tbGrados."idgrado" AS tbGrados_idgrado,
+     tbGrados."idseccionAca" AS tbGrados_idseccionAca,
+     tbGrados."idespecialidad" AS tbGrados_idespecialidad,
+     tbGrados."idgrupo" AS tbGrados_idgrupo,
+     tbGrados."idseccionTec" AS tbGrados_idseccionTec
+FROM
+     "dbo"."tbGrados" tbGrados INNER JOIN "dbo"."tbDocentes" tbDocentes ON tbGrados."idgrado" = tbDocentes."idgrado"]]>
+	</queryString>
+	<field name="tbDocentes_iddocente" class="java.lang.Integer"/>
+	<field name="tbDocentes_apellidos_docente" class="java.lang.String"/>
+	<field name="tbDocentes_nombres_docente" class="java.lang.String"/>
+	<field name="tbDocentes_direccion" class="java.lang.String"/>
+	<field name="tbDocentes_dui" class="java.lang.String"/>
+	<field name="tbDocentes_correo" class="java.lang.String"/>
+	<field name="tbDocentes_fecha_nac" class="java.lang.String"/>
+	<field name="tbDocentes_idgrado" class="java.lang.Integer"/>
+	<field name="tbDocentes_idgenero" class="java.lang.Integer"/>
+	<field name="tbDocentes_contacto" class="java.lang.String"/>
+	<field name="tbGrados_grado" class="java.lang.String"/>
+	<field name="tbGrados_idgrado" class="java.lang.Integer"/>
+	<field name="tbGrados_idseccionAca" class="java.lang.Integer"/>
+	<field name="tbGrados_idespecialidad" class="java.lang.Integer"/>
+	<field name="tbGrados_idgrupo" class="java.lang.Integer"/>
+	<field name="tbGrados_idseccionTec" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="234" y="21" width="100" height="20" uuid="8cc0b78a-653d-44a9-a05b-38f31f71c4a1"/>
+				<text><![CDATA[Reporte Docentes]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="460" y="1" width="100" height="20" uuid="61510168-8378-4c64-a429-aca2d3d3ec36"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="15" height="20" uuid="093d0255-6efd-49ca-b204-1d5e344802b2"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="0" width="75" height="20" uuid="d697c482-f489-475f-9575-d8122d39033a"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="0" width="65" height="20" uuid="9f55635c-d8c1-4156-816a-7070f4ff5da3"/>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="0" width="53" height="20" uuid="ca539f78-7002-40ee-8bd2-73574cf93187"/>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="0" width="44" height="20" uuid="a1130be3-511b-4ddd-bc90-f1efb1277091"/>
+				<text><![CDATA[DUI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="0" width="100" height="20" uuid="c659c50c-0f39-4f8b-93ce-c5e6df3814dc"/>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="0" width="56" height="20" uuid="679a230e-498f-4280-8b30-d570c92a8696"/>
+				<text><![CDATA[Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="506" y="0" width="54" height="20" uuid="e277205e-8dd9-4e7b-b2bd-a67b64783ca2"/>
+				<text><![CDATA[Contacto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="0" width="33" height="20" uuid="d77a9fb2-2c2d-4069-ba8e-503b5a749275"/>
+				<text><![CDATA[Grado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="0" width="66" height="20" uuid="33360a3f-ba9d-458f-b70e-3c550b445a97"/>
+				<text><![CDATA[Genero]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="15" height="20" uuid="fc9e0e0c-f5a1-417c-bd2c-b7666eab6a03"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_iddocente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="0" width="75" height="20" uuid="125eac88-d69a-4c02-a2c8-fe5979a9ff5b"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_nombres_docente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="0" width="65" height="20" uuid="a00bdee6-11d9-4f25-8e80-4df1ebad60d2"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_apellidos_docente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="0" width="53" height="20" uuid="e884b0e7-f780-4af6-a5e9-372a890b258c"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="208" y="0" width="44" height="20" uuid="31b05f41-f522-44db-bef2-0d57bdea9b52"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_dui}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="252" y="0" width="99" height="20" uuid="e779e281-bca3-4d55-b60f-0f614a825794"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="0" width="56" height="20" uuid="a486cb1e-642c-421f-9277-117fae57dac4"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_fecha_nac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="506" y="0" width="54" height="20" uuid="085bb2f8-f764-437c-9dce-cb97d07ff79e"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_contacto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="0" width="33" height="20" uuid="e7d93583-6f01-4228-954f-658f895d0000"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_idgrado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="0" width="66" height="20" uuid="e05d1c2b-4d0b-4109-a22a-6cf12d3a1718"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_idgenero}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="52" splitType="Stretch">
+			<textField>
+				<reportElement x="221" y="14" width="80" height="20" uuid="69fab556-5221-4f59-aa43-4d333f304544"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="301" y="14" width="40" height="20" uuid="5d9666ec-2172-40fd-a67c-8d123a047b6c"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

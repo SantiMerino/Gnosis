@@ -427,18 +427,12 @@ VALUES  (@nivel, @correo, @clavedefault, @b , @c, @id);
 END
 GO
 
-
-
-EXECUTE crearUsuarioEstudiante 1, 'santiago.merino2004', 'gnosis123', 12345, 2, 1;
-
-Go
 CREATE VIEW viewPerfiles
 AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.porcentajeValoracion, a.fechainicio, a.fechavencimiento, b.tipoperfil, c.grado
 FROM tbPerfiles a, tbTipoPerfiles b, tbGrados c
 WHERE a.idtipoperfil = b.idtipoperfil AND a.idgrados = c.idgrado; 
 Go
 
-SELECT * FROM viewPerfiles;
 
 ALTER TABLE tbTareas
 ADD CONSTRAINT fk_tareasperfiles
@@ -594,12 +588,7 @@ INSERT INTO tbTareas VALUES('Campos magneticos', '2022-03-07', '2022-03-11', 2, 
 
 --Vamo gente
 --Se pudo
-use dbGnosis
-go
-SELECT * FROM tbUsuario WHERE username = 'root' AND clave = 'c6f00988430dbc8e83a7bc7ab5256346' AND idnivelusuario = 3
 
-SELECT * FROM viewTareas
---DROP VIEW viewTareas
 
 CREATE VIEW viewTareas
 AS 
