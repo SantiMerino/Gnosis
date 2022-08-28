@@ -87,11 +87,16 @@ public class panTeachers extends javax.swing.JPanel {
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setPreferredSize(new java.awt.Dimension(741, 50));
-        jPanel1.setLayout(new java.awt.FlowLayout(2));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         buttonRound5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/admindocente-black.png"))); // NOI18N
         buttonRound5.setPreferredSize(new java.awt.Dimension(45, 45));
         buttonRound5.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        buttonRound5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(buttonRound5);
 
         buttonRound4.setBackground(new java.awt.Color(255, 0, 51));
@@ -132,7 +137,7 @@ public class panTeachers extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 403, Short.MAX_VALUE)
+            .addGap(0, 594, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +157,7 @@ public class panTeachers extends javax.swing.JPanel {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
+            .addGap(0, 333, Short.MAX_VALUE)
         );
 
         add(jPanel3, java.awt.BorderLayout.LINE_END);
@@ -168,7 +173,7 @@ public class panTeachers extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
+            .addGap(0, 333, Short.MAX_VALUE)
         );
 
         add(jPanel4, java.awt.BorderLayout.LINE_START);
@@ -178,6 +183,10 @@ public class panTeachers extends javax.swing.JPanel {
         // TODO add your handling code here:
         new frmTeachersCRUD().setVisible(true);
     }//GEN-LAST:event_buttonRound1ActionPerformed
+
+    private void buttonRound5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRound5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
