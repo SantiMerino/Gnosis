@@ -110,6 +110,7 @@ public class panStudents extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(726, 50));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
+        txtCarnet.setEditable(false);
         txtCarnet.setBackground(new java.awt.Color(255, 255, 255));
         txtCarnet.setForeground(new java.awt.Color(0, 0, 0));
         txtCarnet.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -218,14 +219,14 @@ public class panStudents extends javax.swing.JPanel {
 
     private void btnReporteEscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteEscActionPerformed
         // TODO add your handling code here:
-               Connection conexion = Controller.CConnection.getConnectionControllerWithoutParameters();
-               String carnet = idSeleccionado;
+        Connection conexion = Controller.CConnection.getConnectionControllerWithoutParameters();
+        String carnet = txtCarnet.getText().trim();
         try {
             JasperReport reporte = null;
             String path = "src\\Reportes\\ReporteAlumnoEspe.jasper";
             Map param = new HashMap();
             param.put("codigocarnet", carnet);
-//            JOptionPane.showMessageDialog(null, idSeleccionado);
+            JOptionPane.showMessageDialog(null, carnet);
             
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path); 
             
