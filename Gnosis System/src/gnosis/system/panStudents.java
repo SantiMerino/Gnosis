@@ -29,7 +29,7 @@ public class panStudents extends javax.swing.JPanel {
     /**
      * Creates new form panStudents
      */
-    String idSeleccionado;
+    String carnetal;
     
     DefaultTableModel tablaModel;
     public panStudents() {
@@ -189,7 +189,7 @@ public class panStudents extends javax.swing.JPanel {
         if (evt.getClickCount() == 1) {
             JTable rcp = (JTable) evt.getSource();
             txtCarnet.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 10).toString());
-            idSeleccionado = txtCarnet.getText();
+            carnetal = txtCarnet.getText();
 //            btnModificar.setEnabled(true);
 //            btnEliminar.setEnabled(true);
 //            btnAgregar.setEnabled(false);
@@ -219,14 +219,12 @@ public class panStudents extends javax.swing.JPanel {
 
     private void btnReporteEscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteEscActionPerformed
         // TODO add your handling code here:
-        Connection conexion = Controller.CConnection.getConnectionControllerWithoutParameters();
-        String carnet = txtCarnet.getText().trim();
+        Connection conexion = Controller.CConnection.getConnectionControllerWithoutParameters();       
         try {
             JasperReport reporte = null;
-            String path = "src\\Reportes\\ReporteAlumnoEspe.jasper";
+            String path = "src\\Reportes\\ReporteDeAlumno.jasper";
             Map param = new HashMap();
-            param.put("codigocarnet", carnet);
-            JOptionPane.showMessageDialog(null, carnet);
+            param.put("codigocarnet", txtCarnet.getText());
             
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path); 
             

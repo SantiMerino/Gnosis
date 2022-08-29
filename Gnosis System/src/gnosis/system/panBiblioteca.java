@@ -14,8 +14,11 @@ public class panBiblioteca extends javax.swing.JPanel {
     /**
      * Creates new form frmBiblioteca
      */
+    customization custoObj = new customization();
+    
     public panBiblioteca() {
         initComponents();
+        custoObj.CrearRecursoBiblioteca("Clase 24 Matemáticas | Trigonometría", "PDF", "Clase", mainPanel);
     }
 
     /**
@@ -36,6 +39,7 @@ public class panBiblioteca extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         buttonRound1 = new roundObjects.ButtonRound();
+        jScrollPane1 = new javax.swing.JScrollPane();
         mainPanel = new javax.swing.JPanel();
 
         setBackground(java.awt.Color.white);
@@ -78,7 +82,7 @@ public class panBiblioteca extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(32, 32, 32));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Ordenar:");
-        jLabel3.setPreferredSize(new java.awt.Dimension(100, 30));
+        jLabel3.setPreferredSize(new java.awt.Dimension(70, 30));
         jPanel5.add(jLabel3);
 
         jComboBox2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
@@ -90,7 +94,7 @@ public class panBiblioteca extends javax.swing.JPanel {
         buttonRound1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         buttonRound1.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound1.setRound(10);
-        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
@@ -102,9 +106,15 @@ public class panBiblioteca extends javax.swing.JPanel {
 
         add(northPanel, java.awt.BorderLayout.PAGE_START);
 
+        jScrollPane1.setBackground(java.awt.Color.white);
+        jScrollPane1.setBorder(null);
+
         mainPanel.setBackground(java.awt.Color.white);
         mainPanel.setPreferredSize(new java.awt.Dimension(900, 950));
-        add(mainPanel, java.awt.BorderLayout.CENTER);
+        mainPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jScrollPane1.setViewportView(mainPanel);
+
+        add(jScrollPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
@@ -122,6 +132,7 @@ public class panBiblioteca extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel northPanel;
     // End of variables declaration//GEN-END:variables

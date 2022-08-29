@@ -53,9 +53,11 @@ public class panTasks extends javax.swing.JPanel {
     public panTasks(int nivel) {
         initComponents();
         if (nivel == 1) {
+            CargarTareas();
             btnAgregarTarea.setVisible(false);
         } else if (nivel == 2) {
             btnAgregarTarea.setVisible(true);
+            CargarTareas();
         } else if (nivel == 3){
             btnAgregarTarea.setVisible(false);
         }
