@@ -90,10 +90,11 @@ public class panBiblioteca extends javax.swing.JPanel {
         jComboBox2.setPreferredSize(new java.awt.Dimension(100, 30));
         jPanel5.add(jComboBox2);
 
-        buttonRound1.setText("+");
+        buttonRound1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add-square.png"))); // NOI18N
         buttonRound1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        buttonRound1.setPreferredSize(new java.awt.Dimension(30, 30));
-        buttonRound1.setRound(10);
+        buttonRound1.setPreferredSize(new java.awt.Dimension(35, 35));
+        buttonRound1.setRound(15);
         buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

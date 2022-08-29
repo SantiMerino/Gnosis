@@ -27,44 +27,11 @@ public class panCalendar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        panelRound1 = new roundObjects.PanelRound();
-        buttonRound1 = new roundObjects.ButtonRound();
-
+        setBackground(java.awt.Color.white);
         setLayout(new java.awt.BorderLayout());
-
-        jScrollPane1.setBackground(new java.awt.Color(51, 51, 255));
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(1000, 1000));
-
-        buttonRound1.setText("buttonRound1");
-        buttonRound1.setRound(100);
-
-        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
-        panelRound1.setLayout(panelRound1Layout);
-        panelRound1Layout.setHorizontalGroup(
-            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(264, 264, 264)
-                .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(394, Short.MAX_VALUE))
-        );
-        panelRound1Layout.setVerticalGroup(
-            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(180, 180, 180)
-                .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(767, Short.MAX_VALUE))
-        );
-
-        jScrollPane1.setViewportView(panelRound1);
-
-        add(jScrollPane1, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound buttonRound1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private roundObjects.PanelRound panelRound1;
     // End of variables declaration//GEN-END:variables
 }

@@ -40,8 +40,17 @@ public class panTasks extends javax.swing.JPanel {
         CTasks controller = new CTasks();
         ResultSet datos = controller.CargarTareasPreview();
         try {
-            while (datos.next()) {                
-                custo.CrearTarea(datos.getString(1), datos.getString(4), datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan);
+            while (datos.next()) {  
+                //Forma de corroborar si es una materia o un modulo :3
+                String materiamodulo;
+                String cadena = datos.getString(4);     
+                String[] palabras = cadena.split(" ", 2);
+                if (palabras[0].equals("Ninguno")) {
+                    materiamodulo = palabras[1];
+                } else {
+                    materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
+                }
+                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas cerote feo");

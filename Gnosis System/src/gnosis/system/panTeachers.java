@@ -69,7 +69,7 @@ public class panTeachers extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        tbDocentes.setForeground(new java.awt.Color(32, 32, 32));
+        tbDocentes.setForeground(java.awt.Color.white);
         tbDocentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

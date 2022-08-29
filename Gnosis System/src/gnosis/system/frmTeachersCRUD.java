@@ -218,7 +218,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     private void initComponents() {
 
         panelRound1 = new roundObjects.PanelRound();
-        btnDispose = new roundObjects.ButtonRound();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDocentes = new javax.swing.JTable();
@@ -259,10 +258,11 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1000, 700));
 
-        panelRound1.setBackground(new java.awt.Color(230, 230, 230));
-        panelRound1.setPreferredSize(new java.awt.Dimension(1000, 20));
+        panelRound1.setBackground(java.awt.Color.white);
+        panelRound1.setPreferredSize(new java.awt.Dimension(1000, 30));
         panelRound1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 panelRound1MouseDragged(evt);
@@ -273,19 +273,8 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
                 panelRound1MousePressed(evt);
             }
         });
-        panelRound1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 5));
-
-        btnDispose.setPreferredSize(new java.awt.Dimension(10, 10));
-        btnDispose.setRound(20);
-        btnDispose.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
-        btnDispose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDisposeActionPerformed(evt);
-            }
-        });
-        panelRound1.add(btnDispose);
-
-        getContentPane().add(panelRound1, java.awt.BorderLayout.PAGE_START);
+        panelRound1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        getContentPane().add(panelRound1, java.awt.BorderLayout.NORTH);
 
         jPanel3.setPreferredSize(new java.awt.Dimension(100, 100));
         jPanel3.setLayout(new java.awt.BorderLayout());
@@ -337,7 +326,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         );
         rightGapLayout.setVerticalGroup(
             rightGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 662, Short.MAX_VALUE)
+            .addGap(0, 653, Short.MAX_VALUE)
         );
 
         jPanel3.add(rightGap, java.awt.BorderLayout.EAST);
@@ -599,7 +588,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 582, Short.MAX_VALUE)
+            .addGap(0, 573, Short.MAX_VALUE)
         );
 
         jPanel2.add(jPanel6, java.awt.BorderLayout.WEST);
@@ -876,11 +865,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cmbGradoItemStateChanged
 
-    private void btnDisposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisposeActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnDisposeActionPerformed
-
     private void panelRound1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound1MousePressed
         // TODO add your handling code here:
         xMouse = evt.getX();
@@ -978,7 +962,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
-    private roundObjects.ButtonRound btnDispose;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;

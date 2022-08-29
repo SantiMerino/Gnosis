@@ -120,7 +120,7 @@ public class customization {
     
     
     //Pruba para crear un componente en otro form parte 1 xd
-    public void CrearTarea(String nombre_tarea, String nombre_materia, String nombre_docente,String fecha_i ,String fecha_v, String estado, JPanel container){
+    public void CrearTarea(String nombre_tarea, String nombre_materia, String nombre_docente,String fecha_i ,String fecha_v, String estado, JPanel container, String materiamoduloColor){
             //Crear labels   
         JLabel nTarea = new JLabel();
         JLabel nMateria = new JLabel();
@@ -151,26 +151,20 @@ public class customization {
         nTarea.setText(nombre_tarea);
         nMateria.setText(nombre_materia);
         nDocente.setText(nombre_docente);
-        nFechaV.setText(fecha_v);
+        nFechaV.setText("Fecha: "+fecha_v);
         nFechaI.setText(fecha_i);
         
         //Asignar tipo de letra a cada label
-        nTarea.setFont(new Font("Poppins", Font.BOLD,25));
+        nTarea.setFont(new Font("Poppins", Font.BOLD,24));
         nMateria.setFont(new Font("Poppins", Font.PLAIN, 12));
         nDocente.setFont(new Font("Poppins", Font.PLAIN, 12));
         nFechaV.setFont(new Font("Poppins", Font.PLAIN, 12));
         nFechaI.setFont(new Font("Poppins", Font.PLAIN, 12));
         
-        //Asignar color de letra a cada label
-        nTarea.setForeground(new Color(32,32,32));
-        nMateria.setForeground(new Color(32,32,32));
-        nDocente.setForeground(new Color(32,32,32));
-        nFechaV.setForeground(new Color(32,32,32));
-        nFechaI.setForeground(new Color(32,32,32));
         
         //Se agregan los dos paneles principales al que va a contener todos o el panel contenedor en si
         pan1.setLayout(new BorderLayout(10, 0));
-        Dimension dimPan1 = new Dimension(1000,80);
+        Dimension dimPan1 = new Dimension(1000,90);
         pan1.setPreferredSize(dimPan1);
         pan1.add(BorderLayout.NORTH, p1TopGap );
         pan1.add(BorderLayout.SOUTH, p1BottomGap);
@@ -199,8 +193,8 @@ public class customization {
         pan4.setLayout(new BorderLayout(10, 5));
         //Agrego todos los componentes segun posción
         pan4.add(BorderLayout.NORTH ,nTarea);
-        nTarea.setVerticalAlignment(JLabel.CENTER);
-        nTarea.setPreferredSize(new Dimension(100, 30));
+        nTarea.setVerticalAlignment(JLabel.BOTTOM);
+        nTarea.setPreferredSize(new Dimension(100, 40));
         nTarea.setHorizontalAlignment(JLabel.LEFT);
         
         pan4.add(BorderLayout.WEST , nMateria);
@@ -225,9 +219,8 @@ public class customization {
         Dimension dimBtnCarpeta = new Dimension(80,80);
         btnCarpeta.setPreferredSize(dimBtnCarpeta);
         pan5.add(BorderLayout.CENTER,btnCarpeta);
-        btnCarpeta.setStyle(ButtonRound.ButtonStyle.VERDE);
+//        btnCarpeta.setStyle(ButtonRound.ButtonStyle.VERDE);
 
-        changeIcon(btnCarpeta, "/resources/folder-open-white.png");
         
         //Me paso al panel 3 y solo le agrego el boton del estado de la tarea que incluso lo puedo cambiar por un label 
         pan3.add(BorderLayout.CENTER, btnEstado);
@@ -235,16 +228,53 @@ public class customization {
         btnEstado.setSize(80,80);
         changeIcon(btnEstado, "/resources/check.png");
         
+        Color mainColor;
+        Color secondColor;
+        Color fontColor;
+        
+        switch (materiamoduloColor) {
+            case "Sociales":
+                mainColor = new Color(98, 148, 244);
+                secondColor = new Color(149, 184, 252);
+                fontColor = new Color(32,32,32);
+                btnCarpeta.setStyle(ButtonRound.ButtonStyle.SOCIALES);
+                changeIcon(btnCarpeta, "/resources/folder-open-white.png");
+                
+                break;
+            case "Matemáticas":
+                mainColor = new Color(255, 153, 0);
+                secondColor = new Color(255, 182, 73);
+                fontColor = new Color(32,32,32);
+                btnCarpeta.setStyle(ButtonRound.ButtonStyle.MATE);
+                changeIcon(btnCarpeta, "/resources/folder-open-white.png");
+                break;
+            default:
+                mainColor = new Color(32,32,32);
+                secondColor = new Color(90,90,90);
+                fontColor = new Color(255,255,255);
+                btnCarpeta.setStyle(ButtonRound.ButtonStyle.NEGRO);
+                changeIcon(btnCarpeta, "/resources/folder-open.png");
+                break;
+        }
+        
         //Asignar colores provisionalmente para ver como se comportan
         pan1.setBackground(Color.white); 
-        pan2.setBackground(new Color(118,220,90)); 
+        pan2.setBackground(mainColor); 
         pan3.setBackground(new Color(216,216,216));
-        pan4.setBackground(new Color(118,220,90));
-        pan5.setBackground(new Color(118,220,90));
+        pan4.setBackground(mainColor);
+        pan5.setBackground(mainColor);
+        btnCarpeta.setRound(20);
+        
+                //Asignar color de letra a cada label
+        nTarea.setForeground(fontColor);
+        nMateria.setForeground(fontColor);
+        nDocente.setForeground(fontColor);
+        nFechaV.setForeground(fontColor);
+        nFechaI.setForeground(fontColor);
         
         p1BottomGap.setBackground(Color.white); 
         p1TopGap.setBackground(Color.white); 
-        leftGap.setBackground(new Color(118,220,90)); 
+        leftGap.setBackground(mainColor); 
         
         //Redondeo bordes de los paneles contenedores
         pan1.setRoundBottomLeft(20);
