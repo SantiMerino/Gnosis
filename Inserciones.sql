@@ -589,19 +589,6 @@ INSERT INTO tbTareas VALUES('Campos magneticos', '2022-03-07', '2022-03-11', 2, 
 --Vamo gente
 --Se pudo
 
-
-CREATE VIEW viewTareas
-AS 
-SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I.], a.fechavencimiento as [Fecha V.], e.materia as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado]
-FROM tbTareas a, tbPerfiles b, tbMateriaDocentes c, tbDocentes d, tbMaterias e, tbModulos f, tbEstadoPerfiles g
-WHERE a.idperfil = b.idperfil 
-	AND b.idmateriadocente = c.idmateriadocente
-	AND c.iddocente = d.iddocente
-	AND c.idmateria = e.idmateria
-	AND c.idmodulo = f.idmodulo
-	AND b.idestadoperfil = g.idestadoperfil
-GO
-
 CREATE VIEW viewTareas
 AS 
 SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I.], a.fechavencimiento as [Fecha V.], CONCAT(e.materia,' ',f.modulo) as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado]
@@ -616,8 +603,12 @@ GO
 
 use dbGnosis
 
-drop view viewTareas
 select * from viewTareas
+
+--hacer vista de la tabla materia docente
+-- hacer vista de los recursos
+-- hacer vista de los docentes
+-- hacer vista de alumnos
 
 
 
