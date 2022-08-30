@@ -27,24 +27,20 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     private void initComponents() {
 
         panelRound1 = new roundObjects.PanelRound();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         buttonRound1 = new roundObjects.ButtonRound();
         buttonRound2 = new roundObjects.ButtonRound();
         jTextField1 = new javax.swing.JTextField();
         panelRound2 = new roundObjects.PanelRound();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelRound1.setBackground(new java.awt.Color(255, 153, 51));
 
-        jLabel1.setText("jLabel1");
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add-square-black.png"))); // NOI18N
         jLabel2.setText("jLabel2");
-
-        jLabel3.setText("jLabel3");
 
         buttonRound1.setText("buttonRound1");
         buttonRound1.setRound(20);
@@ -61,15 +57,29 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         panelRound2.setRoundTopLeft(20);
         panelRound2.setRoundTopRight(20);
 
+        jLabel1.setText("jLabel1");
+
+        jLabel3.setText("jLabel3");
+
         javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
         panelRound2.setLayout(panelRound2Layout);
         panelRound2Layout.setHorizontalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 187, Short.MAX_VALUE)
+            .addGroup(panelRound2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(24, 24, 24))
         );
         panelRound2Layout.setVerticalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 39, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
@@ -79,12 +89,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
-                        .addComponent(jLabel3))
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(jLabel1)
-                        .addGap(155, 155, 155)
+                        .addGap(477, 477, 477)
                         .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRound1Layout.createSequentialGroup()
                                 .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -106,12 +111,8 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(42, 42, 42)
-                .addComponent(jLabel3)
-                .addGap(48, 48, 48)
+                .addComponent(jLabel2)
+                .addGap(106, 106, 106)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
