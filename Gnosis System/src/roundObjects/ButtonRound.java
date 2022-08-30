@@ -132,8 +132,9 @@ public class ButtonRound extends JButton {
         //
         SOCIALES(new Color(98, 148, 244), new Color(32,32,32), new Color(120, 164, 220), new Color(149, 184, 252)),
         //
-        MATE(new Color(255,153,0), new Color(32,32,32), new Color(230,133,0), new Color(255,182,73));
-        
+        MATE(new Color(255,153,0), new Color(32,32,32), new Color(230,133,0), new Color(255,182,73)),
+        //
+        CIENCIAS(new Color(118,221,92), new Color(32,32,32), new Color(100,187,77), new Color(160,235,141));
 
         private ButtonStyle(Color background, Color foreground, Color backgroundHover, Color backgroundPress) {
             this.background = background;

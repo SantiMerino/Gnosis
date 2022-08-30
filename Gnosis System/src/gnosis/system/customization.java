@@ -248,6 +248,26 @@ public class customization {
                 btnCarpeta.setStyle(ButtonRound.ButtonStyle.MATE);
                 changeIcon(btnCarpeta, "/resources/folder-open-white.png");
                 break;
+            case "Ingles":
+                mainColor = new Color(255, 189, 62);
+                secondColor = new Color(255, 198, 87);
+                fontColor = new Color(32,32,32);
+                btnCarpeta.setStyle(ButtonRound.ButtonStyle.AMARILLO);
+                changeIcon(btnCarpeta, "/resources/folder-open-white.png");
+            case "Ciencias":
+                mainColor = new Color(127, 211, 106);
+                secondColor = new Color(152, 215, 136);
+                fontColor = new Color(32,32,32);
+                btnCarpeta.setStyle(ButtonRound.ButtonStyle.VERDE);
+                changeIcon(btnCarpeta, "/resources/folder-open-white.png");
+                break;
+            case "Lenguaje":
+                mainColor = new Color(227, 63, 63);
+                secondColor = new Color(231, 87, 87);
+                fontColor = new Color(255,255,255);
+                btnCarpeta.setStyle(ButtonRound.ButtonStyle.VERDE);
+                changeIcon(btnCarpeta, "/resources/folder-open-white.png");
+                break;
             default:
                 mainColor = new Color(32,32,32);
                 secondColor = new Color(90,90,90);
