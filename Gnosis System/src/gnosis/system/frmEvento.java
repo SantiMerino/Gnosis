@@ -37,7 +37,6 @@ public class frmEvento extends javax.swing.JFrame {
     private Calendar Cal1;
     private Calendar Cal2;
     
-    
     /**
      * Creates new form frmEvento
      */

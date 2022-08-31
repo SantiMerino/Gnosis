@@ -728,17 +728,17 @@ public class frmDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(panContainer.getComponentCount()== 0) {
             cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
-            panContainer.add(new panBlocNotas());
+            panContainer.add(new panPortfolios());
             panContainer.repaint();
             panContainer.revalidate();
-        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panBlocNotas()) {
+        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panPortfolios()) {
             if (pageButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
                 cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
 
-                panContainer.add(new panBlocNotas());
+                panContainer.add(new panPortfolios());
                 panContainer.repaint();
                 panContainer.revalidate(); 
             } else {

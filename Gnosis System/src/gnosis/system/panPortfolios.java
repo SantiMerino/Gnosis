@@ -9,12 +9,12 @@ package gnosis.system;
  *
  * @author santi
  */
-public class panBlocNotas extends javax.swing.JPanel {
+public class panPortfolios extends javax.swing.JPanel {
 
     /**
      * Creates new form frmBlocNotas
      */
-    public panBlocNotas() {
+    public panPortfolios() {
         customization.mainUtilities();
         initComponents();
     }
