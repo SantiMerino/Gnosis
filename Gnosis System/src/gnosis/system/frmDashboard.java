@@ -6,6 +6,7 @@
 package gnosis.system;
 
 import java.awt.*;
+import javax.swing.JPanel;
 import roundObjects.ButtonRound;
 
 /**
@@ -20,6 +21,8 @@ public class frmDashboard extends javax.swing.JFrame {
     public customization custoObj = new customization();
     panGrades grades = new panGrades();
     customization custo = new customization();
+    
+    private JPanel menuAtras;
 
     private int mood = 0;
     
@@ -27,10 +30,21 @@ public class frmDashboard extends javax.swing.JFrame {
         initComponents();
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
-        searchbar.putClientProperty("focusWidth", 0);
-        
+        searchbar.putClientProperty("focusWidth", 0); 
+    }
+    //Metodo para recargar la interfaz de portafolios de manera externa
+    public void abrirMenuPortafolios(){
+        panContainer.removeAll();
+        panContainer.repaint();
+        panContainer.revalidate();
+
+        panContainer.add(new panPortfolios());
+        panContainer.repaint();
+        panContainer.revalidate(); 
+        cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
     }
     
+    //Constructor para ver el mood de concetración
     public frmDashboard(int moodstate){
         initComponents();
         this.mood = moodstate;
@@ -43,6 +57,22 @@ public class frmDashboard extends javax.swing.JFrame {
             btnStopMood.setStyle(ButtonRound.ButtonStyle.NEGRO);
         }
     }
+    
+    public void AbrirBloc(){
+        panContainer.removeAll();
+        panContainer.repaint();
+        panContainer.revalidate();
+        panelRound4.setBackground(new Color(32,32,32));
+        panelRound5.setBackground(new Color(32,32,32));
+        panelRound6.setBackground(new Color(32,32,32));
+        panelRound7.setBackground(new Color(32,32,32));
+        panWhite.setBackground(new Color(32,32,32));
+        panContainer.add(new panBlocMateria());
+        panContainer.repaint();
+        panContainer.revalidate(); 
+
+    }
+    
     
     public void notificacion(String mensaje,int tipo_mensaje, String tipo_men){
         try{
@@ -541,7 +571,6 @@ public class frmDashboard extends javax.swing.JFrame {
 
         panelRound7.setBackground(new java.awt.Color(255, 255, 255));
         panelRound7.setPreferredSize(new java.awt.Dimension(15, 100));
-        panelRound7.setRoundTopLeft(20);
         panWhite.add(panelRound7, java.awt.BorderLayout.LINE_START);
 
         panBlack.add(panWhite, java.awt.BorderLayout.CENTER);

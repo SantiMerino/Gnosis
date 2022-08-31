@@ -5,6 +5,11 @@
  */
 package gnosis.system;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author santi
@@ -17,6 +22,10 @@ public class panPortfolios extends javax.swing.JPanel {
     public panPortfolios() {
         customization.mainUtilities();
         initComponents();
+    }
+    
+    public boolean portfolioOpen(){
+        return true;
     }
 
     /**
@@ -37,37 +46,37 @@ public class panPortfolios extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         mainPan = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollPortfolios = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
-        orangeP = new roundObjects.PanelRound();
+        matematicasPan = new roundObjects.PanelRound();
         panelRound1 = new roundObjects.PanelRound();
         panelRound2 = new roundObjects.PanelRound();
         buttonRound1 = new roundObjects.ButtonRound();
-        yellowP = new roundObjects.PanelRound();
+        inglesPan = new roundObjects.PanelRound();
         panelRound3 = new roundObjects.PanelRound();
         panelRound4 = new roundObjects.PanelRound();
         buttonRound2 = new roundObjects.ButtonRound();
-        greenP = new roundObjects.PanelRound();
+        cienciasPan = new roundObjects.PanelRound();
         panelRound5 = new roundObjects.PanelRound();
         panelRound6 = new roundObjects.PanelRound();
         buttonRound3 = new roundObjects.ButtonRound();
-        blackP = new roundObjects.PanelRound();
+        modulosPan = new roundObjects.PanelRound();
         panelRound7 = new roundObjects.PanelRound();
         panelRound8 = new roundObjects.PanelRound();
         buttonRound4 = new roundObjects.ButtonRound();
-        redP = new roundObjects.PanelRound();
+        lenguajePan = new roundObjects.PanelRound();
         panelRound9 = new roundObjects.PanelRound();
         panelRound10 = new roundObjects.PanelRound();
         buttonRound5 = new roundObjects.ButtonRound();
-        blueP = new roundObjects.PanelRound();
+        socialesPan = new roundObjects.PanelRound();
         panelRound11 = new roundObjects.PanelRound();
         panelRound12 = new roundObjects.PanelRound();
         buttonRound6 = new roundObjects.ButtonRound();
-        darkGreenP = new roundObjects.PanelRound();
+        formaPan = new roundObjects.PanelRound();
         panelRound13 = new roundObjects.PanelRound();
         panelRound14 = new roundObjects.PanelRound();
         buttonRound7 = new roundObjects.ButtonRound();
-        darkBlueP = new roundObjects.PanelRound();
+        opvPan = new roundObjects.PanelRound();
         panelRound15 = new roundObjects.PanelRound();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -127,23 +136,23 @@ public class panPortfolios extends javax.swing.JPanel {
 
         mainPan.setBackground(new java.awt.Color(255, 255, 255));
         mainPan.setPreferredSize(new java.awt.Dimension(800, 506));
-        mainPan.setLayout(new java.awt.BorderLayout());
+        mainPan.setLayout(new java.awt.CardLayout());
 
-        jScrollPane1.setBackground(new java.awt.Color(217, 217, 217));
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setForeground(new java.awt.Color(217, 217, 217));
+        scrollPortfolios.setBackground(new java.awt.Color(217, 217, 217));
+        scrollPortfolios.setBorder(null);
+        scrollPortfolios.setForeground(new java.awt.Color(217, 217, 217));
 
         jPanel3.setBackground(java.awt.Color.white);
         jPanel3.setPreferredSize(new java.awt.Dimension(500, 900));
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
-        orangeP.setBackground(new java.awt.Color(255, 153, 0));
-        orangeP.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        orangeP.setPreferredSize(new java.awt.Dimension(250, 350));
-        orangeP.setRoundBottomLeft(20);
-        orangeP.setRoundBottomRight(20);
-        orangeP.setRoundTopLeft(20);
-        orangeP.setRoundTopRight(20);
+        matematicasPan.setBackground(new java.awt.Color(255, 153, 0));
+        matematicasPan.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        matematicasPan.setPreferredSize(new java.awt.Dimension(250, 350));
+        matematicasPan.setRoundBottomLeft(20);
+        matematicasPan.setRoundBottomRight(20);
+        matematicasPan.setRoundTopLeft(20);
+        matematicasPan.setRoundTopRight(20);
 
         panelRound1.setBackground(new java.awt.Color(255, 196, 32));
         panelRound1.setRoundBottomLeft(20);
@@ -182,22 +191,27 @@ public class panPortfolios extends javax.swing.JPanel {
         buttonRound1.setText("Abrir");
         buttonRound1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound1ActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout orangePLayout = new javax.swing.GroupLayout(orangeP);
-        orangeP.setLayout(orangePLayout);
-        orangePLayout.setHorizontalGroup(
-            orangePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, orangePLayout.createSequentialGroup()
+        javax.swing.GroupLayout matematicasPanLayout = new javax.swing.GroupLayout(matematicasPan);
+        matematicasPan.setLayout(matematicasPanLayout);
+        matematicasPanLayout.setHorizontalGroup(
+            matematicasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, matematicasPanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(orangePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(matematicasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonRound1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
-        orangePLayout.setVerticalGroup(
-            orangePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(orangePLayout.createSequentialGroup()
+        matematicasPanLayout.setVerticalGroup(
+            matematicasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(matematicasPanLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
@@ -207,14 +221,14 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(orangeP);
+        jPanel3.add(matematicasPan);
 
-        yellowP.setBackground(new java.awt.Color(255, 189, 62));
-        yellowP.setPreferredSize(new java.awt.Dimension(250, 350));
-        yellowP.setRoundBottomLeft(20);
-        yellowP.setRoundBottomRight(20);
-        yellowP.setRoundTopLeft(20);
-        yellowP.setRoundTopRight(20);
+        inglesPan.setBackground(new java.awt.Color(255, 189, 62));
+        inglesPan.setPreferredSize(new java.awt.Dimension(250, 350));
+        inglesPan.setRoundBottomLeft(20);
+        inglesPan.setRoundBottomRight(20);
+        inglesPan.setRoundTopLeft(20);
+        inglesPan.setRoundTopRight(20);
 
         panelRound3.setBackground(new java.awt.Color(255, 220, 100));
         panelRound3.setRoundBottomLeft(20);
@@ -254,21 +268,21 @@ public class panPortfolios extends javax.swing.JPanel {
         buttonRound2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         buttonRound2.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
 
-        javax.swing.GroupLayout yellowPLayout = new javax.swing.GroupLayout(yellowP);
-        yellowP.setLayout(yellowPLayout);
-        yellowPLayout.setHorizontalGroup(
-            yellowPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, yellowPLayout.createSequentialGroup()
+        javax.swing.GroupLayout inglesPanLayout = new javax.swing.GroupLayout(inglesPan);
+        inglesPan.setLayout(inglesPanLayout);
+        inglesPanLayout.setHorizontalGroup(
+            inglesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inglesPanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(yellowPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(inglesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonRound2, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
-        yellowPLayout.setVerticalGroup(
-            yellowPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(yellowPLayout.createSequentialGroup()
+        inglesPanLayout.setVerticalGroup(
+            inglesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inglesPanLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
@@ -278,14 +292,14 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(yellowP);
+        jPanel3.add(inglesPan);
 
-        greenP.setBackground(new java.awt.Color(118, 221, 92));
-        greenP.setPreferredSize(new java.awt.Dimension(250, 350));
-        greenP.setRoundBottomLeft(20);
-        greenP.setRoundBottomRight(20);
-        greenP.setRoundTopLeft(20);
-        greenP.setRoundTopRight(20);
+        cienciasPan.setBackground(new java.awt.Color(118, 221, 92));
+        cienciasPan.setPreferredSize(new java.awt.Dimension(250, 350));
+        cienciasPan.setRoundBottomLeft(20);
+        cienciasPan.setRoundBottomRight(20);
+        cienciasPan.setRoundTopLeft(20);
+        cienciasPan.setRoundTopRight(20);
 
         panelRound5.setBackground(new java.awt.Color(140, 230, 130));
         panelRound5.setRoundBottomLeft(20);
@@ -325,21 +339,21 @@ public class panPortfolios extends javax.swing.JPanel {
         buttonRound3.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         buttonRound3.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
 
-        javax.swing.GroupLayout greenPLayout = new javax.swing.GroupLayout(greenP);
-        greenP.setLayout(greenPLayout);
-        greenPLayout.setHorizontalGroup(
-            greenPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, greenPLayout.createSequentialGroup()
+        javax.swing.GroupLayout cienciasPanLayout = new javax.swing.GroupLayout(cienciasPan);
+        cienciasPan.setLayout(cienciasPanLayout);
+        cienciasPanLayout.setHorizontalGroup(
+            cienciasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cienciasPanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(greenPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(cienciasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonRound3, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
-        greenPLayout.setVerticalGroup(
-            greenPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(greenPLayout.createSequentialGroup()
+        cienciasPanLayout.setVerticalGroup(
+            cienciasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cienciasPanLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(panelRound5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
@@ -349,14 +363,14 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(greenP);
+        jPanel3.add(cienciasPan);
 
-        blackP.setBackground(new java.awt.Color(32, 32, 32));
-        blackP.setPreferredSize(new java.awt.Dimension(250, 350));
-        blackP.setRoundBottomLeft(20);
-        blackP.setRoundBottomRight(20);
-        blackP.setRoundTopLeft(20);
-        blackP.setRoundTopRight(20);
+        modulosPan.setBackground(new java.awt.Color(32, 32, 32));
+        modulosPan.setPreferredSize(new java.awt.Dimension(250, 350));
+        modulosPan.setRoundBottomLeft(20);
+        modulosPan.setRoundBottomRight(20);
+        modulosPan.setRoundTopLeft(20);
+        modulosPan.setRoundTopRight(20);
 
         panelRound7.setBackground(new java.awt.Color(80, 80, 80));
         panelRound7.setRoundBottomLeft(20);
@@ -395,21 +409,21 @@ public class panPortfolios extends javax.swing.JPanel {
         buttonRound4.setText("Abrir");
         buttonRound4.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
 
-        javax.swing.GroupLayout blackPLayout = new javax.swing.GroupLayout(blackP);
-        blackP.setLayout(blackPLayout);
-        blackPLayout.setHorizontalGroup(
-            blackPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, blackPLayout.createSequentialGroup()
+        javax.swing.GroupLayout modulosPanLayout = new javax.swing.GroupLayout(modulosPan);
+        modulosPan.setLayout(modulosPanLayout);
+        modulosPanLayout.setHorizontalGroup(
+            modulosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modulosPanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(blackPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(modulosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonRound4, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
-        blackPLayout.setVerticalGroup(
-            blackPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(blackPLayout.createSequentialGroup()
+        modulosPanLayout.setVerticalGroup(
+            modulosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modulosPanLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(panelRound7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
@@ -419,14 +433,14 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(blackP);
+        jPanel3.add(modulosPan);
 
-        redP.setBackground(new java.awt.Color(227, 63, 63));
-        redP.setPreferredSize(new java.awt.Dimension(250, 350));
-        redP.setRoundBottomLeft(20);
-        redP.setRoundBottomRight(20);
-        redP.setRoundTopLeft(20);
-        redP.setRoundTopRight(20);
+        lenguajePan.setBackground(new java.awt.Color(227, 63, 63));
+        lenguajePan.setPreferredSize(new java.awt.Dimension(250, 350));
+        lenguajePan.setRoundBottomLeft(20);
+        lenguajePan.setRoundBottomRight(20);
+        lenguajePan.setRoundTopLeft(20);
+        lenguajePan.setRoundTopRight(20);
 
         panelRound9.setBackground(new java.awt.Color(227, 80, 83));
         panelRound9.setRoundBottomLeft(20);
@@ -465,21 +479,21 @@ public class panPortfolios extends javax.swing.JPanel {
         buttonRound5.setText("Abrir");
         buttonRound5.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
 
-        javax.swing.GroupLayout redPLayout = new javax.swing.GroupLayout(redP);
-        redP.setLayout(redPLayout);
-        redPLayout.setHorizontalGroup(
-            redPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, redPLayout.createSequentialGroup()
+        javax.swing.GroupLayout lenguajePanLayout = new javax.swing.GroupLayout(lenguajePan);
+        lenguajePan.setLayout(lenguajePanLayout);
+        lenguajePanLayout.setHorizontalGroup(
+            lenguajePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lenguajePanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(redPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(lenguajePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonRound5, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
-        redPLayout.setVerticalGroup(
-            redPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(redPLayout.createSequentialGroup()
+        lenguajePanLayout.setVerticalGroup(
+            lenguajePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lenguajePanLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(panelRound9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
@@ -489,14 +503,14 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(redP);
+        jPanel3.add(lenguajePan);
 
-        blueP.setBackground(new java.awt.Color(98, 148, 244));
-        blueP.setPreferredSize(new java.awt.Dimension(250, 350));
-        blueP.setRoundBottomLeft(20);
-        blueP.setRoundBottomRight(20);
-        blueP.setRoundTopLeft(20);
-        blueP.setRoundTopRight(20);
+        socialesPan.setBackground(new java.awt.Color(98, 148, 244));
+        socialesPan.setPreferredSize(new java.awt.Dimension(250, 350));
+        socialesPan.setRoundBottomLeft(20);
+        socialesPan.setRoundBottomRight(20);
+        socialesPan.setRoundTopLeft(20);
+        socialesPan.setRoundTopRight(20);
 
         panelRound11.setBackground(new java.awt.Color(120, 160, 244));
         panelRound11.setRoundBottomLeft(20);
@@ -537,21 +551,21 @@ public class panPortfolios extends javax.swing.JPanel {
         buttonRound6.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         buttonRound6.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
 
-        javax.swing.GroupLayout bluePLayout = new javax.swing.GroupLayout(blueP);
-        blueP.setLayout(bluePLayout);
-        bluePLayout.setHorizontalGroup(
-            bluePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bluePLayout.createSequentialGroup()
+        javax.swing.GroupLayout socialesPanLayout = new javax.swing.GroupLayout(socialesPan);
+        socialesPan.setLayout(socialesPanLayout);
+        socialesPanLayout.setHorizontalGroup(
+            socialesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, socialesPanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(bluePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(socialesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonRound6, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
-        bluePLayout.setVerticalGroup(
-            bluePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bluePLayout.createSequentialGroup()
+        socialesPanLayout.setVerticalGroup(
+            socialesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(socialesPanLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(panelRound11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
@@ -561,14 +575,14 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(blueP);
+        jPanel3.add(socialesPan);
 
-        darkGreenP.setBackground(new java.awt.Color(95, 125, 85));
-        darkGreenP.setPreferredSize(new java.awt.Dimension(250, 350));
-        darkGreenP.setRoundBottomLeft(20);
-        darkGreenP.setRoundBottomRight(20);
-        darkGreenP.setRoundTopLeft(20);
-        darkGreenP.setRoundTopRight(20);
+        formaPan.setBackground(new java.awt.Color(95, 125, 85));
+        formaPan.setPreferredSize(new java.awt.Dimension(250, 350));
+        formaPan.setRoundBottomLeft(20);
+        formaPan.setRoundBottomRight(20);
+        formaPan.setRoundTopLeft(20);
+        formaPan.setRoundTopRight(20);
 
         panelRound13.setBackground(new java.awt.Color(110, 125, 100));
         panelRound13.setRoundBottomLeft(20);
@@ -607,21 +621,21 @@ public class panPortfolios extends javax.swing.JPanel {
         buttonRound7.setText("Abrir");
         buttonRound7.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
 
-        javax.swing.GroupLayout darkGreenPLayout = new javax.swing.GroupLayout(darkGreenP);
-        darkGreenP.setLayout(darkGreenPLayout);
-        darkGreenPLayout.setHorizontalGroup(
-            darkGreenPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, darkGreenPLayout.createSequentialGroup()
+        javax.swing.GroupLayout formaPanLayout = new javax.swing.GroupLayout(formaPan);
+        formaPan.setLayout(formaPanLayout);
+        formaPanLayout.setHorizontalGroup(
+            formaPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formaPanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(darkGreenPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(formaPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonRound7, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
-        darkGreenPLayout.setVerticalGroup(
-            darkGreenPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(darkGreenPLayout.createSequentialGroup()
+        formaPanLayout.setVerticalGroup(
+            formaPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formaPanLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(panelRound13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
@@ -631,14 +645,14 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(darkGreenP);
+        jPanel3.add(formaPan);
 
-        darkBlueP.setBackground(new java.awt.Color(60, 80, 120));
-        darkBlueP.setPreferredSize(new java.awt.Dimension(250, 350));
-        darkBlueP.setRoundBottomLeft(20);
-        darkBlueP.setRoundBottomRight(20);
-        darkBlueP.setRoundTopLeft(20);
-        darkBlueP.setRoundTopRight(20);
+        opvPan.setBackground(new java.awt.Color(60, 80, 120));
+        opvPan.setPreferredSize(new java.awt.Dimension(250, 350));
+        opvPan.setRoundBottomLeft(20);
+        opvPan.setRoundBottomRight(20);
+        opvPan.setRoundTopLeft(20);
+        opvPan.setRoundTopRight(20);
 
         panelRound15.setBackground(new java.awt.Color(60, 100, 130));
         panelRound15.setRoundBottomLeft(20);
@@ -695,21 +709,21 @@ public class panPortfolios extends javax.swing.JPanel {
         buttonRound8.setText("Abrir");
         buttonRound8.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
 
-        javax.swing.GroupLayout darkBluePLayout = new javax.swing.GroupLayout(darkBlueP);
-        darkBlueP.setLayout(darkBluePLayout);
-        darkBluePLayout.setHorizontalGroup(
-            darkBluePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, darkBluePLayout.createSequentialGroup()
+        javax.swing.GroupLayout opvPanLayout = new javax.swing.GroupLayout(opvPan);
+        opvPan.setLayout(opvPanLayout);
+        opvPanLayout.setHorizontalGroup(
+            opvPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opvPanLayout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(darkBluePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(opvPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonRound8, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
-        darkBluePLayout.setVerticalGroup(
-            darkBluePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(darkBluePLayout.createSequentialGroup()
+        opvPanLayout.setVerticalGroup(
+            opvPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(opvPanLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(panelRound15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
@@ -719,19 +733,36 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(darkBlueP);
+        jPanel3.add(opvPan);
 
-        jScrollPane1.setViewportView(jPanel3);
+        scrollPortfolios.setViewportView(jPanel3);
 
-        mainPan.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        mainPan.add(scrollPortfolios, "card2");
 
         add(mainPan, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
+        // TODO add your handling code here:
+//        upperPan.setPreferredSize(new Dimension(100,0));
+//        mainPan.removeAll();
+//        mainPan.repaint();
+//        mainPan.revalidate();
+//
+//        mainPan.add(new panBlocMateria());
+//        mainPan.repaint();
+//        mainPan.revalidate(); 
+//        mainPan.setBackground(new Color(32,32,32));
+        frmDashboard dash = new frmDashboard();
+        dash.setVisible(true);
+        dash.AbrirBloc();
+        
+        JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(this);
+        dashboardopen.dispose();
+    }//GEN-LAST:event_buttonRound1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.PanelRound blackP;
-    private roundObjects.PanelRound blueP;
     private roundObjects.ButtonRound buttonRound1;
     private roundObjects.ButtonRound buttonRound2;
     private roundObjects.ButtonRound buttonRound3;
@@ -740,10 +771,10 @@ public class panPortfolios extends javax.swing.JPanel {
     private roundObjects.ButtonRound buttonRound6;
     private roundObjects.ButtonRound buttonRound7;
     private roundObjects.ButtonRound buttonRound8;
-    private roundObjects.PanelRound darkBlueP;
-    private roundObjects.PanelRound darkGreenP;
+    private roundObjects.PanelRound cienciasPan;
     private javax.swing.JPanel filtersPan;
-    private roundObjects.PanelRound greenP;
+    private roundObjects.PanelRound formaPan;
+    private roundObjects.PanelRound inglesPan;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -754,10 +785,12 @@ public class panPortfolios extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private roundObjects.PanelRound lenguajePan;
     private javax.swing.JPanel mainPan;
+    private roundObjects.PanelRound matematicasPan;
+    private roundObjects.PanelRound modulosPan;
     private javax.swing.JPanel namePan;
-    private roundObjects.PanelRound orangeP;
+    private roundObjects.PanelRound opvPan;
     private roundObjects.PanelRound panelRound1;
     private roundObjects.PanelRound panelRound10;
     private roundObjects.PanelRound panelRound11;
@@ -774,8 +807,8 @@ public class panPortfolios extends javax.swing.JPanel {
     private roundObjects.PanelRound panelRound7;
     private roundObjects.PanelRound panelRound8;
     private roundObjects.PanelRound panelRound9;
-    private roundObjects.PanelRound redP;
+    private javax.swing.JScrollPane scrollPortfolios;
+    private roundObjects.PanelRound socialesPan;
     private javax.swing.JPanel upperPan;
-    private roundObjects.PanelRound yellowP;
     // End of variables declaration//GEN-END:variables
 }

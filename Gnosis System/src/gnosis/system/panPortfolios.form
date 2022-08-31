@@ -175,9 +175,9 @@
         </Constraint>
       </Constraints>
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+        <Container class="javax.swing.JScrollPane" name="scrollPortfolios">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="d9" red="d9" type="rgb"/>
@@ -190,8 +190,8 @@
             </Property>
           </Properties>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="Center"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card2"/>
             </Constraint>
           </Constraints>
 
@@ -213,7 +213,7 @@
                 <Property name="verticalGap" type="int" value="10"/>
               </Layout>
               <SubComponents>
-                <Container class="roundObjects.PanelRound" name="orangeP">
+                <Container class="roundObjects.PanelRound" name="matematicasPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="99" red="ff" type="rgb"/>
@@ -317,10 +317,13 @@
                           <Value id="NEGRO"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRound1ActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="yellowP">
+                <Container class="roundObjects.PanelRound" name="inglesPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="3e" green="bd" red="ff" type="rgb"/>
@@ -424,7 +427,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="greenP">
+                <Container class="roundObjects.PanelRound" name="cienciasPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="5c" green="dd" red="76" type="rgb"/>
@@ -528,7 +531,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="blackP">
+                <Container class="roundObjects.PanelRound" name="modulosPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="20" green="20" red="20" type="rgb"/>
@@ -629,7 +632,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="redP">
+                <Container class="roundObjects.PanelRound" name="lenguajePan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="3f" green="3f" red="e3" type="rgb"/>
@@ -730,7 +733,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="blueP">
+                <Container class="roundObjects.PanelRound" name="socialesPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f4" green="94" red="62" type="rgb"/>
@@ -837,7 +840,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="darkGreenP">
+                <Container class="roundObjects.PanelRound" name="formaPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="55" green="7d" red="5f" type="rgb"/>
@@ -938,7 +941,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="darkBlueP">
+                <Container class="roundObjects.PanelRound" name="opvPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="78" green="50" red="3c" type="rgb"/>
