@@ -257,7 +257,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        dtFechaHoy = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -653,7 +652,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jButton2);
-        jPanel4.add(dtFechaHoy);
 
         jPanel2.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
@@ -699,14 +697,39 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbGeneroItemStateChanged
 
+    void validacionfecha(){
+        Date date = dtNacimiento.getDate();
+                c = new GregorianCalendar();
+                c.setTime(date);
+                int Anio1 = c.get(Calendar.YEAR);
+                int mes1 = c.get(Calendar.MONTH) + 1;
+                int dia1 = c.get(Calendar.DAY_OF_MONTH);
+                
+        //fecha de hoy//
+         Calendar hoy = Calendar.getInstance();
+                int Anio = hoy.get(Calendar.YEAR);
+                int mes = hoy.get(Calendar.MONTH) + 1;
+                int dia = hoy.get(Calendar.DAY_OF_MONTH);
+                
+                System.out.println(hoy.getTime());
+                
+        //Comparacion//                 
+                if (Anio1 > Anio || mes1 > mes || dia1 > dia) {
+                    JOptionPane.showMessageDialog(null, "Error, no se puede ingresar una fecha mayor o igual a la de hoy");
+                    dtNacimiento.setDate(null);
+        }
+    }
+    
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        validacionfecha();
         if (txtNombres.getText().trim().isEmpty() || txtApellidos.getText().trim().isEmpty() || txtDireccion.getText().trim().isEmpty() || txtTelefono.getText().trim().isEmpty() || txtDui.getText().trim().isEmpty() || txtCorreo.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
         }else if(cmbGenero.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Seleccione un genero", "Campos vacios", JOptionPane.WARNING_MESSAGE);
         }
          else {
+            validacionfecha();
             Date date = dtNacimiento.getDate();
             c = new GregorianCalendar();
             c.setTime(date);
@@ -976,26 +999,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
 
     private void txtDuiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDuiMouseClicked
         // TODO add your handling code here:
-        Date date = dtNacimiento.getDate();
-                c = new GregorianCalendar();
-                c.setTime(date);
-                int Anio1 = c.get(Calendar.YEAR);
-                int mes1 = c.get(Calendar.MONTH) + 1;
-                int dia1 = c.get(Calendar.DAY_OF_MONTH);
-                
-        //fecha de hoy//
-         Calendar hoy = Calendar.getInstance();
-                int Anio = hoy.get(Calendar.YEAR);
-                int mes = hoy.get(Calendar.MONTH) + 1;
-                int dia = hoy.get(Calendar.DAY_OF_MONTH);
-                
-                System.out.println(hoy.getTime());
-                
-        //Comparacion//                 
-                if (Anio1 > Anio || mes1 > mes || dia1 > dia) {
-                    JOptionPane.showMessageDialog(null, "Error, no se puede ingresar una fecha mayor o igual a la de hoy");
-                    dtNacimiento.setDate(null);
-        }
+        
     }//GEN-LAST:event_txtDuiMouseClicked
 
     /**
@@ -1035,7 +1039,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox<String> cmbGenero;
     private javax.swing.JComboBox<String> cmbGrado;
-    private com.toedter.calendar.JDateChooser dtFechaHoy;
     private com.toedter.calendar.JDateChooser dtNacimiento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

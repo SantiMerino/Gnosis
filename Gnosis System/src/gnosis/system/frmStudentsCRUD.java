@@ -758,9 +758,32 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombresActionPerformed
 
+    void validacionfecha(){
+        Date date = dtNacimiento.getDate();
+                c = new GregorianCalendar();
+                c.setTime(date);
+                int Anio1 = c.get(Calendar.YEAR);
+                int mes1 = c.get(Calendar.MONTH) + 1;
+                int dia1 = c.get(Calendar.DAY_OF_MONTH);
+                
+        //fecha de hoy//
+         Calendar hoy = Calendar.getInstance();
+                int Anio = hoy.get(Calendar.YEAR);
+                int mes = hoy.get(Calendar.MONTH) + 1;
+                int dia = hoy.get(Calendar.DAY_OF_MONTH);
+                
+                System.out.println(hoy.getTime());
+                
+        //Comparacion//                 
+                if (Anio1 > Anio || mes1 > mes || dia1 > dia) {
+                    JOptionPane.showMessageDialog(null, "Error, no se puede ingresar una fecha mayor o igual a la de hoy");
+                    dtNacimiento.setDate(null);
+        }
+    }
+    
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        
+        validacionfecha();
         Date date = dtNacimiento.getDate();
             c = new GregorianCalendar();
             c.setTime(date);
