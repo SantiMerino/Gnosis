@@ -73,12 +73,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     public frmTeachersCRUD() {
         initComponents();
         
-        
-//        Calendar FechaHoy = new GregorianCalendar();
-//        dtFechaHoy.setCalendar(FechaHoy);
-//        c.setTime(date);
-//        String FechaHoy = String.valueOf(c.get(Calendar.YEAR) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.DAY_OF_MONTH));
-        
         CargarCombobox();
         
         txtId.setVisible(false);
@@ -394,6 +388,11 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
 
         txtDireccion.setBackground(new java.awt.Color(217, 217, 217));
         txtDireccion.setForeground(new java.awt.Color(32, 32, 32));
+        txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDireccionMouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(32, 32, 32));
@@ -414,8 +413,14 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         dtNacimiento.setBackground(java.awt.Color.white);
         dtNacimiento.setForeground(new java.awt.Color(32, 32, 32));
         dtNacimiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dtNacimientoMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 dtNacimientoMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                dtNacimientoMouseReleased(evt);
             }
         });
 
@@ -425,6 +430,11 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
 
         txtDui.setBackground(new java.awt.Color(217, 217, 217));
         txtDui.setForeground(new java.awt.Color(32, 32, 32));
+        txtDui.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDuiMouseClicked(evt);
+            }
+        });
         txtDui.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDuiKeyTyped(evt);
@@ -946,8 +956,26 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
 
     private void dtNacimientoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dtNacimientoMouseExited
         // TODO add your handling code here:
+    }//GEN-LAST:event_dtNacimientoMouseExited
+
+    private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
+        // TODO add your handling code here:
         
+    }//GEN-LAST:event_txtDireccionMouseClicked
+
+    private void dtNacimientoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dtNacimientoMouseReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_dtNacimientoMouseReleased
+
+    private void dtNacimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dtNacimientoMouseClicked
+        // TODO add your handling code here:
         //Fecha seleccionada//
+        
+    }//GEN-LAST:event_dtNacimientoMouseClicked
+
+    private void txtDuiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDuiMouseClicked
+        // TODO add your handling code here:
         Date date = dtNacimiento.getDate();
                 c = new GregorianCalendar();
                 c.setTime(date);
@@ -966,9 +994,9 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         //Comparacion//                 
                 if (Anio1 > Anio || mes1 > mes || dia1 > dia) {
                     JOptionPane.showMessageDialog(null, "Error, no se puede ingresar una fecha mayor o igual a la de hoy");
+                    dtNacimiento.setDate(null);
         }
-        
-    }//GEN-LAST:event_dtNacimientoMouseExited
+    }//GEN-LAST:event_txtDuiMouseClicked
 
     /**
      * @param args the command line arguments
