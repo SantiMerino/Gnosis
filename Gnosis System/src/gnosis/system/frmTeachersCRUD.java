@@ -66,11 +66,18 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     private Calendar c;
     
     private String nacimiento;
+    private String FechaHoy;
     /**
      * Creates new form FrmDocentes
      */
     public frmTeachersCRUD() {
         initComponents();
+        
+        
+//        Calendar FechaHoy = new GregorianCalendar();
+//        dtFechaHoy.setCalendar(FechaHoy);
+//        c.setTime(date);
+//        String FechaHoy = String.valueOf(c.get(Calendar.YEAR) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.DAY_OF_MONTH));
         
         CargarCombobox();
         
@@ -256,6 +263,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        dtFechaHoy = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -326,7 +334,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         );
         rightGapLayout.setVerticalGroup(
             rightGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 653, Short.MAX_VALUE)
+            .addGap(0, 681, Short.MAX_VALUE)
         );
 
         jPanel3.add(rightGap, java.awt.BorderLayout.EAST);
@@ -405,6 +413,11 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
 
         dtNacimiento.setBackground(java.awt.Color.white);
         dtNacimiento.setForeground(new java.awt.Color(32, 32, 32));
+        dtNacimiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                dtNacimientoMouseExited(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(32, 32, 32));
@@ -588,7 +601,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 573, Short.MAX_VALUE)
+            .addGap(0, 601, Short.MAX_VALUE)
         );
 
         jPanel2.add(jPanel6, java.awt.BorderLayout.WEST);
@@ -630,6 +643,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jButton2);
+        jPanel4.add(dtFechaHoy);
 
         jPanel2.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
@@ -754,7 +768,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
             
             txtIdGrado.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
             txtIdGenero.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 8).toString());
-            txtIdUsuario.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 10).toString());
+//            txtIdUsuario.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 10).toString());
             
             DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             try {
@@ -764,11 +778,11 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
             }
             
             int idGenero = Integer.parseInt(txtIdGenero.getText());
-            int idUsuario = Integer.parseInt(txtIdUsuario.getText());
+//            int idUsuario = Integer.parseInt(txtIdUsuario.getText());
             int idGrado = Integer.parseInt(txtIdGrado.getText());
             
             int respuesta = BuscarGeneroSeleccionado(idGenero);
-            int respuesta2 = BuscarUsuarioSeleccionado(idUsuario);
+//            int respuesta2 = BuscarUsuarioSeleccionado(idUsuario);
             int respuesta3 = BuscarGradoSeleccionado(idGrado);
             
             cmbGenero.setSelectedIndex(respuesta + 1);
@@ -930,6 +944,32 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void dtNacimientoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dtNacimientoMouseExited
+        // TODO add your handling code here:
+        
+        //Fecha seleccionada//
+        Date date = dtNacimiento.getDate();
+                c = new GregorianCalendar();
+                c.setTime(date);
+                int Anio1 = c.get(Calendar.YEAR);
+                int mes1 = c.get(Calendar.MONTH) + 1;
+                int dia1 = c.get(Calendar.DAY_OF_MONTH);
+                
+        //fecha de hoy//
+         Calendar hoy = Calendar.getInstance();
+                int Anio = hoy.get(Calendar.YEAR);
+                int mes = hoy.get(Calendar.MONTH) + 1;
+                int dia = hoy.get(Calendar.DAY_OF_MONTH);
+                
+                System.out.println(hoy.getTime());
+                
+        //Comparacion//                 
+                if (Anio1 > Anio || mes1 > mes || dia1 > dia) {
+                    JOptionPane.showMessageDialog(null, "Error, no se puede ingresar una fecha mayor o igual a la de hoy");
+        }
+        
+    }//GEN-LAST:event_dtNacimientoMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -967,6 +1007,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox<String> cmbGenero;
     private javax.swing.JComboBox<String> cmbGrado;
+    private com.toedter.calendar.JDateChooser dtFechaHoy;
     private com.toedter.calendar.JDateChooser dtNacimiento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
