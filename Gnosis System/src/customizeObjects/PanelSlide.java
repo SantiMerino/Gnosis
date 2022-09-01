@@ -15,7 +15,8 @@ import javax.swing.Timer;
  * @author santi
  */
 public class PanelSlide extends javax.swing.JPanel{
-    public int getAnimate() {
+    
+     public int getAnimate() {
         return animate;
     }
 
@@ -31,7 +32,6 @@ public class PanelSlide extends javax.swing.JPanel{
             public void componentResized(ComponentEvent ce) {
                 comShow.setSize(getSize());
             }
-
         });
         timer = new Timer(0, new ActionListener() {
             @Override
@@ -118,6 +118,4 @@ public class PanelSlide extends javax.swing.JPanel{
     public static enum AnimateType {
         TO_RIGHT, TO_LEFT
     }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
 }

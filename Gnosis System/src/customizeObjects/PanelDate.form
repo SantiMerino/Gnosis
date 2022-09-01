@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.9" maxVersion="1.9">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="d9" green="d9" red="d9" type="rgb"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -19,522 +24,529 @@
     <Property name="rows" type="int" value="7"/>
   </Layout>
   <SubComponents>
-    <Component class="gnosis.system.Cell" name="domingo">
+    <Component class="customizeObjects.Cell" name="domingo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dom"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-          <Value id="GRIS_OSCURO"/>
+          <Value id="NEGRO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="lunes">
+    <Component class="customizeObjects.Cell" name="lunes">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lun"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-          <Value id="GRIS_OSCURO"/>
+          <Value id="NEGRO"/>
         </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lunesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="gnosis.system.Cell" name="martes">
+    <Component class="customizeObjects.Cell" name="martes">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mar"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-          <Value id="GRIS_OSCURO"/>
+          <Value id="NEGRO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="miercoles">
+    <Component class="customizeObjects.Cell" name="miercoles">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mier"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-          <Value id="GRIS_OSCURO"/>
+          <Value id="NEGRO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="jueves">
+    <Component class="customizeObjects.Cell" name="jueves">
       <Properties>
         <Property name="text" type="java.lang.String" value="Jue"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-          <Value id="GRIS_OSCURO"/>
+          <Value id="NEGRO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="viernes">
+    <Component class="customizeObjects.Cell" name="viernes">
       <Properties>
         <Property name="text" type="java.lang.String" value="Vie"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-          <Value id="GRIS_OSCURO"/>
+          <Value id="NEGRO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="sabado">
+    <Component class="customizeObjects.Cell" name="sabado">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sab"/>
+        <Property name="round" type="int" value="0"/>
+        <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+          <Value id="NEGRO"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="customizeObjects.Cell" name="cell8">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Poppins" size="12" style="0"/>
+        </Property>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell8">
+    <Component class="customizeObjects.Cell" name="cell9">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell9">
+    <Component class="customizeObjects.Cell" name="cell10">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell10">
+    <Component class="customizeObjects.Cell" name="cell11">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell11">
+    <Component class="customizeObjects.Cell" name="cell12">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell12">
+    <Component class="customizeObjects.Cell" name="cell13">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell13">
+    <Component class="customizeObjects.Cell" name="cell14">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell14">
+    <Component class="customizeObjects.Cell" name="cell15">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell15">
+    <Component class="customizeObjects.Cell" name="cell16">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell16">
+    <Component class="customizeObjects.Cell" name="cell17">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell17">
+    <Component class="customizeObjects.Cell" name="cell18">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell18">
+    <Component class="customizeObjects.Cell" name="cell19">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell19">
+    <Component class="customizeObjects.Cell" name="cell20">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell20">
+    <Component class="customizeObjects.Cell" name="cell21">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell21">
+    <Component class="customizeObjects.Cell" name="cell22">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell22">
+    <Component class="customizeObjects.Cell" name="cell23">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell23">
+    <Component class="customizeObjects.Cell" name="cell24">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell24">
+    <Component class="customizeObjects.Cell" name="cell25">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell25">
+    <Component class="customizeObjects.Cell" name="cell26">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell26">
+    <Component class="customizeObjects.Cell" name="cell27">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell27">
+    <Component class="customizeObjects.Cell" name="cell28">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell28">
+    <Component class="customizeObjects.Cell" name="cell29">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell29">
+    <Component class="customizeObjects.Cell" name="cell30">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell30">
+    <Component class="customizeObjects.Cell" name="cell31">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell31">
+    <Component class="customizeObjects.Cell" name="cell32">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell32">
+    <Component class="customizeObjects.Cell" name="cell33">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell33">
+    <Component class="customizeObjects.Cell" name="cell34">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell34">
+    <Component class="customizeObjects.Cell" name="cell35">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell35">
+    <Component class="customizeObjects.Cell" name="cell36">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell36">
+    <Component class="customizeObjects.Cell" name="cell37">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell37">
+    <Component class="customizeObjects.Cell" name="cell38">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell38">
+    <Component class="customizeObjects.Cell" name="cell39">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell39">
+    <Component class="customizeObjects.Cell" name="cell40">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell40">
+    <Component class="customizeObjects.Cell" name="cell41">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell41">
+    <Component class="customizeObjects.Cell" name="cell42">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell42">
+    <Component class="customizeObjects.Cell" name="cell43">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell43">
+    <Component class="customizeObjects.Cell" name="cell44">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell44">
+    <Component class="customizeObjects.Cell" name="cell45">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell45">
+    <Component class="customizeObjects.Cell" name="cell46">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell46">
+    <Component class="customizeObjects.Cell" name="cell47">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell47">
+    <Component class="customizeObjects.Cell" name="cell48">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="gnosis.system.Cell" name="cell48">
+    <Component class="customizeObjects.Cell" name="cell49">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="20"/>
-        <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-          <Value id="GRIS_OSCURO"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="gnosis.system.Cell" name="cell49">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Poppins" size="12" style="0"/>
-        </Property>
-        <Property name="round" type="int" value="20"/>
+        <Property name="round" type="int" value="0"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>

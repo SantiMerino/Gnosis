@@ -31,15 +31,33 @@ public class panCalendar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        calendarCustom1 = new gnosis.system.CalendarCustom();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        calendarCustom1 = new customizeObjects.CalendarCustom();
 
         setBackground(java.awt.Color.white);
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(calendarCustom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(java.awt.Color.white);
+        jPanel1.setPreferredSize(new java.awt.Dimension(300, 100));
+        add(jPanel1, java.awt.BorderLayout.WEST);
+
+        jPanel2.setBackground(java.awt.Color.white);
+        jPanel2.setPreferredSize(new java.awt.Dimension(100, 200));
+        add(jPanel2, java.awt.BorderLayout.PAGE_END);
+
+        jPanel3.setLayout(new java.awt.BorderLayout());
+        jPanel3.add(calendarCustom1, java.awt.BorderLayout.CENTER);
+
+        add(jPanel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private gnosis.system.CalendarCustom calendarCustom1;
+    private customizeObjects.CalendarCustom calendarCustom1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
