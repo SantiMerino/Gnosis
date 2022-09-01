@@ -307,71 +307,33 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="roundObjects.ButtonRound" name="btnSubir">
+        <Component class="customizeObjects.ButtonRound" name="btnModificar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Subir"/>
-            <Property name="round" type="int" value="20"/>
-            <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="VERDE"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="buttonRound1"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubirActionPerformed"/>
-          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="330" y="270" width="130" height="30"/>
+              <AbsoluteConstraints x="330" y="280" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="roundObjects.ButtonRound" name="btnModificar">
+        <Component class="customizeObjects.ButtonRound" name="btnSubir">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Modificar"/>
-            <Property name="round" type="int" value="20"/>
-            <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="AMARILLO"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="buttonRound2"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
-          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="490" y="270" width="130" height="30"/>
+              <AbsoluteConstraints x="510" y="270" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="roundObjects.ButtonRound" name="btnLimpiarCampos">
+        <Component class="customizeObjects.ButtonRound" name="btnEliminar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Vaciar Campos"/>
-            <Property name="round" type="int" value="20"/>
-            <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="GRIS_OSCURO"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="buttonRound3"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarCamposActionPerformed"/>
-          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="490" y="320" width="130" height="30"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="roundObjects.ButtonRound" name="btnEliminar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Eliminar"/>
-            <Property name="round" type="int" value="20"/>
-            <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="ROJO"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="330" y="320" width="130" height="30"/>
+              <AbsoluteConstraints x="360" y="310" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

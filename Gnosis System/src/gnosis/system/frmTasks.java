@@ -208,10 +208,9 @@ public class frmTasks extends javax.swing.JFrame {
         txtId = new javax.swing.JTextField();
         txtTipoPerfil = new javax.swing.JTextField();
         txtTipoTarea = new javax.swing.JTextField();
-        btnSubir = new roundObjects.ButtonRound();
-        btnModificar = new roundObjects.ButtonRound();
-        btnLimpiarCampos = new roundObjects.ButtonRound();
-        btnEliminar = new roundObjects.ButtonRound();
+        btnModificar = new customizeObjects.ButtonRound();
+        btnSubir = new customizeObjects.ButtonRound();
+        btnEliminar = new customizeObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -294,7 +293,6 @@ public class frmTasks extends javax.swing.JFrame {
         });
         jPanel1.add(CmbTipoTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 180, -1));
 
-        JTTask.setBackground(java.awt.Color.white);
         JTTask.setForeground(new java.awt.Color(32, 32, 32));
         JTTask.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -321,45 +319,14 @@ public class frmTasks extends javax.swing.JFrame {
         jPanel1.add(txtTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, -1, -1));
         jPanel1.add(txtTipoTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
 
-        btnSubir.setText("Subir");
-        btnSubir.setRound(20);
-        btnSubir.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
-        btnSubir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 130, 30));
+        btnModificar.setText("buttonRound1");
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
 
-        btnModificar.setText("Modificar");
-        btnModificar.setRound(20);
-        btnModificar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 130, 30));
+        btnSubir.setText("buttonRound2");
+        jPanel1.add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
 
-        btnLimpiarCampos.setText("Vaciar Campos");
-        btnLimpiarCampos.setRound(20);
-        btnLimpiarCampos.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
-        btnLimpiarCampos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarCamposActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnLimpiarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 130, 30));
-
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setRound(20);
-        btnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 130, 30));
+        btnEliminar.setText("buttonRound3");
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -640,10 +607,9 @@ public class frmTasks extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CmbTipoPerfil;
     private javax.swing.JComboBox<String> CmbTipoTarea;
     private javax.swing.JTable JTTask;
-    private roundObjects.ButtonRound btnEliminar;
-    private roundObjects.ButtonRound btnLimpiarCampos;
-    private roundObjects.ButtonRound btnModificar;
-    private roundObjects.ButtonRound btnSubir;
+    private customizeObjects.ButtonRound btnEliminar;
+    private customizeObjects.ButtonRound btnModificar;
+    private customizeObjects.ButtonRound btnSubir;
     private com.toedter.calendar.JDateChooser dtInicio;
     private com.toedter.calendar.JDateChooser dtVencimiento;
     private javax.swing.JLabel jLabel1;
