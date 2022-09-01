@@ -34,20 +34,42 @@ public class panCalendar extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        panelRound1 = new customizeObjects.PanelRound();
+        panelRound2 = new customizeObjects.PanelRound();
+        panelRound3 = new customizeObjects.PanelRound();
+        panelRound4 = new customizeObjects.PanelRound();
         calendarCustom1 = new customizeObjects.CalendarCustom();
 
         setBackground(java.awt.Color.white);
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(java.awt.Color.white);
-        jPanel1.setPreferredSize(new java.awt.Dimension(300, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(250, 100));
+        jPanel1.setRequestFocusEnabled(false);
         add(jPanel1, java.awt.BorderLayout.WEST);
 
         jPanel2.setBackground(java.awt.Color.white);
-        jPanel2.setPreferredSize(new java.awt.Dimension(100, 200));
+        jPanel2.setPreferredSize(new java.awt.Dimension(100, 100));
         add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
+        jPanel3.setBackground(java.awt.Color.white);
         jPanel3.setLayout(new java.awt.BorderLayout());
+
+        panelRound1.setBackground(new java.awt.Color(32, 32, 32));
+        panelRound1.setRoundTopLeft(20);
+        panelRound1.setRoundTopRight(20);
+        jPanel3.add(panelRound1, java.awt.BorderLayout.PAGE_START);
+
+        panelRound2.setBackground(new java.awt.Color(32, 32, 32));
+        panelRound2.setRoundBottomLeft(20);
+        panelRound2.setRoundBottomRight(20);
+        jPanel3.add(panelRound2, java.awt.BorderLayout.PAGE_END);
+
+        panelRound3.setBackground(new java.awt.Color(32, 32, 32));
+        jPanel3.add(panelRound3, java.awt.BorderLayout.LINE_END);
+
+        panelRound4.setBackground(new java.awt.Color(32, 32, 32));
+        jPanel3.add(panelRound4, java.awt.BorderLayout.LINE_START);
         jPanel3.add(calendarCustom1, java.awt.BorderLayout.CENTER);
 
         add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -59,5 +81,9 @@ public class panCalendar extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private customizeObjects.PanelRound panelRound1;
+    private customizeObjects.PanelRound panelRound2;
+    private customizeObjects.PanelRound panelRound3;
+    private customizeObjects.PanelRound panelRound4;
     // End of variables declaration//GEN-END:variables
 }

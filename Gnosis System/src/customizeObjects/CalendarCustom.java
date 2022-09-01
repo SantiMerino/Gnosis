@@ -5,6 +5,7 @@
 package customizeObjects;
 
 import customizeObjects.PanelSlide;
+import java.awt.Dimension;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -26,26 +27,28 @@ public class CalendarCustom extends javax.swing.JPanel {
         thisMonth();
         slide.show(new PanelDate( 9, 2022), PanelSlide.AnimateType.TO_RIGHT);
         showMonthYear();
-//        
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                while (true) {
-//                    try {
-//                        Thread.sleep(1000);
-//                    } catch (InterruptedException e) {
-//                        System.err.println(e);
-//                    }
-//                    Date date = new Date();
-//                    SimpleDateFormat tf = new SimpleDateFormat("h:mm:ss aa");
-//                    SimpleDateFormat df = new SimpleDateFormat("EEEE, dd/MM-yyyy");
-//                    String time = tf.format(date);
-////                    lblTime.setText(time.split(" ")[0]);
-////                    lblType.setText(time.split(" ")[1]);
-////                    lblDate.setText(df.format(date));
-//                }
-//            }
-//        }).start();
+        Dimension dim = getSize();
+        setSize(dim);
+        
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        System.err.println(e);
+                    }
+                    Date date = new Date();
+                    SimpleDateFormat tf = new SimpleDateFormat("h:mm:ss aa");
+                    SimpleDateFormat df = new SimpleDateFormat("EEEE, dd/MM-yyyy");
+                    String time = tf.format(date);
+                    lblTime.setText(time.split(" ")[0]);
+                    lblType.setText(time.split(" ")[1]);
+                    lblDate.setText(df.format(date));
+                }
+            }
+        }).start();
 
     }
 
@@ -62,6 +65,13 @@ public class CalendarCustom extends javax.swing.JPanel {
         btnNext = new customizeObjects.ButtonRound();
         btnBack = new customizeObjects.ButtonRound();
         lblMesAño = new javax.swing.JLabel();
+        panelRound1 = new customizeObjects.PanelRound();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        lblTime = new javax.swing.JLabel();
+        lblType = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
         slide = new customizeObjects.PanelSlide();
 
         setBackground(new java.awt.Color(32, 32, 32));
@@ -103,8 +113,48 @@ public class CalendarCustom extends javax.swing.JPanel {
 
         add(jLayeredPane1, java.awt.BorderLayout.NORTH);
 
+        panelRound1.setBackground(new java.awt.Color(32, 32, 32));
+        panelRound1.setPreferredSize(new java.awt.Dimension(200, 50));
+        panelRound1.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane1.setBackground(java.awt.Color.white);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jPanel1.setBackground(new java.awt.Color(90, 90, 90));
+        jScrollPane1.setViewportView(jPanel1);
+
+        panelRound1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setBackground(new java.awt.Color(32, 32, 32));
+        jPanel2.setPreferredSize(new java.awt.Dimension(100, 90));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        lblTime.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        lblTime.setForeground(java.awt.Color.white);
+        lblTime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTime.setText("HORA");
+        lblTime.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel2.add(lblTime, java.awt.BorderLayout.CENTER);
+
+        lblType.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblType.setForeground(java.awt.Color.white);
+        lblType.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblType.setText("tipo");
+        lblType.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel2.add(lblType, java.awt.BorderLayout.EAST);
+
+        lblDate.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblDate.setForeground(java.awt.Color.white);
+        lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDate.setText("fecha");
+        lblDate.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel2.add(lblDate, java.awt.BorderLayout.SOUTH);
+
+        panelRound1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        add(panelRound1, java.awt.BorderLayout.EAST);
+
         slide.setBackground(new java.awt.Color(32, 32, 32));
-        slide.setPreferredSize(new java.awt.Dimension(100, 100));
         add(slide, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -152,7 +202,14 @@ public class CalendarCustom extends javax.swing.JPanel {
     private customizeObjects.ButtonRound btnBack;
     private customizeObjects.ButtonRound btnNext;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblMesAño;
+    private javax.swing.JLabel lblTime;
+    private javax.swing.JLabel lblType;
+    private customizeObjects.PanelRound panelRound1;
     private customizeObjects.PanelSlide slide;
     // End of variables declaration//GEN-END:variables
 }

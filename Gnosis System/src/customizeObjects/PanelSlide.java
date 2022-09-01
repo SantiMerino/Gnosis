@@ -4,11 +4,17 @@
  */
 package customizeObjects;
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import javax.swing.GroupLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 /**
  *
@@ -26,12 +32,13 @@ public class PanelSlide extends javax.swing.JPanel{
 
     public PanelSlide() {
         initComponents();
-        setLayout(null);
+        setLayout(new GroupLayout(this));
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent ce) {
                 comShow.setSize(getSize());
             }
+
         });
         timer = new Timer(0, new ActionListener() {
             @Override
@@ -48,7 +55,7 @@ public class PanelSlide extends javax.swing.JPanel{
     private AnimateType animateType;
     private int animate = 1;
 
-    public void show(Component com, AnimateType animateType) {
+        public void show(Component com, AnimateType animateType) {
         if (!timer.isRunning()) {
             this.animateType = animateType;
             this.comShow = com;
@@ -118,4 +125,6 @@ public class PanelSlide extends javax.swing.JPanel{
     public static enum AnimateType {
         TO_RIGHT, TO_LEFT
     }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
 }
