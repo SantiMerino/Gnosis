@@ -47,6 +47,9 @@ public class frmProfiles extends javax.swing.JFrame {
         CargarCmbTipoPerfil();
         CargarCmbGradoPerfil();
         
+        btnModificar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        
         //Tabla
         String [] TitulosPerfil = {"ID", "Nombre", "Descripcion", "Porcentaje de valoracion", "Fecha de inicio", "Fecha de vencimiento", "Tipo Perfil", "Grados"};
         TablaPerfilmodelo = new DefaultTableModel(null, TitulosPerfil);
@@ -63,6 +66,9 @@ public class frmProfiles extends javax.swing.JFrame {
         dtVencimiento.setDate(null);
         CmbTipoPerfil.setSelectedIndex(0);
 //        CmbGrado.setSelectedIndex(0);
+        btnSubir.setEnabled(true);
+        btnModificar.setEnabled(false);
+        btnEliminar.setEnabled(false);
     }
     
     final void CargarTabla(){

@@ -56,6 +56,9 @@ public class frmTasks extends javax.swing.JFrame {
         CargarCmbTipoPerfil();
 //        customization.centrarFrame(this);  
      
+        btnModificar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+
         //Tabla
         String [] TitulosTarea = {"ID", "Nombre", "Fecha de inicio", "Fecha de vencimiento", "Perfil", "Rubrica", "Tipo Tarea"};
         Tablamodelo = new DefaultTableModel(null, TitulosTarea);
@@ -80,6 +83,10 @@ public class frmTasks extends javax.swing.JFrame {
         dtVencimiento.setDate(null);
         CmbTipoPerfil.setSelectedIndex(0);
         CmbTipoTarea.setSelectedIndex(0);
+        btnSubir.setEnabled(true);
+        btnModificar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+    
     }
     
     final void CargarTabla(){
@@ -487,7 +494,36 @@ public class frmTasks extends javax.swing.JFrame {
         evt.consume();
     }
     }//GEN-LAST:event_txtNombreKeyTyped
+    
+    void ValidacionFechas(){
+        Calendar z;
+                Date date = dtInicio.getDate();
+                z = new GregorianCalendar();
+                z.setTime(date);
+                int AnioC = z.get(Calendar.YEAR);
+                int mesC = z.get(Calendar.MONTH) + 1;
+                int diaC = z.get(Calendar.DAY_OF_MONTH);
 
+                //Segundo dateChooser
+                Calendar x;
+                Date date2 = dtVencimiento.getDate();
+                x = new GregorianCalendar();
+                x.setTime(date2);
+                int Anio2 = x.get(Calendar.YEAR);
+                int mes2 = x.get(Calendar.MONTH) + 1;
+                int dia2 = x.get(Calendar.DAY_OF_MONTH);
+
+                //Fecha de hoy
+                Calendar hoy = Calendar.getInstance();
+                int Anio = hoy.get(Calendar.YEAR);
+                int mes = hoy.get(Calendar.MONTH) + 1;
+                int dia = hoy.get(Calendar.DAY_OF_MONTH);
+                
+                if (AnioC > Anio2 || mesC > mes2 || diaC > dia2) {
+            JOptionPane.showMessageDialog(null, "Error, la fecha de inicio no puede ser mayor a la echa de finalizacion");
+        }
+    }
+    
     private void btnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirActionPerformed
         // TODO add your handling code here:
         if (txtNombre.getText().trim().isEmpty()) {
