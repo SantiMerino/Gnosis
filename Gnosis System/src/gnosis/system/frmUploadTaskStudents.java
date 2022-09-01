@@ -48,6 +48,8 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         buttonRound4 = new roundObjects.ButtonRound();
         buttonRound5 = new roundObjects.ButtonRound();
         buttonRound6 = new roundObjects.ButtonRound();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,6 +172,10 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         buttonRound6.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         buttonRound6.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
 
+        jLabel14.setText("jLabel14");
+
+        jLabel15.setText("jLabel15");
+
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
@@ -179,8 +185,14 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel7)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel14))
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(84, 84, 84)
+                        .addComponent(jLabel15))
                     .addComponent(jLabel6)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -231,8 +243,9 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addGap(28, 28, 28)
-                        .addComponent(jLabel5)
-                        .addGap(7, 7, 7))
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel14)))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,8 +257,9 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel2))
-                        .addGap(36, 36, 36)))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel15))))
+                .addGap(36, 36, 36)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel13)
@@ -254,8 +268,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buttonRound4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10))
+                            .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -263,10 +276,10 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                        .addComponent(buttonRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addComponent(buttonRound6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
@@ -309,6 +322,8 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
