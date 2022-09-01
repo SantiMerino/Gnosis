@@ -611,6 +611,9 @@ select * from viewTareas
 -- hacer vista de alumnos
 
 
+SELECT b.nombres_docente, b.apellidos_docente, CONCAT(c.materia, '', d.modulo)
+FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d
+WHERE
 
 
 

@@ -7,7 +7,7 @@ package gnosis.system;
 
 import java.awt.*;
 import javax.swing.JPanel;
-import roundObjects.ButtonRound;
+import customizeObjects.ButtonRound;
 
 /**
  *
@@ -21,31 +21,32 @@ public class frmDashboard extends javax.swing.JFrame {
     public customization custoObj = new customization();
     panGrades grades = new panGrades();
     customization custo = new customization();
-    
+
     private JPanel menuAtras;
 
     private int mood = 0;
-    
+
     public frmDashboard() {
         initComponents();
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
-        searchbar.putClientProperty("focusWidth", 0); 
+        searchbar.putClientProperty("focusWidth", 0);
     }
+
     //Metodo para recargar la interfaz de portafolios de manera externa
-    public void abrirMenuPortafolios(){
+    public void abrirMenuPortafolios() {
         panContainer.removeAll();
         panContainer.repaint();
         panContainer.revalidate();
 
         panContainer.add(new panPortfolios());
         panContainer.repaint();
-        panContainer.revalidate(); 
+        panContainer.revalidate();
         cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
     }
-    
+
     //Constructor para ver el mood de concetración
-    public frmDashboard(int moodstate){
+    public frmDashboard(int moodstate) {
         initComponents();
         this.mood = moodstate;
         if (mood == 1) {
@@ -57,49 +58,48 @@ public class frmDashboard extends javax.swing.JFrame {
             btnStopMood.setStyle(ButtonRound.ButtonStyle.NEGRO);
         }
     }
-    
-    public void AbrirBloc(){
+
+    public void AbrirBloc() {
         panContainer.removeAll();
         panContainer.repaint();
         panContainer.revalidate();
-        panelRound4.setBackground(new Color(32,32,32));
-        panelRound5.setBackground(new Color(32,32,32));
-        panelRound6.setBackground(new Color(32,32,32));
-        panelRound7.setBackground(new Color(32,32,32));
-        panWhite.setBackground(new Color(32,32,32));
+        panelRound4.setBackground(new Color(32, 32, 32));
+        panelRound5.setBackground(new Color(32, 32, 32));
+        panelRound6.setBackground(new Color(32, 32, 32));
+        panelRound7.setBackground(new Color(32, 32, 32));
+        panWhite.setBackground(new Color(32, 32, 32));
         panContainer.add(new panBlocMateria());
         panContainer.repaint();
-        panContainer.revalidate(); 
+        panContainer.revalidate();
 
     }
-    
-    
-    public void notificacion(String mensaje,int tipo_mensaje, String tipo_men){
-        try{
+
+    public void notificacion(String mensaje, int tipo_mensaje, String tipo_men) {
+        try {
             // Obtener solamente una instancia del objeto SystemTray
-            SystemTray tray=SystemTray.getSystemTray();
+            SystemTray tray = SystemTray.getSystemTray();
             // Si quieres crear un icono en la bandeja del sistemas como vista previa
             Image image = Toolkit.getDefaultToolkit().createImage("some-icon.png");
-            TrayIcon trayIcon=new TrayIcon(image,"Java AWT Tray Demo");
+            TrayIcon trayIcon = new TrayIcon(image, "Java AWT Tray Demo");
             // Deja que el sistema auto escale si es necesario
             trayIcon.setImageAutoSize(true);
             // Definir texto de tooltip(descripción emergente)
             trayIcon.setToolTip("Gnosis System");
             tray.add(trayIcon);
             // Mostrar notificación de información:
-            if(tipo_mensaje == 1){
-                trayIcon.displayMessage(tipo_men, mensaje,TrayIcon.MessageType.INFO);
-            }else if(tipo_mensaje == 2){
-                trayIcon.displayMessage(tipo_men,mensaje,TrayIcon.MessageType.WARNING);
-            }else{
-                trayIcon.displayMessage(tipo_men,mensaje,TrayIcon.MessageType.ERROR);
+            if (tipo_mensaje == 1) {
+                trayIcon.displayMessage(tipo_men, mensaje, TrayIcon.MessageType.INFO);
+            } else if (tipo_mensaje == 2) {
+                trayIcon.displayMessage(tipo_men, mensaje, TrayIcon.MessageType.WARNING);
+            } else {
+                trayIcon.displayMessage(tipo_men, mensaje, TrayIcon.MessageType.ERROR);
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.err.print(ex);
         }
     }
-    
-    public void cambiarColorBotonesMenu(ButtonRound btn, String icono){
+
+    public void cambiarColorBotonesMenu(ButtonRound btn, String icono) {
         //Cambio el estado de todos los botones a deseleccionados 
         //En cada uno tiene que ir la imagen en negro :P
         homeButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
@@ -114,14 +114,12 @@ public class frmDashboard extends javax.swing.JFrame {
         custoObj.changeIcon(medalButton, "/resources/medal.png");
         bookButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
         custoObj.changeIcon(bookButton, "/resources/book-saved.png");
-        
+
         //Y justo al final cambio el boton que es al estado de seleccionado :P
         btn.setStyle(ButtonRound.ButtonStyle.BLANCO);
         custoObj.changeIcon(btn, icono);
-        
-    }
 
-         
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -132,15 +130,15 @@ public class frmDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panBlack = new roundObjects.PanelRound();
-        panWhite = new roundObjects.PanelRound();
-        panContainer = new roundObjects.PanelRound();
-        panDashboard = new roundObjects.PanelRound();
+        panBlack = new customizeObjects.PanelRound();
+        panWhite = new customizeObjects.PanelRound();
+        panContainer = new customizeObjects.PanelRound();
+        panDashboard = new customizeObjects.PanelRound();
         upperPanel = new javax.swing.JPanel();
         namePan = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         searchPan = new javax.swing.JPanel();
-        panelRound1 = new roundObjects.PanelRound();
+        panelRound1 = new customizeObjects.PanelRound();
         jLabel8 = new javax.swing.JLabel();
         searchbar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -149,58 +147,58 @@ public class frmDashboard extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         buttonsPan = new javax.swing.JPanel();
-        buttonRound2 = new roundObjects.ButtonRound();
-        btnMood = new roundObjects.ButtonRound();
-        panelRound2 = new roundObjects.PanelRound();
+        buttonRound2 = new customizeObjects.ButtonRound();
+        btnMood = new customizeObjects.ButtonRound();
+        panelRound2 = new customizeObjects.PanelRound();
         jComboBox1 = new javax.swing.JComboBox<>();
-        buttonRound4 = new roundObjects.ButtonRound();
+        buttonRound4 = new customizeObjects.ButtonRound();
         mainPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        segundaFila = new roundObjects.PanelRound();
-        protfoliosPanel = new roundObjects.PanelRound();
+        segundaFila = new customizeObjects.PanelRound();
+        protfoliosPanel = new customizeObjects.PanelRound();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        gradesPanel = new roundObjects.PanelRound();
-        panelRound12 = new roundObjects.PanelRound();
+        gradesPanel = new customizeObjects.PanelRound();
+        panelRound12 = new customizeObjects.PanelRound();
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        panelRound11 = new roundObjects.PanelRound();
-        primeraFila = new roundObjects.PanelRound();
+        panelRound11 = new customizeObjects.PanelRound();
+        primeraFila = new customizeObjects.PanelRound();
         jPanel2 = new javax.swing.JPanel();
-        calendarPanel = new roundObjects.PanelRound();
-        panelRound9 = new roundObjects.PanelRound();
-        panelRound10 = new roundObjects.PanelRound();
+        calendarPanel = new customizeObjects.PanelRound();
+        panelRound9 = new customizeObjects.PanelRound();
+        panelRound10 = new customizeObjects.PanelRound();
         jLabel9 = new javax.swing.JLabel();
-        buttonRound5 = new roundObjects.ButtonRound();
-        stadisticPanel = new roundObjects.PanelRound();
-        panelRound13 = new roundObjects.PanelRound();
-        panelRound14 = new roundObjects.PanelRound();
+        buttonRound5 = new customizeObjects.ButtonRound();
+        stadisticPanel = new customizeObjects.PanelRound();
+        panelRound13 = new customizeObjects.PanelRound();
+        panelRound14 = new customizeObjects.PanelRound();
         jLabel13 = new javax.swing.JLabel();
-        taskPanel = new roundObjects.PanelRound();
-        panelRound3 = new roundObjects.PanelRound();
-        panelRound8 = new roundObjects.PanelRound();
+        taskPanel = new customizeObjects.PanelRound();
+        panelRound3 = new customizeObjects.PanelRound();
+        panelRound8 = new customizeObjects.PanelRound();
         jLabel2 = new javax.swing.JLabel();
-        buttonRound3 = new roundObjects.ButtonRound();
-        panelRound4 = new roundObjects.PanelRound();
-        panelRound5 = new roundObjects.PanelRound();
-        panelRound6 = new roundObjects.PanelRound();
-        panelRound7 = new roundObjects.PanelRound();
+        buttonRound3 = new customizeObjects.ButtonRound();
+        panelRound4 = new customizeObjects.PanelRound();
+        panelRound5 = new customizeObjects.PanelRound();
+        panelRound6 = new customizeObjects.PanelRound();
+        panelRound7 = new customizeObjects.PanelRound();
         upGap = new javax.swing.JPanel();
         downGap = new javax.swing.JPanel();
         rightGap = new javax.swing.JPanel();
         sideBar = new javax.swing.JPanel();
-        homeButton = new roundObjects.ButtonRound();
-        briefcaseButton = new roundObjects.ButtonRound();
-        pageButton = new roundObjects.ButtonRound();
-        calendarButton = new roundObjects.ButtonRound();
-        bookButton = new roundObjects.ButtonRound();
-        medalButton = new roundObjects.ButtonRound();
-        moodPanel = new roundObjects.PanelRound();
+        homeButton = new customizeObjects.ButtonRound();
+        briefcaseButton = new customizeObjects.ButtonRound();
+        pageButton = new customizeObjects.ButtonRound();
+        calendarButton = new customizeObjects.ButtonRound();
+        bookButton = new customizeObjects.ButtonRound();
+        medalButton = new customizeObjects.ButtonRound();
+        moodPanel = new customizeObjects.PanelRound();
         moodPic = new javax.swing.JLabel();
         lblmood = new javax.swing.JLabel();
-        btnStopMood = new roundObjects.ButtonRound();
-        buttonRound1 = new roundObjects.ButtonRound();
+        btnStopMood = new customizeObjects.ButtonRound();
+        buttonRound1 = new customizeObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -294,12 +292,12 @@ public class frmDashboard extends javax.swing.JFrame {
 
         buttonRound2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/calculator.png"))); // NOI18N
         buttonRound2.setPreferredSize(new java.awt.Dimension(40, 40));
-        buttonRound2.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         buttonsPan.add(buttonRound2);
 
         btnMood.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/glass.png"))); // NOI18N
         btnMood.setPreferredSize(new java.awt.Dimension(40, 40));
-        btnMood.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnMood.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         btnMood.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoodActionPerformed(evt);
@@ -323,7 +321,7 @@ public class frmDashboard extends javax.swing.JFrame {
 
         buttonRound4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square.png"))); // NOI18N
         buttonRound4.setPreferredSize(new java.awt.Dimension(40, 40));
-        buttonRound4.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         panelRound2.add(buttonRound4);
 
         buttonsPan.add(panelRound2);
@@ -434,7 +432,7 @@ public class frmDashboard extends javax.swing.JFrame {
         buttonRound5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/more-white.png"))); // NOI18N
         buttonRound5.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound5.setRound(10);
-        buttonRound5.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
 
         javax.swing.GroupLayout panelRound10Layout = new javax.swing.GroupLayout(panelRound10);
         panelRound10.setLayout(panelRound10Layout);
@@ -518,7 +516,7 @@ public class frmDashboard extends javax.swing.JFrame {
         buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/more-black.png"))); // NOI18N
         buttonRound3.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound3.setRound(10);
-        buttonRound3.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
 
         javax.swing.GroupLayout panelRound8Layout = new javax.swing.GroupLayout(panelRound8);
         panelRound8.setLayout(panelRound8Layout);
@@ -612,7 +610,7 @@ public class frmDashboard extends javax.swing.JFrame {
         briefcaseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/briefcase.png"))); // NOI18N
         briefcaseButton.setPreferredSize(new java.awt.Dimension(60, 60));
         briefcaseButton.setRound(15);
-        briefcaseButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        briefcaseButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         briefcaseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 briefcaseButtonActionPerformed(evt);
@@ -623,7 +621,7 @@ public class frmDashboard extends javax.swing.JFrame {
         pageButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text.png"))); // NOI18N
         pageButton.setPreferredSize(new java.awt.Dimension(60, 60));
         pageButton.setRound(15);
-        pageButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        pageButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         pageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pageButtonActionPerformed(evt);
@@ -634,7 +632,7 @@ public class frmDashboard extends javax.swing.JFrame {
         calendarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/calendar.png"))); // NOI18N
         calendarButton.setPreferredSize(new java.awt.Dimension(60, 60));
         calendarButton.setRound(15);
-        calendarButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        calendarButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         calendarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 calendarButtonActionPerformed(evt);
@@ -645,7 +643,7 @@ public class frmDashboard extends javax.swing.JFrame {
         bookButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/book-saved.png"))); // NOI18N
         bookButton.setPreferredSize(new java.awt.Dimension(60, 60));
         bookButton.setRound(15);
-        bookButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        bookButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         bookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bookButtonActionPerformed(evt);
@@ -656,7 +654,7 @@ public class frmDashboard extends javax.swing.JFrame {
         medalButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/medal.png"))); // NOI18N
         medalButton.setPreferredSize(new java.awt.Dimension(60, 60));
         medalButton.setRound(15);
-        medalButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        medalButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         medalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 medalButtonActionPerformed(evt);
@@ -684,7 +682,7 @@ public class frmDashboard extends javax.swing.JFrame {
         btnStopMood.setFont(new java.awt.Font("Poppins Black", 0, 12)); // NOI18N
         btnStopMood.setPreferredSize(new java.awt.Dimension(60, 30));
         btnStopMood.setRound(20);
-        btnStopMood.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnStopMood.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         moodPanel.add(btnStopMood);
 
         sideBar.add(moodPanel);
@@ -692,7 +690,7 @@ public class frmDashboard extends javax.swing.JFrame {
         buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/setting-2.png"))); // NOI18N
         buttonRound1.setPreferredSize(new java.awt.Dimension(60, 60));
         buttonRound1.setRound(15);
-        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         sideBar.add(buttonRound1);
 
         panBlack.add(sideBar, java.awt.BorderLayout.WEST);
@@ -708,7 +706,7 @@ public class frmDashboard extends javax.swing.JFrame {
 
     private void homeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseClicked
         // TODO add your handling code here:     
-        
+
     }//GEN-LAST:event_homeButtonMouseClicked
 
     private void homeButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseReleased
@@ -720,47 +718,47 @@ public class frmDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_homeButtonMouseExited
-   
+
     //Action Performed de los botones del sidebar
-    
+
     private void briefcaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_briefcaseButtonActionPerformed
         // TODO add your handling code here:  
         //Si componentcount es 0 significa que esta en el dashboard
-        if(panContainer.getComponentCount()== 0) {
-        //Cambio el color del boton y el icono
+        if (panContainer.getComponentCount() == 0) {
+            //Cambio el color del boton y el icono
             cambiarColorBotonesMenu(briefcaseButton, "/resources/home-selec.png");
-        //Agrego el panel que corresponde
+            //Agrego el panel que corresponde
             panContainer.add(new panTasks(1));
             panContainer.repaint();
             panContainer.revalidate();
-        //Si el componentCount es 1 es que uno esta abierto
-        } else if (panContainer.getComponentCount()== 1 ) {
+            //Si el componentCount es 1 es que uno esta abierto
+        } else if (panContainer.getComponentCount() == 1) {
             // Si el estilo/color del boton es negro significa que el panel abierto no pertenece al boton
             if (briefcaseButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
-            //Remuevo el panel abierto y agrego el panel correspondiente al boton
-            cambiarColorBotonesMenu(briefcaseButton, "/resources/home-selec.png");
-            panContainer.removeAll();
-            panContainer.repaint();
-            panContainer.revalidate();
+                //Remuevo el panel abierto y agrego el panel correspondiente al boton
+                cambiarColorBotonesMenu(briefcaseButton, "/resources/home-selec.png");
+                panContainer.removeAll();
+                panContainer.repaint();
+                panContainer.revalidate();
 
-            panContainer.add(new panTasks(1));
-            panContainer.repaint();
-            panContainer.revalidate(); 
-            }else {
+                panContainer.add(new panTasks(1));
+                panContainer.repaint();
+                panContainer.revalidate();
+            } else {
                 //Si el estilo/color del boton es blanco es porque el panel que se quiere abrir ya esta abierto
                 notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
-            }           
+            }
         }
     }//GEN-LAST:event_briefcaseButtonActionPerformed
 
     private void pageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pageButtonActionPerformed
         // TODO add your handling code here:
-        if(panContainer.getComponentCount()== 0) {
+        if (panContainer.getComponentCount() == 0) {
             cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
             panContainer.add(new panPortfolios());
             panContainer.repaint();
             panContainer.revalidate();
-        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panPortfolios()) {
+        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panPortfolios()) {
             if (pageButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
                 cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
                 panContainer.removeAll();
@@ -769,22 +767,22 @@ public class frmDashboard extends javax.swing.JFrame {
 
                 panContainer.add(new panPortfolios());
                 panContainer.repaint();
-                panContainer.revalidate(); 
+                panContainer.revalidate();
             } else {
                 notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
             }
-  
+
         }
     }//GEN-LAST:event_pageButtonActionPerformed
 
     private void calendarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarButtonActionPerformed
         // TODO add your handling code here:
-        if(panContainer.getComponentCount()== 0) {
+        if (panContainer.getComponentCount() == 0) {
             cambiarColorBotonesMenu(calendarButton, "/resources/home-selec.png");
             panContainer.add(new panCalendar());
             panContainer.repaint();
             panContainer.revalidate();
-        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panCalendar()) {
+        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panCalendar()) {
             if (calendarButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
                 cambiarColorBotonesMenu(calendarButton, "/resources/home-selec.png");
                 panContainer.removeAll();
@@ -794,46 +792,46 @@ public class frmDashboard extends javax.swing.JFrame {
                 panContainer.add(new panCalendar());
                 panContainer.repaint();
                 panContainer.revalidate();
-            } else{ 
+            } else {
                 notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
             }
-   
+
         }
     }//GEN-LAST:event_calendarButtonActionPerformed
 
     private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
         // TODO add your handling code here:
-        if(panContainer.getComponentCount()== 0) {
+        if (panContainer.getComponentCount() == 0) {
             cambiarColorBotonesMenu(bookButton, "/resources/home-selec.png");
             panContainer.add(new panBiblioteca());
             panContainer.repaint();
             panContainer.revalidate();
-        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panBiblioteca()) {
+        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panBiblioteca()) {
             if (bookButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
                 cambiarColorBotonesMenu(bookButton, "/resources/home-selec.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
-                
+
                 panContainer.add(new panBiblioteca());
                 panContainer.repaint();
                 panContainer.revalidate();
-            } else{ 
+            } else {
                 notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
             }
-     
+
         }
     }//GEN-LAST:event_bookButtonActionPerformed
 
     private void medalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medalButtonActionPerformed
         // TODO add your handling code here:
-        if(panContainer.getComponentCount()== 0) {
+        if (panContainer.getComponentCount() == 0) {
             cambiarColorBotonesMenu(medalButton, "/resources/home-selec.png");
             panContainer.add(new panGrades());
             panContainer.repaint();
             panContainer.revalidate();
-        } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panGrades()) {
-                    if (medalButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
+        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panGrades()) {
+            if (medalButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
                 cambiarColorBotonesMenu(medalButton, "/resources/home-selec.png");
                 panContainer.removeAll();
                 panContainer.repaint();
@@ -842,34 +840,34 @@ public class frmDashboard extends javax.swing.JFrame {
                 panContainer.add(new panGrades());
                 panContainer.repaint();
                 panContainer.revalidate();
-            } else{ 
+            } else {
                 notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
-            }  
+            }
         }
     }//GEN-LAST:event_medalButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:
-        if (panContainer.getComponentCount()== 0) {
+        if (panContainer.getComponentCount() == 0) {
             notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
-        } else   {
+        } else {
             cambiarColorBotonesMenu(homeButton, "/resources/home-selec.png");
-            
+
             panContainer.removeAll();
             panContainer.repaint();
             panContainer.revalidate();
-            
+
             panContainer.add(panDashboard);
             panContainer.repaint();
             panContainer.revalidate();
-        }        
+        }
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void btnMoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoodActionPerformed
         // TODO add your handling code here:
         frmMood mood = new frmMood();
         mood.setVisible(true);
-        this.setState(Frame.ICONIFIED);  
+        this.setState(Frame.ICONIFIED);
         frmMood objmood = new frmMood();
     }//GEN-LAST:event_btnMoodActionPerformed
 
@@ -877,9 +875,8 @@ public class frmDashboard extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        customization.mainUtilities();    
-        
+
+        customization.mainUtilities();
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -890,21 +887,21 @@ public class frmDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound bookButton;
-    private roundObjects.ButtonRound briefcaseButton;
-    private roundObjects.ButtonRound btnMood;
-    private roundObjects.ButtonRound btnStopMood;
-    private roundObjects.ButtonRound buttonRound1;
-    private roundObjects.ButtonRound buttonRound2;
-    private roundObjects.ButtonRound buttonRound3;
-    private roundObjects.ButtonRound buttonRound4;
-    private roundObjects.ButtonRound buttonRound5;
+    private customizeObjects.ButtonRound bookButton;
+    private customizeObjects.ButtonRound briefcaseButton;
+    private customizeObjects.ButtonRound btnMood;
+    private customizeObjects.ButtonRound btnStopMood;
+    private customizeObjects.ButtonRound buttonRound1;
+    private customizeObjects.ButtonRound buttonRound2;
+    private customizeObjects.ButtonRound buttonRound3;
+    private customizeObjects.ButtonRound buttonRound4;
+    private customizeObjects.ButtonRound buttonRound5;
     private javax.swing.JPanel buttonsPan;
-    private roundObjects.ButtonRound calendarButton;
-    private roundObjects.PanelRound calendarPanel;
+    private customizeObjects.ButtonRound calendarButton;
+    private customizeObjects.PanelRound calendarPanel;
     private javax.swing.JPanel downGap;
-    private roundObjects.PanelRound gradesPanel;
-    private roundObjects.ButtonRound homeButton;
+    private customizeObjects.PanelRound gradesPanel;
+    private customizeObjects.ButtonRound homeButton;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -925,38 +922,38 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblmood;
     private javax.swing.JPanel mainPanel;
-    private roundObjects.ButtonRound medalButton;
-    private roundObjects.PanelRound moodPanel;
+    private customizeObjects.ButtonRound medalButton;
+    private customizeObjects.PanelRound moodPanel;
     private javax.swing.JLabel moodPic;
     private javax.swing.JPanel namePan;
-    private roundObjects.ButtonRound pageButton;
-    private roundObjects.PanelRound panBlack;
-    private roundObjects.PanelRound panContainer;
-    private roundObjects.PanelRound panDashboard;
-    private roundObjects.PanelRound panWhite;
-    private roundObjects.PanelRound panelRound1;
-    private roundObjects.PanelRound panelRound10;
-    private roundObjects.PanelRound panelRound11;
-    private roundObjects.PanelRound panelRound12;
-    private roundObjects.PanelRound panelRound13;
-    private roundObjects.PanelRound panelRound14;
-    private roundObjects.PanelRound panelRound2;
-    private roundObjects.PanelRound panelRound3;
-    private roundObjects.PanelRound panelRound4;
-    private roundObjects.PanelRound panelRound5;
-    private roundObjects.PanelRound panelRound6;
-    private roundObjects.PanelRound panelRound7;
-    private roundObjects.PanelRound panelRound8;
-    private roundObjects.PanelRound panelRound9;
-    private roundObjects.PanelRound primeraFila;
-    private roundObjects.PanelRound protfoliosPanel;
+    private customizeObjects.ButtonRound pageButton;
+    private customizeObjects.PanelRound panBlack;
+    private customizeObjects.PanelRound panContainer;
+    private customizeObjects.PanelRound panDashboard;
+    private customizeObjects.PanelRound panWhite;
+    private customizeObjects.PanelRound panelRound1;
+    private customizeObjects.PanelRound panelRound10;
+    private customizeObjects.PanelRound panelRound11;
+    private customizeObjects.PanelRound panelRound12;
+    private customizeObjects.PanelRound panelRound13;
+    private customizeObjects.PanelRound panelRound14;
+    private customizeObjects.PanelRound panelRound2;
+    private customizeObjects.PanelRound panelRound3;
+    private customizeObjects.PanelRound panelRound4;
+    private customizeObjects.PanelRound panelRound5;
+    private customizeObjects.PanelRound panelRound6;
+    private customizeObjects.PanelRound panelRound7;
+    private customizeObjects.PanelRound panelRound8;
+    private customizeObjects.PanelRound panelRound9;
+    private customizeObjects.PanelRound primeraFila;
+    private customizeObjects.PanelRound protfoliosPanel;
     private javax.swing.JPanel rightGap;
     private javax.swing.JPanel searchPan;
     private javax.swing.JTextField searchbar;
-    private roundObjects.PanelRound segundaFila;
+    private customizeObjects.PanelRound segundaFila;
     private javax.swing.JPanel sideBar;
-    private roundObjects.PanelRound stadisticPanel;
-    private roundObjects.PanelRound taskPanel;
+    private customizeObjects.PanelRound stadisticPanel;
+    private customizeObjects.PanelRound taskPanel;
     private javax.swing.JPanel upGap;
     private javax.swing.JPanel upperPanel;
     // End of variables declaration//GEN-END:variables

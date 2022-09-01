@@ -38,7 +38,7 @@ public class panBiblioteca extends javax.swing.JPanel {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
-        buttonRound1 = new roundObjects.ButtonRound();
+        buttonRound1 = new customizeObjects.ButtonRound();
         jScrollPane1 = new javax.swing.JScrollPane();
         mainPanel = new javax.swing.JPanel();
 
@@ -95,7 +95,7 @@ public class panBiblioteca extends javax.swing.JPanel {
         buttonRound1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         buttonRound1.setPreferredSize(new java.awt.Dimension(35, 35));
         buttonRound1.setRound(15);
-        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
@@ -125,7 +125,7 @@ public class panBiblioteca extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound buttonRound1;
+    private customizeObjects.ButtonRound buttonRound1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;

@@ -33,7 +33,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="roundObjects.PanelRound" name="panelRound1">
+    <Container class="customizeObjects.PanelRound" name="panelRound1">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -200,10 +200,10 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="roundObjects.ButtonRound" name="BtnVaciarCampos">
+        <Component class="customizeObjects.ButtonRound" name="BtnVaciarCampos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Vaciar Campos"/>
-            <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+            <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="GRIS_OSCURO"/>
             </Property>
           </Properties>
@@ -213,10 +213,10 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="roundObjects.ButtonRound" name="BtnEliminar">
+        <Component class="customizeObjects.ButtonRound" name="BtnEliminar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar evento"/>
-            <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+            <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="ROJO"/>
             </Property>
           </Properties>
@@ -229,10 +229,10 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="roundObjects.ButtonRound" name="BtnModificar">
+        <Component class="customizeObjects.ButtonRound" name="BtnModificar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar evento"/>
-            <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+            <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="AMARILLO"/>
             </Property>
           </Properties>
@@ -245,10 +245,10 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="roundObjects.ButtonRound" name="BtnAgregar">
+        <Component class="customizeObjects.ButtonRound" name="BtnAgregar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar evento"/>
-            <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+            <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="VERDE"/>
             </Property>
           </Properties>

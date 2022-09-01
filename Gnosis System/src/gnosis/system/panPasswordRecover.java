@@ -116,12 +116,12 @@ public class panPasswordRecover extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LoginPanel = new roundObjects.PanelRound();
-        cardLayoutPan = new roundObjects.PanelRound();
+        LoginPanel = new customizeObjects.PanelRound();
+        cardLayoutPan = new customizeObjects.PanelRound();
         metodos = new javax.swing.JPanel();
-        btnPIN = new roundObjects.ButtonRound();
-        btnADMIN = new roundObjects.ButtonRound();
-        btnEMAIL = new roundObjects.ButtonRound();
+        btnPIN = new customizeObjects.ButtonRound();
+        btnADMIN = new customizeObjects.ButtonRound();
+        btnEMAIL = new customizeObjects.ButtonRound();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -137,9 +137,9 @@ public class panPasswordRecover extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         txtPIN = new javax.swing.JTextField();
         txtNConfirmarPIN = new javax.swing.JTextField();
-        btnConfirmarPIN = new roundObjects.ButtonRound();
-        btnGuardarPIN = new roundObjects.ButtonRound();
-        buttonRound3 = new roundObjects.ButtonRound();
+        btnConfirmarPIN = new customizeObjects.ButtonRound();
+        btnGuardarPIN = new customizeObjects.ButtonRound();
+        buttonRound3 = new customizeObjects.ButtonRound();
         panADMIN = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -151,9 +151,9 @@ public class panPasswordRecover extends javax.swing.JPanel {
         txtClaveADMIN = new javax.swing.JTextField();
         txtNConfirmarADMIN = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        btnConfirmarADMIN = new roundObjects.ButtonRound();
-        btnGuardarADMIN = new roundObjects.ButtonRound();
-        buttonRound6 = new roundObjects.ButtonRound();
+        btnConfirmarADMIN = new customizeObjects.ButtonRound();
+        btnGuardarADMIN = new customizeObjects.ButtonRound();
+        buttonRound6 = new customizeObjects.ButtonRound();
         txtCorreoRecuperar = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         panEMAIL = new javax.swing.JPanel();
@@ -165,18 +165,18 @@ public class panPasswordRecover extends javax.swing.JPanel {
         txtNueva = new javax.swing.JTextField();
         txtNConfirmar = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        btnConfirmar = new roundObjects.ButtonRound();
-        btnGuardar = new roundObjects.ButtonRound();
-        buttonRound9 = new roundObjects.ButtonRound();
+        btnConfirmar = new customizeObjects.ButtonRound();
+        btnGuardar = new customizeObjects.ButtonRound();
+        buttonRound9 = new customizeObjects.ButtonRound();
         jLabel21 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
-        btnEnviar = new roundObjects.ButtonRound();
-        wContainer = new roundObjects.PanelRound();
-        loginWhitePan = new roundObjects.PanelRound();
+        btnEnviar = new customizeObjects.ButtonRound();
+        wContainer = new customizeObjects.PanelRound();
+        loginWhitePan = new customizeObjects.PanelRound();
         lblInterfaz = new javax.swing.JLabel();
-        topGap = new roundObjects.PanelRound();
-        rightWGap = new roundObjects.PanelRound();
-        leftWGap = new roundObjects.PanelRound();
+        topGap = new customizeObjects.PanelRound();
+        rightWGap = new customizeObjects.PanelRound();
+        leftWGap = new customizeObjects.PanelRound();
 
         LoginPanel.setBackground(new java.awt.Color(32, 32, 32));
         LoginPanel.setLayout(new javax.swing.BoxLayout(LoginPanel, javax.swing.BoxLayout.LINE_AXIS));
@@ -189,7 +189,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         metodos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnPIN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/PIN.png"))); // NOI18N
-        btnPIN.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
+        btnPIN.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
         btnPIN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPINMouseClicked(evt);
@@ -209,7 +209,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         metodos.add(btnPIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 177, 128, 280));
 
         btnADMIN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/ADMIN.png"))); // NOI18N
-        btnADMIN.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
+        btnADMIN.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
         btnADMIN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnADMINMousePressed(evt);
@@ -226,7 +226,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         metodos.add(btnADMIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 177, 132, 280));
 
         btnEMAIL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/EMAIL.png"))); // NOI18N
-        btnEMAIL.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
+        btnEMAIL.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
         btnEMAIL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnEMAILMousePressed(evt);
@@ -322,7 +322,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         btnConfirmarPIN.setText("Confirmar");
         btnConfirmarPIN.setPreferredSize(new java.awt.Dimension(130, 40));
         btnConfirmarPIN.setRound(20);
-        btnConfirmarPIN.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnConfirmarPIN.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
         btnConfirmarPIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmarPINActionPerformed(evt);
@@ -332,7 +332,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
 
         btnGuardarPIN.setText("Guardar contraseña");
         btnGuardarPIN.setPreferredSize(new java.awt.Dimension(130, 40));
-        btnGuardarPIN.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnGuardarPIN.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         btnGuardarPIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarPINActionPerformed(evt);
@@ -345,7 +345,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         buttonRound3.setIconTextGap(15);
         buttonRound3.setPreferredSize(new java.awt.Dimension(100, 40));
         buttonRound3.setRound(20);
-        buttonRound3.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         buttonRound3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound3ActionPerformed(evt);
@@ -413,7 +413,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         btnConfirmarADMIN.setText("Confirmar");
         btnConfirmarADMIN.setPreferredSize(new java.awt.Dimension(130, 40));
         btnConfirmarADMIN.setRound(20);
-        btnConfirmarADMIN.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnConfirmarADMIN.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
         btnConfirmarADMIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmarADMINActionPerformed(evt);
@@ -423,7 +423,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
 
         btnGuardarADMIN.setText("Guardar contraseña");
         btnGuardarADMIN.setPreferredSize(new java.awt.Dimension(130, 40));
-        btnGuardarADMIN.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnGuardarADMIN.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         btnGuardarADMIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarADMINActionPerformed(evt);
@@ -436,7 +436,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         buttonRound6.setIconTextGap(15);
         buttonRound6.setPreferredSize(new java.awt.Dimension(100, 40));
         buttonRound6.setRound(20);
-        buttonRound6.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound6.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         buttonRound6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound6ActionPerformed(evt);
@@ -500,7 +500,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         btnConfirmar.setText("Confirmar");
         btnConfirmar.setPreferredSize(new java.awt.Dimension(130, 40));
         btnConfirmar.setRound(20);
-        btnConfirmar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnConfirmar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmarActionPerformed(evt);
@@ -510,7 +510,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
 
         btnGuardar.setText("Guardar contraseña");
         btnGuardar.setPreferredSize(new java.awt.Dimension(130, 40));
-        btnGuardar.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnGuardar.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
@@ -523,7 +523,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         buttonRound9.setIconTextGap(15);
         buttonRound9.setPreferredSize(new java.awt.Dimension(100, 40));
         buttonRound9.setRound(20);
-        buttonRound9.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound9.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         buttonRound9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound9ActionPerformed(evt);
@@ -543,7 +543,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
 
         btnEnviar.setText("Enviar codigo");
         btnEnviar.setPreferredSize(new java.awt.Dimension(130, 40));
-        btnEnviar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        btnEnviar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarActionPerformed(evt);
@@ -916,21 +916,21 @@ public class panPasswordRecover extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.PanelRound LoginPanel;
-    private roundObjects.ButtonRound btnADMIN;
-    private roundObjects.ButtonRound btnConfirmar;
-    private roundObjects.ButtonRound btnConfirmarADMIN;
-    private roundObjects.ButtonRound btnConfirmarPIN;
-    private roundObjects.ButtonRound btnEMAIL;
-    private roundObjects.ButtonRound btnEnviar;
-    private roundObjects.ButtonRound btnGuardar;
-    private roundObjects.ButtonRound btnGuardarADMIN;
-    private roundObjects.ButtonRound btnGuardarPIN;
-    private roundObjects.ButtonRound btnPIN;
-    private roundObjects.ButtonRound buttonRound3;
-    private roundObjects.ButtonRound buttonRound6;
-    private roundObjects.ButtonRound buttonRound9;
-    private roundObjects.PanelRound cardLayoutPan;
+    private customizeObjects.PanelRound LoginPanel;
+    private customizeObjects.ButtonRound btnADMIN;
+    private customizeObjects.ButtonRound btnConfirmar;
+    private customizeObjects.ButtonRound btnConfirmarADMIN;
+    private customizeObjects.ButtonRound btnConfirmarPIN;
+    private customizeObjects.ButtonRound btnEMAIL;
+    private customizeObjects.ButtonRound btnEnviar;
+    private customizeObjects.ButtonRound btnGuardar;
+    private customizeObjects.ButtonRound btnGuardarADMIN;
+    private customizeObjects.ButtonRound btnGuardarPIN;
+    private customizeObjects.ButtonRound btnPIN;
+    private customizeObjects.ButtonRound buttonRound3;
+    private customizeObjects.ButtonRound buttonRound6;
+    private customizeObjects.ButtonRound buttonRound9;
+    private customizeObjects.PanelRound cardLayoutPan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -955,14 +955,14 @@ public class panPasswordRecover extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblInterfaz;
-    private roundObjects.PanelRound leftWGap;
-    private roundObjects.PanelRound loginWhitePan;
+    private customizeObjects.PanelRound leftWGap;
+    private customizeObjects.PanelRound loginWhitePan;
     private javax.swing.JPanel metodos;
     private javax.swing.JPanel panADMIN;
     private javax.swing.JPanel panEMAIL;
     private javax.swing.JPanel panPIN;
-    private roundObjects.PanelRound rightWGap;
-    private roundObjects.PanelRound topGap;
+    private customizeObjects.PanelRound rightWGap;
+    private customizeObjects.PanelRound topGap;
     private javax.swing.JTextField txtClaveADMIN;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCorreo;
@@ -976,6 +976,6 @@ public class panPasswordRecover extends javax.swing.JPanel {
     private javax.swing.JTextField txtNuevaADMIN;
     private javax.swing.JTextField txtNuevaPIN;
     private javax.swing.JTextField txtPIN;
-    private roundObjects.PanelRound wContainer;
+    private customizeObjects.PanelRound wContainer;
     // End of variables declaration//GEN-END:variables
 }

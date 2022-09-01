@@ -150,7 +150,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="roundObjects.ButtonRound" name="buttonRound1">
+            <Component class="customizeObjects.ButtonRound" name="buttonRound1">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -167,7 +167,7 @@
                   <Dimension value="[35, 35]"/>
                 </Property>
                 <Property name="round" type="int" value="15"/>
-                <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="VERDE"/>
                 </Property>
               </Properties>
@@ -312,7 +312,7 @@
               </StatementProvider>
               <Parameters>
                 <CodeExpression id="11_buttonRound1">
-                  <CodeVariable name="buttonRound1" type="8194" declaredType="roundObjects.ButtonRound"/>
+                  <CodeVariable name="buttonRound1" type="8194" declaredType="customizeObjects.ButtonRound"/>
                   <ExpressionOrigin>
                     <ExpressionProvider type="ComponentRef">
                       <ComponentRef name="buttonRound1"/>

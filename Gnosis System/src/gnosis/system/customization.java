@@ -20,8 +20,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-import roundObjects.ButtonRound;
-import roundObjects.PanelRound;
+import customizeObjects.ButtonRound;
+import customizeObjects.PanelRound;
 
 /**
  *

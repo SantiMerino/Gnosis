@@ -47,7 +47,7 @@ public class panConfig extends javax.swing.JPanel {
         jTextField5 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
-        buttonRound1 = new roundObjects.ButtonRound();
+        buttonRound1 = new customizeObjects.ButtonRound();
 
         jLabel4.setText("jLabel4");
 
@@ -106,7 +106,7 @@ public class panConfig extends javax.swing.JPanel {
         buttonRound1.setText("Guardar");
         buttonRound1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         buttonRound1.setRound(20);
-        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -171,7 +171,7 @@ public class panConfig extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound buttonRound1;
+    private customizeObjects.ButtonRound buttonRound1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

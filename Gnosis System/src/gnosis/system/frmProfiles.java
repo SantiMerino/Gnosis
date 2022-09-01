@@ -185,10 +185,10 @@ public class frmProfiles extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        btnSubir = new roundObjects.ButtonRound();
-        btnEliminar = new roundObjects.ButtonRound();
-        btnVaciar = new roundObjects.ButtonRound();
-        btnModificar = new roundObjects.ButtonRound();
+        btnSubir = new customizeObjects.ButtonRound();
+        btnEliminar = new customizeObjects.ButtonRound();
+        btnVaciar = new customizeObjects.ButtonRound();
+        btnModificar = new customizeObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -275,7 +275,7 @@ public class frmProfiles extends javax.swing.JFrame {
 
         btnSubir.setText("Subir");
         btnSubir.setRound(20);
-        btnSubir.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnSubir.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         btnSubir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubirActionPerformed(evt);
@@ -285,7 +285,7 @@ public class frmProfiles extends javax.swing.JFrame {
 
         btnEliminar.setText("Eliminar");
         btnEliminar.setRound(20);
-        btnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        btnEliminar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -295,12 +295,12 @@ public class frmProfiles extends javax.swing.JFrame {
 
         btnVaciar.setText("Vaciar Campos");
         btnVaciar.setRound(20);
-        btnVaciar.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        btnVaciar.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         jPanel1.add(btnVaciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, 130, 30));
 
         btnModificar.setText("Modificar");
         btnModificar.setRound(20);
-        btnModificar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnModificar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
@@ -509,10 +509,10 @@ public class frmProfiles extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CmbTipoPerfil;
     private javax.swing.JTable JTPerfil;
-    private roundObjects.ButtonRound btnEliminar;
-    private roundObjects.ButtonRound btnModificar;
-    private roundObjects.ButtonRound btnSubir;
-    private roundObjects.ButtonRound btnVaciar;
+    private customizeObjects.ButtonRound btnEliminar;
+    private customizeObjects.ButtonRound btnModificar;
+    private customizeObjects.ButtonRound btnSubir;
+    private customizeObjects.ButtonRound btnVaciar;
     private com.toedter.calendar.JDateChooser dtInicio;
     private com.toedter.calendar.JDateChooser dtVencimiento;
     private javax.swing.JLabel jLabel1;

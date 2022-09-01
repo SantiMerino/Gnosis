@@ -8,7 +8,7 @@ package gnosis.system;
 import Controller.CLogin;
 import java.awt.*;
 import javax.swing.JOptionPane;
-import roundObjects.ButtonRound;
+import customizeObjects.ButtonRound;
 
 /**
  *
@@ -114,16 +114,16 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panBlack = new roundObjects.PanelRound();
-        panWhite = new roundObjects.PanelRound();
-        panContainer = new roundObjects.PanelRound();
-        panDashboard = new roundObjects.PanelRound();
+        panBlack = new customizeObjects.PanelRound();
+        panWhite = new customizeObjects.PanelRound();
+        panContainer = new customizeObjects.PanelRound();
+        panDashboard = new customizeObjects.PanelRound();
         mainPanel = new javax.swing.JPanel();
         upperPanel = new javax.swing.JPanel();
         namePan = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         searchPan = new javax.swing.JPanel();
-        panelRound1 = new roundObjects.PanelRound();
+        panelRound1 = new customizeObjects.PanelRound();
         jLabel8 = new javax.swing.JLabel();
         searchbar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -132,30 +132,30 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         buttonsPan = new javax.swing.JPanel();
-        buttonRound2 = new roundObjects.ButtonRound();
-        btnMood = new roundObjects.ButtonRound();
-        panelRound2 = new roundObjects.PanelRound();
+        buttonRound2 = new customizeObjects.ButtonRound();
+        btnMood = new customizeObjects.ButtonRound();
+        panelRound2 = new customizeObjects.PanelRound();
         jComboBox1 = new javax.swing.JComboBox<>();
-        buttonRound4 = new roundObjects.ButtonRound();
-        panelRound4 = new roundObjects.PanelRound();
-        panelRound5 = new roundObjects.PanelRound();
-        panelRound6 = new roundObjects.PanelRound();
-        panelRound7 = new roundObjects.PanelRound();
+        buttonRound4 = new customizeObjects.ButtonRound();
+        panelRound4 = new customizeObjects.PanelRound();
+        panelRound5 = new customizeObjects.PanelRound();
+        panelRound6 = new customizeObjects.PanelRound();
+        panelRound7 = new customizeObjects.PanelRound();
         upGap = new javax.swing.JPanel();
         downGap = new javax.swing.JPanel();
         rightGap = new javax.swing.JPanel();
         sideBar = new javax.swing.JPanel();
-        homeButton = new roundObjects.ButtonRound();
-        briefcaseButton = new roundObjects.ButtonRound();
-        pageButton = new roundObjects.ButtonRound();
-        calendarButton = new roundObjects.ButtonRound();
-        studentsButton = new roundObjects.ButtonRound();
-        teachersButton = new roundObjects.ButtonRound();
-        moodPanel = new roundObjects.PanelRound();
+        homeButton = new customizeObjects.ButtonRound();
+        briefcaseButton = new customizeObjects.ButtonRound();
+        pageButton = new customizeObjects.ButtonRound();
+        calendarButton = new customizeObjects.ButtonRound();
+        studentsButton = new customizeObjects.ButtonRound();
+        teachersButton = new customizeObjects.ButtonRound();
+        moodPanel = new customizeObjects.PanelRound();
         moodPic = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnStopMood = new roundObjects.ButtonRound();
-        buttonRound1 = new roundObjects.ButtonRound();
+        btnStopMood = new customizeObjects.ButtonRound();
+        buttonRound1 = new customizeObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -252,12 +252,12 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 
         buttonRound2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/calculator.png"))); // NOI18N
         buttonRound2.setPreferredSize(new java.awt.Dimension(40, 40));
-        buttonRound2.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         buttonsPan.add(buttonRound2);
 
         btnMood.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/glass.png"))); // NOI18N
         btnMood.setPreferredSize(new java.awt.Dimension(40, 40));
-        btnMood.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnMood.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         btnMood.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoodActionPerformed(evt);
@@ -281,7 +281,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 
         buttonRound4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square.png"))); // NOI18N
         buttonRound4.setPreferredSize(new java.awt.Dimension(40, 40));
-        buttonRound4.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         panelRound2.add(buttonRound4);
 
         buttonsPan.add(panelRound2);
@@ -354,7 +354,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         briefcaseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/briefcase.png"))); // NOI18N
         briefcaseButton.setPreferredSize(new java.awt.Dimension(60, 60));
         briefcaseButton.setRound(15);
-        briefcaseButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        briefcaseButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         briefcaseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 briefcaseButtonActionPerformed(evt);
@@ -365,7 +365,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         pageButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text.png"))); // NOI18N
         pageButton.setPreferredSize(new java.awt.Dimension(60, 60));
         pageButton.setRound(15);
-        pageButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        pageButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         pageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pageButtonActionPerformed(evt);
@@ -376,7 +376,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         calendarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/calendar.png"))); // NOI18N
         calendarButton.setPreferredSize(new java.awt.Dimension(60, 60));
         calendarButton.setRound(15);
-        calendarButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        calendarButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         calendarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 calendarButtonActionPerformed(evt);
@@ -387,7 +387,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         studentsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/teacher-white.png"))); // NOI18N
         studentsButton.setPreferredSize(new java.awt.Dimension(60, 60));
         studentsButton.setRound(15);
-        studentsButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        studentsButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         studentsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 studentsButtonActionPerformed(evt);
@@ -398,7 +398,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         teachersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/admindocente.png"))); // NOI18N
         teachersButton.setPreferredSize(new java.awt.Dimension(60, 60));
         teachersButton.setRound(15);
-        teachersButton.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        teachersButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         teachersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teachersButtonActionPerformed(evt);
@@ -426,7 +426,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         btnStopMood.setFont(new java.awt.Font("Poppins Black", 0, 12)); // NOI18N
         btnStopMood.setPreferredSize(new java.awt.Dimension(60, 30));
         btnStopMood.setRound(20);
-        btnStopMood.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnStopMood.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         moodPanel.add(btnStopMood);
 
         sideBar.add(moodPanel);
@@ -434,7 +434,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/setting-2.png"))); // NOI18N
         buttonRound1.setPreferredSize(new java.awt.Dimension(60, 60));
         buttonRound1.setRound(15);
-        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         sideBar.add(buttonRound1);
 
         panBlack.add(sideBar, java.awt.BorderLayout.WEST);
@@ -660,16 +660,16 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound briefcaseButton;
-    private roundObjects.ButtonRound btnMood;
-    private roundObjects.ButtonRound btnStopMood;
-    private roundObjects.ButtonRound buttonRound1;
-    private roundObjects.ButtonRound buttonRound2;
-    private roundObjects.ButtonRound buttonRound4;
+    private customizeObjects.ButtonRound briefcaseButton;
+    private customizeObjects.ButtonRound btnMood;
+    private customizeObjects.ButtonRound btnStopMood;
+    private customizeObjects.ButtonRound buttonRound1;
+    private customizeObjects.ButtonRound buttonRound2;
+    private customizeObjects.ButtonRound buttonRound4;
     private javax.swing.JPanel buttonsPan;
-    private roundObjects.ButtonRound calendarButton;
+    private customizeObjects.ButtonRound calendarButton;
     private javax.swing.JPanel downGap;
-    private roundObjects.ButtonRound homeButton;
+    private customizeObjects.ButtonRound homeButton;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -680,26 +680,26 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel mainPanel;
-    private roundObjects.PanelRound moodPanel;
+    private customizeObjects.PanelRound moodPanel;
     private javax.swing.JLabel moodPic;
     private javax.swing.JPanel namePan;
-    private roundObjects.ButtonRound pageButton;
-    private roundObjects.PanelRound panBlack;
-    private roundObjects.PanelRound panContainer;
-    private roundObjects.PanelRound panDashboard;
-    private roundObjects.PanelRound panWhite;
-    private roundObjects.PanelRound panelRound1;
-    private roundObjects.PanelRound panelRound2;
-    private roundObjects.PanelRound panelRound4;
-    private roundObjects.PanelRound panelRound5;
-    private roundObjects.PanelRound panelRound6;
-    private roundObjects.PanelRound panelRound7;
+    private customizeObjects.ButtonRound pageButton;
+    private customizeObjects.PanelRound panBlack;
+    private customizeObjects.PanelRound panContainer;
+    private customizeObjects.PanelRound panDashboard;
+    private customizeObjects.PanelRound panWhite;
+    private customizeObjects.PanelRound panelRound1;
+    private customizeObjects.PanelRound panelRound2;
+    private customizeObjects.PanelRound panelRound4;
+    private customizeObjects.PanelRound panelRound5;
+    private customizeObjects.PanelRound panelRound6;
+    private customizeObjects.PanelRound panelRound7;
     private javax.swing.JPanel rightGap;
     private javax.swing.JPanel searchPan;
     private javax.swing.JTextField searchbar;
     private javax.swing.JPanel sideBar;
-    private roundObjects.ButtonRound studentsButton;
-    private roundObjects.ButtonRound teachersButton;
+    private customizeObjects.ButtonRound studentsButton;
+    private customizeObjects.ButtonRound teachersButton;
     private javax.swing.JPanel upGap;
     private javax.swing.JPanel upperPanel;
     // End of variables declaration//GEN-END:variables

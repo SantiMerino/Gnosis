@@ -87,7 +87,7 @@ public class panTasks extends javax.swing.JPanel {
         namePan = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         filtersPan = new javax.swing.JPanel();
-        btnAgregarTarea = new roundObjects.ButtonRound();
+        btnAgregarTarea = new customizeObjects.ButtonRound();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -130,7 +130,7 @@ public class panTasks extends javax.swing.JPanel {
 
         btnAgregarTarea.setText("Agregar Tareas");
         btnAgregarTarea.setRound(15);
-        btnAgregarTarea.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnAgregarTarea.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         btnAgregarTarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarTareaActionPerformed(evt);
@@ -188,7 +188,7 @@ public class panTasks extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound btnAgregarTarea;
+    private customizeObjects.ButtonRound btnAgregarTarea;
     private javax.swing.JPanel filtersPan;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;

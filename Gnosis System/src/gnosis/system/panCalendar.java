@@ -5,6 +5,8 @@
  */
 package gnosis.system;
 
+import com.raven.datechooser.DateChooser;
+
 /**
  *
  * @author santi
@@ -17,6 +19,7 @@ public class panCalendar extends javax.swing.JPanel {
     public panCalendar() {
         initComponents();
         customization.mainUtilities();
+ 
     }
 
     /**
@@ -28,11 +31,15 @@ public class panCalendar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        calendarCustom1 = new gnosis.system.CalendarCustom();
+
         setBackground(java.awt.Color.white);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(calendarCustom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private gnosis.system.CalendarCustom calendarCustom1;
     // End of variables declaration//GEN-END:variables
 }

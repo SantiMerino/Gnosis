@@ -58,11 +58,11 @@ public class panTeachers extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDocentes = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        buttonRound5 = new roundObjects.ButtonRound();
-        buttonRound4 = new roundObjects.ButtonRound();
-        buttonRound1 = new roundObjects.ButtonRound();
-        buttonRound2 = new roundObjects.ButtonRound();
-        buttonRound3 = new roundObjects.ButtonRound();
+        buttonRound5 = new customizeObjects.ButtonRound();
+        buttonRound4 = new customizeObjects.ButtonRound();
+        buttonRound1 = new customizeObjects.ButtonRound();
+        buttonRound2 = new customizeObjects.ButtonRound();
+        buttonRound3 = new customizeObjects.ButtonRound();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -91,7 +91,7 @@ public class panTeachers extends javax.swing.JPanel {
 
         buttonRound5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/admindocente-black.png"))); // NOI18N
         buttonRound5.setPreferredSize(new java.awt.Dimension(45, 45));
-        buttonRound5.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
         buttonRound5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound5ActionPerformed(evt);
@@ -102,13 +102,13 @@ public class panTeachers extends javax.swing.JPanel {
         buttonRound4.setBackground(new java.awt.Color(255, 0, 51));
         buttonRound4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/EMAIL.png"))); // NOI18N
         buttonRound4.setPreferredSize(new java.awt.Dimension(45, 45));
-        buttonRound4.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         jPanel1.add(buttonRound4);
 
         buttonRound1.setText("Agregar");
         buttonRound1.setPreferredSize(new java.awt.Dimension(130, 30));
         buttonRound1.setRound(20);
-        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
@@ -119,13 +119,13 @@ public class panTeachers extends javax.swing.JPanel {
         buttonRound2.setText("Modificar");
         buttonRound2.setPreferredSize(new java.awt.Dimension(130, 30));
         buttonRound2.setRound(20);
-        buttonRound2.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
         jPanel1.add(buttonRound2);
 
         buttonRound3.setText("Eliminar");
         buttonRound3.setPreferredSize(new java.awt.Dimension(130, 30));
         buttonRound3.setRound(20);
-        buttonRound3.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
         jPanel1.add(buttonRound3);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
@@ -190,11 +190,11 @@ public class panTeachers extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound buttonRound1;
-    private roundObjects.ButtonRound buttonRound2;
-    private roundObjects.ButtonRound buttonRound3;
-    private roundObjects.ButtonRound buttonRound4;
-    private roundObjects.ButtonRound buttonRound5;
+    private customizeObjects.ButtonRound buttonRound1;
+    private customizeObjects.ButtonRound buttonRound2;
+    private customizeObjects.ButtonRound buttonRound3;
+    private customizeObjects.ButtonRound buttonRound4;
+    private customizeObjects.ButtonRound buttonRound5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -37,15 +37,15 @@ public class frmMood extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        buttonRound1 = new roundObjects.ButtonRound();
+        buttonRound1 = new customizeObjects.ButtonRound();
         jComboBox3 = new javax.swing.JComboBox<>();
-        btnActivarMood = new roundObjects.ButtonRound();
+        btnActivarMood = new customizeObjects.ButtonRound();
         rbtnLibre = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         rbtnPomodoro = new javax.swing.JRadioButton();
-        buttonRound5 = new roundObjects.ButtonRound();
+        buttonRound5 = new customizeObjects.ButtonRound();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -65,7 +65,7 @@ public class frmMood extends javax.swing.JFrame {
 
         buttonRound1.setText("Cancelar");
         buttonRound1.setRound(20);
-        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
@@ -76,7 +76,7 @@ public class frmMood extends javax.swing.JFrame {
 
         btnActivarMood.setText("Activar");
         btnActivarMood.setRound(20);
-        btnActivarMood.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnActivarMood.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         btnActivarMood.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActivarMoodActionPerformed(evt);
@@ -115,7 +115,7 @@ public class frmMood extends javax.swing.JFrame {
 
         buttonRound5.setPreferredSize(new java.awt.Dimension(10, 10));
         buttonRound5.setRound(20);
-        buttonRound5.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
         buttonRound5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound5ActionPerformed(evt);
@@ -261,9 +261,9 @@ public class frmMood extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound btnActivarMood;
-    private roundObjects.ButtonRound buttonRound1;
-    private roundObjects.ButtonRound buttonRound5;
+    private customizeObjects.ButtonRound btnActivarMood;
+    private customizeObjects.ButtonRound buttonRound1;
+    private customizeObjects.ButtonRound buttonRound5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;

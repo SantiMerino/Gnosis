@@ -137,7 +137,7 @@ public class frmEvento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRound1 = new roundObjects.PanelRound();
+        panelRound1 = new customizeObjects.PanelRound();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNombreEvento = new javax.swing.JTextField();
@@ -153,10 +153,10 @@ public class frmEvento extends javax.swing.JFrame {
         CmbTipoEvento = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         CmbGrado = new javax.swing.JComboBox<>();
-        BtnVaciarCampos = new roundObjects.ButtonRound();
-        BtnEliminar = new roundObjects.ButtonRound();
-        BtnModificar = new roundObjects.ButtonRound();
-        BtnAgregar = new roundObjects.ButtonRound();
+        BtnVaciarCampos = new customizeObjects.ButtonRound();
+        BtnEliminar = new customizeObjects.ButtonRound();
+        BtnModificar = new customizeObjects.ButtonRound();
+        BtnAgregar = new customizeObjects.ButtonRound();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTEventos = new javax.swing.JTable();
         txtTipoEvento = new javax.swing.JTextField();
@@ -213,11 +213,11 @@ public class frmEvento extends javax.swing.JFrame {
         panelRound1.add(CmbGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 200, -1));
 
         BtnVaciarCampos.setText("Vaciar Campos");
-        BtnVaciarCampos.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        BtnVaciarCampos.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         panelRound1.add(BtnVaciarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, -1, -1));
 
         BtnEliminar.setText("Eliminar evento");
-        BtnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        BtnEliminar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
         BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnEliminarActionPerformed(evt);
@@ -226,7 +226,7 @@ public class frmEvento extends javax.swing.JFrame {
         panelRound1.add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, -1));
 
         BtnModificar.setText("Modificar evento");
-        BtnModificar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        BtnModificar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
         BtnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnModificarActionPerformed(evt);
@@ -235,7 +235,7 @@ public class frmEvento extends javax.swing.JFrame {
         panelRound1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, -1, -1));
 
         BtnAgregar.setText("Agregar evento");
-        BtnAgregar.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        BtnAgregar.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAgregarActionPerformed(evt);
@@ -487,10 +487,10 @@ public class frmEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound BtnAgregar;
-    private roundObjects.ButtonRound BtnEliminar;
-    private roundObjects.ButtonRound BtnModificar;
-    private roundObjects.ButtonRound BtnVaciarCampos;
+    private customizeObjects.ButtonRound BtnAgregar;
+    private customizeObjects.ButtonRound BtnEliminar;
+    private customizeObjects.ButtonRound BtnModificar;
+    private customizeObjects.ButtonRound BtnVaciarCampos;
     private javax.swing.JComboBox<String> CmbGrado;
     private javax.swing.JComboBox<String> CmbTipoEvento;
     private javax.swing.JTable JTEventos;
@@ -505,7 +505,7 @@ public class frmEvento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private roundObjects.PanelRound panelRound1;
+    private customizeObjects.PanelRound panelRound1;
     private javax.swing.JTextField txtGrado;
     private javax.swing.JTextField txtHoraFinal;
     private javax.swing.JTextField txtHoraInicio;

@@ -33,38 +33,38 @@ public class panBlocMateria extends javax.swing.JPanel {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        panelRound4 = new roundObjects.PanelRound();
-        panelRound5 = new roundObjects.PanelRound();
-        panelRound6 = new roundObjects.PanelRound();
+        panelRound4 = new customizeObjects.PanelRound();
+        panelRound5 = new customizeObjects.PanelRound();
+        panelRound6 = new customizeObjects.PanelRound();
         jPanel4 = new javax.swing.JPanel();
-        panelRound2 = new roundObjects.PanelRound();
-        buttonRound1 = new roundObjects.ButtonRound();
-        buttonRound2 = new roundObjects.ButtonRound();
+        panelRound2 = new customizeObjects.PanelRound();
+        buttonRound1 = new customizeObjects.ButtonRound();
+        buttonRound2 = new customizeObjects.ButtonRound();
         jPanel5 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        buttonRound3 = new roundObjects.ButtonRound();
-        buttonRound4 = new roundObjects.ButtonRound();
-        buttonRound5 = new roundObjects.ButtonRound();
-        buttonRound6 = new roundObjects.ButtonRound();
-        buttonRound7 = new roundObjects.ButtonRound();
-        buttonRound8 = new roundObjects.ButtonRound();
-        buttonRound9 = new roundObjects.ButtonRound();
-        buttonRound10 = new roundObjects.ButtonRound();
-        buttonRound11 = new roundObjects.ButtonRound();
+        buttonRound3 = new customizeObjects.ButtonRound();
+        buttonRound4 = new customizeObjects.ButtonRound();
+        buttonRound5 = new customizeObjects.ButtonRound();
+        buttonRound6 = new customizeObjects.ButtonRound();
+        buttonRound7 = new customizeObjects.ButtonRound();
+        buttonRound8 = new customizeObjects.ButtonRound();
+        buttonRound9 = new customizeObjects.ButtonRound();
+        buttonRound10 = new customizeObjects.ButtonRound();
+        buttonRound11 = new customizeObjects.ButtonRound();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        buttonRound13 = new roundObjects.ButtonRound();
-        buttonRound14 = new roundObjects.ButtonRound();
-        buttonRound15 = new roundObjects.ButtonRound();
-        buttonRound16 = new roundObjects.ButtonRound();
-        buttonRound17 = new roundObjects.ButtonRound();
+        buttonRound13 = new customizeObjects.ButtonRound();
+        buttonRound14 = new customizeObjects.ButtonRound();
+        buttonRound15 = new customizeObjects.ButtonRound();
+        buttonRound16 = new customizeObjects.ButtonRound();
+        buttonRound17 = new customizeObjects.ButtonRound();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        buttonRound12 = new roundObjects.ButtonRound();
-        buttonRound18 = new roundObjects.ButtonRound();
+        buttonRound12 = new customizeObjects.ButtonRound();
+        buttonRound18 = new customizeObjects.ButtonRound();
         jPanel6 = new javax.swing.JPanel();
-        panelRound1 = new roundObjects.PanelRound();
+        panelRound1 = new customizeObjects.PanelRound();
 
         setBackground(new java.awt.Color(32, 32, 32));
         setLayout(new java.awt.BorderLayout());
@@ -182,7 +182,7 @@ public class panBlocMateria extends javax.swing.JPanel {
         buttonRound2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-left.png"))); // NOI18N
         buttonRound2.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound2.setRound(20);
-        buttonRound2.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         buttonRound2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound2ActionPerformed(evt);
@@ -241,39 +241,39 @@ public class panBlocMateria extends javax.swing.JPanel {
 
         buttonRound3.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound3.setRound(20);
-        buttonRound3.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         buttonRound4.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound4.setRound(20);
-        buttonRound4.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         buttonRound5.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound5.setRound(20);
-        buttonRound5.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         buttonRound6.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound6.setRound(20);
-        buttonRound6.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound6.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         buttonRound7.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound7.setRound(20);
-        buttonRound7.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound7.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         buttonRound8.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound8.setRound(20);
-        buttonRound8.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound8.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         buttonRound9.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound9.setRound(20);
-        buttonRound9.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound9.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         buttonRound10.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound10.setRound(20);
-        buttonRound10.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound10.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         buttonRound11.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound11.setRound(20);
-        buttonRound11.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound11.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         jLabel1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel1.setForeground(java.awt.Color.white);
@@ -284,24 +284,24 @@ public class panBlocMateria extends javax.swing.JPanel {
         jLabel2.setText("Headings.");
 
         buttonRound13.setRound(20);
-        buttonRound13.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound13.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         buttonRound14.setRound(20);
-        buttonRound14.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound14.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         buttonRound15.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound15.setRound(20);
-        buttonRound15.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound15.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         buttonRound16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/receive-square-white.png"))); // NOI18N
         buttonRound16.setPreferredSize(new java.awt.Dimension(114, 35));
         buttonRound16.setRound(20);
-        buttonRound16.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        buttonRound16.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
 
         buttonRound17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/receive-square.png"))); // NOI18N
         buttonRound17.setPreferredSize(new java.awt.Dimension(114, 35));
         buttonRound17.setRound(20);
-        buttonRound17.setStyle(roundObjects.ButtonRound.ButtonStyle.SOCIALES);
+        buttonRound17.setStyle(customizeObjects.ButtonRound.ButtonStyle.SOCIALES);
 
         jLabel3.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel3.setText("Exportar en .PDF");
@@ -315,12 +315,12 @@ public class panBlocMateria extends javax.swing.JPanel {
 
         buttonRound12.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound12.setRound(20);
-        buttonRound12.setStyle(roundObjects.ButtonRound.ButtonStyle.SOCIALES);
+        buttonRound12.setStyle(customizeObjects.ButtonRound.ButtonStyle.SOCIALES);
 
         buttonRound18.setToolTipText("");
         buttonRound18.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound18.setRound(20);
-        buttonRound18.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound18.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -475,24 +475,24 @@ public class panBlocMateria extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound buttonRound1;
-    private roundObjects.ButtonRound buttonRound10;
-    private roundObjects.ButtonRound buttonRound11;
-    private roundObjects.ButtonRound buttonRound12;
-    private roundObjects.ButtonRound buttonRound13;
-    private roundObjects.ButtonRound buttonRound14;
-    private roundObjects.ButtonRound buttonRound15;
-    private roundObjects.ButtonRound buttonRound16;
-    private roundObjects.ButtonRound buttonRound17;
-    private roundObjects.ButtonRound buttonRound18;
-    private roundObjects.ButtonRound buttonRound2;
-    private roundObjects.ButtonRound buttonRound3;
-    private roundObjects.ButtonRound buttonRound4;
-    private roundObjects.ButtonRound buttonRound5;
-    private roundObjects.ButtonRound buttonRound6;
-    private roundObjects.ButtonRound buttonRound7;
-    private roundObjects.ButtonRound buttonRound8;
-    private roundObjects.ButtonRound buttonRound9;
+    private customizeObjects.ButtonRound buttonRound1;
+    private customizeObjects.ButtonRound buttonRound10;
+    private customizeObjects.ButtonRound buttonRound11;
+    private customizeObjects.ButtonRound buttonRound12;
+    private customizeObjects.ButtonRound buttonRound13;
+    private customizeObjects.ButtonRound buttonRound14;
+    private customizeObjects.ButtonRound buttonRound15;
+    private customizeObjects.ButtonRound buttonRound16;
+    private customizeObjects.ButtonRound buttonRound17;
+    private customizeObjects.ButtonRound buttonRound18;
+    private customizeObjects.ButtonRound buttonRound2;
+    private customizeObjects.ButtonRound buttonRound3;
+    private customizeObjects.ButtonRound buttonRound4;
+    private customizeObjects.ButtonRound buttonRound5;
+    private customizeObjects.ButtonRound buttonRound6;
+    private customizeObjects.ButtonRound buttonRound7;
+    private customizeObjects.ButtonRound buttonRound8;
+    private customizeObjects.ButtonRound buttonRound9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -504,10 +504,10 @@ public class panBlocMateria extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private roundObjects.PanelRound panelRound1;
-    private roundObjects.PanelRound panelRound2;
-    private roundObjects.PanelRound panelRound4;
-    private roundObjects.PanelRound panelRound5;
-    private roundObjects.PanelRound panelRound6;
+    private customizeObjects.PanelRound panelRound1;
+    private customizeObjects.PanelRound panelRound2;
+    private customizeObjects.PanelRound panelRound4;
+    private customizeObjects.PanelRound panelRound5;
+    private customizeObjects.PanelRound panelRound6;
     // End of variables declaration//GEN-END:variables
 }

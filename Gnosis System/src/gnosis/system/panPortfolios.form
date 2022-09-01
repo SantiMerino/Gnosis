@@ -213,7 +213,7 @@
                 <Property name="verticalGap" type="int" value="10"/>
               </Layout>
               <SubComponents>
-                <Container class="roundObjects.PanelRound" name="matematicasPan">
+                <Container class="customizeObjects.PanelRound" name="matematicasPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="99" red="ff" type="rgb"/>
@@ -259,7 +259,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="roundObjects.PanelRound" name="panelRound1">
+                    <Container class="customizeObjects.PanelRound" name="panelRound1">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="20" green="c4" red="ff" type="rgb"/>
@@ -283,7 +283,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Container class="roundObjects.PanelRound" name="panelRound2">
+                    <Container class="customizeObjects.PanelRound" name="panelRound2">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="20" green="c4" red="ff" type="rgb"/>
@@ -307,13 +307,13 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="roundObjects.ButtonRound" name="buttonRound1">
+                    <Component class="customizeObjects.ButtonRound" name="buttonRound1">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins" size="14" style="1"/>
                         </Property>
-                        <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                        <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                           <Value id="NEGRO"/>
                         </Property>
                       </Properties>
@@ -323,7 +323,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="inglesPan">
+                <Container class="customizeObjects.PanelRound" name="inglesPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="3e" green="bd" red="ff" type="rgb"/>
@@ -366,7 +366,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="roundObjects.PanelRound" name="panelRound3">
+                    <Container class="customizeObjects.PanelRound" name="panelRound3">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="dc" red="ff" type="rgb"/>
@@ -390,7 +390,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Container class="roundObjects.PanelRound" name="panelRound4">
+                    <Container class="customizeObjects.PanelRound" name="panelRound4">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="dc" red="ff" type="rgb"/>
@@ -414,20 +414,20 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="roundObjects.ButtonRound" name="buttonRound2">
+                    <Component class="customizeObjects.ButtonRound" name="buttonRound2">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI Black" size="14" style="0"/>
                         </Property>
-                        <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                        <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                           <Value id="NEGRO"/>
                         </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="cienciasPan">
+                <Container class="customizeObjects.PanelRound" name="cienciasPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="5c" green="dd" red="76" type="rgb"/>
@@ -470,7 +470,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="roundObjects.PanelRound" name="panelRound5">
+                    <Container class="customizeObjects.PanelRound" name="panelRound5">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="82" green="e6" red="8c" type="rgb"/>
@@ -494,7 +494,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Container class="roundObjects.PanelRound" name="panelRound6">
+                    <Container class="customizeObjects.PanelRound" name="panelRound6">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="82" green="e6" red="8c" type="rgb"/>
@@ -518,20 +518,20 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="roundObjects.ButtonRound" name="buttonRound3">
+                    <Component class="customizeObjects.ButtonRound" name="buttonRound3">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI Black" size="14" style="0"/>
                         </Property>
-                        <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                        <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                           <Value id="NEGRO"/>
                         </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="modulosPan">
+                <Container class="customizeObjects.PanelRound" name="modulosPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="20" green="20" red="20" type="rgb"/>
@@ -574,7 +574,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="roundObjects.PanelRound" name="panelRound7">
+                    <Container class="customizeObjects.PanelRound" name="panelRound7">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="50" green="50" red="50" type="rgb"/>
@@ -598,7 +598,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Container class="roundObjects.PanelRound" name="panelRound8">
+                    <Container class="customizeObjects.PanelRound" name="panelRound8">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="50" green="50" red="50" type="rgb"/>
@@ -622,7 +622,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="roundObjects.ButtonRound" name="buttonRound4">
+                    <Component class="customizeObjects.ButtonRound" name="buttonRound4">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -632,7 +632,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="lenguajePan">
+                <Container class="customizeObjects.PanelRound" name="lenguajePan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="3f" green="3f" red="e3" type="rgb"/>
@@ -675,7 +675,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="roundObjects.PanelRound" name="panelRound9">
+                    <Container class="customizeObjects.PanelRound" name="panelRound9">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="53" green="50" red="e3" type="rgb"/>
@@ -699,7 +699,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Container class="roundObjects.PanelRound" name="panelRound10">
+                    <Container class="customizeObjects.PanelRound" name="panelRound10">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="53" green="50" red="e3" type="rgb"/>
@@ -723,7 +723,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="roundObjects.ButtonRound" name="buttonRound5">
+                    <Component class="customizeObjects.ButtonRound" name="buttonRound5">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -733,7 +733,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="socialesPan">
+                <Container class="customizeObjects.PanelRound" name="socialesPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="f4" green="94" red="62" type="rgb"/>
@@ -776,7 +776,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="roundObjects.PanelRound" name="panelRound11">
+                    <Container class="customizeObjects.PanelRound" name="panelRound11">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f4" green="a0" red="78" type="rgb"/>
@@ -800,7 +800,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Container class="roundObjects.PanelRound" name="panelRound12">
+                    <Container class="customizeObjects.PanelRound" name="panelRound12">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f4" green="a0" red="78" type="rgb"/>
@@ -824,7 +824,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="roundObjects.ButtonRound" name="buttonRound6">
+                    <Component class="customizeObjects.ButtonRound" name="buttonRound6">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="20" green="20" red="20" type="rgb"/>
@@ -833,14 +833,14 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI Black" size="14" style="0"/>
                         </Property>
-                        <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                        <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                           <Value id="NEGRO"/>
                         </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="formaPan">
+                <Container class="customizeObjects.PanelRound" name="formaPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="55" green="7d" red="5f" type="rgb"/>
@@ -883,7 +883,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="roundObjects.PanelRound" name="panelRound13">
+                    <Container class="customizeObjects.PanelRound" name="panelRound13">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="7d" red="6e" type="rgb"/>
@@ -907,7 +907,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Container class="roundObjects.PanelRound" name="panelRound14">
+                    <Container class="customizeObjects.PanelRound" name="panelRound14">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="7d" red="6e" type="rgb"/>
@@ -931,7 +931,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="roundObjects.ButtonRound" name="buttonRound7">
+                    <Component class="customizeObjects.ButtonRound" name="buttonRound7">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -941,7 +941,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="roundObjects.PanelRound" name="opvPan">
+                <Container class="customizeObjects.PanelRound" name="opvPan">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="78" green="50" red="3c" type="rgb"/>
@@ -984,7 +984,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="roundObjects.PanelRound" name="panelRound15">
+                    <Container class="customizeObjects.PanelRound" name="panelRound15">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="82" green="64" red="3c" type="rgb"/>
@@ -1050,7 +1050,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Container class="roundObjects.PanelRound" name="panelRound16">
+                    <Container class="customizeObjects.PanelRound" name="panelRound16">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="82" green="64" red="3c" type="rgb"/>
@@ -1093,7 +1093,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="roundObjects.ButtonRound" name="buttonRound8">
+                    <Component class="customizeObjects.ButtonRound" name="buttonRound8">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

@@ -227,10 +227,10 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbEstudiantes = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
-        btnGuardar = new roundObjects.ButtonRound();
-        btnActualizar = new roundObjects.ButtonRound();
-        btnEliminar = new roundObjects.ButtonRound();
-        buttonRound4 = new roundObjects.ButtonRound();
+        btnGuardar = new customizeObjects.ButtonRound();
+        btnActualizar = new customizeObjects.ButtonRound();
+        btnEliminar = new customizeObjects.ButtonRound();
+        buttonRound4 = new customizeObjects.ButtonRound();
         jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -483,7 +483,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
 
         btnGuardar.setText("Guardar");
         btnGuardar.setRound(20);
-        btnGuardar.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnGuardar.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
@@ -492,7 +492,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
 
         btnActualizar.setText("Actualizar");
         btnActualizar.setRound(20);
-        btnActualizar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnActualizar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
@@ -501,7 +501,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
 
         btnEliminar.setText("Eliminar");
         btnEliminar.setRound(20);
-        btnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        btnEliminar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -510,7 +510,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
 
         buttonRound4.setText("Vaciar Campos");
         buttonRound4.setRound(20);
-        buttonRound4.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         buttonRound4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound4ActionPerformed(evt);
@@ -889,10 +889,10 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound btnActualizar;
-    private roundObjects.ButtonRound btnEliminar;
-    private roundObjects.ButtonRound btnGuardar;
-    private roundObjects.ButtonRound buttonRound4;
+    private customizeObjects.ButtonRound btnActualizar;
+    private customizeObjects.ButtonRound btnEliminar;
+    private customizeObjects.ButtonRound btnGuardar;
+    private customizeObjects.ButtonRound buttonRound4;
     private javax.swing.JComboBox<String> cmbGenero;
     private javax.swing.JComboBox<String> cmbGrado;
     private com.toedter.calendar.JDateChooser dtNacimiento;

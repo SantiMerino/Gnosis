@@ -23,7 +23,7 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
-    <Container class="roundObjects.PanelRound" name="panBlack">
+    <Container class="customizeObjects.PanelRound" name="panBlack">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="20" green="20" red="20" type="rgb"/>
@@ -47,7 +47,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
-        <Container class="roundObjects.PanelRound" name="panWhite">
+        <Container class="customizeObjects.PanelRound" name="panWhite">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -68,7 +68,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
-            <Container class="roundObjects.PanelRound" name="panContainer">
+            <Container class="customizeObjects.PanelRound" name="panContainer">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -86,7 +86,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
               <SubComponents>
-                <Container class="roundObjects.PanelRound" name="panDashboard">
+                <Container class="customizeObjects.PanelRound" name="panDashboard">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -175,7 +175,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
                           <SubComponents>
-                            <Container class="roundObjects.PanelRound" name="panelRound1">
+                            <Container class="customizeObjects.PanelRound" name="panelRound1">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="20" green="20" red="20" type="rgb"/>
@@ -303,7 +303,7 @@
                             <Property name="horizontalGap" type="int" value="7"/>
                           </Layout>
                           <SubComponents>
-                            <Component class="roundObjects.ButtonRound" name="buttonRound2">
+                            <Component class="customizeObjects.ButtonRound" name="buttonRound2">
                               <Properties>
                                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                                   <Image iconType="3" name="/resources/calculator.png"/>
@@ -311,12 +311,12 @@
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[40, 40]"/>
                                 </Property>
-                                <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                                <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                                   <Value id="NEGRO"/>
                                 </Property>
                               </Properties>
                             </Component>
-                            <Component class="roundObjects.ButtonRound" name="btnMood">
+                            <Component class="customizeObjects.ButtonRound" name="btnMood">
                               <Properties>
                                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                                   <Image iconType="3" name="/resources/glass.png"/>
@@ -324,7 +324,7 @@
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[40, 40]"/>
                                 </Property>
-                                <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                                <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                                   <Value id="NEGRO"/>
                                 </Property>
                               </Properties>
@@ -332,7 +332,7 @@
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoodActionPerformed"/>
                               </Events>
                             </Component>
-                            <Container class="roundObjects.PanelRound" name="panelRound2">
+                            <Container class="customizeObjects.PanelRound" name="panelRound2">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="20" green="20" red="20" type="rgb"/>
@@ -375,7 +375,7 @@
                                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                                   </AuxValues>
                                 </Component>
-                                <Component class="roundObjects.ButtonRound" name="buttonRound4">
+                                <Component class="customizeObjects.ButtonRound" name="buttonRound4">
                                   <Properties>
                                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                                       <Image iconType="3" name="/resources/user-square.png"/>
@@ -383,7 +383,7 @@
                                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                       <Dimension value="[40, 40]"/>
                                     </Property>
-                                    <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                                    <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                                       <Value id="NEGRO"/>
                                     </Property>
                                   </Properties>
@@ -398,7 +398,7 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="roundObjects.PanelRound" name="panelRound4">
+            <Container class="customizeObjects.PanelRound" name="panelRound4">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -417,7 +417,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
             </Container>
-            <Container class="roundObjects.PanelRound" name="panelRound5">
+            <Container class="customizeObjects.PanelRound" name="panelRound5">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -436,7 +436,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
             </Container>
-            <Container class="roundObjects.PanelRound" name="panelRound6">
+            <Container class="customizeObjects.PanelRound" name="panelRound6">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -453,7 +453,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
             </Container>
-            <Container class="roundObjects.PanelRound" name="panelRound7">
+            <Container class="customizeObjects.PanelRound" name="panelRound7">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -534,7 +534,7 @@
             <Property name="verticalGap" type="int" value="10"/>
           </Layout>
           <SubComponents>
-            <Component class="roundObjects.ButtonRound" name="homeButton">
+            <Component class="customizeObjects.ButtonRound" name="homeButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/home-selec.png"/>
@@ -551,7 +551,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="roundObjects.ButtonRound" name="briefcaseButton">
+            <Component class="customizeObjects.ButtonRound" name="briefcaseButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/briefcase.png"/>
@@ -560,7 +560,7 @@
                   <Dimension value="[60, 60]"/>
                 </Property>
                 <Property name="round" type="int" value="15"/>
-                <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="NEGRO"/>
                 </Property>
               </Properties>
@@ -568,7 +568,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="briefcaseButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="roundObjects.ButtonRound" name="pageButton">
+            <Component class="customizeObjects.ButtonRound" name="pageButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/document-text.png"/>
@@ -577,7 +577,7 @@
                   <Dimension value="[60, 60]"/>
                 </Property>
                 <Property name="round" type="int" value="15"/>
-                <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="NEGRO"/>
                 </Property>
               </Properties>
@@ -585,7 +585,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pageButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="roundObjects.ButtonRound" name="calendarButton">
+            <Component class="customizeObjects.ButtonRound" name="calendarButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/calendar.png"/>
@@ -594,7 +594,7 @@
                   <Dimension value="[60, 60]"/>
                 </Property>
                 <Property name="round" type="int" value="15"/>
-                <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="NEGRO"/>
                 </Property>
               </Properties>
@@ -602,7 +602,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calendarButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="roundObjects.ButtonRound" name="studentsButton">
+            <Component class="customizeObjects.ButtonRound" name="studentsButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/teacher-white.png"/>
@@ -611,7 +611,7 @@
                   <Dimension value="[60, 60]"/>
                 </Property>
                 <Property name="round" type="int" value="15"/>
-                <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="NEGRO"/>
                 </Property>
               </Properties>
@@ -619,7 +619,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="studentsButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="roundObjects.ButtonRound" name="teachersButton">
+            <Component class="customizeObjects.ButtonRound" name="teachersButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/admindocente.png"/>
@@ -628,7 +628,7 @@
                   <Dimension value="[60, 60]"/>
                 </Property>
                 <Property name="round" type="int" value="15"/>
-                <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="NEGRO"/>
                 </Property>
               </Properties>
@@ -636,7 +636,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teachersButtonActionPerformed"/>
               </Events>
             </Component>
-            <Container class="roundObjects.PanelRound" name="moodPanel">
+            <Container class="customizeObjects.PanelRound" name="moodPanel">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="5a" green="dc" red="78" type="rgb"/>
@@ -672,7 +672,7 @@
                     <Property name="text" type="java.lang.String" value="00:00:00"/>
                   </Properties>
                 </Component>
-                <Component class="roundObjects.ButtonRound" name="btnStopMood">
+                <Component class="customizeObjects.ButtonRound" name="btnStopMood">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="STOP"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -682,14 +682,14 @@
                       <Dimension value="[60, 30]"/>
                     </Property>
                     <Property name="round" type="int" value="20"/>
-                    <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                    <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                       <Value id="NEGRO"/>
                     </Property>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="roundObjects.ButtonRound" name="buttonRound1">
+            <Component class="customizeObjects.ButtonRound" name="buttonRound1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/setting-2.png"/>
@@ -698,7 +698,7 @@
                   <Dimension value="[60, 60]"/>
                 </Property>
                 <Property name="round" type="int" value="15"/>
-                <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="NEGRO"/>
                 </Property>
               </Properties>

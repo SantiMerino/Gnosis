@@ -218,7 +218,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRound1 = new roundObjects.PanelRound();
+        panelRound1 = new customizeObjects.PanelRound();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDocentes = new javax.swing.JTable();
@@ -1058,7 +1058,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private roundObjects.PanelRound panelRound1;
+    private customizeObjects.PanelRound panelRound1;
     private javax.swing.JPanel rightGap;
     private javax.swing.JTable tbDocentes;
     private javax.swing.JPanel topGap;

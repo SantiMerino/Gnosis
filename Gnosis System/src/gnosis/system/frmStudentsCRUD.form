@@ -555,11 +555,11 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="roundObjects.ButtonRound" name="btnGuardar">
+                <Component class="customizeObjects.ButtonRound" name="btnGuardar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Guardar"/>
                     <Property name="round" type="int" value="20"/>
-                    <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                    <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                       <Value id="VERDE"/>
                     </Property>
                   </Properties>
@@ -567,11 +567,11 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="roundObjects.ButtonRound" name="btnActualizar">
+                <Component class="customizeObjects.ButtonRound" name="btnActualizar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Actualizar"/>
                     <Property name="round" type="int" value="20"/>
-                    <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                    <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                       <Value id="AMARILLO"/>
                     </Property>
                   </Properties>
@@ -579,11 +579,11 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="roundObjects.ButtonRound" name="btnEliminar">
+                <Component class="customizeObjects.ButtonRound" name="btnEliminar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                     <Property name="round" type="int" value="20"/>
-                    <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                    <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                       <Value id="ROJO"/>
                     </Property>
                   </Properties>
@@ -591,11 +591,11 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="roundObjects.ButtonRound" name="buttonRound4">
+                <Component class="customizeObjects.ButtonRound" name="buttonRound4">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Vaciar Campos"/>
                     <Property name="round" type="int" value="20"/>
-                    <Property name="style" type="roundObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
+                    <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
                       <Value id="GRIS_OSCURO"/>
                     </Property>
                   </Properties>

@@ -65,37 +65,37 @@ public class frmLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainJPanel = new roundObjects.PanelRound();
-        container = new roundObjects.PanelRound();
-        LoginPanel = new roundObjects.PanelRound();
-        bContainer = new roundObjects.PanelRound();
-        btnLogin = new roundObjects.ButtonRound();
+        mainJPanel = new customizeObjects.PanelRound();
+        container = new customizeObjects.PanelRound();
+        LoginPanel = new customizeObjects.PanelRound();
+        bContainer = new customizeObjects.PanelRound();
+        btnLogin = new customizeObjects.ButtonRound();
         jLabel1 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
-        buttonRound5 = new roundObjects.ButtonRound();
+        buttonRound5 = new customizeObjects.ButtonRound();
         txtPassword = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        buttonRound4 = new roundObjects.ButtonRound();
-        wContainer = new roundObjects.PanelRound();
-        loginWhitePan = new roundObjects.PanelRound();
-        topGap = new roundObjects.PanelRound();
-        returnConfig = new roundObjects.ButtonRound();
-        rightWGap = new roundObjects.PanelRound();
-        leftWGap = new roundObjects.PanelRound();
-        northGap = new roundObjects.PanelRound();
-        menuBarPanel = new roundObjects.PanelRound();
-        btnConnection = new roundObjects.ButtonRound();
-        btnConfig = new roundObjects.ButtonRound();
-        returnLogin = new roundObjects.ButtonRound();
-        controlsPanel = new roundObjects.PanelRound();
-        buttonRound1 = new roundObjects.ButtonRound();
-        buttonRound3 = new roundObjects.ButtonRound();
-        buttonRound2 = new roundObjects.ButtonRound();
-        southGap = new roundObjects.PanelRound();
-        rightGap = new roundObjects.PanelRound();
-        leftGap = new roundObjects.PanelRound();
+        buttonRound4 = new customizeObjects.ButtonRound();
+        wContainer = new customizeObjects.PanelRound();
+        loginWhitePan = new customizeObjects.PanelRound();
+        topGap = new customizeObjects.PanelRound();
+        returnConfig = new customizeObjects.ButtonRound();
+        rightWGap = new customizeObjects.PanelRound();
+        leftWGap = new customizeObjects.PanelRound();
+        northGap = new customizeObjects.PanelRound();
+        menuBarPanel = new customizeObjects.PanelRound();
+        btnConnection = new customizeObjects.ButtonRound();
+        btnConfig = new customizeObjects.ButtonRound();
+        returnLogin = new customizeObjects.ButtonRound();
+        controlsPanel = new customizeObjects.PanelRound();
+        buttonRound1 = new customizeObjects.ButtonRound();
+        buttonRound3 = new customizeObjects.ButtonRound();
+        buttonRound2 = new customizeObjects.ButtonRound();
+        southGap = new customizeObjects.PanelRound();
+        rightGap = new customizeObjects.PanelRound();
+        leftGap = new customizeObjects.PanelRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -138,7 +138,7 @@ public class frmLogin extends javax.swing.JFrame {
         buttonRound5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/eye.png"))); // NOI18N
         buttonRound5.setPreferredSize(new java.awt.Dimension(30, 30));
         buttonRound5.setRound(15);
-        buttonRound5.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         buttonRound5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 buttonRound5MouseEntered(evt);
@@ -169,7 +169,7 @@ public class frmLogin extends javax.swing.JFrame {
         buttonRound4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         buttonRound4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         buttonRound4.setRound(15);
-        buttonRound4.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         buttonRound4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound4ActionPerformed(evt);
@@ -202,7 +202,7 @@ public class frmLogin extends javax.swing.JFrame {
         returnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-right.png"))); // NOI18N
         returnConfig.setPreferredSize(new java.awt.Dimension(30, 30));
         returnConfig.setRound(15);
-        returnConfig.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        returnConfig.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
         returnConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 returnConfigActionPerformed(evt);
@@ -278,7 +278,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnConnection.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         btnConnection.setPreferredSize(new java.awt.Dimension(30, 20));
         btnConnection.setRound(10);
-        btnConnection.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnConnection.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         btnConnection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConnectionActionPerformed(evt);
@@ -293,7 +293,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnConfig.setMinimumSize(new java.awt.Dimension(95, 20));
         btnConfig.setPreferredSize(new java.awt.Dimension(30, 20));
         btnConfig.setRound(10);
-        btnConfig.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnConfig.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         btnConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfigActionPerformed(evt);
@@ -308,7 +308,7 @@ public class frmLogin extends javax.swing.JFrame {
         returnLogin.setIconTextGap(10);
         returnLogin.setPreferredSize(new java.awt.Dimension(100, 20));
         returnLogin.setRound(10);
-        returnLogin.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        returnLogin.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         returnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 returnLoginActionPerformed(evt);
@@ -324,7 +324,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         buttonRound1.setPreferredSize(new java.awt.Dimension(10, 10));
         buttonRound1.setRound(20);
-        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
@@ -334,7 +334,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         buttonRound3.setPreferredSize(new java.awt.Dimension(10, 10));
         buttonRound3.setRound(20);
-        buttonRound3.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
         buttonRound3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound3ActionPerformed(evt);
@@ -344,7 +344,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         buttonRound2.setPreferredSize(new java.awt.Dimension(10, 10));
         buttonRound2.setRound(20);
-        buttonRound2.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
         buttonRound2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound2ActionPerformed(evt);
@@ -579,36 +579,36 @@ public class frmLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.PanelRound LoginPanel;
-    private roundObjects.PanelRound bContainer;
-    private roundObjects.ButtonRound btnConfig;
-    private roundObjects.ButtonRound btnConnection;
-    private roundObjects.ButtonRound btnLogin;
-    private roundObjects.ButtonRound buttonRound1;
-    private roundObjects.ButtonRound buttonRound2;
-    private roundObjects.ButtonRound buttonRound3;
-    private roundObjects.ButtonRound buttonRound4;
-    private roundObjects.ButtonRound buttonRound5;
-    private roundObjects.PanelRound container;
-    private roundObjects.PanelRound controlsPanel;
+    private customizeObjects.PanelRound LoginPanel;
+    private customizeObjects.PanelRound bContainer;
+    private customizeObjects.ButtonRound btnConfig;
+    private customizeObjects.ButtonRound btnConnection;
+    private customizeObjects.ButtonRound btnLogin;
+    private customizeObjects.ButtonRound buttonRound1;
+    private customizeObjects.ButtonRound buttonRound2;
+    private customizeObjects.ButtonRound buttonRound3;
+    private customizeObjects.ButtonRound buttonRound4;
+    private customizeObjects.ButtonRound buttonRound5;
+    private customizeObjects.PanelRound container;
+    private customizeObjects.PanelRound controlsPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private roundObjects.PanelRound leftGap;
-    private roundObjects.PanelRound leftWGap;
-    private roundObjects.PanelRound loginWhitePan;
-    private roundObjects.PanelRound mainJPanel;
-    private roundObjects.PanelRound menuBarPanel;
-    private roundObjects.PanelRound northGap;
-    private roundObjects.ButtonRound returnConfig;
-    private roundObjects.ButtonRound returnLogin;
-    private roundObjects.PanelRound rightGap;
-    private roundObjects.PanelRound rightWGap;
-    private roundObjects.PanelRound southGap;
-    private roundObjects.PanelRound topGap;
+    private customizeObjects.PanelRound leftGap;
+    private customizeObjects.PanelRound leftWGap;
+    private customizeObjects.PanelRound loginWhitePan;
+    private customizeObjects.PanelRound mainJPanel;
+    private customizeObjects.PanelRound menuBarPanel;
+    private customizeObjects.PanelRound northGap;
+    private customizeObjects.ButtonRound returnConfig;
+    private customizeObjects.ButtonRound returnLogin;
+    private customizeObjects.PanelRound rightGap;
+    private customizeObjects.PanelRound rightWGap;
+    private customizeObjects.PanelRound southGap;
+    private customizeObjects.PanelRound topGap;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
-    private roundObjects.PanelRound wContainer;
+    private customizeObjects.PanelRound wContainer;
     // End of variables declaration//GEN-END:variables
 }

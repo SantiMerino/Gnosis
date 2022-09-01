@@ -75,11 +75,11 @@ public class panStudents extends javax.swing.JPanel {
         tbEstudiantes = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         txtCarnet = new javax.swing.JTextField();
-        btnAgregar = new roundObjects.ButtonRound();
-        btnModificar = new roundObjects.ButtonRound();
-        btnEliminar = new roundObjects.ButtonRound();
-        btnReporteEsc = new roundObjects.ButtonRound();
-        btnNomina = new roundObjects.ButtonRound();
+        btnAgregar = new customizeObjects.ButtonRound();
+        btnModificar = new customizeObjects.ButtonRound();
+        btnEliminar = new customizeObjects.ButtonRound();
+        btnReporteEsc = new customizeObjects.ButtonRound();
+        btnNomina = new customizeObjects.ButtonRound();
         jPanel2 = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
@@ -119,7 +119,7 @@ public class panStudents extends javax.swing.JPanel {
         btnAgregar.setText("Agregar");
         btnAgregar.setPreferredSize(new java.awt.Dimension(100, 40));
         btnAgregar.setRound(20);
-        btnAgregar.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        btnAgregar.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -130,18 +130,18 @@ public class panStudents extends javax.swing.JPanel {
         btnModificar.setText("Modificar");
         btnModificar.setPreferredSize(new java.awt.Dimension(100, 40));
         btnModificar.setRound(20);
-        btnModificar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnModificar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
         jPanel1.add(btnModificar);
 
         btnEliminar.setText("Eliminar");
         btnEliminar.setPreferredSize(new java.awt.Dimension(100, 40));
         btnEliminar.setRound(20);
-        btnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        btnEliminar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
         jPanel1.add(btnEliminar);
 
         btnReporteEsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square.png"))); // NOI18N
         btnReporteEsc.setPreferredSize(new java.awt.Dimension(40, 40));
-        btnReporteEsc.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
+        btnReporteEsc.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
         btnReporteEsc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReporteEscActionPerformed(evt);
@@ -152,7 +152,7 @@ public class panStudents extends javax.swing.JPanel {
         btnNomina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text.png"))); // NOI18N
         btnNomina.setPreferredSize(new java.awt.Dimension(40, 40));
         btnNomina.setRound(20);
-        btnNomina.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
+        btnNomina.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
         btnNomina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNominaActionPerformed(evt);
@@ -242,11 +242,11 @@ public class panStudents extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound btnAgregar;
-    private roundObjects.ButtonRound btnEliminar;
-    private roundObjects.ButtonRound btnModificar;
-    private roundObjects.ButtonRound btnNomina;
-    private roundObjects.ButtonRound btnReporteEsc;
+    private customizeObjects.ButtonRound btnAgregar;
+    private customizeObjects.ButtonRound btnEliminar;
+    private customizeObjects.ButtonRound btnModificar;
+    private customizeObjects.ButtonRound btnNomina;
+    private customizeObjects.ButtonRound btnReporteEsc;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

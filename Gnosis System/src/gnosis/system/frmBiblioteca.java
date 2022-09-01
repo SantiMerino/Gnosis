@@ -186,12 +186,12 @@ public class frmBiblioteca extends javax.swing.JFrame {
         txtId = new javax.swing.JTextField();
         txtTipoClasificacion = new javax.swing.JTextField();
         txtTipoRecurso = new javax.swing.JTextField();
-        BtnModificar = new roundObjects.ButtonRound();
-        BtnSubir = new roundObjects.ButtonRound();
-        BtnEliminar = new roundObjects.ButtonRound();
-        BtnVaciarCampos = new roundObjects.ButtonRound();
-        panelRound1 = new roundObjects.PanelRound();
-        btnDispose = new roundObjects.ButtonRound();
+        BtnModificar = new customizeObjects.ButtonRound();
+        BtnSubir = new customizeObjects.ButtonRound();
+        BtnEliminar = new customizeObjects.ButtonRound();
+        BtnVaciarCampos = new customizeObjects.ButtonRound();
+        panelRound1 = new customizeObjects.PanelRound();
+        btnDispose = new customizeObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -268,7 +268,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         jPanel1.add(txtTipoRecurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
 
         BtnModificar.setText("Modificar");
-        BtnModificar.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        BtnModificar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
         BtnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnModificarActionPerformed(evt);
@@ -277,7 +277,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         jPanel1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 90, -1));
 
         BtnSubir.setText("Subir");
-        BtnSubir.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        BtnSubir.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         BtnSubir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSubirActionPerformed(evt);
@@ -286,7 +286,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         jPanel1.add(BtnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 100, -1));
 
         BtnEliminar.setText("Eliminar");
-        BtnEliminar.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        BtnEliminar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
         BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnEliminarActionPerformed(evt);
@@ -295,7 +295,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         jPanel1.add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 110, -1));
 
         BtnVaciarCampos.setText("Vaciar campos");
-        BtnVaciarCampos.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        BtnVaciarCampos.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         jPanel1.add(BtnVaciarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_END);
@@ -318,7 +318,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
         btnDispose.setPreferredSize(new java.awt.Dimension(10, 10));
         btnDispose.setRound(20);
-        btnDispose.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        btnDispose.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
         btnDispose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDisposeActionPerformed(evt);
@@ -532,14 +532,14 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscar;
-    private roundObjects.ButtonRound BtnEliminar;
-    private roundObjects.ButtonRound BtnModificar;
-    private roundObjects.ButtonRound BtnSubir;
-    private roundObjects.ButtonRound BtnVaciarCampos;
+    private customizeObjects.ButtonRound BtnEliminar;
+    private customizeObjects.ButtonRound BtnModificar;
+    private customizeObjects.ButtonRound BtnSubir;
+    private customizeObjects.ButtonRound BtnVaciarCampos;
     private javax.swing.JComboBox<String> CmbClasificacion;
     private javax.swing.JComboBox<String> CmbTipoRecurso;
     private javax.swing.JTable JTBiblioteca;
-    private roundObjects.ButtonRound btnDispose;
+    private customizeObjects.ButtonRound btnDispose;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -548,7 +548,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private roundObjects.PanelRound panelRound1;
+    private customizeObjects.PanelRound panelRound1;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLink;
     private javax.swing.JTextField txtNombreRecurso;

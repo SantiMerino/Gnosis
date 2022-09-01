@@ -26,12 +26,12 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelPrincipal = new roundObjects.PanelRound();
+        panelPrincipal = new customizeObjects.PanelRound();
         jLabel2 = new javax.swing.JLabel();
-        buttonRound1 = new roundObjects.ButtonRound();
-        buttonRound2 = new roundObjects.ButtonRound();
+        buttonRound1 = new customizeObjects.ButtonRound();
+        buttonRound2 = new customizeObjects.ButtonRound();
         jTextField1 = new javax.swing.JTextField();
-        panelRound2 = new roundObjects.PanelRound();
+        panelRound2 = new customizeObjects.PanelRound();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -44,10 +44,10 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        buttonRound3 = new roundObjects.ButtonRound();
-        buttonRound4 = new roundObjects.ButtonRound();
-        buttonRound5 = new roundObjects.ButtonRound();
-        buttonRound6 = new roundObjects.ButtonRound();
+        buttonRound3 = new customizeObjects.ButtonRound();
+        buttonRound4 = new customizeObjects.ButtonRound();
+        buttonRound5 = new customizeObjects.ButtonRound();
+        buttonRound6 = new customizeObjects.ButtonRound();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
@@ -65,7 +65,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
 
         buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/send-square.png"))); // NOI18N
         buttonRound1.setRound(20);
-        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
@@ -74,7 +74,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
 
         buttonRound2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/link.png"))); // NOI18N
         buttonRound2.setRound(20);
-        buttonRound2.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
 
         jTextField1.setBackground(new java.awt.Color(217, 217, 217));
 
@@ -153,11 +153,11 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         jLabel13.setText("Instrumento de evaluacion:");
 
         buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/receive-square.png"))); // NOI18N
-        buttonRound3.setStyle(roundObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
 
         buttonRound4.setText("Eliminar");
         buttonRound4.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        buttonRound4.setStyle(roundObjects.ButtonRound.ButtonStyle.ROJO);
+        buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
         buttonRound4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound4ActionPerformed(evt);
@@ -166,11 +166,11 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
 
         buttonRound5.setText("Modificar ");
         buttonRound5.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        buttonRound5.setStyle(roundObjects.ButtonRound.ButtonStyle.AMARILLO);
+        buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
 
         buttonRound6.setText("Subir ");
         buttonRound6.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        buttonRound6.setStyle(roundObjects.ButtonRound.ButtonStyle.VERDE);
+        buttonRound6.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
 
         jLabel14.setText("jLabel14");
 
@@ -311,12 +311,12 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound buttonRound1;
-    private roundObjects.ButtonRound buttonRound2;
-    private roundObjects.ButtonRound buttonRound3;
-    private roundObjects.ButtonRound buttonRound4;
-    private roundObjects.ButtonRound buttonRound5;
-    private roundObjects.ButtonRound buttonRound6;
+    private customizeObjects.ButtonRound buttonRound1;
+    private customizeObjects.ButtonRound buttonRound2;
+    private customizeObjects.ButtonRound buttonRound3;
+    private customizeObjects.ButtonRound buttonRound4;
+    private customizeObjects.ButtonRound buttonRound5;
+    private customizeObjects.ButtonRound buttonRound6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -333,7 +333,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
-    private roundObjects.PanelRound panelPrincipal;
-    private roundObjects.PanelRound panelRound2;
+    private customizeObjects.PanelRound panelPrincipal;
+    private customizeObjects.PanelRound panelRound2;
     // End of variables declaration//GEN-END:variables
 }

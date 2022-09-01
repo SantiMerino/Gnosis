@@ -48,42 +48,42 @@ public class panPortfolios extends javax.swing.JPanel {
         mainPan = new javax.swing.JPanel();
         scrollPortfolios = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
-        matematicasPan = new roundObjects.PanelRound();
-        panelRound1 = new roundObjects.PanelRound();
-        panelRound2 = new roundObjects.PanelRound();
-        buttonRound1 = new roundObjects.ButtonRound();
-        inglesPan = new roundObjects.PanelRound();
-        panelRound3 = new roundObjects.PanelRound();
-        panelRound4 = new roundObjects.PanelRound();
-        buttonRound2 = new roundObjects.ButtonRound();
-        cienciasPan = new roundObjects.PanelRound();
-        panelRound5 = new roundObjects.PanelRound();
-        panelRound6 = new roundObjects.PanelRound();
-        buttonRound3 = new roundObjects.ButtonRound();
-        modulosPan = new roundObjects.PanelRound();
-        panelRound7 = new roundObjects.PanelRound();
-        panelRound8 = new roundObjects.PanelRound();
-        buttonRound4 = new roundObjects.ButtonRound();
-        lenguajePan = new roundObjects.PanelRound();
-        panelRound9 = new roundObjects.PanelRound();
-        panelRound10 = new roundObjects.PanelRound();
-        buttonRound5 = new roundObjects.ButtonRound();
-        socialesPan = new roundObjects.PanelRound();
-        panelRound11 = new roundObjects.PanelRound();
-        panelRound12 = new roundObjects.PanelRound();
-        buttonRound6 = new roundObjects.ButtonRound();
-        formaPan = new roundObjects.PanelRound();
-        panelRound13 = new roundObjects.PanelRound();
-        panelRound14 = new roundObjects.PanelRound();
-        buttonRound7 = new roundObjects.ButtonRound();
-        opvPan = new roundObjects.PanelRound();
-        panelRound15 = new roundObjects.PanelRound();
+        matematicasPan = new customizeObjects.PanelRound();
+        panelRound1 = new customizeObjects.PanelRound();
+        panelRound2 = new customizeObjects.PanelRound();
+        buttonRound1 = new customizeObjects.ButtonRound();
+        inglesPan = new customizeObjects.PanelRound();
+        panelRound3 = new customizeObjects.PanelRound();
+        panelRound4 = new customizeObjects.PanelRound();
+        buttonRound2 = new customizeObjects.ButtonRound();
+        cienciasPan = new customizeObjects.PanelRound();
+        panelRound5 = new customizeObjects.PanelRound();
+        panelRound6 = new customizeObjects.PanelRound();
+        buttonRound3 = new customizeObjects.ButtonRound();
+        modulosPan = new customizeObjects.PanelRound();
+        panelRound7 = new customizeObjects.PanelRound();
+        panelRound8 = new customizeObjects.PanelRound();
+        buttonRound4 = new customizeObjects.ButtonRound();
+        lenguajePan = new customizeObjects.PanelRound();
+        panelRound9 = new customizeObjects.PanelRound();
+        panelRound10 = new customizeObjects.PanelRound();
+        buttonRound5 = new customizeObjects.ButtonRound();
+        socialesPan = new customizeObjects.PanelRound();
+        panelRound11 = new customizeObjects.PanelRound();
+        panelRound12 = new customizeObjects.PanelRound();
+        buttonRound6 = new customizeObjects.ButtonRound();
+        formaPan = new customizeObjects.PanelRound();
+        panelRound13 = new customizeObjects.PanelRound();
+        panelRound14 = new customizeObjects.PanelRound();
+        buttonRound7 = new customizeObjects.ButtonRound();
+        opvPan = new customizeObjects.PanelRound();
+        panelRound15 = new customizeObjects.PanelRound();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        panelRound16 = new roundObjects.PanelRound();
+        panelRound16 = new customizeObjects.PanelRound();
         jLabel7 = new javax.swing.JLabel();
-        buttonRound8 = new roundObjects.ButtonRound();
+        buttonRound8 = new customizeObjects.ButtonRound();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -190,7 +190,7 @@ public class panPortfolios extends javax.swing.JPanel {
 
         buttonRound1.setText("Abrir");
         buttonRound1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        buttonRound1.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
@@ -266,7 +266,7 @@ public class panPortfolios extends javax.swing.JPanel {
 
         buttonRound2.setText("Abrir");
         buttonRound2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        buttonRound2.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
 
         javax.swing.GroupLayout inglesPanLayout = new javax.swing.GroupLayout(inglesPan);
         inglesPan.setLayout(inglesPanLayout);
@@ -337,7 +337,7 @@ public class panPortfolios extends javax.swing.JPanel {
 
         buttonRound3.setText("Abrir");
         buttonRound3.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        buttonRound3.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
 
         javax.swing.GroupLayout cienciasPanLayout = new javax.swing.GroupLayout(cienciasPan);
         cienciasPan.setLayout(cienciasPanLayout);
@@ -549,7 +549,7 @@ public class panPortfolios extends javax.swing.JPanel {
         buttonRound6.setBackground(new java.awt.Color(32, 32, 32));
         buttonRound6.setText("Abrir");
         buttonRound6.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        buttonRound6.setStyle(roundObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound6.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
 
         javax.swing.GroupLayout socialesPanLayout = new javax.swing.GroupLayout(socialesPan);
         socialesPan.setLayout(socialesPanLayout);
@@ -763,18 +763,18 @@ public class panPortfolios extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private roundObjects.ButtonRound buttonRound1;
-    private roundObjects.ButtonRound buttonRound2;
-    private roundObjects.ButtonRound buttonRound3;
-    private roundObjects.ButtonRound buttonRound4;
-    private roundObjects.ButtonRound buttonRound5;
-    private roundObjects.ButtonRound buttonRound6;
-    private roundObjects.ButtonRound buttonRound7;
-    private roundObjects.ButtonRound buttonRound8;
-    private roundObjects.PanelRound cienciasPan;
+    private customizeObjects.ButtonRound buttonRound1;
+    private customizeObjects.ButtonRound buttonRound2;
+    private customizeObjects.ButtonRound buttonRound3;
+    private customizeObjects.ButtonRound buttonRound4;
+    private customizeObjects.ButtonRound buttonRound5;
+    private customizeObjects.ButtonRound buttonRound6;
+    private customizeObjects.ButtonRound buttonRound7;
+    private customizeObjects.ButtonRound buttonRound8;
+    private customizeObjects.PanelRound cienciasPan;
     private javax.swing.JPanel filtersPan;
-    private roundObjects.PanelRound formaPan;
-    private roundObjects.PanelRound inglesPan;
+    private customizeObjects.PanelRound formaPan;
+    private customizeObjects.PanelRound inglesPan;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -785,30 +785,30 @@ public class panPortfolios extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
-    private roundObjects.PanelRound lenguajePan;
+    private customizeObjects.PanelRound lenguajePan;
     private javax.swing.JPanel mainPan;
-    private roundObjects.PanelRound matematicasPan;
-    private roundObjects.PanelRound modulosPan;
+    private customizeObjects.PanelRound matematicasPan;
+    private customizeObjects.PanelRound modulosPan;
     private javax.swing.JPanel namePan;
-    private roundObjects.PanelRound opvPan;
-    private roundObjects.PanelRound panelRound1;
-    private roundObjects.PanelRound panelRound10;
-    private roundObjects.PanelRound panelRound11;
-    private roundObjects.PanelRound panelRound12;
-    private roundObjects.PanelRound panelRound13;
-    private roundObjects.PanelRound panelRound14;
-    private roundObjects.PanelRound panelRound15;
-    private roundObjects.PanelRound panelRound16;
-    private roundObjects.PanelRound panelRound2;
-    private roundObjects.PanelRound panelRound3;
-    private roundObjects.PanelRound panelRound4;
-    private roundObjects.PanelRound panelRound5;
-    private roundObjects.PanelRound panelRound6;
-    private roundObjects.PanelRound panelRound7;
-    private roundObjects.PanelRound panelRound8;
-    private roundObjects.PanelRound panelRound9;
+    private customizeObjects.PanelRound opvPan;
+    private customizeObjects.PanelRound panelRound1;
+    private customizeObjects.PanelRound panelRound10;
+    private customizeObjects.PanelRound panelRound11;
+    private customizeObjects.PanelRound panelRound12;
+    private customizeObjects.PanelRound panelRound13;
+    private customizeObjects.PanelRound panelRound14;
+    private customizeObjects.PanelRound panelRound15;
+    private customizeObjects.PanelRound panelRound16;
+    private customizeObjects.PanelRound panelRound2;
+    private customizeObjects.PanelRound panelRound3;
+    private customizeObjects.PanelRound panelRound4;
+    private customizeObjects.PanelRound panelRound5;
+    private customizeObjects.PanelRound panelRound6;
+    private customizeObjects.PanelRound panelRound7;
+    private customizeObjects.PanelRound panelRound8;
+    private customizeObjects.PanelRound panelRound9;
     private javax.swing.JScrollPane scrollPortfolios;
-    private roundObjects.PanelRound socialesPan;
+    private customizeObjects.PanelRound socialesPan;
     private javax.swing.JPanel upperPan;
     // End of variables declaration//GEN-END:variables
 }
