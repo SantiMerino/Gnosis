@@ -4,6 +4,7 @@
  */
 package gnosis.system;
 
+import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.datatransfer.Clipboard;
 import java.io.BufferedReader;
@@ -153,6 +154,8 @@ public class frmNotePad extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dialogColor = new javax.swing.JDialog();
+        colorChooser = new javax.swing.JColorChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         textArea = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -165,7 +168,26 @@ public class frmNotePad extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         colorMenu = new javax.swing.JMenuItem();
 
+        javax.swing.GroupLayout dialogColorLayout = new javax.swing.GroupLayout(dialogColor.getContentPane());
+        dialogColor.getContentPane().setLayout(dialogColorLayout);
+        dialogColorLayout.setHorizontalGroup(
+            dialogColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogColorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 729, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        dialogColorLayout.setVerticalGroup(
+            dialogColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 452, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         textArea.setColumns(20);
         textArea.setRows(5);
@@ -251,6 +273,8 @@ public class frmNotePad extends javax.swing.JFrame {
     
     private void colorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorMenuActionPerformed
         // TODO add your handling code here:
+        Color c = colorChooser.showDialog(null, "Color Dialog", textArea.getForeground());
+        textArea.setForeground(c);
     }//GEN-LAST:event_colorMenuActionPerformed
 
     private void saveMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuActionPerformed
@@ -350,6 +374,29 @@ public class frmNotePad extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_exitMenuActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+         if("".equals(textArea.getText())){
+        System.exit(0);
+    }
+    else if(!textChanged){
+        System.exit(0);
+    }
+    else{
+        int confirm = JOptionPane.showConfirmDialog(this, "Do you want to save befor exiting this program?");
+        if (confirm==JOptionPane.YES_OPTION){
+            if(filename.equals(""))
+                saveAs();
+            else
+                save(filename);
+        }
+        if (confirm==JOptionPane.NO_OPTION)
+        {
+            System.exit(0);
+        }
+    }
+    }//GEN-LAST:event_formWindowClosing
+
     /**
      * @param args the command line arguments
      */
@@ -386,7 +433,9 @@ public class frmNotePad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JColorChooser colorChooser;
     private javax.swing.JMenuItem colorMenu;
+    private javax.swing.JDialog dialogColor;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
