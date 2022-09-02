@@ -316,18 +316,18 @@ public class frmNotePad extends javax.swing.JFrame {
 
     public void addActionEvents() {
         //registering action listener to buttons
-        newdoc.addActionListener(this);
-        save.addActionListener(this);
-        print.addActionListener(this);
-        exit.addActionListener(this);
-        copy.addActionListener(this);
-        paste.addActionListener(this);
-        cut.addActionListener(this);
-        selectall.addActionListener(this);
-        open.addActionListener(this);
-        fontfamily.addActionListener(this);
-        fontsize.addActionListener(this);
-        fontstyle.addActionListener(this);
+        newdoc.addActionListener((ActionListener)this);
+        save.addActionListener((ActionListener)this);
+        print.addActionListener((ActionListener)this);
+        exit.addActionListener((ActionListener) this);
+        copy.addActionListener((ActionListener) this);
+        paste.addActionListener((ActionListener)this);
+        cut.addActionListener((ActionListener)this);
+        selectall.addActionListener((ActionListener)this);
+        open.addActionListener((ActionListener)this);
+        fontfamily.addActionListener((ActionListener)this);
+        fontsize.addActionListener((ActionListener)this);
+        fontstyle.addActionListener((ActionListener)this);
     }
 
     /**

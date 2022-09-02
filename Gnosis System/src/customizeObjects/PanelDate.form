@@ -3,8 +3,9 @@
 <Form version="1.9" maxVersion="1.9">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="d9" green="d9" red="d9" type="rgb"/>
+      <Color blue="20" green="20" red="20" type="rgb"/>
     </Property>
+    <Property name="opaque" type="boolean" value="true"/>
   </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -21,13 +22,18 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
     <Property name="columns" type="int" value="7"/>
+    <Property name="horizontalGap" type="int" value="1"/>
     <Property name="rows" type="int" value="7"/>
+    <Property name="verticalGap" type="int" value="1"/>
   </Layout>
   <SubComponents>
     <Component class="customizeObjects.Cell" name="domingo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dom"/>
-        <Property name="round" type="int" value="0"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Poppins" size="12" style="1"/>
+        </Property>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="NEGRO"/>
         </Property>
@@ -36,7 +42,10 @@
     <Component class="customizeObjects.Cell" name="lunes">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lun"/>
-        <Property name="round" type="int" value="0"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Poppins" size="12" style="1"/>
+        </Property>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="NEGRO"/>
         </Property>
@@ -48,7 +57,10 @@
     <Component class="customizeObjects.Cell" name="martes">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mar"/>
-        <Property name="round" type="int" value="0"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Poppins" size="12" style="1"/>
+        </Property>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="NEGRO"/>
         </Property>
@@ -57,7 +69,10 @@
     <Component class="customizeObjects.Cell" name="miercoles">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mier"/>
-        <Property name="round" type="int" value="0"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Poppins" size="12" style="1"/>
+        </Property>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="NEGRO"/>
         </Property>
@@ -66,7 +81,10 @@
     <Component class="customizeObjects.Cell" name="jueves">
       <Properties>
         <Property name="text" type="java.lang.String" value="Jue"/>
-        <Property name="round" type="int" value="0"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Poppins" size="12" style="1"/>
+        </Property>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="NEGRO"/>
         </Property>
@@ -75,7 +93,10 @@
     <Component class="customizeObjects.Cell" name="viernes">
       <Properties>
         <Property name="text" type="java.lang.String" value="Vie"/>
-        <Property name="round" type="int" value="0"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Poppins" size="12" style="1"/>
+        </Property>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="NEGRO"/>
         </Property>
@@ -84,7 +105,10 @@
     <Component class="customizeObjects.Cell" name="sabado">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sab"/>
-        <Property name="round" type="int" value="0"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Poppins" size="12" style="1"/>
+        </Property>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="NEGRO"/>
         </Property>
@@ -95,7 +119,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -106,7 +130,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -117,7 +141,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -128,7 +152,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -139,7 +163,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -150,7 +174,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -161,7 +185,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -172,7 +196,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -183,7 +207,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -194,7 +218,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -205,7 +229,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -216,7 +240,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -227,7 +251,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -238,7 +262,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -249,7 +273,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -260,7 +284,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -271,7 +295,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -282,7 +306,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -293,7 +317,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -304,7 +328,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -315,7 +339,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -326,7 +350,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -337,7 +361,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -348,7 +372,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -359,7 +383,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -370,7 +394,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -381,7 +405,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -392,7 +416,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -403,7 +427,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -414,7 +438,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -425,7 +449,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -436,7 +460,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -447,7 +471,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -458,7 +482,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -469,7 +493,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -480,7 +504,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -491,7 +515,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -502,7 +526,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -513,7 +537,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -524,7 +548,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -535,7 +559,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>
@@ -546,7 +570,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Poppins" size="12" style="0"/>
         </Property>
-        <Property name="round" type="int" value="0"/>
+        <Property name="round" type="int" value="15"/>
         <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="GRIS_OSCURO"/>
         </Property>

@@ -4,9 +4,13 @@
  */
 package customizeObjects;
 
+import Controller.CEvento;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
+import javax.sound.midi.Soundbank;
 
 /**
  *
@@ -19,12 +23,25 @@ public class PanelDate extends javax.swing.JLayeredPane {
      */
     private int month;
     private int year;
+    private int daySelec;
+
+    CEvento controladorFechas = new CEvento();
+    
+    public Date getDateSelec() {
+        return dateSelec;
+    }
+
+    public void setDateSelec(Date dateSelec) {
+        this.dateSelec = dateSelec;
+    }
+    private Date dateSelec;
 
     public PanelDate(int month, int year) {
         initComponents();
         this.month = month;
         this.year = year;
         init();
+        dateSelec();
     }
 
     /**
@@ -62,6 +79,33 @@ public class PanelDate extends javax.swing.JLayeredPane {
                 }
                 calendar.add(Calendar.DATE, 1); //  up 1 day
             }
+        }
+    }
+    
+    
+    public void dateSelec(){
+        for (Component com : getComponents()) {
+            Cell cell = (Cell) com;
+            cell.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (cell != domingo && cell != lunes && cell != martes && cell != miercoles && cell != jueves && cell != viernes && cell != sabado) {
+                        if (cell.getStyle() == ButtonRound.ButtonStyle.VERDE) {
+                            cell.setStyle(ButtonRound.ButtonStyle.GRIS_ROJO);
+                        } else{
+                            daySelec = Integer.parseInt(cell.getText());
+                            cell.setStyle(ButtonRound.ButtonStyle.VERDE);
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.set(Calendar.YEAR, year);
+                            calendar.set(Calendar.MONTH, month - 1);
+                            calendar.set(Calendar.DATE, daySelec);
+                            dateSelec = calendar.getTime();
+                            System.out.println("Fecha: " + dateSelec.toString());
+//                            controladorFechas.fechasSeleccionadas.add(dateSelec);
+                        }
+                    }
+                }
+            });
         }
     }
     
@@ -126,16 +170,19 @@ public class PanelDate extends javax.swing.JLayeredPane {
         cell48 = new customizeObjects.Cell();
         cell49 = new customizeObjects.Cell();
 
-        setBackground(new java.awt.Color(217, 217, 217));
-        setLayout(new java.awt.GridLayout(7, 7));
+        setBackground(new java.awt.Color(32, 32, 32));
+        setOpaque(true);
+        setLayout(new java.awt.GridLayout(7, 7, 1, 1));
 
         domingo.setText("Dom");
-        domingo.setRound(0);
+        domingo.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        domingo.setRound(15);
         domingo.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         add(domingo);
 
         lunes.setText("Lun");
-        lunes.setRound(0);
+        lunes.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        lunes.setRound(15);
         lunes.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         lunes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,237 +192,242 @@ public class PanelDate extends javax.swing.JLayeredPane {
         add(lunes);
 
         martes.setText("Mar");
-        martes.setRound(0);
+        martes.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        martes.setRound(15);
         martes.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         add(martes);
 
         miercoles.setText("Mier");
-        miercoles.setRound(0);
+        miercoles.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        miercoles.setRound(15);
         miercoles.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         add(miercoles);
 
         jueves.setText("Jue");
-        jueves.setRound(0);
+        jueves.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        jueves.setRound(15);
         jueves.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         add(jueves);
 
         viernes.setText("Vie");
-        viernes.setRound(0);
+        viernes.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        viernes.setRound(15);
         viernes.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         add(viernes);
 
         sabado.setText("Sab");
-        sabado.setRound(0);
+        sabado.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        sabado.setRound(15);
         sabado.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         add(sabado);
 
         cell8.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell8.setRound(0);
+        cell8.setRound(15);
         cell8.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell8);
 
         cell9.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell9.setRound(0);
+        cell9.setRound(15);
         cell9.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell9);
 
         cell10.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell10.setRound(0);
+        cell10.setRound(15);
         cell10.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell10);
 
         cell11.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell11.setRound(0);
+        cell11.setRound(15);
         cell11.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell11);
 
         cell12.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell12.setRound(0);
+        cell12.setRound(15);
         cell12.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell12);
 
         cell13.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell13.setRound(0);
+        cell13.setRound(15);
         cell13.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell13);
 
         cell14.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell14.setRound(0);
+        cell14.setRound(15);
         cell14.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell14);
 
         cell15.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell15.setRound(0);
+        cell15.setRound(15);
         cell15.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell15);
 
         cell16.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell16.setRound(0);
+        cell16.setRound(15);
         cell16.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell16);
 
         cell17.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell17.setRound(0);
+        cell17.setRound(15);
         cell17.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell17);
 
         cell18.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell18.setRound(0);
+        cell18.setRound(15);
         cell18.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell18);
 
         cell19.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell19.setRound(0);
+        cell19.setRound(15);
         cell19.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell19);
 
         cell20.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell20.setRound(0);
+        cell20.setRound(15);
         cell20.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell20);
 
         cell21.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell21.setRound(0);
+        cell21.setRound(15);
         cell21.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell21);
 
         cell22.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell22.setRound(0);
+        cell22.setRound(15);
         cell22.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell22);
 
         cell23.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell23.setRound(0);
+        cell23.setRound(15);
         cell23.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell23);
 
         cell24.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell24.setRound(0);
+        cell24.setRound(15);
         cell24.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell24);
 
         cell25.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell25.setRound(0);
+        cell25.setRound(15);
         cell25.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell25);
 
         cell26.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell26.setRound(0);
+        cell26.setRound(15);
         cell26.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell26);
 
         cell27.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell27.setRound(0);
+        cell27.setRound(15);
         cell27.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell27);
 
         cell28.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell28.setRound(0);
+        cell28.setRound(15);
         cell28.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell28);
 
         cell29.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell29.setRound(0);
+        cell29.setRound(15);
         cell29.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell29);
 
         cell30.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell30.setRound(0);
+        cell30.setRound(15);
         cell30.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell30);
 
         cell31.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell31.setRound(0);
+        cell31.setRound(15);
         cell31.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell31);
 
         cell32.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell32.setRound(0);
+        cell32.setRound(15);
         cell32.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell32);
 
         cell33.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell33.setRound(0);
+        cell33.setRound(15);
         cell33.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell33);
 
         cell34.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell34.setRound(0);
+        cell34.setRound(15);
         cell34.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell34);
 
         cell35.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell35.setRound(0);
+        cell35.setRound(15);
         cell35.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell35);
 
         cell36.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell36.setRound(0);
+        cell36.setRound(15);
         cell36.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell36);
 
         cell37.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell37.setRound(0);
+        cell37.setRound(15);
         cell37.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell37);
 
         cell38.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell38.setRound(0);
+        cell38.setRound(15);
         cell38.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell38);
 
         cell39.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell39.setRound(0);
+        cell39.setRound(15);
         cell39.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell39);
 
         cell40.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell40.setRound(0);
+        cell40.setRound(15);
         cell40.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell40);
 
         cell41.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell41.setRound(0);
+        cell41.setRound(15);
         cell41.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell41);
 
         cell42.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell42.setRound(0);
+        cell42.setRound(15);
         cell42.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell42);
 
         cell43.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell43.setRound(0);
+        cell43.setRound(15);
         cell43.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell43);
 
         cell44.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell44.setRound(0);
+        cell44.setRound(15);
         cell44.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell44);
 
         cell45.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell45.setRound(0);
+        cell45.setRound(15);
         cell45.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell45);
 
         cell46.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell46.setRound(0);
+        cell46.setRound(15);
         cell46.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell46);
 
         cell47.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell47.setRound(0);
+        cell47.setRound(15);
         cell47.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell47);
 
         cell48.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell48.setRound(0);
+        cell48.setRound(15);
         cell48.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell48);
 
         cell49.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cell49.setRound(0);
+        cell49.setRound(15);
         cell49.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell49);
     }// </editor-fold>//GEN-END:initComponents
