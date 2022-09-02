@@ -7,8 +7,6 @@ package Controller;
 import Model.MEvento;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -24,16 +22,6 @@ public class CEvento {
     private String horafinalizarevento;
     private int idtipoevento;
     private int idgrado;
-    
-    public ArrayList<Date> fechasSeleccionadas;
-
-    public ArrayList<Date> getFechasSeleccionadas() {
-        return fechasSeleccionadas;
-    }
-
-    public void setFechasSeleccionadas(ArrayList<Date> fechasSeleccionadas) {
-        this.fechasSeleccionadas = fechasSeleccionadas;
-    } 
 
     public int getID() {
         return ID;
@@ -153,6 +141,4 @@ public class CEvento {
     public boolean EliminarEventoResultSet(){
         return mdlEvento.EliminarEventoModel(ID, con);
     }
-
-    
 }

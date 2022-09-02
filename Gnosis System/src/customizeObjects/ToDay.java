@@ -4,17 +4,11 @@
  */
 package customizeObjects;
 
-import Controller.CEvento;
-import java.util.Date;
-
 /**
  *
  * @author santi
  */
-
 public class ToDay {
-    CEvento controladorFechas = new CEvento();
-    
     public int getDay() {
         return day;
     }

@@ -5,8 +5,7 @@
  */
 package gnosis.system;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.raven.datechooser.DateChooser;
 
 /**
  *
@@ -17,31 +16,10 @@ public class panCalendar extends javax.swing.JPanel {
     /**
      * Creates new form frmCalendar
      */
-    
-    
     public panCalendar() {
         initComponents();
         customization.mainUtilities();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        System.err.println(e);
-                    }
-                    Date date = new Date();
-                    SimpleDateFormat tf = new SimpleDateFormat("h:mm:ss aa");
-                    SimpleDateFormat df = new SimpleDateFormat("EEEE, dd/MMMM/yyyy");
-                    String time = tf.format(date);
-                    lblTime.setText(time.split(" ")[0]);
-                    lblType.setText(time.split(" ")[1]);
-                    lblDate.setText(df.format(date));
-                    
-                }
-            }
-        }).start();      
+ 
     }
 
     /**
@@ -54,136 +32,25 @@ public class panCalendar extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        panelRound5 = new customizeObjects.PanelRound();
-        lblTime = new javax.swing.JLabel();
-        lblType = new javax.swing.JLabel();
-        lblDate = new javax.swing.JLabel();
-        panelRound6 = new customizeObjects.PanelRound();
-        panelRound8 = new customizeObjects.PanelRound();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        panelRound9 = new customizeObjects.PanelRound();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        buttonRound1 = new customizeObjects.ButtonRound();
-        buttonRound2 = new customizeObjects.ButtonRound();
-        buttonRound3 = new customizeObjects.ButtonRound();
         jPanel3 = new javax.swing.JPanel();
         panelRound1 = new customizeObjects.PanelRound();
         panelRound2 = new customizeObjects.PanelRound();
         panelRound3 = new customizeObjects.PanelRound();
         panelRound4 = new customizeObjects.PanelRound();
-        calendarCustom2 = new customizeObjects.CalendarCustom();
+        calendarCustom1 = new customizeObjects.CalendarCustom();
 
         setBackground(java.awt.Color.white);
-        setLayout(new java.awt.BorderLayout(10, 0));
+        setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(java.awt.Color.white);
-        jPanel1.setPreferredSize(new java.awt.Dimension(350, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(250, 100));
         jPanel1.setRequestFocusEnabled(false);
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
-        panelRound5.setBackground(java.awt.Color.white);
-        panelRound5.setPreferredSize(new java.awt.Dimension(279, 80));
-        panelRound5.setLayout(new java.awt.BorderLayout());
-
-        lblTime.setFont(new java.awt.Font("Poppins Black", 0, 36)); // NOI18N
-        lblTime.setForeground(new java.awt.Color(32, 32, 32));
-        lblTime.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblTime.setText("TIME");
-        lblTime.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        panelRound5.add(lblTime, java.awt.BorderLayout.CENTER);
-
-        lblType.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        lblType.setForeground(new java.awt.Color(32, 32, 32));
-        lblType.setText("type");
-        lblType.setPreferredSize(new java.awt.Dimension(100, 19));
-        panelRound5.add(lblType, java.awt.BorderLayout.EAST);
-
-        lblDate.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        lblDate.setForeground(new java.awt.Color(32, 32, 32));
-        lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDate.setText("date");
-        panelRound5.add(lblDate, java.awt.BorderLayout.PAGE_END);
-
-        jPanel1.add(panelRound5, java.awt.BorderLayout.NORTH);
-
-        panelRound6.setBackground(java.awt.Color.white);
-        panelRound6.setLayout(new java.awt.BorderLayout(0, 10));
-
-        panelRound8.setBackground(new java.awt.Color(217, 217, 217));
-        panelRound8.setPreferredSize(new java.awt.Dimension(100, 60));
-        panelRound8.setRoundBottomLeft(20);
-        panelRound8.setRoundBottomRight(20);
-        panelRound8.setRoundTopLeft(20);
-        panelRound8.setRoundTopRight(20);
-
-        jLabel1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        jLabel1.setForeground(java.awt.Color.black);
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Fecha seleccionada: ");
-        panelRound8.add(jLabel1);
-
-        panelRound6.add(panelRound8, java.awt.BorderLayout.NORTH);
-
-        jScrollPane1.setBackground(java.awt.Color.white);
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setOpaque(false);
-
-        panelRound9.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound9.setOpaque(true);
-        panelRound9.setPreferredSize(new java.awt.Dimension(100, 1000));
-        panelRound9.setRoundBottomLeft(20);
-        panelRound9.setRoundBottomRight(20);
-        panelRound9.setRoundTopLeft(20);
-        panelRound9.setRoundTopRight(20);
-        jScrollPane1.setViewportView(panelRound9);
-
-        panelRound6.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(panelRound6, java.awt.BorderLayout.CENTER);
-
         add(jPanel1, java.awt.BorderLayout.WEST);
 
         jPanel2.setBackground(java.awt.Color.white);
-        jPanel2.setPreferredSize(new java.awt.Dimension(100, 50));
-        jPanel2.setRequestFocusEnabled(false);
-        jPanel2.setLayout(new java.awt.BorderLayout());
-
-        jLabel2.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel2.setText("Calendario.");
-        jPanel2.add(jLabel2, java.awt.BorderLayout.WEST);
-
-        jPanel4.setBackground(java.awt.Color.white);
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 10));
-
-        buttonRound1.setText("Crear Evento");
-        buttonRound1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        buttonRound1.setPreferredSize(new java.awt.Dimension(150, 30));
-        buttonRound1.setRound(20);
-        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
-        jPanel4.add(buttonRound1);
-
-        buttonRound2.setText("Modificar Evento");
-        buttonRound2.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        buttonRound2.setPreferredSize(new java.awt.Dimension(150, 30));
-        buttonRound2.setRound(20);
-        buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
-        jPanel4.add(buttonRound2);
-
-        buttonRound3.setText("Eliminar Evento");
-        buttonRound3.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        buttonRound3.setPreferredSize(new java.awt.Dimension(150, 30));
-        buttonRound3.setRound(20);
-        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
-        jPanel4.add(buttonRound3);
-
-        jPanel2.add(jPanel4, java.awt.BorderLayout.CENTER);
-
-        add(jPanel2, java.awt.BorderLayout.NORTH);
+        jPanel2.setPreferredSize(new java.awt.Dimension(100, 100));
+        add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         jPanel3.setBackground(java.awt.Color.white);
         jPanel3.setLayout(new java.awt.BorderLayout());
@@ -203,34 +70,20 @@ public class panCalendar extends javax.swing.JPanel {
 
         panelRound4.setBackground(new java.awt.Color(32, 32, 32));
         jPanel3.add(panelRound4, java.awt.BorderLayout.LINE_START);
-        jPanel3.add(calendarCustom2, java.awt.BorderLayout.CENTER);
+        jPanel3.add(calendarCustom1, java.awt.BorderLayout.CENTER);
 
         add(jPanel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private customizeObjects.ButtonRound buttonRound1;
-    private customizeObjects.ButtonRound buttonRound2;
-    private customizeObjects.ButtonRound buttonRound3;
-    private customizeObjects.CalendarCustom calendarCustom2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private customizeObjects.CalendarCustom calendarCustom1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblDate;
-    private javax.swing.JLabel lblTime;
-    private javax.swing.JLabel lblType;
     private customizeObjects.PanelRound panelRound1;
     private customizeObjects.PanelRound panelRound2;
     private customizeObjects.PanelRound panelRound3;
     private customizeObjects.PanelRound panelRound4;
-    private customizeObjects.PanelRound panelRound5;
-    private customizeObjects.PanelRound panelRound6;
-    private customizeObjects.PanelRound panelRound8;
-    private customizeObjects.PanelRound panelRound9;
     // End of variables declaration//GEN-END:variables
 }
