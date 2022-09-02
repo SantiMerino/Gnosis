@@ -20,7 +20,7 @@ import javax.swing.Timer;
  *
  * @author santi
  */
-public class PanelSlide extends javax.swing.JPanel{
+public class PanelSlide extends PanelRound{
     
      public int getAnimate() {
         return animate;
@@ -32,7 +32,7 @@ public class PanelSlide extends javax.swing.JPanel{
 
     public PanelSlide() {
         initComponents();
-        setLayout(new GroupLayout(this));
+        setLayout(null);
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent ce) {
@@ -53,7 +53,7 @@ public class PanelSlide extends javax.swing.JPanel{
     private Component comExit;
     private Component comShow;
     private AnimateType animateType;
-    private int animate = 1;
+    private int animate = 60;
 
         public void show(Component com, AnimateType animateType) {
         if (!timer.isRunning()) {
