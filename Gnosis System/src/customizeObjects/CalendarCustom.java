@@ -4,11 +4,15 @@
  */
 package customizeObjects;
 
-import customizeObjects.PanelSlide;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import customizeObjects.Cell;
 
 /**
  *
@@ -21,6 +25,21 @@ public class CalendarCustom extends javax.swing.JPanel {
      */
     private int month;
     private int year;
+    private String fechaseleccionada;
+    public String valor;
+    
+    public Cell celda;
+    
+    public int daySelec;
+
+    public String getFechaseleccionada() {
+        return fechaseleccionada;
+    }
+
+    public void setFechaseleccionada(String fechaseleccionada) {
+        this.fechaseleccionada = fechaseleccionada;
+    }
+    
     
     public CalendarCustom() {
         initComponents();
@@ -29,6 +48,8 @@ public class CalendarCustom extends javax.swing.JPanel {
         showMonthYear();
         Dimension dim = getSize();
         setSize(dim);
+        PanelDate panelceldas = new PanelDate(month, year);
+//        SeSeleccionoUnaFecha();
         
         new Thread(new Runnable() {
             @Override
@@ -46,11 +67,32 @@ public class CalendarCustom extends javax.swing.JPanel {
                     lblTime.setText(time.split(" ")[0]);
                     lblType.setText(time.split(" ")[1]);
                     lblDate.setText(df.format(date));
-                    
                 }
             }
         }).start(); 
     }
+//
+    public CalendarCustom(String fechaseleccionada) {
+        initComponents();
+
+    }
+    
+    public void FechaSeleccionada(){
+//        panelLabelMIerda.removeAll();
+//        panelLabelMIerda.repaint();
+//        panelLabelMIerda.revalidate();
+//        JOptionPane.showMessageDialog(null, fechaseleccionada);
+////        JLabel fechaCreada = new JLabel();
+//        fechaCreada.setForeground(Color.WHITE);
+//        fechaCreada.setHorizontalAlignment(JLabel.CENTER);
+//        fechaCreada.setText(fechaseleccionada);
+//        panelLabelMIerda.add(fechaCreada, BorderLayout.CENTER);
+//        panelLabelMIerda.repaint();
+//        panelLabelMIerda.revalidate();
+        
+    }
+   
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,44 +103,74 @@ public class CalendarCustom extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRound1 = new customizeObjects.PanelRound();
-        slide = new customizeObjects.PanelSlide();
+        panelSuperior = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lblTime = new javax.swing.JLabel();
+        lblType = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
+        panelPrincipal = new customizeObjects.PanelRound();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         btnNext = new customizeObjects.ButtonRound();
         btnBack = new customizeObjects.ButtonRound();
         lblMesAño = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        lblTime = new javax.swing.JLabel();
-        lblType = new javax.swing.JLabel();
-        lblDate = new javax.swing.JLabel();
+        slide = new customizeObjects.PanelSlide();
 
         setBackground(java.awt.Color.white);
         setLayout(new java.awt.BorderLayout());
 
-        panelRound1.setRoundBottomLeft(20);
-        panelRound1.setRoundBottomRight(20);
-        panelRound1.setRoundTopLeft(20);
-        panelRound1.setRoundTopRight(20);
-        panelRound1.setLayout(new java.awt.BorderLayout());
+        panelSuperior.setBackground(new java.awt.Color(255, 255, 255));
+        panelSuperior.setForeground(new java.awt.Color(255, 255, 255));
+        panelSuperior.setPreferredSize(new java.awt.Dimension(100, 60));
+        panelSuperior.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
-        slide.setBackground(new java.awt.Color(32, 32, 32));
-        slide.setRoundBottomLeft(20);
-        slide.setRoundBottomRight(20);
-        slide.setRoundTopLeft(20);
-        slide.setRoundTopRight(20);
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Calendario");
+        panelSuperior.add(jLabel1);
 
-        javax.swing.GroupLayout slideLayout = new javax.swing.GroupLayout(slide);
-        slide.setLayout(slideLayout);
-        slideLayout.setHorizontalGroup(
-            slideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 422, Short.MAX_VALUE)
+        lblTime.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblTime.setForeground(new java.awt.Color(32, 32, 32));
+        lblTime.setText("TIME");
+        panelSuperior.add(lblTime);
+
+        lblType.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblType.setForeground(new java.awt.Color(32, 32, 32));
+        lblType.setText("type");
+        panelSuperior.add(lblType);
+
+        lblDate.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblDate.setForeground(new java.awt.Color(32, 32, 32));
+        lblDate.setText("DATE");
+        panelSuperior.add(lblDate);
+
+        add(panelSuperior, java.awt.BorderLayout.PAGE_START);
+
+        panelPrincipal.setBackground(new java.awt.Color(32, 32, 32));
+        panelPrincipal.setRoundBottomLeft(20);
+        panelPrincipal.setRoundBottomRight(20);
+        panelPrincipal.setRoundTopLeft(20);
+        panelPrincipal.setRoundTopRight(20);
+        panelPrincipal.setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(300, 448));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
-        slideLayout.setVerticalGroup(
-            slideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 377, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 448, Short.MAX_VALUE)
         );
 
-        panelRound1.add(slide, java.awt.BorderLayout.CENTER);
+        panelPrincipal.add(jPanel2, java.awt.BorderLayout.EAST);
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jLayeredPane1.setBackground(new java.awt.Color(32, 32, 32));
         jLayeredPane1.setOpaque(true);
@@ -106,7 +178,7 @@ public class CalendarCustom extends javax.swing.JPanel {
 
         btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-right-x30.png"))); // NOI18N
         btnNext.setPreferredSize(new java.awt.Dimension(35, 35));
-        btnNext.setRound(0);
+        btnNext.setRound(15);
         btnNext.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +189,7 @@ public class CalendarCustom extends javax.swing.JPanel {
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-let-x30.png"))); // NOI18N
         btnBack.setPreferredSize(new java.awt.Dimension(35, 35));
-        btnBack.setRound(0);
+        btnBack.setRound(15);
         btnBack.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,29 +206,26 @@ public class CalendarCustom extends javax.swing.JPanel {
         lblMesAño.setPreferredSize(new java.awt.Dimension(129, 50));
         jLayeredPane1.add(lblMesAño, java.awt.BorderLayout.CENTER);
 
-        panelRound1.add(jLayeredPane1, java.awt.BorderLayout.NORTH);
+        jPanel1.add(jLayeredPane1, java.awt.BorderLayout.NORTH);
 
-        add(panelRound1, java.awt.BorderLayout.CENTER);
+        slide.setBackground(new java.awt.Color(32, 32, 32));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(400, 100));
+        javax.swing.GroupLayout slideLayout = new javax.swing.GroupLayout(slide);
+        slide.setLayout(slideLayout);
+        slideLayout.setHorizontalGroup(
+            slideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 522, Short.MAX_VALUE)
+        );
+        slideLayout.setVerticalGroup(
+            slideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 398, Short.MAX_VALUE)
+        );
 
-        lblTime.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        lblTime.setForeground(new java.awt.Color(32, 32, 32));
-        lblTime.setText("jLabel1");
-        jPanel1.add(lblTime);
+        jPanel1.add(slide, java.awt.BorderLayout.CENTER);
 
-        lblType.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        lblType.setForeground(new java.awt.Color(32, 32, 32));
-        lblType.setText("jLabel2");
-        jPanel1.add(lblType);
+        panelPrincipal.add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        lblDate.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        lblDate.setForeground(new java.awt.Color(32, 32, 32));
-        lblDate.setText("jLabel3");
-        jPanel1.add(lblDate);
-
-        add(jPanel1, java.awt.BorderLayout.WEST);
+        add(panelPrincipal, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
@@ -202,13 +271,16 @@ public class CalendarCustom extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.ButtonRound btnBack;
     private customizeObjects.ButtonRound btnNext;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblMesAño;
     private javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblType;
-    private customizeObjects.PanelRound panelRound1;
+    private customizeObjects.PanelRound panelPrincipal;
+    private javax.swing.JPanel panelSuperior;
     private customizeObjects.PanelSlide slide;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,7 @@ package customizeObjects;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -21,9 +22,10 @@ public class PanelDate extends javax.swing.JLayeredPane {
      */
     private int month;
     private int year;
-    public Date dateSelec;
+    public String fechaseleccionada;
     private int daySelec;
 
+//    private Cell cell;
     public PanelDate(int month, int year) {
         initComponents();
         this.month = month;
@@ -69,8 +71,8 @@ public class PanelDate extends javax.swing.JLayeredPane {
             }
         }
     }
-    
-     public void dateSelec(){
+
+    public void dateSelec() {
         for (Component com : getComponents()) {
             Cell cell = (Cell) com;
             cell.addActionListener(new ActionListener() {
@@ -79,24 +81,25 @@ public class PanelDate extends javax.swing.JLayeredPane {
                     if (cell != domingo && cell != lunes && cell != martes && cell != miercoles && cell != jueves && cell != viernes && cell != sabado) {
                         if (cell.getStyle() == ButtonRound.ButtonStyle.VERDE) {
                             cell.setStyle(ButtonRound.ButtonStyle.GRIS_ROJO);
-                        } else{
+                        } else {
                             daySelec = Integer.parseInt(cell.getText());
                             cell.setStyle(ButtonRound.ButtonStyle.VERDE);
                             Calendar calendar = Calendar.getInstance();
                             calendar.set(Calendar.YEAR, year);
                             calendar.set(Calendar.MONTH, month - 1);
                             calendar.set(Calendar.DATE, daySelec);
-                            dateSelec = calendar.getTime();
-                            System.out.println("Fecha: " + dateSelec.toString());
-//                            controladorFechas.fechasSeleccionadas.add(dateSelec);
+
+                            Date dateSelec = calendar.getTime();
+                            SimpleDateFormat df = new SimpleDateFormat("EEEE, dd/MMMM/yyyy");
+                            fechaseleccionada = df.format(dateSelec);
+                            System.out.println(fechaseleccionada);
                         }
                     }
                 }
             });
         }
     }
-    
-    
+
     private ToDay getToDay() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -104,6 +107,7 @@ public class PanelDate extends javax.swing.JLayeredPane {
     }
     
     
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

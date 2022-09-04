@@ -32,8 +32,6 @@ public class panCalendar extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         calendarCustom1 = new customizeObjects.CalendarCustom();
 
@@ -42,17 +40,6 @@ public class panCalendar extends javax.swing.JPanel {
 
         jPanel3.setBackground(java.awt.Color.white);
         jPanel3.setLayout(new java.awt.BorderLayout());
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(100, 60));
-
-        jLabel1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel1.setText("Calendario");
-        jLabel1.setToolTipText("");
-        jPanel1.add(jLabel1);
-
-        jPanel3.add(jPanel1, java.awt.BorderLayout.NORTH);
 
         jPanel2.setLayout(new java.awt.BorderLayout());
         jPanel2.add(calendarCustom1, java.awt.BorderLayout.CENTER);
@@ -65,8 +52,6 @@ public class panCalendar extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.CalendarCustom calendarCustom1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
