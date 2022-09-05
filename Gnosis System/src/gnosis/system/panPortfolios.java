@@ -22,6 +22,24 @@ public class panPortfolios extends javax.swing.JPanel {
     public panPortfolios() {
         customization.mainUtilities();
         initComponents();
+        
+        //Matematicas
+        //
+        //
+        //
+        
+        //Sociales
+        //
+        //
+        //
+        
+        //
+        //
+        //
+        
+        //
+        //
+        //
     }
     
     public boolean portfolioOpen(){
@@ -78,7 +96,7 @@ public class panPortfolios extends javax.swing.JPanel {
         btnAbrirBlocForma = new customizeObjects.ButtonRound();
         opvPan = new customizeObjects.PanelRound();
         panelRound15 = new customizeObjects.PanelRound();
-        jLabel4 = new javax.swing.JLabel();
+        opvNombre = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         panelRound16 = new customizeObjects.PanelRound();
@@ -691,10 +709,10 @@ public class panPortfolios extends javax.swing.JPanel {
         panelRound15.setRoundTopRight(20);
         panelRound15.setLayout(new java.awt.BorderLayout());
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Grado");
-        panelRound15.add(jLabel4, java.awt.BorderLayout.CENTER);
+        opvNombre.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        opvNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        opvNombre.setText("Grado");
+        panelRound15.add(opvNombre, java.awt.BorderLayout.CENTER);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel5.setForeground(java.awt.Color.white);
@@ -885,7 +903,6 @@ public class panPortfolios extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -895,6 +912,7 @@ public class panPortfolios extends javax.swing.JPanel {
     private customizeObjects.PanelRound matematicasPan;
     private customizeObjects.PanelRound modulosPan;
     private javax.swing.JPanel namePan;
+    private javax.swing.JLabel opvNombre;
     private customizeObjects.PanelRound opvPan;
     private customizeObjects.PanelRound panelRound1;
     private customizeObjects.PanelRound panelRound10;

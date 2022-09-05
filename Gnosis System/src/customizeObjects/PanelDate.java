@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JLabel;
 
 /**
  *
@@ -24,6 +25,7 @@ public class PanelDate extends javax.swing.JLayeredPane {
     private int year;
     public String fechaseleccionada;
     private int daySelec;
+    
 
 //    private Cell cell;
     public PanelDate(int month, int year) {
@@ -33,6 +35,11 @@ public class PanelDate extends javax.swing.JLayeredPane {
         init();
         dateSelec();
     }
+
+    public PanelDate() {
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -92,7 +99,8 @@ public class PanelDate extends javax.swing.JLayeredPane {
                             Date dateSelec = calendar.getTime();
                             SimpleDateFormat df = new SimpleDateFormat("EEEE, dd/MMMM/yyyy");
                             fechaseleccionada = df.format(dateSelec);
-                            System.out.println(fechaseleccionada);
+                            CalendarCustom papa = new CalendarCustom();
+                            papa.SetearTexto(fechaseleccionada);
                         }
                     }
                 }

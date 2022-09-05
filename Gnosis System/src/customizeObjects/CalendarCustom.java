@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import customizeObjects.Cell;
+import javax.swing.JLabel;
 
 /**
  *
@@ -25,10 +26,8 @@ public class CalendarCustom extends javax.swing.JPanel {
      */
     private int month;
     private int year;
-    private String fechaseleccionada;
+    public String fechaseleccionada;
     public String valor;
-    
-    public Cell celda;
     
     public int daySelec;
 
@@ -37,6 +36,10 @@ public class CalendarCustom extends javax.swing.JPanel {
     }
 
     public void setFechaseleccionada(String fechaseleccionada) {
+        this.fechaseleccionada = fechaseleccionada;
+    }
+
+    public CalendarCustom(String fechaseleccionada) {
         this.fechaseleccionada = fechaseleccionada;
     }
     
@@ -48,8 +51,6 @@ public class CalendarCustom extends javax.swing.JPanel {
         showMonthYear();
         Dimension dim = getSize();
         setSize(dim);
-        PanelDate panelceldas = new PanelDate(month, year);
-//        SeSeleccionoUnaFecha();
         
         new Thread(new Runnable() {
             @Override
@@ -67,30 +68,24 @@ public class CalendarCustom extends javax.swing.JPanel {
                     lblTime.setText(time.split(" ")[0]);
                     lblType.setText(time.split(" ")[1]);
                     lblDate.setText(df.format(date));
-                }
+                }                  
             }
         }).start(); 
     }
-//
-    public CalendarCustom(String fechaseleccionada) {
-        initComponents();
-
-    }
+   
     
-    public void FechaSeleccionada(){
-//        panelLabelMIerda.removeAll();
-//        panelLabelMIerda.repaint();
-//        panelLabelMIerda.revalidate();
-//        JOptionPane.showMessageDialog(null, fechaseleccionada);
-////        JLabel fechaCreada = new JLabel();
-//        fechaCreada.setForeground(Color.WHITE);
-//        fechaCreada.setHorizontalAlignment(JLabel.CENTER);
-//        fechaCreada.setText(fechaseleccionada);
-//        panelLabelMIerda.add(fechaCreada, BorderLayout.CENTER);
-//        panelLabelMIerda.repaint();
-//        panelLabelMIerda.revalidate();
-        
+    public void SetearTexto(String f){
+        this.fechaseleccionada = f;
+        System.out.println(fechaseleccionada);
     }
+////
+    
+//    public void CambiarTexto(){
+//        PanelDate panelhijo = new PanelDate();
+//        this.fechaseleccionada = panelhijo.fechaseleccionada;
+//        lblFechaSeleccionada.setText(fechaseleccionada);
+//        JOptionPane.showMessageDialog(null, "Si llega y esto es una mierda: " + fechaseleccionada);
+//    }
    
     
 
@@ -108,8 +103,9 @@ public class CalendarCustom extends javax.swing.JPanel {
         lblTime = new javax.swing.JLabel();
         lblType = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        lblFechaSeleccionada = new javax.swing.JLabel();
         panelPrincipal = new customizeObjects.PanelRound();
-        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         btnNext = new customizeObjects.ButtonRound();
@@ -148,27 +144,42 @@ public class CalendarCustom extends javax.swing.JPanel {
 
         add(panelSuperior, java.awt.BorderLayout.PAGE_START);
 
+        jPanel3.setPreferredSize(new java.awt.Dimension(300, 448));
+
+        lblFechaSeleccionada.setText("Label de mierda que no se actualiza");
+        lblFechaSeleccionada.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                lblFechaSeleccionadaInputMethodTextChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(lblFechaSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(lblFechaSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(403, Short.MAX_VALUE))
+        );
+
+        add(jPanel3, java.awt.BorderLayout.EAST);
+
         panelPrincipal.setBackground(new java.awt.Color(32, 32, 32));
         panelPrincipal.setRoundBottomLeft(20);
         panelPrincipal.setRoundBottomRight(20);
         panelPrincipal.setRoundTopLeft(20);
         panelPrincipal.setRoundTopRight(20);
         panelPrincipal.setLayout(new java.awt.BorderLayout());
-
-        jPanel2.setPreferredSize(new java.awt.Dimension(300, 448));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
-        );
-
-        panelPrincipal.add(jPanel2, java.awt.BorderLayout.EAST);
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -214,7 +225,7 @@ public class CalendarCustom extends javax.swing.JPanel {
         slide.setLayout(slideLayout);
         slideLayout.setHorizontalGroup(
             slideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         slideLayout.setVerticalGroup(
             slideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,6 +263,11 @@ public class CalendarCustom extends javax.swing.JPanel {
         showMonthYear();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void lblFechaSeleccionadaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_lblFechaSeleccionadaInputMethodTextChanged
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_lblFechaSeleccionadaInputMethodTextChanged
+
     private void thisMonth(){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -267,15 +283,16 @@ public class CalendarCustom extends javax.swing.JPanel {
         SimpleDateFormat df = new SimpleDateFormat("MMMM-yyyy");
         lblMesAño.setText(df.format(calendar.getTime()));
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.ButtonRound btnBack;
     private customizeObjects.ButtonRound btnNext;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblFechaSeleccionada;
     private javax.swing.JLabel lblMesAño;
     private javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblType;
