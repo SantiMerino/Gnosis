@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -122,4 +123,19 @@ public class MEvento {
             return false;
         }        
      }
+    
+    public ResultSet ConsultarEventosSeleccionadas(Date fecha ){
+        try {
+            ResultSet rs;
+            Connection con = MConnection.getConnectionWithoutParameters();
+            String query = "SELECT * FROM tbEventos WHERE fechaevento = ?";
+            ps = con.prepareStatement(query);
+            ps.setDate(1, (java.sql.Date) fecha);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }
 }

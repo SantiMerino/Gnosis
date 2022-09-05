@@ -4,6 +4,7 @@
  */
 package customizeObjects;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -100,7 +101,17 @@ public class PanelDate extends javax.swing.JLayeredPane {
                             SimpleDateFormat df = new SimpleDateFormat("EEEE, dd/MMMM/yyyy");
                             fechaseleccionada = df.format(dateSelec);
                             CalendarCustom papa = new CalendarCustom();
-                            papa.SetearTexto(fechaseleccionada);
+                            papa.fechaseleccionada = fechaseleccionada;
+                            
+                            Thread cambio = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    JLabel culo = new JLabel(fechaseleccionada);
+                                    culo.setForeground(Color.white);
+                                    papa.SetearTexto(culo);
+                                }
+                            });
+                            cambio.start();
                         }
                     }
                 }

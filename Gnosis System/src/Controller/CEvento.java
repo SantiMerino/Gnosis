@@ -7,6 +7,7 @@ package Controller;
 import Model.MEvento;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.Date;
 
 /**
  *
@@ -140,5 +141,9 @@ public class CEvento {
     
     public boolean EliminarEventoResultSet(){
         return mdlEvento.EliminarEventoModel(ID, con);
+    }
+    
+    public ResultSet ConsultarEvento(Date fecha){
+        return mdlEvento.ConsultarEventosSeleccionadas(fecha);
     }
 }

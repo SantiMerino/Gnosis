@@ -4,6 +4,7 @@
  */
 package customizeObjects;
 
+import Controller.CEvento;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import customizeObjects.Cell;
+import java.awt.BorderLayout;
 import javax.swing.JLabel;
 
 /**
@@ -68,15 +70,23 @@ public class CalendarCustom extends javax.swing.JPanel {
                     lblTime.setText(time.split(" ")[0]);
                     lblType.setText(time.split(" ")[1]);
                     lblDate.setText(df.format(date));
+//                    SetearTexto();
                 }                  
             }
-        }).start(); 
+        }).start();
     }
    
-    
-    public void SetearTexto(String f){
-        this.fechaseleccionada = f;
-        System.out.println(fechaseleccionada);
+    //
+    public void SetearTexto(JLabel fecha){
+        new Thread(new Runnable() {
+            @Override
+            public void run(){
+                CEvento eventoscontroller = new CEvento();
+                eventoscontroller.EventoNuevoResultSet();
+                
+            }
+        }).start(); 
+        
     }
 ////
     
@@ -104,7 +114,6 @@ public class CalendarCustom extends javax.swing.JPanel {
         lblType = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        lblFechaSeleccionada = new javax.swing.JLabel();
         panelPrincipal = new customizeObjects.PanelRound();
         jPanel1 = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
@@ -145,33 +154,7 @@ public class CalendarCustom extends javax.swing.JPanel {
         add(panelSuperior, java.awt.BorderLayout.PAGE_START);
 
         jPanel3.setPreferredSize(new java.awt.Dimension(300, 448));
-
-        lblFechaSeleccionada.setText("Label de mierda que no se actualiza");
-        lblFechaSeleccionada.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                lblFechaSeleccionadaInputMethodTextChanged(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(lblFechaSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(lblFechaSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(403, Short.MAX_VALUE))
-        );
-
+        jPanel3.setLayout(new java.awt.CardLayout());
         add(jPanel3, java.awt.BorderLayout.EAST);
 
         panelPrincipal.setBackground(new java.awt.Color(32, 32, 32));
@@ -263,11 +246,6 @@ public class CalendarCustom extends javax.swing.JPanel {
         showMonthYear();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void lblFechaSeleccionadaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_lblFechaSeleccionadaInputMethodTextChanged
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_lblFechaSeleccionadaInputMethodTextChanged
-
     private void thisMonth(){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -292,7 +270,6 @@ public class CalendarCustom extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblDate;
-    private javax.swing.JLabel lblFechaSeleccionada;
     private javax.swing.JLabel lblMesAño;
     private javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblType;
