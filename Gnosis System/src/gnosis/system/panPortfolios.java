@@ -51,31 +51,31 @@ public class panPortfolios extends javax.swing.JPanel {
         matematicasPan = new customizeObjects.PanelRound();
         panelRound1 = new customizeObjects.PanelRound();
         panelRound2 = new customizeObjects.PanelRound();
-        buttonRound1 = new customizeObjects.ButtonRound();
+        btnAbrirBlocMate = new customizeObjects.ButtonRound();
         inglesPan = new customizeObjects.PanelRound();
         panelRound3 = new customizeObjects.PanelRound();
         panelRound4 = new customizeObjects.PanelRound();
-        buttonRound2 = new customizeObjects.ButtonRound();
+        btnAbrirBlocIngles = new customizeObjects.ButtonRound();
         cienciasPan = new customizeObjects.PanelRound();
         panelRound5 = new customizeObjects.PanelRound();
         panelRound6 = new customizeObjects.PanelRound();
-        buttonRound3 = new customizeObjects.ButtonRound();
+        btnAbrirBlocCiencias = new customizeObjects.ButtonRound();
         modulosPan = new customizeObjects.PanelRound();
         panelRound7 = new customizeObjects.PanelRound();
         panelRound8 = new customizeObjects.PanelRound();
-        buttonRound4 = new customizeObjects.ButtonRound();
+        btnAbrirBlocModulos = new customizeObjects.ButtonRound();
         lenguajePan = new customizeObjects.PanelRound();
         panelRound9 = new customizeObjects.PanelRound();
         panelRound10 = new customizeObjects.PanelRound();
-        buttonRound5 = new customizeObjects.ButtonRound();
+        btnAbrirBlocLenguaje = new customizeObjects.ButtonRound();
         socialesPan = new customizeObjects.PanelRound();
         panelRound11 = new customizeObjects.PanelRound();
         panelRound12 = new customizeObjects.PanelRound();
-        buttonRound6 = new customizeObjects.ButtonRound();
+        btnAbrirBlocSociales = new customizeObjects.ButtonRound();
         formaPan = new customizeObjects.PanelRound();
         panelRound13 = new customizeObjects.PanelRound();
         panelRound14 = new customizeObjects.PanelRound();
-        buttonRound7 = new customizeObjects.ButtonRound();
+        btnAbrirBlocForma = new customizeObjects.ButtonRound();
         opvPan = new customizeObjects.PanelRound();
         panelRound15 = new customizeObjects.PanelRound();
         jLabel4 = new javax.swing.JLabel();
@@ -83,7 +83,7 @@ public class panPortfolios extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         panelRound16 = new customizeObjects.PanelRound();
         jLabel7 = new javax.swing.JLabel();
-        buttonRound8 = new customizeObjects.ButtonRound();
+        btnAbrirBlocOpV = new customizeObjects.ButtonRound();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -188,12 +188,12 @@ public class panPortfolios extends javax.swing.JPanel {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        buttonRound1.setText("Abrir");
-        buttonRound1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-        buttonRound1.addActionListener(new java.awt.event.ActionListener() {
+        btnAbrirBlocMate.setText("Abrir");
+        btnAbrirBlocMate.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnAbrirBlocMate.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnAbrirBlocMate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRound1ActionPerformed(evt);
+                btnAbrirBlocMateActionPerformed(evt);
             }
         });
 
@@ -206,7 +206,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGroup(matematicasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonRound1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                    .addComponent(btnAbrirBlocMate, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         matematicasPanLayout.setVerticalGroup(
@@ -217,7 +217,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAbrirBlocMate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -264,9 +264,14 @@ public class panPortfolios extends javax.swing.JPanel {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        buttonRound2.setText("Abrir");
-        buttonRound2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnAbrirBlocIngles.setText("Abrir");
+        btnAbrirBlocIngles.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAbrirBlocIngles.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnAbrirBlocIngles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirBlocInglesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout inglesPanLayout = new javax.swing.GroupLayout(inglesPan);
         inglesPan.setLayout(inglesPanLayout);
@@ -277,7 +282,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGroup(inglesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonRound2, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                    .addComponent(btnAbrirBlocIngles, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         inglesPanLayout.setVerticalGroup(
@@ -288,7 +293,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAbrirBlocIngles, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -335,9 +340,14 @@ public class panPortfolios extends javax.swing.JPanel {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        buttonRound3.setText("Abrir");
-        buttonRound3.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnAbrirBlocCiencias.setText("Abrir");
+        btnAbrirBlocCiencias.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAbrirBlocCiencias.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnAbrirBlocCiencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirBlocCienciasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout cienciasPanLayout = new javax.swing.GroupLayout(cienciasPan);
         cienciasPan.setLayout(cienciasPanLayout);
@@ -348,7 +358,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGroup(cienciasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonRound3, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                    .addComponent(btnAbrirBlocCiencias, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         cienciasPanLayout.setVerticalGroup(
@@ -359,7 +369,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(panelRound6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAbrirBlocCiencias, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -406,8 +416,13 @@ public class panPortfolios extends javax.swing.JPanel {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        buttonRound4.setText("Abrir");
-        buttonRound4.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAbrirBlocModulos.setText("Abrir");
+        btnAbrirBlocModulos.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAbrirBlocModulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirBlocModulosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout modulosPanLayout = new javax.swing.GroupLayout(modulosPan);
         modulosPan.setLayout(modulosPanLayout);
@@ -418,7 +433,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGroup(modulosPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonRound4, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                    .addComponent(btnAbrirBlocModulos, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         modulosPanLayout.setVerticalGroup(
@@ -429,7 +444,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(panelRound8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRound4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAbrirBlocModulos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -476,8 +491,13 @@ public class panPortfolios extends javax.swing.JPanel {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        buttonRound5.setText("Abrir");
-        buttonRound5.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAbrirBlocLenguaje.setText("Abrir");
+        btnAbrirBlocLenguaje.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAbrirBlocLenguaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirBlocLenguajeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout lenguajePanLayout = new javax.swing.GroupLayout(lenguajePan);
         lenguajePan.setLayout(lenguajePanLayout);
@@ -488,7 +508,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGroup(lenguajePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonRound5, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                    .addComponent(btnAbrirBlocLenguaje, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         lenguajePanLayout.setVerticalGroup(
@@ -499,7 +519,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(panelRound10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAbrirBlocLenguaje, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -546,10 +566,15 @@ public class panPortfolios extends javax.swing.JPanel {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        buttonRound6.setBackground(new java.awt.Color(32, 32, 32));
-        buttonRound6.setText("Abrir");
-        buttonRound6.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        buttonRound6.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnAbrirBlocSociales.setBackground(new java.awt.Color(32, 32, 32));
+        btnAbrirBlocSociales.setText("Abrir");
+        btnAbrirBlocSociales.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAbrirBlocSociales.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnAbrirBlocSociales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirBlocSocialesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout socialesPanLayout = new javax.swing.GroupLayout(socialesPan);
         socialesPan.setLayout(socialesPanLayout);
@@ -560,7 +585,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGroup(socialesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonRound6, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                    .addComponent(btnAbrirBlocSociales, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         socialesPanLayout.setVerticalGroup(
@@ -571,7 +596,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(panelRound12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRound6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAbrirBlocSociales, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -618,8 +643,13 @@ public class panPortfolios extends javax.swing.JPanel {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        buttonRound7.setText("Abrir");
-        buttonRound7.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAbrirBlocForma.setText("Abrir");
+        btnAbrirBlocForma.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAbrirBlocForma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirBlocFormaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout formaPanLayout = new javax.swing.GroupLayout(formaPan);
         formaPan.setLayout(formaPanLayout);
@@ -630,7 +660,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGroup(formaPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonRound7, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                    .addComponent(btnAbrirBlocForma, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         formaPanLayout.setVerticalGroup(
@@ -641,7 +671,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(panelRound14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRound7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAbrirBlocForma, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -706,8 +736,13 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        buttonRound8.setText("Abrir");
-        buttonRound8.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAbrirBlocOpV.setText("Abrir");
+        btnAbrirBlocOpV.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnAbrirBlocOpV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirBlocOpVActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout opvPanLayout = new javax.swing.GroupLayout(opvPan);
         opvPan.setLayout(opvPanLayout);
@@ -718,7 +753,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGroup(opvPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonRound8, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                    .addComponent(btnAbrirBlocOpV, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         opvPanLayout.setVerticalGroup(
@@ -729,7 +764,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(panelRound16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRound8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAbrirBlocOpV, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -742,7 +777,7 @@ public class panPortfolios extends javax.swing.JPanel {
         add(mainPan, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
+    private void btnAbrirBlocMateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirBlocMateActionPerformed
         // TODO add your handling code here:
 //        upperPan.setPreferredSize(new Dimension(100,0));
 //        mainPan.removeAll();
@@ -759,18 +794,88 @@ public class panPortfolios extends javax.swing.JPanel {
         
         JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(this);
         dashboardopen.dispose();
-    }//GEN-LAST:event_buttonRound1ActionPerformed
+    }//GEN-LAST:event_btnAbrirBlocMateActionPerformed
+
+    private void btnAbrirBlocInglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirBlocInglesActionPerformed
+        // TODO add your handling code here:
+        frmDashboard dash = new frmDashboard();
+        dash.setVisible(true);
+        dash.AbrirBloc();
+        
+        JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(this);
+        dashboardopen.dispose();
+    }//GEN-LAST:event_btnAbrirBlocInglesActionPerformed
+
+    private void btnAbrirBlocCienciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirBlocCienciasActionPerformed
+        // TODO add your handling code here:
+        frmDashboard dash = new frmDashboard();
+        dash.setVisible(true);
+        dash.AbrirBloc();
+        
+        JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(this);
+        dashboardopen.dispose();
+    }//GEN-LAST:event_btnAbrirBlocCienciasActionPerformed
+
+    private void btnAbrirBlocModulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirBlocModulosActionPerformed
+        // TODO add your handling code here:
+        frmDashboard dash = new frmDashboard();
+        dash.setVisible(true);
+        dash.AbrirBloc();
+        
+        JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(this);
+        dashboardopen.dispose();
+    }//GEN-LAST:event_btnAbrirBlocModulosActionPerformed
+
+    private void btnAbrirBlocLenguajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirBlocLenguajeActionPerformed
+        // TODO add your handling code here:
+        frmDashboard dash = new frmDashboard();
+        dash.setVisible(true);
+        dash.AbrirBloc();
+        
+        JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(this);
+        dashboardopen.dispose();
+    }//GEN-LAST:event_btnAbrirBlocLenguajeActionPerformed
+
+    private void btnAbrirBlocSocialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirBlocSocialesActionPerformed
+        // TODO add your handling code here:
+        frmDashboard dash = new frmDashboard();
+        dash.setVisible(true);
+        dash.AbrirBloc();
+        
+        JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(this);
+        dashboardopen.dispose();
+    }//GEN-LAST:event_btnAbrirBlocSocialesActionPerformed
+
+    private void btnAbrirBlocFormaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirBlocFormaActionPerformed
+        // TODO add your handling code here:
+        frmDashboard dash = new frmDashboard();
+        dash.setVisible(true);
+        dash.AbrirBloc();
+        
+        JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(this);
+        dashboardopen.dispose();
+    }//GEN-LAST:event_btnAbrirBlocFormaActionPerformed
+
+    private void btnAbrirBlocOpVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirBlocOpVActionPerformed
+        // TODO add your handling code here:
+        frmDashboard dash = new frmDashboard();
+        dash.setVisible(true);
+        dash.AbrirBloc();
+        
+        JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(this);
+        dashboardopen.dispose();
+    }//GEN-LAST:event_btnAbrirBlocOpVActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private customizeObjects.ButtonRound buttonRound1;
-    private customizeObjects.ButtonRound buttonRound2;
-    private customizeObjects.ButtonRound buttonRound3;
-    private customizeObjects.ButtonRound buttonRound4;
-    private customizeObjects.ButtonRound buttonRound5;
-    private customizeObjects.ButtonRound buttonRound6;
-    private customizeObjects.ButtonRound buttonRound7;
-    private customizeObjects.ButtonRound buttonRound8;
+    private customizeObjects.ButtonRound btnAbrirBlocCiencias;
+    private customizeObjects.ButtonRound btnAbrirBlocForma;
+    private customizeObjects.ButtonRound btnAbrirBlocIngles;
+    private customizeObjects.ButtonRound btnAbrirBlocLenguaje;
+    private customizeObjects.ButtonRound btnAbrirBlocMate;
+    private customizeObjects.ButtonRound btnAbrirBlocModulos;
+    private customizeObjects.ButtonRound btnAbrirBlocOpV;
+    private customizeObjects.ButtonRound btnAbrirBlocSociales;
     private customizeObjects.PanelRound cienciasPan;
     private javax.swing.JPanel filtersPan;
     private customizeObjects.PanelRound formaPan;

@@ -146,7 +146,7 @@
                   </StringArray>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Default Cursor"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[100, 30]"/>
@@ -238,7 +238,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="panelRound1" max="32767" attributes="0"/>
                                   <Component id="panelRound2" max="32767" attributes="0"/>
-                                  <Component id="buttonRound1" pref="206" max="32767" attributes="0"/>
+                                  <Component id="btnAbrirBlocMate" pref="206" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
@@ -252,7 +252,7 @@
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="panelRound2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonRound1" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btnAbrirBlocMate" min="-2" pref="40" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -307,7 +307,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="customizeObjects.ButtonRound" name="buttonRound1">
+                    <Component class="customizeObjects.ButtonRound" name="btnAbrirBlocMate">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -318,7 +318,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRound1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbrirBlocMateActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -345,7 +345,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="panelRound3" alignment="0" max="32767" attributes="0"/>
                                   <Component id="panelRound4" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="buttonRound2" alignment="0" pref="206" max="32767" attributes="0"/>
+                                  <Component id="btnAbrirBlocIngles" alignment="0" pref="206" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
@@ -359,7 +359,7 @@
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="panelRound4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonRound2" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btnAbrirBlocIngles" min="-2" pref="40" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -414,7 +414,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="customizeObjects.ButtonRound" name="buttonRound2">
+                    <Component class="customizeObjects.ButtonRound" name="btnAbrirBlocIngles">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -424,6 +424,9 @@
                           <Value id="NEGRO"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbrirBlocInglesActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -449,7 +452,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="panelRound5" alignment="0" max="32767" attributes="0"/>
                                   <Component id="panelRound6" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="buttonRound3" alignment="0" pref="206" max="32767" attributes="0"/>
+                                  <Component id="btnAbrirBlocCiencias" alignment="0" pref="206" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
@@ -463,7 +466,7 @@
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="panelRound6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonRound3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btnAbrirBlocCiencias" min="-2" pref="40" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -518,7 +521,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="customizeObjects.ButtonRound" name="buttonRound3">
+                    <Component class="customizeObjects.ButtonRound" name="btnAbrirBlocCiencias">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -528,6 +531,9 @@
                           <Value id="NEGRO"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbrirBlocCienciasActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -553,7 +559,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="panelRound7" alignment="0" max="32767" attributes="0"/>
                                   <Component id="panelRound8" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="buttonRound4" alignment="0" pref="206" max="32767" attributes="0"/>
+                                  <Component id="btnAbrirBlocModulos" alignment="0" pref="206" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
@@ -567,7 +573,7 @@
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="panelRound8" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonRound4" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btnAbrirBlocModulos" min="-2" pref="40" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -622,13 +628,16 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="customizeObjects.ButtonRound" name="buttonRound4">
+                    <Component class="customizeObjects.ButtonRound" name="btnAbrirBlocModulos">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI Black" size="14" style="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbrirBlocModulosActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -654,7 +663,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="panelRound9" alignment="0" max="32767" attributes="0"/>
                                   <Component id="panelRound10" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="buttonRound5" alignment="0" pref="206" max="32767" attributes="0"/>
+                                  <Component id="btnAbrirBlocLenguaje" alignment="0" pref="206" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
@@ -668,7 +677,7 @@
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="panelRound10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonRound5" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btnAbrirBlocLenguaje" min="-2" pref="40" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -723,13 +732,16 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="customizeObjects.ButtonRound" name="buttonRound5">
+                    <Component class="customizeObjects.ButtonRound" name="btnAbrirBlocLenguaje">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI Black" size="14" style="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbrirBlocLenguajeActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -755,7 +767,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="panelRound11" alignment="0" max="32767" attributes="0"/>
                                   <Component id="panelRound12" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="buttonRound6" alignment="0" pref="206" max="32767" attributes="0"/>
+                                  <Component id="btnAbrirBlocSociales" alignment="0" pref="206" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
@@ -769,7 +781,7 @@
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="panelRound12" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonRound6" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btnAbrirBlocSociales" min="-2" pref="40" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -824,7 +836,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="customizeObjects.ButtonRound" name="buttonRound6">
+                    <Component class="customizeObjects.ButtonRound" name="btnAbrirBlocSociales">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="20" green="20" red="20" type="rgb"/>
@@ -837,6 +849,9 @@
                           <Value id="NEGRO"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbrirBlocSocialesActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -862,7 +877,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="panelRound13" alignment="0" max="32767" attributes="0"/>
                                   <Component id="panelRound14" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="buttonRound7" alignment="0" pref="206" max="32767" attributes="0"/>
+                                  <Component id="btnAbrirBlocForma" alignment="0" pref="206" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
@@ -876,7 +891,7 @@
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="panelRound14" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonRound7" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btnAbrirBlocForma" min="-2" pref="40" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -931,13 +946,16 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Component class="customizeObjects.ButtonRound" name="buttonRound7">
+                    <Component class="customizeObjects.ButtonRound" name="btnAbrirBlocForma">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI Black" size="14" style="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbrirBlocFormaActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -963,7 +981,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="panelRound15" alignment="0" max="32767" attributes="0"/>
                                   <Component id="panelRound16" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="buttonRound8" alignment="0" pref="206" max="32767" attributes="0"/>
+                                  <Component id="btnAbrirBlocOpV" alignment="0" pref="206" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
@@ -977,7 +995,7 @@
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="panelRound16" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonRound8" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btnAbrirBlocOpV" min="-2" pref="40" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1093,13 +1111,16 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="customizeObjects.ButtonRound" name="buttonRound8">
+                    <Component class="customizeObjects.ButtonRound" name="btnAbrirBlocOpV">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI Black" size="14" style="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbrirBlocOpVActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
