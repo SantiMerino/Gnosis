@@ -48,6 +48,7 @@ public class Cell extends ButtonRound {
             setForeground(new Color(255, 255, 255));
         } else {
             setForeground(new Color(180, 180, 180));
+            setEnabled(false);
         }
     }
 

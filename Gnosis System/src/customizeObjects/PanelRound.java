@@ -7,6 +7,7 @@ import java.awt.Shape;
 import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PanelRound extends JPanel {
@@ -16,6 +17,8 @@ public class PanelRound extends JPanel {
     int roundBottomLeft=0;
     int RoundBottomRight=0;
 
+    String fechaculera;
+    
     public int getRoundTopLeft() {
         return roundTopLeft;
     }

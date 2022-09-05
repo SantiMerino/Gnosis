@@ -610,10 +610,10 @@ select * from viewTareas
 -- hacer vista de los docentes
 -- hacer vista de alumnos
 
-
-SELECT b.nombres_docente, b.apellidos_docente, CONCAT(c.materia, '', d.modulo)
+--Vista de portafolios
+SELECT b.nombres_docente, b.apellidos_docente, CONCAT(c.materia, ' ', d.modulo)
 FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d
-WHERE
+WHERE a.iddocente = b.iddocente AND a.idmateria = c.idmateria AND a.idmodulo = d.idmodulo
 
 
 

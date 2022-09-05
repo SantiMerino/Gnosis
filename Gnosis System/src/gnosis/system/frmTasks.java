@@ -320,13 +320,23 @@ public class frmTasks extends javax.swing.JFrame {
         jPanel1.add(txtTipoTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
 
         btnModificar.setText("buttonRound1");
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
 
         btnSubir.setText("buttonRound2");
-        jPanel1.add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
+        btnSubir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, -1, -1));
 
         btnEliminar.setText("buttonRound3");
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

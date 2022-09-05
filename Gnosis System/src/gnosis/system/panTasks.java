@@ -49,7 +49,7 @@ public class panTasks extends javax.swing.JPanel {
                     materiamodulo = palabras[1];
                 } else {
                     materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
-                }
+                }               
                 custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo);
             }
         } catch (Exception e) {
