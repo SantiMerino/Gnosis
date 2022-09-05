@@ -162,7 +162,6 @@ public class panPortfolios extends javax.swing.JPanel {
 
         jPanel3.setBackground(java.awt.Color.white);
         jPanel3.setPreferredSize(new java.awt.Dimension(500, 900));
-        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         matematicasPan.setBackground(new java.awt.Color(255, 153, 0));
         matematicasPan.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -767,7 +766,7 @@ public class panPortfolios extends javax.swing.JPanel {
         opvPanLayout.setHorizontalGroup(
             opvPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opvPanLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(opvPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -778,7 +777,7 @@ public class panPortfolios extends javax.swing.JPanel {
             opvPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(opvPanLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(panelRound15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelRound15, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
                 .addComponent(panelRound16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
