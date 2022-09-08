@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author josec
@@ -124,13 +125,14 @@ public class MEvento {
         }        
      }
     
-    public ResultSet ConsultarEventosSeleccionadas(Date fecha ){
+    public ResultSet ConsultarEventosSeleccionadas(Date fecha){
         try {
             ResultSet rs;
             Connection con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT * FROM tbEventos WHERE fechaevento = ?";
+            String query = "SELECT a.nombreevento, b.tipoevento, c.grado FROM tbEventos a, tbTipoEventos b, tbGrados c WHERE a.fechaevento BETWEEN ? AND ? AND a.idtipoevento = b.idtipoevento AND a.idgrado = c.idgrado";
             ps = con.prepareStatement(query);
-            ps.setDate(1, (java.sql.Date) fecha);
+            ps.setTimestamp(1, new java.sql.Timestamp(fecha.getTime()));
+            ps.setTimestamp(2, new java.sql.Timestamp(fecha.getTime()));
             rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {

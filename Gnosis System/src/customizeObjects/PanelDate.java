@@ -8,16 +8,21 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author santi
  */
-public class PanelDate extends javax.swing.JLayeredPane {
+public class PanelDate extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelDate
@@ -98,20 +103,17 @@ public class PanelDate extends javax.swing.JLayeredPane {
                             calendar.set(Calendar.DATE, daySelec);
 
                             Date dateSelec = calendar.getTime();
-                            SimpleDateFormat df = new SimpleDateFormat("EEEE, dd/MMMM/yyyy");
+                            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                             fechaseleccionada = df.format(dateSelec);
                             CalendarCustom papa = new CalendarCustom();
-                            papa.fechaseleccionada = fechaseleccionada;
                             
-                            Thread cambio = new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    JLabel culo = new JLabel(fechaseleccionada);
-                                    culo.setForeground(Color.white);
-                                    papa.SetearTexto(culo);
-                                }
-                            });
-                            cambio.start();
+                            try {
+                                papa.SetearTexto(fechaseleccionada);
+                            } catch (ParseException ex) {
+                                JOptionPane.showMessageDialog(null, "Come mierda netbeans");
+                            } catch (SQLException ex) {
+                                Logger.getLogger(PanelDate.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         }
                     }
                 }
@@ -182,7 +184,6 @@ public class PanelDate extends javax.swing.JLayeredPane {
         cell49 = new customizeObjects.Cell();
 
         setBackground(new java.awt.Color(32, 32, 32));
-        setOpaque(true);
         setLayout(new java.awt.GridLayout(7, 7, 1, 1));
 
         domingo.setText("Dom");
@@ -195,11 +196,6 @@ public class PanelDate extends javax.swing.JLayeredPane {
         lunes.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         lunes.setRound(15);
         lunes.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-        lunes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lunesActionPerformed(evt);
-            }
-        });
         add(lunes);
 
         martes.setText("Mar");
@@ -442,10 +438,6 @@ public class PanelDate extends javax.swing.JLayeredPane {
         cell49.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         add(cell49);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lunesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lunesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lunesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

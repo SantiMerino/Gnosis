@@ -611,9 +611,26 @@ select * from viewTareas
 -- hacer vista de alumnos
 
 --Vista de portafolios
-SELECT b.nombres_docente, b.apellidos_docente,CONCAT(e.grado,' ', f.seccionAca) AS [Grado] ,CONCAT(c.materia, ' ', d.modulo) AS [Materia]
+GO
+CREATE VIEW viewPortafolios
+AS
+SELECT CONCAT (b.nombres_docente, ' ', b.apellidos_docente) AS [Docente],CONCAT(e.grado,' ', f.seccionAca) AS [Grado] ,CONCAT(c.materia, ' ', d.modulo) AS [Materia]
 FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e, tbSeccionAca f
 WHERE a.iddocente = b.iddocente AND a.idmateria = c.idmateria AND a.idmodulo = d.idmodulo  AND b.idgrado = e.idgrado AND e.idseccionAca = f.idseccionAca 
+GO
 
+SELECT * FROM viewPortafolios;
+
+--query para seleccionar los eventos.
+SELECT a.nombreevento, b.tipoevento, c.grado
+FROM tbEventos a, tbTipoEventos b, tbGrados c
+WHERE a.fechaevento BETWEEN '2021-05-26' AND '2021-05-31'
+AND a.idtipoevento = b.idtipoevento
+AND a.idgrado = c.idgrado;
+
+--Vista de profesores - materia - grado
+SELECT CONCAT(b.nombres_docente, ' ', b.apellidos_docente) AS [Docente], CONCAT(c.materia, ' ', d.modulo) AS [Materia], e.grado AS [Grado]
+FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e
+WHERE a.iddocente = b.iddocente AND a.idmateria = c.idmateria AND a.idmodulo = d.idmodulo AND b.idgrado = e.idgrado
 
 

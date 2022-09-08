@@ -8,6 +8,7 @@ package gnosis.system;
 import java.awt.*;
 import javax.swing.JPanel;
 import customizeObjects.ButtonRound;
+import customizeObjects.CalendarCustom;
 
 /**
  *
@@ -779,17 +780,17 @@ public class frmDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (panContainer.getComponentCount() == 0) {
             cambiarColorBotonesMenu(calendarButton, "/resources/home-selec.png");
-            panContainer.add(new panCalendar());
+            panContainer.add(new CalendarCustom());
             panContainer.repaint();
             panContainer.revalidate();
-        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panCalendar()) {
+        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new CalendarCustom()) {
             if (calendarButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
                 cambiarColorBotonesMenu(calendarButton, "/resources/home-selec.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
 
-                panContainer.add(new panCalendar());
+                panContainer.add(new CalendarCustom());
                 panContainer.repaint();
                 panContainer.revalidate();
             } else {

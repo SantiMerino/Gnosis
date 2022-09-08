@@ -1,11 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package gnosis.system;
-
-import com.raven.datechooser.DateChooser;
 
 /**
  *
@@ -14,12 +11,10 @@ import com.raven.datechooser.DateChooser;
 public class panCalendar extends javax.swing.JPanel {
 
     /**
-     * Creates new form frmCalendar
+     * Creates new form panCalendar
      */
     public panCalendar() {
         initComponents();
-        customization.mainUtilities();
- 
     }
 
     /**
@@ -31,28 +26,19 @@ public class panCalendar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        calendarCustom1 = new customizeObjects.CalendarCustom();
-
-        setBackground(java.awt.Color.white);
-        setLayout(new java.awt.BorderLayout());
-
-        jPanel3.setBackground(java.awt.Color.white);
-        jPanel3.setLayout(new java.awt.BorderLayout());
-
-        jPanel2.setLayout(new java.awt.BorderLayout());
-        jPanel2.add(calendarCustom1, java.awt.BorderLayout.CENTER);
-
-        jPanel3.add(jPanel2, java.awt.BorderLayout.CENTER);
-
-        add(jPanel3, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 761, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 462, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private customizeObjects.CalendarCustom calendarCustom1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,15 +7,21 @@ package customizeObjects;
 import Controller.CEvento;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import javax.swing.JOptionPane;
-import customizeObjects.Cell;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,10 +34,7 @@ public class CalendarCustom extends javax.swing.JPanel {
      */
     private int month;
     private int year;
-    public String fechaseleccionada;
-    public String valor;
-    
-    public int daySelec;
+    private String fechaseleccionada;
 
     public String getFechaseleccionada() {
         return fechaseleccionada;
@@ -40,10 +43,14 @@ public class CalendarCustom extends javax.swing.JPanel {
     public void setFechaseleccionada(String fechaseleccionada) {
         this.fechaseleccionada = fechaseleccionada;
     }
+    
+    public int daySelec;
 
-    public CalendarCustom(String fechaseleccionada) {
-        this.fechaseleccionada = fechaseleccionada;
+    public CalendarCustom(String fechadeHOY) {
+        this.fechaseleccionada = fechadeHOY;
     }
+    
+    CEvento controladorCEvento = new CEvento();
     
     
     public CalendarCustom() {
@@ -53,6 +60,7 @@ public class CalendarCustom extends javax.swing.JPanel {
         showMonthYear();
         Dimension dim = getSize();
         setSize(dim);
+//        DateSelecFromParent();
         
         new Thread(new Runnable() {
             @Override
@@ -70,32 +78,49 @@ public class CalendarCustom extends javax.swing.JPanel {
                     lblTime.setText(time.split(" ")[0]);
                     lblType.setText(time.split(" ")[1]);
                     lblDate.setText(df.format(date));
-//                    SetearTexto();
                 }                  
             }
         }).start();
     }
    
-    //
-    public void SetearTexto(JLabel fecha){
-        new Thread(new Runnable() {
-            @Override
-            public void run(){
-                CEvento eventoscontroller = new CEvento();
-                eventoscontroller.EventoNuevoResultSet();
-                
-            }
-        }).start(); 
+    //tengo que hacer que este metodo sea el trigger del controlador que vaya al modelo y retorne un result que luego tengo que usar para crear los eventos a la par del calendario, creando un panel y un dos labels con codigo y luego ejecutandolo las veces que que el result set .next() :P
+    public void SetearTexto(String fecha) throws ParseException, SQLException{
+//        CrearElemntos(fecha);
+        SimpleDateFormat format = new SimpleDateFormat(fecha);
+        Date date1 = format.parse(fecha);
+        System.out.println(date1 + "  Cambio de formato " + fecha);
+        ResultSet rs = controladorCEvento.ConsultarEvento(date1);
+        while (rs.next()) {            
+            System.out.println("Eventos: " + rs.getString(1) + " Tipo:" + rs.getString(2));
+             CrearElemntos(rs.getString(1), rs.getString(2));
+        }
+    }
+    
+    
+    public void CrearElemntos(String nombre,String tipo){
+        //Craer Panel
+        PanelRound newpanel = new PanelRound();
+        newpanel.setBackground(Color.blue);
+        newpanel.setPreferredSize(new Dimension(150, 50));
+        
+        //Labels
+        JLabel newlabel = new JLabel(nombre);
+        newlabel.setForeground(Color.WHITE);
+        newlabel.setHorizontalAlignment(JLabel.CENTER);
+        
+        JLabel newlabel2 = new JLabel(tipo);
+        newlabel2.setForeground(Color.WHITE);
+        newlabel2.setHorizontalAlignment(JLabel.CENTER);
+        newlabel2.setPreferredSize(new Dimension(100, 20));
+        
+        newpanel.add(BorderLayout.CENTER,newlabel);
+        newpanel.add(BorderLayout.SOUTH,newlabel2);
+        panelEventos.add(newpanel);
+        panelEventos.repaint();
+        panelEventos.revalidate();
+        
         
     }
-////
-    
-//    public void CambiarTexto(){
-//        PanelDate panelhijo = new PanelDate();
-//        this.fechaseleccionada = panelhijo.fechaseleccionada;
-//        lblFechaSeleccionada.setText(fechaseleccionada);
-//        JOptionPane.showMessageDialog(null, "Si llega y esto es una mierda: " + fechaseleccionada);
-//    }
    
     
 
@@ -113,9 +138,8 @@ public class CalendarCustom extends javax.swing.JPanel {
         lblTime = new javax.swing.JLabel();
         lblType = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        panelPrincipal = new customizeObjects.PanelRound();
-        jPanel1 = new javax.swing.JPanel();
+        panelEventos = new javax.swing.JPanel();
+        Calendario = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         btnNext = new customizeObjects.ButtonRound();
         btnBack = new customizeObjects.ButtonRound();
@@ -153,18 +177,25 @@ public class CalendarCustom extends javax.swing.JPanel {
 
         add(panelSuperior, java.awt.BorderLayout.PAGE_START);
 
-        jPanel3.setPreferredSize(new java.awt.Dimension(300, 448));
-        jPanel3.setLayout(new java.awt.CardLayout());
-        add(jPanel3, java.awt.BorderLayout.EAST);
+        panelEventos.setBackground(new java.awt.Color(255, 255, 255));
+        panelEventos.setPreferredSize(new java.awt.Dimension(300, 448));
 
-        panelPrincipal.setBackground(new java.awt.Color(32, 32, 32));
-        panelPrincipal.setRoundBottomLeft(20);
-        panelPrincipal.setRoundBottomRight(20);
-        panelPrincipal.setRoundTopLeft(20);
-        panelPrincipal.setRoundTopRight(20);
-        panelPrincipal.setLayout(new java.awt.BorderLayout());
+        javax.swing.GroupLayout panelEventosLayout = new javax.swing.GroupLayout(panelEventos);
+        panelEventos.setLayout(panelEventosLayout);
+        panelEventosLayout.setHorizontalGroup(
+            panelEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        panelEventosLayout.setVerticalGroup(
+            panelEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 448, Short.MAX_VALUE)
+        );
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        add(panelEventos, java.awt.BorderLayout.EAST);
+
+        Calendario.setBackground(new java.awt.Color(32, 32, 32));
+        Calendario.setPreferredSize(new java.awt.Dimension(200, 200));
+        Calendario.setLayout(new java.awt.BorderLayout());
 
         jLayeredPane1.setBackground(new java.awt.Color(32, 32, 32));
         jLayeredPane1.setOpaque(true);
@@ -200,7 +231,7 @@ public class CalendarCustom extends javax.swing.JPanel {
         lblMesAño.setPreferredSize(new java.awt.Dimension(129, 50));
         jLayeredPane1.add(lblMesAño, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(jLayeredPane1, java.awt.BorderLayout.NORTH);
+        Calendario.add(jLayeredPane1, java.awt.BorderLayout.NORTH);
 
         slide.setBackground(new java.awt.Color(32, 32, 32));
 
@@ -212,27 +243,13 @@ public class CalendarCustom extends javax.swing.JPanel {
         );
         slideLayout.setVerticalGroup(
             slideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 398, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(slide, java.awt.BorderLayout.CENTER);
+        Calendario.add(slide, java.awt.BorderLayout.CENTER);
 
-        panelPrincipal.add(jPanel1, java.awt.BorderLayout.CENTER);
-
-        add(panelPrincipal, java.awt.BorderLayout.CENTER);
+        add(Calendario, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        // TODO add your handling code here:
-        if (month == 12) {
-            month = 1;
-            year++;
-        } else{
-            month++;
-        }
-        slide.show(new PanelDate(month, year), PanelSlide.AnimateType.TO_LEFT);
-        showMonthYear();
-    }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -245,6 +262,18 @@ public class CalendarCustom extends javax.swing.JPanel {
         slide.show(new PanelDate(month, year), PanelSlide.AnimateType.TO_RIGHT);
         showMonthYear();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+        if (month == 12) {
+            month = 1;
+            year++;
+        } else{
+            month++;
+        }
+        slide.show(new PanelDate(month, year), PanelSlide.AnimateType.TO_LEFT);
+        showMonthYear();
+    }//GEN-LAST:event_btnNextActionPerformed
 
     private void thisMonth(){
         Calendar calendar = Calendar.getInstance();
@@ -263,17 +292,16 @@ public class CalendarCustom extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Calendario;
     private customizeObjects.ButtonRound btnBack;
     private customizeObjects.ButtonRound btnNext;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblMesAño;
     private javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblType;
-    private customizeObjects.PanelRound panelPrincipal;
+    private javax.swing.JPanel panelEventos;
     private javax.swing.JPanel panelSuperior;
     private customizeObjects.PanelSlide slide;
     // End of variables declaration//GEN-END:variables
