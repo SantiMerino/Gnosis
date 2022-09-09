@@ -5,8 +5,10 @@
  */
 package gnosis.system;
 
+import Controller.CPortfolios;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -19,32 +21,20 @@ public class panPortfolios extends javax.swing.JPanel {
     /**
      * Creates new form frmBlocNotas
      */
+    
+    CPortfolios controlador = new CPortfolios();
+    
+    customization custo = new customization();
     public panPortfolios() {
         customization.mainUtilities();
         initComponents();
-        
-        //Matematicas
-        //
-        //
-        //
-        
-        //Sociales
-        //
-        //
-        //
-        
-        //
-        //
-        //
-        
-        //
-        //
-        //
+       custo.CrearPortafolio( "Matemáticas",  "Segundo Año A-3",  "Lorena Gongora",  "44 páginas",  contenendorPortafolios);
     }
     
-    public boolean portfolioOpen(){
-        return true;
+    final void CargarPortafolios(){
+        ResultSet rs = controlador.CargarPortafolios();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,7 +55,7 @@ public class panPortfolios extends javax.swing.JPanel {
         jComboBox2 = new javax.swing.JComboBox<>();
         mainPan = new javax.swing.JPanel();
         scrollPortfolios = new javax.swing.JScrollPane();
-        jPanel3 = new javax.swing.JPanel();
+        contenendorPortafolios = new javax.swing.JPanel();
         matematicasPan = new customizeObjects.PanelRound();
         panelRound1 = new customizeObjects.PanelRound();
         panelRound2 = new customizeObjects.PanelRound();
@@ -86,10 +76,6 @@ public class panPortfolios extends javax.swing.JPanel {
         panelRound9 = new customizeObjects.PanelRound();
         panelRound10 = new customizeObjects.PanelRound();
         btnAbrirBlocLenguaje = new customizeObjects.ButtonRound();
-        socialesPan = new customizeObjects.PanelRound();
-        panelRound11 = new customizeObjects.PanelRound();
-        panelRound12 = new customizeObjects.PanelRound();
-        btnAbrirBlocSociales = new customizeObjects.ButtonRound();
         formaPan = new customizeObjects.PanelRound();
         panelRound13 = new customizeObjects.PanelRound();
         panelRound14 = new customizeObjects.PanelRound();
@@ -160,22 +146,24 @@ public class panPortfolios extends javax.swing.JPanel {
         scrollPortfolios.setBorder(null);
         scrollPortfolios.setForeground(new java.awt.Color(217, 217, 217));
 
-        jPanel3.setBackground(java.awt.Color.white);
-        jPanel3.setPreferredSize(new java.awt.Dimension(500, 900));
+        contenendorPortafolios.setBackground(java.awt.Color.white);
+        contenendorPortafolios.setPreferredSize(new java.awt.Dimension(500, 900));
 
         matematicasPan.setBackground(new java.awt.Color(255, 153, 0));
         matematicasPan.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         matematicasPan.setPreferredSize(new java.awt.Dimension(250, 350));
-        matematicasPan.setRoundBottomLeft(20);
-        matematicasPan.setRoundBottomRight(20);
-        matematicasPan.setRoundTopLeft(20);
-        matematicasPan.setRoundTopRight(20);
+        matematicasPan.setRoundBottomLeft(25);
+        matematicasPan.setRoundBottomRight(25);
+        matematicasPan.setRoundTopLeft(25);
+        matematicasPan.setRoundTopRight(25);
+        matematicasPan.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 15));
 
         panelRound1.setBackground(new java.awt.Color(255, 196, 32));
-        panelRound1.setRoundBottomLeft(20);
-        panelRound1.setRoundBottomRight(20);
-        panelRound1.setRoundTopLeft(20);
-        panelRound1.setRoundTopRight(20);
+        panelRound1.setPreferredSize(new java.awt.Dimension(220, 200));
+        panelRound1.setRoundBottomLeft(25);
+        panelRound1.setRoundBottomRight(25);
+        panelRound1.setRoundTopLeft(25);
+        panelRound1.setRoundTopRight(25);
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
@@ -185,14 +173,17 @@ public class panPortfolios extends javax.swing.JPanel {
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 188, Short.MAX_VALUE)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
 
+        matematicasPan.add(panelRound1);
+
         panelRound2.setBackground(new java.awt.Color(255, 196, 32));
-        panelRound2.setRoundBottomLeft(20);
-        panelRound2.setRoundBottomRight(20);
-        panelRound2.setRoundTopLeft(20);
-        panelRound2.setRoundTopRight(20);
+        panelRound2.setPreferredSize(new java.awt.Dimension(220, 50));
+        panelRound2.setRoundBottomLeft(25);
+        panelRound2.setRoundBottomRight(25);
+        panelRound2.setRoundTopLeft(25);
+        panelRound2.setRoundTopRight(25);
 
         javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
         panelRound2.setLayout(panelRound2Layout);
@@ -202,43 +193,23 @@ public class panPortfolios extends javax.swing.JPanel {
         );
         panelRound2Layout.setVerticalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
+
+        matematicasPan.add(panelRound2);
 
         btnAbrirBlocMate.setText("Abrir");
         btnAbrirBlocMate.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnAbrirBlocMate.setPreferredSize(new java.awt.Dimension(220, 40));
         btnAbrirBlocMate.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         btnAbrirBlocMate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbrirBlocMateActionPerformed(evt);
             }
         });
+        matematicasPan.add(btnAbrirBlocMate);
 
-        javax.swing.GroupLayout matematicasPanLayout = new javax.swing.GroupLayout(matematicasPan);
-        matematicasPan.setLayout(matematicasPanLayout);
-        matematicasPanLayout.setHorizontalGroup(
-            matematicasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, matematicasPanLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(matematicasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAbrirBlocMate, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
-                .addGap(22, 22, 22))
-        );
-        matematicasPanLayout.setVerticalGroup(
-            matematicasPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(matematicasPanLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
-                .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAbrirBlocMate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-        );
-
-        jPanel3.add(matematicasPan);
+        contenendorPortafolios.add(matematicasPan);
 
         inglesPan.setBackground(new java.awt.Color(255, 189, 62));
         inglesPan.setPreferredSize(new java.awt.Dimension(250, 350));
@@ -314,7 +285,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(inglesPan);
+        contenendorPortafolios.add(inglesPan);
 
         cienciasPan.setBackground(new java.awt.Color(118, 221, 92));
         cienciasPan.setPreferredSize(new java.awt.Dimension(250, 350));
@@ -390,7 +361,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(cienciasPan);
+        contenendorPortafolios.add(cienciasPan);
 
         modulosPan.setBackground(new java.awt.Color(32, 32, 32));
         modulosPan.setPreferredSize(new java.awt.Dimension(250, 350));
@@ -465,7 +436,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(modulosPan);
+        contenendorPortafolios.add(modulosPan);
 
         lenguajePan.setBackground(new java.awt.Color(227, 63, 63));
         lenguajePan.setPreferredSize(new java.awt.Dimension(250, 350));
@@ -540,84 +511,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(lenguajePan);
-
-        socialesPan.setBackground(new java.awt.Color(98, 148, 244));
-        socialesPan.setPreferredSize(new java.awt.Dimension(250, 350));
-        socialesPan.setRoundBottomLeft(20);
-        socialesPan.setRoundBottomRight(20);
-        socialesPan.setRoundTopLeft(20);
-        socialesPan.setRoundTopRight(20);
-
-        panelRound11.setBackground(new java.awt.Color(120, 160, 244));
-        panelRound11.setRoundBottomLeft(20);
-        panelRound11.setRoundBottomRight(20);
-        panelRound11.setRoundTopLeft(20);
-        panelRound11.setRoundTopRight(20);
-
-        javax.swing.GroupLayout panelRound11Layout = new javax.swing.GroupLayout(panelRound11);
-        panelRound11.setLayout(panelRound11Layout);
-        panelRound11Layout.setHorizontalGroup(
-            panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelRound11Layout.setVerticalGroup(
-            panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 188, Short.MAX_VALUE)
-        );
-
-        panelRound12.setBackground(new java.awt.Color(120, 160, 244));
-        panelRound12.setRoundBottomLeft(20);
-        panelRound12.setRoundBottomRight(20);
-        panelRound12.setRoundTopLeft(20);
-        panelRound12.setRoundTopRight(20);
-
-        javax.swing.GroupLayout panelRound12Layout = new javax.swing.GroupLayout(panelRound12);
-        panelRound12.setLayout(panelRound12Layout);
-        panelRound12Layout.setHorizontalGroup(
-            panelRound12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelRound12Layout.setVerticalGroup(
-            panelRound12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        btnAbrirBlocSociales.setBackground(new java.awt.Color(32, 32, 32));
-        btnAbrirBlocSociales.setText("Abrir");
-        btnAbrirBlocSociales.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btnAbrirBlocSociales.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-        btnAbrirBlocSociales.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAbrirBlocSocialesActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout socialesPanLayout = new javax.swing.GroupLayout(socialesPan);
-        socialesPan.setLayout(socialesPanLayout);
-        socialesPanLayout.setHorizontalGroup(
-            socialesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, socialesPanLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(socialesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelRound11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelRound12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAbrirBlocSociales, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
-                .addGap(22, 22, 22))
-        );
-        socialesPanLayout.setVerticalGroup(
-            socialesPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(socialesPanLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(panelRound11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
-                .addComponent(panelRound12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAbrirBlocSociales, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-        );
-
-        jPanel3.add(socialesPan);
+        contenendorPortafolios.add(lenguajePan);
 
         formaPan.setBackground(new java.awt.Color(95, 125, 85));
         formaPan.setPreferredSize(new java.awt.Dimension(250, 350));
@@ -692,7 +586,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(formaPan);
+        contenendorPortafolios.add(formaPan);
 
         opvPan.setBackground(new java.awt.Color(60, 80, 120));
         opvPan.setPreferredSize(new java.awt.Dimension(250, 350));
@@ -785,9 +679,9 @@ public class panPortfolios extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel3.add(opvPan);
+        contenendorPortafolios.add(opvPan);
 
-        scrollPortfolios.setViewportView(jPanel3);
+        scrollPortfolios.setViewportView(contenendorPortafolios);
 
         mainPan.add(scrollPortfolios, "card2");
 
@@ -853,16 +747,6 @@ public class panPortfolios extends javax.swing.JPanel {
         dashboardopen.dispose();
     }//GEN-LAST:event_btnAbrirBlocLenguajeActionPerformed
 
-    private void btnAbrirBlocSocialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirBlocSocialesActionPerformed
-        // TODO add your handling code here:
-        frmDashboard dash = new frmDashboard();
-        dash.setVisible(true);
-        dash.AbrirBloc();
-        
-        JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(this);
-        dashboardopen.dispose();
-    }//GEN-LAST:event_btnAbrirBlocSocialesActionPerformed
-
     private void btnAbrirBlocFormaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirBlocFormaActionPerformed
         // TODO add your handling code here:
         frmDashboard dash = new frmDashboard();
@@ -892,8 +776,8 @@ public class panPortfolios extends javax.swing.JPanel {
     private customizeObjects.ButtonRound btnAbrirBlocMate;
     private customizeObjects.ButtonRound btnAbrirBlocModulos;
     private customizeObjects.ButtonRound btnAbrirBlocOpV;
-    private customizeObjects.ButtonRound btnAbrirBlocSociales;
     private customizeObjects.PanelRound cienciasPan;
+    private javax.swing.JPanel contenendorPortafolios;
     private javax.swing.JPanel filtersPan;
     private customizeObjects.PanelRound formaPan;
     private customizeObjects.PanelRound inglesPan;
@@ -905,7 +789,6 @@ public class panPortfolios extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel3;
     private customizeObjects.PanelRound lenguajePan;
     private javax.swing.JPanel mainPan;
     private customizeObjects.PanelRound matematicasPan;
@@ -915,8 +798,6 @@ public class panPortfolios extends javax.swing.JPanel {
     private customizeObjects.PanelRound opvPan;
     private customizeObjects.PanelRound panelRound1;
     private customizeObjects.PanelRound panelRound10;
-    private customizeObjects.PanelRound panelRound11;
-    private customizeObjects.PanelRound panelRound12;
     private customizeObjects.PanelRound panelRound13;
     private customizeObjects.PanelRound panelRound14;
     private customizeObjects.PanelRound panelRound15;
@@ -930,7 +811,6 @@ public class panPortfolios extends javax.swing.JPanel {
     private customizeObjects.PanelRound panelRound8;
     private customizeObjects.PanelRound panelRound9;
     private javax.swing.JScrollPane scrollPortfolios;
-    private customizeObjects.PanelRound socialesPan;
     private javax.swing.JPanel upperPan;
     // End of variables declaration//GEN-END:variables
 }

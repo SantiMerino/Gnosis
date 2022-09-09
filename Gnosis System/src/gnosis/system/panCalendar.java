@@ -4,6 +4,10 @@
  */
 package gnosis.system;
 
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import java.awt.Insets;
+import javax.swing.UIManager;
+
 /**
  *
  * @author santi
@@ -15,6 +19,23 @@ public class panCalendar extends javax.swing.JPanel {
      */
     public panCalendar() {
         initComponents();
+        customization.mainUtilities();
+//        try {
+//            UIManager.setLookAndFeel(new FlatArcIJTheme());           
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        UIManager.put( "Component.focusWidth", 0 );
+//        UIManager.put( "Component.innerFocusWidth",0 );
+//        UIManager.put( "TextComponent.arc", 15);
+//        UIManager.put( "Component.arc", 15);
+//        UIManager.put( "ProgressBar.arc", 20);
+//        UIManager.put( "ScrollBar.trackArc", 999 );
+//        UIManager.put( "ScrollBar.thumbArc", 999 );
+//        UIManager.put( "ScrollBar.trackInsets", new Insets( 2, 4, 2, 4 ) );
+//        UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
+//        UIManager.put( "Component.arrowType", "chevron" );
+        
     }
 
     /**
@@ -26,19 +47,49 @@ public class panCalendar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
+        dateTimePicker1 = new com.github.lgooddatepicker.components.DateTimePicker();
+        calendarPanel1 = new com.github.lgooddatepicker.components.CalendarPanel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel5.setText("Rango de fechas de:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 761, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(dateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(calendarPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 462, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dateTimePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addComponent(calendarPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.github.lgooddatepicker.components.CalendarPanel calendarPanel1;
+    private com.github.lgooddatepicker.components.DateTimePicker dateTimePicker1;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

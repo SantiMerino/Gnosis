@@ -208,6 +208,8 @@ public class customization {
         pan4.add(BorderLayout.CENTER , nDocente);
         nDocente.setPreferredSize(new Dimension(150, 40));
         nDocente.setHorizontalAlignment(JLabel.LEFT);
+        //Agrego el panel 5 al 2 en la posición derecha
+        pan2.add(BorderLayout.EAST,pan5);
         
         //Agrego el panel 5 al 2 en la posición derecha
         pan2.add(BorderLayout.EAST,pan5);
@@ -342,7 +344,8 @@ public class customization {
     }
     
     
-    public void CrearRecursoBiblioteca( String nombre_recurso, String tipo_recurso, String categoria_recurso, JPanel mainContainer ) {
+    
+    public void CrearRecursoBiblioteca( String nombre_recurso, String tipo_recurso, String categoria_recurso,JPanel mainContainer ) {
         // Crear paneles
         PanelRound resourcesContainer = new PanelRound();
         PanelRound topGap = new PanelRound();
@@ -472,10 +475,153 @@ public class customization {
         //Agregar todo al contenedor principal para hacer que aparezca
         mainContainer.add(resourcesContainer);
         mainContainer.repaint();
-        mainContainer.revalidate();
+        mainContainer.revalidate();     
+        
+    }
+    
+    public void CrearPortafolio(String materiamodulo, String Grado, String docente, String contenido, JPanel contenedor){
+        //Crear paneles contenedores
+        PanelRound portafolio = new PanelRound();
+        PanelRound panelSuperior = new PanelRound();
+        PanelRound panelInferior = new PanelRound();
+        
+        //Crear el botón
+        ButtonRound btnAbrir = new ButtonRound();
+        
+        //Crear labels
+        JLabel lblmateria = new JLabel();
+        JLabel lbldocente = new JLabel();
+        JLabel lblnumpag = new JLabel();
+        JLabel lblgrado = new JLabel();
+       
+        
+        //Definir tipo de letra
+        lblmateria.setFont(new Font("Poppins", Font.BOLD, 20));
+        lbldocente.setFont(new Font("Poppins", Font.PLAIN, 14));
+        lblnumpag.setFont(new Font("Poppins", Font.BOLD, 14));
+        lblgrado.setFont(new Font("Poppins", Font.PLAIN, 14));
+        btnAbrir.setFont(new Font("Poppins", Font.BOLD, 14));
+        
+        lblmateria.setHorizontalAlignment(JLabel.CENTER);
+        lbldocente.setHorizontalAlignment(JLabel.CENTER);
+        lblgrado.setHorizontalAlignment(JLabel.CENTER);
+        lblnumpag.setHorizontalAlignment(JLabel.CENTER);
+        
+        lblmateria.setVerticalAlignment(JLabel.CENTER);
+        lbldocente.setVerticalAlignment(JLabel.TOP);
+        lblgrado.setVerticalAlignment(JLabel.TOP);
+        lblnumpag.setVerticalAlignment(JLabel.CENTER);
 
         
+        Color mainColor;
+        Color secondColor;
+        Color fontColor;
+        
+        switch (materiamodulo) {
+            case "Sociales":
+                mainColor = new Color(98, 148, 244);
+                secondColor = new Color(149, 184, 252);
+                fontColor = new Color(32,32,32);
+                btnAbrir.setStyle(ButtonRound.ButtonStyle.NEGRO);
+         
+                
+                break;
+            case "Matemáticas":
+                mainColor = new Color(255, 153, 0);
+                secondColor = new Color(255, 182, 73);
+                fontColor = new Color(32,32,32);
+                btnAbrir.setStyle(ButtonRound.ButtonStyle.NEGRO);
+               
+                break;
+            case "Ingles":
+                mainColor = new Color(255, 189, 62);
+                secondColor = new Color(255, 198, 87);
+                fontColor = new Color(32,32,32);
+                btnAbrir.setStyle(ButtonRound.ButtonStyle.NEGRO);
+                
+            case "Ciencias":
+                mainColor = new Color(127, 211, 106);
+                secondColor = new Color(152, 215, 136);
+                fontColor = new Color(32,32,32);
+                btnAbrir.setStyle(ButtonRound.ButtonStyle.NEGRO);
+                
+                break;
+            case "Lenguaje":
+                mainColor = new Color(227, 63, 63);
+                secondColor = new Color(231, 87, 87);
+                fontColor = new Color(255,255,255);
+                btnAbrir.setStyle(ButtonRound.ButtonStyle.NEGRO);
+               
+                break;
+            default:
+                mainColor = new Color(32,32,32);
+                secondColor = new Color(90,90,90);
+                fontColor = new Color(255,255,255);
+                btnAbrir.setStyle(ButtonRound.ButtonStyle.BLANCO);
+                break;
+        }    
+        
+        //Establecer color a la fuente
+        lbldocente.setForeground(fontColor);
+        lblmateria.setForeground(fontColor);
+        lblnumpag.setForeground(fontColor);
+        lblgrado.setForeground(fontColor);
+
+        //Establecer color a los paneles
+        portafolio.setBackground(mainColor);
+        panelSuperior.setBackground(secondColor);
+        panelInferior.setBackground(secondColor);
         
         
+        //Establecer las dimensiones de todos los componentes y sus layouts.
+        portafolio.setPreferredSize(new Dimension(250,350));
+        LayoutManager layoutmain = new FlowLayout(FlowLayout.CENTER, 10, 15);
+        portafolio.setRoundBottomLeft(25);
+        portafolio.setRoundBottomRight(25);
+        portafolio.setRoundTopLeft(25);
+        portafolio.setRoundTopRight(25);
+        
+        
+        panelSuperior.setPreferredSize(new Dimension(220, 200));
+        panelSuperior.setRoundBottomLeft(25);
+        panelSuperior.setRoundBottomRight(25);
+        panelSuperior.setRoundTopLeft(25);
+        panelSuperior.setRoundTopRight(25);
+        
+        panelInferior.setPreferredSize(new Dimension(220, 50));
+        panelInferior.setRoundBottomLeft(25);
+        panelInferior.setRoundBottomRight(25);
+        panelInferior.setRoundTopLeft(25);
+        panelInferior.setRoundTopRight(25);
+              
+        //Establecer el texto a los labels
+        lbldocente.setText("<html><center>" + docente + "</center></html>" );
+        lblmateria.setText("<html><center>" +materiamodulo+ "</center></html>" );
+        lblnumpag.setText(contenido);
+        
+        lblgrado.setText("<html><center>" +Grado+ "</center></html>" );
+        btnAbrir.setText("Abrir");
+        
+        
+        //Agregar todos los componentes al panel principal
+        portafolio.setLayout(layoutmain);
+        portafolio.add(panelSuperior);
+        portafolio.add(panelInferior);
+        portafolio.add(btnAbrir);
+        btnAbrir.setPreferredSize(new Dimension(220, 40));
+        
+        panelSuperior.add(BorderLayout.NORTH, lblmateria);
+        lblmateria.setPreferredSize(new Dimension(220, 80));
+        panelSuperior.add(BorderLayout.CENTER, lblgrado);
+        lblgrado.setPreferredSize(new Dimension(220, 60));
+        panelSuperior.add(BorderLayout.SOUTH, lbldocente);
+        lbldocente.setPreferredSize(new Dimension(220, 60));
+        
+        panelInferior.add(BorderLayout.CENTER, lblnumpag);
+        lblnumpag.setPreferredSize(new Dimension(220, 40));
+        
+        contenedor.add(portafolio);
+        contenedor.repaint();
+        contenedor.revalidate(); 
     }
 }
