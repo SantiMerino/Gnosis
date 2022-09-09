@@ -179,4 +179,18 @@ public class MEstudents {
              return false;
          }
      }
+     
+     
+      public ResultSet SearchCrnt(String carnet, Connection con) {
+        try {
+            String query = "select * from tbAlumnos where codigocarnet like(?)";
+            ps = con.prepareStatement(query);
+            ps.setString(1, carnet);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return  null;
+        }        
+    }
+     
 }

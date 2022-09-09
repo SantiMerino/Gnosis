@@ -29,6 +29,7 @@ public class CEstudents {
     private int idusuario;
     private String codigocarnet;
 
+
     public Connection getCon() {
         return con;
     }
@@ -197,5 +198,6 @@ public class CEstudents {
     public CEstudents(int ID) {
         this.ID = ID;
     }
+    
     
 }

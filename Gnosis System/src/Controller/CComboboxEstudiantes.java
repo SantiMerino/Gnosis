@@ -17,6 +17,8 @@ public class CComboboxEstudiantes {
     MEstudents modeloGrados = new MEstudents();
     MEstudents modeloUsuarios = new MEstudents();
     MEstudents modeloAlumnos = new MEstudents();
+    MEstudents mdlEstu = new MEstudents();
+    
     
     public ResultSet CCargarGeneros(){
        return modeloGeneros.MCargarGenero(con);
@@ -32,6 +34,10 @@ public class CComboboxEstudiantes {
     
     public ResultSet CCargarEstudiantes(){
        return modeloAlumnos.mostrarEstudiantes(con);
+    }
+    
+    public ResultSet SearchCrnt(String letra){
+        return mdlEstu.SearchCrnt(letra, con);
     }
     
 }
