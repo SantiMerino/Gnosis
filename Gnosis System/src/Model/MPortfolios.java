@@ -21,7 +21,7 @@ public class MPortfolios {
         Connection con;
         try {
             con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT * FROM viewTareas";
+            String query = "SELECT * FROM viewPortafolios";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;

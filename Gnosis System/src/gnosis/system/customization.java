@@ -553,6 +553,21 @@ public class customization {
                 btnAbrir.setStyle(ButtonRound.ButtonStyle.NEGRO);
                
                 break;
+                
+            case "Formación Cristiana":
+                mainColor = new Color(95,125,85);
+                secondColor = new Color(110,125,100);
+                fontColor = new Color(255,255,255);
+                btnAbrir.setStyle(ButtonRound.ButtonStyle.NEGRO);
+              
+                break;
+            case "Orientación para la vida":
+                mainColor = new Color(60,80,120);
+                secondColor = new Color(60,100,130);
+                fontColor = new Color(255,255,255);
+                btnAbrir.setStyle(ButtonRound.ButtonStyle.NEGRO);
+              
+                break;
             default:
                 mainColor = new Color(32,32,32);
                 secondColor = new Color(90,90,90);
