@@ -19,6 +19,7 @@ public class CComboboxDocentes {
     MTeacher modeloUsuarios = new MTeacher();
     MTeacher modeloGrados = new MTeacher();
     MTeacher modeloDocentesC = new MTeacher();
+    MTeacher modeloBusqueda = new MTeacher();
     
     public ResultSet CCargarGeneros(){
        return modeloGeneros.MCargarGenero(con);
@@ -35,4 +36,9 @@ public class CComboboxDocentes {
     public ResultSet CCargarDocentes(){
         return modeloDocentesC.mostrarDocentes(con);
     }
+    
+    public ResultSet Search(String letra){
+        return modeloBusqueda.Search(letra, con);
+    }
+    
 }

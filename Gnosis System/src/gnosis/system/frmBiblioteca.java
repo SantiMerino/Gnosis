@@ -5,6 +5,7 @@
 package gnosis.system;
 
 import Controller.CBiblioteca;
+<<<<<<< Updated upstream
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import java.awt.Insets;
 import java.awt.event.ItemEvent;
@@ -13,6 +14,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+=======
+import Controller.CConnection;
+import Controller.CTeacher;
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import java.awt.Insets;
+import java.awt.event.ItemEvent;
+import java.sql.Connection;
+>>>>>>> Stashed changes
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -84,7 +93,8 @@ public class frmBiblioteca extends javax.swing.JFrame {
         try {
             ResultSet rs = Biblioteca.CargarBibliotecaResultSet();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idbiblioteca"), rs.getString("nombrerecurso"), rs.getString("idtiporecurso"), rs.getInt("idclasificacion"), rs.getString("Link"), rs.getString("pdf"), rs.getInt("idalumno")};
+                Object [] oValores = {rs.getInt("idbiblioteca"), rs.getString("nombrerecurso"), rs.getString("idtiporecurso"), rs.getInt("idclasificacion"), rs.getString("Link"), 
+                    rs.getString("pdf"), rs.getInt("idalumno")};
                 TablaBiBliotecamodelo.addRow(oValores);
             }
         } catch (Exception e) {
@@ -198,6 +208,10 @@ public class frmBiblioteca extends javax.swing.JFrame {
         BtnEliminar = new customizeObjects.ButtonRound();
         BtnVaciarCampos = new customizeObjects.ButtonRound();
         jLabel7 = new javax.swing.JLabel();
+<<<<<<< Updated upstream
+=======
+        txtBuscar = new javax.swing.JTextField();
+>>>>>>> Stashed changes
         panelRound1 = new customizeObjects.PanelRound();
         btnDispose = new customizeObjects.ButtonRound();
 
@@ -221,8 +235,9 @@ public class frmBiblioteca extends javax.swing.JFrame {
         jPanel1.add(txtNombreRecurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 390, -1));
 
         jLabel3.setText("Archivo:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 108, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, -1));
 
+<<<<<<< Updated upstream
         fileChooser.setText("Buscar archivo");
         fileChooser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,13 +245,17 @@ public class frmBiblioteca extends javax.swing.JFrame {
             }
         });
         jPanel1.add(fileChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 131, 182, -1));
+=======
+        BtnBuscar.setText("Buscar archivo");
+        jPanel1.add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 182, -1));
+>>>>>>> Stashed changes
 
         jLabel4.setText("Links:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 184, -1, -1));
-        jPanel1.add(txtLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 207, 205, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
+        jPanel1.add(txtLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 205, -1));
 
         jLabel5.setText("Tipo de clasificacion:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
 
         CmbClasificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CmbClasificacion.addItemListener(new java.awt.event.ItemListener() {
@@ -244,7 +263,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 CmbClasificacionItemStateChanged(evt);
             }
         });
-        jPanel1.add(CmbClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 158, -1));
+        jPanel1.add(CmbClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 158, -1));
 
         CmbTipoRecurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CmbTipoRecurso.addItemListener(new java.awt.event.ItemListener() {
@@ -252,10 +271,10 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 CmbTipoRecursoItemStateChanged(evt);
             }
         });
-        jPanel1.add(CmbTipoRecurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 158, -1));
+        jPanel1.add(CmbTipoRecurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 158, -1));
 
         jLabel6.setText("Tipo de recurso:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, -1));
 
         JTBiblioteca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -311,10 +330,24 @@ public class frmBiblioteca extends javax.swing.JFrame {
         BtnVaciarCampos.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         jPanel1.add(BtnVaciarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
 
+<<<<<<< Updated upstream
         jLabel7.setText("jLabel7");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 280, -1));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_END);
+=======
+        jLabel7.setText("Buscar Recurso:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, -1));
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+>>>>>>> Stashed changes
 
         panelRound1.setBackground(new java.awt.Color(220, 220, 220));
         panelRound1.setPreferredSize(new java.awt.Dimension(600, 20));
@@ -514,6 +547,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_panelRound1MousePressed
 
+<<<<<<< Updated upstream
     private void fileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileChooserActionPerformed
         // TODO add your handling code here:
        
@@ -547,6 +581,28 @@ public class frmBiblioteca extends javax.swing.JFrame {
         fos.flush();
         fos.close();
     }
+=======
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        // TODO add your handling code here:
+        Connection conn = CConnection.getConnectionControllerWithoutParameters();
+        CBiblioteca bjCar = new CBiblioteca();    
+        
+          while (TablaBiBliotecamodelo.getRowCount() > 0) {
+                    TablaBiBliotecamodelo.removeRow(0);
+                }
+                try {
+                    ResultSet rs = bjCar.Search(txtBuscar.getText() + "%");
+                    while (rs.next()) {
+                        Object[] oValores = {rs.getInt("idbiblioteca"), rs.getString("nombrerecurso"), rs.getString("idtiporecurso"), rs.getInt("idclasificacion"), rs.getString("Link"), 
+                    rs.getString("pdf"), rs.getInt("idalumno"), true, conn};
+                        TablaBiBliotecamodelo.addRow(oValores);
+                    }
+                } catch (Exception e) {
+                }
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
+    
+>>>>>>> Stashed changes
     
     /**
      * @param args the command line arguments
@@ -598,6 +654,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private customizeObjects.PanelRound panelRound1;
+    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLink;
     private javax.swing.JTextField txtNombreRecurso;

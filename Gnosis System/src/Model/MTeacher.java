@@ -139,4 +139,17 @@ public class MTeacher {
             return false;
         }        
      } 
+     
+     public ResultSet Search(String dui, Connection con) {
+        try {
+            String query = "select * from tbDocentes where dui like(?)";
+            ps = con.prepareStatement(query);
+            ps.setString(1, dui);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return  null;
+        }        
+    }
+     
 }

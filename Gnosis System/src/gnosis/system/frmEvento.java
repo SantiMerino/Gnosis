@@ -4,10 +4,16 @@
  */
 package gnosis.system;
 
+<<<<<<< Updated upstream
+=======
+import Controller.CComboboxDocentes;
+import Controller.CConnection;
+>>>>>>> Stashed changes
 import Controller.CEvento;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import java.awt.Insets;
 import java.awt.event.ItemEvent;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -79,7 +85,8 @@ public class frmEvento extends javax.swing.JFrame {
         try {
             ResultSet rs = Evento.CargarEventos();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idevento"), rs.getString("nombreevento"), rs.getString("fechaevento"), rs.getString("horainicioevento"), rs.getString("fechafinalevento"), rs.getString("horafinalizarevento"), rs.getInt("idtipoevento"), rs.getInt("idgrado")};
+                Object [] oValores = {rs.getInt("idevento"), rs.getString("nombreevento"), rs.getString("fechaevento"), rs.getString("horainicioevento"), 
+                    rs.getString("fechafinalevento"), rs.getString("horafinalizarevento"), rs.getInt("idtipoevento"), rs.getInt("idgrado")};
                 tablaEventoModel.addRow(oValores);
             }
         } catch (Exception e) {
@@ -162,10 +169,15 @@ public class frmEvento extends javax.swing.JFrame {
         BtnModificar = new customizeObjects.ButtonRound();
         BtnAgregar = new customizeObjects.ButtonRound();
         txtId = new javax.swing.JTextField();
+<<<<<<< Updated upstream
         txtGrado = new javax.swing.JTextField();
         txtTipoEvento = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+=======
+        jLabel9 = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
+>>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(900, 700));
@@ -349,6 +361,16 @@ public class frmEvento extends javax.swing.JFrame {
         );
 
         panelRound1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        jLabel9.setText("Buscar Evento:");
+        panelRound1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, -1, -1));
+
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
+        panelRound1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 190, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -535,6 +557,7 @@ public class frmEvento extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
+<<<<<<< Updated upstream
     private void txtHoraFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraFinalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoraFinalActionPerformed
@@ -542,6 +565,28 @@ public class frmEvento extends javax.swing.JFrame {
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
+=======
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        // TODO add your handling code here:
+        
+        Connection conn = CConnection.getConnectionControllerWithoutParameters();
+        CEvento bjCar = new CEvento();    
+        
+          while (tablaEventoModel.getRowCount() > 0) {
+                    tablaEventoModel.removeRow(0);
+                }
+                try {
+                    ResultSet rs = bjCar.Search(txtBuscar.getText() + "%");
+                    while (rs.next()) {
+                        Object[] oValores = {rs.getInt("idevento"), rs.getString("nombreevento"), rs.getString("fechaevento"), rs.getString("horainicioevento"), 
+                    rs.getString("fechafinalevento"), rs.getString("horafinalizarevento"), rs.getInt("idtipoevento"), rs.getInt("idgrado"), true, conn};
+                        tablaEventoModel.addRow(oValores);
+                    }
+                } catch (Exception e) {
+                }
+        
+    }//GEN-LAST:event_txtBuscarKeyReleased
+>>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments
@@ -590,11 +635,16 @@ public class frmEvento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+<<<<<<< Updated upstream
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+=======
+    private javax.swing.JLabel jLabel9;
+>>>>>>> Stashed changes
     private javax.swing.JScrollPane jScrollPane1;
     private customizeObjects.PanelRound panelRound1;
+    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtGrado;
     private javax.swing.JTextField txtHoraFinal;
     private javax.swing.JTextField txtHoraInicio;
