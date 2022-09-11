@@ -780,17 +780,17 @@ public class frmDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (panContainer.getComponentCount() == 0) {
             cambiarColorBotonesMenu(calendarButton, "/resources/home-selec.png");
-            panContainer.add(new CalendarCustom());
+            panContainer.add(new panCalendar());
             panContainer.repaint();
             panContainer.revalidate();
-        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new CalendarCustom()) {
+        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panCalendar()) {
             if (calendarButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
                 cambiarColorBotonesMenu(calendarButton, "/resources/home-selec.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
 
-                panContainer.add(new CalendarCustom());
+                panContainer.add(new panCalendar());
                 panContainer.repaint();
                 panContainer.revalidate();
             } else {

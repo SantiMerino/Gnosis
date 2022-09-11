@@ -624,9 +624,10 @@ SELECT * FROM viewPortafolios;
 --query para seleccionar los eventos.
 SELECT a.nombreevento, b.tipoevento, c.grado
 FROM tbEventos a, tbTipoEventos b, tbGrados c
-WHERE a.fechaevento BETWEEN '2021-05-26' AND '2021-05-31'
-AND a.idtipoevento = b.idtipoevento
-AND a.idgrado = c.idgrado;
+WHERE 
+a.idtipoevento = b.idtipoevento
+AND a.idgrado = c.idgrado
+AND a.fechaevento LIKE '2021-05-26' OR a.fechaevento LIKE '2021-05-31'
 
 --Vista de profesores - materia - grado
 SELECT CONCAT(b.nombres_docente, ' ', b.apellidos_docente) AS [Docente], CONCAT(c.materia, ' ', d.modulo) AS [Materia], e.grado AS [Grado]
@@ -634,8 +635,8 @@ FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e
 WHERE a.iddocente = b.iddocente AND a.idmateria = c.idmateria AND a.idmodulo = d.idmodulo AND b.idgrado = e.idgrado
 
 --Vista de portafolios 
-SELECT a.contenido AS [Contenido], b.categoriaPort AS [Categoria], CONCAT(c.grado ,e.seccionAca, ' ', f.especialidad) AS [Grado], CONCAT(d.nombres_alumno, ' ', d.apellidos_alumno) AS [Alumno], CONCAT(h.nombres_docente, ' ', h.apellidos_docente) AS [Docente], CONCAT(i.materia, ' ', j.modulo) AS [Materia]
-FROM tbPortafolio a, tbPortafolioCategoria b, tbGrados c, tbAlumnos d, tbSeccionAca e, tbEspecialidades f, tbMateriaDocentes g, tbDocentes h, tbMaterias i, tbModulos j
+SELECT a.contenido AS [Contenido], b.categoriaPort AS [Categoria], CONCAT(c.grado ,e.seccionAca, k.grupo, ' ', f.especialidad) AS [Grado], CONCAT(d.nombres_alumno, ' ', d.apellidos_alumno) AS [Alumno], CONCAT(h.nombres_docente, ' ', h.apellidos_docente) AS [Docente], CONCAT(i.materia, ' ', j.modulo) AS [Materia]
+FROM tbPortafolio a, tbPortafolioCategoria b, tbGrados c, tbAlumnos d, tbSeccionAca e, tbEspecialidades f, tbMateriaDocentes g, tbDocentes h, tbMaterias i, tbModulos j, tbGrupos k
 WHERE a.idalumno = d.idalumno
 AND a.idcategoriaPort = b.idcategoriaPort
 AND a.idmateriadocente = g.idmateriadocente
@@ -645,5 +646,6 @@ AND c.idgrado = h.idgrado
 AND c.idseccionAca = e.idseccionAca
 AND g.idmateria = i.idmateria
 AND g.idmodulo = j.idmodulo
+AND c.idgrupo = k.idgrupo
 
 

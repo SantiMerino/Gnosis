@@ -106,7 +106,6 @@ public class PanelDate extends javax.swing.JPanel {
                             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                             fechaseleccionada = df.format(dateSelec);
                             CalendarCustom papa = new CalendarCustom();
-                            
                             try {
                                 papa.SetearTexto(fechaseleccionada);
                             } catch (ParseException ex) {

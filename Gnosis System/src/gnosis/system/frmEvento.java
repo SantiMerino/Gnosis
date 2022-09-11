@@ -4,9 +4,9 @@
  */
 package gnosis.system;
 
-import Controller.CComboboxDocentes;
 import Controller.CEvento;
-import Controller.CTeacher;
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +19,7 @@ import java.util.GregorianCalendar;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -138,6 +139,9 @@ public class frmEvento extends javax.swing.JFrame {
     private void initComponents() {
 
         panelRound1 = new customizeObjects.PanelRound();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JTEventos = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNombreEvento = new javax.swing.JTextField();
@@ -157,91 +161,17 @@ public class frmEvento extends javax.swing.JFrame {
         BtnEliminar = new customizeObjects.ButtonRound();
         BtnModificar = new customizeObjects.ButtonRound();
         BtnAgregar = new customizeObjects.ButtonRound();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        JTEventos = new javax.swing.JTable();
-        txtTipoEvento = new javax.swing.JTextField();
-        txtGrado = new javax.swing.JTextField();
         txtId = new javax.swing.JTextField();
+        txtGrado = new javax.swing.JTextField();
+        txtTipoEvento = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 700));
 
-        panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setText("Evento:");
-        panelRound1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-
-        jLabel2.setText("Nombre del evento:");
-        panelRound1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
-        panelRound1.add(txtNombreEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 260, -1));
-
-        jLabel3.setText("Fecha de inicio:");
-        panelRound1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
-        panelRound1.add(dtInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 270, -1));
-
-        jLabel4.setText("Fecha de vencimiento:");
-        panelRound1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
-        panelRound1.add(dtVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 270, -1));
-
-        jLabel5.setText("Hora:");
-        panelRound1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, -1, -1));
-        panelRound1.add(txtHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 60, -1));
-
-        jLabel6.setText("Hora:");
-        panelRound1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
-        panelRound1.add(txtHoraFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 60, -1));
-
-        jLabel7.setText("Tipo evento:");
-        panelRound1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
-
-        CmbTipoEvento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CmbTipoEvento.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CmbTipoEventoItemStateChanged(evt);
-            }
-        });
-        panelRound1.add(CmbTipoEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 200, -1));
-
-        jLabel8.setText("Grado:");
-        panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, -1, -1));
-
-        CmbGrado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CmbGrado.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CmbGradoItemStateChanged(evt);
-            }
-        });
-        panelRound1.add(CmbGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 200, -1));
-
-        BtnVaciarCampos.setText("Vaciar Campos");
-        BtnVaciarCampos.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
-        panelRound1.add(BtnVaciarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, -1, -1));
-
-        BtnEliminar.setText("Eliminar evento");
-        BtnEliminar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
-        BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEliminarActionPerformed(evt);
-            }
-        });
-        panelRound1.add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, -1));
-
-        BtnModificar.setText("Modificar evento");
-        BtnModificar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
-        BtnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnModificarActionPerformed(evt);
-            }
-        });
-        panelRound1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, -1, -1));
-
-        BtnAgregar.setText("Agregar evento");
-        BtnAgregar.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
-        BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAgregarActionPerformed(evt);
-            }
-        });
-        panelRound1.add(BtnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, -1, -1));
+        panelRound1.setBackground(java.awt.Color.white);
+        panelRound1.setLayout(new java.awt.BorderLayout());
 
         JTEventos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -261,20 +191,174 @@ public class frmEvento extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTEventos);
 
-        panelRound1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 870, 170));
-        panelRound1.add(txtTipoEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, -1, -1));
-        panelRound1.add(txtGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 120, -1, -1));
-        panelRound1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 20, -1));
+        panelRound1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(400, 304));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel1.setText("Evento:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel2.setText("Nombre del evento:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        jPanel1.add(txtNombreEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 260, -1));
+
+        jLabel3.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel3.setText("Fecha de inicio:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        jPanel1.add(dtInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 210, -1));
+
+        jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel4.setText("Fecha de vencimiento:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        jPanel1.add(dtVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 210, -1));
+
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel5.setText("Hora:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
+        jPanel1.add(txtHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 100, -1));
+
+        jLabel6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel6.setText("Hora:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, -1));
+
+        txtHoraFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHoraFinalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtHoraFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 100, -1));
+
+        jLabel7.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel7.setText("Tipo evento:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+
+        CmbTipoEvento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CmbTipoEvento.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CmbTipoEventoItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(CmbTipoEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 200, -1));
+
+        jLabel8.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel8.setText("Grado:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        CmbGrado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CmbGrado.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CmbGradoItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(CmbGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 200, -1));
+
+        BtnVaciarCampos.setText("Vaciar Campos");
+        BtnVaciarCampos.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        BtnVaciarCampos.setPreferredSize(new java.awt.Dimension(140, 30));
+        BtnVaciarCampos.setRound(20);
+        BtnVaciarCampos.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        jPanel1.add(BtnVaciarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, -1, -1));
+
+        BtnEliminar.setText("Eliminar evento");
+        BtnEliminar.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        BtnEliminar.setPreferredSize(new java.awt.Dimension(140, 30));
+        BtnEliminar.setRound(20);
+        BtnEliminar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
+        BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, -1, -1));
+
+        BtnModificar.setText("Modificar evento");
+        BtnModificar.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        BtnModificar.setPreferredSize(new java.awt.Dimension(140, 30));
+        BtnModificar.setRound(20);
+        BtnModificar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
+        BtnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, -1, -1));
+
+        BtnAgregar.setText("Agregar evento");
+        BtnAgregar.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        BtnAgregar.setPreferredSize(new java.awt.Dimension(140, 30));
+        BtnAgregar.setRound(20);
+        BtnAgregar.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
+        BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, -1));
+
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 20, -1));
+        jPanel1.add(txtGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, -1, -1));
+        jPanel1.add(txtTipoEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, -1, -1));
+
+        panelRound1.add(jPanel1, java.awt.BorderLayout.WEST);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setPreferredSize(new java.awt.Dimension(20, 519));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 611, Short.MAX_VALUE)
+        );
+
+        panelRound1.add(jPanel3, java.awt.BorderLayout.EAST);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(853, 20));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 853, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        panelRound1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, 932, Short.MAX_VALUE)
+            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, 853, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -399,9 +483,9 @@ public class frmEvento extends javax.swing.JFrame {
             int idGrado = Integer.parseInt(txtGrado.getText());
             
             int respuesta = BuscarTipoEventoSeleccionado(idTipoEvento);
-            JOptionPane.showMessageDialog(null, respuesta);
+//            JOptionPane.showMessageDialog(null, respuesta);
             int respuesta2 = BuscarGradoSeleccionado(idGrado);
-            JOptionPane.showMessageDialog(null, respuesta2);
+//            JOptionPane.showMessageDialog(null, respuesta2);
             
             CmbTipoEvento.setSelectedIndex(respuesta + 1);
             CmbGrado.setSelectedIndex(respuesta2 + 1);
@@ -451,32 +535,34 @@ public class frmEvento extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
+    private void txtHoraFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHoraFinalActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmEvento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.setLookAndFeel(new FlatArcIJTheme());           
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        //</editor-fold>
+        UIManager.put( "Component.focusWidth", 0 );
+        UIManager.put( "Component.innerFocusWidth",0 );
+        UIManager.put( "TextComponent.arc", 15);
+        UIManager.put( "Component.arc", 15);
+        UIManager.put( "ProgressBar.arc", 20);
+        UIManager.put( "ScrollBar.trackArc", 999 );
+        UIManager.put( "ScrollBar.thumbArc", 999 );
+        UIManager.put( "ScrollBar.trackInsets", new Insets( 2, 4, 2, 4 ) );
+        UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
+        UIManager.put( "Component.arrowType", "chevron" );
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -504,6 +590,9 @@ public class frmEvento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private customizeObjects.PanelRound panelRound1;
     private javax.swing.JTextField txtGrado;

@@ -390,7 +390,7 @@ public class customization {
         resourcesContainer.add(BorderLayout.EAST, rightGap);
         resourcesContainer.add(BorderLayout.CENTER, centerPanel);
         
-        //Agregar los paneles al panel central
+        //Agregar los paneles al
         centerPanel.setLayout(new BorderLayout(10, 10));
         centerPanel.add(BorderLayout.NORTH, typePanel);
         centerPanel.add(BorderLayout.SOUTH, openPanel);
@@ -470,6 +470,12 @@ public class customization {
         lblNombreRecurso.setHorizontalAlignment(JLabel.CENTER);
         btnOpen.setFont(new Font("Poppins", Font.BOLD, 12));
         btnTipoDoc.setFont(new Font("Poppins", Font.BOLD, 12));
+        
+        //Establecer los colores de los labels
+        lblCategroiaRecurso.setForeground(Color.white);
+        lblNombreRecurso.setForeground(Color.white);
+        btnOpen.setForeground(Color.white);
+        btnTipoDoc.setForeground(Color.white);
         
         
         //Agregar todo al contenedor principal para hacer que aparezca
@@ -638,5 +644,23 @@ public class customization {
         contenedor.add(portafolio);
         contenedor.repaint();
         contenedor.revalidate(); 
+    }
+    
+        public void CrearComponenteEventos(String nombreevento , String tipoevento,String fechainicio, String fechafinal,JPanel main){
+        for (int i = 0; i < 10; i++) {
+            
+            
+            PanelRound contenedor = new PanelRound();
+            contenedor.setBackground(new Color(127, 211, 106));
+            contenedor.setPreferredSize(new Dimension(100, 50));
+            contenedor.setRoundTopLeft(20);
+            contenedor.setRoundTopRight(20);
+            contenedor.setRoundBottomRight(20);
+            contenedor.setRoundBottomLeft(20);
+            main.add(contenedor);
+            main.repaint();
+            main.revalidate();
+        }
+
     }
 }
