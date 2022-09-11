@@ -140,17 +140,4 @@ public class MEvento {
             return null;
         }
     }
-    
-    public ResultSet Search(String carnet, Connection con) {
-        try {
-            String query = "select * from tbEventos where nombreevento like(?)";
-            ps = con.prepareStatement(query);
-            ps.setString(1, carnet);
-            ResultSet rs = ps.executeQuery();
-            return rs;
-        } catch (Exception e) {
-            return  null;
-        }        
-    }
-    
 }

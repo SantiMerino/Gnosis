@@ -136,9 +136,4 @@ public class CTasks {
     public ResultSet CargarTareasPreview(){
         return mdlTask.CargarTareasPrev();
     }
-    
-    public ResultSet Search(String letra){
-        return mdlTask.Search(letra, con);
-    }
-    
 }

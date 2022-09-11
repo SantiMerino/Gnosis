@@ -96,10 +96,6 @@ public class CBiblioteca {
     MBiblioteca mdlBibli = new MBiblioteca();
     private Connection con = CConnection.getConnectionControllerWithoutParameters();
     
-    public ResultSet Search(String letra){
-        return mdlBibli.Search(letra, con);
-    }
-    
     public ResultSet CargarTipoRecursoResultSet() {
         return mdlBibli.CargaCmbTipoRecurso();
     }

@@ -119,10 +119,6 @@ public class CEvento {
     Connection con = CConnection.getConnectionControllerWithoutParameters();
     private MEvento mdlEvento = new MEvento();
     
-    public ResultSet Search(String letra){
-        return mdlEvento.Search(letra, con);
-    }
-    
     public ResultSet CargarTipoEventoResultSet() {
         return mdlEvento.CargarCmbTipoEvento(con);
     }

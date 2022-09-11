@@ -11,7 +11,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Insets;
 import java.awt.event.ItemEvent;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -98,8 +97,7 @@ public class frmTasks extends javax.swing.JFrame {
         try {
             ResultSet rs = Task.CCargarTareas();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idtarea"), rs.getString("nombretarea"), rs.getString("fechadeinicio"), rs.getString("fechavencimiento"), rs.getInt("idperfil"), 
-                    rs.getString("rubrica"), rs.getInt("idtipotarea")};
+                Object [] oValores = {rs.getInt("idtarea"), rs.getString("nombretarea"), rs.getString("fechadeinicio"), rs.getString("fechavencimiento"), rs.getInt("idperfil"), rs.getString("rubrica"), rs.getInt("idtipotarea")};
                 Tablamodelo.addRow(oValores);
             }
         } catch (Exception e) {
@@ -214,8 +212,6 @@ public class frmTasks extends javax.swing.JFrame {
         btnEliminar = new customizeObjects.ButtonRound();
         BtnSeleccionar = new customizeObjects.ButtonRound();
         buttonRound1 = new customizeObjects.ButtonRound();
-        jLabel3 = new javax.swing.JLabel();
-        txtBuscar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -361,21 +357,11 @@ public class frmTasks extends javax.swing.JFrame {
         buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
         jPanel1.add(buttonRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 60, -1));
 
-        jLabel3.setText("Buscar Perfil:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
-
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyReleased(evt);
-            }
-        });
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 200, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,27 +602,6 @@ public class frmTasks extends javax.swing.JFrame {
         LimpiarCampos();
     }//GEN-LAST:event_buttonRound1ActionPerformed
 
-    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
-        // TODO add your handling code here:
-        
-        Connection conn = CConnection.getConnectionControllerWithoutParameters();
-        CTasks bjCar = new CTasks();    
-        
-          while (Tablamodelo.getRowCount() > 0) {
-                    Tablamodelo.removeRow(0);
-                }
-                try {
-                    ResultSet rs = bjCar.Search(txtBuscar.getText() + "%");
-                    while (rs.next()) {
-                        Object[] oValores = {rs.getInt("idtarea"), rs.getString("nombretarea"), rs.getString("fechadeinicio"), rs.getString("fechavencimiento"), rs.getInt("idperfil"), 
-                    rs.getString("rubrica"), rs.getInt("idtipotarea"), true, conn};
-                        Tablamodelo.addRow(oValores);
-                    }
-                } catch (Exception e) {
-                }
-        
-    }//GEN-LAST:event_txtBuscarKeyReleased
-
     /**
      * @param args the command line arguments
      */
@@ -682,14 +647,12 @@ public class frmTasks extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTipoPerfil;
