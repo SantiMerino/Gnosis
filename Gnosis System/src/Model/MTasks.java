@@ -129,4 +129,17 @@ public class MTasks {
              return false;
         }        
     }
+    
+    public ResultSet Search(String nombre, Connection con) {
+        try {
+            String query = "select * from tbTareas where nombretarea like(?)";
+            ps = con.prepareStatement(query);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return  null;
+        }        
+    }
+    
 }

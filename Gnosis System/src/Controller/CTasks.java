@@ -109,6 +109,10 @@ public class CTasks {
     MTasks mdlTask = new MTasks();
     private Connection con = CConnection.getConnectionControllerWithoutParameters();
     
+     public ResultSet Search(String letra){
+        return mdlTask.Search(letra, con);
+    }
+    
     public ResultSet CargarTipoPerfilResultSet() {
         return mdlTask.CargaCmbTipoPerfil();
     }

@@ -114,4 +114,17 @@ public class MBiblioteca {
              return false;
         }        
     }
+    
+     public ResultSet Search(String carnet, Connection con) {
+        try {
+            String query = "select * from tbBiblioteca where nombrerecurso like(?)";
+            ps = con.prepareStatement(query);
+            ps.setString(1, carnet);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return  null;
+        }        
+    }
+    
 }
