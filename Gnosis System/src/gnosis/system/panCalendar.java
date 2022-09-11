@@ -97,14 +97,14 @@ public class panCalendar extends javax.swing.JPanel {
         lblTime = new javax.swing.JLabel();
         calendarCustom2 = new customizeObjects.CalendarCustom();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ContenedorEventos = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         dtpFechaInicio = new com.github.lgooddatepicker.components.DateTimePicker();
         buttonRound1 = new customizeObjects.ButtonRound();
         btnBuscar = new customizeObjects.ButtonRound();
         dtpFechaFinal = new com.github.lgooddatepicker.components.DateTimePicker();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ContenedorEventos = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -206,13 +206,6 @@ public class panCalendar extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new java.awt.BorderLayout(0, 10));
 
-        ContenedorEventos.setBackground(java.awt.Color.white);
-        ContenedorEventos.setPreferredSize(new java.awt.Dimension(100, 700));
-        ContenedorEventos.setLayout(new java.awt.GridLayout(10, 1, 10, 10));
-        jScrollPane1.setViewportView(ContenedorEventos);
-
-        jPanel5.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setText("Rango de fechas de:");
@@ -279,6 +272,13 @@ public class panCalendar extends javax.swing.JPanel {
 
         jPanel5.add(jPanel7, java.awt.BorderLayout.PAGE_START);
 
+        ContenedorEventos.setBackground(java.awt.Color.white);
+        ContenedorEventos.setPreferredSize(new java.awt.Dimension(100, 700));
+        ContenedorEventos.setLayout(new java.awt.GridLayout(10, 1, 10, 10));
+        jScrollPane1.setViewportView(ContenedorEventos);
+
+        jPanel5.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
         jPanel3.add(jPanel5, java.awt.BorderLayout.CENTER);
 
         add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -289,7 +289,7 @@ public class panCalendar extends javax.swing.JPanel {
         fechainicio = dtpFechaInicio.getDatePicker().toString();
         fechafinal = dtpFechaFinal.getDatePicker().toString();
         System.out.println(fechainicio + " - " + fechafinal);
-        if (fechafinal.isEmpty()) {
+        if (fechainicio.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Selecciona una fecha para buscar los eventos de la misma");
         }
         custo.CrearComponenteEventos(fechainicio, fechafinal, fechainicio, fechafinal, ContenedorEventos);

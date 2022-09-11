@@ -5,19 +5,22 @@
 package gnosis.system;
 
 import Controller.CBiblioteca;
-import Controller.CTeacher;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import java.awt.Insets;
 import java.awt.event.ItemEvent;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -46,6 +49,8 @@ public class frmBiblioteca extends javax.swing.JFrame {
     int yMouse;
     int xMouse;
     
+    String pdf;
+    
     /**
      * Creates new form frmBiblioteca
      */
@@ -62,6 +67,8 @@ public class frmBiblioteca extends javax.swing.JFrame {
         JTBiblioteca.setModel(TablaBiBliotecamodelo);
         CargarTabla();
         customization.centrarFrame(this);
+        jLabel7.setVisible(false);
+        
     }
     
     void LimpiarCampos(){
@@ -91,7 +98,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         j.setFileFilter(fi);
         int se = j.showOpenDialog(this);
         if (se == 0) {
-            this.BtnBuscar.setText("" + j.getSelectedFile().getName());
+            this.fileChooser.setText("" + j.getSelectedFile().getName());
             ruta_archivo = j.getSelectedFile().getAbsolutePath();
         }
     }
@@ -174,7 +181,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNombreRecurso = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        BtnBuscar = new javax.swing.JButton();
+        fileChooser = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtLink = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -190,6 +197,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         BtnSubir = new customizeObjects.ButtonRound();
         BtnEliminar = new customizeObjects.ButtonRound();
         BtnVaciarCampos = new customizeObjects.ButtonRound();
+        jLabel7 = new javax.swing.JLabel();
         panelRound1 = new customizeObjects.PanelRound();
         btnDispose = new customizeObjects.ButtonRound();
 
@@ -215,8 +223,13 @@ public class frmBiblioteca extends javax.swing.JFrame {
         jLabel3.setText("Archivo:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 108, -1, -1));
 
-        BtnBuscar.setText("Buscar archivo");
-        jPanel1.add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 131, 182, -1));
+        fileChooser.setText("Buscar archivo");
+        fileChooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileChooserActionPerformed(evt);
+            }
+        });
+        jPanel1.add(fileChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 131, 182, -1));
 
         jLabel4.setText("Links:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 184, -1, -1));
@@ -297,6 +310,9 @@ public class frmBiblioteca extends javax.swing.JFrame {
         BtnVaciarCampos.setText("Vaciar campos");
         BtnVaciarCampos.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         jPanel1.add(BtnVaciarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+
+        jLabel7.setText("jLabel7");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 280, -1));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_END);
 
@@ -498,7 +514,39 @@ public class frmBiblioteca extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_panelRound1MousePressed
 
-    
+    private void fileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileChooserActionPerformed
+        // TODO add your handling code here:
+       
+        JFileChooser browseImageFile = new JFileChooser();        //Filter image extensions
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("PDF", "pdf");
+        browseImageFile.addChoosableFileFilter(fnef);
+        int num = browseImageFile.showOpenDialog(null);
+
+        if (num == JFileChooser.APPROVE_OPTION) {
+            File selectedImageFile = browseImageFile.getSelectedFile();
+            String selectedImagePath = selectedImageFile.getAbsolutePath();
+            byte[] inFileBytes;
+            try {
+                inFileBytes = Files.readAllBytes(Paths.get(selectedImagePath));
+                byte[] encoded = java.util.Base64.getEncoder().encode(inFileBytes);
+                pdf = Base64.getEncoder().encodeToString(inFileBytes);
+                decodePdf();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Cagaste");
+            }
+
+            jLabel7.setText(selectedImagePath);
+        }
+    }//GEN-LAST:event_fileChooserActionPerformed
+
+    private void decodePdf() throws IOException {
+        byte[] decoded = java.util.Base64.getDecoder().decode(pdf);
+
+        FileOutputStream fos = new FileOutputStream("Archivo.pdf");
+        fos.write(decoded);
+        fos.flush();
+        fos.close();
+    }
     
     /**
      * @param args the command line arguments
@@ -531,7 +579,6 @@ public class frmBiblioteca extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnBuscar;
     private customizeObjects.ButtonRound BtnEliminar;
     private customizeObjects.ButtonRound BtnModificar;
     private customizeObjects.ButtonRound BtnSubir;
@@ -540,12 +587,14 @@ public class frmBiblioteca extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CmbTipoRecurso;
     private javax.swing.JTable JTBiblioteca;
     private customizeObjects.ButtonRound btnDispose;
+    private javax.swing.JButton fileChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private customizeObjects.PanelRound panelRound1;

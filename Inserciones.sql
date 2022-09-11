@@ -624,8 +624,7 @@ SELECT * FROM viewPortafolios;
 --query para seleccionar los eventos.
 SELECT a.nombreevento, b.tipoevento, c.grado
 FROM tbEventos a, tbTipoEventos b, tbGrados c
-WHERE 
-a.idtipoevento = b.idtipoevento
+WHERE a.idtipoevento = b.idtipoevento
 AND a.idgrado = c.idgrado
 AND a.fechaevento LIKE '2021-05-26' OR a.fechaevento LIKE '2021-05-31'
 

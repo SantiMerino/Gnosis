@@ -105,14 +105,7 @@ public class PanelDate extends javax.swing.JPanel {
                             Date dateSelec = calendar.getTime();
                             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                             fechaseleccionada = df.format(dateSelec);
-                            CalendarCustom papa = new CalendarCustom();
-                            try {
-                                papa.SetearTexto(fechaseleccionada);
-                            } catch (ParseException ex) {
-                                JOptionPane.showMessageDialog(null, "Come mierda netbeans");
-                            } catch (SQLException ex) {
-                                Logger.getLogger(PanelDate.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                            
                         }
                     }
                 }

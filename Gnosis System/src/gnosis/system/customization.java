@@ -646,21 +646,21 @@ public class customization {
         contenedor.revalidate(); 
     }
     
-        public void CrearComponenteEventos(String nombreevento , String tipoevento,String fechainicio, String fechafinal,JPanel main){
-        for (int i = 0; i < 10; i++) {
-            
-            
-            PanelRound contenedor = new PanelRound();
-            contenedor.setBackground(new Color(127, 211, 106));
-            contenedor.setPreferredSize(new Dimension(100, 50));
-            contenedor.setRoundTopLeft(20);
-            contenedor.setRoundTopRight(20);
-            contenedor.setRoundBottomRight(20);
-            contenedor.setRoundBottomLeft(20);
-            main.add(contenedor);
+        public void CrearComponenteEventos(String nombreevento , String tipoevento,String fechainicio, String fechafinal, JPanel main){
+            //Crear panel
+            PanelRound evento = new PanelRound();
+            //Crear labels
+
+            evento.setBackground(new Color(127, 211, 106));
+            evento.setPreferredSize(new Dimension(100, 50));
+            evento.setRoundTopLeft(20);
+            evento.setRoundTopRight(20);
+            evento.setRoundBottomRight(20);
+            evento.setRoundBottomLeft(20);
+
+            //Agregar recurso al panel contendedor
+            main.add(evento);
             main.repaint();
             main.revalidate();
-        }
-
     }
 }

@@ -49,6 +49,7 @@ public class frmDashboard extends javax.swing.JFrame {
     //Constructor para ver el mood de concetración
     public frmDashboard(int moodstate) {
         initComponents();
+        custo.mainUtilities();
         this.mood = moodstate;
         if (mood == 1) {
             moodPanel.setVisible(true);
