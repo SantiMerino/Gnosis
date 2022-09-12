@@ -147,7 +147,7 @@ public class CEvento {
         return mdlEvento.EliminarEventoModel(ID, con);
     }
     
-    public ResultSet ConsultarEvento(Date fecha){
-        return mdlEvento.ConsultarEventosSeleccionadas(fecha);
+    public ResultSet ConsultarEvento(String fechain, String fechafin){
+        return mdlEvento.ConsultarEventosSeleccionadas(fechain, fechafin);
     }
 }

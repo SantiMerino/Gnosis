@@ -62,11 +62,6 @@ public class CalendarCustom extends javax.swing.JPanel {
         SimpleDateFormat format = new SimpleDateFormat(fecha);
         Date date1 = format.parse(fecha);
         System.out.println(date1 + "  Cambio de formato " + fecha);
-        ResultSet rs = controladorCEvento.ConsultarEvento(date1);
-        while (rs.next()) {            
-            System.out.println("Eventos: " + rs.getString(1) + " Tipo:" + rs.getString(2));
-//            CrearElemntos(rs.getString(1), rs.getString(2));
-        }
     }
     
 

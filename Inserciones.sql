@@ -626,7 +626,7 @@ SELECT a.nombreevento, b.tipoevento, c.grado
 FROM tbEventos a, tbTipoEventos b, tbGrados c
 WHERE a.idtipoevento = b.idtipoevento
 AND a.idgrado = c.idgrado
-AND a.fechaevento LIKE '2021-05-26' OR a.fechaevento LIKE '2021-05-31'
+AND a.fechaevento LIKE '2021-05-26' OR a.fechaevento LIKE '2021-05-31' AND a.fechafinalevento like '2021-05-31' OR a.fechafinalevento LIKE '2021-05-26'
 
 --Vista de profesores - materia - grado
 SELECT CONCAT(b.nombres_docente, ' ', b.apellidos_docente) AS [Docente], CONCAT(c.materia, ' ', d.modulo) AS [Materia], e.grado AS [Grado]

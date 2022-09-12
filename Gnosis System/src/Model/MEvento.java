@@ -125,14 +125,16 @@ public class MEvento {
         }        
      }
     
-    public ResultSet ConsultarEventosSeleccionadas(Date fecha){
+    public ResultSet ConsultarEventosSeleccionadas(String fechainicio, String fechafinal){
         try {
             ResultSet rs;
             Connection con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT a.nombreevento, b.tipoevento, c.grado FROM tbEventos a, tbTipoEventos b, tbGrados c WHERE a.fechaevento BETWEEN ? AND ? AND a.idtipoevento = b.idtipoevento AND a.idgrado = c.idgrado";
+            String query = "SELECT a.nombreevento, b.tipoevento, c.grado FROM tbEventos a, tbTipoEventos b, tbGrados c WHERE a.idtipoevento = b.idtipoevento AND a.idgrado = c.idgrado AND a.fechaevento LIKE ? OR a.fechaevento LIKE ? AND a.fechafinalevento LIKE ? OR a.fechafinalevento LIKE ?";
             ps = con.prepareStatement(query);
-            ps.setTimestamp(1, new java.sql.Timestamp(fecha.getTime()));
-            ps.setTimestamp(2, new java.sql.Timestamp(fecha.getTime()));
+            ps.setString(1,fechainicio);
+            ps.setString(2,  fechafinal);
+            ps.setString(3,fechainicio);
+            ps.setString(4,  fechafinal);
             rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {

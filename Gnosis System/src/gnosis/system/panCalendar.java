@@ -4,11 +4,14 @@
  */
 package gnosis.system;
 
+import Controller.CEvento;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import customizeObjects.PanelRound;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Insets;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.UIManager;
 
 /**
@@ -17,6 +20,8 @@ import javax.swing.UIManager;
  */
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 public class panCalendar extends javax.swing.JPanel {
@@ -98,11 +103,13 @@ public class panCalendar extends javax.swing.JPanel {
         calendarCustom2 = new customizeObjects.CalendarCustom();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        dtpFechaInicio = new com.github.lgooddatepicker.components.DateTimePicker();
+        texto = new javax.swing.JLabel();
         buttonRound1 = new customizeObjects.ButtonRound();
         btnBuscar = new customizeObjects.ButtonRound();
-        dtpFechaFinal = new com.github.lgooddatepicker.components.DateTimePicker();
+        dtpFechaInicial = new com.github.lgooddatepicker.components.DatePicker();
+        dtpFechaFinal = new com.github.lgooddatepicker.components.DatePicker();
+        panelRound1 = new customizeObjects.PanelRound();
+        buttonRound3 = new customizeObjects.ButtonRound();
         jScrollPane1 = new javax.swing.JScrollPane();
         ContenedorEventos = new javax.swing.JPanel();
 
@@ -131,7 +138,7 @@ public class panCalendar extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 533, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 772, Short.MAX_VALUE)
                 .addComponent(buttonRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -208,17 +215,15 @@ public class panCalendar extends javax.swing.JPanel {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setText("Rango de fechas de:");
-        jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(32, 32, 32));
-
-        dtpFechaInicio.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        texto.setText("Selecciona una fecha para consultar si hay eventos:");
+        texto.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        texto.setForeground(new java.awt.Color(32, 32, 32));
 
         buttonRound1.setText("Rango de Fechas");
         buttonRound1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         buttonRound1.setPreferredSize(new java.awt.Dimension(150, 30));
         buttonRound1.setRound(20);
-        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
@@ -236,7 +241,27 @@ public class panCalendar extends javax.swing.JPanel {
             }
         });
 
-        dtpFechaFinal.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        panelRound1.setBackground(new java.awt.Color(217, 217, 217));
+        panelRound1.setRoundBottomLeft(20);
+        panelRound1.setRoundBottomRight(20);
+        panelRound1.setRoundTopLeft(20);
+        panelRound1.setRoundTopRight(20);
+
+        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
+        panelRound1.setLayout(panelRound1Layout);
+        panelRound1Layout.setHorizontalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+        panelRound1Layout.setVerticalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        buttonRound3.setText("Vaciar");
+        buttonRound3.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        buttonRound3.setRound(20);
+        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -244,33 +269,47 @@ public class panCalendar extends javax.swing.JPanel {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(dtpFechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dtpFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(texto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addComponent(dtpFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(dtpFechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(297, 297, 297))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dtpFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dtpFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(texto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dtpFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dtpFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)))
                 .addContainerGap())
         );
 
-        jPanel5.add(jPanel7, java.awt.BorderLayout.PAGE_START);
+        jPanel5.add(jPanel7, java.awt.BorderLayout.NORTH);
 
         ContenedorEventos.setBackground(java.awt.Color.white);
         ContenedorEventos.setPreferredSize(new java.awt.Dimension(100, 700));
@@ -286,15 +325,30 @@ public class panCalendar extends javax.swing.JPanel {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        fechainicio = dtpFechaInicio.getDatePicker().toString();
-        fechafinal = dtpFechaFinal.getDatePicker().toString();
+        fechainicio = dtpFechaInicial.getDate().toString();
+        fechafinal = dtpFechaFinal.getDate().toString();
         System.out.println(fechainicio + " - " + fechafinal);
         if (fechainicio.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Selecciona una fecha para buscar los eventos de la misma");
+            if (fechafinal.isEmpty()) {
+                CEvento controlador = new CEvento();
+                ResultSet datos = controlador.ConsultarEvento(fechainicio, fechainicio);
+            }
         }
-        custo.CrearComponenteEventos(fechainicio, fechafinal, fechainicio, fechafinal, ContenedorEventos);
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    public void CargarEventosDia(ResultSet rs){
+        try {
+            while (rs.next()) {
+                custo.CrearComponenteEventos(rs.getString(1), rs.getString(2), rs.getString(3), fechafinal, ContenedorEventos);
+            }
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "que pedo");
+        }
+        
+    }
+    
     private void buttonRound2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound2ActionPerformed
         // TODO add your handling code here:
         new frmEvento().setVisible(true);
@@ -302,7 +356,14 @@ public class panCalendar extends javax.swing.JPanel {
 
     private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
         // TODO add your handling code here:
-        dtpFechaFinal.setVisible(true);
+        if (dtpFechaFinal.isVisible()) {
+            dtpFechaFinal.setVisible(false);
+            texto.setText("Selecciona una fecha para consultar si hay eventos:");
+        } else {
+            dtpFechaFinal.setVisible(true);
+            texto.setText("Selecciona un rango de fechas a consultar: ");
+        }
+
     }//GEN-LAST:event_buttonRound1ActionPerformed
 
 
@@ -311,11 +372,11 @@ public class panCalendar extends javax.swing.JPanel {
     private customizeObjects.ButtonRound btnBuscar;
     private customizeObjects.ButtonRound buttonRound1;
     private customizeObjects.ButtonRound buttonRound2;
+    private customizeObjects.ButtonRound buttonRound3;
     private customizeObjects.CalendarCustom calendarCustom2;
-    private com.github.lgooddatepicker.components.DateTimePicker dtpFechaFinal;
-    private com.github.lgooddatepicker.components.DateTimePicker dtpFechaInicio;
+    private com.github.lgooddatepicker.components.DatePicker dtpFechaFinal;
+    private com.github.lgooddatepicker.components.DatePicker dtpFechaInicial;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -326,5 +387,7 @@ public class panCalendar extends javax.swing.JPanel {
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblType;
+    private customizeObjects.PanelRound panelRound1;
+    private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
 }
