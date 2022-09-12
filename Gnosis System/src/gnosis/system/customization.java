@@ -24,6 +24,7 @@ import customizeObjects.ButtonRound;
 import customizeObjects.PanelRound;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -226,7 +227,18 @@ public class customization {
         pan5.add(BorderLayout.CENTER,btnCarpeta);
 //        btnCarpeta.setStyle(ButtonRound.ButtonStyle.VERDE);
 
-        
+        //Agregar action performed a la carpeta
+        btnCarpeta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (new frmUploadTaskStudents().isVisible()== true) {
+                
+                    JOptionPane.showMessageDialog(null, "Ya esta abierta una tarea");
+                } else {
+                    new frmUploadTaskStudents().setVisible(true);
+                }           
+            }
+        });
         //Me paso al panel 3 y solo le agrego el boton del estado de la tarea que incluso lo puedo cambiar por un label 
         pan3.add(BorderLayout.CENTER, btnEstado);
         btnEstado.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);

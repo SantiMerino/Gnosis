@@ -734,7 +734,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         //Si componentcount es 0 significa que esta en el dashboard
         if(panContainer.getComponentCount()== 0) {
         //Cambio el color del boton y el icono
-            cambiarColorBotonesMenu(briefcaseButton, "/resources/home-selec.png");
+            cambiarColorBotonesMenu(briefcaseButton, "/resources/briefcase-black.png");
         //Agrego el panel que corresponde
             panContainer.add(new panTasks());
             panContainer.repaint();
@@ -744,7 +744,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
             // Si el estilo/color del boton es negro significa que el panel abierto no pertenece al boton
             if (briefcaseButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
             //Remuevo el panel abierto y agrego el panel correspondiente al boton
-            cambiarColorBotonesMenu(briefcaseButton, "/resources/home-selec.png");
+            cambiarColorBotonesMenu(briefcaseButton, "/resources/briefcase-black.png");
             panContainer.removeAll();
             panContainer.repaint();
             panContainer.revalidate();
@@ -762,13 +762,13 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private void pageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pageButtonActionPerformed
         // TODO add your handling code here:
         if(panContainer.getComponentCount()== 0) {
-            cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
+            cambiarColorBotonesMenu(pageButton, "/resources/document-text-black.png");
             panContainer.add(new panPortfolios());
             panContainer.repaint();
             panContainer.revalidate();
         } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panPortfolios()) {
             if (pageButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
-                cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
+                cambiarColorBotonesMenu(pageButton, "/resources/document-text-black.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
@@ -786,13 +786,13 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private void calendarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarButtonActionPerformed
         // TODO add your handling code here:
         if(panContainer.getComponentCount()== 0) {
-            cambiarColorBotonesMenu(calendarButton, "/resources/home-selec.png");
+            cambiarColorBotonesMenu(calendarButton, "/resources/calendar-black.png");
             panContainer.add(new panCalendar());
             panContainer.repaint();
             panContainer.revalidate();
         } else if (panContainer.getComponentCount()== 1 && panContainer.getComponent(0) != new panCalendar()) {
             if (calendarButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
-                cambiarColorBotonesMenu(calendarButton, "/resources/home-selec.png");
+                cambiarColorBotonesMenu(calendarButton, "/resources/calendar-black.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
@@ -902,13 +902,13 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
         // TODO add your handling code here:
         if (panContainer.getComponentCount() == 0) {
-            cambiarColorBotonesMenu(bookButton, "/resources/home-selec.png");
+            cambiarColorBotonesMenu(bookButton, "/resources/book-saved-black.png");
             panContainer.add(new panBiblioteca());
             panContainer.repaint();
             panContainer.revalidate();
         } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panBiblioteca()) {
             if (bookButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
-                cambiarColorBotonesMenu(bookButton, "/resources/home-selec.png");
+                cambiarColorBotonesMenu(bookButton, "/resources/book-saved-black.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
@@ -926,13 +926,13 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private void medalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medalButtonActionPerformed
         // TODO add your handling code here:
         if (panContainer.getComponentCount() == 0) {
-            cambiarColorBotonesMenu(medalButton, "/resources/home-selec.png");
+            cambiarColorBotonesMenu(medalButton, "/resources/medal-black.png");
             panContainer.add(new panGrades());
             panContainer.repaint();
             panContainer.revalidate();
         } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panGrades()) {
             if (medalButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
-                cambiarColorBotonesMenu(medalButton, "/resources/home-selec.png");
+                cambiarColorBotonesMenu(medalButton, "/resources/medal-black.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
