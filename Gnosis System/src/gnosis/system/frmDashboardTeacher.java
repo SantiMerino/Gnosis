@@ -35,6 +35,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     CLogin log = new CLogin();
     
     public frmDashboardTeacher() {
+        customization.mainUtilities();
         initComponents();
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
@@ -44,6 +45,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 
     public frmDashboardTeacher(int niveluser) {
         this.niveluser = niveluser;
+        customization.mainUtilities();
         initComponents();
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
@@ -96,6 +98,10 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         custoObj.changeIcon(teachersButton, "/resources/admindocente.png");
         studentsButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
         custoObj.changeIcon(studentsButton, "/resources/teacher-white.png");
+        medalButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
+        custoObj.changeIcon(medalButton, "/resources/medal.png");
+        bookButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
+        custoObj.changeIcon(bookButton, "/resources/book-saved.png");
         
         //Y justo al final cambio el boton que es al estado de seleccionado :P
         btn.setStyle(ButtonRound.ButtonStyle.BLANCO);
@@ -118,7 +124,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         panWhite = new customizeObjects.PanelRound();
         panContainer = new customizeObjects.PanelRound();
         panDashboard = new customizeObjects.PanelRound();
-        mainPanel = new javax.swing.JPanel();
         upperPanel = new javax.swing.JPanel();
         namePan = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -137,6 +142,34 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         panelRound2 = new customizeObjects.PanelRound();
         jComboBox1 = new javax.swing.JComboBox<>();
         buttonRound4 = new customizeObjects.ButtonRound();
+        mainPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        segundaFila = new customizeObjects.PanelRound();
+        protfoliosPanel = new customizeObjects.PanelRound();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        gradesPanel = new customizeObjects.PanelRound();
+        panelRound12 = new customizeObjects.PanelRound();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        panelRound11 = new customizeObjects.PanelRound();
+        primeraFila = new customizeObjects.PanelRound();
+        jPanel2 = new javax.swing.JPanel();
+        calendarPanel = new customizeObjects.PanelRound();
+        panelRound9 = new customizeObjects.PanelRound();
+        panelRound10 = new customizeObjects.PanelRound();
+        jLabel9 = new javax.swing.JLabel();
+        buttonRound5 = new customizeObjects.ButtonRound();
+        stadisticPanel = new customizeObjects.PanelRound();
+        panelRound13 = new customizeObjects.PanelRound();
+        panelRound14 = new customizeObjects.PanelRound();
+        jLabel13 = new javax.swing.JLabel();
+        taskPanel = new customizeObjects.PanelRound();
+        panelRound3 = new customizeObjects.PanelRound();
+        panelRound8 = new customizeObjects.PanelRound();
+        jLabel14 = new javax.swing.JLabel();
+        buttonRound3 = new customizeObjects.ButtonRound();
         panelRound4 = new customizeObjects.PanelRound();
         panelRound5 = new customizeObjects.PanelRound();
         panelRound6 = new customizeObjects.PanelRound();
@@ -149,13 +182,14 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         briefcaseButton = new customizeObjects.ButtonRound();
         pageButton = new customizeObjects.ButtonRound();
         calendarButton = new customizeObjects.ButtonRound();
+        bookButton = new customizeObjects.ButtonRound();
+        medalButton = new customizeObjects.ButtonRound();
         studentsButton = new customizeObjects.ButtonRound();
         teachersButton = new customizeObjects.ButtonRound();
         moodPanel = new customizeObjects.PanelRound();
         moodPic = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnStopMood = new customizeObjects.ButtonRound();
-        buttonRound1 = new customizeObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,9 +219,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 
         panDashboard.setBackground(new java.awt.Color(255, 255, 255));
         panDashboard.setLayout(new java.awt.BorderLayout());
-
-        mainPanel.setBackground(java.awt.Color.white);
-        panDashboard.add(mainPanel, java.awt.BorderLayout.CENTER);
 
         upperPanel.setBackground(java.awt.Color.white);
         upperPanel.setPreferredSize(new java.awt.Dimension(100, 50));
@@ -275,7 +306,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 
         jComboBox1.setBackground(new java.awt.Color(32, 32, 32));
         jComboBox1.setForeground(new java.awt.Color(32, 32, 32));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cerrar sesión", "" }));
         jComboBox1.setPreferredSize(new java.awt.Dimension(23, 26));
         panelRound2.add(jComboBox1);
 
@@ -289,6 +320,223 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         upperPanel.add(buttonsPan, java.awt.BorderLayout.EAST);
 
         panDashboard.add(upperPanel, java.awt.BorderLayout.NORTH);
+
+        mainPanel.setBackground(java.awt.Color.white);
+        mainPanel.setLayout(new java.awt.BorderLayout(0, 10));
+
+        jPanel1.setBackground(java.awt.Color.white);
+        jPanel1.setPreferredSize(new java.awt.Dimension(100, 20));
+        mainPanel.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        segundaFila.setBackground(java.awt.Color.white);
+        segundaFila.setPreferredSize(new java.awt.Dimension(100, 280));
+        segundaFila.setLayout(new java.awt.BorderLayout(10, 0));
+
+        protfoliosPanel.setBackground(java.awt.Color.white);
+        protfoliosPanel.setLayout(new java.awt.BorderLayout());
+
+        jPanel3.setBackground(java.awt.Color.white);
+        protfoliosPanel.add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        jPanel4.setBackground(java.awt.Color.white);
+        jPanel4.setPreferredSize(new java.awt.Dimension(100, 40));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
+
+        jLabel10.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel10.setText("Portafolios");
+        jLabel10.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel4.add(jLabel10);
+
+        protfoliosPanel.add(jPanel4, java.awt.BorderLayout.PAGE_START);
+
+        segundaFila.add(protfoliosPanel, java.awt.BorderLayout.CENTER);
+
+        gradesPanel.setBackground(new java.awt.Color(32, 32, 32));
+        gradesPanel.setPreferredSize(new java.awt.Dimension(400, 100));
+        gradesPanel.setRoundBottomLeft(20);
+        gradesPanel.setRoundBottomRight(20);
+        gradesPanel.setRoundTopLeft(20);
+        gradesPanel.setRoundTopRight(20);
+        gradesPanel.setLayout(new java.awt.BorderLayout());
+
+        panelRound12.setBackground(new java.awt.Color(32, 32, 32));
+        panelRound12.setPreferredSize(new java.awt.Dimension(100, 60));
+        panelRound12.setRoundTopLeft(20);
+        panelRound12.setRoundTopRight(20);
+        panelRound12.setLayout(new javax.swing.BoxLayout(panelRound12, javax.swing.BoxLayout.Y_AXIS));
+
+        jLabel12.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel12.setForeground(java.awt.Color.white);
+        jLabel12.setText("  Calificaciones");
+        jLabel12.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel12.setPreferredSize(new java.awt.Dimension(80, 40));
+        panelRound12.add(jLabel12);
+
+        jLabel11.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel11.setForeground(java.awt.Color.white);
+        jLabel11.setText("   Periodo");
+        jLabel11.setToolTipText("");
+        jLabel11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelRound12.add(jLabel11);
+
+        gradesPanel.add(panelRound12, java.awt.BorderLayout.PAGE_START);
+
+        panelRound11.setBackground(new java.awt.Color(32, 32, 32));
+        panelRound11.setRoundBottomLeft(20);
+        panelRound11.setRoundBottomRight(20);
+        gradesPanel.add(panelRound11, java.awt.BorderLayout.CENTER);
+
+        segundaFila.add(gradesPanel, java.awt.BorderLayout.EAST);
+
+        mainPanel.add(segundaFila, java.awt.BorderLayout.SOUTH);
+
+        primeraFila.setBackground(java.awt.Color.white);
+        primeraFila.setPreferredSize(new java.awt.Dimension(100, 300));
+        primeraFila.setLayout(new java.awt.BorderLayout(10, 0));
+
+        jPanel2.setBackground(java.awt.Color.white);
+        jPanel2.setPreferredSize(new java.awt.Dimension(700, 100));
+        jPanel2.setLayout(new java.awt.BorderLayout(10, 0));
+
+        calendarPanel.setPreferredSize(new java.awt.Dimension(200, 100));
+        calendarPanel.setRoundBottomLeft(20);
+        calendarPanel.setRoundBottomRight(20);
+        calendarPanel.setRoundTopLeft(20);
+        calendarPanel.setRoundTopRight(20);
+        calendarPanel.setLayout(new java.awt.BorderLayout());
+
+        panelRound9.setBackground(new java.awt.Color(32, 32, 32));
+        panelRound9.setRoundBottomLeft(20);
+        panelRound9.setRoundBottomRight(20);
+        calendarPanel.add(panelRound9, java.awt.BorderLayout.CENTER);
+
+        panelRound10.setBackground(new java.awt.Color(32, 32, 32));
+        panelRound10.setPreferredSize(new java.awt.Dimension(100, 50));
+        panelRound10.setRoundTopLeft(20);
+        panelRound10.setRoundTopRight(20);
+
+        jLabel9.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        jLabel9.setForeground(java.awt.Color.white);
+        jLabel9.setText("Calendario");
+
+        buttonRound5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/more-white.png"))); // NOI18N
+        buttonRound5.setPreferredSize(new java.awt.Dimension(30, 30));
+        buttonRound5.setRound(10);
+        buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+
+        javax.swing.GroupLayout panelRound10Layout = new javax.swing.GroupLayout(panelRound10);
+        panelRound10.setLayout(panelRound10Layout);
+        panelRound10Layout.setHorizontalGroup(
+            panelRound10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound10Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
+                .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelRound10Layout.setVerticalGroup(
+            panelRound10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound10Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(panelRound10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addContainerGap())
+        );
+
+        calendarPanel.add(panelRound10, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.add(calendarPanel, java.awt.BorderLayout.CENTER);
+
+        stadisticPanel.setBackground(new java.awt.Color(217, 217, 217));
+        stadisticPanel.setPreferredSize(new java.awt.Dimension(250, 100));
+        stadisticPanel.setRoundBottomLeft(20);
+        stadisticPanel.setRoundBottomRight(20);
+        stadisticPanel.setRoundTopLeft(20);
+        stadisticPanel.setRoundTopRight(20);
+        stadisticPanel.setLayout(new java.awt.BorderLayout());
+
+        panelRound13.setBackground(new java.awt.Color(217, 217, 217));
+        panelRound13.setRoundBottomLeft(20);
+        panelRound13.setRoundBottomRight(20);
+        stadisticPanel.add(panelRound13, java.awt.BorderLayout.CENTER);
+
+        panelRound14.setBackground(new java.awt.Color(217, 217, 217));
+        panelRound14.setPreferredSize(new java.awt.Dimension(100, 50));
+        panelRound14.setRoundTopLeft(20);
+        panelRound14.setRoundTopRight(20);
+        panelRound14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel13.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel13.setText("Estadisticas");
+        jLabel13.setPreferredSize(new java.awt.Dimension(107, 30));
+        panelRound14.add(jLabel13);
+
+        stadisticPanel.add(panelRound14, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.add(stadisticPanel, java.awt.BorderLayout.EAST);
+
+        primeraFila.add(jPanel2, java.awt.BorderLayout.EAST);
+
+        taskPanel.setBackground(new java.awt.Color(217, 217, 217));
+        taskPanel.setPreferredSize(new java.awt.Dimension(400, 100));
+        taskPanel.setRoundBottomLeft(20);
+        taskPanel.setRoundBottomRight(20);
+        taskPanel.setRoundTopLeft(20);
+        taskPanel.setRoundTopRight(20);
+        taskPanel.setLayout(new java.awt.BorderLayout());
+
+        panelRound3.setBackground(new java.awt.Color(217, 217, 217));
+        panelRound3.setRoundBottomLeft(20);
+        panelRound3.setRoundBottomRight(20);
+        taskPanel.add(panelRound3, java.awt.BorderLayout.CENTER);
+
+        panelRound8.setBackground(new java.awt.Color(217, 217, 217));
+        panelRound8.setPreferredSize(new java.awt.Dimension(100, 50));
+        panelRound8.setRoundTopLeft(20);
+        panelRound8.setRoundTopRight(20);
+
+        jLabel14.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel14.setText("Tareas");
+        jLabel14.setPreferredSize(new java.awt.Dimension(120, 25));
+
+        buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/more-black.png"))); // NOI18N
+        buttonRound3.setPreferredSize(new java.awt.Dimension(30, 30));
+        buttonRound3.setRound(10);
+        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+
+        javax.swing.GroupLayout panelRound8Layout = new javax.swing.GroupLayout(panelRound8);
+        panelRound8.setLayout(panelRound8Layout);
+        panelRound8Layout.setHorizontalGroup(
+            panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound8Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelRound8Layout.setVerticalGroup(
+            panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound8Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8))
+        );
+
+        taskPanel.add(panelRound8, java.awt.BorderLayout.PAGE_START);
+
+        primeraFila.add(taskPanel, java.awt.BorderLayout.CENTER);
+
+        mainPanel.add(primeraFila, java.awt.BorderLayout.CENTER);
+
+        panDashboard.add(mainPanel, java.awt.BorderLayout.CENTER);
 
         panContainer.add(panDashboard, "card2");
 
@@ -384,6 +632,28 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         });
         sideBar.add(calendarButton);
 
+        bookButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/book-saved.png"))); // NOI18N
+        bookButton.setPreferredSize(new java.awt.Dimension(60, 60));
+        bookButton.setRound(15);
+        bookButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        bookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookButtonActionPerformed(evt);
+            }
+        });
+        sideBar.add(bookButton);
+
+        medalButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/medal.png"))); // NOI18N
+        medalButton.setPreferredSize(new java.awt.Dimension(60, 60));
+        medalButton.setRound(15);
+        medalButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        medalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                medalButtonActionPerformed(evt);
+            }
+        });
+        sideBar.add(medalButton);
+
         studentsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/teacher-white.png"))); // NOI18N
         studentsButton.setPreferredSize(new java.awt.Dimension(60, 60));
         studentsButton.setRound(15);
@@ -430,12 +700,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         moodPanel.add(btnStopMood);
 
         sideBar.add(moodPanel);
-
-        buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/setting-2.png"))); // NOI18N
-        buttonRound1.setPreferredSize(new java.awt.Dimension(60, 60));
-        buttonRound1.setRound(15);
-        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-        sideBar.add(buttonRound1);
 
         panBlack.add(sideBar, java.awt.BorderLayout.WEST);
 
@@ -635,11 +899,58 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_homeButtonActionPerformed
 
+    private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
+        // TODO add your handling code here:
+        if (panContainer.getComponentCount() == 0) {
+            cambiarColorBotonesMenu(bookButton, "/resources/home-selec.png");
+            panContainer.add(new panBiblioteca());
+            panContainer.repaint();
+            panContainer.revalidate();
+        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panBiblioteca()) {
+            if (bookButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
+                cambiarColorBotonesMenu(bookButton, "/resources/home-selec.png");
+                panContainer.removeAll();
+                panContainer.repaint();
+                panContainer.revalidate();
+
+                panContainer.add(new panBiblioteca());
+                panContainer.repaint();
+                panContainer.revalidate();
+            } else {
+                notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
+            }
+
+        }
+    }//GEN-LAST:event_bookButtonActionPerformed
+
+    private void medalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medalButtonActionPerformed
+        // TODO add your handling code here:
+        if (panContainer.getComponentCount() == 0) {
+            cambiarColorBotonesMenu(medalButton, "/resources/home-selec.png");
+            panContainer.add(new panGrades());
+            panContainer.repaint();
+            panContainer.revalidate();
+        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panGrades()) {
+            if (medalButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
+                cambiarColorBotonesMenu(medalButton, "/resources/home-selec.png");
+                panContainer.removeAll();
+                panContainer.repaint();
+                panContainer.revalidate();
+
+                panContainer.add(new panGrades());
+                panContainer.repaint();
+                panContainer.revalidate();
+            } else {
+                notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
+            }
+        }
+    }//GEN-LAST:event_medalButtonActionPerformed
+
     private void btnMoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoodActionPerformed
         // TODO add your handling code here:
         frmMood mood = new frmMood();
         mood.setVisible(true);
-        this.setState(Frame.ICONIFIED);  
+        this.setState(Frame.ICONIFIED);
         frmMood objmood = new frmMood();
     }//GEN-LAST:event_btnMoodActionPerformed
 
@@ -660,18 +971,27 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private customizeObjects.ButtonRound bookButton;
     private customizeObjects.ButtonRound briefcaseButton;
     private customizeObjects.ButtonRound btnMood;
     private customizeObjects.ButtonRound btnStopMood;
-    private customizeObjects.ButtonRound buttonRound1;
     private customizeObjects.ButtonRound buttonRound2;
+    private customizeObjects.ButtonRound buttonRound3;
     private customizeObjects.ButtonRound buttonRound4;
+    private customizeObjects.ButtonRound buttonRound5;
     private javax.swing.JPanel buttonsPan;
     private customizeObjects.ButtonRound calendarButton;
+    private customizeObjects.PanelRound calendarPanel;
     private javax.swing.JPanel downGap;
+    private customizeObjects.PanelRound gradesPanel;
     private customizeObjects.ButtonRound homeButton;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -679,7 +999,13 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel mainPanel;
+    private customizeObjects.ButtonRound medalButton;
     private customizeObjects.PanelRound moodPanel;
     private javax.swing.JLabel moodPic;
     private javax.swing.JPanel namePan;
@@ -689,16 +1015,29 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private customizeObjects.PanelRound panDashboard;
     private customizeObjects.PanelRound panWhite;
     private customizeObjects.PanelRound panelRound1;
+    private customizeObjects.PanelRound panelRound10;
+    private customizeObjects.PanelRound panelRound11;
+    private customizeObjects.PanelRound panelRound12;
+    private customizeObjects.PanelRound panelRound13;
+    private customizeObjects.PanelRound panelRound14;
     private customizeObjects.PanelRound panelRound2;
+    private customizeObjects.PanelRound panelRound3;
     private customizeObjects.PanelRound panelRound4;
     private customizeObjects.PanelRound panelRound5;
     private customizeObjects.PanelRound panelRound6;
     private customizeObjects.PanelRound panelRound7;
+    private customizeObjects.PanelRound panelRound8;
+    private customizeObjects.PanelRound panelRound9;
+    private customizeObjects.PanelRound primeraFila;
+    private customizeObjects.PanelRound protfoliosPanel;
     private javax.swing.JPanel rightGap;
     private javax.swing.JPanel searchPan;
     private javax.swing.JTextField searchbar;
+    private customizeObjects.PanelRound segundaFila;
     private javax.swing.JPanel sideBar;
+    private customizeObjects.PanelRound stadisticPanel;
     private customizeObjects.ButtonRound studentsButton;
+    private customizeObjects.PanelRound taskPanel;
     private customizeObjects.ButtonRound teachersButton;
     private javax.swing.JPanel upGap;
     private javax.swing.JPanel upperPanel;

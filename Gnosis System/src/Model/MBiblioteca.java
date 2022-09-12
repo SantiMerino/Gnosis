@@ -60,13 +60,14 @@ public class MBiblioteca {
     
     public boolean SubirBibliotecaModel(String nombrerecurso, int idtiporecurso, int idclasificacion, String link, String pdf, Connection con) {
         try {            
-            String query = "INSERT INTO tbBiblioteca(nombrerecurso,idtiporecurso,idclasificacion,link,pdf) VALUES (?,?,?,?,?)";
+            String query = "INSERT INTO tbBiblioteca VALUES (?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, nombrerecurso);
             ps.setInt(2, idtiporecurso);
             ps.setInt(3, idclasificacion);
             ps.setString(4, link);
             ps.setString(5, pdf);
+            ps.setInt(6, 1);
             if (ps.executeUpdate () == 1) {
                 return true;
             } else {

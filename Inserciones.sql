@@ -634,7 +634,7 @@ FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e
 WHERE a.iddocente = b.iddocente AND a.idmateria = c.idmateria AND a.idmodulo = d.idmodulo AND b.idgrado = e.idgrado
 
 --Vista de portafolios 
-SELECT a.contenido AS [Contenido], b.categoriaPort AS [Categoria], CONCAT(c.grado ,e.seccionAca, k.grupo, ' ', f.especialidad) AS [Grado], CONCAT(d.nombres_alumno, ' ', d.apellidos_alumno) AS [Alumno], CONCAT(h.nombres_docente, ' ', h.apellidos_docente) AS [Docente], CONCAT(i.materia, ' ', j.modulo) AS [Materia]
+SELECT a.contenido AS [Contenido], b.categoriaPort AS [Categoria], CONCAT(c.grado ,e.seccionAca,' ', k.grupo, ' ', f.especialidad) AS [Grado], CONCAT(d.nombres_alumno, ' ', d.apellidos_alumno) AS [Alumno], CONCAT(h.nombres_docente, ' ', h.apellidos_docente) AS [Docente], CONCAT(i.materia, ' ', j.modulo) AS [Materia]
 FROM tbPortafolio a, tbPortafolioCategoria b, tbGrados c, tbAlumnos d, tbSeccionAca e, tbEspecialidades f, tbMateriaDocentes g, tbDocentes h, tbMaterias i, tbModulos j, tbGrupos k
 WHERE a.idalumno = d.idalumno
 AND a.idcategoriaPort = b.idcategoriaPort
