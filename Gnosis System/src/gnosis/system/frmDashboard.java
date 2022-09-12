@@ -33,6 +33,22 @@ public class frmDashboard extends javax.swing.JFrame {
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
     }
+    
+    
+    public frmDashboard(String materiaString){
+        initComponents();
+        moodPanel.setVisible(false);
+        searchbar.putClientProperty("innerFocusWidth", 0);
+        searchbar.putClientProperty("focusWidth", 0);
+        panContainer.removeAll();
+        panContainer.repaint();
+        panContainer.revalidate();
+
+        panContainer.add(new panBlocMateria());
+        panContainer.repaint();
+        panContainer.revalidate();
+        cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
+    }
 
     //Metodo para recargar la interfaz de portafolios de manera externa
     public void abrirMenuPortafolios() {
@@ -61,20 +77,20 @@ public class frmDashboard extends javax.swing.JFrame {
         }
     }
 
-    public void AbrirBloc() {
-        panContainer.removeAll();
-        panContainer.repaint();
-        panContainer.revalidate();
-        panelRound4.setBackground(new Color(32, 32, 32));
-        panelRound5.setBackground(new Color(32, 32, 32));
-        panelRound6.setBackground(new Color(32, 32, 32));
-        panelRound7.setBackground(new Color(32, 32, 32));
-        panWhite.setBackground(new Color(32, 32, 32));
-        panContainer.add(new panBlocMateria());
-        panContainer.repaint();
-        panContainer.revalidate();
-
-    }
+//    public void AbrirBloc() {
+//        panContainer.removeAll();
+//        panContainer.repaint();
+//        panContainer.revalidate();
+//        panelRound4.setBackground(new Color(32, 32, 32));
+//        panelRound5.setBackground(new Color(32, 32, 32));
+//        panelRound6.setBackground(new Color(32, 32, 32));
+//        panelRound7.setBackground(new Color(32, 32, 32));
+//        panWhite.setBackground(new Color(32, 32, 32));
+//        panContainer.add(new panBlocMateria());
+//        panContainer.repaint();
+//        panContainer.revalidate();
+//
+//    }
 
     public void notificacion(String mensaje, int tipo_mensaje, String tipo_men) {
         try {

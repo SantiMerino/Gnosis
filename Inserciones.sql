@@ -633,8 +633,13 @@ SELECT CONCAT(b.nombres_docente, ' ', b.apellidos_docente) AS [Docente], CONCAT(
 FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e
 WHERE a.iddocente = b.iddocente AND a.idmateria = c.idmateria AND a.idmodulo = d.idmodulo AND b.idgrado = e.idgrado
 
+USE dbGnosis;
+
 --Vista de portafolios 
-SELECT a.contenido AS [Contenido], b.categoriaPort AS [Categoria], CONCAT(c.grado ,e.seccionAca,' ', k.grupo, ' ', f.especialidad) AS [Grado], CONCAT(d.nombres_alumno, ' ', d.apellidos_alumno) AS [Alumno], CONCAT(h.nombres_docente, ' ', h.apellidos_docente) AS [Docente], CONCAT(i.materia, ' ', j.modulo) AS [Materia]
+GO
+CREATE VIEW viewPortafolios
+AS
+SELECT a.contenido AS [Contenido], b.categoriaPort AS [Categoria], CONCAT(c.grado,' ' ,e.seccionAca,'-', k.grupo) AS [Grado], CONCAT(d.nombres_alumno, ' ', d.apellidos_alumno) AS [Alumno], CONCAT(h.nombres_docente, ' ', h.apellidos_docente) AS [Docente], CONCAT(i.materia, ' ', j.modulo) AS [Materia]
 FROM tbPortafolio a, tbPortafolioCategoria b, tbGrados c, tbAlumnos d, tbSeccionAca e, tbEspecialidades f, tbMateriaDocentes g, tbDocentes h, tbMaterias i, tbModulos j, tbGrupos k
 WHERE a.idalumno = d.idalumno
 AND a.idcategoriaPort = b.idcategoriaPort
@@ -646,5 +651,22 @@ AND c.idseccionAca = e.idseccionAca
 AND g.idmateria = i.idmateria
 AND g.idmodulo = j.idmodulo
 AND c.idgrupo = k.idgrupo
+GO
+
+SELECT a.contenido AS [Contenido], b.categoriaPort AS [Categoria], CONCAT(c.grado,' ' ,e.seccionAca,'-', k.grupo) AS [Grado], CONCAT(d.nombres_alumno, ' ', d.apellidos_alumno) AS [Alumno], CONCAT(h.nombres_docente, ' ', h.apellidos_docente) AS [Docente], CONCAT(i.materia, ' ', j.modulo) AS [Materia]
+FROM tbPortafolio a, tbPortafolioCategoria b, tbGrados c, tbAlumnos d, tbSeccionAca e, tbEspecialidades f, tbMateriaDocentes g, tbDocentes h, tbMaterias i, tbModulos j, tbGrupos k
+WHERE a.idalumno = d.idalumno
+AND a.idcategoriaPort = b.idcategoriaPort
+AND a.idmateriadocente = g.idmateriadocente
+AND g.iddocente = h.iddocente
+AND c.idespecialidad = f.idespecialidad
+AND c.idgrado = h.idgrado
+AND c.idseccionAca = e.idseccionAca
+AND g.idmateria = i.idmateria
+AND g.idmodulo = j.idmodulo
+AND c.idgrupo = k.idgrupo
+--para consultar y abrir el portafolio especifico tengo que pasar estos dos parametros de más en el select pero nose de donde sacar el idmateriadocente
+AND a.idalumno = 2
+AND a.idmateriadocente = 1;
 
 

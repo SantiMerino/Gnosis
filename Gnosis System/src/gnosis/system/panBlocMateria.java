@@ -17,10 +17,17 @@ public class panBlocMateria extends javax.swing.JPanel {
      * Creates new form panBlocMateria
      */
     frmDashboard dash = new frmDashboard();
+    private String materiabloc;
+    private int idalumno;
+    
+    
     
     public panBlocMateria() {
         initComponents();
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

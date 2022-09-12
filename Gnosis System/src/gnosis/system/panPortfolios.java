@@ -28,11 +28,27 @@ public class panPortfolios extends javax.swing.JPanel {
     public panPortfolios() {
         customization.mainUtilities();
         initComponents();
-       custo.CrearPortafolio( "Matemáticas",  "Segundo Año A-3",  "Lorena Gongora",  "44 páginas",  contenendorPortafolios);
+        CargarPortafolios();
     }
     
     final void CargarPortafolios(){
-        ResultSet rs = controlador.CargarPortafolios();
+        CPortfolios controlador = new CPortfolios();
+        ResultSet datos = controlador.CargarPortafolios();
+        try {
+            while (datos.next()) {                
+                String materiamodulo;
+                String cadena = datos.getString(6);
+                String[] palabras = cadena.split(" ", 2);
+                if (palabras[0].equals("Ninguno")) {
+                    materiamodulo = palabras[1];
+                } else {
+                    materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
+                }
+                custo.CrearPortafolio(materiamodulo, datos.getString(3), datos.getString(5), "44 páginas", contenendorPortafolios);
+            }
+        } catch (Exception e) {
+        }
+        
     }
     
 
@@ -56,18 +72,6 @@ public class panPortfolios extends javax.swing.JPanel {
         mainPan = new javax.swing.JPanel();
         scrollPortfolios = new javax.swing.JScrollPane();
         contenendorPortafolios = new javax.swing.JPanel();
-        formaPan = new customizeObjects.PanelRound();
-        panelRound13 = new customizeObjects.PanelRound();
-        panelRound14 = new customizeObjects.PanelRound();
-        btnAbrirBlocForma = new customizeObjects.ButtonRound();
-        opvPan = new customizeObjects.PanelRound();
-        panelRound15 = new customizeObjects.PanelRound();
-        opvNombre = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        panelRound16 = new customizeObjects.PanelRound();
-        jLabel7 = new javax.swing.JLabel();
-        btnAbrirBlocOpV = new customizeObjects.ButtonRound();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -128,175 +132,7 @@ public class panPortfolios extends javax.swing.JPanel {
 
         contenendorPortafolios.setBackground(java.awt.Color.white);
         contenendorPortafolios.setPreferredSize(new java.awt.Dimension(500, 900));
-
-        formaPan.setBackground(new java.awt.Color(95, 125, 85));
-        formaPan.setPreferredSize(new java.awt.Dimension(250, 350));
-        formaPan.setRoundBottomLeft(20);
-        formaPan.setRoundBottomRight(20);
-        formaPan.setRoundTopLeft(20);
-        formaPan.setRoundTopRight(20);
-
-        panelRound13.setBackground(new java.awt.Color(110, 125, 100));
-        panelRound13.setRoundBottomLeft(20);
-        panelRound13.setRoundBottomRight(20);
-        panelRound13.setRoundTopLeft(20);
-        panelRound13.setRoundTopRight(20);
-
-        javax.swing.GroupLayout panelRound13Layout = new javax.swing.GroupLayout(panelRound13);
-        panelRound13.setLayout(panelRound13Layout);
-        panelRound13Layout.setHorizontalGroup(
-            panelRound13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelRound13Layout.setVerticalGroup(
-            panelRound13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 188, Short.MAX_VALUE)
-        );
-
-        panelRound14.setBackground(new java.awt.Color(110, 125, 100));
-        panelRound14.setRoundBottomLeft(20);
-        panelRound14.setRoundBottomRight(20);
-        panelRound14.setRoundTopLeft(20);
-        panelRound14.setRoundTopRight(20);
-
-        javax.swing.GroupLayout panelRound14Layout = new javax.swing.GroupLayout(panelRound14);
-        panelRound14.setLayout(panelRound14Layout);
-        panelRound14Layout.setHorizontalGroup(
-            panelRound14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelRound14Layout.setVerticalGroup(
-            panelRound14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        btnAbrirBlocForma.setText("Abrir");
-        btnAbrirBlocForma.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btnAbrirBlocForma.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAbrirBlocFormaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout formaPanLayout = new javax.swing.GroupLayout(formaPan);
-        formaPan.setLayout(formaPanLayout);
-        formaPanLayout.setHorizontalGroup(
-            formaPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formaPanLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(formaPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelRound13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelRound14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAbrirBlocForma, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
-                .addGap(22, 22, 22))
-        );
-        formaPanLayout.setVerticalGroup(
-            formaPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(formaPanLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(panelRound13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
-                .addComponent(panelRound14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAbrirBlocForma, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-        );
-
-        contenendorPortafolios.add(formaPan);
-
-        opvPan.setBackground(new java.awt.Color(60, 80, 120));
-        opvPan.setPreferredSize(new java.awt.Dimension(250, 350));
-        opvPan.setRoundBottomLeft(20);
-        opvPan.setRoundBottomRight(20);
-        opvPan.setRoundTopLeft(20);
-        opvPan.setRoundTopRight(20);
-
-        panelRound15.setBackground(new java.awt.Color(60, 100, 130));
-        panelRound15.setRoundBottomLeft(20);
-        panelRound15.setRoundBottomRight(20);
-        panelRound15.setRoundTopLeft(20);
-        panelRound15.setRoundTopRight(20);
-        panelRound15.setLayout(new java.awt.BorderLayout());
-
-        opvNombre.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        opvNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        opvNombre.setText("Grado");
-        panelRound15.add(opvNombre, java.awt.BorderLayout.CENTER);
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jLabel5.setForeground(java.awt.Color.white);
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Materia");
-        jLabel5.setPreferredSize(new java.awt.Dimension(70, 70));
-        panelRound15.add(jLabel5, java.awt.BorderLayout.PAGE_START);
-
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Docente");
-        jLabel6.setPreferredSize(new java.awt.Dimension(41, 60));
-        panelRound15.add(jLabel6, java.awt.BorderLayout.PAGE_END);
-
-        panelRound16.setBackground(new java.awt.Color(60, 100, 130));
-        panelRound16.setRoundBottomLeft(20);
-        panelRound16.setRoundBottomRight(20);
-        panelRound16.setRoundTopLeft(20);
-        panelRound16.setRoundTopRight(20);
-
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("# Páginas");
-
-        javax.swing.GroupLayout panelRound16Layout = new javax.swing.GroupLayout(panelRound16);
-        panelRound16.setLayout(panelRound16Layout);
-        panelRound16Layout.setHorizontalGroup(
-            panelRound16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound16Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelRound16Layout.setVerticalGroup(
-            panelRound16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound16Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        btnAbrirBlocOpV.setText("Abrir");
-        btnAbrirBlocOpV.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btnAbrirBlocOpV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAbrirBlocOpVActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout opvPanLayout = new javax.swing.GroupLayout(opvPan);
-        opvPan.setLayout(opvPanLayout);
-        opvPanLayout.setHorizontalGroup(
-            opvPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opvPanLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(opvPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelRound15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelRound16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAbrirBlocOpV, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
-                .addGap(22, 22, 22))
-        );
-        opvPanLayout.setVerticalGroup(
-            opvPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(opvPanLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(panelRound15, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
-                .addComponent(panelRound16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAbrirBlocOpV, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-        );
-
-        contenendorPortafolios.add(opvPan);
-
+        contenendorPortafolios.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
         scrollPortfolios.setViewportView(contenendorPortafolios);
 
         mainPan.add(scrollPortfolios, "card2");
@@ -304,49 +140,17 @@ public class panPortfolios extends javax.swing.JPanel {
         add(mainPan, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAbrirBlocFormaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirBlocFormaActionPerformed
-        // TODO add your handling code here:
-        frmDashboard dash = new frmDashboard();
-        dash.setVisible(true);
-        dash.AbrirBloc();
-        
-        JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(this);
-        dashboardopen.dispose();
-    }//GEN-LAST:event_btnAbrirBlocFormaActionPerformed
-
-    private void btnAbrirBlocOpVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirBlocOpVActionPerformed
-        // TODO add your handling code here:
-        frmDashboard dash = new frmDashboard();
-        dash.setVisible(true);
-        dash.AbrirBloc();
-        
-        JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(this);
-        dashboardopen.dispose();
-    }//GEN-LAST:event_btnAbrirBlocOpVActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private customizeObjects.ButtonRound btnAbrirBlocForma;
-    private customizeObjects.ButtonRound btnAbrirBlocOpV;
     private javax.swing.JPanel contenendorPortafolios;
     private javax.swing.JPanel filtersPan;
-    private customizeObjects.PanelRound formaPan;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel mainPan;
     private javax.swing.JPanel namePan;
-    private javax.swing.JLabel opvNombre;
-    private customizeObjects.PanelRound opvPan;
-    private customizeObjects.PanelRound panelRound13;
-    private customizeObjects.PanelRound panelRound14;
-    private customizeObjects.PanelRound panelRound15;
-    private customizeObjects.PanelRound panelRound16;
     private javax.swing.JScrollPane scrollPortfolios;
     private javax.swing.JPanel upperPan;
     // End of variables declaration//GEN-END:variables

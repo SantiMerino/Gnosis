@@ -22,6 +22,9 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import customizeObjects.ButtonRound;
 import customizeObjects.PanelRound;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -345,7 +348,7 @@ public class customization {
     
     
     
-    public void CrearRecursoBiblioteca( String nombre_recurso, String tipo_recurso, String categoria_recurso,JPanel mainContainer ) {
+    public void CrearRecursoBiblioteca( String nombre_recurso, String tipo_recurso, String categoria_recurso,JPanel mainContainer) {
         // Crear paneles
         PanelRound resourcesContainer = new PanelRound();
         PanelRound topGap = new PanelRound();
@@ -485,7 +488,7 @@ public class customization {
         
     }
     
-    public void CrearPortafolio(String materiamodulo, String Grado, String docente, String contenido, JPanel contenedor){
+    public void CrearPortafolio(String materiamodulo, String Grado, String docente, String contenido, JPanel contenedor ){
         //Crear paneles contenedores
         PanelRound portafolio = new PanelRound();
         PanelRound panelSuperior = new PanelRound();
@@ -502,10 +505,10 @@ public class customization {
        
         
         //Definir tipo de letra
-        lblmateria.setFont(new Font("Poppins", Font.BOLD, 20));
+        lblmateria.setFont(new Font("Poppins Black", Font.PLAIN, 20));
         lbldocente.setFont(new Font("Poppins", Font.PLAIN, 14));
         lblnumpag.setFont(new Font("Poppins", Font.BOLD, 14));
-        lblgrado.setFont(new Font("Poppins", Font.PLAIN, 14));
+        lblgrado.setFont(new Font("Poppins", Font.BOLD, 18));
         btnAbrir.setFont(new Font("Poppins", Font.BOLD, 14));
         
         lblmateria.setHorizontalAlignment(JLabel.CENTER);
@@ -640,6 +643,16 @@ public class customization {
         
         panelInferior.add(BorderLayout.CENTER, lblnumpag);
         lblnumpag.setPreferredSize(new Dimension(220, 40));
+       
+        //Agregar actionListener
+        btnAbrir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new frmDashboard(materiamodulo).setVisible(true);
+                JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(contenedor);
+        dashboardopen.dispose();
+            }
+        });
         
         contenedor.add(portafolio);
         contenedor.repaint();
