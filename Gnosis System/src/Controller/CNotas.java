@@ -5,6 +5,7 @@
 package Controller;
 import Model.MNotas;
 import java.sql.Connection;
+import java.sql.ResultSet;
 
 /**
  *

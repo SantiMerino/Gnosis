@@ -15,6 +15,7 @@ public class CComboboxNotas {
     MNotas modeloPerfil = new MNotas();
     MNotas modeloAlumno = new MNotas();
     MNotas modelRegistroNotas = new MNotas();
+    MNotas modelNombrePerfil = new MNotas();
     
     public ResultSet CCargarPerfiles(){
        return modeloPerfil.MCargarPefiles(con);
@@ -28,6 +29,10 @@ public class CComboboxNotas {
     
     public ResultSet CCargarRegistroNotas(){
         return modelRegistroNotas.MCargarRegistrosNotas(con);
+    }
+    
+    public ResultSet SearchCrnt(int ID){
+        return modelNombrePerfil.SearchCrnt(ID, con);
     }
     
 }

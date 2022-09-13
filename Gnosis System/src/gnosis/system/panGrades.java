@@ -5,9 +5,22 @@
  */
 package gnosis.system;
 
+import Controller.CComboboxNotas;
+import Controller.CConnection;
+import Controller.CNotas;
+import Controller.CProfiles;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import java.awt.Insets;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,6 +28,8 @@ import javax.swing.UIManager;
  */
 public class panGrades extends javax.swing.JPanel {
 
+    DefaultTableModel TablaPerfilmodelo;
+    
     /**
      * Creates new form panNotas
      */
@@ -36,10 +51,30 @@ public class panGrades extends javax.swing.JPanel {
         UIManager.put( "Component.arrowType", "chevron" );
         initComponents();
 
-        
+        String [] TitulosPerfil = {"ID", "Nombre", "Descripcion", "Porcentaje de valoracion", "Fecha de inicio", "Fecha de vencimiento", "Tipo Perfil", "Grados"};
+        TablaPerfilmodelo = new DefaultTableModel(null, TitulosPerfil);
+        tbPerfil.setModel(TablaPerfilmodelo);
+        CargarTabla();
 
     }
-
+    
+    
+    final void CargarTabla(){
+        CProfiles Perfil = new CProfiles();
+        while (TablaPerfilmodelo.getRowCount() > 0) {
+            TablaPerfilmodelo.removeRow(0);           
+        }
+        try {
+            ResultSet rs = Perfil.CargarPerfilResultSet();
+            while (rs.next()) {                
+                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"), rs.getString("porcentajeValoracion"), rs.getString("fechainicio"), rs.getString("fechavencimiento"), rs.getString("tipoperfil"), rs.getString("grado")};
+                TablaPerfilmodelo.addRow(oValores);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se cargo la tabla");
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,7 +88,7 @@ public class panGrades extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbPerfil = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -61,6 +96,7 @@ public class panGrades extends javax.swing.JPanel {
         jComboBox3 = new javax.swing.JComboBox<>();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
+        txtIdPerfil = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         panelRound1 = new customizeObjects.PanelRound();
@@ -75,7 +111,7 @@ public class panGrades extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         panelRound2 = new customizeObjects.PanelRound();
         panelRound3 = new customizeObjects.PanelRound();
@@ -92,7 +128,7 @@ public class panGrades extends javax.swing.JPanel {
         jPanel3.setBackground(java.awt.Color.white);
         jPanel3.setLayout(new java.awt.BorderLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbPerfil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -103,7 +139,12 @@ public class panGrades extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbPerfilMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbPerfil);
 
         jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -131,6 +172,12 @@ public class panGrades extends javax.swing.JPanel {
         jLabel15.setForeground(new java.awt.Color(32, 32, 32));
         jLabel15.setText("Materia:");
 
+        txtIdPerfil.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtIdPerfilKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -146,9 +193,12 @@ public class panGrades extends javax.swing.JPanel {
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                        .addComponent(txtIdPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +207,8 @@ public class panGrades extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(jLabel16)
-                    .addComponent(jLabel17))
+                    .addComponent(jLabel17)
+                    .addComponent(txtIdPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,10 +293,10 @@ public class panGrades extends javax.swing.JPanel {
         jLabel12.setForeground(new java.awt.Color(32, 32, 32));
         jLabel12.setText("jLabel12");
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel2.setText("Nombre del perfil.");
+        lblNombre.setBackground(new java.awt.Color(255, 255, 255));
+        lblNombre.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(32, 32, 32));
+        lblNombre.setText("Nombre del perfil.");
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -291,7 +342,7 @@ public class panGrades extends javax.swing.JPanel {
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addGap(29, 29, 29)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel3))
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel4Layout.createSequentialGroup()
@@ -325,7 +376,7 @@ public class panGrades extends javax.swing.JPanel {
                         .addGap(34, 34, 34)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addComponent(lblNombre))
                         .addGap(10, 10, 10))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -381,6 +432,25 @@ public class panGrades extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtIdPerfilKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdPerfilKeyReleased
+        // TODO add your handling code here:
+        
+         
+    }//GEN-LAST:event_txtIdPerfilKeyReleased
+
+    private void tbPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPerfilMouseClicked
+        // TODO add your handling code here:
+        
+        if (evt.getClickCount() == 1) {
+            JTable rcp = (JTable) evt.getSource();
+            
+            txtIdPerfil.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
+            lblNombre.setText("Nombre: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
+            
+        }
+        
+    }//GEN-LAST:event_tbPerfilMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
@@ -395,7 +465,6 @@ public class panGrades extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -410,10 +479,12 @@ public class panGrades extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblNombre;
     private customizeObjects.PanelRound panelRound1;
     private customizeObjects.PanelRound panelRound2;
     private customizeObjects.PanelRound panelRound3;
+    private javax.swing.JTable tbPerfil;
+    private javax.swing.JTextField txtIdPerfil;
     // End of variables declaration//GEN-END:variables
 }
