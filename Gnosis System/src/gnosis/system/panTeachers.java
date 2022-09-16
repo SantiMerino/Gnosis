@@ -5,6 +5,7 @@
 package gnosis.system;
 
 import Controller.CComboboxDocentes;
+import Controller.CTeacher;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +31,7 @@ public class panTeachers extends javax.swing.JPanel {
     }
 
     final void CargarTabla(){
-        CComboboxDocentes docent = new CComboboxDocentes();
+        CTeacher docent = new CTeacher();
         while (tablaModel.getRowCount() > 0) {
             tablaModel.removeRow(0);           
         }

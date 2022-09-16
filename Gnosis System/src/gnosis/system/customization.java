@@ -674,9 +674,41 @@ public class customization {
         public void CrearComponenteEventos(String nombreevento , String tipoevento,String fechainicio, String fechafinal, JPanel main){
             //Crear panel
             PanelRound evento = new PanelRound();
-            //Crear labels
+            //Crear labels y setear el texto
+            JLabel lblnombreevento = new JLabel(nombreevento);
+            JLabel lbltipoevento = new JLabel(tipoevento);
+            JLabel lblfechain = new JLabel(fechainicio);
+            JLabel lblfechafin = new JLabel(fechafinal);
 
-            evento.setBackground(new Color(127, 211, 106));
+            switch (tipoevento) {
+                case "Eventos salesianos":
+                    evento.setBackground(new Color(255, 255, 51));
+                    break;
+                    
+                case "Tareas":
+                    evento.setBackground(new Color(255, 51, 51));
+                    break;
+                    
+                case "Clases":
+                    evento.setBackground(new Color(51, 0, 255));
+                    break;
+                    
+                case "Defensa":
+                    evento.setBackground(new Color(102, 102, 102));
+                    break;
+                    
+                case "Personal":
+                    evento.setBackground(new Color(127, 211, 106));
+                    break;
+                              
+                default:
+                    evento.setBackground(new Color(32,32,32));
+            }
+            
+            
+            
+            
+            
             evento.setPreferredSize(new Dimension(100, 50));
             evento.setRoundTopLeft(20);
             evento.setRoundTopRight(20);
@@ -687,5 +719,53 @@ public class customization {
             main.add(evento);
             main.repaint();
             main.revalidate();
+    }
+        
+        
+    public void CrearPostulantes(String nombre, String estado, JPanel main) {
+        //Crear componentes
+        PanelRound container = new PanelRound();
+
+        JLabel lblnombre = new JLabel(nombre);
+        JLabel lblestado = new JLabel(estado);
+        JPanel colorestado = new JPanel();
+        
+        //Dimensiones
+        lblestado.setPreferredSize(new Dimension(100, 50));
+        container.setPreferredSize(new Dimension(500, 50));
+        lblnombre.setPreferredSize(new Dimension(350, 50));
+        colorestado.setPreferredSize(new Dimension(30, 30));
+        
+        //Color y tipo de letra
+        container.setBackground(Color.red);
+        lblestado.setForeground(Color.white);
+        lblestado.setHorizontalAlignment(JLabel.RIGHT);
+        
+        //Añadir componentes al principal
+        container.add(lblnombre);
+        container.add(colorestado);
+        container.add(lblestado);
+
+        container.setRoundTopLeft(20);
+        container.setRoundTopRight(20);
+        container.setRoundBottomRight(20);
+        container.setRoundBottomLeft(20);
+        container.repaint();
+
+        container.revalidate();
+
+        switch (estado) {
+            case "Disponible":
+                colorestado.setBackground(Color.green);
+                break;
+            default:
+                colorestado.setBackground(Color.black);
+                break;
+        }
+
+        //Agregas a la interfaz
+        main.add(container);
+        main.repaint();
+        main.revalidate();
     }
 }

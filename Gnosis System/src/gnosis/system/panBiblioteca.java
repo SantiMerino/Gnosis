@@ -22,6 +22,8 @@ public class panBiblioteca extends javax.swing.JPanel {
         custoObj.CrearRecursoBiblioteca("Clase 24 Matemáticas | Trigonometría", "PDF", "Clase", mainPanel);
         custoObj.CrearRecursoBiblioteca("Clase 24 Matemáticas | Trigonometría", "PDF", "Clase", mainPanel);
         custoObj.CrearRecursoBiblioteca("Clase 24 Matemáticas | Trigonometría", "PDF", "Clase", mainPanel);
+        custoObj.CrearPostulantes("Kevin", "Inactivo", mainPanel);
+        custoObj.CrearRecursoBiblioteca("Kevin chuco", "PDF", "Clase", mainPanel);
     }
 
     /**

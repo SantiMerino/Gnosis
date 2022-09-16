@@ -216,6 +216,11 @@ public class CTeacher {
     public ResultSet CCargarDocentes(){
         return modeloDocentesC.mostrarDocentes(con);
     }
+
+    public CTeacher() {
+    }
+    
+    
     
     
 }

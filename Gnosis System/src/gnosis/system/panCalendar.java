@@ -100,7 +100,6 @@ public class panCalendar extends javax.swing.JPanel {
         lblDate = new javax.swing.JLabel();
         lblType = new javax.swing.JLabel();
         lblTime = new javax.swing.JLabel();
-        calendarCustom2 = new customizeObjects.CalendarCustom();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         texto = new javax.swing.JLabel();
@@ -206,7 +205,6 @@ public class panCalendar extends javax.swing.JPanel {
         );
 
         jPanel4.add(jPanel1, java.awt.BorderLayout.NORTH);
-        jPanel4.add(calendarCustom2, java.awt.BorderLayout.CENTER);
 
         jPanel3.add(jPanel4, java.awt.BorderLayout.EAST);
 
@@ -325,16 +323,16 @@ public class panCalendar extends javax.swing.JPanel {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        fechainicio = dtpFechaInicial.getDate().toString();
-        fechafinal = dtpFechaFinal.getDate().toString();
+        fechainicio = dtpFechaInicial.getDateStringOrEmptyString();
+        fechafinal = dtpFechaFinal.getDateStringOrEmptyString();
         System.out.println(fechainicio + " - " + fechafinal);
-        if (fechainicio.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Selecciona una fecha para buscar los eventos de la misma");
-            if (fechafinal.isEmpty()) {
-                CEvento controlador = new CEvento();
-                ResultSet datos = controlador.ConsultarEvento(fechainicio, fechainicio);
-            }
-        }
+//        if (fechainicio.isEmpty()) {
+//            JOptionPane.showMessageDialog(null, "Selecciona una fecha para buscar los eventos de la misma");
+//            if (fechafinal.isEmpty()) {
+//                CEvento controlador = new CEvento();
+//                ResultSet datos = controlador.ConsultarEvento(fechainicio, fechainicio);
+//            }
+//        }
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -373,7 +371,6 @@ public class panCalendar extends javax.swing.JPanel {
     private customizeObjects.ButtonRound buttonRound1;
     private customizeObjects.ButtonRound buttonRound2;
     private customizeObjects.ButtonRound buttonRound3;
-    private customizeObjects.CalendarCustom calendarCustom2;
     private com.github.lgooddatepicker.components.DatePicker dtpFechaFinal;
     private com.github.lgooddatepicker.components.DatePicker dtpFechaInicial;
     private javax.swing.JLabel jLabel1;
