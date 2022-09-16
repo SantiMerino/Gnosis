@@ -122,4 +122,17 @@ public class MNotas {
         }        
     }
     
+    
+    public ResultSet ObtenerId(int ID, Connection con) {
+        try {
+            String query = "SELECT idgrados FROM tbPerfiles WHERE idperfil = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, ID);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return  null;
+        }        
+    }
+    
 }

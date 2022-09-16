@@ -10,11 +10,15 @@ import Controller.CConnection;
 import Controller.CNotas;
 import Controller.CProfiles;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Insets;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -29,6 +33,8 @@ import javax.swing.table.DefaultTableModel;
 public class panGrades extends javax.swing.JPanel {
 
     DefaultTableModel TablaPerfilmodelo;
+    
+    
     
     /**
      * Creates new form panNotas
@@ -55,7 +61,10 @@ public class panGrades extends javax.swing.JPanel {
         TablaPerfilmodelo = new DefaultTableModel(null, TitulosPerfil);
         tbPerfil.setModel(TablaPerfilmodelo);
         CargarTabla();
-
+        txtDescripcion.setEditable(false);
+        
+        
+        
     }
     
     
@@ -67,7 +76,8 @@ public class panGrades extends javax.swing.JPanel {
         try {
             ResultSet rs = Perfil.CargarPerfilResultSet();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"), rs.getString("porcentajeValoracion"), rs.getString("fechainicio"), rs.getString("fechavencimiento"), rs.getString("tipoperfil"), rs.getString("grado")};
+                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"), rs.getString("porcentajeValoracion"), 
+                    rs.getString("fechainicio"), rs.getString("fechavencimiento"), rs.getString("tipoperfil"), rs.getString("grado")};
                 TablaPerfilmodelo.addRow(oValores);
             }
         } catch (Exception e) {
@@ -100,22 +110,22 @@ public class panGrades extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         panelRound1 = new customizeObjects.PanelRound();
-        jLabel4 = new javax.swing.JLabel();
+        lblTipoPerfil = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblGrado = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         panelRound2 = new customizeObjects.PanelRound();
         panelRound3 = new customizeObjects.PanelRound();
         jLabel8 = new javax.swing.JLabel();
+        dtInicio = new com.toedter.calendar.JDateChooser();
+        dtCierre = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
 
@@ -234,9 +244,9 @@ public class panGrades extends javax.swing.JPanel {
         panelRound1.setRoundTopLeft(20);
         panelRound1.setRoundTopRight(20);
 
-        jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel4.setText("Tipo Perfil | Porcentaje de valoración");
+        lblTipoPerfil.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        lblTipoPerfil.setForeground(new java.awt.Color(32, 32, 32));
+        lblTipoPerfil.setText("Tipo Perfil |");
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
@@ -244,14 +254,14 @@ public class panGrades extends javax.swing.JPanel {
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel4)
+                .addComponent(lblTipoPerfil)
                 .addGap(15, 15, 15))
         );
 
@@ -260,10 +270,10 @@ public class panGrades extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(32, 32, 32));
         jLabel3.setText("Descrpción:");
 
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel7.setText("grado asignado");
+        lblGrado.setBackground(new java.awt.Color(255, 255, 255));
+        lblGrado.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        lblGrado.setForeground(new java.awt.Color(32, 32, 32));
+        lblGrado.setText("grado asignado");
 
         jLabel11.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(32, 32, 32));
@@ -284,14 +294,6 @@ public class panGrades extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(32, 32, 32));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/check.png"))); // NOI18N
-
-        jLabel14.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel14.setText("jLabel14");
-
-        jLabel12.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel12.setText("jLabel12");
 
         lblNombre.setBackground(new java.awt.Color(255, 255, 255));
         lblNombre.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
@@ -330,39 +332,42 @@ public class panGrades extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(29, 29, 29)
-                                    .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel3))
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGap(24, 24, 24)
-                                    .addComponent(jLabel9))
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel5))))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel12)
-                                .addComponent(jLabel11))
-                            .addGap(69, 69, 69)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel13)
-                                .addComponent(jLabel14)))))
-                .addContainerGap())
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                            .addComponent(jLabel1)
+                                            .addGap(29, 29, 29)
+                                            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel3))
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                            .addGap(24, 24, 24)
+                                            .addComponent(jLabel9))
+                                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel5))))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(lblGrado)
+                                    .addComponent(jLabel11))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dtCierre, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13))
+                                .addGap(9, 9, 9))))
+                    .addComponent(dtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,18 +393,19 @@ public class panGrades extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel14))
-                .addContainerGap())
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblGrado)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel13))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dtCierre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61))
         );
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.EAST);
@@ -447,31 +453,45 @@ public class panGrades extends javax.swing.JPanel {
             txtIdPerfil.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
             lblNombre.setText("Nombre: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
             txtDescripcion.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 2).toString());
+            lblTipoPerfil.setText("Tipo Perfil | : " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 6).toString());
+            lblGrado.setText("Grado asignado: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
             
+            DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                dtInicio.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString()));
+            } catch (Exception e) {
+                
+            }
+            
+            try {
+                dtCierre.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 5).toString()));
+            } catch (Exception e) {
+                
+            }
             
         }
+        
+        
         
     }//GEN-LAST:event_tbPerfilMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser dtCierre;
+    private com.toedter.calendar.JDateChooser dtInicio;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -481,7 +501,9 @@ public class panGrades extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblGrado;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblTipoPerfil;
     private customizeObjects.PanelRound panelRound1;
     private customizeObjects.PanelRound panelRound2;
     private customizeObjects.PanelRound panelRound3;
