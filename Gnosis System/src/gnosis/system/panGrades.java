@@ -107,7 +107,7 @@ public class panGrades extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtDescripcion = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -277,9 +277,9 @@ public class panGrades extends javax.swing.JPanel {
         jLabel13.setForeground(new java.awt.Color(32, 32, 32));
         jLabel13.setText("Fecha de cierre:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setRows(5);
+        jScrollPane2.setViewportView(txtDescripcion);
 
         jLabel9.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(32, 32, 32));
@@ -446,6 +446,8 @@ public class panGrades extends javax.swing.JPanel {
             
             txtIdPerfil.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
             lblNombre.setText("Nombre: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
+            txtDescripcion.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 2).toString());
+            
             
         }
         
@@ -479,12 +481,12 @@ public class panGrades extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblNombre;
     private customizeObjects.PanelRound panelRound1;
     private customizeObjects.PanelRound panelRound2;
     private customizeObjects.PanelRound panelRound3;
     private javax.swing.JTable tbPerfil;
+    private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtIdPerfil;
     // End of variables declaration//GEN-END:variables
 }
