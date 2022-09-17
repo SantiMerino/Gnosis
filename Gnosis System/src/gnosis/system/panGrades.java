@@ -57,7 +57,7 @@ public class panGrades extends javax.swing.JPanel {
         UIManager.put( "Component.arrowType", "chevron" );
         initComponents();
 
-        String [] TitulosPerfil = {"ID", "Nombre", "Descripcion", "Porcentaje de valoracion", "Fecha de inicio", "Fecha de vencimiento", "Tipo Perfil", "Grados"};
+        String [] TitulosPerfil = {"ID", "Nombre", "Descripcion", "Nota", "Porcentaje de valoracion", "Fecha de inicio", "Fecha de vencimiento", "Tipo Perfil", "Grados"};
         TablaPerfilmodelo = new DefaultTableModel(null, TitulosPerfil);
         tbPerfil.setModel(TablaPerfilmodelo);
         CargarTabla();
@@ -76,7 +76,7 @@ public class panGrades extends javax.swing.JPanel {
         try {
             ResultSet rs = Perfil.CargarPerfilResultSet();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"), rs.getString("porcentajeValoracion"), 
+                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"), rs.getString("nota"),rs.getString("porcentajeValoracion"), 
                     rs.getString("fechainicio"), rs.getString("fechavencimiento"), rs.getString("tipoperfil"), rs.getString("grado")};
                 TablaPerfilmodelo.addRow(oValores);
             }
@@ -123,7 +123,7 @@ public class panGrades extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         panelRound2 = new customizeObjects.PanelRound();
         panelRound3 = new customizeObjects.PanelRound();
-        jLabel8 = new javax.swing.JLabel();
+        lblNota = new javax.swing.JLabel();
         dtInicio = new com.toedter.calendar.JDateChooser();
         dtCierre = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
@@ -320,10 +320,10 @@ public class panGrades extends javax.swing.JPanel {
         panelRound3.setRoundTopRight(15);
         panelRound3.setLayout(new java.awt.BorderLayout());
 
-        jLabel8.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("10");
-        panelRound3.add(jLabel8, java.awt.BorderLayout.CENTER);
+        lblNota.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        lblNota.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNota.setText("10");
+        panelRound3.add(lblNota, java.awt.BorderLayout.CENTER);
 
         panelRound2.add(panelRound3);
 
@@ -338,8 +338,8 @@ public class panGrades extends javax.swing.JPanel {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,18 +453,19 @@ public class panGrades extends javax.swing.JPanel {
             txtIdPerfil.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
             lblNombre.setText("Nombre: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
             txtDescripcion.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 2).toString());
-            lblTipoPerfil.setText("Tipo Perfil | : " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 6).toString());
-            lblGrado.setText("Grado asignado: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
+            lblNota.setText("" + rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
+            lblTipoPerfil.setText("Tipo Perfil | : " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
+            lblGrado.setText("Grado asignado: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 8).toString());
             
             DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             try {
-                dtInicio.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString()));
+                dtInicio.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 5).toString()));
             } catch (Exception e) {
                 
             }
             
             try {
-                dtCierre.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 5).toString()));
+                dtCierre.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 6).toString()));
             } catch (Exception e) {
                 
             }
@@ -492,7 +493,6 @@ public class panGrades extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -503,6 +503,7 @@ public class panGrades extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblGrado;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNota;
     private javax.swing.JLabel lblTipoPerfil;
     private customizeObjects.PanelRound panelRound1;
     private customizeObjects.PanelRound panelRound2;
