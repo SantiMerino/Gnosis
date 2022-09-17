@@ -111,9 +111,9 @@ public class panTasks extends javax.swing.JPanel {
         namePan.setPreferredSize(new java.awt.Dimension(200, 50));
         namePan.setLayout(new javax.swing.BoxLayout(namePan, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Tareas");
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setPreferredSize(new java.awt.Dimension(200, 50));
         namePan.add(jLabel1);
 

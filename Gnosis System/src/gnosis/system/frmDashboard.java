@@ -8,6 +8,10 @@ package gnosis.system;
 import java.awt.*;
 import javax.swing.JPanel;
 import customizeObjects.ButtonRound;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,6 +29,8 @@ public class frmDashboard extends javax.swing.JFrame {
     private JPanel menuAtras;
 
     private int mood = 0;
+    
+    String usernamelog;
 
     public frmDashboard() {
         initComponents();
@@ -35,13 +41,19 @@ public class frmDashboard extends javax.swing.JFrame {
         
     }
     
-    public frmDashboard(String usernameString, int idusuario) {
+    public frmDashboard(ResultSet datosusuario) {
         initComponents();
+        try {
+            usernamelog = datosusuario.getString(3);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         customization.mainUtilities();
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
-        lblnamedashboard.setText(usernameString + "'s Dashboard");
+        lblnamedashboard.setText(usernamelog + "'s Dashboard");
         
     }
     

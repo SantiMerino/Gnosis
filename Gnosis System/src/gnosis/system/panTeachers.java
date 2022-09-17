@@ -59,6 +59,7 @@ public class panTeachers extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDocentes = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         buttonRound1 = new customizeObjects.ButtonRound();
         buttonRound2 = new customizeObjects.ButtonRound();
         buttonRound3 = new customizeObjects.ButtonRound();
@@ -70,7 +71,9 @@ public class panTeachers extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        tbDocentes.setForeground(java.awt.Color.white);
+        tbDocentes.setBackground(java.awt.Color.white);
+        tbDocentes.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        tbDocentes.setForeground(new java.awt.Color(32, 32, 32));
         tbDocentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -89,6 +92,11 @@ public class panTeachers extends javax.swing.JPanel {
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setPreferredSize(new java.awt.Dimension(741, 50));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel1.setText("Gestión de Docentes.");
+        jPanel1.add(jLabel1);
 
         buttonRound1.setText("Agregar");
         buttonRound1.setPreferredSize(new java.awt.Dimension(100, 40));
@@ -140,7 +148,7 @@ public class panTeachers extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 594, Short.MAX_VALUE)
+            .addGap(0, 598, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,6 +206,7 @@ public class panTeachers extends javax.swing.JPanel {
     private customizeObjects.ButtonRound buttonRound3;
     private customizeObjects.ButtonRound buttonRound4;
     private customizeObjects.ButtonRound buttonRound5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

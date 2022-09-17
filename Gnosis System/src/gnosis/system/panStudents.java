@@ -85,6 +85,7 @@ public class panStudents extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         tbEstudiantes.setBackground(java.awt.Color.white);
+        tbEstudiantes.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         tbEstudiantes.setForeground(new java.awt.Color(32, 32, 32));
         tbEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -497,11 +497,9 @@ public class frmLogin extends javax.swing.JFrame {
             ResultSet datosusuarioResultSet = constructor.CIniciarSesion();
             try {
                 niveldeusuario = datosusuarioResultSet.getInt(2);
-                username = datosusuarioResultSet.getString(3);
-                int idusuario = datosusuarioResultSet.getInt(1);
 //                System.out.println(username);
                 if (niveldeusuario == 1 ) {
-                    framepornivel = new frmDashboard(username, idusuario);
+                    framepornivel = new frmDashboard(datosusuarioResultSet);
                     framepornivel.setVisible(true);
                     this.dispose();  
                 }else if(niveldeusuario == 2){
