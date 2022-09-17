@@ -675,5 +675,10 @@ AND c.idgrupo = k.idgrupo
 AND a.idalumno = 2
 AND a.idmateriadocente = 1;
 
+GO
 
-select * from tbUsuario
+CREATE VIEW viewPerfiles
+AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.nota, a.porcentajeValoracion, a.fechainicio, a.fechavencimiento, b.tipoperfil, c.grado
+FROM tbPerfiles a, tbTipoPerfiles b, tbGrados c
+WHERE a.idtipoperfil = b.idtipoperfil AND a.idgrados = c.idgrado; 
+Go
