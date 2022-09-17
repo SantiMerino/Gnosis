@@ -74,6 +74,7 @@ public class panStudents extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbEstudiantes = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         txtCarnet = new javax.swing.JTextField();
         btnAgregar = new customizeObjects.ButtonRound();
         btnModificar = new customizeObjects.ButtonRound();
@@ -110,6 +111,11 @@ public class panStudents extends javax.swing.JPanel {
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setPreferredSize(new java.awt.Dimension(726, 50));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel1.setText("Gestión de Alumnos");
+        jPanel1.add(jLabel1);
 
         txtCarnet.setEditable(false);
         txtCarnet.setBackground(new java.awt.Color(255, 255, 255));
@@ -248,6 +254,7 @@ public class panStudents extends javax.swing.JPanel {
     private customizeObjects.ButtonRound btnModificar;
     private customizeObjects.ButtonRound btnNomina;
     private customizeObjects.ButtonRound btnReporteEsc;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

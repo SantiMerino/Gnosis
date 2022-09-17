@@ -83,7 +83,7 @@ public class panPortfolios extends javax.swing.JPanel {
         namePan.setBackground(java.awt.Color.white);
         namePan.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Portafolio");
         namePan.add(jLabel1, java.awt.BorderLayout.CENTER);

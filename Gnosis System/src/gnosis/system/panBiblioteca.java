@@ -57,7 +57,7 @@ public class panBiblioteca extends javax.swing.JPanel {
         jPanel4.setPreferredSize(new java.awt.Dimension(300, 100));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Biblioteca");
         jPanel4.add(jLabel1, java.awt.BorderLayout.CENTER);
