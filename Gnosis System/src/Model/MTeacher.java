@@ -142,9 +142,12 @@ public class MTeacher {
      
      public ResultSet Search(String dui, Connection con) {
         try {
-            String query = "select * from tbDocentes where dui like(?)";
+            String query = "select * from tbDocentes where dui like(?) or nombres_docente like(?) or apellidos_docente like(?) or contacto like(?)";
             ps = con.prepareStatement(query);
             ps.setString(1, dui);
+            ps.setString(2, dui);
+            ps.setString(3, dui);
+            ps.setString(4, dui);
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {

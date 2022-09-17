@@ -183,9 +183,11 @@ public class MEstudents {
      
       public ResultSet SearchCrnt(String carnet, Connection con) {
         try {
-            String query = "select * from tbAlumnos where codigocarnet like(?)";
+            String query = "select * from tbAlumnos where codigocarnet like(?) or nombres_alumno like(?) or apellidos_alumno like(?)";
             ps = con.prepareStatement(query);
             ps.setString(1, carnet);
+            ps.setString(2, carnet);
+            ps.setString(3, carnet);
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {

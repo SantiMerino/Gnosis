@@ -145,9 +145,10 @@ public class MEvento {
     
      public ResultSet Search(String carnet, Connection con) {
         try {
-            String query = "select * from tbEventos where nombreevento like(?)";
+            String query = "select * from tbEventos where nombreevento like(?) or fechaevento like(?)";
             ps = con.prepareStatement(query);
             ps.setString(1, carnet);
+            ps.setString(2, carnet);
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {

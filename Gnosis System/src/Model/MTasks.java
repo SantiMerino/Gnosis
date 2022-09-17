@@ -132,9 +132,10 @@ public class MTasks {
     
     public ResultSet Search(String nombre, Connection con) {
         try {
-            String query = "select * from tbTareas where nombretarea like(?)";
+            String query = "select * from tbTareas where nombretarea like(?) or fechadeinicio like(?)";
             ps = con.prepareStatement(query);
             ps.setString(1, nombre);
+            ps.setString(2, nombre);
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {
