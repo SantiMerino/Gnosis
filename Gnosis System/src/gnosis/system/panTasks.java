@@ -29,11 +29,6 @@ public class panTasks extends javax.swing.JPanel {
     public panTasks() {
         initComponents();
         CargarTareas();
-        //while () {
-            //custo.CrearTarea(rs.getString("nombre_tarea"), rs.get, "Joaquin Sanchez", "12/10/2022", 1, mainPan);
-        
-//}
-
     }
     
     final void CargarTareas(){

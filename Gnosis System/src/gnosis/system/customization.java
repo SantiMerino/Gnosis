@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gnosis.system;
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatMonocaiIJTheme;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -119,6 +120,24 @@ public class customization {
         UIManager.put( "ScrollBar.trackInsets", new Insets( 2, 4, 2, 4 ) );
         UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
         UIManager.put( "Component.arrowType", "chevron" );
+    }
+    
+    public static void mainUtilitiesWhite(){
+        try {
+            UIManager.setLookAndFeel(new FlatArcIJTheme());           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        UIManager.put( "Component.focusWidth", 0 );
+        UIManager.put( "Component.innerFocusWidth",0 );
+        UIManager.put( "TextComponent.arc", 15);
+        UIManager.put( "Component.arc", 15);
+        UIManager.put( "ProgressBar.arc", 20);
+        UIManager.put( "ScrollBar.trackArc", 999 );
+        UIManager.put( "ScrollBar.thumbArc", 999 );
+        UIManager.put( "ScrollBar.trackInsets", new Insets( 2, 4, 2, 4 ) );
+        UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
+        UIManager.put( "Component.arrowType", "chevron" );  
     }
     
     
@@ -671,43 +690,64 @@ public class customization {
         contenedor.revalidate(); 
     }
     
-        public void CrearComponenteEventos(String nombreevento , String tipoevento,String fechainicio, String fechafinal, JPanel main){
+        public void CrearComponenteEventos(String nombreevento , String tipoevento, String grado, String fechainicio, String fechafinal, JPanel main){
             //Crear panel
             PanelRound evento = new PanelRound();
             //Crear labels y setear el texto
             JLabel lblnombreevento = new JLabel(nombreevento);
             JLabel lbltipoevento = new JLabel(tipoevento);
-            JLabel lblfechain = new JLabel(fechainicio);
-            JLabel lblfechafin = new JLabel(fechafinal);
-
+            JLabel lblfechas = new JLabel(fechainicio + " | " +  fechafinal);
+//            JLabel lblgrado = new JLabel(grado);
+            
+            Color fontcolor;
+            Font fuentepre = new Font("Poppins", Font.BOLD, 14);
+            Font fuentepro = new Font("Poppins" , Font.PLAIN, 14);
             switch (tipoevento) {
                 case "Eventos salesianos":
-                    evento.setBackground(new Color(255, 255, 51));
+                    evento.setBackground(new Color(255, 189, 62));
+                    fontcolor = new Color(32, 32, 32);
                     break;
                     
                 case "Tareas":
-                    evento.setBackground(new Color(255, 51, 51));
+                    evento.setBackground(new Color(227, 63, 63));
+                    fontcolor = new Color(255,255,255);
                     break;
                     
                 case "Clases":
-                    evento.setBackground(new Color(51, 0, 255));
+                    evento.setBackground(new Color(60,80,120));
+                    fontcolor = new Color(255,255,255);
                     break;
                     
                 case "Defensa":
-                    evento.setBackground(new Color(102, 102, 102));
+                    evento.setBackground(new Color(255, 153, 0));
+                    fontcolor = new Color(32, 32, 32);
                     break;
                     
                 case "Personal":
                     evento.setBackground(new Color(127, 211, 106));
+                    fontcolor = new Color(32, 32, 32);
                     break;
                               
                 default:
                     evento.setBackground(new Color(32,32,32));
+                    fontcolor = new Color(255,255,255);
             }
             
+            lblfechas.setFont(fuentepro);
+//            lblfechain.setFont(fuentepre);
+            lblnombreevento.setFont(fuentepre);
+            lbltipoevento.setFont(fuentepro);
             
+            lblfechas.setForeground(fontcolor);
+//            lblfechain.setForeground(fontcolor);
+            lblnombreevento.setForeground(fontcolor);
+            lbltipoevento.setForeground(fontcolor);
             
-            
+            evento.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+
+            evento.add(lblnombreevento);
+            evento.add(lbltipoevento);
+            evento.add(lblfechas);
             
             evento.setPreferredSize(new Dimension(100, 50));
             evento.setRoundTopLeft(20);
@@ -719,53 +759,5 @@ public class customization {
             main.add(evento);
             main.repaint();
             main.revalidate();
-    }
-        
-        
-    public void CrearPostulantes(String nombre, String estado, JPanel main) {
-        //Crear componentes
-        PanelRound container = new PanelRound();
-
-        JLabel lblnombre = new JLabel(nombre);
-        JLabel lblestado = new JLabel(estado);
-        JPanel colorestado = new JPanel();
-        
-        //Dimensiones
-        lblestado.setPreferredSize(new Dimension(100, 50));
-        container.setPreferredSize(new Dimension(500, 50));
-        lblnombre.setPreferredSize(new Dimension(350, 50));
-        colorestado.setPreferredSize(new Dimension(30, 30));
-        
-        //Color y tipo de letra
-        container.setBackground(Color.red);
-        lblestado.setForeground(Color.white);
-        lblestado.setHorizontalAlignment(JLabel.RIGHT);
-        
-        //Añadir componentes al principal
-        container.add(lblnombre);
-        container.add(colorestado);
-        container.add(lblestado);
-
-        container.setRoundTopLeft(20);
-        container.setRoundTopRight(20);
-        container.setRoundBottomRight(20);
-        container.setRoundBottomLeft(20);
-        container.repaint();
-
-        container.revalidate();
-
-        switch (estado) {
-            case "Disponible":
-                colorestado.setBackground(Color.green);
-                break;
-            default:
-                colorestado.setBackground(Color.black);
-                break;
-        }
-
-        //Agregas a la interfaz
-        main.add(container);
-        main.repaint();
-        main.revalidate();
     }
 }

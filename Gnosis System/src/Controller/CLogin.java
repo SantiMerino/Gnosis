@@ -49,7 +49,7 @@ public class CLogin {
     public CLogin() {
     }
     
-    public int CIniciarSesion(){
+    public ResultSet CIniciarSesion(){
         return MLogin.InciarSesion(usuario, password);
     }
         

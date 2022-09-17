@@ -129,12 +129,12 @@ public class MEvento {
         try {
             ResultSet rs;
             Connection con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT a.nombreevento, b.tipoevento, c.grado FROM tbEventos a, tbTipoEventos b, tbGrados c WHERE a.idtipoevento = b.idtipoevento AND a.idgrado = c.idgrado AND a.fechaevento LIKE ? OR a.fechaevento LIKE ? AND a.fechafinalevento LIKE ? OR a.fechafinalevento LIKE ?";
+            String query = "SELECT * FROM viewEventos";
             ps = con.prepareStatement(query);
-            ps.setString(1,fechainicio);
-            ps.setString(2,  fechafinal);
-            ps.setString(3,fechainicio);
-            ps.setString(4,  fechafinal);
+//            ps.setString(1, fechainicio);
+//            ps.setString(2,  fechafinal);
+//            ps.setString(3, fechainicio);
+//            ps.setString(4,  fechafinal);
             rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {

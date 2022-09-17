@@ -32,7 +32,10 @@ public class frmLogin extends javax.swing.JFrame {
      */
     int xMouse;
     int yMouse;
+    
     int niveldeusuario;
+    String username;
+    
     JFrame framepornivel;
     ArrayList datosuser;
     DefaultListModel<String> modelodatos;
@@ -491,19 +494,27 @@ public class frmLogin extends javax.swing.JFrame {
         } else {
             String clave = CValidaciones.getMD5(String.valueOf(txtPassword.getPassword()));
             CLogin constructor = new CLogin(txtUsername.getText(), clave);
-            niveldeusuario = constructor.CIniciarSesion();
-            if (niveldeusuario == 1 ) {
-                framepornivel = new frmDashboard();
-                framepornivel.setVisible(true);
-                this.dispose();
-            }else if(niveldeusuario == 2){
-                framepornivel = new frmDashboardTeacher(2);
-                framepornivel.setVisible(true);
-                this.dispose();         
-            }else if(niveldeusuario == 3){ 
-                framepornivel = new frmDashboardTeacher(3);
-                framepornivel.setVisible(true);
-                this.dispose(); 
+            ResultSet datosusuarioResultSet = constructor.CIniciarSesion();
+            try {
+                niveldeusuario = datosusuarioResultSet.getInt(2);
+                username = datosusuarioResultSet.getString(3);
+                int idusuario = datosusuarioResultSet.getInt(1);
+//                System.out.println(username);
+                if (niveldeusuario == 1 ) {
+                    framepornivel = new frmDashboard(username, idusuario);
+                    framepornivel.setVisible(true);
+                    this.dispose();  
+                }else if(niveldeusuario == 2){
+                    framepornivel = new frmDashboardTeacher(2);
+                    framepornivel.setVisible(true);
+                    this.dispose();
+                }else if(niveldeusuario == 3){
+                    framepornivel = new frmDashboardTeacher(3);
+                    framepornivel.setVisible(true); 
+                    this.dispose();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         

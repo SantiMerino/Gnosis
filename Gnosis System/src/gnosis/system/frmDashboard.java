@@ -8,7 +8,6 @@ package gnosis.system;
 import java.awt.*;
 import javax.swing.JPanel;
 import customizeObjects.ButtonRound;
-import customizeObjects.CalendarCustom;
 
 /**
  *
@@ -29,9 +28,21 @@ public class frmDashboard extends javax.swing.JFrame {
 
     public frmDashboard() {
         initComponents();
+        customization.mainUtilities();
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
+        
+    }
+    
+    public frmDashboard(String usernameString, int idusuario) {
+        initComponents();
+        customization.mainUtilities();
+        moodPanel.setVisible(false);
+        searchbar.putClientProperty("innerFocusWidth", 0);
+        searchbar.putClientProperty("focusWidth", 0);
+        lblnamedashboard.setText(usernameString + "'s Dashboard");
+        
     }
     
     
@@ -154,7 +165,7 @@ public class frmDashboard extends javax.swing.JFrame {
         panDashboard = new customizeObjects.PanelRound();
         upperPanel = new javax.swing.JPanel();
         namePan = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblnamedashboard = new javax.swing.JLabel();
         searchPan = new javax.swing.JPanel();
         panelRound1 = new customizeObjects.PanelRound();
         jLabel8 = new javax.swing.JLabel();
@@ -167,8 +178,6 @@ public class frmDashboard extends javax.swing.JFrame {
         buttonsPan = new javax.swing.JPanel();
         buttonRound2 = new customizeObjects.ButtonRound();
         btnMood = new customizeObjects.ButtonRound();
-        panelRound2 = new customizeObjects.PanelRound();
-        jComboBox1 = new javax.swing.JComboBox<>();
         buttonRound4 = new customizeObjects.ButtonRound();
         mainPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -254,10 +263,10 @@ public class frmDashboard extends javax.swing.JFrame {
         namePan.setPreferredSize(new java.awt.Dimension(300, 100));
         namePan.setLayout(new javax.swing.BoxLayout(namePan, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel1.setText("Santi's Dashboard");
-        namePan.add(jLabel1);
+        lblnamedashboard.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        lblnamedashboard.setForeground(new java.awt.Color(32, 32, 32));
+        lblnamedashboard.setText("Santi's Dashboard");
+        namePan.add(lblnamedashboard);
 
         upperPanel.add(namePan, java.awt.BorderLayout.WEST);
 
@@ -322,26 +331,10 @@ public class frmDashboard extends javax.swing.JFrame {
         });
         buttonsPan.add(btnMood);
 
-        panelRound2.setBackground(new java.awt.Color(32, 32, 32));
-        panelRound2.setPreferredSize(new java.awt.Dimension(80, 40));
-        panelRound2.setRoundBottomLeft(20);
-        panelRound2.setRoundBottomRight(20);
-        panelRound2.setRoundTopLeft(20);
-        panelRound2.setRoundTopRight(20);
-        panelRound2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 5, 0));
-
-        jComboBox1.setBackground(new java.awt.Color(32, 32, 32));
-        jComboBox1.setForeground(new java.awt.Color(32, 32, 32));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cerrar sesión", "" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(23, 26));
-        panelRound2.add(jComboBox1);
-
         buttonRound4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square.png"))); // NOI18N
         buttonRound4.setPreferredSize(new java.awt.Dimension(40, 40));
         buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-        panelRound2.add(buttonRound4);
-
-        buttonsPan.add(panelRound2);
+        buttonsPan.add(buttonRound4);
 
         upperPanel.add(buttonsPan, java.awt.BorderLayout.EAST);
 
@@ -912,8 +905,6 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel downGap;
     private customizeObjects.PanelRound gradesPanel;
     private customizeObjects.ButtonRound homeButton;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -931,6 +922,7 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblmood;
+    private javax.swing.JLabel lblnamedashboard;
     private javax.swing.JPanel mainPanel;
     private customizeObjects.ButtonRound medalButton;
     private customizeObjects.PanelRound moodPanel;
@@ -947,7 +939,6 @@ public class frmDashboard extends javax.swing.JFrame {
     private customizeObjects.PanelRound panelRound12;
     private customizeObjects.PanelRound panelRound13;
     private customizeObjects.PanelRound panelRound14;
-    private customizeObjects.PanelRound panelRound2;
     private customizeObjects.PanelRound panelRound3;
     private customizeObjects.PanelRound panelRound4;
     private customizeObjects.PanelRound panelRound5;

@@ -622,13 +622,17 @@ GO
 SELECT * FROM viewPortafolios;
 
 --query para seleccionar los eventos.
+GO
+CREATE VIEW viewEventos
+AS
 SELECT a.nombreevento, b.tipoevento, c.grado, a.fechaevento, a.fechafinalevento
 FROM tbEventos a, tbTipoEventos b, tbGrados c
 WHERE a.idtipoevento = b.idtipoevento
 AND a.idgrado = c.idgrado 
-AND a.fechaevento between '2022/05/01'AND '2022/05/31'
-AND a.fechafinalevento between '2022/05/01'AND '2022/05/31'
+--AND a.fechaevento between '2022/05/01'AND '2022/05/31' AND a.fechafinalevento between '2022/05/01'AND '2022/05/31'
+GO
 
+SELECT * FROM viewEventos WHERE fechaevento between '2022/05/01'AND '2022/05/31' AND fechafinalevento between '2022/05/01'AND '2022/05/31'
 
 --Vista de profesores - materia - grado
 SELECT CONCAT(b.nombres_docente, ' ', b.apellidos_docente) AS [Docente], CONCAT(c.materia, ' ', d.modulo) AS [Materia], e.grado AS [Grado]
@@ -672,3 +676,4 @@ AND a.idalumno = 2
 AND a.idmateriadocente = 1;
 
 
+select * from tbUsuario

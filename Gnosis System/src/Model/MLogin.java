@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class MLogin {
       
-    public static int InciarSesion (String user, String clave){
+    public static ResultSet InciarSesion (String user, String clave){
         int i = 0;
 //        JOptionPane.showMessageDialog(null, user);
 //        JOptionPane.showMessageDialog(null, clave);
@@ -30,15 +30,14 @@ public class MLogin {
 //            ps.setInt(3, nivel);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                nivel = rs.getInt(2);
-                return nivel;
+                return rs;
             }else {
                 JOptionPane.showMessageDialog(null, "Las credenciales  son incorrectas o no existen", "Creedenciales", JOptionPane.ERROR_MESSAGE);
-                return 0;
+                return null;
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error " + e.toString());
-            return 0;
+            return null;
         }
     }
 }
