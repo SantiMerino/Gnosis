@@ -313,6 +313,36 @@ public class customization {
                 break;
         }
         
+        
+        switch (estado) {
+            case "Completado":
+                changeIcon(btnEstado, "/resources/check.png");
+                break;
+                
+            case "Calificado":
+                changeIcon(btnEstado, "/resources/medal-estateprofile.png");
+                break;
+                
+            case "No entregado":
+                changeIcon(btnEstado, "/resources/close-square-state.png");
+                break;
+                
+            case "En proceso":
+                changeIcon(btnEstado, "/resources/more-square-state.png");
+                break;
+                
+            case "Urgente":
+                changeIcon(btnEstado, "/resources/danger-state.png");
+                break;
+                
+            case "No disponible":
+                changeIcon(btnEstado, "/resources/slash.png");
+                break;
+                
+            default:
+                throw new AssertionError();
+        }
+        
         //Asignar colores provisionalmente para ver como se comportan
         pan1.setBackground(Color.white); 
         pan2.setBackground(mainColor); 

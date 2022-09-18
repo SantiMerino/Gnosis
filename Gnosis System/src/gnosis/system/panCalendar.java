@@ -199,7 +199,7 @@ public class panCalendar extends javax.swing.JPanel {
                 .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(531, 531, 531))
+                .addGap(546, 546, 546))
         );
 
         jPanel3.add(jPanel4, java.awt.BorderLayout.EAST);

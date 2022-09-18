@@ -695,3 +695,6 @@ AND a.idclasificacion = c.idclasificacion
 
 
 SELECT * FROM viewBiblioteca WHERE idalumno = 1;
+
+Select * from viewTareas
+select * from viewPerfiles

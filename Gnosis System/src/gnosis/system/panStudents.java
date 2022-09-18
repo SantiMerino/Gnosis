@@ -75,12 +75,13 @@ public class panStudents extends javax.swing.JPanel {
         tbEstudiantes = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         txtCarnet = new javax.swing.JTextField();
         btnAgregar = new customizeObjects.ButtonRound();
         btnModificar = new customizeObjects.ButtonRound();
         btnEliminar = new customizeObjects.ButtonRound();
-        btnReporteEsc = new customizeObjects.ButtonRound();
         btnNomina = new customizeObjects.ButtonRound();
+        btnReporteEsc = new customizeObjects.ButtonRound();
         jPanel2 = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
@@ -110,18 +111,21 @@ public class panStudents extends javax.swing.JPanel {
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setPreferredSize(new java.awt.Dimension(726, 50));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Gestión de Alumnos");
-        jPanel1.add(jLabel1);
+        jPanel1.add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setPreferredSize(new java.awt.Dimension(560, 50));
 
         txtCarnet.setEditable(false);
         txtCarnet.setBackground(new java.awt.Color(255, 255, 255));
         txtCarnet.setForeground(new java.awt.Color(0, 0, 0));
         txtCarnet.setPreferredSize(new java.awt.Dimension(100, 30));
-        jPanel1.add(txtCarnet);
 
         btnAgregar.setText("Agregar");
         btnAgregar.setPreferredSize(new java.awt.Dimension(100, 40));
@@ -132,29 +136,16 @@ public class panStudents extends javax.swing.JPanel {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregar);
 
         btnModificar.setText("Modificar");
         btnModificar.setPreferredSize(new java.awt.Dimension(100, 40));
         btnModificar.setRound(20);
         btnModificar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
-        jPanel1.add(btnModificar);
 
         btnEliminar.setText("Eliminar");
         btnEliminar.setPreferredSize(new java.awt.Dimension(100, 40));
         btnEliminar.setRound(20);
         btnEliminar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
-        jPanel1.add(btnEliminar);
-
-        btnReporteEsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square.png"))); // NOI18N
-        btnReporteEsc.setPreferredSize(new java.awt.Dimension(40, 40));
-        btnReporteEsc.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
-        btnReporteEsc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReporteEscActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnReporteEsc);
 
         btnNomina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text.png"))); // NOI18N
         btnNomina.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -165,7 +156,51 @@ public class panStudents extends javax.swing.JPanel {
                 btnNominaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNomina);
+
+        btnReporteEsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square.png"))); // NOI18N
+        btnReporteEsc.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnReporteEsc.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
+        btnReporteEsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteEscActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnReporteEsc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReporteEsc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel3, java.awt.BorderLayout.EAST);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -176,7 +211,7 @@ public class panStudents extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 801, Short.MAX_VALUE)
+            .addGap(0, 850, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,6 +292,7 @@ public class panStudents extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbEstudiantes;
     private javax.swing.JTextField txtCarnet;

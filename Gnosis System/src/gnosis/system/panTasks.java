@@ -48,7 +48,7 @@ public class panTasks extends javax.swing.JPanel {
                 custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas cerote feo");
+            JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas");
         }
         
     }
@@ -82,11 +82,11 @@ public class panTasks extends javax.swing.JPanel {
         namePan = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         filtersPan = new javax.swing.JPanel();
-        btnAgregarTarea = new customizeObjects.ButtonRound();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
+        btnAgregarTarea = new customizeObjects.ButtonRound();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -123,16 +123,6 @@ public class panTasks extends javax.swing.JPanel {
         filtersPan.setPreferredSize(new java.awt.Dimension(500, 50));
         filtersPan.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 15, 10));
 
-        btnAgregarTarea.setText("Agregar Tareas");
-        btnAgregarTarea.setRound(15);
-        btnAgregarTarea.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
-        btnAgregarTarea.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarTareaActionPerformed(evt);
-            }
-        });
-        filtersPan.add(btnAgregarTarea);
-
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(32, 32, 32));
         jLabel2.setText("Ordenar:");
@@ -154,6 +144,17 @@ public class panTasks extends javax.swing.JPanel {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.setPreferredSize(new java.awt.Dimension(100, 30));
         filtersPan.add(jComboBox2);
+
+        btnAgregarTarea.setText("Gestionar Tareas");
+        btnAgregarTarea.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        btnAgregarTarea.setRound(15);
+        btnAgregarTarea.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
+        btnAgregarTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarTareaActionPerformed(evt);
+            }
+        });
+        filtersPan.add(btnAgregarTarea);
 
         upperPan.add(filtersPan, java.awt.BorderLayout.CENTER);
 
