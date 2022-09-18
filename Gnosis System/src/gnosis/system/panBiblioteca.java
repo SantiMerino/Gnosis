@@ -5,6 +5,10 @@
  */
 package gnosis.system;
 
+import Controller.CBiblioteca;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author santi
@@ -15,16 +19,34 @@ public class panBiblioteca extends javax.swing.JPanel {
      * Creates new form frmBiblioteca
      */
     customization custoObj = new customization();
+    int idAlumno;
     
     public panBiblioteca() {
         initComponents();
-        custoObj.CrearRecursoBiblioteca("Clase 24 Matemáticas | Trigonometría", "PDF", "Clase", mainPanel);
-        custoObj.CrearRecursoBiblioteca("Clase 24 Matemáticas | Trigonometría", "PDF", "Clase", mainPanel);
-        custoObj.CrearRecursoBiblioteca("Clase 24 Matemáticas | Trigonometría", "PDF", "Clase", mainPanel);
-        custoObj.CrearRecursoBiblioteca("Clase 24 Matemáticas | Trigonometría", "PDF", "Clase", mainPanel);
-        custoObj.CrearRecursoBiblioteca("Kevin chuco", "PDF", "Clase", mainPanel);
+//        custoObj.CrearRecursoBiblioteca("Clase 24 Matemáticas | Trigonometría", "PDF", "Clase", mainPanel);
+        CargarRecursos();
+    }
+    
+    public panBiblioteca(int idalumno) {
+        initComponents();
+        idAlumno = idalumno;
+//        custoObj.CrearRecursoBiblioteca("Clase 24 Matemáticas | Trigonometría", "PDF", "Clase", mainPanel);
+        CargarRecursos();
+//        custoObj.CrearPostulantes("Kevin","Disponible", mainPanel);
     }
 
+    final void CargarRecursos(){
+        CBiblioteca controlador = new CBiblioteca();
+        ResultSet datosrecursos = controlador.CargarRecursosVista(idAlumno);
+        try {
+            while (datosrecursos.next()) {                
+                 custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel);                
+            }         
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Tu mama men" + e.toString());
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

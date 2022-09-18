@@ -449,13 +449,22 @@ public class customization {
         openPanel.add(BorderLayout.CENTER, btnOpen);
         
         //Definir los colores, estilo y texto
-        btnOpen.setStyle(ButtonRound.ButtonStyle.ROJO);
-        btnOpen.setText("Abrir");
         
-        btnTipoDoc.setStyle(ButtonRound.ButtonStyle.ROJO);
-        changeIcon(btnTipoDoc, "/resources/folder.png");
+        switch (tipo_recurso) {
+            case "PDF":
+                btnOpen.setStyle(ButtonRound.ButtonStyle.ROJO);
+                btnTipoDoc.setStyle(ButtonRound.ButtonStyle.ROJO);
+                changeIcon(btnTipoDoc, "/resources/folder.png");
+                break;
+            default:
+                btnOpen.setStyle(ButtonRound.ButtonStyle.SOCIALES);
+                btnTipoDoc.setStyle(ButtonRound.ButtonStyle.SOCIALES);
+                changeIcon(btnTipoDoc, "/resources/link-x21.png");
+                
+        }
+
         btnTipoDoc.setText(tipo_recurso);
-        
+        btnOpen.setText("Abrir"); 
         lblCategroiaRecurso.setText("   "+categoria_recurso);
         
         lblNombreRecurso.setText("<html><center>"+nombre_recurso+"</center></html>");
@@ -759,5 +768,5 @@ public class customization {
             main.add(evento);
             main.repaint();
             main.revalidate();
-    }
+    }   
 }

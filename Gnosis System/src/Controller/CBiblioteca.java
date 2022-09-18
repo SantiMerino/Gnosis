@@ -123,4 +123,9 @@ public class CBiblioteca {
     public boolean EliminarBibliotecaController() {
         return mdlBibli.EliminarBibliotecasModel(ID, con);
     }
+    
+    
+    public ResultSet CargarRecursosVista(int id){
+        return mdlBibli.CargarRecursosVista(id, con);
+    }
 }

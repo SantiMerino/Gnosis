@@ -127,5 +127,18 @@ public class MBiblioteca {
             return  null;
         }        
     }
+     
+     
+    public ResultSet CargarRecursosVista(int id, Connection con){
+        try {
+            String query = "SELECT * FROM viewBiblioteca WHERE idalumno = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return null;
+        }
+    }
     
 }

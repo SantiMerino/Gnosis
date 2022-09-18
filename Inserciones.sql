@@ -682,3 +682,16 @@ AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.nota, a.porcentajeValoraci
 FROM tbPerfiles a, tbTipoPerfiles b, tbGrados c
 WHERE a.idtipoperfil = b.idtipoperfil AND a.idgrados = c.idgrado; 
 Go
+
+SELECT * FROM tbBiblioteca WHERE idalumno = 1
+
+GO
+CREATE VIEW viewBiblioteca
+AS
+SELECT a.nombrerecurso,b.tiporecurso, c.clasificacion, a.link, a.pdf, a.idalumno
+FROM tbBiblioteca a, tbTipoRecursos b, tbClasificaciones c
+WHERE a.idtiporecurso = b.idtiporecurso
+AND a.idclasificacion = c.idclasificacion
+
+
+SELECT * FROM viewBiblioteca WHERE idalumno = 1;

@@ -107,7 +107,6 @@
                                       <Component id="BtnVaciarCampos" min="-2" pref="113" max="-2" attributes="0"/>
                                       <Component id="BtnModificar" min="-2" pref="113" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="3" max="32767" attributes="0"/>
                               </Group>
                               <Component id="CmbTipoRecurso" alignment="0" max="32767" attributes="0"/>
                           </Group>
@@ -196,18 +195,18 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Recurso:"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Poppins" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Recurso:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre del recurso:"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Poppins" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nombre del recurso:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNombreRecurso">
@@ -217,10 +216,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Archivo:"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Poppins" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Archivo:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="fileChooser">
@@ -233,20 +232,20 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Links:"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Poppins" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Links:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtLink">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Tipo de clasificacion:"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Poppins" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tipo de clasificacion:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="CmbClasificacion">
@@ -287,10 +286,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Tipo de recurso:"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Poppins" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tipo de recurso:"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -382,10 +381,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Buscar Registro:"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Poppins" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Buscar Registro:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtBuscar">
@@ -395,10 +394,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel8"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Poppins" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="jLabel8"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">

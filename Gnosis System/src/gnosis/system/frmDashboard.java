@@ -30,6 +30,7 @@ public class frmDashboard extends javax.swing.JFrame {
 
     private int mood = 0;
     
+    int iduserlog;
     String usernamelog;
 
     public frmDashboard() {
@@ -45,6 +46,8 @@ public class frmDashboard extends javax.swing.JFrame {
         initComponents();
         try {
             usernamelog = datosusuario.getString(3);
+            //Es el id del estudiante :P
+            iduserlog = datosusuario.getInt(7);
         } catch (SQLException ex) {
             Logger.getLogger(frmDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -811,7 +814,6 @@ public class frmDashboard extends javax.swing.JFrame {
             } else {
                 notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
             }
-
         }
     }//GEN-LAST:event_calendarButtonActionPerformed
 
@@ -819,7 +821,8 @@ public class frmDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (panContainer.getComponentCount() == 0) {
             cambiarColorBotonesMenu(bookButton, "/resources/book-saved-black.png");
-            panContainer.add(new panBiblioteca());
+            panContainer.add(new panBiblioteca(iduserlog));
+            System.out.println(iduserlog);
             panContainer.repaint();
             panContainer.revalidate();
         } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panBiblioteca()) {
@@ -829,7 +832,8 @@ public class frmDashboard extends javax.swing.JFrame {
                 panContainer.repaint();
                 panContainer.revalidate();
 
-                panContainer.add(new panBiblioteca());
+                panContainer.add(new panBiblioteca(iduserlog));
+                System.out.println(iduserlog);
                 panContainer.repaint();
                 panContainer.revalidate();
             } else {
