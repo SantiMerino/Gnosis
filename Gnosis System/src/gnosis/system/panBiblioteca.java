@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author santi
+ * @author santi1
  */
 public class panBiblioteca extends javax.swing.JPanel {
 

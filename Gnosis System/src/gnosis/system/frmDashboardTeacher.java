@@ -306,7 +306,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 
         jComboBox1.setBackground(new java.awt.Color(32, 32, 32));
         jComboBox1.setForeground(new java.awt.Color(32, 32, 32));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cerrar sesión", "" }));
+        jComboBox1.setToolTipText("");
         jComboBox1.setPreferredSize(new java.awt.Dimension(23, 26));
         panelRound2.add(jComboBox1);
 

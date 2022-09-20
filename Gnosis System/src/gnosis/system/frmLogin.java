@@ -497,19 +497,25 @@ public class frmLogin extends javax.swing.JFrame {
             ResultSet datosusuarioResultSet = constructor.CIniciarSesion();
             try {
                 niveldeusuario = datosusuarioResultSet.getInt(2);
-//                System.out.println(username);
-                if (niveldeusuario == 1 ) {
-                    framepornivel = new frmDashboard(datosusuarioResultSet);
-                    framepornivel.setVisible(true);
-                    this.dispose();  
-                }else if(niveldeusuario == 2){
-                    framepornivel = new frmDashboardTeacher(2);
-                    framepornivel.setVisible(true);
-                    this.dispose();
-                }else if(niveldeusuario == 3){
-                    framepornivel = new frmDashboardTeacher(3);
-                    framepornivel.setVisible(true); 
-                    this.dispose();
+                System.out.println(niveldeusuario);
+                switch (niveldeusuario) {
+                    case 1:
+                        framepornivel = new frmDashboard(datosusuarioResultSet);
+                        framepornivel.setVisible(true);
+                        this.dispose();
+                        break;
+                    case 2:
+                        framepornivel = new frmDashboardTeacher(2);
+                        framepornivel.setVisible(true);
+                        this.dispose();
+                        break;
+                    case 3:
+                        framepornivel = new frmDashboardTeacher(3);
+                        framepornivel.setVisible(true);
+                        this.dispose();
+                        break;
+                    default:
+                        break;
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
