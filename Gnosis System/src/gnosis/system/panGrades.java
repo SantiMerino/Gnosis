@@ -12,6 +12,7 @@ import Controller.CProfiles;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Insets;
+import java.awt.event.ItemEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
@@ -34,7 +36,20 @@ public class panGrades extends javax.swing.JPanel {
 
     DefaultTableModel TablaPerfilmodelo;
     
+    ArrayList tipoPerfilArrayList;
+    ArrayList GradoArrayList;
+    ArrayList PeriodoArrayList;
     
+    DefaultComboBoxModel<String> modeloTipoPerfil;
+    DefaultComboBoxModel<String> modeloGrado;
+    DefaultComboBoxModel<String> modeloPeriodo;
+    
+    private int idTipoPerfil = 0;
+    private int idGrado = 0;
+    private int idPeriodo = 0;
+    
+    CComboboxNotas buscar = new CComboboxNotas();
+    Connection conn = CConnection.getConnectionControllerWithoutParameters();
     
     /**
      * Creates new form panNotas
@@ -63,7 +78,7 @@ public class panGrades extends javax.swing.JPanel {
         CargarTabla();
         txtDescripcion.setEditable(false);
         
-        
+//        CargarCmb();
         
     }
     
@@ -85,6 +100,78 @@ public class panGrades extends javax.swing.JPanel {
         }
     }
     
+    void CargarCmb(){
+        CargarTipoPerfil();
+        CargarGrado();
+//        CargarFases();
+    }
+    
+    final void CargarTipoPerfil(){
+        CComboboxNotas alumnosObj = new CComboboxNotas();
+        tipoPerfilArrayList = new ArrayList();
+        
+        try {
+            ResultSet rs = alumnosObj.CCargarTipoPerfil();
+            if (rs.next()) {
+                modeloTipoPerfil = new DefaultComboBoxModel<>();
+                modeloTipoPerfil.addElement("Elige una opcion");
+                do {                    
+                    tipoPerfilArrayList.add(rs.getInt("idtipoperfil"));
+                    modeloTipoPerfil.addElement(rs.getString("tipoperfil"));
+                    cmbTipoPerfil.setModel(modeloTipoPerfil);
+                } while (rs.next());
+            } else{
+                JOptionPane.showMessageDialog(null, "No se pudo cargar los tipos de perfiles");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error critico, consultar al administrador");
+        }
+    }
+    
+    final void CargarGrado(){
+        CComboboxNotas alumnosObj = new CComboboxNotas();
+        GradoArrayList = new ArrayList();
+        
+        try {
+            ResultSet rs = alumnosObj.CCargarGrado();
+            if (rs.next()) {
+                modeloGrado = new DefaultComboBoxModel<>();
+                modeloGrado.addElement("Elige una opcion");
+                do {                    
+                    GradoArrayList.add(rs.getInt("idgrado"));
+                    modeloGrado.addElement(rs.getString("grado"));
+                    cmbGrado.setModel(modeloGrado);
+                } while (rs.next());
+            } else{
+                JOptionPane.showMessageDialog(null, "No se pudo cargar los grados");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error critico, consultar al administrador");
+        }
+    }
+    
+//    final void CargarFases(){
+//        CComboboxNotas alumnosObj = new CComboboxNotas();
+//        PeriodoArrayList = new ArrayList();
+//        
+//        try {
+//            ResultSet rs = alumnosObj.CCargarFases();
+//            if (rs.next()) {
+//                modeloPeriodo = new DefaultComboBoxModel<>();
+//                modeloPeriodo.addElement("Elige una opcion");
+//                do {                    
+//                    PeriodoArrayList.add(rs.getInt("idfase"));
+//                    modeloPeriodo.addElement(rs.getString("fase"));
+//                    cmbPeriodo.setModel(modeloPeriodo);
+//                } while (rs.next());
+//            } else{
+//                JOptionPane.showMessageDialog(null, "No se pudo cargar las fases");
+//            }
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, "Error critico, consultar al administrador");
+//        }
+//    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,12 +188,11 @@ public class panGrades extends javax.swing.JPanel {
         tbPerfil = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbTipoPerfil = new javax.swing.JComboBox<>();
+        cmbGrado = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
         txtIdPerfil = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         panelRound1 = new customizeObjects.PanelRound();
@@ -126,6 +212,9 @@ public class panGrades extends javax.swing.JPanel {
         lblNota = new javax.swing.JLabel();
         dtInicio = new com.toedter.calendar.JDateChooser();
         dtCierre = new com.toedter.calendar.JDateChooser();
+        txtIdTipoPerfil = new javax.swing.JTextField();
+        txtGrado = new javax.swing.JTextField();
+        txtFase = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
 
@@ -164,27 +253,42 @@ public class panGrades extends javax.swing.JPanel {
         jLabel17.setForeground(new java.awt.Color(32, 32, 32));
         jLabel17.setText("Tipo de perfil:");
 
-        jLabel16.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel16.setText("Periodo:");
+        cmbTipoPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cotidianas", "Proyecto Formativo", "Recuperacion", " " }));
+        cmbTipoPerfil.setMinimumSize(new java.awt.Dimension(100, 30));
+        cmbTipoPerfil.setPreferredSize(new java.awt.Dimension(100, 30));
+        cmbTipoPerfil.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbTipoPerfilItemStateChanged(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setPreferredSize(new java.awt.Dimension(100, 30));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox3.setMinimumSize(new java.awt.Dimension(100, 30));
-        jComboBox3.setPreferredSize(new java.awt.Dimension(100, 30));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(100, 30));
+        cmbGrado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Septimo", "Octavo", "Noveno", "Primer Año", "Segundo Año", "Tercer Año", " " }));
+        cmbGrado.setPreferredSize(new java.awt.Dimension(100, 30));
+        cmbGrado.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbGradoItemStateChanged(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel15.setText("Materia:");
+        jLabel15.setText("Grado:");
 
         txtIdPerfil.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtIdPerfilKeyReleased(evt);
+            }
+        });
+
+        jButton1.setText("Buscar por filtro");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jButton1KeyReleased(evt);
             }
         });
 
@@ -195,19 +299,16 @@ public class panGrades extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbGrado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(40, 146, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                        .addComponent(txtIdPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -216,14 +317,13 @@ public class panGrades extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jLabel16)
                     .addComponent(jLabel17)
                     .addComponent(txtIdPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -333,40 +433,47 @@ public class panGrades extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                    .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addGap(29, 29, 29)
+                                                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel3))
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addGap(24, 24, 24)
+                                                .addComponent(jLabel9))
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel5))))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addComponent(jLabel1)
-                                            .addGap(29, 29, 29)
-                                            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel3))
+                                        .addComponent(jLabel6)
+                                        .addComponent(lblGrado)
+                                        .addComponent(jLabel11))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addGap(24, 24, 24)
-                                            .addComponent(jLabel9))
-                                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel5))))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(lblGrado)
-                                    .addComponent(jLabel11))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dtCierre, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13))
-                                .addGap(9, 9, 9))))
-                    .addComponent(dtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(dtCierre, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel13))
+                                    .addGap(9, 9, 9)))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(txtIdTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtFase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -405,7 +512,12 @@ public class panGrades extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(dtCierre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIdTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.EAST);
@@ -425,7 +537,7 @@ public class panGrades extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel10)
-                .addGap(0, 713, Short.MAX_VALUE))
+                .addGap(0, 737, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,6 +556,30 @@ public class panGrades extends javax.swing.JPanel {
          
     }//GEN-LAST:event_txtIdPerfilKeyReleased
 
+    final int BuscarTipoPerfilSeleccionado(int TipoPerfil){
+        int size = tipoPerfilArrayList.size();
+        int retorno = -1;
+        for(int i = 0; i < size; i++) {
+            int valor = (Integer) tipoPerfilArrayList.get(i);
+            if (valor == TipoPerfil) {
+                retorno = i;
+            }
+        }
+        return retorno;
+    }
+    
+    final int BuscarGradoSeleccionado(int Grado){
+        int size = GradoArrayList.size();
+        int retorno = -1;
+        for(int i = 0; i < size; i++) {
+            int valor = (Integer) GradoArrayList.get(i);
+            if (valor == Grado) {
+                retorno = i;
+            }
+        }
+        return retorno;
+    }
+    
     private void tbPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPerfilMouseClicked
         // TODO add your handling code here:
         
@@ -456,6 +592,10 @@ public class panGrades extends javax.swing.JPanel {
             lblNota.setText("" + rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
             lblTipoPerfil.setText("Tipo Perfil | : " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
             lblGrado.setText("Grado asignado: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 8).toString());
+            
+            txtIdTipoPerfil.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
+            txtGrado.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 8).toString());
+//            txtFase.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
             
             DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             try {
@@ -470,25 +610,103 @@ public class panGrades extends javax.swing.JPanel {
                 
             }
             
+            int idTipoPerfil = Integer.parseInt(txtIdTipoPerfil.getText());
+            int idGrado = Integer.parseInt(txtGrado.getText());
+            
+           int respuesta = BuscarTipoPerfilSeleccionado(idTipoPerfil);
+           int respuesta2 = BuscarGradoSeleccionado(idGrado);
+            
+            cmbTipoPerfil.setSelectedIndex(respuesta + 1);
+            cmbGrado.setSelectedIndex(respuesta2 + 1);
         }
         
         
         
     }//GEN-LAST:event_tbPerfilMouseClicked
 
+    private void cmbTipoPerfilItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTipoPerfilItemStateChanged
+        // TODO add your handling code here:
+        
+//        if (evt.getStateChange() == ItemEvent.SELECTED) {
+//            int pos = cmbTipoPerfil.getSelectedIndex();
+//            if (pos == 0) {
+//                idTipoPerfil = 0;
+//            } else {
+//                int dim = tipoPerfilArrayList.size();
+//                for (int i = 0; i < dim; i++) {
+//                    if (i == pos - 1) {
+//                        idTipoPerfil = (int) tipoPerfilArrayList.get(i);
+//                    }
+//                }
+//            }
+//            
+//        }
+        
+    }//GEN-LAST:event_cmbTipoPerfilItemStateChanged
+
+    private void cmbGradoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGradoItemStateChanged
+        // TODO add your handling code here:
+        
+//        if (evt.getStateChange() == ItemEvent.SELECTED) {
+//            int pos = cmbGrado.getSelectedIndex();
+//            if (pos == 0) {
+//                idGrado = 0;
+//            } else {
+//                int dim = GradoArrayList.size();
+//                for (int i = 0; i < dim; i++) {
+//                    if (i == pos - 1) {
+//                        idGrado = (int) GradoArrayList.get(i);
+//                    }
+//                }
+//            }
+//            
+//        }
+        
+    }//GEN-LAST:event_cmbGradoItemStateChanged
+
+    void buscarPerfil(){
+        String Item = (String) cmbTipoPerfil.getSelectedItem();
+        String param = (String) cmbGrado.getSelectedItem();
+        while (TablaPerfilmodelo.getRowCount() > 0) {
+            TablaPerfilmodelo.removeRow(0);
+        }
+        try {
+            ResultSet rs = buscar.SearchParam(Item, param);
+            while (rs.next()) {
+                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"), rs.getString("nota"),rs.getString("porcentajeValoracion"), 
+                    rs.getString("fechainicio"), rs.getString("fechavencimiento"), rs.getString("tipoperfil"), rs.getString("grado")};
+                TablaPerfilmodelo.addRow(oValores);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar el perfil, verifique su conexión de internet");
+        }
+        
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+       buscarPerfil();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1KeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbGrado;
+    private javax.swing.JComboBox<String> cmbTipoPerfil;
     private com.toedter.calendar.JDateChooser dtCierre;
     private com.toedter.calendar.JDateChooser dtInicio;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -510,6 +728,9 @@ public class panGrades extends javax.swing.JPanel {
     private customizeObjects.PanelRound panelRound3;
     private javax.swing.JTable tbPerfil;
     private javax.swing.JTextArea txtDescripcion;
+    private javax.swing.JTextField txtFase;
+    private javax.swing.JTextField txtGrado;
     private javax.swing.JTextField txtIdPerfil;
+    private javax.swing.JTextField txtIdTipoPerfil;
     // End of variables declaration//GEN-END:variables
 }

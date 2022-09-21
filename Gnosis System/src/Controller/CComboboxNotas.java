@@ -18,6 +18,12 @@ public class CComboboxNotas {
     MNotas modelNombrePerfil = new MNotas();
     MNotas modelGradoPerfil = new MNotas();
     
+    MNotas modelTipoPerfil = new MNotas();
+    MNotas modelGrado = new MNotas();
+    MNotas modelPeriodo = new MNotas();
+    MNotas modeloBusqueda = new MNotas();
+    
+    
     public ResultSet CCargarPerfiles(){
        return modeloPerfil.MCargarPefiles(con);
     }
@@ -38,6 +44,26 @@ public class CComboboxNotas {
     
     public ResultSet ObtenerGrado(int ID){
         return modelGradoPerfil.ObtenerId(ID, con);
+    }
+    
+    /*Combobox*/
+    
+    public ResultSet CCargarTipoPerfil(){
+       return modelTipoPerfil.MCargarTipoPerfil(con);
+    }
+    
+    public ResultSet CCargarGrado(){
+       return modelGrado.MCargarGrado(con);
+    }
+    
+    public ResultSet CCargarFases(){
+       return modelPeriodo.MCargarFase(con);
+    }
+    
+    /*Filtro*/
+    
+    public ResultSet SearchParam(String busca, String param){
+        return modeloBusqueda.BuscarPerfilParam(busca, param, con);
     }
     
 }
