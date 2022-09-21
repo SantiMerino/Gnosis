@@ -575,8 +575,8 @@ public class panGrades extends javax.swing.JPanel {
             lblNombre.setText("Nombre: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
             txtDescripcion.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 2).toString());
             lblNota.setText("" + rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
-            lblTipoPerfil.setText("Tipo Perfil | : " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
-            lblGrado.setText("Grado asignado: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 8).toString());
+            lblTipoPerfil.setText("Tipo Perfil | : " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 8).toString());
+            lblGrado.setText("Grado asignado: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 9).toString());
             
             String notas = ("" + rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
             String Estado = ("" + rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
@@ -603,9 +603,12 @@ public class panGrades extends javax.swing.JPanel {
                     custom.changeIconlbl(lblEstado, "/resources/key.png");
                     break;
                 default:
-                    
+                    custom.changeIconlbl(lblEstado, "/resources/check.png");
             }
             
+            
+           
+           
 //            txtIdTipoPerfil.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
 //            txtGrado.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 8).toString());
 //            txtFase.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
