@@ -698,3 +698,14 @@ SELECT * FROM viewBiblioteca WHERE idalumno = 1;
 
 Select * from viewTareas
 select * from viewPerfiles
+Select * from viewPortafolios
+
+USE dbGnosis;
+
+
+CREATE TRIGGER CrearPortafolios
+ON tbAlumnos
+AFTER INSERT
+AS 
+BEGIN
+DECLARE @idalumno
