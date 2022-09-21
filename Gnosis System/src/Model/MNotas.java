@@ -135,4 +135,70 @@ public class MNotas {
         }        
     }
     
+    public ResultSet Search(String dui, Connection con) {
+        try {
+            String query = "select * from tbDocentes where dui like(?) or nombres_docente like(?) or apellidos_docente like(?) or contacto like(?)";
+            ps = con.prepareStatement(query);
+            ps.setString(1, dui);
+            ps.setString(2, dui);
+            ps.setString(3, dui);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return  null;
+        }        
+    }
+    
+    /*Combobox*/
+    
+     public ResultSet MCargarTipoPerfil(Connection con){
+        try {
+            String query = "SELECT * FROM tbTipoPerfiles";
+            ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se cargo los tipos de perfiles: " + e.toString());
+            return null;
+        }
+    }
+     
+     public ResultSet MCargarGrado(Connection con){
+        try {
+            String query = "SELECT * FROM tbGrados";
+            ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se cargo los grados: " + e.toString());
+            return null;
+        }
+    }
+     
+     public ResultSet MCargarFase(Connection con){
+        try {
+            String query = "SELECT * FROM tbFases";
+            ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se cargo las fases: " + e.toString());
+            return null;
+        }
+    }
+     
+     /*Filtro*/
+     
+     public ResultSet BuscarPerfilParam(String busca, String param, Connection con){
+        //System.out.println(busca + " "+ param);
+        try {
+            String sentencia = "select * from viewPerfiles where tipoperfil like '"+busca+"%' and grado like '"+param+"%'";
+            ps = con.prepareStatement(sentencia);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar empleados" + e.toString(), "error de base de datos", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
 }
