@@ -68,7 +68,7 @@ public class MTeacher {
      
     
     /**
-     * Metedo en el Modelo Profesores de insercion de datos para registrar un docente.
+     * Metodo en el Modelo Profesores de insercion de datos para registrar un docente.
      * @param apellidosdocente
      * @param nombresdocente
      * @param direccion

@@ -877,6 +877,11 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
                 }
     }//GEN-LAST:event_txtBuscarKeyReleased
 
+    
+/**
+ * Method to save the teacher in the database
+ * @param evt 
+ */
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         validacionfecha();
