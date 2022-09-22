@@ -14,7 +14,13 @@ import javax.swing.JOptionPane;
  * @author santi
  */
 public class MLogin {
-      
+    
+    /**
+     * Metedo en el Modelo Login para iniciar sesion en el sistema.
+     * @param user
+     * @param clave
+     * @return 
+     */
     public static ResultSet InciarSesion (String user, String clave){
         int i = 0;
 //        JOptionPane.showMessageDialog(null, user);

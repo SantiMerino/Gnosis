@@ -69,6 +69,18 @@ public class MCalendar {
         }
     }
     
+    /**
+     * Metedo en el Modelo Calendario para registrar un evento.
+     * @param nombreevento
+     * @param fechaevento
+     * @param horainicioevento
+     * @param fechafinalevento
+     * @param horafinalizarevento
+     * @param idtipoevento
+     * @param idgrado
+     * @param idseccion
+     * @return 
+     */
     public boolean RegistrarEvento(String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado, int idseccion){
         try {
             Connection con = MConnection.getConnectionWithoutParameters();
@@ -96,6 +108,20 @@ public class MCalendar {
         }     
     }
  
+    /**
+     * Metodo en el Modelo Calendario para actualizar en evento.
+     * @param ID
+     * @param nombreevento
+     * @param fechaevento
+     * @param horainicioevento
+     * @param fechafinalevento
+     * @param horafinalizarevento
+     * @param idtipoevento
+     * @param idgrado
+     * @param idseccion
+     * @param con
+     * @return 
+     */
     public boolean ActualizarEventoModelo(int ID, String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado, int idseccion, Connection con){
         try {
             String query = "UPDATE tbEventos SET nombreevento = ?, fechaevento = ?, horainicioevento = ?, fechafinalevento = ?, horafinalizarevento = ?, idtipoevento = ?, idgrado = ?, idseccion = ?  WHERE idevento = ? ";
@@ -117,6 +143,12 @@ public class MCalendar {
         }
     }
   
+    /**
+     * Metedo en el Modelo Calendario para eliminar un evento.
+     * @param ID
+     * @param con
+     * @return 
+     */
     public boolean EliminarEventoModelo(int ID, Connection con){
         try {
             String query = "DELETE Eventos WHERE idevento = ?";

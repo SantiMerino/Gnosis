@@ -81,66 +81,101 @@ public class MEstudents {
         }
     }
     
+    /**
+     * Metedo en el Modelo Estudiantes para registrar el usuario del alumno.
+     * @param nivel
+     * @param correo
+     * @param idalumno
+     * @param clavedefault
+     * @param con
+     * @return 
+     */ 
+    public boolean RegistrarUsuarioAlumno(int nivel, String correo, int idalumno, String clavedefault, Connection con) {
+        int estadouser = 2;
+        int pindefault = 12345;
+        try {
+            String query = "EXEC crearUsuarioEstudiante ?, ?, ?, ?, ?, ?";
+            ps = con.prepareStatement(query);
+            ps.setEscapeProcessing(true);
+            ps.setInt(1, nivel);
+            ps.setString(2, correo);
+            ps.setString(3, clavedefault);
+            ps.setInt(4, pindefault);
+            ps.setInt(5, estadouser);
+            ps.setInt(6, idalumno);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error" + e.toString());
+            return false;
+        }
+    }
      
-     public boolean RegistrarUsuarioAlumno(int nivel, String correo,int idalumno , String clavedefault,Connection con){
-         int estadouser = 2;
-         int pindefault = 12345;
-         try {
-             String query = "EXEC crearUsuarioEstudiante ?, ?, ?, ?, ?, ?";
-             ps = con.prepareStatement(query);
-             ps.setEscapeProcessing(true);
-             ps.setInt(1, nivel);
-             ps.setString(2, correo);
-             ps.setString(3 , clavedefault);
-             ps.setInt(4, pindefault);
-             ps.setInt(5, estadouser);
-             ps.setInt(6,idalumno);
-             ResultSet rs = ps.executeQuery();
-             if (rs.next()) {
-                 return true;
-             }else{
-                 return false;
-             }
-         } catch (SQLException e) {
-             JOptionPane.showMessageDialog(null, "error" + e.toString());
-             return false;
-         }
-     }
-     
-     /*Insercion de datos*/
-     
-     public boolean RegistrarDocenteModel(String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, String codigocarnet,  Connection con) {
-         try {
-             String query = "INSERT INTO tbAlumnos VALUES (?,?,?,?,?,?,?,?,?,?)";
-             ps = con.prepareStatement(query);
-             ps.setString(1, ApellidosAlumno);
-             ps.setString(2, NombresAlumno);
-             ps.setInt(3, idgenero);
-             ps.setInt(4, idgrado);
-             ps.setString(5, correo);
-             ps.setString(6, direccion);
-             ps.setString(7, contacto);
-             ps.setString(8, dui);
-             ps.setString(9, fecha_nac);
+    /**
+     * Metedo en el Modelo Estudiantes para registrar un alumno.
+     * @param ApellidosAlumno
+     * @param NombresAlumno
+     * @param idgenero
+     * @param idgrado
+     * @param correo
+     * @param direccion
+     * @param contacto
+     * @param dui
+     * @param fecha_nac
+     * @param codigocarnet
+     * @param con
+     * @return 
+     */
+    public boolean RegistrarAlumnoModel(String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, String codigocarnet, Connection con) {
+        try {
+            String query = "INSERT INTO tbAlumnos VALUES (?,?,?,?,?,?,?,?,?,?)";
+            ps = con.prepareStatement(query);
+            ps.setString(1, ApellidosAlumno);
+            ps.setString(2, NombresAlumno);
+            ps.setInt(3, idgenero);
+            ps.setInt(4, idgrado);
+            ps.setString(5, correo);
+            ps.setString(6, direccion);
+            ps.setString(7, contacto);
+            ps.setString(8, dui);
+            ps.setString(9, fecha_nac);
 //             ps.setInt(10, idusuario);
-             ps.setString(10, codigocarnet);
-             if (ps.executeUpdate () == 1) {
-                 return true;
-             }else {
-                 return false;
-             }
- 
-             
-         } catch (SQLException e) {
+            ps.setString(10, codigocarnet);
+            if (ps.executeUpdate() == 1) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al ingresar los datos, verifique la conexion. " + e.toString());
             return false;
-        } catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro critico. " + ex.toString());
             return false;
         }
     }
      
-    /*Actualizacion*/ 
+    /**
+     * Metedo en el Modelo Estudiantes para actualizar un estudiante.
+     * @param ID
+     * @param ApellidosAlumno
+     * @param NombresAlumno
+     * @param idgenero
+     * @param idgrado
+     * @param correo
+     * @param direccion
+     * @param contacto
+     * @param dui
+     * @param fecha_nac
+     * @param codigocarnet
+     * @param con
+     * @return 
+     */ 
      public boolean ActualizarEstudianteModel(int ID, String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, String codigocarnet, Connection con){
          try {
 //             JOptionPane.showMessageDialog(null, idgenero);
@@ -165,23 +200,33 @@ public class MEstudents {
              return false;
          }
      }
+    
+     /**
+      * Metedo en el Modelo Estudiante para eliminar un estudiante.
+      * @param ID
+      * @param con
+      * @return 
+      */
+    public boolean EliminarEstudianteModel(int ID, Connection con) {
+        try {
+            String query = "DELETE tbAlumnos WHERE idAlumno = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, ID);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion");
+            return false;
+        }
+    }
      
-     /*Eliminacion de datos*/
-     public boolean EliminarEstudianteModel(int ID, Connection con){
-         try {
-             String query = "DELETE tbAlumnos WHERE idAlumno = ?";
-             ps = con.prepareStatement(query);
-             ps.setInt(1, ID);
-             ps.execute();
-             return true;
-         } catch (SQLException e) {
-             JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion");
-             return false;
-         }
-     }
-     
-     
-      public ResultSet SearchCrnt(String carnet, Connection con) {
+    /**
+     * Metedo en el Modelo Estudiantes para buscar un alumno mediante su codigo de carnet o su nombre.
+     * @param carnet
+     * @param con
+     * @return 
+     */
+    public ResultSet SearchCrnt(String carnet, Connection con) {
         try {
             String query = "select * from tbAlumnos where codigocarnet like(?) or nombres_alumno like(?) or apellidos_alumno like(?)";
             ps = con.prepareStatement(query);
@@ -191,8 +236,7 @@ public class MEstudents {
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {
-            return  null;
-        }        
-    }
-     
+            return null;
+        }
+    }  
 }

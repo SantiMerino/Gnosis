@@ -17,14 +17,12 @@ import javax.swing.JOptionPane;
 public class MNotas {
     PreparedStatement ps;
     
-    /*Llenado de combobox*/
-    
+    /*Llenado de combobox*/  
     /**
-     * Metodo para cargar perfiles desde el modelo
+     * Metodo en el Modulo Notas para cargar perfiles desde el modelo.
      * @param con
      * @return 
-     */
-    
+     */   
     public ResultSet MCargarPefiles(Connection con){
         try {
             String query = "SELECT * FROM tbPerfiles";
@@ -38,11 +36,10 @@ public class MNotas {
     }
     
     /**
-     * Metodo para cargar alumnos desde el modelo
+     * Metodo en el Modelo Notas para cargar alumnos desde el modelo.
      * @param con
      * @return 
-     */
-    
+     */    
     public ResultSet MCargarAlumnos(Connection con){
         try {
             String query = "SELECT * FROM tbAlumnos";
@@ -55,14 +52,12 @@ public class MNotas {
         }
     }
 
-    /*Mostrar Tabla*/
-    
+    /*Mostrar Tabla*/   
     /**
-     * Metodo para llenar la tabla con una consulta desde el modelo 
+     * Metodo en el Modelo Notas para llenar la tabla con una consulta desde el modelo.
      * @param con
      * @return 
-     */
-    
+     */    
     public ResultSet MCargarRegistrosNotas(Connection con){
         try {
             String query = "SELECT * FROM tbRegistroNotas";
@@ -76,14 +71,12 @@ public class MNotas {
     }
     
     /**
-     * Metodo en el modelo para el ingreso de datos a la base de datos
+     * Metodo en el Modelo Notas para el ingreso de una nota.
      * @param idperfil
      * @param idalumno
      * @param con
      * @return 
-     */
-    
-    /*Insercion de datos*/
+     */ 
     public boolean RegistrarRegistroNotas(int idperfil, int idalumno,Connection con){
          try {
              String query = "INSERT INTO tbRegistroNotas VALUES(?,?)";
@@ -106,7 +99,7 @@ public class MNotas {
     
     /*Actualizacion*/
     /**
-     * Metodo en el modelo para la actualizacion de datos 
+     * Metodo en el Modelo Notas para la actualizacion de una nota.
      * @param ID
      * @param idperfil
      * @param idalumno
@@ -130,12 +123,11 @@ public class MNotas {
     
     /*Eliminacion*/
     /**
-     * Metodo en el modelo para la eliminacion de registros 
+     * Metodo en el Modelo Notas para la eliminacion de una nota. 
      * @param ID
      * @param con
      * @return 
-     */
-    
+     */ 
     public boolean EliminarEstudianteModel(int ID, Connection con){
          try {
              String query = "DELETE tbAlumnos WHERE idnota = ?";
@@ -148,14 +140,13 @@ public class MNotas {
              return false;
          }
      }
-    
+   
     /**
-     * Metodo para la busqueda por nombre del perfil en el modelo
+     * Metodo en el Modelo Notas para la busqueda por nombre del perfil en el modelo.
      * @param ID
      * @param con
      * @return 
-     */
-    
+     */  
     public ResultSet SearchCrnt(int ID, Connection con) {
         try {
             String query = "SELECT nombreperfil FROM tbPerfiles WHERE idperfil = ?";
@@ -169,12 +160,11 @@ public class MNotas {
     }
     
     /**
-     * obtener nota mediante el id del perfil
+     * Metedo en el Modelo Notas para obtener una nota mediante el id del perfil.
      * @param ID
      * @param con
      * @return 
-     */
-    
+     */  
     public ResultSet ObtenerId(int ID, Connection con) {
         try {
             String query = "SELECT nota FROM tbPerfiles WHERE idperfil = ?";
@@ -186,12 +176,9 @@ public class MNotas {
             return  null;
         }        
     }
-    
-
-    
-    /*Combobox*/
-    
-     public ResultSet MCargarTipoPerfil(Connection con){
+     
+    /*Combobox*/    
+    public ResultSet MCargarTipoPerfil(Connection con) {
         try {
             String query = "SELECT * FROM tbTipoPerfiles";
             ps = con.prepareStatement(query);
@@ -202,8 +189,8 @@ public class MNotas {
             return null;
         }
     }
-     
-     public ResultSet MCargarGrado(Connection con){
+
+    public ResultSet MCargarGrado(Connection con) {
         try {
             String query = "SELECT * FROM tbGrados";
             ps = con.prepareStatement(query);
@@ -215,7 +202,7 @@ public class MNotas {
         }
     }
      
-     public ResultSet MCargarFase(Connection con){
+    public ResultSet MCargarFase(Connection con) {
         try {
             String query = "SELECT * FROM tbFases";
             ps = con.prepareStatement(query);
@@ -227,20 +214,19 @@ public class MNotas {
         }
     }
      
-     /*Filtro*/
-     
-     /**
-      * Metodo con la busqueda de registros mediante filtros
-      * @param busca
-      * @param param
-      * @param con
-      * @return 
-      */
-     
-     public ResultSet BuscarPerfilParam(String busca, String param, Connection con){
+    /*Filtro*/
+    /**
+     * Metodo en el Modelo Notas con la busqueda de registros mediante filtros
+     *
+     * @param busca
+     * @param param
+     * @param con
+     * @return
+     */
+    public ResultSet BuscarPerfilParam(String busca, String param, Connection con) {
         //System.out.println(busca + " "+ param);
         try {
-            String sentencia = "select * from viewPerfiles where tipoperfil like '"+busca+"%' and grado like '"+param+"%'";
+            String sentencia = "select * from viewPerfiles where tipoperfil like '" + busca + "%' and grado like '" + param + "%'";
             ps = con.prepareStatement(sentencia);
             ResultSet rs = ps.executeQuery();
             return rs;

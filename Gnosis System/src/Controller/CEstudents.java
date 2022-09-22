@@ -153,7 +153,7 @@ public class CEstudents {
     }
     
     public boolean AlumnoNuevoController(){
-        return mdlEstu.RegistrarDocenteModel(apellidosalumno, nombresalumno, idgenero, idgrado, correo, direccion, contacto, dui, fecha_nac, codigocarnet, con);
+        return mdlEstu.RegistrarAlumnoModel(apellidosalumno, nombresalumno, idgenero, idgrado, correo, direccion, contacto, dui, fecha_nac, codigocarnet, con);
     }
 
     public CEstudents(String apellidosalumno, String nombresalumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, int idusuario, String codigocarnet) {
@@ -189,8 +189,6 @@ public class CEstudents {
         this.codigocarnet = codigocarnet;
     }
     
-    
-    
     public boolean EliminarEstudiante() {
         return mdlEstu.EliminarEstudianteModel(ID, con);
     }
@@ -198,6 +196,4 @@ public class CEstudents {
     public CEstudents(int ID) {
         this.ID = ID;
     }
-    
-    
 }

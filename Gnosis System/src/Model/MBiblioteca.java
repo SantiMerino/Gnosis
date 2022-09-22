@@ -58,6 +58,16 @@ public class MBiblioteca {
         }
     }
     
+    /**
+     * Metedo en el Modelo Biblioteca para subir un recurso en la biblioteca.
+     * @param nombrerecurso
+     * @param idtiporecurso
+     * @param idclasificacion
+     * @param link
+     * @param pdf
+     * @param con
+     * @return 
+     */
     public boolean SubirBibliotecaModel(String nombrerecurso, int idtiporecurso, int idclasificacion, String link, String pdf, Connection con) {
         try {            
             String query = "INSERT INTO tbBiblioteca VALUES (?,?,?,?,?,?)";
@@ -82,6 +92,17 @@ public class MBiblioteca {
         }
     }
     
+    /**
+     * Metedo en el Modelo Biblioteca para actualizar un recurso en la biblioteca.
+     * @param ID
+     * @param nombrerecurso
+     * @param idtiporecurso
+     * @param idclasificacion
+     * @param link
+     * @param pdf
+     * @param con
+     * @return 
+     */
     public boolean ActualizarBibliotecasModel(int ID,String nombrerecurso, int idtiporecurso, int idclasificacion, String link, String pdf, Connection con){
         JOptionPane.showMessageDialog(null, idtiporecurso);
         JOptionPane.showMessageDialog(null, idclasificacion);
@@ -102,6 +123,12 @@ public class MBiblioteca {
         }
     }
     
+    /**
+     * Metedo en el Modelo Biblioteca para eliminar el recurso de la biblioteca.
+     * @param ID
+     * @param con
+     * @return 
+     */
     public boolean EliminarBibliotecasModel(int ID, Connection con) {
          
         try {
@@ -116,7 +143,13 @@ public class MBiblioteca {
         }        
     }
     
-     public ResultSet Search(String carnet, Connection con) {
+    /**
+     * Metodo en el Modelo Biblioteca para buscar un recurso mediante el nombre en la biblioteca.
+     * @param carnet
+     * @param con
+     * @return 
+     */
+    public ResultSet Search(String carnet, Connection con) {
         try {
             String query = "select * from tbBiblioteca where nombrerecurso like(?)";
             ps = con.prepareStatement(query);
@@ -124,8 +157,8 @@ public class MBiblioteca {
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {
-            return  null;
-        }        
+            return null;
+        }
     }
      
      

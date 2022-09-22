@@ -15,6 +15,16 @@ import javax.swing.JOptionPane;
  * @author santi
  */
 public class MConnection {
+    
+    /**
+     * Metedo en el Modelo Conexion para acceder a la base de datos con datos propios.
+     * @param IP
+     * @param port
+     * @param db
+     * @param user
+     * @param password
+     * @return 
+     */
     public static Connection getConnection(String IP, String port, String db, String user, String password){
         Connection con;
         try {
@@ -31,8 +41,11 @@ public class MConnection {
         }
     }
     
-    
-        public static Connection getConnectionWithoutParameters(){
+    /**
+     * Metedo en el Modelo Conexion para acceder a la base de datos sin parametros.
+     * @return 
+     */
+    public static Connection getConnectionWithoutParameters() {
         //Variable conexión y será la variable a retornar.
         Connection con;
         try {
@@ -48,7 +61,7 @@ public class MConnection {
             return con;
         } catch (Exception e) {
             //Mensaje de error en caso no se establezca correctamente una conexión
-            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos, E001   "+ e.toString());
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos, E001   " + e.toString());
             return null;
         }
     }

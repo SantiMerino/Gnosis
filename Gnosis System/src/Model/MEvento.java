@@ -180,7 +180,13 @@ public class MEvento {
         }
     }
     
-     public ResultSet Search(String carnet, Connection con) {
+    /**
+     * Metedo en el Modelo Evento para buscar un evento mediante su nombre o la fecha en la que se realiza.
+     * @param carnet
+     * @param con
+     * @return 
+     */
+    public ResultSet Search(String carnet, Connection con) {
         try {
             String query = "select * from tbEventos where nombreevento like(?) or fechaevento like(?)";
             ps = con.prepareStatement(query);
@@ -189,8 +195,7 @@ public class MEvento {
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {
-            return  null;
-        }        
-    }
-    
+            return null;
+        }
+    }  
 }
