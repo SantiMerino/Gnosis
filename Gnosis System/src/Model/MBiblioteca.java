@@ -174,4 +174,18 @@ public class MBiblioteca {
         }
     }
     
+    public ResultSet BuscarRecursos(String categoria, String orden){
+        try {
+            ResultSet rs;
+            Connection con = MConnection.getConnectionWithoutParameters();
+            String sentencia = "SELECT * FROM viewBiblioteca WHERE clasificacion = '"+categoria+"' order by = '"+orden+"'";
+            ps = con.prepareStatement(sentencia);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }
+    
 }

@@ -175,4 +175,9 @@ public class CBiblioteca {
     public ResultSet CargarRecursosVista(int id) {
         return mdlBibli.CargarRecursosVista(id, con);
     }
+    
+    public ResultSet CargarBusquedaFiltro(String categoria, String orden){
+        return mdlBibli.BuscarRecursos(categoria, orden);
+    }
+    
 }
