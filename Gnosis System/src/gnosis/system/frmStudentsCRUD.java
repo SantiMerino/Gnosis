@@ -82,6 +82,10 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         btnEliminar.setEnabled(false);
     }
     
+    /**
+     * Metodo para limpiar los campos en la vista
+     */
+    
     void LimpiarCampos(){
         txtNombres.setText("");
         txtApellidos.setText("");
@@ -100,6 +104,10 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         btnActualizar.setEnabled(false);
         btnEliminar.setEnabled(false);
     }
+    
+    /**
+     * Metodo para el llenado de la tabla con registros de la base de datos
+     */
     
      final void CargarTabla(){
         CComboboxEstudiantes docent = new CComboboxEstudiantes();
@@ -125,7 +133,11 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         CargarGrados();
     }
     
-    /*Llenado de combobox*/
+    
+    /**
+     * Metodos para llenar combobox con registros de la base de datos
+     */
+    
     final void CargarGeneros(){
         CComboboxEstudiantes estudiantesObj = new CComboboxEstudiantes();
         generoArrayList = new ArrayList();
@@ -590,6 +602,11 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Eventos para recoger id´s de los registros en los combobox
+     * @param evt 
+     */
+    
     private void cmbGeneroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGeneroItemStateChanged
         // TODO add your handling code here:
         if (evt.getStateChange() == ItemEvent.SELECTED) {
@@ -628,6 +645,11 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
 
     
     /*Llenar campos al sleccionar un registro*/
+    /**
+     * Metodo para buscar el id del registros seleccionado en el combobox
+     * @param Genero
+     * @return 
+     */
     
     final int BuscarGeneroSeleccionado(int Genero){
         int size = generoArrayList.size();
@@ -641,6 +663,12 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         return retorno;
     }
     
+    /**
+     * Metodo para buscar el id del registros seleccionado en el combobox
+     * @param Estado
+     * @return 
+     */
+    
     final int BuscarGradoSeleccionado(int Estado){
         int size = gradoArrayList.size();
         int retorno = -1;
@@ -653,6 +681,12 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         return retorno;
     }
     
+    /**
+     * Metodo para buscar el id del registros seleccionado en el combobox
+     * @param Usuario
+     * @return 
+     */
+    
     final int BuscarUsuarioSeleccionado(int Usuario){
         int size = usuarioArrayList.size();
         int retorno = -1;
@@ -664,6 +698,11 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         }
         return retorno;
     }
+    
+    /**
+     * evento para el llenado de campos con los datos del registro seleciconado al realizar doble click
+     * @param evt 
+     */
     
     private void tbEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEstudiantesMouseClicked
         // TODO add your handling code here:
@@ -713,6 +752,11 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tbEstudiantesMouseClicked
 
+    /**
+     * Validaciones en los campos
+     * @param evt 
+     */
+    
     private void txtNombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombresKeyTyped
         // TODO add your handling code here:
          int key = evt.getKeyChar();
@@ -777,6 +821,10 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombresActionPerformed
 
+    /**
+     * Metodo para validar que no se pueda ingresar una fecha mayor a la de hoy
+     */
+    
     void validacionfecha(){
         Date date = dtNacimiento.getDate();
                 c = new GregorianCalendar();
@@ -799,6 +847,11 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                     dtNacimiento.setDate(null);
         }
     }
+    
+    /**
+     * Guardado de datos en la base de datos
+     * @param evt 
+     */
     
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
@@ -835,6 +888,11 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
             }                                     
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    /**
+     * Eliminacion de registro en la base de datos
+     * @param evt 
+     */
+    
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
          if (txtId.getText().trim().isEmpty()) {
@@ -855,11 +913,21 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    /**
+     * Boton para limpiar campos
+     * @param evt 
+     */
+    
     private void buttonRound4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound4ActionPerformed
         // TODO add your handling code here:
         LimpiarCampos();
     }//GEN-LAST:event_buttonRound4ActionPerformed
 
+    /**
+     * Actualizacion de datos de registros
+     * @param evt 
+     */
+    
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
         
@@ -878,6 +946,11 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     Connection conn = CConnection.getConnectionControllerWithoutParameters();
+    
+    /**
+     * Busqueda de registros por buscador
+     * @param evt 
+     */
     
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
         // TODO add your handling code here:

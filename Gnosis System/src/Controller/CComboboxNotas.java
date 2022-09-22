@@ -23,10 +23,19 @@ public class CComboboxNotas {
     MNotas modelPeriodo = new MNotas();
     MNotas modeloBusqueda = new MNotas();
     
+    /**
+     * Metodo para cargar perfiles
+     * @return 
+     */
     
     public ResultSet CCargarPerfiles(){
        return modeloPerfil.MCargarPefiles(con);
     }
+    
+    /**
+     * Metodo para cargar alumnos 
+     * @return 
+     */
     
     public ResultSet CCargarAlumnos(){
         return modeloAlumno.MCargarAlumnos(con);
@@ -34,19 +43,40 @@ public class CComboboxNotas {
     
     /*Cargar tabla de registros*/
     
+    /**
+     * Metodo en el controllador para el llenado de la tabla con la vista
+     * @return 
+     */
+    
     public ResultSet CCargarRegistroNotas(){
         return modelRegistroNotas.MCargarRegistrosNotas(con);
     }
     
+    /**
+     * Metodo para la busqueda por nombre de perfil
+     * @param ID
+     * @return 
+     */
+    
     public ResultSet SearchCrnt(int ID){
         return modelNombrePerfil.SearchCrnt(ID, con);
     }
+    
+    /**
+     * Metodo para buscar perfiles por id
+     * @param ID
+     * @return 
+     */
     
     public ResultSet ObtenerGrado(int ID){
         return modelGradoPerfil.ObtenerId(ID, con);
     }
     
     /*Combobox*/
+    /**
+     * Metodos para el llenado de combobox con la vista
+     * @return 
+     */
     
     public ResultSet CCargarTipoPerfil(){
        return modelTipoPerfil.MCargarTipoPerfil(con);
@@ -61,6 +91,13 @@ public class CComboboxNotas {
     }
     
     /*Filtro*/
+    
+    /**
+     * Metodo en el controllador para la busqueda por filtro
+     * @param busca
+     * @param param
+     * @return 
+     */
     
     public ResultSet SearchParam(String busca, String param){
         return modeloBusqueda.BuscarPerfilParam(busca, param, con);
