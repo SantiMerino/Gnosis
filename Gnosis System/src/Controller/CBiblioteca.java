@@ -180,12 +180,12 @@ public class CBiblioteca {
         return mdlBibli.CargarRecursosVista(id, con);
     }
     
-    public ResultSet CargarBusquedaFiltro(String categoria){
-        return mdlBibli.BuscarRecursos(categoria);
+    public ResultSet CargarBusquedaFiltro(String categoria, int Id){
+        return mdlBibli.BuscarRecursos(categoria, Id, con);
     }
     
-    public ResultSet CargarBusquedaFiltroClas(String clasificacion){
-        return mdlBibli.BuscarRecursos(clasificacion);
+    public ResultSet CargarBusquedaFiltroClas(String clasificacion, int Id){
+        return mdlBibli.BuscarRecursosClas(clasificacion, Id,con);
     }
     
 }

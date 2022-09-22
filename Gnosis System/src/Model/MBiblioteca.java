@@ -174,12 +174,12 @@ public class MBiblioteca {
         }
     }
     
-    public ResultSet BuscarRecursos(String categoria){
+    public ResultSet BuscarRecursos(String categoria, int Id, Connection con){
         try {
             ResultSet rs;
-            Connection con = MConnection.getConnectionWithoutParameters();
-            String sentencia = "SELECT * FROM viewBiblioteca WHERE tiporecurso LIKE '"+categoria+"%'";
+            String sentencia = "SELECT * FROM viewBiblioteca WHERE tiporecurso LIKE '"+categoria+"%' AND idalumno = ?";
             ps = con.prepareStatement(sentencia);
+            ps.setInt(1, Id);
             rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {
@@ -188,12 +188,12 @@ public class MBiblioteca {
         }
     }
     
-    public ResultSet BuscarRecursosClas(String clasificacion){
+    public ResultSet BuscarRecursosClas(String clasificacion, int Id,Connection con){
         try {
             ResultSet rs;
-            Connection con = MConnection.getConnectionWithoutParameters();
-            String sentencia = "SELECT * FROM viewBiblioteca WHERE clasificacion LIKE '"+clasificacion+"%'";
+            String sentencia = "SELECT * FROM viewBiblioteca WHERE clasificacion LIKE '"+clasificacion+"%' AND idalumno = ?";
             ps = con.prepareStatement(sentencia);
+            ps.setInt(1, Id);
             rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {

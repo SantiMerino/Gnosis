@@ -36,9 +36,12 @@ public class panBiblioteca extends javax.swing.JPanel {
     }
     
      final void CargarRecursosFiltro(){
+        mainPanel.removeAll();
+        mainPanel.revalidate();
+        mainPanel.repaint();
         String categoria = (String) cmbOrden.getSelectedItem();
         CBiblioteca controlador = new CBiblioteca();
-        ResultSet datosrecursos = controlador.CargarBusquedaFiltro(categoria);
+        ResultSet datosrecursos = controlador.CargarBusquedaFiltro(categoria, idAlumno);
         try {
             while (datosrecursos.next()) {                
                  custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel, datosrecursos.getString(4));                
@@ -49,9 +52,12 @@ public class panBiblioteca extends javax.swing.JPanel {
     }
     
      final void CargarRecursosFiltroClas(){
+        mainPanel.removeAll();
+        mainPanel.revalidate();
+        mainPanel.repaint();
         String categoria = (String) cmbCategoria.getSelectedItem();
         CBiblioteca controlador = new CBiblioteca();
-        ResultSet datosrecursos = controlador.CargarBusquedaFiltroClas(categoria);
+        ResultSet datosrecursos = controlador.CargarBusquedaFiltroClas(categoria, idAlumno);
         try {
             while (datosrecursos.next()) {                
                  custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel, datosrecursos.getString(4));                
