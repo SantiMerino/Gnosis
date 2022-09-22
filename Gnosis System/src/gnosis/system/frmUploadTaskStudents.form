@@ -54,7 +54,7 @@
                           <Component id="lblnombreTarea" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="btnLink" alignment="0" pref="283" max="32767" attributes="0"/>
-                      <Component id="buttonRound1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnSubirPDF" alignment="0" max="32767" attributes="0"/>
                       <Component id="lblMateriaModulo" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblEstado" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblDocente" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -156,7 +156,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonRound1" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btnSubirPDF" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lblArchivo64" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -188,7 +188,7 @@
             <Property name="text" type="java.lang.String" value="Estado :"/>
           </Properties>
         </Component>
-        <Component class="customizeObjects.ButtonRound" name="buttonRound1">
+        <Component class="customizeObjects.ButtonRound" name="btnSubirPDF">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/send-square.png"/>
@@ -199,7 +199,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRound1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubirPDFActionPerformed"/>
           </Events>
         </Component>
         <Component class="customizeObjects.ButtonRound" name="btnLink">
@@ -471,7 +471,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="20" green="20" red="20" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
         </Component>
       </SubComponents>

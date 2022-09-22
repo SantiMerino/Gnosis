@@ -576,7 +576,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         }else if(CmbTipoRecurso.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Seleccione un tipo recurso", "Campos vacios", JOptionPane.WARNING_MESSAGE);
         } else {
-            CBiblioteca objBiblioteca = new CBiblioteca(txtNombreRecurso.getText(), idTipoRecurso, idclasificacion, txtLink.getText(), pdf);
+            CBiblioteca objBiblioteca = new CBiblioteca(txtNombreRecurso.getText(), idTipoRecurso, idclasificacion, lblLink.getText(), pdf);
             boolean respuesta = objBiblioteca.BibliotecaNuevaResultSet();
             if (respuesta == true) {
                 JOptionPane.showMessageDialog(this, "Biblioteca ingresada correctamente");
@@ -590,7 +590,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
     private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
         // TODO add your handling code here:
-        CBiblioteca objUpdate = new CBiblioteca(Integer.parseInt(txtId.getText()), txtNombreRecurso.getText(), idTipoRecurso, idclasificacion, txtLink.getText(), pdf);
+        CBiblioteca objUpdate = new CBiblioteca(Integer.parseInt(txtId.getText()), txtNombreRecurso.getText(), idTipoRecurso, idclasificacion, lblLink.getText(), pdf);
         boolean valor = objUpdate.ActualizarBiblioteca();
         if (valor == true) {
             JOptionPane.showMessageDialog(this, "Biblioteca actualizada correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);

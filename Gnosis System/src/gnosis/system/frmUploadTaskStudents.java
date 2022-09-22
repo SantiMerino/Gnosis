@@ -50,6 +50,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     public frmUploadTaskStudents(int id) {
         initComponents();
         lblArchivo64.setVisible(false);
+        lblLinkStore.setVisible(false);
         lblRubrica64.setVisible(false);
         CargarDatos(id);
         if (lblRubrica64.getText() == " ") {
@@ -134,7 +135,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
 
         panelPrincipal = new customizeObjects.PanelRound();
         lblEstado = new javax.swing.JLabel();
-        buttonRound1 = new customizeObjects.ButtonRound();
+        btnSubirPDF = new customizeObjects.ButtonRound();
         btnLink = new customizeObjects.ButtonRound();
         txtNota = new javax.swing.JTextField();
         panelRound2 = new customizeObjects.PanelRound();
@@ -173,12 +174,12 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         lblEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/medal-estateprofile.png"))); // NOI18N
         lblEstado.setText("Estado :");
 
-        buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/send-square.png"))); // NOI18N
-        buttonRound1.setRound(20);
-        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
-        buttonRound1.addActionListener(new java.awt.event.ActionListener() {
+        btnSubirPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/send-square.png"))); // NOI18N
+        btnSubirPDF.setRound(20);
+        btnSubirPDF.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        btnSubirPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRound1ActionPerformed(evt);
+                btnSubirPDFActionPerformed(evt);
             }
         });
 
@@ -307,7 +308,6 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         lblLinkStore.setText("jLabel14");
 
         lblRubrica64.setForeground(new java.awt.Color(32, 32, 32));
-        lblRubrica64.setText("jLabel2");
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
@@ -323,7 +323,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lblnombreTarea))
                     .addComponent(btnLink, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                    .addComponent(buttonRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSubirPDF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblMateriaModulo)
                     .addComponent(lblEstado)
                     .addComponent(lblDocente)
@@ -404,7 +404,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSubirPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lblArchivo64)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -425,15 +425,37 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarTareaActionPerformed
 
-    private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
+    private void btnSubirPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirPDFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonRound1ActionPerformed
+        JFileChooser browseImageFile = new JFileChooser();        //Filter image extensions
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter(".PDF", ".pdf");
+        browseImageFile.addChoosableFileFilter(fnef);
+        int num = browseImageFile.showOpenDialog(null);
+
+        if (num == JFileChooser.APPROVE_OPTION) {
+            File selectedImageFile = browseImageFile.getSelectedFile();
+            String selectedImagePath = selectedImageFile.getAbsolutePath();
+            byte[] inFileBytes;
+            try {
+                inFileBytes = Files.readAllBytes(Paths.get(selectedImagePath));
+                byte[] encoded = java.util.Base64.getEncoder().encode(inFileBytes);
+                pdf = Base64.getEncoder().encodeToString(inFileBytes);
+//                decodePdf();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Cagaste");
+            }
+
+            lblArchivo64.setText(pdf);
+            btnSubirPDF.setStyle(ButtonRound.ButtonStyle.ROJO);
+        }
+    }//GEN-LAST:event_btnSubirPDFActionPerformed
 
     
     private void btnLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLinkActionPerformed
         // TODO add your handling code here:
         link = JOptionPane.showInputDialog("Ingresa el link: ", "www.link.com");
         lblLinkStore.setText(link);
+        btnLink.setStyle(ButtonRound.ButtonStyle.SOCIALES);
     }//GEN-LAST:event_btnLinkActionPerformed
 
     private void btnSubirTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirTareaActionPerformed
@@ -450,24 +472,11 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No se pudo descargar la rubrica");
         }
     }//GEN-LAST:event_btnDescargarRubricaActionPerformed
-
-    void SeleccionarRutaArchivo(){
-        JFileChooser j = new JFileChooser();
-//        FileNameExtensionFilter fi = new FileNameExtensionFilter("pdf","pdf"); 
-//        j.setFileFilter(fi);
-        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        j.setAcceptAllFileFilterUsed(false);
-        int se = j.showOpenDialog(this);
-        if (se == 0) {
-            rutadescarga = j.getSelectedFile().getAbsolutePath();
-            System.out.println(rutadescarga);
-        }
-    }
     
     private void DescargarRubrica() throws IOException {
         byte[] decoded = java.util.Base64.getDecoder().decode(pdf);
         String home = System.getProperty("user.home");
-        String fileName = "SoyPaloma.pdf";
+        String fileName = "Rubrica " + lblnombreTarea.getText() + ".pdf";
         File rutaFile = new File(home + "/Downloads/" + fileName);
         FileOutputStream fos = new FileOutputStream(rutaFile);
         fos.write(decoded);
@@ -511,8 +520,8 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     private customizeObjects.ButtonRound btnEliminarTarea;
     private customizeObjects.ButtonRound btnLink;
     private customizeObjects.ButtonRound btnModificar;
+    private customizeObjects.ButtonRound btnSubirPDF;
     private customizeObjects.ButtonRound btnSubirTarea;
-    private customizeObjects.ButtonRound buttonRound1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
