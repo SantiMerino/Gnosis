@@ -80,7 +80,7 @@ public class MRecuperacionContra {
             if (rs.next()) {
                 return rs;
             }else{
-                JOptionPane.showMessageDialog(null, "nose que esta mal jij");
+                JOptionPane.showMessageDialog(null, "Error al comprobar");
                 return null;
             }
         } catch (Exception e) {
