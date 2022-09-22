@@ -740,7 +740,7 @@ drop view viewPerfiles;
 go
 
 CREATE VIEW viewPerfiles
-AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.nota, a.porcentajeValoracion, a.fechainicio, a.fechavencimiento, d.estadoperfil, b.tipoperfil, c.grado
+AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.porcentajeValoracion, a.fechainicio, a.fechavencimiento, d.estadoperfil, b.tipoperfil, c.grado
 FROM tbPerfiles a, tbTipoPerfiles b, tbGrados c, tbEstadoPerfiles d
 WHERE a.idtipoperfil = b.idtipoperfil AND a.idgrados = c.idgrado AND a.idestadoperfil = d.idestadoperfil; 
 Go

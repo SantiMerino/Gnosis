@@ -36,7 +36,7 @@ public class panBiblioteca extends javax.swing.JPanel {
     }
     
      final void CargarRecursosFiltro(){
-         String categoria = (String) cmbCategoria.getSelectedItem();
+        String categoria = (String) cmbCategoria.getSelectedItem();
         String orden = (String) cmbOrden.getSelectedItem();
         CBiblioteca controlador = new CBiblioteca();
         ResultSet datosrecursos = controlador.CargarBusquedaFiltro(categoria, orden);
@@ -102,7 +102,7 @@ public class panBiblioteca extends javax.swing.JPanel {
 
         jPanel5.setBackground(java.awt.Color.white);
         jPanel5.setPreferredSize(new java.awt.Dimension(600, 100));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(2, 10, 10);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 10);
         flowLayout1.setAlignOnBaseline(true);
         jPanel5.setLayout(flowLayout1);
 
@@ -116,6 +116,16 @@ public class panBiblioteca extends javax.swing.JPanel {
         cmbOrden.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         cmbOrden.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PDF", "Link" }));
         cmbOrden.setPreferredSize(new java.awt.Dimension(100, 30));
+        cmbOrden.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbOrdenItemStateChanged(evt);
+            }
+        });
+        cmbOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbOrdenActionPerformed(evt);
+            }
+        });
         jPanel5.add(cmbOrden);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -152,7 +162,7 @@ public class panBiblioteca extends javax.swing.JPanel {
 
         mainPanel.setBackground(java.awt.Color.white);
         mainPanel.setPreferredSize(new java.awt.Dimension(900, 950));
-        mainPanel.setLayout(new java.awt.FlowLayout(0));
+        mainPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
         jScrollPane1.setViewportView(mainPanel);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -165,10 +175,10 @@ public class panBiblioteca extends javax.swing.JPanel {
                 JOptionPane.INFORMATION_MESSAGE);
          
          switch (resp) {
-            case 0:
+            case JOptionPane.OK_OPTION:
                  new frmBiblioteca().setVisible(true);
                 break;
-            case 1:
+            case JOptionPane.CANCEL_OPTION:
                 CargarRecursosFiltro();
                 break;
             default:
@@ -176,6 +186,14 @@ public class panBiblioteca extends javax.swing.JPanel {
         }
          
     }//GEN-LAST:event_buttonRound1ActionPerformed
+
+    private void cmbOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrdenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbOrdenActionPerformed
+
+    private void cmbOrdenItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbOrdenItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbOrdenItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
