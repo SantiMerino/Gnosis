@@ -198,4 +198,33 @@ public class MEvento {
             return null;
         }
     }  
+    
+    public ResultSet BuscarFechasRango(String buscar1, String Buscar2){
+        try {
+            ResultSet rs;
+            Connection con = MConnection.getConnectionWithoutParameters();
+            String sentencia = "SELECT * FROM viewEventos WHERE fechaevento BETWEEN '"+buscar1+"' AND '"+Buscar2+"' OR fechafinalevento BETWEEN '"+buscar1+"' AND '"+Buscar2+"'";
+            ps = con.prepareStatement(sentencia);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }
+    
+    public ResultSet BuscarFechasUnRango(String buscar1){
+        try {
+            ResultSet rs;
+            Connection con = MConnection.getConnectionWithoutParameters();
+            String sentencia = "SELECT * FROM viewEventos WHERE fechaevento = '"+buscar1+"' AND fechafinalevento = '"+buscar1+"'";
+            ps = con.prepareStatement(sentencia);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }
+    
 }

@@ -150,4 +150,20 @@ public class CEvento {
     public ResultSet ConsultarEvento(String fechain, String fechafin){
         return mdlEvento.ConsultarEventosSeleccionadas(fechain, fechafin);
     }
+    
+    /**
+     * Metodo para buscar rangos de fechas
+     * @param Fecha1
+     * @param Fecha2
+     * @return 
+     */
+    
+    public ResultSet ConsultarEventoRango(String Fecha1, String Fecha2){
+        return  mdlEvento.BuscarFechasRango(Fecha1, Fecha2);
+    }
+    
+    public ResultSet ConsultarFechaUnSoloRango(String Fecha1){
+        return  mdlEvento.BuscarFechasUnRango(Fecha1);
+    }
+    
 }
