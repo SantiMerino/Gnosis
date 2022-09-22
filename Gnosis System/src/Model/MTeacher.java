@@ -98,7 +98,7 @@ public class MTeacher {
             ps.setInt(8, idgenero);
             ps.setString(9, contacto);
 //            ps.setInt(10, idusuario);
-            if (ps.executeUpdate () == 1) {
+            if (ps.executeUpdate() == 1) {
                 return true;
             }else {
                 return false;

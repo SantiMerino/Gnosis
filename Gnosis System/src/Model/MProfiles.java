@@ -149,7 +149,7 @@ public class MProfiles {
              ps.execute();
              return true;
         } catch (SQLException e) {
-             JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion");
+             JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion" + e.toString());
              return false;
         }        
     }

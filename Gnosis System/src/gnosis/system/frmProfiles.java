@@ -187,7 +187,7 @@ public class frmProfiles extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtGrado = new javax.swing.JTextField();
         btnSubir = new customizeObjects.ButtonRound();
         btnModificar = new customizeObjects.ButtonRound();
         btnEliminar = new customizeObjects.ButtonRound();
@@ -249,17 +249,33 @@ public class frmProfiles extends javax.swing.JFrame {
         jTextField2.setEditable(false);
         jTextField2.setToolTipText("");
 
-        jTextField3.setEditable(false);
-        jTextField3.setToolTipText("");
+        txtGrado.setEditable(false);
+        txtGrado.setText("1");
+        txtGrado.setToolTipText("");
 
         btnSubir.setText("Agregar Perfil");
         btnSubir.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
+        btnSubir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirActionPerformed(evt);
+            }
+        });
 
         btnModificar.setText("Modificar Perfil");
         btnModificar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar Perfil");
         btnEliminar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -292,9 +308,7 @@ public class frmProfiles extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jTextField2)
                     .addComponent(jTextField1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(52, 52, 52))
+                    .addComponent(jLabel7)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -310,7 +324,7 @@ public class frmProfiles extends javax.swing.JFrame {
                                 .addComponent(txtPonderacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnSubir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(44, 44, 44))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane2)
@@ -333,7 +347,7 @@ public class frmProfiles extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addGap(0, 0, 0)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(7, 7, 7)
@@ -352,6 +366,7 @@ public class frmProfiles extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
+                        .addGap(0, 0, 0)
                         .addComponent(dtVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
@@ -409,6 +424,8 @@ public class frmProfiles extends javax.swing.JFrame {
     
     private void JTPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTPerfilMouseClicked
         // TODO add your handling code here:
+        btnModificar.setEnabled(true);
+        btnEliminar.setEnabled(true);
         if (evt.getClickCount() == 1) {
             JTable rcp = (JTable) evt.getSource();
             txtId.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
@@ -418,6 +435,7 @@ public class frmProfiles extends javax.swing.JFrame {
             String tipoperfil = (rcp.getModel().getValueAt(rcp.getSelectedRow(), 6).toString());
             String grado = (rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
 
+            txtGrado.setText(grado);
             DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             try {
                 dtInicio.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString()));
@@ -588,8 +606,8 @@ public class frmProfiles extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextArea txtDescripcion;
+    private javax.swing.JTextField txtGrado;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPonderacion;

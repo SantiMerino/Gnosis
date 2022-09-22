@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * This java class is for all the methods for tasks managment
  * @author santi
  */
 public class MTasks {
