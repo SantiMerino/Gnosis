@@ -66,7 +66,21 @@ public class MTeacher {
         }
     }
      
-    /*Inserción de datos*/
+    
+    /**
+     * Metedo en el Modelo Profesores de insercion de datos para registrar un docente.
+     * @param apellidosdocente
+     * @param nombresdocente
+     * @param direccion
+     * @param dui
+     * @param correo
+     * @param fecha_nac
+     * @param idgrado
+     * @param idgenero
+     * @param contacto
+     * @param con
+     * @return 
+     */
     public boolean RegistrarDocenteModel(String apellidosdocente, String nombresdocente, String direccion, String dui, 
             String correo, 
             String fecha_nac, int idgrado, int idgenero, String contacto, Connection con) {
@@ -98,11 +112,25 @@ public class MTeacher {
         }
     }
      
-     /*Actualizacion de datos*/
-     public boolean ActualizarDocenteModel(int ID, String apellidosdocente, String nombresdocente, String direccion, String dui, 
-            String correo, 
-            String fecha_nac, int idgrado, int idgenero, String contacto, Connection con){
-         try {
+    /**
+     * Metodo en el Modelo Profesores de actualizacion docentes.
+     * @param ID
+     * @param apellidosdocente
+     * @param nombresdocente
+     * @param direccion
+     * @param dui
+     * @param correo
+     * @param fecha_nac
+     * @param idgrado
+     * @param idgenero
+     * @param contacto
+     * @param con
+     * @return 
+     */
+    public boolean ActualizarDocenteModel(int ID, String apellidosdocente, String nombresdocente, String direccion, String dui,
+            String correo,
+            String fecha_nac, int idgrado, int idgenero, String contacto, Connection con) {
+        try {
             String query = "UPDATE tbDocentes SET apellidos_docente = ?, nombres_docente = ?, direccion = ?, dui = ?, correo = ?, fecha_nac = ?, idgrado = ?, idgenero = ?, contacto = ? WHERE iddocente = ?";
             ps = con.prepareStatement(query);
             ps.setString(1, apellidosdocente);
@@ -122,12 +150,16 @@ public class MTeacher {
             JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar el registro" + e.toString());
             return false;
         }
-     }
-     
-     /*Eliminacion de datos*/
-     
-     public boolean EliminarDocenteModel(int ID, Connection con) {
-         
+    }
+
+    /**
+     * Metedo en el Modelo Profesores de eliminacion de un docente.
+     * @param ID
+     * @param con
+     * @return 
+     */ 
+    public boolean EliminarDocenteModel(int ID, Connection con) {
+
         try {
             String query = "DELETE tbDocentes WHERE idDocente = ?";
             ps = con.prepareStatement(query);
@@ -137,10 +169,16 @@ public class MTeacher {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion");
             return false;
-        }        
-     } 
-     
-     public ResultSet Search(String dui, Connection con) {
+        }
+    }
+    
+    /**
+     * Metodo en el Modelo Profesores de busqueda de un docente por su DUI, su nombre, su apellido o su contacto
+     * @param dui
+     * @param con
+     * @return 
+     */
+    public ResultSet Search(String dui, Connection con) {
         try {
             String query = "select * from tbDocentes where dui like(?) or nombres_docente like(?) or apellidos_docente like(?) or contacto like(?)";
             ps = con.prepareStatement(query);
@@ -151,8 +189,8 @@ public class MTeacher {
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {
-            return  null;
-        }        
+            return null;
+        }
     }
      
 }

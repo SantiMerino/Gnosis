@@ -83,8 +83,6 @@ public class MTasks {
     }
     
     
-    
-    
     public ResultSet mostrarTareas(Connection con){
         try {
             String query = "SELECT * FROM tbTareas";
@@ -97,6 +95,17 @@ public class MTasks {
         }
     }
     
+    /**
+     * Metedo en el Modelo Tareas para subir tareas asignadas a un perfil.
+     * @param nombretarea
+     * @param fechainicio
+     * @param fechavencimiento
+     * @param idperfil
+     * @param rubrica
+     * @param idtipotarea
+     * @param con
+     * @return 
+     */
     public boolean SubirTareasModel(String nombretarea, String fechainicio, String fechavencimiento, int idperfil, String rubrica, int idtipotarea, Connection con) {
         try {            
             String query = "INSERT INTO tbTareas VALUES (?,?,?,?,?,?)";
@@ -121,6 +130,18 @@ public class MTasks {
         }
     }
     
+    /**
+     * Metedo en el Modelo Tareas para actualizar las tareas.
+     * @param ID
+     * @param nombretarea
+     * @param fechadeinicio
+     * @param fechavencimiento
+     * @param idperfil
+     * @param rubrica
+     * @param idtipotarea
+     * @param con
+     * @return 
+     */
     public boolean ActualizarTareasModel(int ID, String nombretarea, String fechadeinicio, String fechavencimiento, int idperfil, String rubrica, int idtipotarea, Connection con){
         try {
             String query = "UPDATE tbTareas SET nombretarea = ?, fechadeinicio = ?, fechavencimiento = ?, idperfil = ?, rubrica = ?, idtipotarea = ? WHERE idtarea = ?";
@@ -140,6 +161,12 @@ public class MTasks {
         }
     }
     
+    /**
+     * Metodo en el Modelo Tareas para eliminar tareas
+     * @param ID
+     * @param con
+     * @return 
+     */
     public boolean EliminarTareaModel(int ID, Connection con) {
          
         try {

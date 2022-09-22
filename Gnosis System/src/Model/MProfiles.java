@@ -57,6 +57,17 @@ public class MProfiles {
         }
     }
     
+    /**
+     * Metedo de el Modelo Perfiles para subir perfiles.
+     * @param nombre
+     * @param descripcion
+     * @param porcentajedevaloracion
+     * @param fechadeinicio
+     * @param fechadevencimiento
+     * @param tipoperfil
+     * @param con
+     * @return 
+     */
     public boolean SubirPerfilesModel(String nombre, String descripcion, String porcentajedevaloracion, String fechadeinicio, String fechadevencimiento, int tipoperfil, Connection con) {
         double nota = 7.5;
         int idestadoperfil = 1;
@@ -91,6 +102,19 @@ public class MProfiles {
         }
     }
     
+    /**
+     * Metodo de el Modelo Perfiles para actualizar los perfiles.
+     * @param ID
+     * @param nombre
+     * @param descripcion
+     * @param porcentajedevaloracion
+     * @param fechadeinicio
+     * @param fechadevencimiento
+     * @param tipoperfil
+     * @param grado
+     * @param con
+     * @return 
+     */
     public boolean ActualizarProfilesModel(int ID, String nombre, String descripcion, String porcentajedevaloracion, String fechadeinicio, String fechadevencimiento, int tipoperfil,int grado, Connection con){
          try {
             String query = "UPDATE tbPerfiles SET nombreperfil = ?, descripcion = ?, porcentajeValoracion = ?, fechainicio = ?, fechavencimiento = ?, idtipoperfil = ?, idgrados = ? WHERE idperfil = ?";
@@ -111,6 +135,12 @@ public class MProfiles {
         }
     }
     
+    /**
+     * Metodo en el Modelo Perfiles para eliminar perfiles.
+     * @param ID
+     * @param con
+     * @return 
+     */
     public boolean EliminarProfileModel(int ID, Connection con) {     
         try {
              String query = "DELETE tbPerfiles WHERE idperfil = ?";
