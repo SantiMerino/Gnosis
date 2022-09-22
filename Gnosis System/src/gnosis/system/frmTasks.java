@@ -11,12 +11,18 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Insets;
 import java.awt.event.ItemEvent;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -46,7 +52,7 @@ public class frmTasks extends javax.swing.JFrame {
     private int idTipoTarea = 0;
     private Calendar Cal1;
     private Calendar Cal2;
-    private String ruta_archivo = " ";
+    private String pdf;
     
     /**
      * Creates new form frmTasks
@@ -107,14 +113,35 @@ public class frmTasks extends javax.swing.JFrame {
     }
     
     public void seleccionar_pdf(){
-        JFileChooser j = new JFileChooser();
-        FileNameExtensionFilter fi = new FileNameExtensionFilter("pdf","pdf"); 
-        j.setFileFilter(fi);
-        int se = j.showOpenDialog(this);
-        if (se == 0) {
-            this.BtnSeleccionar.setText("" + j.getSelectedFile().getName());
-            ruta_archivo = j.getSelectedFile().getAbsolutePath();
+JFileChooser browseImageFile = new JFileChooser();        //Filter image extensions
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("PDF", "pdf");
+        browseImageFile.addChoosableFileFilter(fnef);
+        int num = browseImageFile.showOpenDialog(null);
+
+        if (num == JFileChooser.APPROVE_OPTION) {
+            File selectedImageFile = browseImageFile.getSelectedFile();
+            String selectedImagePath = selectedImageFile.getAbsolutePath();
+            byte[] inFileBytes;
+            try {
+                inFileBytes = Files.readAllBytes(Paths.get(selectedImagePath));
+                byte[] encoded = java.util.Base64.getEncoder().encode(inFileBytes);
+                pdf = Base64.getEncoder().encodeToString(inFileBytes);
+                decodePdf();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Cagaste");
+            }
+
+            lblarchivo64.setText(pdf);
         }
+    }
+    
+    private void decodePdf() throws IOException {
+        byte[] decoded = java.util.Base64.getDecoder().decode(pdf);
+
+        FileOutputStream fos = new FileOutputStream("Archivo.pdf");
+        fos.write(decoded);
+        fos.flush();
+        fos.close();
     }
     
     final void CargarCmbTipoPerfil(){
@@ -212,11 +239,12 @@ public class frmTasks extends javax.swing.JFrame {
         btnSubir = new customizeObjects.ButtonRound();
         btnEliminar = new customizeObjects.ButtonRound();
         BtnSeleccionar = new customizeObjects.ButtonRound();
-        buttonRound1 = new customizeObjects.ButtonRound();
         jLabel3 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
+        lblarchivo64 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setPreferredSize(new java.awt.Dimension(130, 40));
@@ -244,7 +272,7 @@ public class frmTasks extends javax.swing.JFrame {
                 txtNombreKeyTyped(evt);
             }
         });
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 252, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 510, 30));
 
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(32, 32, 32));
@@ -266,29 +294,33 @@ public class frmTasks extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(32, 32, 32));
         jLabel9.setText("Perfil vinculado:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
         CmbTipoPerfil.setBackground(new java.awt.Color(210, 210, 210));
+        CmbTipoPerfil.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         CmbTipoPerfil.setForeground(new java.awt.Color(32, 32, 32));
         CmbTipoPerfil.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CmbTipoPerfilItemStateChanged(evt);
             }
         });
-        jPanel1.add(CmbTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 200, 30));
+        jPanel1.add(CmbTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 260, 30));
 
         jLabel10.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(32, 32, 32));
         jLabel10.setText("Tipo Tarea:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
-        CmbTipoTarea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CmbTipoTarea.setBackground(new java.awt.Color(210, 210, 210));
+        CmbTipoTarea.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        CmbTipoTarea.setForeground(new java.awt.Color(32, 32, 32));
+        CmbTipoTarea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         CmbTipoTarea.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CmbTipoTareaItemStateChanged(evt);
             }
         });
-        jPanel1.add(CmbTipoTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 180, 30));
+        jPanel1.add(CmbTipoTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 270, 30));
 
         JTTask.setForeground(new java.awt.Color(32, 32, 32));
         JTTask.setModel(new javax.swing.table.DefaultTableModel(
@@ -309,14 +341,15 @@ public class frmTasks extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTTask);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 690, 200));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 690, 200));
 
         txtId.setBackground(new java.awt.Color(210, 210, 210));
-        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 70, -1));
+        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, 70, -1));
         jPanel1.add(txtTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, -1, -1));
         jPanel1.add(txtTipoTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
 
         btnModificar.setText("Modificar");
+        btnModificar.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         btnModificar.setPreferredSize(new java.awt.Dimension(130, 40));
         btnModificar.setRound(20);
         btnModificar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
@@ -325,10 +358,11 @@ public class frmTasks extends javax.swing.JFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 120, 35));
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 150, 35));
         btnModificar.getAccessibleContext().setAccessibleName("");
 
         btnSubir.setText("Subir");
+        btnSubir.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         btnSubir.setPreferredSize(new java.awt.Dimension(130, 40));
         btnSubir.setRound(20);
         btnSubir.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
@@ -337,14 +371,15 @@ public class frmTasks extends javax.swing.JFrame {
                 btnSubirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 120, 35));
+        jPanel1.add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 320, 35));
         btnSubir.getAccessibleContext().setAccessibleName("");
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         btnEliminar.setPreferredSize(new java.awt.Dimension(130, 40));
         btnEliminar.setRound(20);
         btnEliminar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 120, 35));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 150, 35));
         btnEliminar.getAccessibleContext().setAccessibleName("");
 
         BtnSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/send-square.png"))); // NOI18N
@@ -354,27 +389,29 @@ public class frmTasks extends javax.swing.JFrame {
                 BtnSeleccionarActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 270, 40));
+        jPanel1.add(BtnSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 330, 40));
 
-        buttonRound1.setText("buttonRound1");
-        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
-        jPanel1.add(buttonRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 60, -1));
-
+        jLabel3.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(32, 32, 32));
         jLabel3.setText("Buscar Registro:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, -1, -1));
 
+        txtBuscar.setBackground(new java.awt.Color(210, 210, 210));
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 200, -1));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 320, -1));
+
+        lblarchivo64.setText("jLabel6");
+        jPanel1.add(lblarchivo64, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 40, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -449,6 +486,8 @@ public class frmTasks extends javax.swing.JFrame {
     
     private void JTTaskMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTTaskMouseClicked
         // TODO add your handling code here:
+        btnModificar.setEnabled(true);
+        btnEliminar.setEnabled(true);
         if (evt.getClickCount() == 1) {
             JTable rcp = (JTable) evt.getSource();
             txtId.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
@@ -550,7 +589,7 @@ public class frmTasks extends javax.swing.JFrame {
             Cal2.setTime(date2);
             String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + Cal2.get(Calendar.MONTH) + "/" + Cal2.get(Calendar.DAY_OF_MONTH));
             // Envio
-            CTasks controller = new CTasks(txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
+            CTasks controller = new CTasks(txtNombre.getText(), inicio, vencimiento, idTipoPerfil, pdf, idTipoTarea);
             boolean respuesta = controller.TareaNuevaResultSet();
             if ( respuesta = true) {
                 JOptionPane.showMessageDialog(this, "Tarea ingresado correctamente");
@@ -576,7 +615,7 @@ public class frmTasks extends javax.swing.JFrame {
         String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + (Cal2.get(Calendar.MONTH) + 1)+ "/" + Cal2.get(Calendar.DAY_OF_MONTH));
 
         //Update
-        CTasks objupdate =new CTasks(Integer.parseInt(txtId.getText()), txtNombre.getText(), inicio, vencimiento, idTipoPerfil, ruta_archivo, idTipoTarea);
+        CTasks objupdate =new CTasks(Integer.parseInt(txtId.getText()), txtNombre.getText(), inicio, vencimiento, idTipoPerfil, pdf, idTipoTarea);
         boolean res = objupdate.ActualizarTareaController();
         if (res == true) {
             JOptionPane.showMessageDialog(this, "Tarea actualizada correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
@@ -609,11 +648,6 @@ public class frmTasks extends javax.swing.JFrame {
         // TODO add your handling code here:
         seleccionar_pdf();
     }//GEN-LAST:event_BtnSeleccionarActionPerformed
-
-    private void btnLimpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
-        // TODO add your handling code here:
-        LimpiarCampos();
-    }//GEN-LAST:event_buttonRound1ActionPerformed
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
         // TODO add your handling code here:
@@ -675,7 +709,6 @@ public class frmTasks extends javax.swing.JFrame {
     private customizeObjects.ButtonRound btnEliminar;
     private customizeObjects.ButtonRound btnModificar;
     private customizeObjects.ButtonRound btnSubir;
-    private customizeObjects.ButtonRound buttonRound1;
     private com.toedter.calendar.JDateChooser dtInicio;
     private com.toedter.calendar.JDateChooser dtVencimiento;
     private javax.swing.JLabel jLabel1;
@@ -688,6 +721,7 @@ public class frmTasks extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblarchivo64;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;

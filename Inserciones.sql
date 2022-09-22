@@ -597,7 +597,7 @@ ADD pdftarea VARCHAR(MAX) null
 ALTER TABLE tbTareas
 ADD linktarea VARCHAR(1000) null
 
-DROP VIEW viewTareas
+SELECT  * FROM viewTareas WHERE
 
 CREATE VIEW viewTareas
 AS 
@@ -614,7 +614,7 @@ GO
 
 use dbGnosis
 
-select * from viewTareas
+select * from viewTareas WHERE Tarea = 'Actividades cotidianas';
 
 --hacer vista de la tabla materia docente
 -- hacer vista de los recursos

@@ -6,12 +6,23 @@ package gnosis.system;
 
 import Controller.CTasks;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import customizeObjects.ButtonRound;
 import java.awt.Font;
 import java.awt.Insets;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -26,15 +37,26 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     CTasks controlador = new CTasks();
     int id;
     String link;
+    String pdf;
+    String rutadescarga;
     customization custo = new customization();
     
     public frmUploadTaskStudents() {
+        lblArchivo64.setVisible(false);
+        lblRubrica64.setVisible(false);
         initComponents();
     }
 
     public frmUploadTaskStudents(int id) {
         initComponents();
+        lblArchivo64.setVisible(false);
+        lblRubrica64.setVisible(false);
         CargarDatos(id);
+        if (lblRubrica64.getText() == " ") {
+            btnDescargarRubrica.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
+        } else {
+            btnDescargarRubrica.setStyle(ButtonRound.ButtonStyle.ROJO);
+        }
     }
     
     final void CargarDatos(int id){
@@ -128,7 +150,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         lblnombreTarea = new javax.swing.JLabel();
         lblFechaVencimiento = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        buttonRound3 = new customizeObjects.ButtonRound();
+        btnDescargarRubrica = new customizeObjects.ButtonRound();
         btnEliminarTarea = new customizeObjects.ButtonRound();
         btnModificar = new customizeObjects.ButtonRound();
         btnSubirTarea = new customizeObjects.ButtonRound();
@@ -248,8 +270,13 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(32, 32, 32));
         jLabel13.setText("Instrumento de evaluacion:");
 
-        buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/receive-square.png"))); // NOI18N
-        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        btnDescargarRubrica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/receive-square.png"))); // NOI18N
+        btnDescargarRubrica.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        btnDescargarRubrica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDescargarRubricaActionPerformed(evt);
+            }
+        });
 
         btnEliminarTarea.setText("Eliminar");
         btnEliminarTarea.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
@@ -318,21 +345,20 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                                 .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(1, 1, 1))
                             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addGap(143, 143, 143)
+                                .addGap(146, 146, 146)
                                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnSubirTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel13)
                                     .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel13)
-                                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                                .addComponent(btnEliminarTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(lblRubrica64, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lblFechaVencimiento, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(buttonRound3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                                        .addComponent(btnEliminarTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblRubrica64, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lblFechaVencimiento, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnDescargarRubrica, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(1, 1, 1)))))
                         .addGap(67, 67, 67))))
         );
         panelPrincipalLayout.setVerticalGroup(
@@ -365,15 +391,16 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDescargarRubrica, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
-                        .addComponent(lblRubrica64)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnEliminarTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSubirTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblRubrica64, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminarTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSubirTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -386,7 +413,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                         .addComponent(btnLink, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblLinkStore)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
@@ -413,6 +440,41 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSubirTareaActionPerformed
 
+    private void btnDescargarRubricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescargarRubricaActionPerformed
+        // TODO add your handling code here:
+//        System.out.println(lblRubrica64.getText());
+        pdf = lblRubrica64.getText();
+        try {
+            DescargarRubrica();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo descargar la rubrica");
+        }
+    }//GEN-LAST:event_btnDescargarRubricaActionPerformed
+
+    void SeleccionarRutaArchivo(){
+        JFileChooser j = new JFileChooser();
+//        FileNameExtensionFilter fi = new FileNameExtensionFilter("pdf","pdf"); 
+//        j.setFileFilter(fi);
+        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        j.setAcceptAllFileFilterUsed(false);
+        int se = j.showOpenDialog(this);
+        if (se == 0) {
+            rutadescarga = j.getSelectedFile().getAbsolutePath();
+            System.out.println(rutadescarga);
+        }
+    }
+    
+    private void DescargarRubrica() throws IOException {
+        byte[] decoded = java.util.Base64.getDecoder().decode(pdf);
+        String home = System.getProperty("user.home");
+        String fileName = "SoyPaloma.pdf";
+        File rutaFile = new File(home + "/Downloads/" + fileName);
+        FileOutputStream fos = new FileOutputStream(rutaFile);
+        fos.write(decoded);
+        fos.flush();
+        fos.close();
+        System.out.println("Soy vergon");
+    }
     /**
      * @param args the command line arguments
      */
@@ -445,12 +507,12 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private customizeObjects.ButtonRound btnDescargarRubrica;
     private customizeObjects.ButtonRound btnEliminarTarea;
     private customizeObjects.ButtonRound btnLink;
     private customizeObjects.ButtonRound btnModificar;
     private customizeObjects.ButtonRound btnSubirTarea;
     private customizeObjects.ButtonRound buttonRound1;
-    private customizeObjects.ButtonRound buttonRound3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

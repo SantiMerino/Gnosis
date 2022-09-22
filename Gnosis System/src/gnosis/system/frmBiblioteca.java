@@ -600,7 +600,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         // TODO add your handling code here:
        
         JFileChooser browseImageFile = new JFileChooser();        //Filter image extensions
-        FileNameExtensionFilter fnef = new FileNameExtensionFilter("PDF", "pdf");
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter(".PDF", ".pdf");
         browseImageFile.addChoosableFileFilter(fnef);
         int num = browseImageFile.showOpenDialog(null);
 
