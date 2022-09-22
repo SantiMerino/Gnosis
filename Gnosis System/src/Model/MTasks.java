@@ -61,6 +61,30 @@ public class MTasks {
         }
     }
     
+        
+    public ResultSet CargarTareasFull(int idtarea){
+        Connection con;
+        try {
+            con = MConnection.getConnectionWithoutParameters();
+            String query = "SELECT * FROM viewTareas WHERE idtarea = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, idtarea);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs;
+            } else{
+                return null;
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }
+    
+    
+    
+    
     public ResultSet mostrarTareas(Connection con){
         try {
             String query = "SELECT * FROM tbTareas";

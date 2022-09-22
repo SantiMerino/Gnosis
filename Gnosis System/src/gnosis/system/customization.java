@@ -25,6 +25,7 @@ import customizeObjects.ButtonRound;
 import customizeObjects.PanelRound;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -143,7 +144,7 @@ public class customization {
     
     
     //Pruba para crear un componente en otro form parte 1 xd
-    public void CrearTarea(String nombre_tarea, String nombre_materia, String nombre_docente,String fecha_i ,String fecha_v, String estado, JPanel container, String materiamoduloColor){
+    public void CrearTarea(String nombre_tarea, String nombre_materia, String nombre_docente,String fecha_i ,String fecha_v, String estado, JPanel container, String materiamoduloColor, int idtarea){
             //Crear labels   
         JLabel nTarea = new JLabel();
         JLabel nMateria = new JLabel();
@@ -250,11 +251,10 @@ public class customization {
         btnCarpeta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (new frmUploadTaskStudents().isVisible()== true) {
-                
+                if (new frmUploadTaskStudents(idtarea).isVisible()== true) {            
                     JOptionPane.showMessageDialog(null, "Ya esta abierta una tarea");
                 } else {
-                    new frmUploadTaskStudents().setVisible(true);
+                    new frmUploadTaskStudents(idtarea).setVisible(true);
                 }           
             }
         });

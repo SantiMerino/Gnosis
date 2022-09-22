@@ -589,16 +589,27 @@ INSERT INTO tbTareas VALUES('Campos magneticos', '2022-03-07', '2022-03-11', 2, 
 --Vamo gente
 --Se pudo
 
+use dbGnosis
+
+ALTER TABLE tbTareas
+ADD pdftarea VARCHAR(MAX) null
+
+ALTER TABLE tbTareas
+ADD linktarea VARCHAR(1000) null
+
+DROP VIEW viewTareas
+
 CREATE VIEW viewTareas
 AS 
-SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I.], a.fechavencimiento as [Fecha V.], CONCAT(e.materia,' ',f.modulo) as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado]
-FROM tbTareas a, tbPerfiles b, tbMateriaDocentes c, tbDocentes d, tbMaterias e, tbModulos f, tbEstadoPerfiles g
+SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I.], a.fechavencimiento as [Fecha V.], CONCAT(e.materia,' ',f.modulo) as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado], a.rubrica AS [Rúbrica], a.pdftarea AS [PDF], a.linktarea AS [Link], b.nota AS [Nota], b.porcentajeValoracion AS [%], h.tipoperfil AS [Tipo Perfil], a.idtarea
+FROM tbTareas a, tbPerfiles b, tbMateriaDocentes c, tbDocentes d, tbMaterias e, tbModulos f, tbEstadoPerfiles g, tbTipoPerfiles h
 WHERE a.idperfil = b.idperfil 
 	AND b.idmateriadocente = c.idmateriadocente
 	AND c.iddocente = d.iddocente
 	AND c.idmateria = e.idmateria
 	AND c.idmodulo = f.idmodulo
 	AND b.idestadoperfil = g.idestadoperfil
+	AND b.idtipoperfil = h.idtipoperfil
 GO
 
 use dbGnosis
@@ -714,4 +725,16 @@ SET @idalumno = (SELECT MAX(idalumno) FROM tbAlumnos);
 SET @idgrado = (SELECT (a.idgrado) FROM tbGrados a, tbAlumnos b WHERE b.idgrado = a.idgrado AND b.idalumno = )
 
 
+use dbGnosis;
+go
 
+select * from viewPerfiles;
+
+drop view viewPerfiles;
+go
+
+CREATE VIEW viewPerfiles
+AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.nota, a.porcentajeValoracion, a.fechainicio, a.fechavencimiento, d.estadoperfil, b.tipoperfil, c.grado
+FROM tbPerfiles a, tbTipoPerfiles b, tbGrados c, tbEstadoPerfiles d
+WHERE a.idtipoperfil = b.idtipoperfil AND a.idgrados = c.idgrado AND a.idestadoperfil = d.idestadoperfil; 
+Go

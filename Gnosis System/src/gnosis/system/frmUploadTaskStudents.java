@@ -4,9 +4,13 @@
  */
 package gnosis.system;
 
+import Controller.CTasks;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import java.awt.Font;
 import java.awt.Insets;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -18,9 +22,84 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     /**
      * Creates new form frmUploadTaskStudents
      */
+    ResultSet datosCargar;
+    CTasks controlador = new CTasks();
+    int id;
+    String link;
+    customization custo = new customization();
+    
     public frmUploadTaskStudents() {
         initComponents();
     }
+
+    public frmUploadTaskStudents(int id) {
+        initComponents();
+        CargarDatos(id);
+    }
+    
+    final void CargarDatos(int id){
+        datosCargar = controlador.CargarTareasFull(id);
+//        System.out.println(id);
+        try {
+            String materiamodulo;
+                String cadena = datosCargar.getString(4);     
+                String[] palabras = cadena.split(" ", 2);
+                if (palabras[0].equals("Ninguno")) {
+                    materiamodulo = "Módulo: " +palabras[1];
+                } else {
+                    materiamodulo = "Materia: " + cadena.substring(0, cadena.lastIndexOf(" "));
+                }  
+            lblnombreTarea.setText(datosCargar.getString(1));
+            lblFechaVencimiento.setText("Fecha de Cierre: " + datosCargar.getString(3));
+            lblMateriaModulo.setText(materiamodulo);
+            lblDocente.setText("Docente: " + datosCargar.getString(5));
+            lblEstado.setText(datosCargar.getString(6));
+            IconoEstado(datosCargar.getString(6));
+            lblRubrica64.setText(datosCargar.getString(7));
+            lblArchivo64.setText(datosCargar.getString(8));
+            lblLinkStore.setText(datosCargar.getString(9));
+            txtNota.setText(datosCargar.getString(10));
+            lblPorcentaje.setText(datosCargar.getString(11) + "%");
+            lblTipoPerfil.setText(datosCargar.getString(12));
+        } catch (SQLException ex) {
+            System.out.println(datosCargar);
+            JOptionPane.showMessageDialog(null, "No se pudo cargar el buzón de la tarea" + ex.toString());
+        }
+    }
+    
+    
+    void IconoEstado(String estado){
+        switch (estado) {
+            case "Completado":
+                custo.changeIconlbl(lblEstado, "/resources/check.png");
+                break;
+                
+            case "Calificado":
+                custo.changeIconlbl(lblEstado, "/resources/medal-estateprofile.png");
+                break;
+                
+            case "No entregado":
+                custo.changeIconlbl(lblEstado, "/resources/close-square-state.png");
+                break;
+                
+            case "En proceso":
+                custo.changeIconlbl(lblEstado, "/resources/more-square-state.png");
+                break;
+                
+            case "Urgente":
+                custo.changeIconlbl(lblEstado, "/resources/danger-state.png");
+                break;
+                
+            case "No disponible":
+                custo.changeIconlbl(lblEstado, "/resources/slash.png");
+                break;
+                
+            default:
+                throw new AssertionError();
+        }
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,27 +111,30 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     private void initComponents() {
 
         panelPrincipal = new customizeObjects.PanelRound();
-        jLabel2 = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
         buttonRound1 = new customizeObjects.ButtonRound();
-        buttonRound2 = new customizeObjects.ButtonRound();
-        jTextField1 = new javax.swing.JTextField();
+        btnLink = new customizeObjects.ButtonRound();
+        txtNota = new javax.swing.JTextField();
         panelRound2 = new customizeObjects.PanelRound();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblTipoPerfil = new javax.swing.JLabel();
+        lblPorcentaje = new javax.swing.JLabel();
+        lblMateriaModulo = new javax.swing.JLabel();
+        lblDocente = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lblnombreTarea = new javax.swing.JLabel();
+        lblFechaVencimiento = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         buttonRound3 = new customizeObjects.ButtonRound();
-        buttonRound4 = new customizeObjects.ButtonRound();
-        buttonRound5 = new customizeObjects.ButtonRound();
-        buttonRound6 = new customizeObjects.ButtonRound();
+        btnEliminarTarea = new customizeObjects.ButtonRound();
+        btnModificar = new customizeObjects.ButtonRound();
+        btnSubirTarea = new customizeObjects.ButtonRound();
+        lblArchivo64 = new javax.swing.JLabel();
+        lblLinkStore = new javax.swing.JLabel();
+        lblRubrica64 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -63,9 +145,11 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         panelPrincipal.setRoundTopLeft(20);
         panelPrincipal.setRoundTopRight(20);
 
-        jLabel2.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel2.setText("Estado :");
+        lblEstado.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        lblEstado.setForeground(new java.awt.Color(32, 32, 32));
+        lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/medal-estateprofile.png"))); // NOI18N
+        lblEstado.setText("Estado :");
 
         buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/send-square.png"))); // NOI18N
         buttonRound1.setRound(20);
@@ -76,12 +160,18 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
             }
         });
 
-        buttonRound2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/link.png"))); // NOI18N
-        buttonRound2.setRound(20);
-        buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        btnLink.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/link.png"))); // NOI18N
+        btnLink.setRound(20);
+        btnLink.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        btnLink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLinkActionPerformed(evt);
+            }
+        });
 
-        jTextField1.setBackground(new java.awt.Color(217, 217, 217));
-        jTextField1.setEnabled(false);
+        txtNota.setBackground(java.awt.Color.white);
+        txtNota.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        txtNota.setEnabled(false);
 
         panelRound2.setBackground(new java.awt.Color(32, 32, 32));
         panelRound2.setRoundBottomLeft(20);
@@ -89,13 +179,13 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         panelRound2.setRoundTopLeft(20);
         panelRound2.setRoundTopRight(20);
 
-        jLabel8.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Actividad de cotidiana ");
+        lblTipoPerfil.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        lblTipoPerfil.setForeground(new java.awt.Color(255, 255, 255));
+        lblTipoPerfil.setText("Actividad de cotidiana ");
 
-        jLabel9.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("10%");
+        lblPorcentaje.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        lblPorcentaje.setForeground(new java.awt.Color(255, 255, 255));
+        lblPorcentaje.setText("10%");
 
         javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
         panelRound2.setLayout(panelRound2Layout);
@@ -103,9 +193,9 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel8)
+                .addComponent(lblTipoPerfil)
                 .addGap(44, 44, 44)
-                .addComponent(jLabel9)
+                .addComponent(lblPorcentaje)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         panelRound2Layout.setVerticalGroup(
@@ -113,18 +203,18 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
             .addGroup(panelRound2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
+                    .addComponent(lblTipoPerfil)
+                    .addComponent(lblPorcentaje))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jLabel4.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel4.setText("Materia / Modulo ");
+        lblMateriaModulo.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        lblMateriaModulo.setForeground(new java.awt.Color(32, 32, 32));
+        lblMateriaModulo.setText("Materia / Modulo ");
 
-        jLabel5.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel5.setText("Docentes :");
+        lblDocente.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        lblDocente.setForeground(new java.awt.Color(32, 32, 32));
+        lblDocente.setText("Docentes :");
 
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(32, 32, 32));
@@ -146,13 +236,13 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Tarea:");
 
-        jLabel3.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel3.setText("Actividad de grupos ");
+        lblnombreTarea.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        lblnombreTarea.setForeground(new java.awt.Color(32, 32, 32));
+        lblnombreTarea.setText("Actividad de grupos ");
 
-        jLabel12.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel12.setText("Fecha de vencimiento:");
+        lblFechaVencimiento.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        lblFechaVencimiento.setForeground(new java.awt.Color(32, 32, 32));
+        lblFechaVencimiento.setText("Fecha de vencimiento:");
 
         jLabel13.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(32, 32, 32));
@@ -161,22 +251,36 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/receive-square.png"))); // NOI18N
         buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
 
-        buttonRound4.setText("Eliminar");
-        buttonRound4.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
-        buttonRound4.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarTarea.setText("Eliminar");
+        btnEliminarTarea.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        btnEliminarTarea.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
+        btnEliminarTarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRound4ActionPerformed(evt);
+                btnEliminarTareaActionPerformed(evt);
             }
         });
 
-        buttonRound5.setText("Modificar ");
-        buttonRound5.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
+        btnModificar.setText("Modificar ");
+        btnModificar.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        btnModificar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
 
-        buttonRound6.setText("Subir ");
-        buttonRound6.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
-        buttonRound6.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
+        btnSubirTarea.setText("Subir ");
+        btnSubirTarea.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        btnSubirTarea.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
+        btnSubirTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirTareaActionPerformed(evt);
+            }
+        });
+
+        lblArchivo64.setForeground(new java.awt.Color(32, 32, 32));
+        lblArchivo64.setText("jLabel14");
+
+        lblLinkStore.setForeground(new java.awt.Color(32, 32, 32));
+        lblLinkStore.setText("jLabel14");
+
+        lblRubrica64.setForeground(new java.awt.Color(32, 32, 32));
+        lblRubrica64.setText("jLabel2");
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
@@ -190,19 +294,20 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
-                    .addComponent(buttonRound2, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                        .addComponent(lblnombreTarea))
+                    .addComponent(btnLink, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                     .addComponent(buttonRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4)
-                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel5)))
+                    .addComponent(lblMateriaModulo)
+                    .addComponent(lblEstado)
+                    .addComponent(lblDocente)
+                    .addComponent(lblArchivo64, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblLinkStore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -215,17 +320,18 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                             .addGroup(panelPrincipalLayout.createSequentialGroup()
                                 .addGap(143, 143, 143)
                                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(buttonRound6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSubirTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel13)
                                             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                                .addComponent(buttonRound4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(btnEliminarTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(lblRubrica64, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(lblFechaVencimiento, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(buttonRound3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
                                         .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(67, 67, 67))))
         );
@@ -237,44 +343,50 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel3))
+                            .addComponent(lblnombreTarea))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
+                        .addComponent(lblMateriaModulo)
                         .addGap(28, 28, 28)
-                        .addComponent(jLabel5))
+                        .addComponent(lblDocente))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)
                             .addComponent(jLabel10))
                         .addGap(28, 28, 28)
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel2))))
+                            .addComponent(lblFechaVencimiento)
+                            .addComponent(lblEstado))))
                 .addGap(36, 36, 36)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(1, 1, 1)
+                        .addComponent(lblRubrica64)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonRound4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnEliminarTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSubirTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblArchivo64)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonRound6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(btnLink, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblLinkStore)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
@@ -282,13 +394,24 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonRound4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound4ActionPerformed
+    private void btnEliminarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTareaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonRound4ActionPerformed
+    }//GEN-LAST:event_btnEliminarTareaActionPerformed
 
     private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonRound1ActionPerformed
+
+    
+    private void btnLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLinkActionPerformed
+        // TODO add your handling code here:
+        link = JOptionPane.showInputDialog("Ingresa el link: ", "www.link.com");
+        lblLinkStore.setText(link);
+    }//GEN-LAST:event_btnLinkActionPerformed
+
+    private void btnSubirTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirTareaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSubirTareaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,27 +445,30 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private customizeObjects.ButtonRound btnEliminarTarea;
+    private customizeObjects.ButtonRound btnLink;
+    private customizeObjects.ButtonRound btnModificar;
+    private customizeObjects.ButtonRound btnSubirTarea;
     private customizeObjects.ButtonRound buttonRound1;
-    private customizeObjects.ButtonRound buttonRound2;
     private customizeObjects.ButtonRound buttonRound3;
-    private customizeObjects.ButtonRound buttonRound4;
-    private customizeObjects.ButtonRound buttonRound5;
-    private customizeObjects.ButtonRound buttonRound6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblArchivo64;
+    private javax.swing.JLabel lblDocente;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblFechaVencimiento;
+    private javax.swing.JLabel lblLinkStore;
+    private javax.swing.JLabel lblMateriaModulo;
+    private javax.swing.JLabel lblPorcentaje;
+    private javax.swing.JLabel lblRubrica64;
+    private javax.swing.JLabel lblTipoPerfil;
+    private javax.swing.JLabel lblnombreTarea;
     private customizeObjects.PanelRound panelPrincipal;
     private customizeObjects.PanelRound panelRound2;
+    private javax.swing.JTextField txtNota;
     // End of variables declaration//GEN-END:variables
 }

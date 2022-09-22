@@ -140,4 +140,8 @@ public class CTasks {
     public ResultSet CargarTareasPreview(){
         return mdlTask.CargarTareasPrev();
     }
+    
+    public ResultSet CargarTareasFull(int id){
+        return mdlTask.CargarTareasFull(id);
+    }
 }

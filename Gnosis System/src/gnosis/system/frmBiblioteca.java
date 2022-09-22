@@ -210,11 +210,11 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("Recurso:");
         jLabel1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        jLabel1.setText("Recurso:");
 
-        jLabel2.setText("Nombre del recurso:");
         jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel2.setText("Nombre del recurso:");
 
         txtNombreRecurso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -222,8 +222,8 @@ public class frmBiblioteca extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Archivo:");
         jLabel3.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel3.setText("Archivo:");
 
         fileChooser.setText("Buscar archivo");
         fileChooser.addActionListener(new java.awt.event.ActionListener() {
@@ -232,11 +232,11 @@ public class frmBiblioteca extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Links:");
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel4.setText("Links:");
 
-        jLabel5.setText("Tipo de clasificacion:");
         jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel5.setText("Tipo de clasificacion:");
 
         CmbClasificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CmbClasificacion.addItemListener(new java.awt.event.ItemListener() {
@@ -252,8 +252,8 @@ public class frmBiblioteca extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("Tipo de recurso:");
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel6.setText("Tipo de recurso:");
 
         JTBiblioteca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -308,8 +308,8 @@ public class frmBiblioteca extends javax.swing.JFrame {
         BtnVaciarCampos.setRound(20);
         BtnVaciarCampos.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
-        jLabel7.setText("Buscar Registro:");
         jLabel7.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        jLabel7.setText("Buscar Registro:");
 
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -317,8 +317,8 @@ public class frmBiblioteca extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("jLabel8");
         jLabel8.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel8.setText("jLabel8");
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/search-normal-black.png"))); // NOI18N
 
