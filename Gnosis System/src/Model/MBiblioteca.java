@@ -178,7 +178,7 @@ public class MBiblioteca {
         try {
             ResultSet rs;
             Connection con = MConnection.getConnectionWithoutParameters();
-            String sentencia = "SELECT * FROM viewBiblioteca WHERE clasificacion = '"+categoria+"' order by = '"+orden+"'";
+            String sentencia = "SELECT * FROM viewBiblioteca WHERE tiporecurso like '"+categoria+"%' and clasificacion like '"+orden+"%'";
             ps = con.prepareStatement(sentencia);
             rs = ps.executeQuery();
             return rs;

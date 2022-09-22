@@ -75,9 +75,9 @@ public class panBiblioteca extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        cmbCategoria = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
         cmbOrden = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        cmbCategoria = new javax.swing.JComboBox<>();
         buttonRound1 = new customizeObjects.ButtonRound();
         jScrollPane1 = new javax.swing.JScrollPane();
         mainPanel = new javax.swing.JPanel();
@@ -113,10 +113,10 @@ public class panBiblioteca extends javax.swing.JPanel {
         jLabel2.setPreferredSize(new java.awt.Dimension(100, 30));
         jPanel5.add(jLabel2);
 
-        cmbCategoria.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libro", "Presentación", "Clase", " " }));
-        cmbCategoria.setPreferredSize(new java.awt.Dimension(100, 30));
-        jPanel5.add(cmbCategoria);
+        cmbOrden.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        cmbOrden.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PDF", "Link" }));
+        cmbOrden.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel5.add(cmbOrden);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(32, 32, 32));
@@ -125,10 +125,10 @@ public class panBiblioteca extends javax.swing.JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(70, 30));
         jPanel5.add(jLabel3);
 
-        cmbOrden.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        cmbOrden.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ASC", "DESC", " " }));
-        cmbOrden.setPreferredSize(new java.awt.Dimension(100, 30));
-        jPanel5.add(cmbOrden);
+        cmbCategoria.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libro", "Presentación", "Clase", " " }));
+        cmbCategoria.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel5.add(cmbCategoria);
 
         buttonRound1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         buttonRound1.setText("Gestionar Recursos");
