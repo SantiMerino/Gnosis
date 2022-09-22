@@ -14,11 +14,19 @@ import java.sql.Connection;
  */
 public class CConnection {
     
+    /**
+     * Controlador Conexion para conección  a la base de datos con parametros propios.
+     * @return 
+     */
     public static Connection getConnectionController(){
         return MConnection.getConnection(CConfiguracion.IP, CConfiguracion.Port, CConfiguracion.Database, CConfiguracion.User, CConfiguracion.Password);
     }
     
-        public static Connection getConnectionControllerWithoutParameters(){
+    /**
+     * Controlador Conexion para dar conección a la base de datos sin parametros. 
+     * @return 
+     */
+    public static Connection getConnectionControllerWithoutParameters() {
         return MConnection.getConnectionWithoutParameters();
     }
 }

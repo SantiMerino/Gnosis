@@ -145,17 +145,21 @@ public class CEstudents {
     public ResultSet idAlumnoforUsuario(){
         return mdlEstu.idAlumnoParaUsuario(correo, con);
     }
-    
-    
-    public boolean CrearUsuarioAlumnoController (){
-        String clave = CValidaciones.getMD5("gnosis123");
-        return mdlEstu.RegistrarUsuarioAlumno(1, correo,idalumno ,clave, con);
-    }
-    
-    public boolean AlumnoNuevoController(){
-        return mdlEstu.RegistrarAlumnoModel(apellidosalumno, nombresalumno, idgenero, idgrado, correo, direccion, contacto, dui, fecha_nac, codigocarnet, con);
-    }
 
+    /**
+     * Controlador para la inserción de datos.
+     * @param apellidosalumno
+     * @param nombresalumno
+     * @param idgenero
+     * @param idgrado
+     * @param correo
+     * @param direccion
+     * @param contacto
+     * @param dui
+     * @param fecha_nac
+     * @param idusuario
+     * @param codigocarnet 
+     */
     public CEstudents(String apellidosalumno, String nombresalumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, int idusuario, String codigocarnet) {
         this.apellidosalumno = apellidosalumno;
         this.nombresalumno = nombresalumno;
@@ -170,10 +174,21 @@ public class CEstudents {
         this.codigocarnet = codigocarnet;
     }
     
-    public boolean ActualizarEstudiante() {
-        return mdlEstu.ActualizarEstudianteModel(ID, apellidosalumno, nombresalumno, idgenero, idgrado, correo, direccion, contacto, dui, fecha_nac, codigocarnet, con);
-    }
-
+    /**
+     * Controlador para la actualización de datos.
+     * @param ID
+     * @param apellidosalumno
+     * @param nombresalumno
+     * @param idgenero
+     * @param idgrado
+     * @param correo
+     * @param direccion
+     * @param contacto
+     * @param dui
+     * @param fecha_nac
+     * @param idusuario
+     * @param codigocarnet 
+     */
     public CEstudents(int ID, String apellidosalumno, String nombresalumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, int idusuario, String codigocarnet) {
         this.ID = ID;
         this.apellidosalumno = apellidosalumno;
@@ -188,12 +203,51 @@ public class CEstudents {
         this.idusuario = idusuario;
         this.codigocarnet = codigocarnet;
     }
-    
-    public boolean EliminarEstudiante() {
-        return mdlEstu.EliminarEstudianteModel(ID, con);
-    }
-
+   
+    /**
+     * Controlador para la eliminación de datos.
+     * @param ID 
+     */
     public CEstudents(int ID) {
         this.ID = ID;
+    }
+
+    /**
+     * Controlador Estudiantes.
+     */
+    public CEstudents() {
+    }
+    
+    /**
+     * Controlador Estudiantes para la creación del usuario para el alumno.
+     * @return
+     */
+    public boolean CrearUsuarioAlumnoController() {
+        String clave = CValidaciones.getMD5("gnosis123");
+        return mdlEstu.RegistrarUsuarioAlumno(1, correo, idalumno, clave, con);
+    }
+
+    /**
+     * Controlador Estudiantes para el registro de un nuevo alumno.
+     * @return 
+     */
+    public boolean AlumnoNuevoController() {
+        return mdlEstu.RegistrarAlumnoModel(apellidosalumno, nombresalumno, idgenero, idgrado, correo, direccion, contacto, dui, fecha_nac, codigocarnet, con);
+    }
+    
+    /**
+     * Controlador Estudiantes para la actualización de un alumno.
+     * @return 
+     */
+    public boolean ActualizarEstudiante() {
+        return mdlEstu.ActualizarEstudianteModel(ID, apellidosalumno, nombresalumno, idgenero, idgrado, correo, direccion, contacto, dui, fecha_nac, codigocarnet, con);
+    }
+  
+    /**
+     * Controlador Estudiantes para la eliminar un alumno.
+     * @return 
+     */
+    public boolean EliminarEstudiante() {
+        return mdlEstu.EliminarEstudianteModel(ID, con);
     }
 }

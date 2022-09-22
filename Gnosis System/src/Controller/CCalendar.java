@@ -132,13 +132,17 @@ public class CCalendar {
         this.idseccion = idseccion;
     }
 
-    
-
-    
-
-    public CCalendar() {
-    }
-
+    /**
+     * Controlador para la inserción de datos.
+     * @param nombreevento
+     * @param fechaevento
+     * @param horainicioevento
+     * @param fechafinalevento
+     * @param horafinalizarevento
+     * @param idtipoevento
+     * @param idgrado
+     * @param idseccion 
+     */
     public CCalendar(String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado, int idseccion) {
         this.NombreEvento = nombreevento;
         this.FechaEvento = fechaevento;
@@ -150,6 +154,18 @@ public class CCalendar {
         this.idseccion = idseccion;
     }
     
+    /**
+     * Controlador para la actualizacion de datos.
+     * @param idevento
+     * @param nombreevento
+     * @param fechaevento
+     * @param horainicioevento
+     * @param fechafinalevento
+     * @param horafinalizarevento
+     * @param idtipoevento
+     * @param idgrado
+     * @param idseccion 
+     */
     public CCalendar(int idevento, String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado, int idseccion) {
         this.ID = ID;
         this.NombreEvento = nombreevento;
@@ -161,24 +177,46 @@ public class CCalendar {
         this.idgrado = idgrado;
         this.idseccion = idseccion;
     }
-       
+    
+    /**
+     * Controlador para la eliminación de datos.
+     * @param ID 
+     */
+    public CCalendar(int ID) {
+        this.ID = ID;
+    }
+    
+    /**
+     * Controlador Calendario.
+     */
+    public CCalendar() {
+    }
+    
+    /**
+     * Controlador Calendario para la inserción de datos.
+     * @return 
+     */
     public boolean EventoNuevoControladorResultset(){
         return mdlAsp.RegistrarEvento(NombreEvento, FechaEvento, HoraInicioEvento, FechaFinalEvento, HoraFinalizarEvento, idtipoevento, idgrado, idseccion);
     }
     
-    public ResultSet CargarCalendarioResultSet() {
-        return mdlAsp.CargarTablaCalendario();
+    /**
+     * Controlador Calendario para la actualización de un evento.
+     * @return 
+     */
+    public boolean ActualizarEvento() {
+        return mdlAsp.ActualizarEventoModelo(ID, NombreEvento, FechaEvento, HoraInicioEvento, FechaFinalEvento, HoraFinalizarEvento, idtipoevento, idgrado, idseccion, con);
     }
     
+    /**
+     * Controlador Calendario para la eliminación de un evento.
+     * @return 
+     */
     public boolean EliminarEventoController(){
         return mdlAsp.EliminarEventoModelo(ID, con);
     }
     
-    public boolean ActualizarEvento(){
-        return mdlAsp.ActualizarEventoModelo(ID, NombreEvento, FechaEvento, HoraInicioEvento, FechaFinalEvento, HoraFinalizarEvento, idtipoevento, idgrado, idseccion, con);
-    }
-
-    public CCalendar(int ID) {
-        this.ID = ID;
+    public ResultSet CargarCalendarioResultSet() {
+        return mdlAsp.CargarTablaCalendario();
     }
 }
