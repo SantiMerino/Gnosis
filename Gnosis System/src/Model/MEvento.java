@@ -60,6 +60,18 @@ public class MEvento {
         }
     }
     
+    /**
+     * Metodo en el Modelo Evento para registrar un evento.
+     * @param nombreevento
+     * @param fechaevento
+     * @param horainicioevento
+     * @param fechafinalevento
+     * @param horafinalizarevento
+     * @param idtipoevento
+     * @param idgrado
+     * @param con
+     * @return 
+     */
     public boolean RegistrarEventoModel(String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado, Connection con) {
         try {           
             String query = "INSERT INTO tbEventos VALUES (?,?,?,?,?,?,?)";
@@ -85,6 +97,19 @@ public class MEvento {
         }
     }
     
+    /**
+     * Metodo en el Modelo Eventos actualizar el evento.
+     * @param ID
+     * @param nombreevento
+     * @param fechaevento
+     * @param horainicioevento
+     * @param fechafinalevento
+     * @param horafinalizarevento
+     * @param idtipoevento
+     * @param idgrado
+     * @param con
+     * @return 
+     */
     public boolean ActualizarEventoModel(int ID, String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado, Connection con){
         try {           
             String query = "UPDATE tbEventos SET nombreevento = ?,  fechaevento = ?, horainicioevento = ?, fechafinalevento = ?, horafinalizarevento = ?, idtipoevento = ?, idgrado = ? WHERE idevento = ?";
@@ -111,6 +136,12 @@ public class MEvento {
         }
     }
     
+    /**
+     * Metedo en el Modelo Eventos para eliminar el evento.
+     * @param ID
+     * @param con
+     * @return 
+     */
     public boolean EliminarEventoModel(int ID, Connection con) {
          
         try {
@@ -125,6 +156,12 @@ public class MEvento {
         }        
      }
     
+    /**
+     * Metedo en el Modelo Evento para consultar los eventos seleccionados.
+     * @param fechainicio
+     * @param fechafinal
+     * @return 
+     */
     public ResultSet ConsultarEventosSeleccionadas(String fechainicio, String fechafinal){
         try {
             ResultSet rs;
