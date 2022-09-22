@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
- *
+ * 
  * @author josec
  */
 public class CBiblioteca {
@@ -45,6 +45,10 @@ public class CBiblioteca {
         this.idtiporecurso = idtiporecurso;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public int getIdclasificacion() {
         return idclasificacion;
     }

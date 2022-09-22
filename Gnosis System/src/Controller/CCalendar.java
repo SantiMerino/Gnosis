@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
- *
+ *  Este clase contine todo lo de la biblioteca de recursos 
  * @author devro
  */
 public class CCalendar {
