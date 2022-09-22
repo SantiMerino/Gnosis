@@ -13,7 +13,7 @@ import java.sql.ResultSet;
  * @author josec
  */
 public class CBiblioteca {
-    
+
     protected int ID;
     private String nombrerecurso;
     private int idtiporecurso;
@@ -69,6 +69,15 @@ public class CBiblioteca {
         this.pdf = pdf;
     }
 
+    /**
+     * Controlador para la insercion de datos.
+     *
+     * @param nombrerecurso
+     * @param idtiporecurso
+     * @param idclasificacion
+     * @param link
+     * @param pdf
+     */
     public CBiblioteca(String nombrerecurso, int idtiporecurso, int idclasificacion, String link, String pdf) {
         this.nombrerecurso = nombrerecurso;
         this.idtiporecurso = idtiporecurso;
@@ -77,6 +86,16 @@ public class CBiblioteca {
         this.pdf = pdf;
     }
 
+    /**
+     * Controlador para la actualizacion de datos.
+     *
+     * @param ID
+     * @param nombrerecurso
+     * @param idtiporecurso
+     * @param idclasificacion
+     * @param link
+     * @param pdf
+     */
     public CBiblioteca(int ID, String nombrerecurso, int idtiporecurso, int idclasificacion, String link, String pdf) {
         this.ID = ID;
         this.nombrerecurso = nombrerecurso;
@@ -86,46 +105,74 @@ public class CBiblioteca {
         this.pdf = pdf;
     }
 
+    /**
+     * Controlador para la eliminacion de datos.
+     *
+     * @param ID
+     */
     public CBiblioteca(int ID) {
         this.ID = ID;
     }
 
+    /**
+     * Controlador Biblioteca
+     */
     public CBiblioteca() {
     }
-    
+
     MBiblioteca mdlBibli = new MBiblioteca();
     private Connection con = CConnection.getConnectionControllerWithoutParameters();
-    
-    public ResultSet Search(String letra){
+
+    /**
+     * Controlador Biblioteca para la busqueda de datos.
+     *
+     * @param letra
+     * @return
+     */
+    public ResultSet Search(String letra) {
         return mdlBibli.Search(letra, con);
     }
-    
+
     public ResultSet CargarTipoRecursoResultSet() {
         return mdlBibli.CargaCmbTipoRecurso();
     }
-    
+
     public ResultSet CargarTipoClasificacionResultSet() {
         return mdlBibli.CargaCmbTipoClasificacion();
     }
-    
+
     public ResultSet CargarBibliotecaResultSet() {
         return mdlBibli.mostrarBibliotecas(con);
     }
-    
-    public boolean BibliotecaNuevaResultSet(){
+
+    /**
+     * Controlador Biblioteca para la inserción de recursos.
+     *
+     * @return
+     */
+    public boolean BibliotecaNuevaResultSet() {
         return mdlBibli.SubirBibliotecaModel(nombrerecurso, idtiporecurso, idclasificacion, link, pdf, con);
     }
-    
+
+    /**
+     * Controlador Biblioteca para al actualizacion de el recurso de la biblioteca.
+     *
+     * @return
+     */
     public boolean ActualizarBiblioteca() {
-       return mdlBibli.ActualizarBibliotecasModel(ID, nombrerecurso, idtiporecurso, idclasificacion, link, pdf, con);
+        return mdlBibli.ActualizarBibliotecasModel(ID, nombrerecurso, idtiporecurso, idclasificacion, link, pdf, con);
     }
-    
+
+    /**
+     * Controlador Biblioteca para la eliminacion de el recurso en la biblioteca.
+     *
+     * @return
+     */
     public boolean EliminarBibliotecaController() {
         return mdlBibli.EliminarBibliotecasModel(ID, con);
     }
-    
-    
-    public ResultSet CargarRecursosVista(int id){
+
+    public ResultSet CargarRecursosVista(int id) {
         return mdlBibli.CargarRecursosVista(id, con);
     }
 }

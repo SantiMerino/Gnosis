@@ -88,6 +88,16 @@ public class CEvento {
         this.idgrado = idgrado;
     }
 
+    /**
+     * Controlador para la inserción de datos.
+     * @param nombreevento
+     * @param fechaevento
+     * @param horainicioevento
+     * @param fechafinalevento
+     * @param horafinalizarevento
+     * @param idtipoevento
+     * @param idgrado 
+     */
     public CEvento(String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado) {
         this.nombreevento = nombreevento;
         this.fechaevento = fechaevento;
@@ -98,6 +108,17 @@ public class CEvento {
         this.idgrado = idgrado;
     }
 
+    /**
+     * Controlador para la actualización de datos.
+     * @param ID
+     * @param nombreevento
+     * @param fechaevento
+     * @param horainicioevento
+     * @param fechafinalevento
+     * @param horafinalizarevento
+     * @param idtipoevento
+     * @param idgrado 
+     */
     public CEvento(int ID, String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado) {
         this.ID = ID;
         this.nombreevento = nombreevento;
@@ -109,17 +130,29 @@ public class CEvento {
         this.idgrado = idgrado;
     }
 
+    /**
+     * Controlador para la eliminación de datos.
+     * @param ID 
+     */
     public CEvento(int ID) {
         this.ID = ID;
     }
 
+    /**
+     * Controlador Evento
+     */
     public CEvento() {
     }
       
     Connection con = CConnection.getConnectionControllerWithoutParameters();
     private MEvento mdlEvento = new MEvento();
     
-       public ResultSet Search(String letra){
+    /**
+     * Controlador Evento para la busqueda de eventos.
+     * @param letra
+     * @return 
+     */
+    public ResultSet Search(String letra) {
         return mdlEvento.Search(letra, con);
     }
     
@@ -135,17 +168,30 @@ public class CEvento {
         return mdlEvento.CargaCalendario();
     }
     
+    /**
+     * Controlador Evento para registrar un evento nuevo.
+     * @return 
+     */
     public boolean EventoNuevoResultSet(){
         return mdlEvento.RegistrarEventoModel(nombreevento, fechaevento, horainicioevento, fechafinalevento, horafinalizarevento, idtipoevento, idgrado, con);
     }
     
+    /**
+     * Controlador Evento para la actualización de un evento.
+     * @return 
+     */
     public boolean ActualizarEventoResultSet(){
         return mdlEvento.ActualizarEventoModel(ID, nombreevento, fechaevento, horainicioevento, fechafinalevento, horafinalizarevento, idtipoevento, idgrado, con);
     }
     
+    /**
+     * Controlador Evento para la eliminación de un evento.
+     * @return 
+     */
     public boolean EliminarEventoResultSet(){
         return mdlEvento.EliminarEventoModel(ID, con);
     }
+    
     
     public ResultSet ConsultarEvento(String fechain, String fechafin){
         return mdlEvento.ConsultarEventosSeleccionadas(fechain, fechafin);
@@ -156,12 +202,16 @@ public class CEvento {
      * @param Fecha1
      * @param Fecha2
      * @return 
-     */
-    
+     */  
     public ResultSet ConsultarEventoRango(String Fecha1, String Fecha2){
         return  mdlEvento.BuscarFechasRango(Fecha1, Fecha2);
     }
     
+    /**
+     * Metodo para buscar una fecha en un solo rango.
+     * @param Fecha1
+     * @return 
+     */
     public ResultSet ConsultarFechaUnSoloRango(String Fecha1){
         return  mdlEvento.BuscarFechasUnRango(Fecha1);
     }
