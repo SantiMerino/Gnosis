@@ -36,10 +36,9 @@ public class panBiblioteca extends javax.swing.JPanel {
     }
     
      final void CargarRecursosFiltro(){
-        String categoria = (String) cmbCategoria.getSelectedItem();
-        String orden = (String) cmbOrden.getSelectedItem();
+        String categoria = (String) cmbOrden.getSelectedItem();
         CBiblioteca controlador = new CBiblioteca();
-        ResultSet datosrecursos = controlador.CargarBusquedaFiltro(categoria, orden);
+        ResultSet datosrecursos = controlador.CargarBusquedaFiltro(categoria);
         try {
             while (datosrecursos.next()) {                
                  custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel, datosrecursos.getString(4));                
@@ -49,6 +48,19 @@ public class panBiblioteca extends javax.swing.JPanel {
         }
     }
     
+     final void CargarRecursosFiltroClas(){
+        String categoria = (String) cmbCategoria.getSelectedItem();
+        CBiblioteca controlador = new CBiblioteca();
+        ResultSet datosrecursos = controlador.CargarBusquedaFiltroClas(categoria);
+        try {
+            while (datosrecursos.next()) {                
+                 custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel, datosrecursos.getString(4));                
+            }         
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar los recursos" + e.toString());
+        }
+    }
+     
     final void CargarRecursos(){
         CBiblioteca controlador = new CBiblioteca();
         ResultSet datosrecursos = controlador.CargarRecursosVista(idAlumno);
@@ -102,7 +114,7 @@ public class panBiblioteca extends javax.swing.JPanel {
 
         jPanel5.setBackground(java.awt.Color.white);
         jPanel5.setPreferredSize(new java.awt.Dimension(600, 100));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 10);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(2, 10, 10);
         flowLayout1.setAlignOnBaseline(true);
         jPanel5.setLayout(flowLayout1);
 
@@ -138,6 +150,11 @@ public class panBiblioteca extends javax.swing.JPanel {
         cmbCategoria.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libro", "Presentación", "Clase", " " }));
         cmbCategoria.setPreferredSize(new java.awt.Dimension(100, 30));
+        cmbCategoria.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbCategoriaItemStateChanged(evt);
+            }
+        });
         jPanel5.add(cmbCategoria);
 
         buttonRound1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -162,7 +179,7 @@ public class panBiblioteca extends javax.swing.JPanel {
 
         mainPanel.setBackground(java.awt.Color.white);
         mainPanel.setPreferredSize(new java.awt.Dimension(900, 950));
-        mainPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        mainPanel.setLayout(new java.awt.FlowLayout(0));
         jScrollPane1.setViewportView(mainPanel);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -170,20 +187,7 @@ public class panBiblioteca extends javax.swing.JPanel {
 
     private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
         // TODO add your handling code here:
-         int resp = JOptionPane.showConfirmDialog(null, "Desea agregar más recursos?",
-                "OK_CANCEL_OPTION", JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.INFORMATION_MESSAGE);
-         
-         switch (resp) {
-            case JOptionPane.OK_OPTION:
-                 new frmBiblioteca().setVisible(true);
-                break;
-            case JOptionPane.CANCEL_OPTION:
-                CargarRecursosFiltro();
-                break;
-            default:
-                throw new AssertionError();
-        }
+         new frmBiblioteca().setVisible(true);
          
     }//GEN-LAST:event_buttonRound1ActionPerformed
 
@@ -193,7 +197,13 @@ public class panBiblioteca extends javax.swing.JPanel {
 
     private void cmbOrdenItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbOrdenItemStateChanged
         // TODO add your handling code here:
+        CargarRecursosFiltro();
     }//GEN-LAST:event_cmbOrdenItemStateChanged
+
+    private void cmbCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCategoriaItemStateChanged
+        // TODO add your handling code here:
+        CargarRecursosFiltroClas();
+    }//GEN-LAST:event_cmbCategoriaItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

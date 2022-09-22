@@ -174,11 +174,25 @@ public class MBiblioteca {
         }
     }
     
-    public ResultSet BuscarRecursos(String categoria, String orden){
+    public ResultSet BuscarRecursos(String categoria){
         try {
             ResultSet rs;
             Connection con = MConnection.getConnectionWithoutParameters();
-            String sentencia = "SELECT * FROM viewBiblioteca WHERE tiporecurso LIKE '"+categoria+"%' AND clasificacion LIKE '"+orden+"%'";
+            String sentencia = "SELECT * FROM viewBiblioteca WHERE tiporecurso LIKE '"+categoria+"%'";
+            ps = con.prepareStatement(sentencia);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }
+    
+    public ResultSet BuscarRecursosClas(String clasificacion){
+        try {
+            ResultSet rs;
+            Connection con = MConnection.getConnectionWithoutParameters();
+            String sentencia = "SELECT * FROM viewBiblioteca WHERE clasificacion LIKE '"+clasificacion+"%'";
             ps = con.prepareStatement(sentencia);
             rs = ps.executeQuery();
             return rs;
