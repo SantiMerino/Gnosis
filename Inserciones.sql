@@ -708,4 +708,10 @@ ON tbAlumnos
 AFTER INSERT
 AS 
 BEGIN
-DECLARE @idalumno
+DECLARE @idalumno int
+DECLARE @
+SET @idalumno = (SELECT MAX(idalumno) FROM tbAlumnos);
+SET @idgrado = (SELECT (a.idgrado) FROM tbGrados a, tbAlumnos b WHERE b.idgrado = a.idgrado AND b.idalumno = )
+
+
+

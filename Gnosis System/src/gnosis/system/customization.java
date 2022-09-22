@@ -485,6 +485,8 @@ public class customization {
                 btnOpen.setStyle(ButtonRound.ButtonStyle.ROJO);
                 btnTipoDoc.setStyle(ButtonRound.ButtonStyle.ROJO);
                 changeIcon(btnTipoDoc, "/resources/folder.png");
+                
+                
                 break;
             default:
                 btnOpen.setStyle(ButtonRound.ButtonStyle.SOCIALES);
