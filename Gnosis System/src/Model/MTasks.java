@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -194,4 +196,24 @@ public class MTasks {
         }        
     }
     
+    
+    public boolean UploadTaskStudent(String link, String pdf, int idalumno,int idtarea, Connection con){
+            try {
+                String query = "INSERT INTO tbTareasAlumnos VALUES (?,?,?,?)";
+                ps = con.prepareStatement(query);
+                ps.setInt(1, idtarea);
+                ps.setInt(1, idalumno);
+                ps.setString(1, pdf);
+                ps.setString(1, link);
+                if (ps.executeUpdate() == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null, "Hubo un error en al subir la tarea " + ex.toString());
+               return false;
+            }
+            
+    }
 }

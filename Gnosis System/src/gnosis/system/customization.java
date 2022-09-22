@@ -25,7 +25,7 @@ import customizeObjects.ButtonRound;
 import customizeObjects.PanelRound;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
+import java.net.URI;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -409,7 +409,7 @@ public class customization {
     
     
     
-    public void CrearRecursoBiblioteca( String nombre_recurso, String tipo_recurso, String categoria_recurso,JPanel mainContainer) {
+    public void CrearRecursoBiblioteca( String nombre_recurso, String tipo_recurso, String categoria_recurso,JPanel mainContainer, String link) {
         // Crear paneles
         PanelRound resourcesContainer = new PanelRound();
         PanelRound topGap = new PanelRound();
@@ -485,7 +485,12 @@ public class customization {
                 btnOpen.setStyle(ButtonRound.ButtonStyle.ROJO);
                 btnTipoDoc.setStyle(ButtonRound.ButtonStyle.ROJO);
                 changeIcon(btnTipoDoc, "/resources/folder.png");
-                
+                btnOpen.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                    }
+                });
                 
                 break;
             default:
@@ -493,7 +498,15 @@ public class customization {
                 btnTipoDoc.setStyle(ButtonRound.ButtonStyle.SOCIALES);
                 changeIcon(btnTipoDoc, "/resources/link-x21.png");
                 
+                btnOpen.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        AbrirLinks(link);
+                    }
+                });
         }
+        
+        
 
         btnTipoDoc.setText(tipo_recurso);
         btnOpen.setText("Abrir"); 
@@ -558,6 +571,16 @@ public class customization {
         mainContainer.repaint();
         mainContainer.revalidate();     
         
+    }
+    
+    void AbrirLinks(String link){
+            try {
+            Desktop desktop = java.awt.Desktop.getDesktop();
+            URI oURL = new URI(link);
+            desktop.browse(oURL);
+          } catch (Exception e) {
+            e.printStackTrace();
+          }
     }
     
     public void CrearPortafolio(String materiamodulo, String Grado, String docente, String contenido, JPanel contenedor ){

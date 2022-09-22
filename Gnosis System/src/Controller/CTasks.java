@@ -144,4 +144,12 @@ public class CTasks {
     public ResultSet CargarTareasFull(int id){
         return mdlTask.CargarTareasFull(id);
     }
+    
+    
+    
+    //Controlador para subir la tarea - Estudiante
+    
+    public boolean UploadTaskStudents(String rubrica, String pdf, int idalumno, int idtarea){
+        return mdlTask.UploadTaskStudent(rubrica, pdf, idalumno, idtarea, con);
+    }
 }

@@ -47,7 +47,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         initComponents();
     }
 
-    public frmUploadTaskStudents(int id) {
+    public frmUploadTaskStudents(int idtarea) {
         initComponents();
         lblArchivo64.setVisible(false);
         lblLinkStore.setVisible(false);
@@ -79,11 +79,11 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
             lblEstado.setText(datosCargar.getString(6));
             IconoEstado(datosCargar.getString(6));
             lblRubrica64.setText(datosCargar.getString(7));
-            lblArchivo64.setText(datosCargar.getString(8));
-            lblLinkStore.setText(datosCargar.getString(9));
-            txtNota.setText(datosCargar.getString(10));
-            lblPorcentaje.setText(datosCargar.getString(11) + "%");
-            lblTipoPerfil.setText(datosCargar.getString(12));
+//            lblArchivo64.setText(datosCargar.getString(8));
+//            lblLinkStore.setText(datosCargar.getString(9));
+            txtNota.setText(datosCargar.getString(8));
+            lblPorcentaje.setText(datosCargar.getString(9) + "%");
+            lblTipoPerfil.setText(datosCargar.getString(10));
         } catch (SQLException ex) {
             System.out.println(datosCargar);
             JOptionPane.showMessageDialog(null, "No se pudo cargar el buzón de la tarea" + ex.toString());
@@ -460,6 +460,8 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
 
     private void btnSubirTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirTareaActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_btnSubirTareaActionPerformed
 
     private void btnDescargarRubricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescargarRubricaActionPerformed

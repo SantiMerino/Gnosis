@@ -263,7 +263,7 @@ public class panCalendar extends javax.swing.JPanel {
         fechafinal = dtpFechaFinal.getDateStringOrEmptyString();
         System.out.println(fechainicio + " - " + fechafinal);
 
-        if (!fechainicio.isEmpty() && !fechafinal.isEmpty()) {
+        if (fechainicio.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Selecciona una fecha para buscar los eventos de la misma");
         }else if(fechafinal.isEmpty()){
             CargarEventosUnRango();
@@ -292,11 +292,15 @@ public class panCalendar extends javax.swing.JPanel {
     }
     
     final void CargarEventosUnRango(){
+        ContenedorEventos.removeAll();
+        ContenedorEventos.revalidate();
+        ContenedorEventos.repaint();
         CEvento controller = new CEvento();
         ResultSet datos = controller.ConsultarFechaUnSoloRango(fechainicio);
         int contador = 0;
         try {
             while (datos.next()) {
+                
                 custo.CrearComponenteEventos(datos.getString(1), datos.getString(2), datos.getString(3), datos.getString(4), datos.getString(5) ,ContenedorEventos);
                 contador++;
             }
@@ -308,6 +312,9 @@ public class panCalendar extends javax.swing.JPanel {
     }
     
      final void CargarEventosRango(){
+        ContenedorEventos.removeAll();
+        ContenedorEventos.revalidate();
+        ContenedorEventos.repaint();
         CEvento controller = new CEvento();
         ResultSet datos = controller.ConsultarEventoRango(fechainicio, fechafinal);
         int contador = 0;

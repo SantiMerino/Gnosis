@@ -217,7 +217,7 @@ public class MEvento {
         try {
             ResultSet rs;
             Connection con = MConnection.getConnectionWithoutParameters();
-            String sentencia = "SELECT * FROM viewEventos WHERE fechaevento = '"+buscar1+"' AND fechafinalevento = '"+buscar1+"'";
+            String sentencia = "SELECT * FROM viewEventos WHERE fechaevento = '"+buscar1+"' OR fechafinalevento = '"+buscar1+"'";
             ps = con.prepareStatement(sentencia);
             rs = ps.executeQuery();
             return rs;

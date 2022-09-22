@@ -40,7 +40,7 @@ public class panBiblioteca extends javax.swing.JPanel {
         ResultSet datosrecursos = controlador.CargarRecursosVista(idAlumno);
         try {
             while (datosrecursos.next()) {                
-                 custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel);                
+                 custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel, datosrecursos.getString(4));                
             }         
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Tu mama men" + e.toString());

@@ -591,17 +591,23 @@ INSERT INTO tbTareas VALUES('Campos magneticos', '2022-03-07', '2022-03-11', 2, 
 
 use dbGnosis
 
-ALTER TABLE tbTareas
-ADD pdftarea VARCHAR(MAX) null
+CREATE TABLE tbTareasAlumnos(
+	idtareaalumno int not null primary key identity(1,1),
+	idtarea int not null,
+	idalumno int not null,
+	archivo varchar(max),
+	link varchar(1000)
+)
 
-ALTER TABLE tbTareas
-ADD linktarea VARCHAR(1000) null
+SELECT * FROM viewTareas WHERE idtarea = 2;
 
-SELECT  * FROM viewTareas WHERE
+ALTER TABLE tbPerfiles
+DROP COLUMN nota
+
 
 CREATE VIEW viewTareas
 AS 
-SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I.], a.fechavencimiento as [Fecha V.], CONCAT(e.materia,' ',f.modulo) as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado], a.rubrica AS [Rúbrica], a.pdftarea AS [PDF], a.linktarea AS [Link], b.nota AS [Nota], b.porcentajeValoracion AS [%], h.tipoperfil AS [Tipo Perfil], a.idtarea
+SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I.], a.fechavencimiento as [Fecha V.], CONCAT(e.materia,' ',f.modulo) as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado], a.rubrica AS [Rúbrica], b.nota AS [Nota], b.porcentajeValoracion AS [%], h.tipoperfil AS [Tipo Perfil], a.idtarea
 FROM tbTareas a, tbPerfiles b, tbMateriaDocentes c, tbDocentes d, tbMaterias e, tbModulos f, tbEstadoPerfiles g, tbTipoPerfiles h
 WHERE a.idperfil = b.idperfil 
 	AND b.idmateriadocente = c.idmateriadocente
@@ -643,7 +649,7 @@ AND a.idgrado = c.idgrado
 --AND a.fechaevento between '2022/05/01'AND '2022/05/31' AND a.fechafinalevento between '2022/05/01'AND '2022/05/31'
 GO
 
-SELECT * FROM viewEventos WHERE fechaevento between '2022/05/01'AND '2022/05/31' AND fechafinalevento between '2022/05/01'AND '2022/05/31'
+SELECT * FROM viewEventos WHERE fechaevento between '2022/05/01'AND '2022/05/31'  fechafinalevento between '2022/05/01'AND '2022/05/31'
 
 --Vista de profesores - materia - grado
 SELECT CONCAT(b.nombres_docente, ' ', b.apellidos_docente) AS [Docente], CONCAT(c.materia, ' ', d.modulo) AS [Materia], e.grado AS [Grado]
@@ -689,13 +695,13 @@ AND a.idmateriadocente = 1;
 GO
 
 CREATE VIEW viewPerfiles
-AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.nota, a.porcentajeValoracion, a.fechainicio, a.fechavencimiento, b.tipoperfil, c.grado
+AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.porcentajeValoracion, a.fechainicio, a.fechavencimiento, b.tipoperfil, c.grado
 FROM tbPerfiles a, tbTipoPerfiles b, tbGrados c
 WHERE a.idtipoperfil = b.idtipoperfil AND a.idgrados = c.idgrado; 
 Go
 
 SELECT * FROM tbBiblioteca WHERE idalumno = 1
-
+Select * from viewBiblioteca where idalumno = 1;
 GO
 CREATE VIEW viewBiblioteca
 AS
