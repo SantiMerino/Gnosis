@@ -46,11 +46,11 @@ public class panTasks extends javax.swing.JPanel {
                 } else {
                     materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
                 }               
-                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo, datos.getInt(13));
+                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo, datos.getInt(10));
 //                System.out.println(datos.absolute(fila));
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas");
+            JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas " + e.toString());
         }
         
     }

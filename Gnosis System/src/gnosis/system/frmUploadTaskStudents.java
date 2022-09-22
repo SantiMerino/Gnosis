@@ -49,6 +49,8 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
 
     public frmUploadTaskStudents(int idtarea) {
         initComponents();
+        id = idtarea;
+        System.out.println(id);
         lblArchivo64.setVisible(false);
         lblLinkStore.setVisible(false);
         lblRubrica64.setVisible(false);
@@ -81,9 +83,9 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
             lblRubrica64.setText(datosCargar.getString(7));
 //            lblArchivo64.setText(datosCargar.getString(8));
 //            lblLinkStore.setText(datosCargar.getString(9));
-            txtNota.setText(datosCargar.getString(8));
-            lblPorcentaje.setText(datosCargar.getString(9) + "%");
-            lblTipoPerfil.setText(datosCargar.getString(10));
+//            txtNota.setText(datosCargar.getString(8));
+            lblPorcentaje.setText(datosCargar.getString(8) + "%");
+            lblTipoPerfil.setText(datosCargar.getString(9));
         } catch (SQLException ex) {
             System.out.println(datosCargar);
             JOptionPane.showMessageDialog(null, "No se pudo cargar el buzón de la tarea" + ex.toString());
