@@ -74,7 +74,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
         customization.mainUtilitiesWhite();
 //        customization.centrarFrame(this);
 //        jLabel7.setVisible(false);
-//        lblLink.setVisible(false);
+        lblLink.setVisible(false);
     }
     
     void LimpiarCampos(){
@@ -212,7 +212,6 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(600, 600));
-        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
