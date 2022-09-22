@@ -491,12 +491,12 @@ public class panGrades extends javax.swing.JPanel {
             
             double Notas = Double.parseDouble(notas);
             
-            if (Notas == 10.00) {
+            if (Notas == 10.00 || Notas > 6.00) {
                 panelNota.setBackground(Color.GREEN);
-            }else if(Notas < 6.00) {
+            }else if(Notas < 6.00  || Notas > 4.00) {
                 panelNota.setBackground(Color.YELLOW);
-            }else if(Notas < 4.00) {
-               panelNota.setBackground(Color.GRAY);
+            }else {
+               panelNota.setBackground(Color.RED);
             }
             
             
