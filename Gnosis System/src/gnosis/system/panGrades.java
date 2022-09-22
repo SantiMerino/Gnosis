@@ -56,24 +56,11 @@ public class panGrades extends javax.swing.JPanel {
      * Creates new form panNotas
      */
     public panGrades() {
-        try {
-            UIManager.setLookAndFeel(new FlatArcIJTheme());           
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        UIManager.put( "Component.focusWidth", 0 );
-        UIManager.put( "Component.innerFocusWidth",0 );
-        UIManager.put( "TextComponent.arc", 15);
-        UIManager.put( "Component.arc", 15);
-        UIManager.put( "ProgressBar.arc", 20);
-        UIManager.put( "ScrollBar.trackArc", 999 );
-        UIManager.put( "ScrollBar.thumbArc", 999 );
-        UIManager.put( "ScrollBar.trackInsets", new Insets( 2, 4, 2, 4 ) );
-        UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
-        UIManager.put( "Component.arrowType", "chevron" );
+        customization.mainUtilitiesWhite();
         initComponents();
-
-        String [] TitulosPerfil = {"ID", "Nombre", "Descripcion", "Nota", "Porcentaje de valoracion", "Fecha de inicio", "Fecha de vencimiento", "estado perfil", "Tipo Perfil", "Grados"};
+        dtInicio.setEnabled(false);
+        dtCierre.setEnabled(false);
+        String [] TitulosPerfil = {"ID", "Nombre", "Descripcion", "Porcentaje de valoracion", "Fecha de inicio", "Fecha de vencimiento", "estado perfil", "Tipo Perfil", "Grados"};
         TablaPerfilmodelo = new DefaultTableModel(null, TitulosPerfil);
         tbPerfil.setModel(TablaPerfilmodelo);
         CargarTabla();
@@ -93,7 +80,7 @@ public class panGrades extends javax.swing.JPanel {
         try {
             ResultSet rs = Perfil.CargarPerfilResultSet();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"), rs.getString("nota"),rs.getString("porcentajeValoracion"), 
+                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"),rs.getString("porcentajeValoracion"), 
                     rs.getString("fechainicio"), rs.getString("fechavencimiento"), rs.getString("estadoperfil"),rs.getString("tipoperfil"), rs.getString("grado")};
                 TablaPerfilmodelo.addRow(oValores);
             }
@@ -120,7 +107,6 @@ public class panGrades extends javax.swing.JPanel {
         txtIdPerfil = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         panelRound1 = new customizeObjects.PanelRound();
         lblTipoPerfil = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -132,7 +118,6 @@ public class panGrades extends javax.swing.JPanel {
         txtDescripcion = new javax.swing.JTextArea();
         lblEstado = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         panelNota = new customizeObjects.PanelRound();
         panelRound3 = new customizeObjects.PanelRound();
         lblNota = new javax.swing.JLabel();
@@ -256,11 +241,6 @@ public class panGrades extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel6.setText("Grado:");
-
         panelRound1.setBackground(new java.awt.Color(204, 204, 204));
         panelRound1.setRoundBottomLeft(20);
         panelRound1.setRoundBottomRight(20);
@@ -323,11 +303,6 @@ public class panGrades extends javax.swing.JPanel {
         lblNombre.setForeground(new java.awt.Color(32, 32, 32));
         lblNombre.setText("Nombre del perfil.");
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel1.setText("Perfil:");
-
         panelNota.setBackground(new java.awt.Color(127, 211, 106));
         panelNota.setPreferredSize(new java.awt.Dimension(40, 40));
         panelNota.setRoundBottomLeft(20);
@@ -355,42 +330,35 @@ public class panGrades extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelNota, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(29, 29, 29)
-                                    .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel3))
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGap(24, 24, 24)
-                                    .addComponent(lblEstado))
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel5))))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(lblGrado)
-                            .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel13)
-                        .addGap(76, 76, 76)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(dtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(dtCierre, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(panelNota, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(60, 60, 60)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel11)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel13)
+                            .addGap(76, 76, 76)))
+                    .addComponent(lblGrado))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,27 +369,25 @@ public class panGrades extends javax.swing.JPanel {
                     .addComponent(panelNota, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(lblNombre))
-                        .addGap(10, 10, 10))
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel5))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblNombre)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
+                .addComponent(lblGrado)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblGrado)
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
                             .addComponent(jLabel13))
@@ -480,25 +446,25 @@ public class panGrades extends javax.swing.JPanel {
             JTable rcp = (JTable) evt.getSource();
             
             txtIdPerfil.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
-            lblNombre.setText("Nombre: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
+            lblNombre.setText("Perfil: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
             txtDescripcion.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 2).toString());
-            lblNota.setText("" + rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
-            lblTipoPerfil.setText("Tipo Perfil | : " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 8).toString());
-            lblGrado.setText("Grado asignado: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 9).toString());
+//            lblNota.setText("" + rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
+            lblTipoPerfil.setText("Tipo Perfil | : " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
+            lblGrado.setText("Grado asignado: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 8).toString());
             
-            String notas = ("" + rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
-            String Estado = ("" + rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
+//            String notas = ("" + rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
+            String Estado = ("" + rcp.getModel().getValueAt(rcp.getSelectedRow(), 6).toString());
             
-            double Notas = Double.parseDouble(notas);
-            
-            if (Notas == 10.00 || Notas > 6.00) {
-                panelNota.setBackground(Color.GREEN);
-            }else if(Notas < 6.00  || Notas > 4.00) {
-                panelNota.setBackground(Color.YELLOW);
-            }else {
-               panelNota.setBackground(Color.RED);
-            }
-            
+//            double Notas = Double.parseDouble(notas);
+//            
+//            if (Notas == 10.00 || Notas > 6.00) {
+//                panelNota.setBackground(Color.GREEN);
+//            }else if(Notas < 6.00  || Notas > 4.00) {
+//                panelNota.setBackground(Color.YELLOW);
+//            }else {
+//               panelNota.setBackground(Color.RED);
+//            }
+//            
             
             
             customization custom = new customization();
@@ -514,7 +480,7 @@ public class panGrades extends javax.swing.JPanel {
                     custom.changeIconlbl(lblEstado, "/resources/close-square-state.png");
                     break;
                 case "En proceso":
-                    custom.changeIconlbl(lblEstado, "/resources/arrow-right.png");
+                    custom.changeIconlbl(lblEstado, "/resources/more-square-state.png");
                     break;
                 case "Urgente":
                     custom.changeIconlbl(lblEstado, "/resources/danger-state.png");
@@ -535,13 +501,13 @@ public class panGrades extends javax.swing.JPanel {
             
             DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             try {
-                dtInicio.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 5).toString()));
+                dtInicio.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString()));
             } catch (Exception e) {
                 
             }
             
             try {
-                dtCierre.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 6).toString()));
+                dtCierre.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 5).toString()));
             } catch (Exception e) {
                 
             }
@@ -605,7 +571,7 @@ public class panGrades extends javax.swing.JPanel {
         try {
             ResultSet rs = buscar.SearchParam(Item, param);
             while (rs.next()) {
-                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"), rs.getString("nota"),rs.getString("porcentajeValoracion"), 
+                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"),rs.getString("porcentajeValoracion"), 
                     rs.getString("fechainicio"), rs.getString("fechavencimiento"), rs.getString("estadoperfil"), rs.getString("tipoperfil"), rs.getString("grado")};
                 TablaPerfilmodelo.addRow(oValores);
             }
@@ -634,7 +600,6 @@ public class panGrades extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser dtCierre;
     private com.toedter.calendar.JDateChooser dtInicio;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
@@ -642,7 +607,6 @@ public class panGrades extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
