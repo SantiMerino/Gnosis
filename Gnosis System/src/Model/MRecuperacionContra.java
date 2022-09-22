@@ -16,6 +16,13 @@ import javax.swing.JOptionPane;
 public class MRecuperacionContra {
     PreparedStatement ps;
     
+    /**
+     * Metedo en el Modelo de Recuperación de Contraseña para actualizar y recupear la contraseña.
+     * @param correo
+     * @param clave
+     * @param con
+     * @return 
+     */
     public boolean RecuperarContraseña (String correo,String clave,Connection con){
         try {
             JOptionPane.showMessageDialog(null, correo);
@@ -32,6 +39,13 @@ public class MRecuperacionContra {
         }
     }
     
+    /**
+     * Metedo en el Modelo de Recuperación de Contraseña para consultar el PIN enviado al correo.
+     * @param correo
+     * @param pin
+     * @param con
+     * @return 
+     */
     public boolean ConsultarPINporCorreo (String correo, int pin, Connection con){
         try {
             String query = "SELECT * FROM tbUsuario WHERE username = ? AND pin = ?";
@@ -46,6 +60,13 @@ public class MRecuperacionContra {
         }
     }
     
+    /**
+     * Metedo en el Modelo de Recuperación de Contraseña para confirmar los datos de un administrador.
+     * @param correo
+     * @param contra
+     * @param con
+     * @return 
+     */
     public ResultSet ConsultarADMIN(String correo, String contra, Connection con){
         try {
             int nivelusuario = 3;
