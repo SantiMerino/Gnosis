@@ -192,7 +192,7 @@ public class frmProfiles extends javax.swing.JFrame {
         btnModificar = new customizeObjects.ButtonRound();
         btnEliminar = new customizeObjects.ButtonRound();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(875, 604));
 
@@ -250,7 +250,6 @@ public class frmProfiles extends javax.swing.JFrame {
         jTextField2.setToolTipText("");
 
         txtGrado.setEditable(false);
-        txtGrado.setText("1");
         txtGrado.setToolTipText("");
 
         btnSubir.setText("Agregar Perfil");

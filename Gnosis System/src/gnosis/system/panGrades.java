@@ -106,6 +106,7 @@ public class panGrades extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         txtIdPerfil = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        AgregarPerfil = new customizeObjects.ButtonRound();
         jPanel4 = new javax.swing.JPanel();
         panelRound1 = new customizeObjects.PanelRound();
         lblTipoPerfil = new javax.swing.JLabel();
@@ -200,6 +201,14 @@ public class panGrades extends javax.swing.JPanel {
             }
         });
 
+        AgregarPerfil.setText("Gestionar Perfiles");
+        AgregarPerfil.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        AgregarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarPerfilActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -213,10 +222,13 @@ public class panGrades extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 111, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtIdPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(AgregarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -231,7 +243,8 @@ public class panGrades extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(AgregarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -414,7 +427,7 @@ public class panGrades extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel10)
-                .addGap(0, 737, Short.MAX_VALUE))
+                .addGap(0, 924, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -593,8 +606,15 @@ public class panGrades extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton1KeyReleased
 
+    private void AgregarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarPerfilActionPerformed
+        // TODO add your handling code here:
+        frmProfiles Profiles = new frmProfiles();
+        Profiles.setVisible(true);
+    }//GEN-LAST:event_AgregarPerfilActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private customizeObjects.ButtonRound AgregarPerfil;
     private javax.swing.JComboBox<String> cmbGrado;
     private javax.swing.JComboBox<String> cmbTipoPerfil;
     private com.toedter.calendar.JDateChooser dtCierre;
