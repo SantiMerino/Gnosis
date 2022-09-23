@@ -61,7 +61,7 @@ public class MEvento {
     }
     
     /**
-     * Metodo en el Modelo Evento para registrar un evento.
+     * Method in the Event Model to register an event.
      * @param nombreevento
      * @param fechaevento
      * @param horainicioevento
@@ -98,7 +98,7 @@ public class MEvento {
     }
     
     /**
-     * Metodo en el Modelo Eventos actualizar el evento.
+     * Method in the Model Events update the event.
      * @param ID
      * @param nombreevento
      * @param fechaevento
@@ -137,7 +137,7 @@ public class MEvento {
     }
     
     /**
-     * Metedo en el Modelo Eventos para eliminar el evento.
+     * Method in the Events Model to remove the event.
      * @param ID
      * @param con
      * @return 
@@ -157,7 +157,7 @@ public class MEvento {
      }
     
     /**
-     * Metedo en el Modelo Evento para consultar los eventos seleccionados.
+     * Method in the Event Model to query the selected events.
      * @param fechainicio
      * @param fechafinal
      * @return 
@@ -181,7 +181,7 @@ public class MEvento {
     }
     
     /**
-     * Metedo en el Modelo Evento para buscar un evento mediante su nombre o la fecha en la que se realiza.
+     * Method in the Event Model to search for an event by its name or the date on which it takes place.
      * @param carnet
      * @param con
      * @return 

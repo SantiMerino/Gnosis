@@ -7,7 +7,7 @@ import Model.MTeacher;
 import java.sql.Connection;
 import java.sql.ResultSet;
 /**
- *
+ *Controller to create, delete, modify and read data methods of Teacher
  * @author santi
  */
 public class CTeacher {

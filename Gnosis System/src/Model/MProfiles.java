@@ -58,7 +58,7 @@ public class MProfiles {
     }
     
     /**
-     * Metedo de el Modelo Perfiles para subir perfiles.
+     * Method of the Profiles Model to upload profiles.
      * @param nombre
      * @param descripcion
      * @param porcentajedevaloracion
@@ -103,7 +103,7 @@ public class MProfiles {
     }
     
     /**
-     * Metodo de el Modelo Perfiles para actualizar los perfiles.
+     * Method of the Profiles Model to update the profiles.
      * @param ID
      * @param nombre
      * @param descripcion
@@ -136,7 +136,7 @@ public class MProfiles {
     }
     
     /**
-     * Metodo en el Modelo Perfiles para eliminar perfiles.
+     *Method in the Profiles Model to delete profiles.
      * @param ID
      * @param con
      * @return 

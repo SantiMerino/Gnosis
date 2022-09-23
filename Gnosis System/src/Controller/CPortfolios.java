@@ -8,7 +8,7 @@ import Model.MPortfolios;
 import java.sql.ResultSet;
 
 /**
- *
+ *Controller for create, delete, modify and read profile data methods
  * @author santi
  */
 public class CPortfolios {

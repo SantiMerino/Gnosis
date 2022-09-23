@@ -213,7 +213,7 @@ public class CEstudents {
     }
 
     /**
-     * Controlador Estudiantes.
+     * Student Controller.
      */
     public CEstudents() {
     }

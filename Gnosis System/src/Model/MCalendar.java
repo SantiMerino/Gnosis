@@ -70,7 +70,7 @@ public class MCalendar {
     }
     
     /**
-     * Metedo en el Modelo Calendario para registrar un evento.
+     * Method in the Calendar Model to register an event.
      * @param nombreevento
      * @param fechaevento
      * @param horainicioevento
@@ -109,7 +109,7 @@ public class MCalendar {
     }
  
     /**
-     * Metodo en el Modelo Calendario para actualizar en evento.
+     * Method in the Calendar Model to update on event.
      * @param ID
      * @param nombreevento
      * @param fechaevento
@@ -144,7 +144,7 @@ public class MCalendar {
     }
   
     /**
-     * Metedo en el Modelo Calendario para eliminar un evento.
+     * Method in the Calendar Model to delete an event.
      * @param ID
      * @param con
      * @return 

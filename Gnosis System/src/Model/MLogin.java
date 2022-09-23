@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class MLogin {
     
     /**
-     * Metedo en el Modelo Login para iniciar sesion en el sistema.
+     * Method in the Login Module to start a session in the system.
      * @param user
      * @param clave
      * @return 

@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *Controller to create, delete, modify and read data methods of takss
  * @author santi
  */
 public class CTasks {

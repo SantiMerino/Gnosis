@@ -8,7 +8,7 @@ import Model.MLogin;
 import java.sql.ResultSet;
 
 /**
- *
+ *Handler for creating, deleting, modifying, and reading data methods on login
  * @author santi
  */
 public class CLogin {

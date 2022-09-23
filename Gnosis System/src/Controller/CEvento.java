@@ -89,7 +89,7 @@ public class CEvento {
     }
 
     /**
-     * Controlador para la inserción de datos.
+     * Controller for data insertion.
      * @param nombreevento
      * @param fechaevento
      * @param horainicioevento
@@ -109,7 +109,7 @@ public class CEvento {
     }
 
     /**
-     * Controlador para la actualización de datos.
+     * Driver for data update.
      * @param ID
      * @param nombreevento
      * @param fechaevento
@@ -131,7 +131,7 @@ public class CEvento {
     }
 
     /**
-     * Controlador para la eliminación de datos.
+     * Controller for data deletion.
      * @param ID 
      */
     public CEvento(int ID) {
@@ -139,7 +139,7 @@ public class CEvento {
     }
 
     /**
-     * Controlador Evento
+     * Event Handler
      */
     public CEvento() {
     }
@@ -148,7 +148,7 @@ public class CEvento {
     private MEvento mdlEvento = new MEvento();
     
     /**
-     * Controlador Evento para la busqueda de eventos.
+     * Event Controller for event search.
      * @param letra
      * @return 
      */
@@ -169,7 +169,7 @@ public class CEvento {
     }
     
     /**
-     * Controlador Evento para registrar un evento nuevo.
+     * Event Handler to register a new event.
      * @return 
      */
     public boolean EventoNuevoResultSet(){
@@ -177,7 +177,7 @@ public class CEvento {
     }
     
     /**
-     * Controlador Evento para la actualización de un evento.
+     * Event Handler for updating an event.
      * @return 
      */
     public boolean ActualizarEventoResultSet(){
@@ -185,7 +185,7 @@ public class CEvento {
     }
     
     /**
-     * Controlador Evento para la eliminación de un evento.
+     * Event Handler for deleting an event.
      * @return 
      */
     public boolean EliminarEventoResultSet(){
@@ -198,7 +198,7 @@ public class CEvento {
     }
     
     /**
-     * Metodo para buscar rangos de fechas
+     * Method to search for date ranges
      * @param Fecha1
      * @param Fecha2
      * @return 
@@ -208,7 +208,7 @@ public class CEvento {
     }
     
     /**
-     * Metodo para buscar una fecha en un solo rango.
+     * Method to search for a date in a single range.
      * @param Fecha1
      * @return 
      */

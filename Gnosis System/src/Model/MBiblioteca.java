@@ -93,7 +93,7 @@ public class MBiblioteca {
     }
     
     /**
-     * Metedo en el Modelo Biblioteca para actualizar un recurso en la biblioteca.
+     * Method in the Library Model to update a resource in the library.
      * @param ID
      * @param nombrerecurso
      * @param idtiporecurso
@@ -124,7 +124,7 @@ public class MBiblioteca {
     }
     
     /**
-     * Metedo en el Modelo Biblioteca para eliminar el recurso de la biblioteca.
+     * Method in the Library Model to remove the resource from the library.
      * @param ID
      * @param con
      * @return 
@@ -144,7 +144,7 @@ public class MBiblioteca {
     }
     
     /**
-     * Metodo en el Modelo Biblioteca para buscar un recurso mediante el nombre en la biblioteca.
+     * Method in the Library Model to search for a resource by name in the library.
      * @param carnet
      * @param con
      * @return 

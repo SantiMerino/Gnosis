@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class MConnection {
     
     /**
-     * Metedo en el Modelo Conexion para acceder a la base de datos con datos propios.
+     *Method in the Connection Model to access the database with its own data.
      * @param IP
      * @param port
      * @param db
@@ -42,7 +42,7 @@ public class MConnection {
     }
     
     /**
-     * Metedo en el Modelo Conexion para acceder a la base de datos sin parametros.
+     * Method in the Connection Model to access the database without parameters.
      * @return 
      */
     public static Connection getConnectionWithoutParameters() {
@@ -55,12 +55,12 @@ public class MConnection {
                     + "user = inicio_sesion;"
                     + "password = itr2022;"
                     + "loginTimeOut = 10";
-            //Asignación de valores a objeto conexión
+            //Assigning values to connection object
             con = DriverManager.getConnection(url);
             //Retorno de objeto conexión
             return con;
         } catch (Exception e) {
-            //Mensaje de error en caso no se establezca correctamente una conexión
+            //Error message in case a connection is not established correctly
             JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos, E001   " + e.toString());
             return null;
         }

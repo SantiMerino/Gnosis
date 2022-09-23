@@ -17,7 +17,7 @@ public class MRecuperacionContra {
     PreparedStatement ps;
     
     /**
-     * Metedo en el Modelo de Recuperación de Contraseña para actualizar y recupear la contraseña.
+     * Method in the Password Recovery Model to update and recover the password.
      * @param correo
      * @param clave
      * @param con
@@ -40,7 +40,7 @@ public class MRecuperacionContra {
     }
     
     /**
-     * Metedo en el Modelo de Recuperación de Contraseña para consultar el PIN enviado al correo.
+     * Method in the Password Recovery Model to check the PIN sent to the mail.
      * @param correo
      * @param pin
      * @param con
@@ -61,7 +61,7 @@ public class MRecuperacionContra {
     }
     
     /**
-     * Metedo en el Modelo de Recuperación de Contraseña para confirmar los datos de un administrador.
+     * Method in the Password Recovery Model to confirm the data of an administrator.
      * @param correo
      * @param contra
      * @param con

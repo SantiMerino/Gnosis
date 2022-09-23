@@ -7,9 +7,10 @@ import Model.MNotas;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
+
 /**
- *
- * @author PC
+ * Handler to create, delete, modify and read data methods on launch in notes
+ * @author Usuario
  */
 public class CNotas {
     Connection con = CConnection.getConnectionControllerWithoutParameters();
@@ -63,26 +64,26 @@ public class CNotas {
         this.idalumno = idalumno;
     }
     
-    /*Insercion de datos*/
+    /*Data insertion*/
     
     public boolean RegistroNuevoController(){
         return mdlnotas.RegistrarRegistroNotas(idperfil, idalumno, con);
     }
     
-    /*Constructor de insercion*/
+    /*insert constructor*/
 
     public CNotas(int idperfil, int idalumno) {
         this.idperfil = idperfil;
         this.idalumno = idalumno;
     }
     
-    /*Actualizacion*/
+    /*Update*/
     
     public boolean ActualizarRegistroController(){
         return mdlnotas.ActualizarRegistroNotas(ID, idperfil, idalumno, con);
     }
     
-    /*Constructor de actualizacion*/
+    /*update builder*/
 
     public CNotas(int ID, int idperfil, int idalumno) {
         this.ID = ID;
@@ -90,13 +91,13 @@ public class CNotas {
         this.idalumno = idalumno;
     }
     
-    /*Eliminacion de datos*/
+    /*data deletion*/
     
     public boolean EliminarRegistroController(){
         return mdlnotas.EliminarEstudianteModel(ID, con);
     }
     
-    /*Constructor de eliminacion*/
+    /*delete constructor*/
 
     public CNotas(int ID) {
         this.ID = ID;

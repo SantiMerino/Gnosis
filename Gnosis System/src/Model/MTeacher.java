@@ -53,7 +53,7 @@ public class MTeacher {
         }
     }
     
-    /*Cargar tabla de registros*/
+    /*Load record table*/
      public ResultSet mostrarDocentes(Connection con){
         try {
             String query = "SELECT * FROM tbDocentes";
@@ -113,7 +113,7 @@ public class MTeacher {
     }
      
     /**
-     * Metodo en el Modelo Profesores de actualizacion docentes.
+     *Method in the Teachers Model for updating teachers.
      * @param ID
      * @param apellidosdocente
      * @param nombresdocente
@@ -153,7 +153,7 @@ public class MTeacher {
     }
 
     /**
-     * Metedo en el Modelo Profesores de eliminacion de un docente.
+     * Method in the Teachers Model for the elimination of a teacher.
      * @param ID
      * @param con
      * @return 
@@ -173,7 +173,7 @@ public class MTeacher {
     }
     
     /**
-     * Metodo en el Modelo Profesores de busqueda de un docente por su DUI, su nombre, su apellido o su contacto
+     * Method in the Teachers Model to search for a teacher by their DUI, their name, their surname or their contact
      * @param dui
      * @param con
      * @return 

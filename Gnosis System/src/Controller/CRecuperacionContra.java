@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
- *
+ *Controller to create, delete, modify and read data methods of RecoveryAgainst
  * @author santi
  */
 public class CRecuperacionContra {

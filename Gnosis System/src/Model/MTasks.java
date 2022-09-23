@@ -98,7 +98,7 @@ public class MTasks {
     }
     
     /**
-     * Metedo en el Modelo Tareas para subir tareas asignadas a un perfil.
+     * Method in the Tasks Model to upload tasks assigned to a profile.
      * @param nombretarea
      * @param fechainicio
      * @param fechavencimiento
@@ -133,7 +133,7 @@ public class MTasks {
     }
     
     /**
-     * Metedo en el Modelo Tareas para actualizar las tareas.
+     * Method in the Tasks Model to update the tasks.
      * @param ID
      * @param nombretarea
      * @param fechadeinicio
@@ -164,7 +164,7 @@ public class MTasks {
     }
     
     /**
-     * Metodo en el Modelo Tareas para eliminar tareas
+     * Method in the Tasks Model to delete tasks
      * @param ID
      * @param con
      * @return 

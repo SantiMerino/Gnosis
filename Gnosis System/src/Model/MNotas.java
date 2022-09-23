@@ -19,7 +19,7 @@ public class MNotas {
     
     /*Llenado de combobox*/  
     /**
-     * Metodo en el Modulo Notas para cargar perfiles desde el modelo.
+     * Method in the Notes Module to load profiles from the model.
      * @param con
      * @return 
      */   
@@ -36,7 +36,7 @@ public class MNotas {
     }
     
     /**
-     * Metodo en el Modelo Notas para cargar alumnos desde el modelo.
+     * Method in the Model Notes to load students from the model.
      * @param con
      * @return 
      */    
@@ -54,7 +54,7 @@ public class MNotas {
 
     /*Mostrar Tabla*/   
     /**
-     * Metodo en el Modelo Notas para llenar la tabla con una consulta desde el modelo.
+     * Method in the Model Notes to fill the table with a query from the model.
      * @param con
      * @return 
      */    
@@ -71,7 +71,7 @@ public class MNotas {
     }
     
     /**
-     * Metodo en el Modelo Notas para el ingreso de una nota.
+     * Method in the Notes Model for entering a note.
      * @param idperfil
      * @param idalumno
      * @param con
@@ -97,9 +97,9 @@ public class MNotas {
         }
      }
     
-    /*Actualizacion*/
+    /*Update*/
     /**
-     * Metodo en el Modelo Notas para la actualizacion de una nota.
+     * Method in the Notes Model for updating a note.
      * @param ID
      * @param idperfil
      * @param idalumno
@@ -121,7 +121,7 @@ public class MNotas {
         }
     }
     
-    /*Eliminacion*/
+    /*Elimination*/
     /**
      * Metodo en el Modelo Notas para la eliminacion de una nota. 
      * @param ID
@@ -142,7 +142,7 @@ public class MNotas {
      }
    
     /**
-     * Metodo en el Modelo Notas para la busqueda por nombre del perfil en el modelo.
+     * Method in the Model Notes for the search by name of the profile in the model.
      * @param ID
      * @param con
      * @return 
@@ -160,7 +160,7 @@ public class MNotas {
     }
     
     /**
-     * Metedo en el Modelo Notas para obtener una nota mediante el id del perfil.
+     * Method in the Notes Model to obtain a note by means of the profile id.
      * @param ID
      * @param con
      * @return 
@@ -216,7 +216,7 @@ public class MNotas {
      
     /*Filtro*/
     /**
-     * Metodo en el Modelo Notas con la busqueda de registros mediante filtros
+     * Method in the Notes Model with the search for records through filters
      *
      * @param busca
      * @param param
