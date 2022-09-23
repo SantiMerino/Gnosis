@@ -152,4 +152,13 @@ public class CTasks {
     public boolean UploadTaskStudents(String rubrica, String pdf, int idalumno, int idtarea){
         return mdlTask.UploadTaskStudent(rubrica, pdf, idalumno, idtarea, con);
     }
+    
+    public ResultSet CargarTareasFiltro(String tipoperfil){
+        return mdlTask.BuscarTipoPerfil(tipoperfil, con);
+    }
+    
+    public ResultSet CargarTareasFiltroEstado(String tipoperfil){
+        return mdlTask.Estado(tipoperfil, con);
+    }
+    
 }

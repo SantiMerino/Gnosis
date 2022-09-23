@@ -85,9 +85,9 @@ public class panTasks extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         filtersPan = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbTipo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cmbEstado = new javax.swing.JComboBox<>();
         btnAgregarTarea = new customizeObjects.ButtonRound();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -130,22 +130,30 @@ public class panTasks extends javax.swing.JPanel {
         jLabel2.setText("Ordenar:");
         filtersPan.add(jLabel2);
 
-        jComboBox1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jComboBox1.setForeground(java.awt.Color.white);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(100, 30));
-        filtersPan.add(jComboBox1);
+        cmbTipo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Calificado", "Completado" }));
+        cmbTipo.setPreferredSize(new java.awt.Dimension(100, 30));
+        cmbTipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbTipoItemStateChanged(evt);
+            }
+        });
+        filtersPan.add(cmbTipo);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(32, 32, 32));
         jLabel3.setText("Filtrar:");
         filtersPan.add(jLabel3);
 
-        jComboBox2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jComboBox2.setForeground(java.awt.Color.white);
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setPreferredSize(new java.awt.Dimension(100, 30));
-        filtersPan.add(jComboBox2);
+        cmbEstado.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Proyecto Formativo", "Recuperacion", "Cotidianas " }));
+        cmbEstado.setPreferredSize(new java.awt.Dimension(100, 30));
+        cmbEstado.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbEstadoItemStateChanged(evt);
+            }
+        });
+        filtersPan.add(cmbEstado);
 
         btnAgregarTarea.setText("Gestionar Tareas");
         btnAgregarTarea.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
@@ -183,13 +191,79 @@ public class panTasks extends javax.swing.JPanel {
         frmTasks task = new frmTasks();
         task.setVisible(true);
     }//GEN-LAST:event_btnAgregarTareaActionPerformed
+    
+    final void CargarTareasTipo(){
+        mainPan.removeAll();
+        mainPan.revalidate();
+        mainPan.repaint();
+        CTasks controller = new CTasks();
+        String tipo = (String) cmbTipo.getSelectedItem();
+        ResultSet datos = controller.CargarTareasFiltro(tipo);
+        try {
+            while (datos.next()) {  
+                //Forma de corroborar si es una materia o un modulo :3
+                int fila = datos.getRow();
+                String materiamodulo;
+                String cadena = datos.getString(4);     
+                String[] palabras = cadena.split(" ", 2);
+                if (palabras[0].equals("Ninguno")) {
+                    materiamodulo = palabras[1];
+                } else {
+                    materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
+                }               
+                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo, datos.getInt(10));
+//                System.out.println(datos.absolute(fila));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas " + e.toString());
+        }
+        
+    }
+    
+    final void CargarTareasEstado(){
+        mainPan.removeAll();
+        mainPan.revalidate();
+        mainPan.repaint();
+        CTasks controller = new CTasks();
+        String tipo = (String) cmbEstado.getSelectedItem();
+        ResultSet datos = controller.CargarTareasFiltroEstado(tipo);
+        try {
+            while (datos.next()) {  
+                //Forma de corroborar si es una materia o un modulo :3
+                int fila = datos.getRow();
+                String materiamodulo;
+                String cadena = datos.getString(4);     
+                String[] palabras = cadena.split(" ", 2);
+                if (palabras[0].equals("Ninguno")) {
+                    materiamodulo = palabras[1];
+                } else {
+                    materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
+                }               
+                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo, datos.getInt(10));
+//                System.out.println(datos.absolute(fila));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas " + e.toString());
+        }
+        
+    }
+    
+    private void cmbTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTipoItemStateChanged
+        // TODO add your handling code here:
+        CargarTareasTipo();
+    }//GEN-LAST:event_cmbTipoItemStateChanged
+
+    private void cmbEstadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbEstadoItemStateChanged
+        // TODO add your handling code here:
+        CargarTareasEstado();
+    }//GEN-LAST:event_cmbEstadoItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.ButtonRound btnAgregarTarea;
+    private javax.swing.JComboBox<String> cmbEstado;
+    private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JPanel filtersPan;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

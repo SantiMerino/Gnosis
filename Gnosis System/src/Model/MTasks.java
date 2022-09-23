@@ -214,6 +214,32 @@ public class MTasks {
                JOptionPane.showMessageDialog(null, "Hubo un error en al subir la tarea " + ex.toString());
                return false;
             }
-            
     }
+    
+     public ResultSet BuscarTipoPerfil(String clasificacion,Connection con){
+        try {
+            ResultSet rs;
+            String sentencia = "SELECT * FROM viewTareas WHERE Estado LIKE '"+clasificacion+"%'";
+            ps = con.prepareStatement(sentencia);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }
+     
+     public ResultSet Estado(String clasificacion,Connection con){
+        try {
+            ResultSet rs;
+            String sentencia = "SELECT * FROM viewTareas WHERE TipoPerfil LIKE '"+clasificacion+"%'";
+            ps = con.prepareStatement(sentencia);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }
+    
 }
