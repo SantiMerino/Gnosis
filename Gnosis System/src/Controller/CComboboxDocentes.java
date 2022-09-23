@@ -10,7 +10,7 @@ import Model.MTeacher;
 import java.sql.ResultSet;
 
 /**
- *
+ *Controller of Methods of creating, deleting, modifying and reading data on Teachers
  * @author Estudiante_PC10
  */
 public class CComboboxDocentes {

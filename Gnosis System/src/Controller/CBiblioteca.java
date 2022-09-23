@@ -8,9 +8,10 @@ import Model.MBiblioteca;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
+
 /**
- * 
- * @author josec
+ * controller of methods of creation, deletion, modification and reading of data on library
+ * @author Usuario
  */
 public class CBiblioteca {
 
@@ -32,7 +33,10 @@ public class CBiblioteca {
     public String getNombrerecurso() {
         return nombrerecurso;
     }
-
+/**
+ * name controller library courses
+ * @param nombrerecurso 
+ */
     public void setNombrerecurso(String nombrerecurso) {
         this.nombrerecurso = nombrerecurso;
     }
@@ -74,7 +78,7 @@ public class CBiblioteca {
     }
 
     /**
-     * Controlador para la insercion de datos.
+     * Data insertion controller.
      *
      * @param nombrerecurso
      * @param idtiporecurso
