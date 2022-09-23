@@ -54,7 +54,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
     boolean enviado = false;
         try{
             String de = "systemgnosis@gmail.com"; 
-            String clave = "mvjmcsymrrypmnjc";
+            String clave = "dbhgbabgqzmtmfrz";
             String para = correo;
             String host = "smtp.gmail.com";
 

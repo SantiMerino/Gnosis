@@ -30,6 +30,7 @@ public class frmDashboard extends javax.swing.JFrame {
 
     private int mood = 0;
     
+    //idalumno
     int iduserlog;
     String usernamelog;
 

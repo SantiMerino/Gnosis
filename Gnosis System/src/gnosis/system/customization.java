@@ -25,7 +25,12 @@ import customizeObjects.ButtonRound;
 import customizeObjects.PanelRound;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URI;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -409,7 +414,7 @@ public class customization {
     
     
     
-    public void CrearRecursoBiblioteca( String nombre_recurso, String tipo_recurso, String categoria_recurso,JPanel mainContainer, String link) {
+    public void CrearRecursoBiblioteca( String nombre_recurso, String tipo_recurso, String categoria_recurso,JPanel mainContainer, String link, String pdf) {
         // Crear paneles
         PanelRound resourcesContainer = new PanelRound();
         PanelRound topGap = new PanelRound();
@@ -488,7 +493,11 @@ public class customization {
                 btnOpen.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-
+                        try {
+                            decodePdf(pdf, nombre_recurso);
+                        } catch (IOException ex) {
+                              JOptionPane.showMessageDialog(null, "No fue posible descargar el recurso");
+                        }
                     }
                 });
                 
@@ -571,6 +580,19 @@ public class customization {
         mainContainer.repaint();
         mainContainer.revalidate();     
         
+    }
+    
+    private void decodePdf(String pdf, String name) throws IOException {
+        byte[] decoded = java.util.Base64.getDecoder().decode(pdf);
+        String home = System.getProperty("user.home");
+        String fileName = "Recurso " + name + ".pdf";
+        File rutaFile = new File(home + "/Downloads/" + fileName);
+        FileOutputStream fos = new FileOutputStream(rutaFile);
+        fos.write(decoded);
+        fos.flush();
+        fos.close();
+        notificacion("Recurso descargado exitosamente", 1, "Confirmación de descarga" );
+//        AbrirLinks(rutaFile.toString());
     }
     
     void AbrirLinks(String link){

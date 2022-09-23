@@ -486,7 +486,6 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         fos.write(decoded);
         fos.flush();
         fos.close();
-        System.out.println("Soy vergon");
     }
     /**
      * @param args the command line arguments

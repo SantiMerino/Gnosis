@@ -52,7 +52,7 @@ public class MConnection {
             //Valores de conexión
             String url = "jdbc:sqlserver://localhost:1433;"
                     + "database = dbGnosis;"
-                    + "user = sa;"
+                    + "user = inicio_sesion;"
                     + "password = itr2022;"
                     + "loginTimeOut = 10";
             //Asignación de valores a objeto conexión

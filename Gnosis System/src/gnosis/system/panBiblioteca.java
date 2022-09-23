@@ -44,7 +44,7 @@ public class panBiblioteca extends javax.swing.JPanel {
         ResultSet datosrecursos = controlador.CargarBusquedaFiltro(categoria, idAlumno);
         try {
             while (datosrecursos.next()) {                
-                 custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel, datosrecursos.getString(4));                
+                 custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel, datosrecursos.getString(4), datosrecursos.getString(5));                
             }         
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al cargar los recursos" + e.toString());
@@ -60,7 +60,7 @@ public class panBiblioteca extends javax.swing.JPanel {
         ResultSet datosrecursos = controlador.CargarBusquedaFiltroClas(categoria, idAlumno);
         try {
             while (datosrecursos.next()) {                
-                 custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel, datosrecursos.getString(4));                
+                 custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel, datosrecursos.getString(4), datosrecursos.getString(5));                
             }         
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al cargar los recursos" + e.toString());
@@ -72,7 +72,7 @@ public class panBiblioteca extends javax.swing.JPanel {
         ResultSet datosrecursos = controlador.CargarRecursosVista(idAlumno);
         try {
             while (datosrecursos.next()) {                
-                 custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel, datosrecursos.getString(4));                
+                 custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), mainPanel, datosrecursos.getString(4), datosrecursos.getString(5));                
             }         
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al cargar los recursos" + e.toString());
