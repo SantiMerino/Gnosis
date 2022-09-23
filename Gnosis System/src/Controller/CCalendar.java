@@ -133,7 +133,7 @@ public class CCalendar {
     }
 
     /**
-     * Controlador para la inserción de datos.
+     * Controller for data insertion.
      * @param nombreevento
      * @param fechaevento
      * @param horainicioevento
@@ -155,7 +155,7 @@ public class CCalendar {
     }
     
     /**
-     * Controlador para la actualizacion de datos.
+     * Controller for data update.
      * @param idevento
      * @param nombreevento
      * @param fechaevento

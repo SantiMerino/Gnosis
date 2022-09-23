@@ -10,9 +10,10 @@ import Model.MTeacher;
 import java.sql.ResultSet;
 
 /**
- *Controller of Methods of creating, deleting, modifying and reading data on Teachers
- * @author Estudiante_PC10
+ * Controller of Methods of creating, deleting, modifying and reading data on Teachers
+ * @author Usuario
  */
+
 public class CComboboxDocentes {
     Connection con = CConnection.getConnectionControllerWithoutParameters();
     MTeacher modeloGeneros = new MTeacher();

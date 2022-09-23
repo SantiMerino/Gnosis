@@ -7,7 +7,7 @@ import Model.MNotas;
 import java.sql.Connection;
 import java.sql.ResultSet;
 /**
- *
+ *controller of methods of creating, deleting, modifying and reading data on Notes
  * @author PC
  */
 public class CComboboxNotas {
@@ -24,7 +24,7 @@ public class CComboboxNotas {
     MNotas modeloBusqueda = new MNotas();
     
     /**
-     * Metodo para cargar perfiles
+     * Method to load profiles
      * @return 
      */
     
@@ -33,7 +33,7 @@ public class CComboboxNotas {
     }
     
     /**
-     * Metodo para cargar alumnos 
+     * Method to load students
      * @return 
      */
     
@@ -43,17 +43,17 @@ public class CComboboxNotas {
     
     /*Cargar tabla de registros*/
     
-    /**
-     * Metodo en el controllador para el llenado de la tabla con la vista
-     * @return 
-     */
+   /**
+    *  Method in the controller to fill the table with the view
+    * @return 
+    */
     
     public ResultSet CCargarRegistroNotas(){
         return modelRegistroNotas.MCargarRegistrosNotas(con);
     }
     
     /**
-     * Metodo para la busqueda por nombre de perfil
+     * Method for searching by profile name
      * @param ID
      * @return 
      */
@@ -63,7 +63,7 @@ public class CComboboxNotas {
     }
     
     /**
-     * Metodo para buscar perfiles por id
+     * Method to search profiles by id
      * @param ID
      * @return 
      */
@@ -74,7 +74,7 @@ public class CComboboxNotas {
     
     /*Combobox*/
     /**
-     * Metodos para el llenado de combobox con la vista
+     * Methods for filling combobox with the view
      * @return 
      */
     
@@ -93,7 +93,7 @@ public class CComboboxNotas {
     /*Filtro*/
     
     /**
-     * Metodo en el controllador para la busqueda por filtro
+     * Method in controller for search by filter
      * @param busca
      * @param param
      * @return 

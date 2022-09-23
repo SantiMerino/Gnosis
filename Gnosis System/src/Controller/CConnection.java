@@ -15,7 +15,7 @@ import java.sql.Connection;
 public class CConnection {
     
     /**
-     * Controlador Conexion para conección  a la base de datos con parametros propios.
+     * Connection controller for connection to the database with its own parameters.
      * @return 
      */
     public static Connection getConnectionController(){
@@ -23,7 +23,7 @@ public class CConnection {
     }
     
     /**
-     * Controlador Conexion para dar conección a la base de datos sin parametros. 
+     * Connection Controller to connect to the database without parameters. 
      * @return 
      */
     public static Connection getConnectionControllerWithoutParameters() {

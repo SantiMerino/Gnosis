@@ -147,7 +147,7 @@ public class CEstudents {
     }
 
     /**
-     * Controlador para la inserción de datos.
+     * Controller for data insertion.
      * @param apellidosalumno
      * @param nombresalumno
      * @param idgenero
@@ -175,7 +175,7 @@ public class CEstudents {
     }
     
     /**
-     * Controlador para la actualización de datos.
+     * Driver for data update.
      * @param ID
      * @param apellidosalumno
      * @param nombresalumno
@@ -205,7 +205,7 @@ public class CEstudents {
     }
    
     /**
-     * Controlador para la eliminación de datos.
+     * Controller for data deletion.
      * @param ID 
      */
     public CEstudents(int ID) {
@@ -219,7 +219,7 @@ public class CEstudents {
     }
     
     /**
-     * Controlador Estudiantes para la creación del usuario para el alumno.
+     * Student Controller for creating the user for the student.
      * @return
      */
     public boolean CrearUsuarioAlumnoController() {
@@ -228,7 +228,7 @@ public class CEstudents {
     }
 
     /**
-     * Controlador Estudiantes para el registro de un nuevo alumno.
+     * Student controller for registering a new student.
      * @return 
      */
     public boolean AlumnoNuevoController() {
@@ -236,7 +236,7 @@ public class CEstudents {
     }
     
     /**
-     * Controlador Estudiantes para la actualización de un alumno.
+     * Student controller for updating a student.
      * @return 
      */
     public boolean ActualizarEstudiante() {
@@ -244,7 +244,7 @@ public class CEstudents {
     }
   
     /**
-     * Controlador Estudiantes para la eliminar un alumno.
+     * Student Controller for deleting a student.
      * @return 
      */
     public boolean EliminarEstudiante() {

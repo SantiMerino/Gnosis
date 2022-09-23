@@ -6,8 +6,8 @@
 package Controller;
 
 /**
- *
- * @author santi
+ * 
+ * @author Usuario
  */
 public class CConfiguracion {
 
