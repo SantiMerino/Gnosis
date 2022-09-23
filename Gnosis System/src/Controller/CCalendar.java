@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
- *  Este clase contine todo lo de la biblioteca de recursos 
+ * This class contains everything from the resource library
  * @author devro
  */
 public class CCalendar {
@@ -179,7 +179,7 @@ public class CCalendar {
     }
     
     /**
-     * Controlador para la eliminación de datos.
+     * Controller for data deletion.
      * @param ID 
      */
     public CCalendar(int ID) {
@@ -187,13 +187,13 @@ public class CCalendar {
     }
     
     /**
-     * Controlador Calendario.
+     * Calendar Controller.
      */
     public CCalendar() {
     }
     
     /**
-     * Controlador Calendario para la inserción de datos.
+     * Calendar controller for data insertion.
      * @return 
      */
     public boolean EventoNuevoControladorResultset(){
@@ -201,7 +201,7 @@ public class CCalendar {
     }
     
     /**
-     * Controlador Calendario para la actualización de un evento.
+     * Calendar controller for updating an event.
      * @return 
      */
     public boolean ActualizarEvento() {
@@ -209,7 +209,7 @@ public class CCalendar {
     }
     
     /**
-     * Controlador Calendario para la eliminación de un evento.
+     * Calendar controller for the elimination of an event.
      * @return 
      */
     public boolean EliminarEventoController(){
