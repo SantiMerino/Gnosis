@@ -505,12 +505,12 @@ public class frmLogin extends javax.swing.JFrame {
                         this.dispose();
                         break;
                     case 2:
-                        framepornivel = new frmDashboardTeacher(2);
+                        framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
                         framepornivel.setVisible(true);
                         this.dispose();
                         break;
                     case 3:
-                        framepornivel = new frmDashboardTeacher(3);
+                        framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
                         framepornivel.setVisible(true);
                         this.dispose();
                         break;

@@ -617,6 +617,22 @@ WHERE a.idperfil = b.idperfil
 	AND b.idtipoperfil = h.idtipoperfil
 GO
 
+CREATE VIEW viewTareasDocentes
+AS
+SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I.], a.fechavencimiento as [Fecha V.], CONCAT(e.materia,' ',f.modulo) as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado], a.rubrica AS [Rúbrica], b.porcentajeValoracion AS [%], h.tipoperfil AS [Tipo Perfil], a.idtarea, d.iddocente
+FROM tbTareas a, tbPerfiles b, tbMateriaDocentes c, tbDocentes d, tbMaterias e, tbModulos f, tbEstadoPerfiles g, tbTipoPerfiles h
+WHERE a.idperfil = b.idperfil 
+	AND b.idmateriadocente = c.idmateriadocente
+	AND c.iddocente = d.iddocente
+	AND c.idmateria = e.idmateria
+	AND c.idmodulo = f.idmodulo
+	AND b.idestadoperfil = g.idestadoperfil
+	AND b.idtipoperfil = h.idtipoperfil
+GO
+
+SELECT * FROM viewTareasDocentes WHERE iddocente = 1
+
+
 use dbGnosis
 
 select * from viewTareas WHERE Tarea = 'Actividades cotidianas';
@@ -713,7 +729,7 @@ AND a.idclasificacion = c.idclasificacion
 
 SELECT * FROM viewBiblioteca WHERE idalumno = 1;
 
-Select * from viewTareas
+Select * from viewTareas 
 select * from viewPerfiles
 Select * from viewPortafolios
 

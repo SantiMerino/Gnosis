@@ -141,6 +141,10 @@ public class CTasks {
         return mdlTask.CargarTareasPrev();
     }
     
+    public ResultSet CargarTareasPreviewDocente(int id){
+        return mdlTask.CargarTareasPrevDocente(id);
+    }
+    
     public ResultSet CargarTareasFull(int id){
         return mdlTask.CargarTareasFull(id);
     }
@@ -153,12 +157,13 @@ public class CTasks {
         return mdlTask.UploadTaskStudent(rubrica, pdf, idalumno, idtarea, con);
     }
     
-    public ResultSet CargarTareasFiltro(String tipoperfil){
-        return mdlTask.BuscarTipoPerfil(tipoperfil, con);
-    }
+    public ResultSet CargarTareasFiltro(String tipoperfil, int iddocente){
+        return mdlTask.BuscarTipoPerfil(tipoperfil, iddocente,con);
+    } 
     
-    public ResultSet CargarTareasFiltroEstado(String tipoperfil){
-        return mdlTask.Estado(tipoperfil, con);
+    
+    public ResultSet CargarTareasFiltroEstado(String tipoperfil, int iddocente){
+        return mdlTask.Estado(tipoperfil, iddocente,con);
     }
     
 }

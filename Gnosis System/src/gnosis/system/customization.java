@@ -29,13 +29,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
- *
+ * This class contains ALL the methods for dynamic components created with code, some general stetic methods for every frame or panel, visual effects and animations.
  * @author santi
  */
 public class customization {
@@ -149,7 +147,7 @@ public class customization {
     
     
     //Pruba para crear un componente en otro form parte 1 xd
-    public void CrearTarea(String nombre_tarea, String nombre_materia, String nombre_docente,String fecha_i ,String fecha_v, String estado, JPanel container, String materiamoduloColor, int idtarea){
+    public void CrearTarea(String nombre_tarea, String nombre_materia, String nombre_docente,String fecha_i ,String fecha_v, String estado, JPanel container, String materiamoduloColor, int idtarea, int niveluser){
             //Crear labels   
         JLabel nTarea = new JLabel();
         JLabel nMateria = new JLabel();
@@ -252,17 +250,28 @@ public class customization {
         pan5.add(BorderLayout.CENTER,btnCarpeta);
 //        btnCarpeta.setStyle(ButtonRound.ButtonStyle.VERDE);
 
+        
+
         //Agregar action performed a la carpeta
         btnCarpeta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (new frmUploadTaskStudents(idtarea).isVisible()== true) {            
-                    JOptionPane.showMessageDialog(null, "Ya esta abierta una tarea");
-                } else {
-                    new frmUploadTaskStudents(idtarea).setVisible(true);
-                }           
+                
+            switch (niveluser) {
+            case 1:
+                Frame tareaframe = new frmUploadTaskStudents();
+                tareaframe.setVisible(true);
+                break;
+            case 2:
+                Frame frame2 = new frmUploadTaskTeacher();
+                frame2.setVisible(true);
+                break;
+        }
             }
         });
+        
+        
+        
         //Me paso al panel 3 y solo le agrego el boton del estado de la tarea que incluso lo puedo cambiar por un label 
         pan3.add(BorderLayout.CENTER, btnEstado);
         btnEstado.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
@@ -410,6 +419,10 @@ public class customization {
         //Tengo que hacer un metodo para dependiendo el id del estado se asigne un icono :3
         //Tengo que hacer que dependiendo la materia el color de los paneles vería :P
               
+    }
+    
+    final void AbrirFrameTareas(int nivel){
+
     }
     
     

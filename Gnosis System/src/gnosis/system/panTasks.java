@@ -6,6 +6,7 @@
 package gnosis.system;
 
 import Controller.CTasks;
+import java.awt.Frame;
 import java.awt.event.ItemEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,14 +26,32 @@ public class panTasks extends javax.swing.JPanel {
      * Creates new form frmprueba
      */
     customization custo = new customization();
-
-    public panTasks() {
+    CTasks controller = new CTasks();
+    int nivelusuario;
+    int iddocente;
+    
+    public panTasks(int nivel) {
         initComponents();
-        CargarTareas();
+        nivelusuario = nivel;
+        iddocente = 0;
+        btnAgregarTarea.setVisible(false);
+        CargarTareasAlumnos();
     }
     
-    final void CargarTareas(){
-        CTasks controller = new CTasks();
+    public panTasks(int nivel, int iddocente){
+        initComponents();
+        nivelusuario = nivel;
+        if (nivelusuario == 3) {
+            this.iddocente = 0;
+        } else {
+            this.iddocente = iddocente;
+        }
+        CargarTareasDocente(iddocente);
+    }
+    
+    
+    final void CargarTareasAlumnos(){
+        controller = new CTasks();
         ResultSet datos = controller.CargarTareasPreview();
         try {
             while (datos.next()) {  
@@ -46,7 +65,7 @@ public class panTasks extends javax.swing.JPanel {
                 } else {
                     materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
                 }               
-                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo, datos.getInt(10));
+                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo, datos.getInt(10), nivelusuario);
 //                System.out.println(datos.absolute(fila));
             }
         } catch (Exception e) {
@@ -54,21 +73,31 @@ public class panTasks extends javax.swing.JPanel {
         }
         
     }
-
-    //Constructor para habilitar los botones de agregar tareas
-    public panTasks(int nivel) {
-        initComponents();
-        if (nivel == 1) {
-            CargarTareas();
-            btnAgregarTarea.setVisible(false);
-        } else if (nivel == 2) {
-            btnAgregarTarea.setVisible(true);
-            CargarTareas();
-        } else if (nivel == 3){
-            btnAgregarTarea.setVisible(false);
+    
+        final void CargarTareasDocente(int iddocente){
+        controller = new CTasks();
+        ResultSet datos = controller.CargarTareasPreviewDocente(iddocente);
+        try {
+            while (datos.next()) {  
+                //Forma de corroborar si es una materia o un modulo :3
+                int fila = datos.getRow();
+                String materiamodulo;
+                String cadena = datos.getString(4);     
+                String[] palabras = cadena.split(" ", 2);
+                if (palabras[0].equals("Ninguno")) {
+                    materiamodulo = palabras[1];
+                } else {
+                    materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
+                }               
+                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo, datos.getInt(10), nivelusuario);
+//                System.out.println(datos.absolute(fila));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas " + e.toString());
         }
+        
     }
-
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -146,7 +175,7 @@ public class panTasks extends javax.swing.JPanel {
         filtersPan.add(jLabel3);
 
         cmbEstado.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Proyecto Formativo", "Recuperacion", "Cotidianas " }));
+        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Proyecto Formativo", "Recuperacion", "Cotidianas" }));
         cmbEstado.setPreferredSize(new java.awt.Dimension(100, 30));
         cmbEstado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -193,31 +222,30 @@ public class panTasks extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarTareaActionPerformed
     
     final void CargarTareasTipo(){
+        String tipo = (String) cmbTipo.getSelectedItem();
+        ResultSet datos = controller.CargarTareasFiltro(tipo, iddocente);
         mainPan.removeAll();
         mainPan.revalidate();
         mainPan.repaint();
-        CTasks controller = new CTasks();
-        String tipo = (String) cmbTipo.getSelectedItem();
-        ResultSet datos = controller.CargarTareasFiltro(tipo);
+        controller = new CTasks();
         try {
-            while (datos.next()) {  
+            while (datos.next()) {
                 //Forma de corroborar si es una materia o un modulo :3
                 int fila = datos.getRow();
                 String materiamodulo;
-                String cadena = datos.getString(4);     
+                String cadena = datos.getString(4);
                 String[] palabras = cadena.split(" ", 2);
                 if (palabras[0].equals("Ninguno")) {
                     materiamodulo = palabras[1];
                 } else {
                     materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
-                }               
-                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo, datos.getInt(10));
+                }
+                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo, datos.getInt(10), nivelusuario);
 //                System.out.println(datos.absolute(fila));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas " + e.toString());
         }
-        
     }
     
     final void CargarTareasEstado(){
@@ -226,7 +254,7 @@ public class panTasks extends javax.swing.JPanel {
         mainPan.repaint();
         CTasks controller = new CTasks();
         String tipo = (String) cmbEstado.getSelectedItem();
-        ResultSet datos = controller.CargarTareasFiltroEstado(tipo);
+        ResultSet datos = controller.CargarTareasFiltroEstado(tipo, iddocente);
         try {
             while (datos.next()) {  
                 //Forma de corroborar si es una materia o un modulo :3
@@ -239,7 +267,7 @@ public class panTasks extends javax.swing.JPanel {
                 } else {
                     materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
                 }               
-                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo, datos.getInt(10));
+                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo, datos.getInt(10), nivelusuario);
 //                System.out.println(datos.absolute(fila));
             }
         } catch (Exception e) {

@@ -9,6 +9,10 @@ import Controller.CLogin;
 import java.awt.*;
 import javax.swing.JOptionPane;
 import customizeObjects.ButtonRound;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,7 +33,9 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     }
 
     private int niveluser;
-    
+    int iddocente;
+    String usernamelog;
+       
     public customization custoObj = new customization();
     panGrades grades = new panGrades();
     CLogin log = new CLogin();
@@ -43,10 +49,17 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         
     }
 
-    public frmDashboardTeacher(int niveluser) {
-        this.niveluser = niveluser;
+    public frmDashboardTeacher(ResultSet datosusuario) {
         customization.mainUtilities();
         initComponents();
+        try {
+            usernamelog = datosusuario.getString(3);
+            niveluser = datosusuario.getInt(2);
+            iddocente = datosusuario.getInt(8);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmDashboardTeacher.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        lblDashboard.setText(usernamelog + "'s Dashboard");
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
@@ -65,7 +78,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
             // Si quieres crear un icono en la bandeja del sistemas como vista previa
             Image image = Toolkit.getDefaultToolkit().createImage("some-icon.png");
             TrayIcon trayIcon=new TrayIcon(image,"Java AWT Tray Demo");
-            // Deja que el sistema auto escale si es necesario
+            // Deja que el sistema auto escale si es necesar
             trayIcon.setImageAutoSize(true);
             // Definir texto de tooltip(descripción emergente)
             trayIcon.setToolTip("Gnosis System");
@@ -126,7 +139,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         panDashboard = new customizeObjects.PanelRound();
         upperPanel = new javax.swing.JPanel();
         namePan = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblDashboard = new javax.swing.JLabel();
         searchPan = new javax.swing.JPanel();
         panelRound1 = new customizeObjects.PanelRound();
         jLabel8 = new javax.swing.JLabel();
@@ -228,10 +241,10 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         namePan.setPreferredSize(new java.awt.Dimension(300, 100));
         namePan.setLayout(new javax.swing.BoxLayout(namePan, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel1.setText("Santi's Dashboard");
-        namePan.add(jLabel1);
+        lblDashboard.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        lblDashboard.setForeground(new java.awt.Color(32, 32, 32));
+        lblDashboard.setText("Santi's Dashboard");
+        namePan.add(lblDashboard);
 
         upperPanel.add(namePan, java.awt.BorderLayout.WEST);
 
@@ -736,7 +749,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         //Cambio el color del boton y el icono
             cambiarColorBotonesMenu(briefcaseButton, "/resources/briefcase-black.png");
         //Agrego el panel que corresponde
-            panContainer.add(new panTasks());
+            panContainer.add(new panTasks(niveluser, iddocente));
             panContainer.repaint();
             panContainer.revalidate();
         //Si el componentCount es 1 es que uno esta abierto
@@ -749,7 +762,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
             panContainer.repaint();
             panContainer.revalidate();
 
-            panContainer.add(new panTasks());
+            panContainer.add(new panTasks(niveluser, iddocente));
             panContainer.repaint();
             panContainer.revalidate(); 
             }else {
@@ -986,7 +999,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private customizeObjects.PanelRound gradesPanel;
     private customizeObjects.ButtonRound homeButton;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1004,6 +1016,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel lblDashboard;
     private javax.swing.JPanel mainPanel;
     private customizeObjects.ButtonRound medalButton;
     private customizeObjects.PanelRound moodPanel;

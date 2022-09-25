@@ -64,6 +64,23 @@ public class MTasks {
     }
     
         
+    public ResultSet CargarTareasPrevDocente(int id){
+        Connection con;
+        try {
+            con = MConnection.getConnectionWithoutParameters();
+            String query = "SELECT * FROM viewTareasDocentes  WHERE iddocente = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }
+    
+    
+        
     public ResultSet CargarTareasFull(int idtarea){
         Connection con;
         try {
@@ -216,10 +233,15 @@ public class MTasks {
             }
     }
     
-     public ResultSet BuscarTipoPerfil(String clasificacion,Connection con){
+     public ResultSet BuscarTipoPerfil(String clasificacion,int iddocente,Connection con){
         try {
             ResultSet rs;
-            String sentencia = "SELECT * FROM viewTareas WHERE Estado LIKE '"+clasificacion+"%'";
+            String sentencia = "";
+            if (iddocente == 0) {
+                sentencia = "SELECT * FROM viewTareas WHERE Estado LIKE '"+clasificacion+"%'";
+            } else{
+                sentencia = "SELECT * FROM viewTareasDocentes WHERE iddocente = "+iddocente +"AND Estado LIKE '"+clasificacion+"%'";
+            }
             ps = con.prepareStatement(sentencia);
             rs = ps.executeQuery();
             return rs;
@@ -229,10 +251,15 @@ public class MTasks {
         }
     }
      
-     public ResultSet Estado(String clasificacion,Connection con){
+     public ResultSet Estado(String clasificacion, int iddocente,Connection con){
         try {
             ResultSet rs;
-            String sentencia = "SELECT * FROM viewTareas WHERE TipoPerfil LIKE '"+clasificacion+"%'";
+            String sentencia = "";
+            if (iddocente == 0) {
+                sentencia = "SELECT * FROM viewTareas WHERE TipoPerfil LIKE '" + clasificacion + "%'";
+            } else {
+                sentencia = "SELECT * FROM viewTareasDocentes WHERE iddocente = " + iddocente + " AND [Tipo Perfil] LIKE '" + clasificacion + "%'";
+            }
             ps = con.prepareStatement(sentencia);
             rs = ps.executeQuery();
             return rs;
