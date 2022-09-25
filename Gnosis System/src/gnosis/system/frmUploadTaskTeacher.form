@@ -164,6 +164,9 @@
               <Value id="VERDE"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRound5ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="customizeObjects.ButtonRound" name="buttonRound6">
           <Properties>

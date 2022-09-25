@@ -77,6 +77,11 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         buttonRound5.setText("Calificar");
         buttonRound5.setRound(20);
         buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
+        buttonRound5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound5ActionPerformed(evt);
+            }
+        });
 
         buttonRound6.setText("Modificar");
         buttonRound6.setRound(20);
@@ -184,6 +189,12 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonRound5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound5ActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_buttonRound5ActionPerformed
 
     /**
      * @param args the command line arguments

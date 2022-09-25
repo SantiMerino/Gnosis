@@ -26,13 +26,12 @@ public class frmDashboard extends javax.swing.JFrame {
     panGrades grades = new panGrades();
 //    customization custo = new customization();
 
-    private JPanel menuAtras;
-
     private int mood = 0;
     
     //idalumno
     int iduserlog;
     String usernamelog;
+    ResultSet datosAlumnoLog;
 
     public frmDashboard() {
         initComponents();
@@ -77,6 +76,11 @@ public class frmDashboard extends javax.swing.JFrame {
         panContainer.repaint();
         panContainer.revalidate();
         cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
+    }
+    
+    
+    public void ObtenerDatosAlumnoLoggeado(int id){
+        c
     }
 
     //Metodo para recargar la interfaz de portafolios de manera externa

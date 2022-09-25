@@ -606,8 +606,8 @@ DROP COLUMN nota
 
 CREATE VIEW viewTareas
 AS 
-SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I.], a.fechavencimiento as [Fecha V.], CONCAT(e.materia,' ',f.modulo) as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado], a.rubrica AS [Rúbrica], b.porcentajeValoracion AS [%], h.tipoperfil AS [Tipo Perfil], a.idtarea
-FROM tbTareas a, tbPerfiles b, tbMateriaDocentes c, tbDocentes d, tbMaterias e, tbModulos f, tbEstadoPerfiles g, tbTipoPerfiles h
+SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I.], a.fechavencimiento as [Fecha V.], CONCAT(e.materia,' ',f.modulo) as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado], a.rubrica AS [Rúbrica], b.porcentajeValoracion AS [%], h.tipoperfil AS [Tipo Perfil], a.idtarea, i.grado
+FROM tbTareas a, tbPerfiles b, tbMateriaDocentes c, tbDocentes d, tbMaterias e, tbModulos f, tbEstadoPerfiles g, tbTipoPerfiles h, tbGrados i
 WHERE a.idperfil = b.idperfil 
 	AND b.idmateriadocente = c.idmateriadocente
 	AND c.iddocente = d.iddocente
@@ -615,7 +615,15 @@ WHERE a.idperfil = b.idperfil
 	AND c.idmodulo = f.idmodulo
 	AND b.idestadoperfil = g.idestadoperfil
 	AND b.idtipoperfil = h.idtipoperfil
+	AND b.idgrados = i.idgrado
 GO
+ 
+
+SELECT * FROM viewTareas WHERE Grado = 'Segundo Año';
+
+SELECT b.grado FROM tbAlumnos a, tbGrados b WHERE a.idalumno = 1 AND a.idgrado = b.idgrado
+
+
 
 CREATE VIEW viewTareasDocentes
 AS
@@ -630,7 +638,7 @@ WHERE a.idperfil = b.idperfil
 	AND b.idtipoperfil = h.idtipoperfil
 GO
 
-SELECT * FROM viewTareasDocentes WHERE iddocente = 1
+SELECT * FROM viewTareasDocentes WHERE iddocente = 1 AND [Tipo Perfil] LIKE 'Cotidianas%'
 
 
 use dbGnosis
