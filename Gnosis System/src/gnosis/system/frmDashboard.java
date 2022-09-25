@@ -5,6 +5,7 @@
  */
 package gnosis.system;
 
+import Controller.CEstudents;
 import java.awt.*;
 import javax.swing.JPanel;
 import customizeObjects.ButtonRound;
@@ -79,9 +80,10 @@ public class frmDashboard extends javax.swing.JFrame {
     }
     
     
-    public void ObtenerDatosAlumnoLoggeado(int id){
-        c
-    }
+//    public void ObtenerDatosAlumnoLoggeado(int id){
+//        CEstudents controller = new CEstudents();
+//        controller
+//    }
 
     //Metodo para recargar la interfaz de portafolios de manera externa
     public void abrirMenuPortafolios() {

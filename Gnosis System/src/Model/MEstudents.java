@@ -81,6 +81,13 @@ public class MEstudents {
         }
     }
     
+//    public ResultSet DatosAlumnoLog(){
+//        try {
+//            String query = ""
+//        } catch (Exception e) {
+//        }
+//    }
+    
     /**
      * Metedo en el Modelo Estudiantes para registrar el usuario del alumno.
      * @param nivel
