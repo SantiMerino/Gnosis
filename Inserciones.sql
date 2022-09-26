@@ -516,9 +516,9 @@ INSERT INTO tbPortafolioCategoria VALUES ('Clases'), ('Examenes'), ('Tareas')
 INSERT INTO tbClasificaciones VALUES ('Libro'), ('Presentación'), ('Clase')
 
 CREATE VIEW viewAlumnos
-AS SELECT a.apellidos_alumno, a.nombres_alumno, b.genero, c.grado, d.especialidad, f.seccionAca, h.grupo ,g.seccionTec, a.correo, a.direccion, a.contacto, a.dui, a.fecha_nac, a.codigocarnet
-FROM tbAlumnos a, tbGeneros b, tbGrados c, tbEspecialidades d, tbSeccionAca f, tbSeccionTec g, tbGrupos h
-WHERE a.idgenero = b.idgenero AND a.idgrado = c.idgrado AND c.idespecialidad = d.idespecialidad AND c.idgrupo = h.idgrupo AND c.idseccionAca = f.idseccionAca AND c.idseccionTec = g.idseccionTec
+AS SELECT a.idalumno, a.apellidos_alumno, a.nombres_alumno, b.genero, c.grado, d.especialidad, f.seccionAca, h.grupo , a.correo, a.direccion, a.contacto, a.dui, a.fecha_nac, a.codigocarnet
+FROM tbAlumnos a, tbGeneros b, tbGrados c, tbEspecialidades d, tbSeccionAca f, tbGrupos h
+WHERE a.idgenero = b.idgenero AND a.idgrado = c.idgrado AND c.idespecialidad = d.idespecialidad AND c.idgrupo = h.idgrupo AND c.idseccionAca = f.idseccionAca
 
 --Inserciones en la tabla tbUsuario
 INSERT INTO tbAlumnos VALUES ('Merino Herrera', 'José Santiago', 1, 1, 'jose@gmail.com', 'Colonia la zacamil', '34540987', '123213', '2004-08-15', '20190016'),
@@ -599,7 +599,7 @@ CREATE TABLE tbTareasAlumnos(
 	link varchar(1000)
 )
 
-SELECT * FROM viewTareas WHERE idtarea = 2;
+SELECT * FROM viewAlumnos where idalumno = 1
 
 ALTER TABLE tbPerfiles
 DROP COLUMN nota
@@ -621,7 +621,9 @@ GO
 
 SELECT * FROM viewTareas WHERE Grado = 'Segundo Año';
 
-SELECT b.grado FROM tbAlumnos a, tbGrados b WHERE a.idalumno = 1 AND a.idgrado = b.idgrado
+SELECT CONCAT(a.nombres_alumno, ' ', a.apellidos_alumno) AS [Alumno] 
+FROM tbAlumnos a, tbGrados b 
+WHERE a.idalumno = 1 AND a.idgrado = b.idgrado
 
 
 

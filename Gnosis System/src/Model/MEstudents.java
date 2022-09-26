@@ -81,12 +81,18 @@ public class MEstudents {
         }
     }
     
-//    public ResultSet DatosAlumnoLog(){
-//        try {
-//            String query = ""
-//        } catch (Exception e) {
-//        }
-//    }
+    public ResultSet DatosAlumnoLog(int idalumno, Connection con){
+        try {
+            String query = "SELECT * FROM viewAlumnos WHERE idalumno = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, idalumno);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No fue posible cargar los datos de los alumnos "+e.toString());
+            return null;
+        }
+    }
     
     /**
      * Metedo en el Modelo Estudiantes para registrar el usuario del alumno.

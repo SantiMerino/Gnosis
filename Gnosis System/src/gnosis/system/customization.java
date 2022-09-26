@@ -259,7 +259,7 @@ public class customization {
                 
             switch (niveluser) {
             case 1:
-                Frame tareaframe = new frmUploadTaskStudents();
+                Frame tareaframe = new frmUploadTaskStudents(idtarea);
                 tareaframe.setVisible(true);
                 break;
             case 2:

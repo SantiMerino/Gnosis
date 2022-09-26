@@ -289,7 +289,7 @@ public class panGrades extends javax.swing.JPanel {
         lblGrado.setBackground(new java.awt.Color(255, 255, 255));
         lblGrado.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblGrado.setForeground(new java.awt.Color(32, 32, 32));
-        lblGrado.setText("grado asignado");
+        lblGrado.setText("Grado:");
 
         jLabel11.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(32, 32, 32));

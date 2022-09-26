@@ -29,6 +29,7 @@ public class panTasks extends javax.swing.JPanel {
     CTasks controller = new CTasks();
     int nivelusuario;
     int iddocente;
+    int idalumno;
     
     public panTasks(int nivel) {
         initComponents();
@@ -38,15 +39,17 @@ public class panTasks extends javax.swing.JPanel {
         CargarTareasAlumnos();
     }
     
-    public panTasks(int nivel, int iddocente){
+    public panTasks(int nivel, int idDocenteAlumno){
         initComponents();
         nivelusuario = nivel;
-        if (nivelusuario == 3) {
+        if (nivelusuario == 3 || nivelusuario == 1) {
             this.iddocente = 0;
+            idalumno = idDocenteAlumno;
+            CargarTareasAlumnos();
         } else {
-            this.iddocente = iddocente;
-        }
-        CargarTareasDocente(iddocente);
+            this.iddocente = idDocenteAlumno;
+            CargarTareasDocente(iddocente);
+        }    
     }
     
     

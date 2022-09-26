@@ -42,9 +42,10 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     customization custo = new customization();
     
     public frmUploadTaskStudents() {
+        initComponents();
         lblArchivo64.setVisible(false);
         lblRubrica64.setVisible(false);
-        initComponents();
+       
     }
 
     public frmUploadTaskStudents(int idtarea) {

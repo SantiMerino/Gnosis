@@ -83,6 +83,7 @@ public class frmLogin extends javax.swing.JFrame {
         buttonRound4 = new customizeObjects.ButtonRound();
         wContainer = new customizeObjects.PanelRound();
         loginWhitePan = new customizeObjects.PanelRound();
+        jLabel5 = new javax.swing.JLabel();
         topGap = new customizeObjects.PanelRound();
         returnConfig = new customizeObjects.ButtonRound();
         rightWGap = new customizeObjects.PanelRound();
@@ -90,7 +91,6 @@ public class frmLogin extends javax.swing.JFrame {
         northGap = new customizeObjects.PanelRound();
         menuBarPanel = new customizeObjects.PanelRound();
         btnConnection = new customizeObjects.ButtonRound();
-        btnConfig = new customizeObjects.ButtonRound();
         returnLogin = new customizeObjects.ButtonRound();
         controlsPanel = new customizeObjects.PanelRound();
         buttonRound1 = new customizeObjects.ButtonRound();
@@ -194,9 +194,15 @@ public class frmLogin extends javax.swing.JFrame {
         loginWhitePan.setToolTipText("");
         loginWhitePan.setPreferredSize(new java.awt.Dimension(420, 430));
         loginWhitePan.setLayout(new java.awt.CardLayout());
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/animation-tools.gif"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        loginWhitePan.add(jLabel5, "card2");
+
         wContainer.add(loginWhitePan, java.awt.BorderLayout.CENTER);
 
-        topGap.setBackground(new java.awt.Color(255, 255, 255));
+        topGap.setBackground(new java.awt.Color(247, 198, 19));
         topGap.setPreferredSize(new java.awt.Dimension(437, 40));
         topGap.setRoundTopLeft(10);
         topGap.setRoundTopRight(10);
@@ -215,7 +221,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         wContainer.add(topGap, java.awt.BorderLayout.NORTH);
 
-        rightWGap.setBackground(java.awt.Color.white);
+        rightWGap.setBackground(new java.awt.Color(247, 198, 19));
         rightWGap.setPreferredSize(new java.awt.Dimension(10, 550));
         rightWGap.setRoundBottomRight(25);
 
@@ -232,7 +238,8 @@ public class frmLogin extends javax.swing.JFrame {
 
         wContainer.add(rightWGap, java.awt.BorderLayout.EAST);
 
-        leftWGap.setBackground(java.awt.Color.white);
+        leftWGap.setBackground(new java.awt.Color(247, 198, 19));
+        leftWGap.setForeground(new java.awt.Color(247, 198, 19));
         leftWGap.setPreferredSize(new java.awt.Dimension(10, 550));
         leftWGap.setRoundBottomLeft(25);
 
@@ -288,21 +295,6 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         menuBarPanel.add(btnConnection);
-
-        btnConfig.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/setting20x20-white.png"))); // NOI18N
-        btnConfig.setToolTipText("Conexión");
-        btnConfig.setMaximumSize(new java.awt.Dimension(95, 20));
-        btnConfig.setMinimumSize(new java.awt.Dimension(95, 20));
-        btnConfig.setPreferredSize(new java.awt.Dimension(30, 20));
-        btnConfig.setRound(10);
-        btnConfig.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-        btnConfig.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfigActionPerformed(evt);
-            }
-        });
-        menuBarPanel.add(btnConfig);
 
         returnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-left.png"))); // NOI18N
         returnLogin.setText("Login");
@@ -368,7 +360,7 @@ public class frmLogin extends javax.swing.JFrame {
         southGap.setLayout(southGapLayout);
         southGapLayout.setHorizontalGroup(
             southGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGap(0, 1225, Short.MAX_VALUE)
         );
         southGapLayout.setVerticalGroup(
             southGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,7 +380,7 @@ public class frmLogin extends javax.swing.JFrame {
         );
         rightGapLayout.setVerticalGroup(
             rightGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
+            .addGap(0, 671, Short.MAX_VALUE)
         );
 
         mainJPanel.add(rightGap, java.awt.BorderLayout.LINE_END);
@@ -404,7 +396,7 @@ public class frmLogin extends javax.swing.JFrame {
         );
         leftGapLayout.setVerticalGroup(
             leftGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
+            .addGap(0, 671, Short.MAX_VALUE)
         );
 
         mainJPanel.add(leftGap, java.awt.BorderLayout.LINE_START);
@@ -413,18 +405,6 @@ public class frmLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
-        // TODO add your handling code here:
-        loginWhitePan.removeAll();
-        loginWhitePan.repaint();
-        loginWhitePan.revalidate();
-
-        loginWhitePan.add(new panConfig());
-        loginWhitePan.repaint();
-        loginWhitePan.revalidate(); 
-        returnConfig.setVisible(true);
-    }//GEN-LAST:event_btnConfigActionPerformed
 
     private void buttonRound2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound2ActionPerformed
         // TODO add your handling code here:
@@ -532,7 +512,7 @@ public class frmLogin extends javax.swing.JFrame {
         LoginPanel.add(new panPasswordRecover());
         LoginPanel.repaint();
         LoginPanel.revalidate();
-        btnConfig.setVisible(false);
+//        btnConfig.setVisible(false);
         btnConnection.setVisible(false);
         returnLogin.setVisible(true);
         northGap.setSize(100, 40);
@@ -548,7 +528,7 @@ public class frmLogin extends javax.swing.JFrame {
         LoginPanel.add(bContainer);
         LoginPanel.add(wContainer);
         
-        btnConfig.setVisible(true);
+//        btnConfig.setVisible(true);
         btnConnection.setVisible(true);
         returnLogin.setVisible(false);
         
@@ -596,7 +576,6 @@ public class frmLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.PanelRound LoginPanel;
     private customizeObjects.PanelRound bContainer;
-    private customizeObjects.ButtonRound btnConfig;
     private customizeObjects.ButtonRound btnConnection;
     private customizeObjects.ButtonRound btnLogin;
     private customizeObjects.ButtonRound buttonRound1;
@@ -610,6 +589,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private customizeObjects.PanelRound leftGap;
     private customizeObjects.PanelRound leftWGap;
     private customizeObjects.PanelRound loginWhitePan;

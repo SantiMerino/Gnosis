@@ -250,4 +250,9 @@ public class CEstudents {
     public boolean EliminarEstudiante() {
         return mdlEstu.EliminarEstudianteModel(ID, con);
     }
+    
+    
+    public ResultSet DatosAlumnoLog(int idalumno){
+        return mdlEstu.DatosAlumnoLog(idalumno, con);
+    }
 }

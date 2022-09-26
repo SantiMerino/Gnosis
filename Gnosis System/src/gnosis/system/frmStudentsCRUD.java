@@ -334,6 +334,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         txtCodigo.setEditable(false);
         txtCodigo.setBackground(new java.awt.Color(217, 217, 217));
         txtCodigo.setForeground(new java.awt.Color(50, 50, 50));
+        txtCodigo.setText("20220009");
         txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodigoKeyTyped(evt);

@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +34,7 @@ public class frmDashboard extends javax.swing.JFrame {
     int iduserlog;
     String usernamelog;
     ResultSet datosAlumnoLog;
+    String nombreAlumno;
 
     public frmDashboard() {
         initComponents();
@@ -51,7 +53,7 @@ public class frmDashboard extends javax.swing.JFrame {
             //Es el id del estudiante :P
             iduserlog = datosusuario.getInt(7);
         } catch (SQLException ex) {
-            Logger.getLogger(frmDashboard.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "No fue posible conseguir los datos del usuario", "Conflicto de datos", JOptionPane.ERROR);
         }
         
         customization.mainUtilities();
@@ -80,10 +82,15 @@ public class frmDashboard extends javax.swing.JFrame {
     }
     
     
-//    public void ObtenerDatosAlumnoLoggeado(int id){
-//        CEstudents controller = new CEstudents();
-//        controller
-//    }
+    void ObtenerDatosAlumnoLoggeado(int id){
+        CEstudents controller = new CEstudents();
+        datosAlumnoLog = controller.DatosAlumnoLog(id);
+        try {
+            nombreAlumno = datosAlumnoLog.getString(3);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     //Metodo para recargar la interfaz de portafolios de manera externa
     public void abrirMenuPortafolios() {
@@ -373,6 +380,11 @@ public class frmDashboard extends javax.swing.JFrame {
         buttonRound4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square.png"))); // NOI18N
         buttonRound4.setPreferredSize(new java.awt.Dimension(40, 40));
         buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound4ActionPerformed(evt);
+            }
+        });
         panelRound2.add(buttonRound4);
 
         buttonsPan.add(panelRound2);
@@ -773,7 +785,7 @@ public class frmDashboard extends javax.swing.JFrame {
             //Cambio el color del boton y el icono
             cambiarColorBotonesMenu(briefcaseButton, "/resources/briefcase-black.png");
             //Agrego el panel que corresponde
-            panContainer.add(new panTasks(1));
+            panContainer.add(new panTasks(1, iduserlog));
             panContainer.repaint();
             panContainer.revalidate();
             //Si el componentCount es 1 es que uno esta abierto
@@ -786,7 +798,7 @@ public class frmDashboard extends javax.swing.JFrame {
                 panContainer.repaint();
                 panContainer.revalidate();
 
-                panContainer.add(new panTasks(1));
+                panContainer.add(new panTasks(1, iduserlog));
                 panContainer.repaint();
                 panContainer.revalidate();
             } else {
@@ -916,6 +928,10 @@ public class frmDashboard extends javax.swing.JFrame {
         this.setState(Frame.ICONIFIED);
         frmMood objmood = new frmMood();
     }//GEN-LAST:event_btnMoodActionPerformed
+
+    private void buttonRound4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRound4ActionPerformed
 
     /**
      * @param args the command line arguments
