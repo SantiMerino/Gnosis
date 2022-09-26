@@ -580,6 +580,13 @@
                                   </Constraints>
 
                                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JLabel" name="lblTexto2">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" value="0000"/>
+                                      </Properties>
+                                    </Component>
+                                  </SubComponents>
                                 </Container>
                               </SubComponents>
                             </Container>
@@ -1199,7 +1206,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="20" green="20" red="20" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="00:00:00"/>
+                    <Property name="text" type="java.lang.String" value="00 : 00 : 00"/>
                   </Properties>
                 </Component>
                 <Component class="customizeObjects.ButtonRound" name="btnStopMood">
@@ -1216,6 +1223,9 @@
                       <Value id="NEGRO"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStopMoodActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

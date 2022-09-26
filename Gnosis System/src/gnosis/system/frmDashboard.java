@@ -9,6 +9,7 @@ import Controller.CEstudents;
 import java.awt.*;
 import javax.swing.JPanel;
 import customizeObjects.ButtonRound;
+import static java.lang.Thread.sleep;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -20,7 +21,11 @@ import javax.swing.JOptionPane;
  * @author santi
  */
 public class frmDashboard extends javax.swing.JFrame {
-
+public int milisegundos = 0;
+    public int segundos = 0;
+    public int minutos = 0;
+    public int horas = 0;
+    boolean estado = true;
     /**
      * Creates new form frmDashboard
      */
@@ -43,6 +48,7 @@ public class frmDashboard extends javax.swing.JFrame {
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
         
+        lblTexto2.setVisible(false);
     }
     
     public frmDashboard(ResultSet datosusuario) {
@@ -111,6 +117,41 @@ public class frmDashboard extends javax.swing.JFrame {
         this.mood = moodstate;
         if (mood == 1) {
             moodPanel.setVisible(true);
+            estado = true;
+        Thread hilo = new Thread(){
+          public void run(){
+              for (;;) {
+                  if (estado == true) {
+                      try {
+                          sleep(1);
+                          if (milisegundos >= 1000 ) {
+                             milisegundos = 0;
+                             segundos++;
+                          }
+                          if (segundos >= 60) {
+                             milisegundos = 0;
+                             segundos = 0;
+                             minutos++;
+                          }
+                          if (minutos >= 60) {
+                              milisegundos = 0;
+                              segundos = 0;
+                              minutos = 0;
+                              horas++;
+                          }
+                          lblmood.setText(horas + " : " + minutos + " : " + segundos);
+                          lblTexto2.setText("" + milisegundos);
+                          milisegundos++;
+                      } catch (Exception e) {
+                      }
+                  }else{
+                      break;
+                  }
+                   
+              }
+          }  
+        };
+        hilo.start();
         } else {
             moodPanel.setBackground(Color.red);
             custoObj.changeIconlbl(moodPic, "/resources/Tomato-white.png");
@@ -224,6 +265,7 @@ public class frmDashboard extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         panelRound11 = new customizeObjects.PanelRound();
+        lblTexto2 = new javax.swing.JLabel();
         primeraFila = new customizeObjects.PanelRound();
         jPanel2 = new javax.swing.JPanel();
         calendarPanel = new customizeObjects.PanelRound();
@@ -457,6 +499,10 @@ public class frmDashboard extends javax.swing.JFrame {
         panelRound11.setBackground(new java.awt.Color(32, 32, 32));
         panelRound11.setRoundBottomLeft(20);
         panelRound11.setRoundBottomRight(20);
+
+        lblTexto2.setText("0000");
+        panelRound11.add(lblTexto2);
+
         gradesPanel.add(panelRound11, java.awt.BorderLayout.CENTER);
 
         segundaFila.add(gradesPanel, java.awt.BorderLayout.EAST);
@@ -738,7 +784,7 @@ public class frmDashboard extends javax.swing.JFrame {
 
         lblmood.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
         lblmood.setForeground(new java.awt.Color(32, 32, 32));
-        lblmood.setText("00:00:00");
+        lblmood.setText("00 : 00 : 00");
         moodPanel.add(lblmood);
 
         btnStopMood.setText("STOP");
@@ -746,6 +792,11 @@ public class frmDashboard extends javax.swing.JFrame {
         btnStopMood.setPreferredSize(new java.awt.Dimension(60, 30));
         btnStopMood.setRound(20);
         btnStopMood.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnStopMood.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStopMoodActionPerformed(evt);
+            }
+        });
         moodPanel.add(btnStopMood);
 
         sideBar.add(moodPanel);
@@ -933,6 +984,17 @@ public class frmDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonRound4ActionPerformed
 
+    private void btnStopMoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopMoodActionPerformed
+        // TODO add your handling code here:
+        estado = false;
+        milisegundos = 0;
+        segundos = 0;
+        minutos = 0;
+        horas = 0;
+        lblmood.setText("00"+" : "+"00"+" : "+"00"+ " : ");
+        lblTexto2.setText("0000");
+    }//GEN-LAST:event_btnStopMoodActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -980,6 +1042,7 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel lblTexto2;
     private javax.swing.JLabel lblmood;
     private javax.swing.JLabel lblnamedashboard;
     private javax.swing.JPanel mainPanel;

@@ -20,7 +20,7 @@ public class frmMood extends javax.swing.JFrame {
     /**
      * Creates new form frmMood
      */
-    int moodSelect = 0;
+    static int moodSelect = 0;
     
     public frmMood() {
         initComponents();
