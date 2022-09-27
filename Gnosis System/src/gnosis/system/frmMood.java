@@ -5,8 +5,15 @@
  */
 package gnosis.system;
 
+import Controller.CComboboxEstudiantes;
+import Controller.CMood;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import java.awt.Insets;
+import java.awt.event.ItemEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -20,12 +27,20 @@ public class frmMood extends javax.swing.JFrame {
     /**
      * Creates new form frmMood
      */
+    
+    DefaultComboBoxModel<String> modeloMateria;
+    ArrayList materiaArrayList;
+    public static int idMateria = 0;
+    
     static int moodSelect = 0;
+    static int IdMatSelec = 0;
+    
+    
     
     public frmMood() {
         initComponents();
 //        customization.centrarFrame(this);
-        
+        CargarMateria();
     }
    
     /**
@@ -38,7 +53,7 @@ public class frmMood extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbMateria1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         buttonRound1 = new customizeObjects.ButtonRound();
         jComboBox3 = new javax.swing.JComboBox<>();
@@ -59,8 +74,12 @@ public class frmMood extends javax.swing.JFrame {
         jPanel1.setForeground(java.awt.Color.white);
         jPanel1.setToolTipText("");
 
-        jComboBox1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbMateria1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        cmbMateria1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbMateria1ItemStateChanged(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(32, 32, 32));
@@ -77,7 +96,7 @@ public class frmMood extends javax.swing.JFrame {
         });
 
         jComboBox3.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matematicas", "Sociales", "Ciencias", "Lenguaje", "Formacion Cristiana", "Orientacion para la vida" }));
 
         btnActivarMood.setText("Activar");
         btnActivarMood.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
@@ -104,7 +123,7 @@ public class frmMood extends javax.swing.JFrame {
         jLabel2.setText("Selecciona la/s materias o modulos a enfocarte (3 materias maximo)");
 
         jComboBox2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matematicas", "Sociales", "Ciencias", "Lenguaje", "Formacion Cristiana", "Orientacion para la vida" }));
 
         jLabel1.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
@@ -145,7 +164,7 @@ public class frmMood extends javax.swing.JFrame {
                                 .addComponent(btnActivarMood, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbMateria1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -162,7 +181,7 @@ public class frmMood extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbMateria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -198,6 +217,28 @@ public class frmMood extends javax.swing.JFrame {
         
     }//GEN-LAST:event_rbtnLibreActionPerformed
 
+    final void CargarMateria(){
+        CMood estudiantesObj = new CMood();
+        materiaArrayList = new ArrayList();
+        
+        try {
+            ResultSet rs = estudiantesObj.CcargarMaterias();
+            if (rs.next()) {
+                modeloMateria = new DefaultComboBoxModel<>();
+                modeloMateria.addElement("Elige una opcion");
+                do {                    
+                    materiaArrayList.add(rs.getInt("idmateria"));
+                    modeloMateria.addElement(rs.getString("materia"));
+                    cmbMateria1.setModel(modeloMateria);
+                } while (rs.next());
+            } else{
+                JOptionPane.showMessageDialog(null, "No se pudo cargar los generos");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error critico, consultar al administrador");
+        }
+    }
+    
     private void btnActivarMoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarMoodActionPerformed
         // TODO add your handling code here:
         if (moodSelect == 0) {
@@ -222,6 +263,24 @@ public class frmMood extends javax.swing.JFrame {
         moodSelect = 2;
         rbtnLibre.setSelected(false);
     }//GEN-LAST:event_rbtnPomodoroActionPerformed
+    
+    private void cmbMateria1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMateria1ItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            int pos = cmbMateria1.getSelectedIndex();
+            if (pos == 0) {
+                idMateria = 0;
+            } else {
+                int dim = materiaArrayList.size();
+                for (int i = 0; i < dim; i++) {
+                    if (i == pos - 1) {
+                        idMateria = (int) materiaArrayList.get(i);
+                    }
+                }
+            }
+            
+        }
+    }//GEN-LAST:event_cmbMateria1ItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -256,7 +315,7 @@ public class frmMood extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.ButtonRound btnActivarMood;
     private customizeObjects.ButtonRound buttonRound1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbMateria1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
