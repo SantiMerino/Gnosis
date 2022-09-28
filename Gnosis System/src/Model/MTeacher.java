@@ -54,7 +54,7 @@ public class MTeacher {
     }
     
     /*Load record table*/
-     public ResultSet mostrarDocentes(Connection con){
+    public ResultSet mostrarDocentes(Connection con){
         try {
             String query = "SELECT * FROM tbDocentes";
             ps = con.prepareStatement(query);
@@ -65,7 +65,7 @@ public class MTeacher {
             return null;
         }
     }
-     
+    
     
     /**
      * Metodo en el Modelo Profesores de insercion de datos para registrar un docente.

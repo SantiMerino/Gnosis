@@ -149,6 +149,9 @@ public class CTasks {
         return mdlTask.CargarTareasFull(id);
     }
     
+    public ResultSet CargarTareasTablaCalificar(int id){
+        return mdlTask.BuscarTareasEstudiantes(id, con);
+    }
     
     
     //Controlador para subir la tarea - Estudiante

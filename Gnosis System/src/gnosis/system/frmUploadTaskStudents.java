@@ -51,7 +51,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     public frmUploadTaskStudents(int idtarea) {
         initComponents();
         id = idtarea;
-        System.out.println(id);
+//        System.out.println(id);
         lblArchivo64.setVisible(false);
         lblLinkStore.setVisible(false);
         lblRubrica64.setVisible(false);

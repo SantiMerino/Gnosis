@@ -147,7 +147,7 @@ public class customization {
     
     
     //Pruba para crear un componente en otro form parte 1 xd
-    public void CrearTarea(String nombre_tarea, String nombre_materia, String nombre_docente,String fecha_i ,String fecha_v, String estado, JPanel container, String materiamoduloColor, int idtarea, int niveluser){
+    public void CrearTarea(String nombre_tarea, String nombre_materia, String nombre_docente,String fecha_i ,String fecha_v, String estado, JPanel container, String materiamoduloColor, int idtarea, int niveluser, int iddocente){
             //Crear labels   
         JLabel nTarea = new JLabel();
         JLabel nMateria = new JLabel();
@@ -263,7 +263,7 @@ public class customization {
                 tareaframe.setVisible(true);
                 break;
             case 2:
-                Frame frame2 = new frmUploadTaskTeacher();
+                Frame frame2 = new frmUploadTaskTeacher(idtarea, iddocente);
                 frame2.setVisible(true);
                 break;
         }

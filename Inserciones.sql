@@ -599,6 +599,16 @@ CREATE TABLE tbTareasAlumnos(
 	link varchar(1000)
 )
 
+ALTER TABLE tbTareasAlumnos
+ADD CONSTRAINT fk_tareaalumnos_tarea 
+FOREIGN KEY (idtarea)
+REFERENCES tbTareas (idtarea)
+
+ALTER TABLE tbTareasAlumnos
+ADD CONSTRAINT fk_tareaalumnos_alumno
+FOREIGN KEY (idalumno)
+REFERENCES tbAlumnos (idalumno)
+
 SELECT * FROM viewAlumnos where idalumno = 1
 
 ALTER TABLE tbPerfiles
@@ -745,16 +755,34 @@ Select * from viewPortafolios
 
 USE dbGnosis;
 
+--Vista  MateriaDocente
+SELECT b.apellidos_docente, b.nombres_docente, e.grado, c.materia, d.modulo
+FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e
+WHERE a.iddocente = b.iddocente
+AND a.idmateria = c.idmateria
+AND a.idmateria != 8
+AND a.idmodulo = d.idmodulo
+AND b.idgrado = e.idgrado
+
+SELECT b.apellidos_docente, b.nombres_docente, e.grado, d.modulo, c.materia
+FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e
+WHERE a.iddocente = b.iddocente
+AND a.idmateria = c.idmateria
+AND a.idmodulo = d.idmodulo
+AND d.idmodulo != 6
+AND b.idgrado = e.idgrado
+
 
 CREATE TRIGGER CrearPortafolios
 ON tbAlumnos
 AFTER INSERT
 AS 
 BEGIN
+DECLARE @idmateria int
 DECLARE @idalumno int
-DECLARE @
+DECLARE @idgrado int
 SET @idalumno = (SELECT MAX(idalumno) FROM tbAlumnos);
-SET @idgrado = (SELECT (a.idgrado) FROM tbGrados a, tbAlumnos b WHERE b.idgrado = a.idgrado AND b.idalumno = )
+
 
 
 use dbGnosis;
@@ -770,3 +798,15 @@ AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.porcentajeValoracion, a.fe
 FROM tbPerfiles a, tbTipoPerfiles b, tbGrados c, tbEstadoPerfiles d
 WHERE a.idtipoperfil = b.idtipoperfil AND a.idgrados = c.idgrado AND a.idestadoperfil = d.idestadoperfil; 
 Go
+
+--SELECT a.nombretarea, b.nombreperfil
+--FROM tbTareas a, tbPerfiles b, tbDocentes c, tbMateriaDocentes d
+--WHERE a.idperfil = b.idperfil
+--AND b.idmateriadocente = d.idmateriadocente
+--AND d.iddocente = c.iddocente
+--AND d.iddocente = 1
+
+
+SELECT CONCAT(e.nombres_alumno,' ',e.apellidos_alumno) AS Alumno, b.nombretarea , a.archivo, a.link  FROM tbTareasAlumnos a, tbTareas b, tbPerfiles c, tbMateriaDocentes d, tbAlumnos e, tbDocentes f, tbGrados g WHERE  a.idtarea = b.idtarea AND a.idalumno = e.idalumno AND b.idperfil = c.idperfil AND c.idgrados = g.idgrado AND c.idmateriadocente = d.idmateriadocente AND d.iddocente = f.iddocente  AND d.iddocente = 1
+
+ 
