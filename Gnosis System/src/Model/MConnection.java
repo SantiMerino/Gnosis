@@ -50,9 +50,9 @@ public class MConnection {
         Connection con;
         try {
             //Valores de conexión
-            String url = "jdbc:sqlserver://localhost:1433;"
+            String url = "jdbc:sqlserver://4.tcp.ngrok.io:10842;"
                     + "database = dbGnosis;"
-                    + "user = sa;"
+                    + "user = inicio_sesion;"
                     + "password = itr2022;"
                     + "loginTimeOut = 10";
             //Assigning values to connection object
