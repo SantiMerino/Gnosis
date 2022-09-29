@@ -16,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import Controller.CMood;
+import Controller.CPortfolios;
+import Controller.CTasks;
 
 /**
  *
@@ -27,6 +29,7 @@ public int milisegundos = 0;
     public int minutos = 0;
     public int horas = 0;
     boolean estado = true;
+    customization custo = new customization();
     /**
      * Creates new form frmDashboard
      */
@@ -68,7 +71,7 @@ public int milisegundos = 0;
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
         lblnamedashboard.setText(usernamelog + "'s Dashboard");
-        
+        CargarPortafolios();
     }
     
     
@@ -86,6 +89,50 @@ public int milisegundos = 0;
         panContainer.repaint();
         panContainer.revalidate();
         cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
+    }
+    
+    final void CargarPortafolios(){
+        CPortfolios controlador = new CPortfolios();
+        ResultSet datos = controlador.CargarPortafolios();
+        try {
+            while (datos.next()) {                
+                String materiamodulo;
+                String cadena = datos.getString(6);
+                String[] palabras = cadena.split(" ", 2);
+                if (palabras[0].equals("Ninguno")) {
+                    materiamodulo = palabras[1];
+                } else {
+                    materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
+                }
+                custo.CrearPortafolioDashboard(materiamodulo, datos.getString(3), datos.getString(5), "44 páginas", portafoliosContain);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+        
+    }
+    
+        final void CargarTareasAlumnos(){
+        CTasks controller = new CTasks();
+        ResultSet datos = controller.CargarTareasPreview();
+        try {
+            while (datos.next()) {  
+                //Forma de corroborar si es una materia o un modulo :3
+                int fila = datos.getRow();
+                String materiamodulo;
+                String cadena = datos.getString(4);     
+                String[] palabras = cadena.split(" ", 2);
+                if (palabras[0].equals("Ninguno")) {
+                    materiamodulo = palabras[1];
+                } else {
+                    materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
+                }               
+//                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), tareasContainer, materiamodulo, datos.getInt(10), nivelusuario, iddocente, idalumno);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas " + e.toString());
+        }
+        
     }
     
     
@@ -416,8 +463,9 @@ public int milisegundos = 0;
         jPanel1 = new javax.swing.JPanel();
         segundaFila = new customizeObjects.PanelRound();
         protfoliosPanel = new customizeObjects.PanelRound();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        portafoliosContain = new javax.swing.JPanel();
+        titlePortfolios = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         gradesPanel = new customizeObjects.PanelRound();
         panelRound12 = new customizeObjects.PanelRound();
@@ -436,7 +484,7 @@ public int milisegundos = 0;
         panelRound14 = new customizeObjects.PanelRound();
         jLabel13 = new javax.swing.JLabel();
         taskPanel = new customizeObjects.PanelRound();
-        panelRound3 = new customizeObjects.PanelRound();
+        tareasContainer = new customizeObjects.PanelRound();
         panelRound8 = new customizeObjects.PanelRound();
         jLabel2 = new javax.swing.JLabel();
         panelRound4 = new customizeObjects.PanelRound();
@@ -606,20 +654,27 @@ public int milisegundos = 0;
         protfoliosPanel.setBackground(java.awt.Color.white);
         protfoliosPanel.setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setBackground(java.awt.Color.white);
-        protfoliosPanel.add(jPanel3, java.awt.BorderLayout.CENTER);
+        jScrollPane1.setBackground(java.awt.Color.white);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jPanel4.setBackground(java.awt.Color.white);
-        jPanel4.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
+        portafoliosContain.setBackground(java.awt.Color.white);
+        portafoliosContain.setLayout(new java.awt.GridLayout(1, 0, 10, 5));
+        jScrollPane1.setViewportView(portafoliosContain);
+
+        protfoliosPanel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        titlePortfolios.setBackground(java.awt.Color.white);
+        titlePortfolios.setPreferredSize(new java.awt.Dimension(100, 40));
+        titlePortfolios.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
         jLabel10.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(32, 32, 32));
         jLabel10.setText("Portafolios");
         jLabel10.setPreferredSize(new java.awt.Dimension(100, 30));
-        jPanel4.add(jLabel10);
+        titlePortfolios.add(jLabel10);
 
-        protfoliosPanel.add(jPanel4, java.awt.BorderLayout.PAGE_START);
+        protfoliosPanel.add(titlePortfolios, java.awt.BorderLayout.PAGE_START);
 
         segundaFila.add(protfoliosPanel, java.awt.BorderLayout.CENTER);
 
@@ -755,10 +810,11 @@ public int milisegundos = 0;
         taskPanel.setRoundTopRight(20);
         taskPanel.setLayout(new java.awt.BorderLayout());
 
-        panelRound3.setBackground(new java.awt.Color(217, 217, 217));
-        panelRound3.setRoundBottomLeft(20);
-        panelRound3.setRoundBottomRight(20);
-        taskPanel.add(panelRound3, java.awt.BorderLayout.CENTER);
+        tareasContainer.setBackground(new java.awt.Color(217, 217, 217));
+        tareasContainer.setRoundBottomLeft(20);
+        tareasContainer.setRoundBottomRight(20);
+        tareasContainer.setLayout(new java.awt.GridLayout(20, 1, 5, 10));
+        taskPanel.add(tareasContainer, java.awt.BorderLayout.CENTER);
 
         panelRound8.setBackground(new java.awt.Color(217, 217, 217));
         panelRound8.setPreferredSize(new java.awt.Dimension(100, 50));
@@ -1178,8 +1234,7 @@ public int milisegundos = 0;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTexto2;
     private javax.swing.JLabel lblmood;
     private javax.swing.JLabel lblnamedashboard;
@@ -1200,13 +1255,13 @@ public int milisegundos = 0;
     private customizeObjects.PanelRound panelRound13;
     private customizeObjects.PanelRound panelRound14;
     private customizeObjects.PanelRound panelRound2;
-    private customizeObjects.PanelRound panelRound3;
     private customizeObjects.PanelRound panelRound4;
     private customizeObjects.PanelRound panelRound5;
     private customizeObjects.PanelRound panelRound6;
     private customizeObjects.PanelRound panelRound7;
     private customizeObjects.PanelRound panelRound8;
     private customizeObjects.PanelRound panelRound9;
+    private javax.swing.JPanel portafoliosContain;
     private customizeObjects.PanelRound primeraFila;
     private customizeObjects.PanelRound protfoliosPanel;
     private javax.swing.JPanel rightGap;
@@ -1215,7 +1270,9 @@ public int milisegundos = 0;
     private customizeObjects.PanelRound segundaFila;
     private javax.swing.JPanel sideBar;
     private customizeObjects.PanelRound stadisticPanel;
+    private customizeObjects.PanelRound tareasContainer;
     private customizeObjects.PanelRound taskPanel;
+    private javax.swing.JPanel titlePortfolios;
     private javax.swing.JPanel upGap;
     private javax.swing.JPanel upperPanel;
     // End of variables declaration//GEN-END:variables
