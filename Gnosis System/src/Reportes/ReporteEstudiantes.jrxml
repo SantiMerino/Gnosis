@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteEstudiantes" language="groovy" pageWidth="1660" pageHeight="842" columnWidth="1620" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="432b5879-5831-45db-867b-ae0f4436703c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="375"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     viewAlumnos."idalumno" AS viewAlumnos_idalumno,
+     viewAlumnos."apellidos_alumno" AS viewAlumnos_apellidos_alumno,
+     viewAlumnos."nombres_alumno" AS viewAlumnos_nombres_alumno,
+     viewAlumnos."genero" AS viewAlumnos_genero,
+     viewAlumnos."grado" AS viewAlumnos_grado,
+     viewAlumnos."especialidad" AS viewAlumnos_especialidad,
+     viewAlumnos."seccionAca" AS viewAlumnos_seccionAca,
+     viewAlumnos."grupo" AS viewAlumnos_grupo,
+     viewAlumnos."correo" AS viewAlumnos_correo,
+     viewAlumnos."direccion" AS viewAlumnos_direccion,
+     viewAlumnos."contacto" AS viewAlumnos_contacto,
+     viewAlumnos."dui" AS viewAlumnos_dui,
+     viewAlumnos."fecha_nac" AS viewAlumnos_fecha_nac,
+     viewAlumnos."codigocarnet" AS viewAlumnos_codigocarnet
+FROM
+     "dbo"."viewAlumnos" viewAlumnos]]>
+	</queryString>
+	<field name="viewAlumnos_idalumno" class="java.lang.Integer"/>
+	<field name="viewAlumnos_apellidos_alumno" class="java.lang.String"/>
+	<field name="viewAlumnos_nombres_alumno" class="java.lang.String"/>
+	<field name="viewAlumnos_genero" class="java.lang.String"/>
+	<field name="viewAlumnos_grado" class="java.lang.String"/>
+	<field name="viewAlumnos_especialidad" class="java.lang.String"/>
+	<field name="viewAlumnos_seccionAca" class="java.lang.String"/>
+	<field name="viewAlumnos_grupo" class="java.lang.String"/>
+	<field name="viewAlumnos_correo" class="java.lang.String"/>
+	<field name="viewAlumnos_direccion" class="java.lang.String"/>
+	<field name="viewAlumnos_contacto" class="java.lang.String"/>
+	<field name="viewAlumnos_dui" class="java.lang.String"/>
+	<field name="viewAlumnos_fecha_nac" class="java.lang.String"/>
+	<field name="viewAlumnos_codigocarnet" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="739" y="28" width="189" height="20" uuid="345d4a6d-51b5-4e5c-9426-9024d4dda62f"/>
+				<textElement>
+					<font fontName="Berlin Sans FB Demi" size="15"/>
+				</textElement>
+				<text><![CDATA[REPORTE ALUMNOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="20" width="100" height="20" uuid="d3d88be3-6e6d-44a0-a1c7-37abc53daafb"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="20" width="100" height="20" uuid="740df098-c58b-4348-a0ef-43281e1ba6ec"/>
+				<text><![CDATA[Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="256" y="20" width="100" height="20" uuid="58ee8c31-82ed-4c52-95cc-490b4516d669"/>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="20" width="100" height="20" uuid="8575e5c5-3d61-439f-ad1a-13a057f3ba3d"/>
+				<text><![CDATA[Genero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="489" y="20" width="100" height="20" uuid="8c552e77-6417-4d83-9616-b24b8702a2b4"/>
+				<text><![CDATA[Grado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="589" y="20" width="100" height="20" uuid="e064c266-ce7b-450d-a311-d9c947eaeeb4"/>
+				<text><![CDATA[Especialidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="689" y="20" width="100" height="20" uuid="01b83e0d-38af-4d3c-a0b0-bd72c373af9d"/>
+				<text><![CDATA[Seccion academica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="801" y="20" width="100" height="20" uuid="66600be8-a4fa-4c95-98b6-bbe158fc47d4"/>
+				<text><![CDATA[Grupo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="916" y="20" width="100" height="20" uuid="e0b36c7e-a9fe-4b3e-9234-fbc8f205ac07"/>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1028" y="20" width="100" height="20" uuid="f73b871a-2e4b-432d-9dac-1f24b1d42431"/>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1145" y="20" width="100" height="20" uuid="798bb72c-85bf-41ad-9eb3-bc2ff4469368"/>
+				<text><![CDATA[Contacto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1263" y="20" width="100" height="20" uuid="4bc332a5-a68a-4aa0-9ebc-c72c1c6a6275"/>
+				<text><![CDATA[DUI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1380" y="20" width="100" height="20" uuid="6e4cc3d8-1b2d-425e-83a1-a05386f50763"/>
+				<text><![CDATA[Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1497" y="20" width="100" height="20" uuid="382097c3-d826-4fbc-9c45-96b287810dec"/>
+				<text><![CDATA[Carnet]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="66" splitType="Stretch">
+			<textField>
+				<reportElement x="18" y="17" width="100" height="20" uuid="a294cafa-6015-493d-a8b6-73c2dcf76c23"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_idalumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="17" width="100" height="20" uuid="04422c87-e27a-4f3f-b1fa-9a6b310a954c"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_apellidos_alumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="256" y="18" width="100" height="20" uuid="cc9a4c4c-85e7-44ab-9168-b0e8e1da4655"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_nombres_alumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="17" width="100" height="20" uuid="37c54b18-0d38-4211-9a5c-52203b2f3a06"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_genero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="489" y="18" width="100" height="20" uuid="fb8b158e-c61b-405f-b48d-d9fe7a4e6bab"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_grado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="589" y="18" width="100" height="20" uuid="2c489d7a-ab41-4282-a32e-57cb2f8ed983"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_especialidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="689" y="17" width="100" height="20" uuid="f92cfd52-4ffc-4eb5-940d-8ce5462e662e"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_seccionAca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="801" y="17" width="100" height="20" uuid="1e390ef4-8bae-44b8-9116-896461bab5ae"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_grupo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="916" y="18" width="100" height="20" uuid="056d83fc-7805-4caf-b508-42c4019fbf3d"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1028" y="17" width="100" height="20" uuid="3a4b06cd-0ffd-4670-be7a-6621fe973ce4"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1145" y="17" width="100" height="20" uuid="10019743-a9d9-43a3-a081-344cc1f720e4"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_contacto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1263" y="17" width="100" height="20" uuid="98e05fee-d521-4c7d-bc35-154da9d378f9"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_dui}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1380" y="17" width="100" height="20" uuid="59fff593-5ac4-4de3-9ebf-460e665fb996"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_fecha_nac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1497" y="17" width="100" height="20" uuid="55492e12-c47f-4d74-95b8-43de236761c3"/>
+				<textFieldExpression><![CDATA[$F{viewAlumnos_codigocarnet}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement x="1497" y="17" width="100" height="20" uuid="7a53d9e3-dc87-4748-bf0e-6f9f4c7fa52f"/>
+				<textElement>
+					<font fontName="Berlin Sans FB Demi"/>
+				</textElement>
+				<text><![CDATA[GNOSIS SYSTEM]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="761" y="17" width="100" height="20" uuid="940207c6-dd7e-4a56-b916-bfa1404db8ee"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
