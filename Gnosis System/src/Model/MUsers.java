@@ -87,7 +87,7 @@ public class MUsers {
     
     public boolean RegistrarUsuariosModel(int nivelusuario, String username, String clave, int pin, int estadousuario, int alumno, int docente, Connection con) {
         try {            
-            String query = "INSERT INTO tbPerfiles() VALUES (?,?,?,?,?,?,?)";
+            String query = "INSERT INTO tbUsuario VALUES (?,?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setInt(1, nivelusuario);
             ps.setString(2, username);
@@ -112,7 +112,7 @@ public class MUsers {
     
     public boolean ActualizarUsuariosModel(int ID, int nivelusuario, String username, String clave, int pin, int estadousuario, int alumno, int docente, Connection con){
          try {
-            String query = "UPDATE tbUsuario SET idnivelusuario = ?, username = ?, clave = ?, pin = ?, idestausuario = ?, idalumno = ?, iddocente = ? WHERE idusuario = ?";
+            String query = "UPDATE tbUsuario SET idnivelusuario = ?, username = ?, clave = ?, pin = ?, idestadousuario = ?, idalumno = ?, iddocente = ? WHERE idusuario = ?";
             ps = con.prepareStatement(query);
             ps.setInt(1, nivelusuario);
             ps.setString(2, username);
@@ -120,7 +120,7 @@ public class MUsers {
             ps.setInt(4, pin);
             ps.setInt(5, estadousuario);
             ps.setInt(6, alumno);
-            ps.setDouble(7, docente);
+            ps.setInt(7, docente);
             ps.setInt(8, ID);
             ps.execute();
             return true;

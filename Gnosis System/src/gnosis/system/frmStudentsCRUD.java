@@ -621,8 +621,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                         idGenero = (int) generoArrayList.get(i);
                     }
                 }
-            }
-            
+            }          
         }
     }//GEN-LAST:event_cmbGeneroItemStateChanged
 
@@ -896,16 +895,16 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-         if (txtId.getText().trim().isEmpty()) {
+        if (txtId.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Seleccione un registro", "Informacion incompleta", JOptionPane.WARNING_MESSAGE);
         } else {
             int confirmacion = JOptionPane.YES_NO_OPTION;
             JOptionPane.showMessageDialog(this, "Esta seguro de eliminar este registro?", "Confirmar Accion", confirmacion);
             if (confirmacion == JOptionPane.YES_OPTION) {
                 CEstudents objcontrolalumdell = new CEstudents(Integer.parseInt(txtId.getText()));
-                
+
                 boolean valor = objcontrolalumdell.EliminarEstudiante();
-                if ( valor == true) {
+                if (valor == true) {
                     JOptionPane.showMessageDialog(this, "Estudiante eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
                     CargarTabla();
                     LimpiarCampos();
@@ -931,13 +930,11 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-        
-               Date date = dtNacimiento.getDate();
+        Date date = dtNacimiento.getDate();
         c = new GregorianCalendar();
         c.setTime(date);
-        String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + (c.get(Calendar.MONTH) + 1)+ "/" + c.get(Calendar.DAY_OF_MONTH));
-        CEstudents objControllerEstudiantes = new CEstudents(Integer.parseInt(txtId.getText()), txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario, 
-                    txtCodigo.getText());
+        String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + (c.get(Calendar.MONTH) + 1) + "/" + c.get(Calendar.DAY_OF_MONTH));
+        CEstudents objControllerEstudiantes = new CEstudents(Integer.parseInt(txtId.getText()), txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario, txtCodigo.getText());
         boolean valor = objControllerEstudiantes.ActualizarEstudiante();
         if (valor == true) {
             JOptionPane.showMessageDialog(this, "Estudiante actualizado correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
