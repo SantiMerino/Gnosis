@@ -131,6 +131,10 @@ public class CProfiles {
     MProfiles mdlPerfil = new MProfiles();
     private Connection con = MConnection.getConnectionWithoutParameters();
     
+    public ResultSet CargarDatosDocente(){
+        return mdlPerfil.DatosDocente(ID);
+    }
+    
     public ResultSet CargarTipoPerfilResultSet() {
         return mdlPerfil.CargaCmbTipoPerfil();
     }

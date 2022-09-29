@@ -52,10 +52,13 @@ public class panGrades extends javax.swing.JPanel {
     CComboboxNotas buscar = new CComboboxNotas();
     Connection conn = CConnection.getConnectionControllerWithoutParameters();
     
+    int iddocentelog;
+    
     /**
      * Creates new form panNotas
      */
-    public panGrades() {
+    public panGrades(int iddocente) {
+        iddocentelog = iddocente;
         customization.mainUtilitiesWhite();
         initComponents();
         dtInicio.setEnabled(false);
@@ -66,6 +69,12 @@ public class panGrades extends javax.swing.JPanel {
         CargarTabla();
         txtDescripcion.setEditable(false);
     }
+
+    public panGrades() {
+        initComponents();
+    }
+    
+    
     
     
     /**
@@ -608,7 +617,7 @@ public class panGrades extends javax.swing.JPanel {
 
     private void AgregarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarPerfilActionPerformed
         // TODO add your handling code here:
-        frmProfiles Profiles = new frmProfiles();
+        frmProfiles Profiles = new frmProfiles(iddocentelog);
         Profiles.setVisible(true);
     }//GEN-LAST:event_AgregarPerfilActionPerformed
 
