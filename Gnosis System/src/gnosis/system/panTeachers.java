@@ -24,7 +24,7 @@ public class panTeachers extends javax.swing.JPanel {
     public panTeachers() {
         initComponents();
         
-        String [] TitulosDocentes = {"ID", "Apellidos", "Nombres", "Direccion", "Dui", "Correo",  "Nacimiento", "Grado", "Genero", "Contacto", "Usuario"};
+        String [] TitulosDocentes = {"ID", "Apellidos", "Nombres", "Direccion", "Dui", "Correo",  "Nacimiento", "Grado", "Genero", "Contacto"};
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tbDocentes.setModel(tablaModel);
         CargarTabla();
@@ -40,7 +40,7 @@ public class panTeachers extends javax.swing.JPanel {
             while (rs.next()) {                
                 Object [] oValores = {rs.getInt("iddocente"), rs.getString("apellidos_docente"), rs.getString("nombres_docente"), 
                     rs.getString("direccion"), rs.getString("dui"), rs.getString("correo"), rs.getString("fecha_nac"), rs.getInt("idgrado"), 
-                    rs.getInt("idgenero"),rs.getString("contacto"), rs.getInt("idusuario")};
+                    rs.getInt("idgenero"),rs.getString("contacto")};
                 tablaModel.addRow(oValores);
             }
         } catch (Exception e) {
