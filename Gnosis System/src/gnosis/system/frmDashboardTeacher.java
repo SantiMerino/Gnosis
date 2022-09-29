@@ -37,7 +37,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     String usernamelog;
        
     public customization custoObj = new customization();
-    panGrades grades = new panGrades(iddocente);
+    panGrades grades = new panGrades();
     CLogin log = new CLogin();
     
     public frmDashboardTeacher() {
@@ -922,17 +922,17 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (panContainer.getComponentCount() == 0) {
             cambiarColorBotonesMenu(medalButton, "/resources/medal-black.png");
-            panContainer.add(new panGrades(iddocente));
+            panContainer.add(new panGrades());
             panContainer.repaint();
             panContainer.revalidate();
-        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panGrades(iddocente)) {
+        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panGrades()) {
             if (medalButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
                 cambiarColorBotonesMenu(medalButton, "/resources/medal-black.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
 
-                panContainer.add(new panGrades(iddocente));
+                panContainer.add(new panGrades());
                 panContainer.repaint();
                 panContainer.revalidate();
             } else {

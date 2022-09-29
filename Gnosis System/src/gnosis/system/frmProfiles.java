@@ -57,16 +57,9 @@ public class frmProfiles extends javax.swing.JFrame {
     /**
      * Creates new form frmProfiles
      */
-    
-    
     public frmProfiles() {
+//        setResizable(false);
         initComponents();
-    }
-
-    public frmProfiles(int iddocente) {
-        //        setResizable(false);
-        initComponents();
-        ConseguirDatosDocente();
         CargarCmbTipoPerfil();
         CargarCmbGradoPerfil();
         
@@ -78,18 +71,6 @@ public class frmProfiles extends javax.swing.JFrame {
         TablaPerfilmodelo = new DefaultTableModel(null, TitulosPerfil);
         JTPerfil.setModel(TablaPerfilmodelo);
         CargarTabla();
-    }
-    
-    final void ConseguirDatosDocente(){
-        try {
-            CProfiles Perfil = new CProfiles();
-            ResultSet rs = Perfil.CargarDatosDocente();
-            txtDocente.setText(rs.getString(5));
-            txtMateria.setText(rs.getString(3));
-            txtGrado.setText(rs.getString(2));
-        } catch (SQLException ex) {
-            Logger.getLogger(frmProfiles.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     void LimpiarCampos() {
@@ -217,8 +198,8 @@ public class frmProfiles extends javax.swing.JFrame {
         txtId = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtDocente = new javax.swing.JTextField();
-        txtMateria = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         txtGrado = new javax.swing.JTextField();
         btnSubir = new customizeObjects.ButtonRound();
         btnModificar = new customizeObjects.ButtonRound();
@@ -235,6 +216,8 @@ public class frmProfiles extends javax.swing.JFrame {
         jLabel2.setText("Nombre: ");
 
         jLabel4.setText("Tipo perfil:");
+
+        CmbTipoPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setText("Fecha de inicio:");
 
@@ -274,11 +257,11 @@ public class frmProfiles extends javax.swing.JFrame {
 
         jLabel9.setText("Docente:");
 
-        txtDocente.setEditable(false);
-        txtDocente.setToolTipText("");
+        jTextField1.setEditable(false);
+        jTextField1.setToolTipText("");
 
-        txtMateria.setEditable(false);
-        txtMateria.setToolTipText("");
+        jTextField2.setEditable(false);
+        jTextField2.setToolTipText("");
 
         txtGrado.setEditable(false);
         txtGrado.setToolTipText("");
@@ -343,29 +326,12 @@ public class frmProfiles extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
                     .addComponent(jLabel3)
-<<<<<<< Updated upstream
                     .addComponent(jTextField2)
                     .addComponent(jTextField1)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-=======
-                    .addComponent(txtMateria)
-                    .addComponent(txtDocente)
-                    .addComponent(jLabel7)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel11)
-                                        .addGap(5, 5, 5)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
->>>>>>> Stashed changes
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addGap(5, 5, 5)))
@@ -394,11 +360,11 @@ public class frmProfiles extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addGap(4, 4, 4)
-                        .addComponent(txtMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addGap(0, 0, 0)
@@ -688,11 +654,11 @@ public class frmProfiles extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextArea txtDescripcion;
-    private javax.swing.JTextField txtDocente;
     private javax.swing.JTextField txtGrado;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtMateria;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPonderacion;
     // End of variables declaration//GEN-END:variables

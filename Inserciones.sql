@@ -760,7 +760,7 @@ Select * from viewPortafolios
 USE dbGnosis;
 
 --Vista  MateriaDocente
-SELECT CONCAT(b.apellidos_docente, ', ',b.nombres_docente), e.grado, c.materia, d.modulo, b.iddocente
+SELECT b.apellidos_docente, b.nombres_docente, e.grado, c.materia, d.modulo
 FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e
 WHERE a.iddocente = b.iddocente
 AND a.idmateria = c.idmateria

@@ -7,7 +7,13 @@ package gnosis.system;
 
 import Controller.CComboboxNotas;
 import Controller.CConnection;
+import Controller.CNotas;
 import Controller.CProfiles;
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import com.toedter.calendar.JDateChooser;
+import java.awt.Color;
+import java.awt.Insets;
+import java.awt.event.ItemEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,6 +21,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -44,24 +52,9 @@ public class panGrades extends javax.swing.JPanel {
     CComboboxNotas buscar = new CComboboxNotas();
     Connection conn = CConnection.getConnectionControllerWithoutParameters();
     
-    int iddocentelog;
-    
     /**
      * Creates new form panNotas
      */
-    public panGrades(int iddocente) {
-        iddocentelog = iddocente;
-        customization.mainUtilitiesWhite();
-        initComponents();
-        dtInicio.setEnabled(false);
-        dtCierre.setEnabled(false);
-        String [] TitulosPerfil = {"ID", "Nombre", "Descripcion", "Porcentaje de valoracion", "Fecha de inicio", "Fecha de vencimiento", "estado perfil", "Tipo Perfil", "Grados"};
-        TablaPerfilmodelo = new DefaultTableModel(null, TitulosPerfil);
-        tbPerfil.setModel(TablaPerfilmodelo);
-        CargarTabla();
-        txtDescripcion.setEditable(false);
-    }
-
     public panGrades() {
         customization.mainUtilitiesWhite();
         initComponents();
@@ -73,8 +66,6 @@ public class panGrades extends javax.swing.JPanel {
         CargarTabla();
         txtDescripcion.setEditable(false);
     }
-    
-    
     
     
     /**
@@ -617,7 +608,7 @@ public class panGrades extends javax.swing.JPanel {
 
     private void AgregarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarPerfilActionPerformed
         // TODO add your handling code here:
-        frmProfiles Profiles = new frmProfiles(iddocentelog);
+        frmProfiles Profiles = new frmProfiles();
         Profiles.setVisible(true);
     }//GEN-LAST:event_AgregarPerfilActionPerformed
 

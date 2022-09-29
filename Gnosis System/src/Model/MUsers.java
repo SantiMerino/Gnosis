@@ -87,13 +87,7 @@ public class MUsers {
     
     public boolean RegistrarUsuariosModel(int nivelusuario, String username, String clave, int pin, int estadousuario, int alumno, int docente, Connection con) {
         try {            
-            if (alumno == 0) {
-                alumno = 10;
-            } 
-            if(docente == 0){
-                docente = 114;
-            }
-            String query = "INSERT INTO tbUsuario VALUES (?,?,?,?,?,?,?)";          
+            String query = "INSERT INTO tbUsuario VALUES (?,?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setInt(1, nivelusuario);
             ps.setString(2, username);
@@ -101,9 +95,7 @@ public class MUsers {
             ps.setInt(4, pin);
             ps.setInt(5, estadousuario);
             ps.setInt(6, alumno);
-            ps.setInt(7, docente);
-             System.out.println(alumno);
-             System.out.println(docente);
+            ps.setDouble(7, docente);
             if (ps.executeUpdate () == 1) {
                 return true;
             } else {
