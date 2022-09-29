@@ -59,6 +59,13 @@ public class frmTasks extends javax.swing.JFrame {
      */
     public frmTasks() {
         initComponents();
+         customization.mainUtilitiesWhite();
+        for(Component c : dtInicio.getComponents()){
+            ((JComponent)c).setBackground(new Color (255,255,255));
+        }
+        for(Component c : dtVencimiento.getComponents()){
+            ((JComponent)c).setBackground(new Color (255,255,255));
+        }
         CargarCmbTipoTarea();
         CargarCmbTipoPerfil();
 //        customization.centrarFrame(this); 
@@ -75,12 +82,7 @@ public class frmTasks extends javax.swing.JFrame {
         txtId.setVisible(false);
         txtTipoPerfil.setVisible(false);
         txtTipoTarea.setVisible(false);
-        for(Component c : dtInicio.getComponents()){
-            ((JComponent)c).setBackground(new Color (217,217,217));
-        }
-        for(Component c : dtVencimiento.getComponents()){
-            ((JComponent)c).setBackground(new Color (217,217,217));
-        }
+
     }
     
     void LimpiarCampos() {

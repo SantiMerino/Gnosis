@@ -41,6 +41,7 @@ public class panTasks extends javax.swing.JPanel {
     
     public panTasks(int nivel, int idDocenteAlumno){
         initComponents();
+        customization.mainUtilitiesWhite();
         nivelusuario = nivel;
         if (nivelusuario == 3 || nivelusuario == 1) {
             this.iddocente = 0;
