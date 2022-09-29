@@ -386,7 +386,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
           
           try {
             JasperReport reporte = null;
-            String path = "src\\Reportes\\ReporteTareaDocente.jasper";
+            String path = "src\\Reportes\\ReporteTareaAlumno.jasper";
             
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
             
