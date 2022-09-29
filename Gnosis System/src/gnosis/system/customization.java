@@ -465,7 +465,7 @@ public class customization {
         
         //Se agregan los dos paneles principales al que va a contener todos o el panel contenedor en si
         pan1.setLayout(new BorderLayout(10, 0));
-        Dimension dimPan1 = new Dimension(1000,90);
+        Dimension dimPan1 = new Dimension(300,90);
         pan1.setPreferredSize(dimPan1);
         pan1.add(BorderLayout.NORTH, p1TopGap );
         pan1.add(BorderLayout.SOUTH, p1BottomGap);
@@ -502,9 +502,9 @@ public class customization {
         nMateria.setPreferredSize(new Dimension(150, 40));
         nMateria.setHorizontalAlignment(JLabel.LEFT);      
         
-        pan4.add(BorderLayout.EAST , nFechaV);
-        nFechaV.setHorizontalAlignment(JLabel.LEFT);
-        nFechaV.setPreferredSize(new Dimension(200, 40));
+////        pan4.add(BorderLayout.EAST , nFechaV);
+//        nFechaV.setHorizontalAlignment(JLabel.LEFT);
+//        nFechaV.setPreferredSize(new Dimension(200, 40));
         
         pan4.add(BorderLayout.CENTER , nDocente);
         nDocente.setPreferredSize(new Dimension(150, 40));

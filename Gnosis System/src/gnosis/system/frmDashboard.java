@@ -72,6 +72,7 @@ public int milisegundos = 0;
         searchbar.putClientProperty("focusWidth", 0);
         lblnamedashboard.setText(usernamelog + "'s Dashboard");
         CargarPortafolios();
+        CargarTareasAlumnos();
     }
     
     
@@ -127,7 +128,7 @@ public int milisegundos = 0;
                 } else {
                     materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
                 }               
-//                custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), tareasContainer, materiamodulo, datos.getInt(10), nivelusuario, iddocente, idalumno);
+                custo.CrearTareaDashboard(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), tareasContainer, materiamodulo, datos.getInt(10), 1, 0, iduserlog);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas " + e.toString());
@@ -484,9 +485,10 @@ public int milisegundos = 0;
         panelRound14 = new customizeObjects.PanelRound();
         jLabel13 = new javax.swing.JLabel();
         taskPanel = new customizeObjects.PanelRound();
-        tareasContainer = new customizeObjects.PanelRound();
         panelRound8 = new customizeObjects.PanelRound();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tareasContainer = new customizeObjects.PanelRound();
         panelRound4 = new customizeObjects.PanelRound();
         panelRound5 = new customizeObjects.PanelRound();
         panelRound6 = new customizeObjects.PanelRound();
@@ -810,12 +812,6 @@ public int milisegundos = 0;
         taskPanel.setRoundTopRight(20);
         taskPanel.setLayout(new java.awt.BorderLayout());
 
-        tareasContainer.setBackground(new java.awt.Color(217, 217, 217));
-        tareasContainer.setRoundBottomLeft(20);
-        tareasContainer.setRoundBottomRight(20);
-        tareasContainer.setLayout(new java.awt.GridLayout(20, 1, 5, 10));
-        taskPanel.add(tareasContainer, java.awt.BorderLayout.CENTER);
-
         panelRound8.setBackground(new java.awt.Color(217, 217, 217));
         panelRound8.setPreferredSize(new java.awt.Dimension(100, 50));
         panelRound8.setRoundTopLeft(20);
@@ -844,6 +840,17 @@ public int milisegundos = 0;
         );
 
         taskPanel.add(panelRound8, java.awt.BorderLayout.PAGE_START);
+
+        jScrollPane2.setBackground(new java.awt.Color(217, 217, 217));
+
+        tareasContainer.setBackground(new java.awt.Color(217, 217, 217));
+        tareasContainer.setPreferredSize(new java.awt.Dimension(349, 1000));
+        tareasContainer.setRoundBottomLeft(25);
+        tareasContainer.setRoundBottomRight(25);
+        tareasContainer.setLayout(new java.awt.GridLayout(10, 1));
+        jScrollPane2.setViewportView(tareasContainer);
+
+        taskPanel.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
         primeraFila.add(taskPanel, java.awt.BorderLayout.CENTER);
 
@@ -1235,6 +1242,7 @@ public int milisegundos = 0;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblTexto2;
     private javax.swing.JLabel lblmood;
     private javax.swing.JLabel lblnamedashboard;
