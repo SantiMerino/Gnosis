@@ -44,6 +44,8 @@ public int milisegundos = 0;
     String usernamelog;
     ResultSet datosAlumnoLog;
     String nombreAlumno;
+    
+    int tareaidOpen;
 
     public frmDashboard() {
         initComponents();
@@ -120,6 +122,7 @@ public int milisegundos = 0;
             while (datos.next()) {  
                 //Forma de corroborar si es una materia o un modulo :3
                 int fila = datos.getRow();
+                
                 String materiamodulo;
                 String cadena = datos.getString(4);     
                 String[] palabras = cadena.split(" ", 2);
@@ -127,8 +130,9 @@ public int milisegundos = 0;
                     materiamodulo = palabras[1];
                 } else {
                     materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
-                }               
-                custo.CrearTareaDashboard(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), tareasContainer, materiamodulo, datos.getInt(10), 1, 0, iduserlog);
+                }    
+                tareaidOpen = datos.getInt(10);
+                custo.CrearTareaDashboard(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), tareasContainer, materiamodulo, tareaidOpen, 1, 0, iduserlog);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas " + e.toString());
@@ -656,7 +660,7 @@ public int milisegundos = 0;
         protfoliosPanel.setBackground(java.awt.Color.white);
         protfoliosPanel.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane1.setBackground(java.awt.Color.white);
+        jScrollPane1.setBackground(new java.awt.Color(217, 217, 217));
         jScrollPane1.setBorder(null);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
@@ -842,8 +846,10 @@ public int milisegundos = 0;
         taskPanel.add(panelRound8, java.awt.BorderLayout.PAGE_START);
 
         jScrollPane2.setBackground(new java.awt.Color(217, 217, 217));
+        jScrollPane2.setBorder(null);
 
         tareasContainer.setBackground(new java.awt.Color(217, 217, 217));
+        tareasContainer.setOpaque(true);
         tareasContainer.setPreferredSize(new java.awt.Dimension(349, 1000));
         tareasContainer.setRoundBottomLeft(25);
         tareasContainer.setRoundBottomRight(25);

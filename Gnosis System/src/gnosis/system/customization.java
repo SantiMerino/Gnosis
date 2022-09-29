@@ -632,7 +632,7 @@ public class customization {
         }
         
         //Asignar colores provisionalmente para ver como se comportan
-        pan1.setBackground(Color.white); 
+        pan1.setBackground(new Color (217,217,217)); 
         pan2.setBackground(mainColor); 
         pan3.setBackground(new Color(216,216,216));
         pan4.setBackground(mainColor);
@@ -646,8 +646,8 @@ public class customization {
         nFechaV.setForeground(fontColor);
         nFechaI.setForeground(fontColor);
         
-        p1BottomGap.setBackground(Color.white); 
-        p1TopGap.setBackground(Color.white); 
+        p1BottomGap.setBackground(new Color (217,217,217)); 
+        p1TopGap.setBackground(new Color (217,217,217)); 
         leftGap.setBackground(mainColor); 
         
         //Redondeo bordes de los paneles contenedores
