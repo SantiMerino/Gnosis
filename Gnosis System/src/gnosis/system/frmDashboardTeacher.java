@@ -69,7 +69,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         if (this.niveluser == 3) {
             teachersButton.setVisible(true);
             studentsButton.setVisible(true);
-            btnUsers.setVisible(false);
+            btnUsers.setVisible(true);
         }
     }   
     
