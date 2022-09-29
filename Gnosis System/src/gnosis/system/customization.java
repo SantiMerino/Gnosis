@@ -471,7 +471,7 @@ public class customization {
         pan1.add(BorderLayout.SOUTH, p1BottomGap);
         
         pan1.add(BorderLayout.CENTER, pan2);
-        pan1.add(BorderLayout.EAST, pan3);
+//        pan1.add(BorderLayout.EAST, pan3);
         
         
         //Asignar dimensiones de los paneles adentro del contenedor
