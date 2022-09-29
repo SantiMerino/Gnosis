@@ -65,6 +65,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         lblLinkStore.setVisible(false);
         lblRubrica64.setVisible(false);
         CargarDatos(idtarea, idalumno);
+        CargarDatosAlumno(idtarea, idalumno);
         if (lblRubrica64.getText().equals("No disponible")) {
             btnDescargarRubrica.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
         } else{
@@ -75,10 +76,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     
     final void CargarDatos(int id, int idalumno){
         datosCargar = controlador.CargarTareasFull(id);
-        datosAlumno = controlador.CargarDatosAlumnoTarea(id, idalumno);
         try {
-            txtNota.setText(String.valueOf(datosAlumno.getDouble(1))); 
-            
             String materiamodulo;
             String cadena = datosCargar.getString(4);
             String[] palabras = cadena.split(" ", 2);
@@ -97,13 +95,18 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
             lblPorcentaje.setText(datosCargar.getString(8) + "%");
             lblTipoPerfil.setText(datosCargar.getString(9));
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se que esta malo" + ex.toString());
+            customization.notificacion("Hubo un error al abrir la tarea", 2, "Advertencia");
 //            JOptionPane.showMessageDialog(null, "No has entregado la tarea aun" + ex.toString());
         }
     }
     
     final void CargarDatosAlumno(int idtarea, int idalumno){
-
+        datosAlumno = controlador.CargarDatosAlumnoTarea(idtarea, idalumno);
+        try {
+            txtNota.setText(String.valueOf(datosAlumno.getDouble(1)));
+        } catch (Exception e) {
+            customization.notificacion("La tarea no ha sido subida, compartela con tu profesor", 2, "Advertencia");
+        }
     }
     
     
