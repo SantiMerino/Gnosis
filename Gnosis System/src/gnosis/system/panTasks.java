@@ -78,7 +78,7 @@ public class panTasks extends javax.swing.JPanel {
         
     }
     
-        final void CargarTareasDocente(int iddocente){
+        final void CargarTareasDocente(int iddocente){   
         controller = new CTasks();
         ResultSet datos = controller.CargarTareasPreviewDocente(iddocente);
         try {
