@@ -809,7 +809,8 @@ Go
 --AND d.iddocente = c.iddocente
 --AND d.iddocente = 1
 
+CREATE VIEW viewTareaAlumno AS
+SELECT CONCAT(e.nombres_alumno,' ',e.apellidos_alumno) AS Alumno, b.nombretarea , a.archivo, a.link, a.nota, a.idtareaalumno FROM tbTareasAlumnos a, tbTareas b, tbPerfiles c, tbMateriaDocentes d, tbAlumnos e, tbDocentes f, tbGrados g WHERE  a.idtarea = b.idtarea AND a.idalumno = e.idalumno AND b.idperfil = c.idperfil AND c.idgrados = g.idgrado AND c.idmateriadocente = d.idmateriadocente AND d.iddocente = f.iddocente
 
-SELECT CONCAT(e.nombres_alumno,' ',e.apellidos_alumno) AS Alumno, b.nombretarea , a.archivo, a.link  FROM tbTareasAlumnos a, tbTareas b, tbPerfiles c, tbMateriaDocentes d, tbAlumnos e, tbDocentes f, tbGrados g WHERE  a.idtarea = b.idtarea AND a.idalumno = e.idalumno AND b.idperfil = c.idperfil AND c.idgrados = g.idgrado AND c.idmateriadocente = d.idmateriadocente AND d.iddocente = f.iddocente 
-
- 
+SELECT * FROM viewTareaAlumno
+SELECT (nota) FROM tbTareasAlumnos WHERE idtarea = 7 AND idalumno = 1

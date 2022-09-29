@@ -9,8 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -232,6 +230,20 @@ public class MTasks {
             }
     }
     
+    public boolean CalificarTask(double nota,int idtareaalumno,Connection con){
+        try {
+            String query = "UPDATE tbTareasAlumnos SET nota = ? WHERE idtareaalumno = ?";
+            ps = con.prepareStatement(query);
+            ps.setDouble(1, nota);
+            ps.setInt(2, idtareaalumno);
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Surgio un problema al calificar la tarea "+ e.toString());
+            return false;
+        }
+    }
+    
      public ResultSet BuscarTipoPerfil(String clasificacion,int iddocente,Connection con){
         try {
             ResultSet rs;
@@ -267,11 +279,23 @@ public class MTasks {
             return null;
         }
     }
+     
+    public ResultSet CargarDatosAlumnoTarea(int idtarea,  int idalumno, Connection con) {
+        try {
+            String query = "SELECT (nota) FROM tbTareasAlumnos WHERE idtarea = "+idtarea+" AND idalumno =" +idalumno;
+            ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return  null;
+        }        
+    }
     
      
     public ResultSet BuscarTareasEstudiantes(int docente,  int tarea, Connection con) {
         try {
-            String query = "SELECT CONCAT(e.nombres_alumno,' ',e.apellidos_alumno) AS Alumno, b.nombretarea , a.archivo, a.link,  a.nota FROM tbTareasAlumnos a, tbTareas b, tbPerfiles c, tbMateriaDocentes d, tbAlumnos e, tbDocentes f, tbGrados g WHERE  a.idtarea = b.idtarea AND a.idalumno = e.idalumno AND b.idperfil = c.idperfil AND c.idgrados = g.idgrado AND c.idmateriadocente = d.idmateriadocente AND d.iddocente = f.iddocente  AND d.iddocente = ? AND a.idtarea = ?";
+            String query = "SELECT CONCAT(e.nombres_alumno,' ',e.apellidos_alumno) AS Alumno, b.nombretarea , a.archivo, a.link,  a.nota, a.idtareaalumno FROM tbTareasAlumnos a, tbTareas b, tbPerfiles c, tbMateriaDocentes d, tbAlumnos e, tbDocentes f, tbGrados g WHERE  a.idtarea = b.idtarea AND a.idalumno = e.idalumno AND b.idperfil = c.idperfil AND c.idgrados = g.idgrado AND c.idmateriadocente = d.idmateriadocente AND d.iddocente = f.iddocente  AND d.iddocente = ? AND a.idtarea = ?";
             ps = con.prepareStatement(query);
             ps.setInt(1, docente);
             ps.setInt(2, tarea);

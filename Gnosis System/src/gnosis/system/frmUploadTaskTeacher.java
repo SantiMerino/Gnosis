@@ -5,7 +5,15 @@
 package gnosis.system;
 
 import Controller.CTasks;
+import static gnosis.system.customization.notificacion;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URI;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +32,10 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
     DefaultTableModel tablaModel;
     int iddocentelog;
     int idtareaSelec;
+    String pdf;
+    String link;
+    String nombreTarea;
+    String nombreAlumno;
     
     
     public frmUploadTaskTeacher() {
@@ -34,10 +46,13 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         initComponents();
         iddocentelog = iddocente;
         idtareaSelec = idtarea;
-        String [] TitulosDocentes = {"Alumno", "Tarea", "Archivo", "Link", "Nota"};
+        String [] TitulosDocentes = {"Alumno", "Tarea", "Archivo", "Link", "Nota", "ID"};
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tablaTareas.setModel(tablaModel);
+        tablaTareas.getColumnModel().getColumn(5).setMinWidth(0);
         CargarTabla();
+        lblTarea64.setVisible(false);
+        lblTareaLink.setVisible(false);
     }
     
     final void CargarTabla(){
@@ -48,13 +63,36 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         try {
             datosCargar = docent.CargarTareasTablaCalificar(iddocentelog, idtareaSelec);
             while (datosCargar.next()) {                
-                Object [] oValores = {datosCargar.getString(1), datosCargar.getString(2), datosCargar.getString(3), datosCargar.getString(4), datosCargar.getDouble(5)};
+                Object [] oValores = {datosCargar.getString(1), datosCargar.getString(2), datosCargar.getString(3), datosCargar.getString(4), datosCargar.getDouble(5), datosCargar.getInt(6)};
                 tablaModel.addRow(oValores);
             }
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se cargo la tabla");
         }
+    }
+    
+    void AbrirLinks(String link) {
+        try {
+            Desktop desktop = java.awt.Desktop.getDesktop();
+            URI oURL = new URI(link);
+            desktop.browse(oURL);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void decodePdf(String pdf) throws IOException {
+        byte[] decoded = java.util.Base64.getDecoder().decode(pdf);
+        String home = System.getProperty("user.home");
+        String fileName = nombreAlumno + " " +nombreTarea  + ".pdf";
+        File rutaFile = new File(home + "/Downloads/" + fileName);
+        FileOutputStream fos = new FileOutputStream(rutaFile);
+        fos.write(decoded);
+        fos.flush();
+        fos.close();
+        customization.notificacion("Recurso descargado exitosamente", 1, "Confirmación de descarga" );
+//        AbrirLinks(rutaFile.toString());
     }
 
     /**
@@ -72,11 +110,14 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         lblEstudiante = new javax.swing.JLabel();
         buttonRound2 = new customizeObjects.ButtonRound();
         buttonRound3 = new customizeObjects.ButtonRound();
-        jTextField1 = new javax.swing.JTextField();
+        txtGrade = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         buttonRound5 = new customizeObjects.ButtonRound();
         jTextField2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        lblTarea64 = new javax.swing.JLabel();
+        lblTareaLink = new javax.swing.JLabel();
+        lblIDTareaAlumno = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         panelRound1 = new customizeObjects.PanelRound();
         jLabel1 = new javax.swing.JLabel();
@@ -84,9 +125,11 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         buttonRound4 = new customizeObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jPanel2.setPreferredSize(new java.awt.Dimension(803, 530));
 
         tablaTareas.setBackground(java.awt.Color.white);
         tablaTareas.setForeground(new java.awt.Color(32, 32, 32));
@@ -114,13 +157,24 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
 
         buttonRound2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/receive-square-white.png"))); // NOI18N
         buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
+        buttonRound2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound2ActionPerformed(evt);
+            }
+        });
 
         buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/link.png"))); // NOI18N
         buttonRound3.setToolTipText("");
         buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.SOCIALES);
+        buttonRound3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound3ActionPerformed(evt);
+            }
+        });
 
-        jTextField1.setBackground(java.awt.Color.white);
-        jTextField1.setText("00.0");
+        txtGrade.setBackground(java.awt.Color.white);
+        txtGrade.setForeground(new java.awt.Color(32, 32, 32));
+        txtGrade.setText("00.0");
 
         jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(32, 32, 32));
@@ -139,6 +193,15 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/search-normal-black.png"))); // NOI18N
 
+        lblTarea64.setForeground(new java.awt.Color(32, 32, 32));
+        lblTarea64.setText("jLabel3");
+
+        lblTareaLink.setForeground(new java.awt.Color(32, 32, 32));
+        lblTareaLink.setText("jLabel4");
+
+        lblIDTareaAlumno.setForeground(new java.awt.Color(32, 32, 32));
+        lblIDTareaAlumno.setText("jLabel3");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -153,42 +216,54 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
                         .addComponent(jTextField2)))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(buttonRound2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonRound3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblEstudiante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                        .addComponent(buttonRound5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addComponent(lblIDTareaAlumno)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                            .addComponent(buttonRound5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblTareaLink, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTarea64, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(36, 36, 36))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField2))
+                .addGap(10, 10, 10)
+                .addComponent(lblIDTareaAlumno)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(11, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addComponent(lblEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addComponent(buttonRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(10, 10, 10)
+                        .addComponent(lblTarea64)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTareaLink)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))))
+                        .addGap(19, 19, 19))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(9, Short.MAX_VALUE))))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -225,7 +300,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
                 .addComponent(buttonRound4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,18 +319,47 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
 
     private void buttonRound5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound5ActionPerformed
         // TODO add your handling code here:
-        
+        double nota = Double.parseDouble(txtGrade.getText());
+        int id = Integer.parseInt(lblIDTareaAlumno.getText());
+        boolean respuesta = controlador.CalificarTask(nota, id);
+        if (respuesta == true) {
+            customization.notificacion("La nota fue ingresada", 1, "Confirmación");
+        }
     }//GEN-LAST:event_buttonRound5ActionPerformed
 
     private void tablaTareasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaTareasMouseClicked
         // TODO add your handling code here:
         if (evt.getClickCount() == 1) {
             JTable rcp = (JTable) evt.getSource();
-            String estu = "Estudiante: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString();
-            lblEstudiante.setText("<html><center>" + estu +"</center></html>");
+            nombreAlumno =rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString();
+            lblEstudiante.setText("<html><center> Estudiante: " + nombreAlumno +"</center></html>");
+            txtGrade.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString());
+            lblTareaLink.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
+            lblTarea64.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 2).toString());
+            pdf = rcp.getModel().getValueAt(rcp.getSelectedRow(), 2).toString();
+            System.out.println(pdf);
+            link = rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString();     
+            nombreTarea = rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString();
+            lblIDTareaAlumno.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 5).toString());
         }
     }//GEN-LAST:event_tablaTareasMouseClicked
 
+    private void buttonRound2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound2ActionPerformed
+        // TODO add your handling code here:
+        try {
+            decodePdf(pdf);
+            System.out.println(pdf);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "No fue posible descargar la tarea " + ex.toString());
+        }
+    }//GEN-LAST:event_buttonRound2ActionPerformed
+
+    private void buttonRound3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound3ActionPerformed
+        // TODO add your handling code here:
+        AbrirLinks(link);
+    }//GEN-LAST:event_buttonRound3ActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -303,10 +407,13 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblEstudiante;
+    private javax.swing.JLabel lblIDTareaAlumno;
+    private javax.swing.JLabel lblTarea64;
+    private javax.swing.JLabel lblTareaLink;
     private customizeObjects.PanelRound panelRound1;
     private javax.swing.JTable tablaTareas;
+    private javax.swing.JTextField txtGrade;
     // End of variables declaration//GEN-END:variables
 }
