@@ -87,7 +87,6 @@ public int milisegundos = 0;
         panContainer.removeAll();
         panContainer.repaint();
         panContainer.revalidate();
-
         panContainer.add(new panBlocMateria());
         panContainer.repaint();
         panContainer.revalidate();

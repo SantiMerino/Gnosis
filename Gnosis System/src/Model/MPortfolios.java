@@ -30,4 +30,19 @@ public class MPortfolios {
             return null;
         }
     }
+    
+    public ResultSet BuscarCategoria(String clasificacion,Connection con){
+        try {
+            ResultSet rs;
+            String sentencia = "";
+            sentencia = "SELECT * FROM viewPortafolios WHERE Categoria LIKE '"+clasificacion+"%'";
+            ps = con.prepareStatement(sentencia);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }
+    
 }

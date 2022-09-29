@@ -267,7 +267,7 @@ public class MTasks {
             ResultSet rs;
             String sentencia = "";
             if (iddocente == 0) {
-                sentencia = "SELECT * FROM viewTareas WHERE TipoPerfil LIKE '" + clasificacion + "%'";
+                sentencia = "SELECT * FROM viewTareas WHERE [Tipo Perfil] LIKE '" + clasificacion + "%'";
             } else {
                 sentencia = "SELECT * FROM viewTareasDocentes WHERE iddocente = " + iddocente + " AND [Tipo Perfil] LIKE '" + clasificacion + "%'";
             }

@@ -4,7 +4,9 @@
  */
 package Controller;
 
+import Model.MConnection;
 import Model.MPortfolios;
+import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
@@ -13,9 +15,16 @@ import java.sql.ResultSet;
  */
 public class CPortfolios {
     
+    Connection con = MConnection.getConnectionWithoutParameters();
+    
     MPortfolios mdlPortfolios = new MPortfolios();
     
     public ResultSet CargarPortafolios(){
         return mdlPortfolios.CargarPortafoliosPrev();
     }
+    
+    public ResultSet CargarPortafoliosFiltro(String clasificacion){
+        return mdlPortfolios.BuscarCategoria(clasificacion, con);
+    }
+    
 }

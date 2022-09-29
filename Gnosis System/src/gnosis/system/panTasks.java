@@ -164,7 +164,7 @@ public class panTasks extends javax.swing.JPanel {
         filtersPan.add(jLabel2);
 
         cmbTipo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Calificado", "Completado" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Calificado", "Completado", "En proceso" }));
         cmbTipo.setPreferredSize(new java.awt.Dimension(100, 30));
         cmbTipo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -179,7 +179,7 @@ public class panTasks extends javax.swing.JPanel {
         filtersPan.add(jLabel3);
 
         cmbEstado.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Proyecto Formativo", "Recuperacion", "Cotidianas" }));
+        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recuperacion", "Cotidianas" }));
         cmbEstado.setPreferredSize(new java.awt.Dimension(100, 30));
         cmbEstado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
