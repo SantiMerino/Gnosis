@@ -213,13 +213,14 @@ public class MEstudents {
              return false;
          }
      }
-    
-     /**
-      * Metedo en el Modelo Estudiante para eliminar un estudiante.
-      * @param ID
-      * @param con
-      * @return 
-      */
+
+    /**
+     * Metedo en el Modelo Estudiante para eliminar un estudiante.
+     *
+     * @param ID
+     * @param con
+     * @return
+     */
     public boolean EliminarEstudianteModel(int ID, Connection con) {
         try {
             String query = "DELETE tbAlumnos WHERE idAlumno = ?";

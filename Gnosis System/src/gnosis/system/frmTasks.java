@@ -93,7 +93,6 @@ public class frmTasks extends javax.swing.JFrame {
         btnSubir.setEnabled(true);
         btnModificar.setEnabled(false);
         btnEliminar.setEnabled(false);
-    
     }
     
     final void CargarTabla(){
@@ -379,6 +378,11 @@ JFileChooser browseImageFile = new JFileChooser();        //Filter image extensi
         btnEliminar.setPreferredSize(new java.awt.Dimension(130, 40));
         btnEliminar.setRound(20);
         btnEliminar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 150, 35));
         btnEliminar.getAccessibleContext().setAccessibleName("");
 
@@ -521,9 +525,7 @@ JFileChooser browseImageFile = new JFileChooser();        //Filter image extensi
     }//GEN-LAST:event_JTTaskMouseClicked
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-        
-        
+        // TODO add your handling code here:      
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
@@ -609,7 +611,7 @@ JFileChooser browseImageFile = new JFileChooser();        //Filter image extensi
         Cal1.setTime(date);
         String inicio = String.valueOf(Cal1.get(Calendar.YEAR) + "/" + (Cal1.get(Calendar.MONTH) + 1)+ "/" + Cal1.get(Calendar.DAY_OF_MONTH));
         //fecha de vencimiento update
-        Date date2 = dtInicio.getDate();
+        Date date2 = dtVencimiento.getDate();
         Cal2 = new GregorianCalendar();
         Cal2.setTime(date2);
         String vencimiento = String.valueOf(Cal2.get(Calendar.YEAR) + "/" + (Cal2.get(Calendar.MONTH) + 1)+ "/" + Cal2.get(Calendar.DAY_OF_MONTH));

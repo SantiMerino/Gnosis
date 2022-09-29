@@ -187,17 +187,16 @@ public class MTasks {
      * @return 
      */
     public boolean EliminarTareaModel(int ID, Connection con) {
-         
         try {
-             String query = "DELETE tbTareas WHERE idtarea = ?";
-             ps = con.prepareStatement(query);
-             ps.setInt(1, ID);
-             ps.execute();
-             return true;
+            String query = "DELETE tbTareas WHERE idtarea = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, ID);
+            ps.execute();
+            return true;
         } catch (SQLException e) {
-             JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion");
-             return false;
-        }        
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion");
+            return false;
+        }
     }
     
     public ResultSet Search(String nombre, Connection con) {

@@ -951,6 +951,8 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         c = new GregorianCalendar();
         c.setTime(date);
         String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + (c.get(Calendar.MONTH) + 1) + "/" + c.get(Calendar.DAY_OF_MONTH));
+        
+        
         CEstudents objControllerEstudiantes = new CEstudents(Integer.parseInt(txtId.getText()), txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario, txtCodigo.getText());
         boolean valor = objControllerEstudiantes.ActualizarEstudiante();
         if (valor == true) {
