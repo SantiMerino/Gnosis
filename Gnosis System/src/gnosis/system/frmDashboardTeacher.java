@@ -59,6 +59,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(frmDashboardTeacher.class.getName()).log(Level.SEVERE, null, ex);
         }
+        btnUsers.setVisible(false);
         lblDashboard.setText(usernamelog + "'s Dashboard");
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
@@ -68,6 +69,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         if (this.niveluser == 3) {
             teachersButton.setVisible(true);
             studentsButton.setVisible(true);
+            btnUsers.setVisible(false);
         }
     }   
     
@@ -151,7 +153,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         buttonsPan = new javax.swing.JPanel();
         buttonRound2 = new customizeObjects.ButtonRound();
-        btnMood = new customizeObjects.ButtonRound();
         panelRound2 = new customizeObjects.PanelRound();
         jComboBox1 = new javax.swing.JComboBox<>();
         buttonRound4 = new customizeObjects.ButtonRound();
@@ -173,7 +174,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         panelRound9 = new customizeObjects.PanelRound();
         panelRound10 = new customizeObjects.PanelRound();
         jLabel9 = new javax.swing.JLabel();
-        buttonRound5 = new customizeObjects.ButtonRound();
         stadisticPanel = new customizeObjects.PanelRound();
         panelRound13 = new customizeObjects.PanelRound();
         panelRound14 = new customizeObjects.PanelRound();
@@ -182,7 +182,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         panelRound3 = new customizeObjects.PanelRound();
         panelRound8 = new customizeObjects.PanelRound();
         jLabel14 = new javax.swing.JLabel();
-        buttonRound3 = new customizeObjects.ButtonRound();
         panelRound4 = new customizeObjects.PanelRound();
         panelRound5 = new customizeObjects.PanelRound();
         panelRound6 = new customizeObjects.PanelRound();
@@ -199,6 +198,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         medalButton = new customizeObjects.ButtonRound();
         studentsButton = new customizeObjects.ButtonRound();
         teachersButton = new customizeObjects.ButtonRound();
+        btnUsers = new customizeObjects.ButtonRound();
         moodPanel = new customizeObjects.PanelRound();
         moodPic = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -298,16 +298,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         buttonRound2.setPreferredSize(new java.awt.Dimension(40, 40));
         buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         buttonsPan.add(buttonRound2);
-
-        btnMood.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/glass.png"))); // NOI18N
-        btnMood.setPreferredSize(new java.awt.Dimension(40, 40));
-        btnMood.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-        btnMood.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoodActionPerformed(evt);
-            }
-        });
-        buttonsPan.add(btnMood);
 
         panelRound2.setBackground(new java.awt.Color(32, 32, 32));
         panelRound2.setPreferredSize(new java.awt.Dimension(80, 40));
@@ -433,11 +423,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         jLabel9.setForeground(java.awt.Color.white);
         jLabel9.setText("Calendario");
 
-        buttonRound5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/more-white.png"))); // NOI18N
-        buttonRound5.setPreferredSize(new java.awt.Dimension(30, 30));
-        buttonRound5.setRound(10);
-        buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-
         javax.swing.GroupLayout panelRound10Layout = new javax.swing.GroupLayout(panelRound10);
         panelRound10.setLayout(panelRound10Layout);
         panelRound10Layout.setHorizontalGroup(
@@ -445,17 +430,13 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
             .addGroup(panelRound10Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
-                .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(326, Short.MAX_VALUE))
         );
         panelRound10Layout.setVerticalGroup(
             panelRound10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound10Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(panelRound10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel9)
                 .addContainerGap())
         );
 
@@ -517,11 +498,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         jLabel14.setText("Tareas");
         jLabel14.setPreferredSize(new java.awt.Dimension(120, 25));
 
-        buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/more-black.png"))); // NOI18N
-        buttonRound3.setPreferredSize(new java.awt.Dimension(30, 30));
-        buttonRound3.setRound(10);
-        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
-
         javax.swing.GroupLayout panelRound8Layout = new javax.swing.GroupLayout(panelRound8);
         panelRound8.setLayout(panelRound8Layout);
         panelRound8Layout.setHorizontalGroup(
@@ -529,18 +505,14 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
             .addGroup(panelRound8Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
-                .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(274, Short.MAX_VALUE))
         );
         panelRound8Layout.setVerticalGroup(
             panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound8Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8))
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
 
         taskPanel.add(panelRound8, java.awt.BorderLayout.PAGE_START);
@@ -688,6 +660,16 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
             }
         });
         sideBar.add(teachersButton);
+
+        btnUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people-white.png"))); // NOI18N
+        btnUsers.setPreferredSize(new java.awt.Dimension(60, 60));
+        btnUsers.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsersActionPerformed(evt);
+            }
+        });
+        sideBar.add(btnUsers);
 
         moodPanel.setBackground(new java.awt.Color(120, 220, 90));
         moodPanel.setPreferredSize(new java.awt.Dimension(75, 140));
@@ -959,13 +941,10 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_medalButtonActionPerformed
 
-    private void btnMoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoodActionPerformed
+    private void btnUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsersActionPerformed
         // TODO add your handling code here:
-        frmMood mood = new frmMood();
-        mood.setVisible(true);
-        this.setState(Frame.ICONIFIED);
-        frmMood objmood = new frmMood();
-    }//GEN-LAST:event_btnMoodActionPerformed
+        new frmUsers().setVisible(true);
+    }//GEN-LAST:event_btnUsersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -986,12 +965,10 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.ButtonRound bookButton;
     private customizeObjects.ButtonRound briefcaseButton;
-    private customizeObjects.ButtonRound btnMood;
     private customizeObjects.ButtonRound btnStopMood;
+    private customizeObjects.ButtonRound btnUsers;
     private customizeObjects.ButtonRound buttonRound2;
-    private customizeObjects.ButtonRound buttonRound3;
     private customizeObjects.ButtonRound buttonRound4;
-    private customizeObjects.ButtonRound buttonRound5;
     private javax.swing.JPanel buttonsPan;
     private customizeObjects.ButtonRound calendarButton;
     private customizeObjects.PanelRound calendarPanel;

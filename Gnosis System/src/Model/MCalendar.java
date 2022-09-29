@@ -157,7 +157,7 @@ public class MCalendar {
             ps.execute();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro, verifique que no existan datos dependientes, si el problema persiste consulte con el admin del sistema");           
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro, verifique que no existan datos dependientes, si el problema persiste consulte con el administrador del sistema");           
         }
         return false;
     }

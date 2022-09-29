@@ -600,6 +600,9 @@ CREATE TABLE tbTareasAlumnos(
 )
 
 ALTER TABLE tbTareasAlumnos
+ADD nota numeric (3,1)
+
+ALTER TABLE tbTareasAlumnos
 ADD CONSTRAINT fk_tareaalumnos_tarea 
 FOREIGN KEY (idtarea)
 REFERENCES tbTareas (idtarea)
@@ -806,7 +809,8 @@ Go
 --AND d.iddocente = c.iddocente
 --AND d.iddocente = 1
 
+CREATE VIEW viewTareaAlumno AS
+SELECT CONCAT(e.nombres_alumno,' ',e.apellidos_alumno) AS Alumno, b.nombretarea , a.archivo, a.link, a.nota, a.idtareaalumno FROM tbTareasAlumnos a, tbTareas b, tbPerfiles c, tbMateriaDocentes d, tbAlumnos e, tbDocentes f, tbGrados g WHERE  a.idtarea = b.idtarea AND a.idalumno = e.idalumno AND b.idperfil = c.idperfil AND c.idgrados = g.idgrado AND c.idmateriadocente = d.idmateriadocente AND d.iddocente = f.iddocente
 
-SELECT CONCAT(e.nombres_alumno,' ',e.apellidos_alumno) AS Alumno, b.nombretarea , a.archivo, a.link  FROM tbTareasAlumnos a, tbTareas b, tbPerfiles c, tbMateriaDocentes d, tbAlumnos e, tbDocentes f, tbGrados g WHERE  a.idtarea = b.idtarea AND a.idalumno = e.idalumno AND b.idperfil = c.idperfil AND c.idgrados = g.idgrado AND c.idmateriadocente = d.idmateriadocente AND d.iddocente = f.iddocente  AND d.iddocente = 1 AND a.idtarea = 5
-
- 
+SELECT * FROM viewTareaAlumno
+SELECT (nota) FROM tbTareasAlumnos WHERE idtarea = 7 AND idalumno = 1

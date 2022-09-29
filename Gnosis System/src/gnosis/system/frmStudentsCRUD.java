@@ -123,9 +123,9 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         try {
             ResultSet rs = docent.CCargarEstudiantes();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idalumno"), rs.getString("apellidos_alumno"), rs.getString("nombres_alumno"), rs.getInt("idgenero"), 
-                    rs.getInt("idgrado"), rs.getString("correo"), rs.getString("direccion"), rs.getString("contacto"), 
-                    rs.getString("dui"), 
+                Object[] oValores = {rs.getInt("idalumno"), rs.getString("apellidos_alumno"), rs.getString("nombres_alumno"), rs.getInt("idgenero"),
+                    rs.getInt("idgrado"), rs.getString("correo"), rs.getString("direccion"), rs.getString("contacto"),
+                    rs.getString("dui"),
                     rs.getString("fecha_nac"), rs.getString("codigocarnet")};
                 tablaModel.addRow(oValores);
             }
@@ -181,7 +181,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                     cmbGrado.setModel(modeloGrados);
                 } while (rs.next());
             } else{
-                JOptionPane.showMessageDialog(null, "No se pudo cargar los usuarios");
+                JOptionPane.showMessageDialog(null, "No se pudo cargar los grados");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error critico, consultar al administrador");
@@ -203,7 +203,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
 //                    cmbUsuario.setModel(modeloUsuario);
                 } while (rs.next());
             } else{
-                JOptionPane.showMessageDialog(null, "No se pudo cargar los usuarios");
+                JOptionPane.showMessageDialog(null, "No se pudo cargar los usuarios ");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error critico, consultar al administrador");
@@ -338,7 +338,6 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(32, 32, 32));
         jLabel8.setText("Codigo de carnet:");
 
-        txtCodigo.setEditable(false);
         txtCodigo.setBackground(new java.awt.Color(217, 217, 217));
         txtCodigo.setForeground(new java.awt.Color(50, 50, 50));
         txtCodigo.setText("20220009");
@@ -708,10 +707,10 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
      * @return 
      */
     
-    final int BuscarUsuarioSeleccionado(int Usuario){
+    final int BuscarUsuarioSeleccionado(int Usuario) {
         int size = usuarioArrayList.size();
         int retorno = -1;
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             int valor = (Integer) usuarioArrayList.get(i);
             if (valor == Usuario) {
                 retorno = i;
@@ -727,13 +726,13 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     
     private void tbEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEstudiantesMouseClicked
         // TODO add your handling code here:
-        
+
         if (evt.getClickCount() == 1) {
-            
+
             btnActualizar.setEnabled(true);
             btnEliminar.setEnabled(true);
             btnGuardar.setEnabled(false);
-            
+
             JTable rcp = (JTable) evt.getSource();
             txtId.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString());
             txtApellidos.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 1).toString());
@@ -742,35 +741,32 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
             txtDireccion.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 6).toString());
             txtTelefono.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 7).toString());
             txtDui.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 8).toString());
-            txtCodigo.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 5).toString());
-            
+            txtCodigo.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 10).toString());
+
             txtIdGenero.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 3).toString());
             txtIdGrado.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 4).toString());
-//            txtIdUsuario.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 10).toString());
-            
-            
+
             DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             try {
                 dtNacimiento.setDate((Date) simpleDateFormat.parse(rcp.getModel().getValueAt(rcp.getSelectedRow(), 9).toString()));
             } catch (Exception e) {
-                
+
             }
-            
+
             int idGenero = Integer.parseInt(txtIdGenero.getText());
             int idGrado = Integer.parseInt(txtIdGrado.getText());
 //            int idUsuario = Integer.parseInt(txtIdUsuario.getText());
-            
+
             int respuesta = BuscarGeneroSeleccionado(idGenero);
             int respuesta2 = BuscarGradoSeleccionado(idGrado);
 //            int respuesta4 = BuscarUsuarioSeleccionado(idUsuario);
-            
-            JOptionPane.showMessageDialog(null, respuesta);
-            JOptionPane.showMessageDialog(null, respuesta2);
+
+//            JOptionPane.showMessageDialog(null, respuesta);
+//            JOptionPane.showMessageDialog(null, respuesta2);
             cmbGenero.setSelectedIndex(respuesta + 1);
             cmbGrado.setSelectedIndex(respuesta2 + 1);
 //            cmbUsuario.setSelectedIndex(respuesta4 + 1);
         }
-        
     }//GEN-LAST:event_tbEstudiantesMouseClicked
 
     /**
@@ -955,6 +951,8 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         c = new GregorianCalendar();
         c.setTime(date);
         String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + (c.get(Calendar.MONTH) + 1) + "/" + c.get(Calendar.DAY_OF_MONTH));
+        
+        
         CEstudents objControllerEstudiantes = new CEstudents(Integer.parseInt(txtId.getText()), txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario, txtCodigo.getText());
         boolean valor = objControllerEstudiantes.ActualizarEstudiante();
         if (valor == true) {

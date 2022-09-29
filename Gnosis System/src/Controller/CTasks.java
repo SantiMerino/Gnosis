@@ -157,7 +157,16 @@ public class CTasks {
     //Controlador para subir la tarea - Estudiante
     
     public boolean UploadTaskStudents(int idtarea, int idalumno ,String pdf, String link){
-        return mdlTask.UploadTaskStudent(rubrica, pdf, idalumno, idtarea, con);
+        return mdlTask.UploadTaskStudent(link, pdf, idalumno, idtarea, con);
+    }
+    
+    
+    public boolean CalificarTask(double nota,int idtareaalumno){
+        return mdlTask.CalificarTask(nota, idtareaalumno, con);
+    }
+    
+    public ResultSet CargarDatosAlumnoTarea(int idtarea, int idalumno){
+        return mdlTask.CargarDatosAlumnoTarea(idtarea, idalumno, con);
     }
     
     public ResultSet CargarTareasFiltro(String tipoperfil, int iddocente){

@@ -431,7 +431,6 @@ public int milisegundos = 0;
         panelRound9 = new customizeObjects.PanelRound();
         panelRound10 = new customizeObjects.PanelRound();
         jLabel9 = new javax.swing.JLabel();
-        buttonRound5 = new customizeObjects.ButtonRound();
         stadisticPanel = new customizeObjects.PanelRound();
         panelRound13 = new customizeObjects.PanelRound();
         panelRound14 = new customizeObjects.PanelRound();
@@ -440,7 +439,6 @@ public int milisegundos = 0;
         panelRound3 = new customizeObjects.PanelRound();
         panelRound8 = new customizeObjects.PanelRound();
         jLabel2 = new javax.swing.JLabel();
-        buttonRound3 = new customizeObjects.ButtonRound();
         panelRound4 = new customizeObjects.PanelRound();
         panelRound5 = new customizeObjects.PanelRound();
         panelRound6 = new customizeObjects.PanelRound();
@@ -697,11 +695,6 @@ public int milisegundos = 0;
         jLabel9.setForeground(java.awt.Color.white);
         jLabel9.setText("Calendario");
 
-        buttonRound5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/more-white.png"))); // NOI18N
-        buttonRound5.setPreferredSize(new java.awt.Dimension(30, 30));
-        buttonRound5.setRound(10);
-        buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-
         javax.swing.GroupLayout panelRound10Layout = new javax.swing.GroupLayout(panelRound10);
         panelRound10.setLayout(panelRound10Layout);
         panelRound10Layout.setHorizontalGroup(
@@ -709,17 +702,13 @@ public int milisegundos = 0;
             .addGroup(panelRound10Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
-                .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(326, Short.MAX_VALUE))
         );
         panelRound10Layout.setVerticalGroup(
             panelRound10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound10Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(panelRound10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel9)
                 .addContainerGap())
         );
 
@@ -781,11 +770,6 @@ public int milisegundos = 0;
         jLabel2.setText("Tareas");
         jLabel2.setPreferredSize(new java.awt.Dimension(120, 25));
 
-        buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/more-black.png"))); // NOI18N
-        buttonRound3.setPreferredSize(new java.awt.Dimension(30, 30));
-        buttonRound3.setRound(10);
-        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
-
         javax.swing.GroupLayout panelRound8Layout = new javax.swing.GroupLayout(panelRound8);
         panelRound8.setLayout(panelRound8Layout);
         panelRound8Layout.setHorizontalGroup(
@@ -793,18 +777,14 @@ public int milisegundos = 0;
             .addGroup(panelRound8Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
-                .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(274, Short.MAX_VALUE))
         );
         panelRound8Layout.setVerticalGroup(
             panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound8Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
 
         taskPanel.add(panelRound8, java.awt.BorderLayout.PAGE_START);
@@ -1176,9 +1156,7 @@ public int milisegundos = 0;
     private customizeObjects.ButtonRound btnMood;
     private customizeObjects.ButtonRound btnStopMood;
     private customizeObjects.ButtonRound buttonRound2;
-    private customizeObjects.ButtonRound buttonRound3;
     private customizeObjects.ButtonRound buttonRound4;
-    private customizeObjects.ButtonRound buttonRound5;
     private javax.swing.JPanel buttonsPan;
     private customizeObjects.ButtonRound calendarButton;
     private customizeObjects.PanelRound calendarPanel;
