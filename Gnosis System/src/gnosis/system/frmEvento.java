@@ -554,8 +554,7 @@ public class frmEvento extends javax.swing.JFrame {
             int confirmacion = JOptionPane.YES_NO_OPTION;
             JOptionPane.showMessageDialog(this, "Esta seguro de eliminar este registro?", "Confirmar Accion", confirmacion);
             if (confirmacion == JOptionPane.YES_OPTION) {
-                CEvento objDell = new CEvento(Integer.parseInt(txtId.getText()));
-                
+                CEvento objDell = new CEvento(Integer.parseInt(txtId.getText()));              
                 boolean valor = objDell.EliminarEventoResultSet();
                 if ( valor == true) {
                     JOptionPane.showMessageDialog(this, "Evento eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);

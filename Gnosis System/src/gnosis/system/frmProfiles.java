@@ -522,7 +522,7 @@ public class frmProfiles extends javax.swing.JFrame {
         obj.idperfil = CmbTipoPerfil.getSelectedIndex();
 //        obj.idgrado = CmbGrado.getSelectedIndex();
         if (obj.ActualizarPerfil()== true) {
-            JOptionPane.showMessageDialog(this, "Docente actualizado correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Perfil actualizado correctamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
             CargarTabla();
             LimpiarCampos();
         }
