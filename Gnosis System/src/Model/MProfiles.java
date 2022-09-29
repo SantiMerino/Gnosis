@@ -45,6 +45,26 @@ public class MProfiles {
         }
     }
     
+    public ResultSet DatosDocente(int iddocente){
+        Connection con;
+        try {
+            con = MConnection.getConnectionWithoutParameters();
+            String query = "SELECT CONCAT(b.apellidos_docente, ', ',b.nombres_docente) AS [Docente], e.grado, c.materia, d.modulo, b.iddocente\n"
+                    + "FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e\n"
+                    + "WHERE a.iddocente = b.iddocente\n"
+                    + "AND a.idmateria = c.idmateria\n"
+                    + "AND a.idmodulo = d.idmodulo\n"
+                    + "AND b.idgrado = e.idgrado\n"
+                    + "AND b.iddocente = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, iddocente);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
     public ResultSet mostrarPerfiles(Connection con){
         try {
             String query = "SELECT * FROM viewPerfiles;";

@@ -229,7 +229,6 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        dtNacimiento = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         txtDui = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -245,6 +244,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         txtIdGrado = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
+        dtNacimiento = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbEstudiantes = new javax.swing.JTable();
@@ -315,10 +315,6 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(32, 32, 32));
         jLabel5.setText("Fecha de nacimiento:");
-
-        dtNacimiento.setBackground(new java.awt.Color(217, 217, 217));
-        dtNacimiento.setForeground(new java.awt.Color(218, 217, 217));
-        dtNacimiento.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(32, 32, 32));
@@ -391,21 +387,9 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                     .addComponent(txtApellidos)
                     .addComponent(txtDireccion)
                     .addComponent(txtTelefono)
-                    .addComponent(dtNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtDui)
                     .addComponent(txtCorreo)
                     .addComponent(txtCodigo)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,10 +411,22 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addComponent(jLabel11)
-                                .addGap(0, 57, Short.MAX_VALUE))
+                                .addGap(0, 51, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(txtBuscar)))))
+                                .addComponent(txtBuscar))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(dtNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -454,9 +450,9 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                 .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
+                .addComponent(dtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtDui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -486,8 +482,6 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                         .addComponent(txtIdGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-
-        dtNacimiento.setForeground(java.awt.Color.white);
 
         jPanel3.add(jPanel1, java.awt.BorderLayout.WEST);
 
@@ -872,37 +866,35 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        validacionfecha();
+//        validacionfecha();
         Date date = dtNacimiento.getDate();
-            c = new GregorianCalendar();
-            c.setTime(date);
-            String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.DAY_OF_MONTH));
-            CEstudents objEstu = new CEstudents(txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario, 
-                    txtCodigo.getText());
-            boolean respuesta = objEstu.AlumnoNuevoController();
-            if (respuesta == true) {
+        c = new GregorianCalendar();
+        c.setTime(date);
+        String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.DAY_OF_MONTH));
+        CEstudents objEstu = new CEstudents(txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario,
+                txtCodigo.getText());
+        boolean respuesta = objEstu.AlumnoNuevoController();
+        if (respuesta == true) {
             JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente");
             boolean usuariores = false;
-                CargarTabla();
-                ResultSet idalumno = objEstu.idAlumnoforUsuario();
-                try {
-                    if (idalumno.next()) {
-                        CEstudents.idalumno = idalumno.getInt("idalumno");
-                        JOptionPane.showMessageDialog(null, CEstudents.idalumno);
-                        usuariores = objEstu.CrearUsuarioAlumnoController();
-                    }
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "adios id" + ex.toString());
-                }           
-                if ( usuariores == true ) {
-                    JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
+            CargarTabla();
+            ResultSet idalumno = objEstu.idAlumnoforUsuario();
+            try {
+                if (idalumno.next()) {
+                    CEstudents.idalumno = idalumno.getInt("idalumno");
+                    usuariores = objEstu.CrearUsuarioAlumnoController();
                 }
-                else{
-                    JOptionPane.showMessageDialog(null, "Usuario ingresado");
-                }
-        }  else {
-                JOptionPane.showMessageDialog(this, "Estudiante no pudo ser ingresado");
-            }                                     
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "adios id" + ex.toString());
+            }
+            if (usuariores == true) {
+                JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario ingresado");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Estudiante no pudo ser ingresado");
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
