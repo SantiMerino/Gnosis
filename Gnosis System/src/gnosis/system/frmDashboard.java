@@ -124,6 +124,138 @@ public int milisegundos = 0;
         }
     }
     
+    public void contador(){
+        estado = true;
+            Thread hilo = new Thread(){
+          public void run(){
+              for (;;) {
+                  if (estado == true) {
+                      try {
+                          sleep(1);
+                          if (milisegundos >= 1000 ) {
+                             milisegundos = 0;
+                             segundos++;
+                          }
+                          if (segundos >= 60) {
+                             milisegundos = 0;
+                             segundos = 0;
+                             minutos++;
+                          }
+                          if (minutos >= 60) {
+                              milisegundos = 0;
+                              segundos = 0;
+                              minutos = 0;
+                              horas++;
+                          }
+                          lblmood.setText(horas + " : " + minutos + " : " + segundos);
+                          lblTexto2.setText("" + milisegundos);
+                          milisegundos++;
+                      } catch (Exception e) {
+                      }
+                  }else{
+                      break;
+                  }
+                   
+              }
+          }  
+        };
+        hilo.start();
+    }
+    
+    public void pomodoro(){
+    estado = true;
+            Thread hilo = new Thread(){
+          public void run(){
+              for (;;) {
+                  if (estado == true) {
+                      try {
+                          sleep(1);
+                          if (milisegundos >= 1000 ) {
+                             milisegundos = 0;
+                             segundos++;
+                          }
+                          if (segundos >= 60) {
+                             milisegundos = 0;
+                             segundos = 0;
+                             minutos++;
+                          }
+                          if (minutos >= 60) {
+                              milisegundos = 0;
+                              segundos = 0;
+                              minutos = 0;
+                              horas++;
+                          }
+                          lblmood.setText(horas + " : " + minutos + " : " + segundos);
+                          lblTexto2.setText("" + milisegundos);
+                          milisegundos++;
+                          if (segundos == 10) {
+                              moodPanel.setBackground(Color.green);
+                               milisegundos = 0;
+                                segundos = 0;
+                                minutos = 0;
+                                horas = 0;
+                                lblmood.setText("00"+" : "+"00"+" : "+"00"+ " : ");
+                                lblTexto2.setText("0000");
+                          }
+                      } catch (Exception e) {
+                      }
+                  }else{
+                      break;
+                  }
+                   
+              }
+          }  
+        };
+        hilo.start();
+    }
+    
+    public void pomodoroDescanso(){
+        estado = true;
+            Thread hilo = new Thread(){
+          public void run(){
+              for (;;) {
+                  if (estado == true) {
+                      try {
+                          sleep(1);
+                          if (milisegundos >= 1000 ) {
+                             milisegundos = 0;
+                             segundos++;
+                          }
+                          if (segundos >= 60) {
+                             milisegundos = 0;
+                             segundos = 0;
+                             minutos++;
+                          }
+                          if (minutos >= 60) {
+                              milisegundos = 0;
+                              segundos = 0;
+                              minutos = 0;
+                              horas++;
+                          }
+                          lblmood.setText(horas + " : " + minutos + " : " + segundos);
+                          lblTexto2.setText("" + milisegundos);
+                          milisegundos++;
+                          if (segundos == 5) {
+                              moodPanel.setBackground(Color.red);
+                               milisegundos = 0;
+                                segundos = 0;
+                                minutos = 0;
+                                horas = 0;
+                                lblmood.setText("00"+" : "+"00"+" : "+"00"+ " : ");
+                                lblTexto2.setText("0000");
+                          }
+                      } catch (Exception e) {
+                      }
+                  }else{
+                      break;
+                  }
+                   
+              }
+          }  
+        };
+        hilo.start();
+    }
+    
     //Constructor para ver el mood de concetración
     public frmDashboard(int moodstate) {
         initComponents();
@@ -168,50 +300,17 @@ public int milisegundos = 0;
         hilo.start();
         } else if(mood == 2){
             moodPanel.setVisible(true);
-            estado = true;
-        Thread hilo = new Thread(){
-          public void run(){
-              for (;;) {
-                  if (estado == true) {
-                      try {
-                          sleep(1);
-                          if (milisegundos >= 1000 ) {
-                             milisegundos = 0;
-                             segundos++;
-                          }
-                          if (segundos >= 60) {
-                             milisegundos = 0;
-                             segundos = 0;
-                             minutos++;
-                          }
-                          if (minutos >= 60) {
-                              milisegundos = 0;
-                              segundos = 0;
-                              minutos = 0;
-                              horas++;
-                          }
-                          lblmood.setText(horas + " : " + minutos + " : " + segundos);
-                          lblTexto2.setText("" + milisegundos);
-                          milisegundos++;
-                          if (segundos == 10) {
-                              moodPanel.setBackground(Color.red);
-                              milisegundos = 0;
-                              segundos = 0;
-                              minutos = 0;
-                              horas = 0;
-                              lblTexto2.setText("0000");
-                          }else if (segundos == 5) {
-                                  moodPanel.setBackground(Color.green);
-                          }
-                      } catch (Exception e) {
-                      }
-                  }else{
-                      break;
-                  }
-              }
-          }  
-        };
-        hilo.start();
+            
+            int ciclos = 10;
+            
+            for (int i = 1; i <= ciclos; i++) {
+                if (ciclos % 2 == 0) {
+                    pomodoroDescanso();
+                }else{
+                    pomodoro();
+                }
+            }
+            
         }else{
             moodPanel.setBackground(Color.red);
             custoObj.changeIconlbl(moodPic, "/resources/Tomato-white.png");

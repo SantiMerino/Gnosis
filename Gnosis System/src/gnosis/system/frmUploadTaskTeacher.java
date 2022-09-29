@@ -5,11 +5,7 @@
 package gnosis.system;
 
 import Controller.CTasks;
-import Controller.CTeacher;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,6 +22,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
     ResultSet datosCargar;
     DefaultTableModel tablaModel;
     int iddocentelog;
+    int idtareaSelec;
     
     
     public frmUploadTaskTeacher() {
@@ -35,7 +32,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
     public frmUploadTaskTeacher(int idtarea, int iddocente){
         initComponents();
         iddocentelog = iddocente;
-        
+        idtareaSelec = idtarea;
         String [] TitulosDocentes = {"Alumno", "Tarea", "Archivo", "Link"};
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tablaTareas.setModel(tablaModel);
@@ -48,7 +45,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
             tablaModel.removeRow(0);           
         }
         try {
-            datosCargar = docent.CargarTareasTablaCalificar(iddocentelog);
+            datosCargar = docent.CargarTareasTablaCalificar(iddocentelog, idtareaSelec);
             while (datosCargar.next()) {                
                 Object [] oValores = {datosCargar.getString(1), datosCargar.getString(2), datosCargar.getString(3), datosCargar.getString(4)};
                 tablaModel.addRow(oValores);
@@ -176,9 +173,9 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
