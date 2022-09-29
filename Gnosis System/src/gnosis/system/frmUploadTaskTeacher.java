@@ -44,6 +44,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
     
     public frmUploadTaskTeacher(int idtarea, int iddocente){
         initComponents();
+        lblIDTareaAlumno.setVisible(false);
         iddocentelog = iddocente;
         idtareaSelec = idtarea;
         String [] TitulosDocentes = {"Alumno", "Tarea", "Archivo", "Link", "Nota", "ID"};
