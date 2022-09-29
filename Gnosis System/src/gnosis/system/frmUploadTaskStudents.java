@@ -17,8 +17,6 @@ import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Base64;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -35,7 +33,8 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
      */
     ResultSet datosCargar;
     CTasks controlador = new CTasks();
-    int id;
+    int idtareaSelec;
+    int idalumnolog;
     String link;
     String pdf;
     String rutadescarga;
@@ -44,23 +43,18 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     public frmUploadTaskStudents() {
         initComponents();
         lblArchivo64.setVisible(false);
-        lblRubrica64.setVisible(false);
-       
+        lblRubrica64.setVisible(false);    
     }
 
-    public frmUploadTaskStudents(int idtarea) {
+    public frmUploadTaskStudents(int idtarea, int idalumno) {
         initComponents();
-        id = idtarea;
-//        System.out.println(id);
+        idtareaSelec = idtarea;
         lblArchivo64.setVisible(false);
         lblLinkStore.setVisible(false);
         lblRubrica64.setVisible(false);
-        CargarDatos(id);
-        if (lblRubrica64.getText() == " ") {
-            btnDescargarRubrica.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
-        } else {
-            btnDescargarRubrica.setStyle(ButtonRound.ButtonStyle.ROJO);
-        }
+        CargarDatos(idtarea);
+        btnDescargarRubrica.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
+        btnLink.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
     }
     
     final void CargarDatos(int id){
@@ -304,7 +298,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
             }
         });
 
-        lblArchivo64.setForeground(new java.awt.Color(32, 32, 32));
+        lblArchivo64.setForeground(java.awt.Color.white);
         lblArchivo64.setText("jLabel14");
 
         lblLinkStore.setForeground(new java.awt.Color(32, 32, 32));
@@ -463,8 +457,8 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
 
     private void btnSubirTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirTareaActionPerformed
         // TODO add your handling code here:
-//        controlador.UploadTaskStudents(lblblLinkStore.getText(), pdf, id, WIDTH)
-        
+        boolean respuesta = controlador.UploadTaskStudents(idtareaSelec, idalumnolog, pdf, link);
+
     }//GEN-LAST:event_btnSubirTareaActionPerformed
 
     private void btnDescargarRubricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescargarRubricaActionPerformed

@@ -675,24 +675,7 @@ JFileChooser browseImageFile = new JFileChooser();        //Filter image extensi
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-//        customization.mainUtilities();
-     try {
-            UIManager.setLookAndFeel(new FlatArcIJTheme());           
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        UIManager.put( "Component.focusWidth", 0 );
-        UIManager.put( "Component.innerFocusWidth",0 );
-        UIManager.put( "TextComponent.arc", 15);
-        UIManager.put( "Component.arc", 15);
-        UIManager.put( "ProgressBar.arc", 20);
-        UIManager.put( "ScrollBar.trackArc", 999 );
-        UIManager.put( "ScrollBar.thumbArc", 999 );
-        UIManager.put( "ScrollBar.trackInsets", new Insets( 2, 4, 2, 4 ) );
-        UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
-        UIManager.put( "Component.arrowType", "chevron" );
-        
-        
+        customization.mainUtilitiesWhite();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
