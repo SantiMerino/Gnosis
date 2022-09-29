@@ -46,6 +46,13 @@ public class frmUsers extends javax.swing.JFrame {
      */
     public frmUsers() {
         initComponents();
+        
+        txtId.setVisible(false);
+        txtNivelUsuario.setVisible(false);
+        txtEstadoUsuario.setVisible(false);
+        txtAlumno.setVisible(false);
+        txtDocente.setVisible(false);
+        
         CargarCmbEstadoUsuario();
         CargarCmbNivelUsuario();
         CargarCmbDocentes();
@@ -304,8 +311,8 @@ public class frmUsers extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNivelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEstadoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEstadoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(txtAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
                         .addComponent(txtDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -748,7 +755,7 @@ public class frmUsers extends javax.swing.JFrame {
             int respuesta3 = BuscarAlumnoSeleccionado(idalumno);
             int respuesta4 = BuscarDocenteSeleccionado(iddocente);
             
-            cmbNivelUsuario.setSelectedIndex(respuesta + 1);
+            cmbNivelUsuario.setSelectedIndex(respuesta);
             cmbEstadoUsuario.setSelectedIndex(respuesta2 + 1);
             CmbAlumno.setSelectedIndex(respuesta3 + 1);
             CmbDocente.setSelectedIndex(respuesta4 + 1);
