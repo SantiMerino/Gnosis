@@ -86,8 +86,7 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         topGap = new customizeObjects.PanelRound();
         returnConfig = new customizeObjects.ButtonRound();
-        rightWGap = new customizeObjects.PanelRound();
-        leftWGap = new customizeObjects.PanelRound();
+        panelRound1 = new customizeObjects.PanelRound();
         northGap = new customizeObjects.PanelRound();
         menuBarPanel = new customizeObjects.PanelRound();
         btnConnection = new customizeObjects.ButtonRound();
@@ -221,40 +220,23 @@ public class frmLogin extends javax.swing.JFrame {
 
         wContainer.add(topGap, java.awt.BorderLayout.NORTH);
 
-        rightWGap.setBackground(new java.awt.Color(247, 198, 19));
-        rightWGap.setPreferredSize(new java.awt.Dimension(10, 550));
-        rightWGap.setRoundBottomRight(25);
+        panelRound1.setBackground(new java.awt.Color(247, 198, 19));
+        panelRound1.setPreferredSize(new java.awt.Dimension(437, 20));
+        panelRound1.setRoundBottomLeft(25);
+        panelRound1.setRoundBottomRight(25);
 
-        javax.swing.GroupLayout rightWGapLayout = new javax.swing.GroupLayout(rightWGap);
-        rightWGap.setLayout(rightWGapLayout);
-        rightWGapLayout.setHorizontalGroup(
-            rightWGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
+        panelRound1.setLayout(panelRound1Layout);
+        panelRound1Layout.setHorizontalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 437, Short.MAX_VALUE)
         );
-        rightWGapLayout.setVerticalGroup(
-            rightWGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
-        );
-
-        wContainer.add(rightWGap, java.awt.BorderLayout.EAST);
-
-        leftWGap.setBackground(new java.awt.Color(247, 198, 19));
-        leftWGap.setForeground(new java.awt.Color(247, 198, 19));
-        leftWGap.setPreferredSize(new java.awt.Dimension(10, 550));
-        leftWGap.setRoundBottomLeft(25);
-
-        javax.swing.GroupLayout leftWGapLayout = new javax.swing.GroupLayout(leftWGap);
-        leftWGap.setLayout(leftWGapLayout);
-        leftWGapLayout.setHorizontalGroup(
-            leftWGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        leftWGapLayout.setVerticalGroup(
-            leftWGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+        panelRound1Layout.setVerticalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
-        wContainer.add(leftWGap, java.awt.BorderLayout.WEST);
+        wContainer.add(panelRound1, java.awt.BorderLayout.PAGE_END);
 
         LoginPanel.add(wContainer);
 
@@ -591,15 +573,14 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private customizeObjects.PanelRound leftGap;
-    private customizeObjects.PanelRound leftWGap;
     private customizeObjects.PanelRound loginWhitePan;
     private customizeObjects.PanelRound mainJPanel;
     private customizeObjects.PanelRound menuBarPanel;
     private customizeObjects.PanelRound northGap;
+    private customizeObjects.PanelRound panelRound1;
     private customizeObjects.ButtonRound returnConfig;
     private customizeObjects.ButtonRound returnLogin;
     private customizeObjects.PanelRound rightGap;
-    private customizeObjects.PanelRound rightWGap;
     private customizeObjects.PanelRound southGap;
     private customizeObjects.PanelRound topGap;
     private javax.swing.JPasswordField txtPassword;

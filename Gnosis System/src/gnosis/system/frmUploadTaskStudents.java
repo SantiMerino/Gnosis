@@ -48,12 +48,17 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
 
     public frmUploadTaskStudents(int idtarea, int idalumno) {
         initComponents();
+        idalumnolog = idalumno;
         idtareaSelec = idtarea;
         lblArchivo64.setVisible(false);
         lblLinkStore.setVisible(false);
         lblRubrica64.setVisible(false);
         CargarDatos(idtarea);
-        btnDescargarRubrica.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
+        if (lblRubrica64.getText().equals("No disponible")) {
+            btnDescargarRubrica.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
+        } else{
+            btnDescargarRubrica.setStyle(ButtonRound.ButtonStyle.ROJO);
+        }    
         btnLink.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
     }
     
@@ -76,9 +81,6 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
             lblEstado.setText(datosCargar.getString(6));
             IconoEstado(datosCargar.getString(6));
             lblRubrica64.setText(datosCargar.getString(7));
-//            lblArchivo64.setText(datosCargar.getString(8));
-//            lblLinkStore.setText(datosCargar.getString(9));
-//            txtNota.setText(datosCargar.getString(8));
             lblPorcentaje.setText(datosCargar.getString(8) + "%");
             lblTipoPerfil.setText(datosCargar.getString(9));
         } catch (SQLException ex) {
@@ -458,7 +460,12 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     private void btnSubirTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirTareaActionPerformed
         // TODO add your handling code here:
         boolean respuesta = controlador.UploadTaskStudents(idtareaSelec, idalumnolog, pdf, link);
-
+        System.out.println(idalumnolog);
+        if (respuesta == true) {
+            customization.notificacion("La tarea fue subida exitosamente", 1, "Confirmación");
+        }else{
+            JOptionPane.showInternalMessageDialog(null, "La tarea no pudo ser subida correctamente, intentalo de nuevo", "Error", JOptionPane.ERROR);
+        }
     }//GEN-LAST:event_btnSubirTareaActionPerformed
 
     private void btnDescargarRubricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescargarRubricaActionPerformed

@@ -7,6 +7,7 @@ package gnosis.system;
 import Controller.CTasks;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,7 +34,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         initComponents();
         iddocentelog = iddocente;
         idtareaSelec = idtarea;
-        String [] TitulosDocentes = {"Alumno", "Tarea", "Archivo", "Link"};
+        String [] TitulosDocentes = {"Alumno", "Tarea", "Archivo", "Link", "Nota"};
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tablaTareas.setModel(tablaModel);
         CargarTabla();
@@ -47,7 +48,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         try {
             datosCargar = docent.CargarTareasTablaCalificar(iddocentelog, idtareaSelec);
             while (datosCargar.next()) {                
-                Object [] oValores = {datosCargar.getString(1), datosCargar.getString(2), datosCargar.getString(3), datosCargar.getString(4)};
+                Object [] oValores = {datosCargar.getString(1), datosCargar.getString(2), datosCargar.getString(3), datosCargar.getString(4), datosCargar.getDouble(5)};
                 tablaModel.addRow(oValores);
             }
             
@@ -68,14 +69,12 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaTareas = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblEstudiante = new javax.swing.JLabel();
         buttonRound2 = new customizeObjects.ButtonRound();
         buttonRound3 = new customizeObjects.ButtonRound();
         jTextField1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         buttonRound5 = new customizeObjects.ButtonRound();
-        buttonRound6 = new customizeObjects.ButtonRound();
         jTextField2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -84,7 +83,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         buttonRound4 = new customizeObjects.ButtonRound();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -102,13 +101,16 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaTareas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaTareasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaTareas);
 
-        jLabel3.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel3.setText("Estudiante:");
-
-        jLabel4.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel4.setText("Grado y sección:");
+        lblEstudiante.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        lblEstudiante.setForeground(new java.awt.Color(32, 32, 32));
+        lblEstudiante.setText("Estudiante:");
 
         buttonRound2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/receive-square-white.png"))); // NOI18N
         buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
@@ -117,9 +119,12 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         buttonRound3.setToolTipText("");
         buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.SOCIALES);
 
-        jTextField1.setText("Nota");
+        jTextField1.setBackground(java.awt.Color.white);
+        jTextField1.setText("00.0");
 
-        jLabel5.setText("jLabel5");
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel5.setText("Calificación: ");
 
         buttonRound5.setText("Calificar");
         buttonRound5.setRound(20);
@@ -129,10 +134,6 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
                 buttonRound5ActionPerformed(evt);
             }
         });
-
-        buttonRound6.setText("Modificar");
-        buttonRound6.setRound(20);
-        buttonRound6.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
 
         jTextField2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
 
@@ -151,50 +152,43 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTextField2)))
                 .addGap(32, 32, 32)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(buttonRound2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonRound3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(buttonRound2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonRound3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblEstudiante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                        .addComponent(buttonRound5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonRound6, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField2))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(11, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel4)
-                        .addGap(93, 93, 93)
-                        .addComponent(buttonRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(41, 41, 41)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonRound6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(11, Short.MAX_VALUE))
+                        .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -251,8 +245,16 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
     private void buttonRound5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound5ActionPerformed
         // TODO add your handling code here:
         
-        
     }//GEN-LAST:event_buttonRound5ActionPerformed
+
+    private void tablaTareasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaTareasMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 1) {
+            JTable rcp = (JTable) evt.getSource();
+            String estu = "Estudiante: " + rcp.getModel().getValueAt(rcp.getSelectedRow(), 0).toString();
+            lblEstudiante.setText("<html><center>" + estu +"</center></html>");
+        }
+    }//GEN-LAST:event_tablaTareasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -294,11 +296,8 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
     private customizeObjects.ButtonRound buttonRound3;
     private customizeObjects.ButtonRound buttonRound4;
     private customizeObjects.ButtonRound buttonRound5;
-    private customizeObjects.ButtonRound buttonRound6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
@@ -306,6 +305,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblEstudiante;
     private customizeObjects.PanelRound panelRound1;
     private javax.swing.JTable tablaTareas;
     // End of variables declaration//GEN-END:variables

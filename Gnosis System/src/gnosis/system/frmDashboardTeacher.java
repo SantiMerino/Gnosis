@@ -59,6 +59,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(frmDashboardTeacher.class.getName()).log(Level.SEVERE, null, ex);
         }
+        btnUsers.setVisible(false);
         lblDashboard.setText(usernamelog + "'s Dashboard");
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
@@ -68,6 +69,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         if (this.niveluser == 3) {
             teachersButton.setVisible(true);
             studentsButton.setVisible(true);
+            btnUsers.setVisible(false);
         }
     }   
     
@@ -151,7 +153,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         buttonsPan = new javax.swing.JPanel();
         buttonRound2 = new customizeObjects.ButtonRound();
-        btnMood = new customizeObjects.ButtonRound();
         panelRound2 = new customizeObjects.PanelRound();
         jComboBox1 = new javax.swing.JComboBox<>();
         buttonRound4 = new customizeObjects.ButtonRound();
@@ -199,6 +200,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         medalButton = new customizeObjects.ButtonRound();
         studentsButton = new customizeObjects.ButtonRound();
         teachersButton = new customizeObjects.ButtonRound();
+        btnUsers = new customizeObjects.ButtonRound();
         moodPanel = new customizeObjects.PanelRound();
         moodPic = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -298,16 +300,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         buttonRound2.setPreferredSize(new java.awt.Dimension(40, 40));
         buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         buttonsPan.add(buttonRound2);
-
-        btnMood.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/glass.png"))); // NOI18N
-        btnMood.setPreferredSize(new java.awt.Dimension(40, 40));
-        btnMood.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-        btnMood.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoodActionPerformed(evt);
-            }
-        });
-        buttonsPan.add(btnMood);
 
         panelRound2.setBackground(new java.awt.Color(32, 32, 32));
         panelRound2.setPreferredSize(new java.awt.Dimension(80, 40));
@@ -689,6 +681,16 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         });
         sideBar.add(teachersButton);
 
+        btnUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/people-white.png"))); // NOI18N
+        btnUsers.setPreferredSize(new java.awt.Dimension(60, 60));
+        btnUsers.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsersActionPerformed(evt);
+            }
+        });
+        sideBar.add(btnUsers);
+
         moodPanel.setBackground(new java.awt.Color(120, 220, 90));
         moodPanel.setPreferredSize(new java.awt.Dimension(75, 140));
         moodPanel.setRoundBottomLeft(20);
@@ -959,13 +961,10 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_medalButtonActionPerformed
 
-    private void btnMoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoodActionPerformed
+    private void btnUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsersActionPerformed
         // TODO add your handling code here:
-        frmMood mood = new frmMood();
-        mood.setVisible(true);
-        this.setState(Frame.ICONIFIED);
-        frmMood objmood = new frmMood();
-    }//GEN-LAST:event_btnMoodActionPerformed
+        new frmUsers().setVisible(true);
+    }//GEN-LAST:event_btnUsersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -986,8 +985,8 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.ButtonRound bookButton;
     private customizeObjects.ButtonRound briefcaseButton;
-    private customizeObjects.ButtonRound btnMood;
     private customizeObjects.ButtonRound btnStopMood;
+    private customizeObjects.ButtonRound btnUsers;
     private customizeObjects.ButtonRound buttonRound2;
     private customizeObjects.ButtonRound buttonRound3;
     private customizeObjects.ButtonRound buttonRound4;
