@@ -81,13 +81,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnSubirTarea" max="32767" attributes="0"/>
                                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="btnEliminarTarea" min="-2" pref="131" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnModificar" min="-2" pref="132" max="-2" attributes="0"/>
-                                      </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="lblRubrica64" alignment="0" max="32767" attributes="0"/>
@@ -95,6 +89,20 @@
                                               <Component id="btnDescargarRubrica" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="btnSubirTarea" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="btnEliminarTarea" alignment="0" pref="131" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                                  <Component id="buttonRound1" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Component id="btnModificar" min="-2" pref="132" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
@@ -150,7 +158,10 @@
                               <Component id="btnEliminarTarea" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="btnSubirTarea" min="-2" pref="46" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnSubirTarea" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="buttonRound1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -472,6 +483,14 @@
               <Color blue="20" green="20" red="20" type="rgb"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="customizeObjects.ButtonRound" name="buttonRound1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Generar Reporte"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRound1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

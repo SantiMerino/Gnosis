@@ -27,6 +27,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
@@ -35,6 +37,12 @@ import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -243,6 +251,7 @@ JFileChooser browseImageFile = new JFileChooser();        //Filter image extensi
         jLabel3 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         lblarchivo64 = new javax.swing.JLabel();
+        buttonRound1 = new customizeObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -372,7 +381,7 @@ JFileChooser browseImageFile = new JFileChooser();        //Filter image extensi
                 btnSubirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 320, 35));
+        jPanel1.add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 150, 35));
         btnSubir.getAccessibleContext().setAccessibleName("");
 
         btnEliminar.setText("Eliminar");
@@ -412,6 +421,14 @@ JFileChooser browseImageFile = new JFileChooser();        //Filter image extensi
 
         lblarchivo64.setText("jLabel6");
         jPanel1.add(lblarchivo64, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 40, -1));
+
+        buttonRound1.setText("Generar reporte");
+        buttonRound1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 150, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -674,6 +691,32 @@ JFileChooser browseImageFile = new JFileChooser();        //Filter image extensi
         
     }//GEN-LAST:event_txtBuscarKeyReleased
 
+    private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
+        // TODO add your handling code here:
+        
+          Connection conn = CConnection.getConnectionControllerWithoutParameters();
+          
+          try {
+            JasperReport reporte = null;
+            String path = "src\\Reportes\\ReporteTareasGeneral.jasper";
+            
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, conn);
+            
+            JasperViewer view = new JasperViewer (jprint , false);
+            
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            
+            view.setVisible(true);
+            
+        } catch (JRException ex) {
+            Logger.getLogger(frmStudentsCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_buttonRound1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -696,6 +739,7 @@ JFileChooser browseImageFile = new JFileChooser();        //Filter image extensi
     private customizeObjects.ButtonRound btnEliminar;
     private customizeObjects.ButtonRound btnModificar;
     private customizeObjects.ButtonRound btnSubir;
+    private customizeObjects.ButtonRound buttonRound1;
     private com.toedter.calendar.JDateChooser dtInicio;
     private com.toedter.calendar.JDateChooser dtVencimiento;
     private javax.swing.JLabel jLabel1;

@@ -61,8 +61,9 @@
                           <Component id="lblIDTareaAlumno" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="buttonRound1" alignment="0" max="32767" attributes="0"/>
                               <Component id="buttonRound2" alignment="0" max="32767" attributes="0"/>
                               <Component id="buttonRound3" alignment="0" max="32767" attributes="0"/>
                               <Component id="lblEstudiante" alignment="0" pref="253" max="32767" attributes="0"/>
@@ -71,8 +72,9 @@
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtGrade" min="-2" pref="58" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="lblTareaLink" max="32767" attributes="0"/>
+                              <Component id="lblTareaLink" alignment="0" max="32767" attributes="0"/>
                               <Component id="lblTarea64" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
@@ -104,6 +106,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblTareaLink" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="buttonRound1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="buttonRound5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
@@ -255,6 +259,14 @@
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel3"/>
           </Properties>
+        </Component>
+        <Component class="customizeObjects.ButtonRound" name="buttonRound1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Generar Reporte"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRound1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
