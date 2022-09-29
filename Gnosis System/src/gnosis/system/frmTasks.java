@@ -127,7 +127,7 @@ JFileChooser browseImageFile = new JFileChooser();        //Filter image extensi
                 pdf = Base64.getEncoder().encodeToString(inFileBytes);
                 decodePdf();
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Cagaste");
+                JOptionPane.showMessageDialog(null, "No se pudo seleccionar el archivo");
             }
 
             lblarchivo64.setText(pdf);

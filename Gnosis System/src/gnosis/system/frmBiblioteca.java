@@ -633,7 +633,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 
                 boolean valor = objcontrolDelete.EliminarBibliotecaController();
                 if ( valor == true) {
-                    JOptionPane.showMessageDialog(this, "Docente eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Recurso eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
                     CargarTabla();
                     LimpiarCampos();
                 }
@@ -673,7 +673,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 pdf = Base64.getEncoder().encodeToString(inFileBytes);
                 decodePdf();
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Cagaste");
+                JOptionPane.showMessageDialog(null, "No se pudo seleccionar el archivo");
             }
 
             jLabel8.setText(pdf);
