@@ -160,6 +160,15 @@ public class CTasks {
         return mdlTask.UploadTaskStudent(link, pdf, idalumno, idtarea, con);
     }
     
+    
+    public boolean CalificarTask(double nota,int idtareaalumno){
+        return mdlTask.CalificarTask(nota, idtareaalumno, con);
+    }
+    
+    public ResultSet CargarDatosAlumnoTarea(int idtarea, int idalumno){
+        return mdlTask.CargarDatosAlumnoTarea(idtarea, idalumno, con);
+    }
+    
     public ResultSet CargarTareasFiltro(String tipoperfil, int iddocente){
         return mdlTask.BuscarTipoPerfil(tipoperfil, iddocente,con);
     } 

@@ -17,6 +17,8 @@ import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -32,6 +34,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
      * Creates new form frmUploadTaskStudents
      */
     ResultSet datosCargar;
+    ResultSet datosAlumno;
     CTasks controlador = new CTasks();
     int idtareaSelec;
     int idalumnolog;
@@ -53,7 +56,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         lblArchivo64.setVisible(false);
         lblLinkStore.setVisible(false);
         lblRubrica64.setVisible(false);
-        CargarDatos(idtarea);
+        CargarDatos(idtarea, idalumno);
         if (lblRubrica64.getText().equals("No disponible")) {
             btnDescargarRubrica.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
         } else{
@@ -62,18 +65,20 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         btnLink.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
     }
     
-    final void CargarDatos(int id){
+    final void CargarDatos(int id, int idalumno){
         datosCargar = controlador.CargarTareasFull(id);
-//        System.out.println(id);
+        datosAlumno = controlador.CargarDatosAlumnoTarea(id, idalumno);
         try {
+            txtNota.setText(String.valueOf(datosAlumno.getDouble(1))); 
+            
             String materiamodulo;
-                String cadena = datosCargar.getString(4);     
-                String[] palabras = cadena.split(" ", 2);
-                if (palabras[0].equals("Ninguno")) {
-                    materiamodulo = "Módulo: " +palabras[1];
-                } else {
-                    materiamodulo = "Materia: " + cadena.substring(0, cadena.lastIndexOf(" "));
-                }  
+            String cadena = datosCargar.getString(4);
+            String[] palabras = cadena.split(" ", 2);
+            if (palabras[0].equals("Ninguno")) {
+                materiamodulo = "Módulo: " + palabras[1];
+            } else {
+                materiamodulo = "Materia: " + cadena.substring(0, cadena.lastIndexOf(" "));
+            }
             lblnombreTarea.setText(datosCargar.getString(1));
             lblFechaVencimiento.setText("Fecha de Cierre: " + datosCargar.getString(3));
             lblMateriaModulo.setText(materiamodulo);
@@ -84,9 +89,13 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
             lblPorcentaje.setText(datosCargar.getString(8) + "%");
             lblTipoPerfil.setText(datosCargar.getString(9));
         } catch (SQLException ex) {
-            System.out.println(datosCargar);
-            JOptionPane.showMessageDialog(null, "No se pudo cargar el buzón de la tarea" + ex.toString());
+            JOptionPane.showMessageDialog(null, "No se que esta malo" + ex.toString());
+//            JOptionPane.showMessageDialog(null, "No has entregado la tarea aun" + ex.toString());
         }
+    }
+    
+    final void CargarDatosAlumno(int idtarea, int idalumno){
+
     }
     
     
