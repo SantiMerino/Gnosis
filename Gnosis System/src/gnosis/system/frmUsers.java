@@ -622,12 +622,6 @@ public class frmUsers extends javax.swing.JFrame {
         else if(cmbNivelUsuario.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(this, "Seleccione un nivel de usuario", "Campos vacios", JOptionPane.WARNING_MESSAGE);
         } 
-        else if(CmbAlumno.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(this, "Seleccione un alumno", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        } 
-        else if(CmbDocente.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(this, "Seleccione un docente", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        } 
         else {
             // Envio
             obj.idnivelusuario = cmbNivelUsuario.getSelectedIndex();

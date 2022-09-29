@@ -86,7 +86,7 @@
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="lblRubrica64" alignment="0" max="32767" attributes="0"/>
                                               <Component id="lblFechaVencimiento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnDescargarRubrica" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="btnDescargarRubrica" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                                       </Group>

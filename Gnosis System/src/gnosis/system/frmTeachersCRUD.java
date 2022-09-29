@@ -925,7 +925,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-         if (txtId.getText().trim().isEmpty()) {
+         if (txtId.getText().trim().isEmpty()) { 
             JOptionPane.showMessageDialog(this, "Seleccione un registro", "Informacion incompleta", JOptionPane.WARNING_MESSAGE);
         } else {
             int confirmacion = JOptionPane.YES_NO_OPTION;

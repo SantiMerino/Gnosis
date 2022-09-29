@@ -616,11 +616,10 @@ SELECT * FROM viewAlumnos where idalumno = 1
 
 ALTER TABLE tbPerfiles
 DROP COLUMN nota
-DROP VIEW viewTareas
 
 CREATE VIEW viewTareas
 AS 
-SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I], a.fechavencimiento as [Fecha V], CONCAT(e.materia,' ',f.modulo) as [Materia_Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado], a.rubrica AS [Rúbrica], b.porcentajeValoracion AS [Porcentaje], h.tipoperfil AS [Tipo Perfil], a.idtarea, i.grado
+SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I.], a.fechavencimiento as [Fecha V.], CONCAT(e.materia,' ',f.modulo) as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado], a.rubrica AS [Rúbrica], b.porcentajeValoracion AS [%], h.tipoperfil AS [Tipo Perfil], a.idtarea, i.grado
 FROM tbTareas a, tbPerfiles b, tbMateriaDocentes c, tbDocentes d, tbMaterias e, tbModulos f, tbEstadoPerfiles g, tbTipoPerfiles h, tbGrados i
 WHERE a.idperfil = b.idperfil 
 	AND b.idmateriadocente = c.idmateriadocente
@@ -643,7 +642,7 @@ WHERE a.idalumno = 1 AND a.idgrado = b.idgrado
 
 CREATE VIEW viewTareasDocentes
 AS
-SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I], a.fechavencimiento as [Fecha V], CONCAT(e.materia,' ',f.modulo) as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado], a.rubrica AS [Rúbrica], b.porcentajeValoracion AS [Porcentaje], h.tipoperfil AS [Tipo Perfil], a.idtarea, d.iddocente
+SELECT a.nombretarea as [Tarea], a.fechadeinicio as [Fecha I.], a.fechavencimiento as [Fecha V.], CONCAT(e.materia,' ',f.modulo) as [Materia/Modulo], CONCAT (d.nombres_docente,' ', d.apellidos_docente) AS [Docente], g.estadoperfil AS [Estado], a.rubrica AS [Rúbrica], b.porcentajeValoracion AS [%], h.tipoperfil AS [Tipo Perfil], a.idtarea, d.iddocente
 FROM tbTareas a, tbPerfiles b, tbMateriaDocentes c, tbDocentes d, tbMaterias e, tbModulos f, tbEstadoPerfiles g, tbTipoPerfiles h
 WHERE a.idperfil = b.idperfil 
 	AND b.idmateriadocente = c.idmateriadocente
@@ -760,11 +759,10 @@ Select * from viewPortafolios
 USE dbGnosis;
 
 --Vista  MateriaDocente
-SELECT b.apellidos_docente, b.nombres_docente, e.grado, c.materia, d.modulo
+SELECT CONCAT(b.apellidos_docente, ', ',b.nombres_docente) AS [Docente], e.grado, c.materia, d.modulo, b.iddocente
 FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e
 WHERE a.iddocente = b.iddocente
 AND a.idmateria = c.idmateria
-AND a.idmateria != 8
 AND a.idmodulo = d.idmodulo
 AND b.idgrado = e.idgrado
 
@@ -803,16 +801,13 @@ FROM tbPerfiles a, tbTipoPerfiles b, tbGrados c, tbEstadoPerfiles d
 WHERE a.idtipoperfil = b.idtipoperfil AND a.idgrados = c.idgrado AND a.idestadoperfil = d.idestadoperfil; 
 Go
 
-Select * from viewTareas
-
 --SELECT a.nombretarea, b.nombreperfil
 --FROM tbTareas a, tbPerfiles b, tbDocentes c, tbMateriaDocentes d
 --WHERE a.idperfil = b.idperfil
 --AND b.idmateriadocente = d.idmateriadocente
 --AND d.iddocente = c.iddocente
 --AND d.iddocente = 1
-USE dbGnosis
-DROP VIEW viewTareaAlumno
+
 CREATE VIEW viewTareaAlumno AS
 SELECT CONCAT(e.nombres_alumno,' ',e.apellidos_alumno) AS Alumno, b.nombretarea , a.archivo, a.link, a.nota, a.idtareaalumno FROM tbTareasAlumnos a, tbTareas b, tbPerfiles c, tbMateriaDocentes d, tbAlumnos e, tbDocentes f, tbGrados g WHERE  a.idtarea = b.idtarea AND a.idalumno = e.idalumno AND b.idperfil = c.idperfil AND c.idgrados = g.idgrado AND c.idmateriadocente = d.idmateriadocente AND d.iddocente = f.iddocente
 
