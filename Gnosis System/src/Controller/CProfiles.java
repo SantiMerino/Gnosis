@@ -152,7 +152,7 @@ public class CProfiles {
     }
 
     public boolean ActualizarPerfil() {
-        return mdlPerfil.ActualizarProfilesModel(ID, nombre, descripcion, porcentajedevaloracion, fechadeinicio, fechadevencimiento, idperfil, idgrado, con);
+        return mdlPerfil.ActualizarProfilesModel(ID, nombre, descripcion, porcentajedevaloracion, fechadeinicio, fechadevencimiento, idperfil, con);
     }
 
     public boolean EliminarTareaController() {
