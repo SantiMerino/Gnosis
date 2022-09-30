@@ -78,7 +78,7 @@ public final class frmProfiles extends javax.swing.JFrame {
         btnEliminar.setEnabled(false);
         
         //Tabla
-        String [] TitulosPerfil = {"ID", "Nombre", "Descripcion", "Porcentaje de valoracion", "Fecha de inicio", "Fecha de vencimiento", "Tipo Perfil", "Grados"};
+        String [] TitulosPerfil = {"ID", "Nombre", "Descripcion", "Porcentaje de valoracion", "Fecha de inicio", "Fecha de vencimiento", "Estado","Tipo Perfil", "Grados"};
         TablaPerfilmodelo = new DefaultTableModel(null, TitulosPerfil);
         JTPerfil.setModel(TablaPerfilmodelo);
         CargarTabla();
@@ -126,7 +126,7 @@ public final class frmProfiles extends javax.swing.JFrame {
         try {
             ResultSet rs = Perfil.CargarPerfilResultSet();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idperfil"), rs.getString("nombreperfil"), rs.getString("descripcion"), rs.getString("porcentajeValoracion"), rs.getString("fechainicio"), rs.getString("fechavencimiento"), rs.getString("tipoperfil"), rs.getString("grado")};
+                Object [] oValores = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)};
                 TablaPerfilmodelo.addRow(oValores);
             }
         } catch (Exception e) {
@@ -542,7 +542,7 @@ public final class frmProfiles extends javax.swing.JFrame {
             obj.porcentajedevaloracion = txtPonderacion.getText();
             obj.descripcion = txtDescripcion.getText();
             obj.idperfil = CmbTipoPerfil.getSelectedIndex();
-            
+            obj.idmateriadocente = idmateriadocentelog;
             
 //            obj.idgrado = CmbGrado.getSelectedIndex();
             if (obj.PerfilNuevaResultSet()== true) {

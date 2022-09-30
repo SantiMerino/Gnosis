@@ -23,6 +23,7 @@ public class CProfiles {
     public String porcentajedevaloracion;
     public String descripcion;
     public int idperfil;
+    public int idmateriadocente;
     public int idgrado;
 
     public int getID() {
@@ -97,8 +98,15 @@ public class CProfiles {
         this.idgrado = idgrado;
     }
 
+    public int getIdmateriadocente() {
+        return idmateriadocente;
+    }
 
-    public CProfiles(String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int idperfil, int idgrado) {
+    public void setIdmateriadocente(int idmateriadocente) {
+        this.idmateriadocente = idmateriadocente;
+    }
+
+    public CProfiles(String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int idperfil, int idmateriadocente, int idgrado) {
         this.nombre = nombre;
         this.rubricadeevaluacion = rubricadeevaluacion;
         this.fechadeinicio = fechadeinicio;
@@ -106,6 +114,7 @@ public class CProfiles {
         this.porcentajedevaloracion = porcentajedevaloracion;
         this.descripcion = descripcion;
         this.idperfil = idperfil;
+        this.idmateriadocente = idmateriadocente;
         this.idgrado = idgrado;
     }
 
@@ -148,7 +157,7 @@ public class CProfiles {
     }
     
     public boolean PerfilNuevaResultSet() {
-        return mdlPerfil.SubirPerfilesModel(nombre, descripcion, porcentajedevaloracion, fechadeinicio, fechadevencimiento, idperfil, con);
+        return mdlPerfil.SubirPerfilesModel(nombre, descripcion, porcentajedevaloracion, fechadeinicio, fechadevencimiento, idperfil,idmateriadocente, con);
     }
 
     public boolean ActualizarPerfil() {

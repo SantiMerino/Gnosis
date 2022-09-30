@@ -46,11 +46,12 @@ public class MProfiles {
     }
     
     public ResultSet mostrarPerfiles(Connection con){
+        int idmateriadocente = 1;
         try {
-            String query = "SELECT * FROM viewPerfiles;";
+            String query = "SELECT * FROM viewPerfiles WHERE idmateriadocente = ?";
             ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            return rs;
+            ps.setInt(1, idmateriadocente);
+            ResultSet rs = ps.executeQuery();    return rs;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se cargaron los perfiles: " + e.toString());
             return null;
@@ -84,10 +85,9 @@ public class MProfiles {
      * @param con
      * @return 
      */
-    public boolean SubirPerfilesModel(String nombre, String descripcion, String porcentajedevaloracion, String fechadeinicio, String fechadevencimiento, int tipoperfil, Connection con) {
+    public boolean SubirPerfilesModel(String nombre, String descripcion, String porcentajedevaloracion, String fechadeinicio, String fechadevencimiento, int tipoperfil, int idmateriadocente, Connection con) {
         int idestadoperfil = 1;
         int idfase = 1;
-        int idmateriadocente = 1;
         int idgrado = 2;
         try {            
             String query = "INSERT INTO tbPerfiles VALUES (?,?,?,?,?,?,?,?,?,?)";
