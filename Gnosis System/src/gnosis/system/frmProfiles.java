@@ -82,10 +82,11 @@ public class frmProfiles extends javax.swing.JFrame {
     
     final void ConseguirDatosDocente(){
         try {
+            int iddocente = 1;
             CProfiles Perfil = new CProfiles();
-            ResultSet rs = Perfil.CargarDatosDocente();
+            ResultSet rs = Perfil.CargarDatosDocente(iddocente);
             txtDocente.setText(rs.getString(5));
-            txtMateria.setText(rs.getString(3));
+//            txtMateria.setText(rs.getString(3));
             txtGrado.setText(rs.getString(2));
         } catch (SQLException ex) {
             Logger.getLogger(frmProfiles.class.getName()).log(Level.SEVERE, null, ex);
