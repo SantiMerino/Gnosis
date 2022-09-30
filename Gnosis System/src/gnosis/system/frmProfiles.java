@@ -39,7 +39,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author josec
  */
-public class frmProfiles extends javax.swing.JFrame {
+public final class frmProfiles extends javax.swing.JFrame {
     
     CProfiles obj = new CProfiles();
     DefaultTableModel TablaPerfilmodelo;
@@ -51,6 +51,8 @@ public class frmProfiles extends javax.swing.JFrame {
     private Calendar Cal1;
     private Calendar Cal2;
     private String ruta_archivo = " ";
+    int iddocentelog;
+    ResultSet datosDocente;
         
     Connection conn = CConnection.getConnectionControllerWithoutParameters();
     
@@ -66,6 +68,7 @@ public class frmProfiles extends javax.swing.JFrame {
     public frmProfiles(int iddocente) {
         //        setResizable(false);
         initComponents();
+        iddocentelog = iddocente;
         ConseguirDatosDocente();
         CargarCmbTipoPerfil();
         CargarCmbGradoPerfil();
@@ -81,15 +84,14 @@ public class frmProfiles extends javax.swing.JFrame {
     }
     
     final void ConseguirDatosDocente(){
-        try {
-            int iddocente = 1;
-            CProfiles Perfil = new CProfiles();
-            ResultSet rs = Perfil.CargarDatosDocente(iddocente);
-            txtDocente.setText(rs.getString(5));
-//            txtMateria.setText(rs.getString(3));
-            txtGrado.setText(rs.getString(2));
+        CProfiles Perfil = new CProfiles();
+        try { 
+            datosDocente = Perfil.CargarDatosDocente(iddocentelog);
+            txtDocente.setText(datosDocente.getString(1));
+            txtMateria.setText(datosDocente.getString(3));
+            txtGrado.setText(datosDocente.getString(2));
         } catch (SQLException ex) {
-            Logger.getLogger(frmProfiles.class.getName()).log(Level.SEVERE, null, ex);
+            customization.notificacion("No se pudieron cargar los datos del docente " + ex.toString(), 3, "Error de carga");
         }
     }
     

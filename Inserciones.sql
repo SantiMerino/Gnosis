@@ -659,6 +659,15 @@ SELECT * FROM viewBiblioteca
 
 use dbGnosis
 
+select * from tbPerfiles;
+
+alter table tbPerfiles drop constraint fk_perfilgrados;
+
+alter table tbPerfiles
+add constraint fk_perfilesgrados
+foreign key (idgrados)
+references tbGrados(idgrado);
+
 select * from viewTareas WHERE Tarea = 'Actividades cotidianas';
 
 --hacer vista de la tabla materia docente
@@ -760,20 +769,18 @@ Select * from viewPortafolios
 USE dbGnosis;
 
 --Vista  MateriaDocente
-SELECT b.apellidos_docente, b.nombres_docente, e.grado, c.materia, d.modulo
-FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e
-WHERE a.iddocente = b.iddocente
-AND a.idmateria = c.idmateria
-AND a.idmateria != 8
-AND a.idmodulo = d.idmodulo
-AND b.idgrado = e.idgrado
+drop view MateriaDocente
+GO
+CREATE VIEW viewMateriaDocente AS
+SELECT b.apellidos_docente, b.nombres_docente, e.grado, c.materia, d.modulo, b.iddocente FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e WHERE a.iddocente = b.iddocente AND a.idmateria = c.idmateria AND a.idmodulo = d.idmodulo AND b.idgrado = e.idgrado
+
+SELECT * FROM viewMateriaDocente WHERE iddocente = 1
 
 SELECT b.apellidos_docente, b.nombres_docente, e.grado, d.modulo, c.materia
 FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e
 WHERE a.iddocente = b.iddocente
 AND a.idmateria = c.idmateria
 AND a.idmodulo = d.idmodulo
-AND d.idmodulo != 6
 AND b.idgrado = e.idgrado
 
 
@@ -818,3 +825,9 @@ SELECT CONCAT(e.nombres_alumno,' ',e.apellidos_alumno) AS Alumno, b.nombretarea 
 
 SELECT * FROM viewTareaAlumno
 SELECT (nota) FROM tbTareasAlumnos WHERE idtarea = 7 AND idalumno = 1
+
+SELECT CONCAT(b.apellidos_docente, ', ',b.nombres_docente) AS [Docente], e.grado, c.materia, d.modulo, b.iddocente FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e WHERE a.iddocente = b.iddocente AND a.idmateria = c.idmateria AND a.idmodulo = d.idmodulo AND b.idgrado = e.idgrado AND b.iddocente = 1
+
+SELECT CONCAT(b.apellidos_docente, ', ',b.nombres_docente) AS [Docente], e.grado, c.materia, d.modulo, b.iddocente FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e WHERE a.iddocente = b.iddocente AND a.idmateria = c.idmateria AND a.idmodulo = d.idmodulo AND b.idgrado = e.idgrado AND b.iddocente = ?
+
+SELECT * FROM tbMateriaDocentes WHERE iddocente = 1

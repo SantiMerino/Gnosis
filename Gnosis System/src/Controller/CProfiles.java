@@ -132,7 +132,7 @@ public class CProfiles {
     private Connection con = MConnection.getConnectionWithoutParameters();
     
     public ResultSet CargarDatosDocente(int id){
-        return mdlPerfil.DatosDocente(ID);
+        return mdlPerfil.DatosDocente(id);
     }
     
     public ResultSet CargarTipoPerfilResultSet() {
