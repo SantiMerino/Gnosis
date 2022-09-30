@@ -89,13 +89,12 @@ public class MProfiles {
      * @return 
      */
     public boolean SubirPerfilesModel(String nombre, String descripcion, String porcentajedevaloracion, String fechadeinicio, String fechadevencimiento, int tipoperfil, Connection con) {
-        double nota = 7.5;
         int idestadoperfil = 1;
         int idfase = 1;
         int idmateriadocente = 1;
-        int idgrado = 8;
+        int idgrado = 2;
         try {            
-            String query = "INSERT INTO tbPerfiles VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO tbPerfiles VALUES (?,?,?,?,?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, nombre);
             ps.setString(2, descripcion);
@@ -103,11 +102,10 @@ public class MProfiles {
             ps.setString(4, fechadeinicio);
             ps.setString(5, fechadevencimiento);
             ps.setInt(6, idestadoperfil);
-            ps.setDouble(7, nota);
-            ps.setInt(8, tipoperfil);
-            ps.setInt(9, idfase);
-            ps.setInt(10, idmateriadocente);
-            ps.setInt(11, idgrado);
+            ps.setInt(7, tipoperfil);
+            ps.setInt(8, idfase);
+            ps.setInt(9, idmateriadocente);
+            ps.setInt(10, idgrado);
             if (ps.executeUpdate () == 1) {
                 return true;
             } else {
@@ -135,18 +133,25 @@ public class MProfiles {
      * @param con
      * @return 
      */
-    public boolean ActualizarProfilesModel(int ID, String nombre, String descripcion, String porcentajedevaloracion, String fechadeinicio, String fechadevencimiento, int tipoperfil,int grado, Connection con){
+    public boolean ActualizarProfilesModel(int ID, String nombre, String descripcion, String porcentajedevaloracion, String fechadeinicio, String fechadevencimiento, int tipoperfil, Connection con){
+        int idestadoperfil = 1;
+        int idfase = 1;
+        int idmateriadocente = 1;
+        int idgrado = 2;
          try {
-            String query = "UPDATE tbPerfiles SET nombreperfil = ?, descripcion = ?, porcentajeValoracion = ?, fechainicio = ?, fechavencimiento = ?, idtipoperfil = ?, idgrados = ? WHERE idperfil = ?";
+            String query = "UPDATE tbPerfiles SET nombreperfil = ?, descripcion = ?, porcentajeValoracion = ?, fechainicio = ?, fechavencimiento = ?, idestadoperfil = ?, idtipoperfil = ?, idfase = ?, idmateriadocente = ?, idgrados  = ? WHERE idperfil = ?";
             ps = con.prepareStatement(query);
             ps.setString(1, nombre);
             ps.setString(2, descripcion);
             ps.setString(3, porcentajedevaloracion);
             ps.setString(4, fechadeinicio);
             ps.setString(5, fechadevencimiento);
-            ps.setInt(6, tipoperfil);
-            ps.setInt(7, grado);
-            ps.setInt(8, ID);
+            ps.setInt(6, idestadoperfil);
+            ps.setInt(7, tipoperfil);
+            ps.setInt(8, idfase);
+            ps.setInt(9, idmateriadocente);
+            ps.setInt(10, idgrado);
+            ps.setInt(11, ID);
             ps.execute();
             return true;
         } catch (Exception e) {
