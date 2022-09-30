@@ -52,6 +52,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     public frmDashboardTeacher(ResultSet datosusuario) {
         customization.mainUtilities();
         initComponents();
+        
         try {
             usernamelog = datosusuario.getString(3);
             niveluser = datosusuario.getInt(2);
@@ -70,6 +71,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
             teachersButton.setVisible(true);
             studentsButton.setVisible(true);
             btnUsers.setVisible(true);
+           pageButton.setVisible(false);
         }
     }   
     

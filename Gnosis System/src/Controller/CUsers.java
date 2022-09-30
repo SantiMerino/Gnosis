@@ -140,7 +140,8 @@ public class CUsers {
     }
     
     public boolean UsuarioNuevo() {
-        return mdlUsers.RegistrarUsuariosModel(idnivelusuario, username, clave, pin, idestadousuario, idalumno, iddocente, con);
+        String claveMD5 = CValidaciones.getMD5(clave);
+        return mdlUsers.RegistrarUsuariosModel(idnivelusuario, username, claveMD5, pin, idestadousuario, idalumno, iddocente, con);
     }
 
     public boolean ActualizarUsuario() {
