@@ -63,7 +63,7 @@ public class panGrades extends javax.swing.JPanel {
         customization.mainUtilitiesWhite();
         initComponents();
         iddocentelog = iddocente;
-        ConseguirDatosDocente(iddocentelog);
+//        ConseguirDatosDocente(iddocentelog);
         System.out.println(iddocente);
         dtInicio.setEnabled(false);
         dtCierre.setEnabled(false);
@@ -103,23 +103,6 @@ public class panGrades extends javax.swing.JPanel {
         }
     }
     
-    final void ConseguirDatosDocente(int iddoc){
-        
-        try { 
-            ResultSet datosDocente = Perfil.CargarDatosDocente(iddocentelog);
-            if (datosDocente.next()) {
-                txtDocente.setText(datosDocente.getString(1));
-                txtMateria.setText(datosDocente.getString(3));
-                txtGrado.setText(datosDocente.getString(2));
-            }
-
-        } catch (SQLException ex) {
-            System.out.println("id docente: " + iddoc);
-            customization.notificacion("No se pudieron cargar los datos del docente " + ex.toString(), 3, "Error de carga");
-        }
-    }
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -155,9 +138,6 @@ public class panGrades extends javax.swing.JPanel {
         dtCierre = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txtDocente = new javax.swing.JTextField();
-        txtMateria = new javax.swing.JTextField();
-        txtGrado = new javax.swing.JTextField();
 
         setBackground(java.awt.Color.white);
         setLayout(new java.awt.BorderLayout());
@@ -453,35 +433,19 @@ public class panGrades extends javax.swing.JPanel {
         jLabel10.setForeground(new java.awt.Color(32, 32, 32));
         jLabel10.setText("Calificaciones.");
 
-        txtDocente.setText("jTextField1");
-
-        txtMateria.setText("jTextField2");
-
-        txtGrado.setText("jTextField3");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel10)
-                .addGap(356, 356, 356)
-                .addComponent(txtDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(txtMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 290, Short.MAX_VALUE))
+                .addGap(0, 920, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel10)
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
@@ -692,9 +656,6 @@ public class panGrades extends javax.swing.JPanel {
     private customizeObjects.PanelRound panelRound3;
     private javax.swing.JTable tbPerfil;
     private javax.swing.JTextArea txtDescripcion;
-    private javax.swing.JTextField txtDocente;
-    private javax.swing.JTextField txtGrado;
     private javax.swing.JTextField txtIdPerfil;
-    private javax.swing.JTextField txtMateria;
     // End of variables declaration//GEN-END:variables
 }

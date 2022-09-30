@@ -573,13 +573,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="356" max="-2" attributes="0"/>
-                  <Component id="txtDocente" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="txtMateria" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="txtGrado" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="290" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="920" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -587,12 +581,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtDocente" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtMateria" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtGrado" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="7" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -608,21 +597,6 @@
               <Color blue="20" green="20" red="20" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Calificaciones."/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtDocente">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtMateria">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField2"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtGrado">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField3"/>
           </Properties>
         </Component>
       </SubComponents>

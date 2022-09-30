@@ -53,6 +53,7 @@ public final class frmProfiles extends javax.swing.JFrame {
     private String ruta_archivo = " ";
     int iddocentelog;
     ResultSet datosDocente;
+    int idmateriadocentelog;
         
     Connection conn = CConnection.getConnectionControllerWithoutParameters();
     
@@ -87,9 +88,17 @@ public final class frmProfiles extends javax.swing.JFrame {
         CProfiles Perfil = new CProfiles();
         try { 
             datosDocente = Perfil.CargarDatosDocente(iddocentelog);
-            txtDocente.setText(datosDocente.getString(1));
-            txtMateria.setText(datosDocente.getString(3));
-            txtGrado.setText(datosDocente.getString(2));
+            while (datosDocente.next()) {        
+                idmateriadocentelog = datosDocente.getInt(7);
+                txtDocente.setText(datosDocente.getString(1) +  datosDocente.getString(2));
+                
+                txtGrado.setText(datosDocente.getString(3));
+                if (datosDocente.getString(4).equals("Ninguno")) {
+                    txtMateria.setText(datosDocente.getString(5));
+                }else{
+                    txtMateria.setText(datosDocente.getString(4));
+                }
+            }
         } catch (SQLException ex) {
             customization.notificacion("No se pudieron cargar los datos del docente " + ex.toString(), 3, "Error de carga");
         }
@@ -533,6 +542,8 @@ public final class frmProfiles extends javax.swing.JFrame {
             obj.porcentajedevaloracion = txtPonderacion.getText();
             obj.descripcion = txtDescripcion.getText();
             obj.idperfil = CmbTipoPerfil.getSelectedIndex();
+            
+            
 //            obj.idgrado = CmbGrado.getSelectedIndex();
             if (obj.PerfilNuevaResultSet()== true) {
                 JOptionPane.showMessageDialog(this, "Perfil ingresado correctamente");

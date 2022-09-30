@@ -772,9 +772,9 @@ USE dbGnosis;
 drop view MateriaDocente
 GO
 CREATE VIEW viewMateriaDocente AS
-SELECT b.apellidos_docente, b.nombres_docente, e.grado, c.materia, d.modulo, b.iddocente FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e WHERE a.iddocente = b.iddocente AND a.idmateria = c.idmateria AND a.idmodulo = d.idmodulo AND b.idgrado = e.idgrado
+SELECT b.apellidos_docente, b.nombres_docente, e.grado, c.materia, d.modulo, b.iddocente, a.idmateriadocente FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e WHERE a.iddocente = b.iddocente AND a.idmateria = c.idmateria AND a.idmodulo = d.idmodulo AND b.idgrado = e.idgrado
 
-SELECT * FROM viewMateriaDocente WHERE iddocente = 1
+SELECT * FROM viewMateriaDocente
 
 SELECT b.apellidos_docente, b.nombres_docente, e.grado, d.modulo, c.materia
 FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e
