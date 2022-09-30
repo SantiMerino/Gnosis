@@ -58,8 +58,10 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     private int idGenero = 0;
     private int idGrado = 0;
     private int idUsuario = 0;
-     
+    int year;
+    int contadorCarne;
     private Calendar c;
+    
     
     private String nacimiento;
     
@@ -68,6 +70,8 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
      */
     public frmStudentsCRUD() {
         initComponents();
+        Date dt=new Date();
+        year = dt.getYear() + 1900;
         dtNacimiento.setBackground(new Color (217,217,217));
         txtId.setEditable(false);
         txtIdGenero.setVisible(false);
@@ -83,7 +87,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tbEstudiantes.setModel(tablaModel);
         CargarTabla();
-        
+        txtCodigo.setText( String.valueOf(year) + contadorCarne);
         btnActualizar.setEnabled(false);
         btnEliminar.setEnabled(false);
     }
@@ -128,6 +132,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                     rs.getString("dui"),
                     rs.getString("fecha_nac"), rs.getString("codigocarnet")};
                 tablaModel.addRow(oValores);
+                contadorCarne++;
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se cargo la tabla" + e.toString());
@@ -894,7 +899,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, "adios id" + ex.toString());
                 }           
-                if ( usuariores == true ) {
+                if (usuariores == true ) {
                     JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
                 }
                 else{
