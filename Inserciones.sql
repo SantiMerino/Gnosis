@@ -655,7 +655,7 @@ WHERE a.idperfil = b.idperfil
 GO
 
 SELECT * FROM viewTareasDocentes WHERE iddocente = 1 AND [Tipo Perfil] LIKE 'Cotidianas%'
-
+SELECT * FROM viewBiblioteca
 
 use dbGnosis
 

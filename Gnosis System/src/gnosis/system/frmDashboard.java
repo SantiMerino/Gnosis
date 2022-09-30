@@ -5,6 +5,7 @@
  */
 package gnosis.system;
 
+import Controller.CBiblioteca;
 import Controller.CEstudents;
 import java.awt.*;
 import javax.swing.JPanel;
@@ -75,6 +76,7 @@ public int milisegundos = 0;
         lblnamedashboard.setText(usernamelog + "'s Dashboard");
         CargarPortafolios();
         CargarTareasAlumnos();
+        CargarRecursos();
     }
     
     
@@ -91,6 +93,18 @@ public int milisegundos = 0;
         panContainer.repaint();
         panContainer.revalidate();
         cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
+    }
+    
+    final void CargarRecursos(){
+        CBiblioteca controlador = new CBiblioteca();
+        ResultSet datosrecursos = controlador.CargarRecursosVista(iduserlog);
+        try {
+            while (datosrecursos.next()) {                
+                 custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), recursosContainer, datosrecursos.getString(4), datosrecursos.getString(5));                
+            }         
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar los recursos" + e.toString());
+        }
     }
     
     final void CargarPortafolios(){
@@ -480,9 +494,10 @@ public int milisegundos = 0;
         primeraFila = new customizeObjects.PanelRound();
         jPanel2 = new javax.swing.JPanel();
         calendarPanel = new customizeObjects.PanelRound();
-        panelRound9 = new customizeObjects.PanelRound();
         panelRound10 = new customizeObjects.PanelRound();
         jLabel9 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        recursosContainer = new customizeObjects.PanelRound();
         stadisticPanel = new customizeObjects.PanelRound();
         panelRound13 = new customizeObjects.PanelRound();
         panelRound14 = new customizeObjects.PanelRound();
@@ -699,14 +714,14 @@ public int milisegundos = 0;
 
         jLabel12.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         jLabel12.setForeground(java.awt.Color.white);
-        jLabel12.setText("  Calificaciones");
+        jLabel12.setText("  Calendario");
         jLabel12.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel12.setPreferredSize(new java.awt.Dimension(80, 40));
         panelRound12.add(jLabel12);
 
         jLabel11.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel11.setForeground(java.awt.Color.white);
-        jLabel11.setText("   Periodo");
+        jLabel11.setText("    Hoy: ");
         jLabel11.setToolTipText("");
         jLabel11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panelRound12.add(jLabel11);
@@ -741,11 +756,6 @@ public int milisegundos = 0;
         calendarPanel.setRoundTopRight(20);
         calendarPanel.setLayout(new java.awt.BorderLayout());
 
-        panelRound9.setBackground(new java.awt.Color(32, 32, 32));
-        panelRound9.setRoundBottomLeft(20);
-        panelRound9.setRoundBottomRight(20);
-        calendarPanel.add(panelRound9, java.awt.BorderLayout.CENTER);
-
         panelRound10.setBackground(new java.awt.Color(32, 32, 32));
         panelRound10.setPreferredSize(new java.awt.Dimension(100, 50));
         panelRound10.setRoundTopLeft(20);
@@ -753,7 +763,7 @@ public int milisegundos = 0;
 
         jLabel9.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         jLabel9.setForeground(java.awt.Color.white);
-        jLabel9.setText("Calendario");
+        jLabel9.setText("Recursos");
 
         javax.swing.GroupLayout panelRound10Layout = new javax.swing.GroupLayout(panelRound10);
         panelRound10.setLayout(panelRound10Layout);
@@ -762,7 +772,7 @@ public int milisegundos = 0;
             .addGroup(panelRound10Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel9)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
         panelRound10Layout.setVerticalGroup(
             panelRound10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -773,6 +783,18 @@ public int milisegundos = 0;
         );
 
         calendarPanel.add(panelRound10, java.awt.BorderLayout.PAGE_START);
+
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        recursosContainer.setPreferredSize(new java.awt.Dimension(1000, 227));
+        recursosContainer.setRoundBottomLeft(25);
+        recursosContainer.setRoundBottomRight(25);
+        recursosContainer.setLayout(new java.awt.GridLayout(1, 10, 10, 0));
+        jScrollPane3.setViewportView(recursosContainer);
+
+        calendarPanel.add(jScrollPane3, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(calendarPanel, java.awt.BorderLayout.CENTER);
 
@@ -1248,6 +1270,7 @@ public int milisegundos = 0;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblTexto2;
     private javax.swing.JLabel lblmood;
     private javax.swing.JLabel lblnamedashboard;
@@ -1273,10 +1296,10 @@ public int milisegundos = 0;
     private customizeObjects.PanelRound panelRound6;
     private customizeObjects.PanelRound panelRound7;
     private customizeObjects.PanelRound panelRound8;
-    private customizeObjects.PanelRound panelRound9;
     private javax.swing.JPanel portafoliosContain;
     private customizeObjects.PanelRound primeraFila;
     private customizeObjects.PanelRound protfoliosPanel;
+    private customizeObjects.PanelRound recursosContainer;
     private javax.swing.JPanel rightGap;
     private javax.swing.JPanel searchPan;
     private javax.swing.JTextField searchbar;

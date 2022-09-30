@@ -254,7 +254,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         txtIdUsuario = new javax.swing.JTextField();
         txtIdGenero = new javax.swing.JTextField();
         buttonRound1 = new customizeObjects.ButtonRound();
-        buttonRound2 = new customizeObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -582,15 +581,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
             }
         });
 
-        buttonRound2.setText("Reporte Especifico");
-        buttonRound2.setRound(20);
-        buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
-        buttonRound2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRound2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -612,8 +602,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
                         .addComponent(txtBuscar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(buttonRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE))
                 .addGap(17, 17, 17))
@@ -631,9 +619,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
                 .addGap(22, 22, 22))
@@ -954,7 +940,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             JasperReport reporte = null;
-            String path = "src\\Reportes\\ReportesDocentes.jasper";
+            String path = "src\\Reportes\\ReporteDocentes.jasper";
 
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
 
@@ -968,33 +954,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
             Logger.getLogger(frmTeachersCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_buttonRound1ActionPerformed
-
-    private void buttonRound2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound2ActionPerformed
-        // TODO add your handling code here:
-        if (txtDui.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Seleccione un registro");
-        } else {
-            try {
-                // TODO add your handling code here:
-                JasperReport reporte = null;
-                String path = "src\\Reportes\\ReportesPaDocentes.jasper";
-
-                Map parametro = new HashMap();
-                parametro.put("DUI", txtDui.getText());
-
-                reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
-
-                JasperPrint jprint = JasperFillManager.fillReport(reporte, parametro, CConnection.getConnectionControllerWithoutParameters());
-                JasperViewer view = new JasperViewer(jprint, false);
-                view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
-                view.setVisible(true);
-
-            } catch (JRException ex) {
-                Logger.getLogger(frmTeachersCRUD.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_buttonRound2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1033,7 +992,6 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     private customizeObjects.ButtonRound btnGuardar;
     private customizeObjects.ButtonRound btnLimpiarCampos;
     private customizeObjects.ButtonRound buttonRound1;
-    private customizeObjects.ButtonRound buttonRound2;
     private javax.swing.JComboBox<String> cmbGenero;
     private javax.swing.JComboBox<String> cmbGrado;
     private com.toedter.calendar.JDateChooser dtNacimiento;
