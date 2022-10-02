@@ -1337,7 +1337,7 @@ public class customization {
         
         
         //Establecer las dimensiones de todos los componentes y sus layouts.
-        portafolio.setPreferredSize(new Dimension(240,200));
+        portafolio.setPreferredSize(new Dimension(200,200));
         LayoutManager layoutmain = new FlowLayout(FlowLayout.CENTER, 10, 15);
         portafolio.setRoundBottomLeft(25);
         portafolio.setRoundBottomRight(25);
@@ -1345,7 +1345,7 @@ public class customization {
         portafolio.setRoundTopRight(25);
         
         
-        panelSuperior.setPreferredSize(new Dimension(220, 150));
+        panelSuperior.setPreferredSize(new Dimension(180, 150));
         panelSuperior.setRoundBottomLeft(25);
         panelSuperior.setRoundBottomRight(25);
         panelSuperior.setRoundTopLeft(25);
@@ -1371,14 +1371,14 @@ public class customization {
         portafolio.add(panelSuperior);
 //        portafolio.add(panelInferior);
         portafolio.add(btnAbrir);
-        btnAbrir.setPreferredSize(new Dimension(220, 40));
+        btnAbrir.setPreferredSize(new Dimension(180, 40));
         
         panelSuperior.add(BorderLayout.NORTH, lblmateria);
-        lblmateria.setPreferredSize(new Dimension(220, 80));
+        lblmateria.setPreferredSize(new Dimension(180, 80));
         panelSuperior.add(BorderLayout.CENTER, lblgrado);
-        lblgrado.setPreferredSize(new Dimension(220, 60));
+        lblgrado.setPreferredSize(new Dimension(180, 60));
         panelSuperior.add(BorderLayout.SOUTH, lbldocente);
-        lbldocente.setPreferredSize(new Dimension(220, 60));
+        lbldocente.setPreferredSize(new Dimension(180, 60));
         
 //        panelInferior.add(BorderLayout.CENTER, lblnumpag);
 //        lblnumpag.setPreferredSize(new Dimension(220, 40));

@@ -798,6 +798,7 @@ public class frmDashboard extends javax.swing.JFrame {
 
         jScrollPane2.setBackground(new java.awt.Color(217, 217, 217));
         jScrollPane2.setBorder(null);
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         tareasContainer.setBackground(new java.awt.Color(217, 217, 217));
         tareasContainer.setOpaque(true);
