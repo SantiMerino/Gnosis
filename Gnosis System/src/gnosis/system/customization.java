@@ -865,6 +865,174 @@ public class customization {
         
     }
     
+    public void CrearRecursoBibliotecaDashboard( String nombre_recurso, String tipo_recurso, String categoria_recurso,JPanel mainContainer, String link, String pdf) {
+        // Crear paneles
+        PanelRound resourcesContainer = new PanelRound();
+        PanelRound topGap = new PanelRound();
+        PanelRound bottomGap = new PanelRound();
+        PanelRound leftGap = new PanelRound();
+        PanelRound rightGap = new PanelRound();
+        PanelRound centerPanel = new PanelRound();
+        // Tres paneles centrales
+        PanelRound typePanel = new PanelRound();
+        PanelRound nameResourcePanel = new PanelRound();
+        PanelRound openPanel = new PanelRound();
+        
+        // Crear labels
+        JLabel lblNombreRecurso = new JLabel();
+        JLabel lblCategroiaRecurso = new JLabel();
+        
+        
+        // Crear botón
+        ButtonRound btnOpen = new ButtonRound();
+        ButtonRound btnTipoDoc = new ButtonRound();
+        
+        
+        // Dimensionar los paneles principales
+        resourcesContainer.setPreferredSize(new Dimension(200,300));
+        resourcesContainer.setLayout(new BorderLayout(0,0));
+        
+        topGap.setPreferredSize(new Dimension(100,15));
+        leftGap.setPreferredSize(new Dimension(10,100));
+        bottomGap.setPreferredSize(new Dimension(100,15));
+        rightGap.setPreferredSize(new Dimension(10,100));
+        centerPanel.setPreferredSize(new Dimension(100,100));
+        
+//        Dimensionar los paneles de contención
+        typePanel.setPreferredSize(new Dimension(180, 40));
+        nameResourcePanel.setPreferredSize(new Dimension(100,100));
+        openPanel.setPreferredSize(new Dimension(180, 50));
+        
+        //Agregar los paneles al panel principal
+        resourcesContainer.add(BorderLayout.NORTH, topGap);
+        resourcesContainer.add(BorderLayout.SOUTH, bottomGap);
+        resourcesContainer.add(BorderLayout.WEST, leftGap);
+        resourcesContainer.add(BorderLayout.EAST, rightGap);
+        resourcesContainer.add(BorderLayout.CENTER, centerPanel);
+        
+        //Agregar los paneles al
+        centerPanel.setLayout(new BorderLayout(10, 10));
+        centerPanel.add(BorderLayout.NORTH, typePanel);
+        centerPanel.add(BorderLayout.SOUTH, openPanel);
+        centerPanel.add(BorderLayout.CENTER, nameResourcePanel);
+        
+        //Agregar el layout a los paneles y los elementos
+        typePanel.setLayout(new BorderLayout(0, 0));
+        typePanel.add(BorderLayout.WEST, lblCategroiaRecurso);
+        lblCategroiaRecurso.setPreferredSize(new Dimension(110,30));
+//        typePanel.add(BorderLayout.CENTER, btnTipoDoc);
+        
+        nameResourcePanel.setLayout(new BorderLayout(0,0));
+        nameResourcePanel.add(BorderLayout.CENTER, lblNombreRecurso);
+        //Crear dos labels vacías para no dejar qu el nombre toque los bordes del panel
+        JLabel leftlbl = new JLabel();
+        JLabel rightlbl = new JLabel();
+        leftlbl.setPreferredSize(new Dimension(10,100));
+        rightlbl.setPreferredSize(new Dimension(10,100));
+        nameResourcePanel.add(BorderLayout.WEST, leftlbl);
+        nameResourcePanel.add(BorderLayout.EAST, rightlbl);     
+        openPanel.setLayout(new BorderLayout(0,0));
+        openPanel.add(BorderLayout.CENTER, btnOpen);
+        
+        //Definir los colores, estilo y texto
+        
+        switch (tipo_recurso) {
+            case "PDF":
+                btnOpen.setStyle(ButtonRound.ButtonStyle.ROJO);
+                btnTipoDoc.setStyle(ButtonRound.ButtonStyle.ROJO);
+                changeIcon(btnTipoDoc, "/resources/folder.png");
+                btnOpen.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        try {
+                            decodePdf(pdf, nombre_recurso);
+                        } catch (IOException ex) {
+                              JOptionPane.showMessageDialog(null, "No fue posible descargar el recurso");
+                        }
+                    }
+                });
+                
+                break;
+            default:
+                btnOpen.setStyle(ButtonRound.ButtonStyle.SOCIALES);
+                btnTipoDoc.setStyle(ButtonRound.ButtonStyle.SOCIALES);
+                changeIcon(btnTipoDoc, "/resources/link-x21.png");
+                
+                btnOpen.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        AbrirLinks(link);
+                    }
+                });
+        }
+        
+        
+
+        btnTipoDoc.setText(tipo_recurso);
+        btnOpen.setText("Abrir"); 
+        lblCategroiaRecurso.setText("   "+categoria_recurso);
+        
+        lblNombreRecurso.setText("<html><center>"+nombre_recurso+"</center></html>");
+        
+        //Redondear Bordes y establecer el color
+        resourcesContainer.setBackground(new Color(255,255,255));
+        resourcesContainer.setRoundBottomLeft(20);
+        resourcesContainer.setRoundBottomRight(20);
+        resourcesContainer.setRoundTopLeft(20);
+        resourcesContainer.setRoundTopRight(20);
+                
+        topGap.setBackground(new Color(32,32,32));
+        topGap.setRoundTopLeft(20);
+        topGap.setRoundTopRight(20);
+        
+        bottomGap.setBackground(new Color(32,32,32));
+        bottomGap.setRoundBottomRight(20);
+        bottomGap.setRoundBottomLeft(20);
+        
+        leftGap.setBackground(new Color(32,32,32));
+        rightGap.setBackground(new Color(32,32,32));
+        
+        centerPanel.setBackground(new Color(32,32,32));
+        
+        typePanel.setBackground(new Color(100, 100, 100));
+        typePanel.setRoundBottomLeft(25);
+        typePanel.setRoundBottomRight(25);
+        typePanel.setRoundTopLeft(25);
+        typePanel.setRoundTopRight(25);
+        
+        nameResourcePanel.setBackground(new Color(100, 100, 100));
+        nameResourcePanel.setRoundBottomLeft(20);
+        nameResourcePanel.setRoundBottomRight(20);
+        nameResourcePanel.setRoundTopLeft(20);
+        nameResourcePanel.setRoundTopRight(20);
+        
+        openPanel.setBackground(new Color(100, 100, 100));
+        openPanel.setRoundBottomLeft(20);
+        openPanel.setRoundBottomRight(20);
+        openPanel.setRoundTopLeft(20);
+        openPanel.setRoundTopRight(20);
+        
+        //Establece tipo de letra en los elementos
+        lblCategroiaRecurso.setFont(new Font("Poppins Medium", Font.PLAIN, 12)); 
+        lblNombreRecurso.setFont(new Font("Poppins", Font.BOLD, 15));
+        lblNombreRecurso.setHorizontalAlignment(JLabel.CENTER);
+        btnOpen.setFont(new Font("Poppins", Font.BOLD, 12));
+        btnTipoDoc.setFont(new Font("Poppins", Font.BOLD, 12));
+        
+        //Establecer los colores de los labels
+        lblCategroiaRecurso.setForeground(Color.white);
+        lblNombreRecurso.setForeground(Color.white);
+        btnOpen.setForeground(Color.white);
+        btnTipoDoc.setForeground(Color.white);
+        
+        
+        //Agregar todo al contenedor principal para hacer que aparezca
+        mainContainer.add(resourcesContainer);
+        mainContainer.repaint();
+        mainContainer.revalidate();     
+        
+    }
+    
     private void decodePdf(String pdf, String name) throws IOException {
         byte[] decoded = java.util.Base64.getDecoder().decode(pdf);
         String home = System.getProperty("user.home");

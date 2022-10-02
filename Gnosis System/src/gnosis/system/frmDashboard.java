@@ -8,9 +8,7 @@ package gnosis.system;
 import Controller.CBiblioteca;
 import Controller.CEstudents;
 import java.awt.*;
-import javax.swing.JPanel;
 import customizeObjects.ButtonRound;
-import static java.lang.Thread.sleep;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -19,64 +17,72 @@ import javax.swing.JOptionPane;
 import Controller.CMood;
 import Controller.CPortfolios;
 import Controller.CTasks;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
  * @author santi
  */
 public class frmDashboard extends javax.swing.JFrame {
-public int milisegundos = 0;
-    public int segundos = 0;
-    public int minutos = 0;
-    public int horas = 0;
-    boolean estado = true;
-    customization custo = new customization();
-    /**
-     * Creates new form frmDashboard
-     */
-    public customization custoObj = new customization();
-    panGrades grades = new panGrades();
-//    customization custo = new customization();
-
+    
+    //Variables para los modo de concentración
+    Timer timerP;
+    TimerTask taskP;
+    int pomodoros;
+    int minutos;
+    int segundos;
+    int horas;
     private int mood = 0;
     
-    //idalumno
+    //Objeto de la clase customization
+    customization custo = new customization();
+
+    //Variables de inicio de sesión de alumno loggeado
     int iduserlog;
     String usernamelog;
     ResultSet datosAlumnoLog;
     String nombreAlumno;
     
+    //id de la tarea
     int tareaidOpen;
 
+    /**
+     * Constructor without parameters with the UI initialize 
+     */
     public frmDashboard() {
         initComponents();
         customization.mainUtilities();
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
-        
-        lblTexto2.setVisible(false);
     }
-    
+    /**
+     * Constructor with the student data from a ResultSet obtained previously in the Login
+     * @param datosusuario 
+     */
     public frmDashboard(ResultSet datosusuario) {
         customization.mainUtilities();
         initComponents();     
-        try {
-            usernamelog = datosusuario.getString(3);
-            //Es el id del estudiante :P
-            iduserlog = datosusuario.getInt(7);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No fue posible conseguir los datos del usuario", "Conflicto de datos", JOptionPane.ERROR);
-        }
-        
-        customization.mainUtilities();
+        datosAlumnoLog = datosusuario;
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
-        lblnamedashboard.setText(usernamelog + "'s Dashboard");
+        CargarDatosAlumnoDashboard();
         CargarPortafolios();
         CargarTareasAlumnos();
         CargarRecursos();
+    }
+    
+    public void CargarDatosAlumnoDashboard(){
+            try {
+            usernamelog = datosAlumnoLog.getString(3);
+            //Es el id del estudiante :P
+            iduserlog = datosAlumnoLog.getInt(7);
+            lblnamedashboard.setText(usernamelog + "'s Dashboard");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No fue posible conseguir los datos del usuario", "Conflicto de datos", JOptionPane.ERROR);
+        }
     }
     
     
@@ -100,7 +106,7 @@ public int milisegundos = 0;
         ResultSet datosrecursos = controlador.CargarRecursosVista(iduserlog);
         try {
             while (datosrecursos.next()) {                
-                 custoObj.CrearRecursoBiblioteca(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), recursosContainer, datosrecursos.getString(4), datosrecursos.getString(5));                
+                 custo.CrearRecursoBibliotecaDashboard(datosrecursos.getString(1), datosrecursos.getString(2),datosrecursos.getString(3), recursosContainer, datosrecursos.getString(4), datosrecursos.getString(5));                
             }         
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al cargar los recursos" + e.toString());
@@ -176,228 +182,156 @@ public int milisegundos = 0;
         cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
     }
 
-    frmMood objmood = new frmMood();
-    
+    //Arreglar este metodo
     void GuardarRegistroMood(){
         String variable1 = "Modo Libre";
-        CMood obj = new CMood(variable1, lblmood.getText(), objmood.idMateria);
-        boolean respuesta = obj.RegistrarMood(variable1, lblmood.getText(), objmood.idMateria);
+        CMood obj = new CMood(variable1, lblmood.getText(), 1);
+        boolean respuesta = obj.RegistrarMood(variable1, lblmood.getText(), 1);
         if (respuesta == true) {
-            JOptionPane.showMessageDialog(this, "Evento ingresado correctamente");
+            notificacion("Se han ingresado tus datos de enfoque exitosamente", 1, "Confirmación");
         }else {
-            JOptionPane.showMessageDialog(this, "Evento no pudo ser ingresado");
+            notificacion("No se ha podido ingresar tus datos de enfoque", 3, "Error");
         }
-    }
-    
-    public void contador(){
-        estado = true;
-            Thread hilo = new Thread(){
-          public void run(){
-              for (;;) {
-                  if (estado == true) {
-                      try {
-                          sleep(1);
-                          if (milisegundos >= 1000 ) {
-                             milisegundos = 0;
-                             segundos++;
-                          }
-                          if (segundos >= 60) {
-                             milisegundos = 0;
-                             segundos = 0;
-                             minutos++;
-                          }
-                          if (minutos >= 60) {
-                              milisegundos = 0;
-                              segundos = 0;
-                              minutos = 0;
-                              horas++;
-                          }
-                          lblmood.setText(horas + " : " + minutos + " : " + segundos);
-                          lblTexto2.setText("" + milisegundos);
-                          milisegundos++;
-                      } catch (Exception e) {
-                      }
-                  }else{
-                      break;
-                  }
-                   
-              }
-          }  
-        };
-        hilo.start();
-    }
-    
-    public void pomodoro(){
-    estado = true;
-            Thread hilo = new Thread(){
-          public void run(){
-              for (;;) {
-                  if (estado == true) {
-                      try {
-                          sleep(1);
-                          if (milisegundos >= 1000 ) {
-                             milisegundos = 0;
-                             segundos++;
-                          }
-                          if (segundos >= 60) {
-                             milisegundos = 0;
-                             segundos = 0;
-                             minutos++;
-                          }
-                          if (minutos >= 60) {
-                              milisegundos = 0;
-                              segundos = 0;
-                              minutos = 0;
-                              horas++;
-                          }
-                          lblmood.setText(horas + " : " + minutos + " : " + segundos);
-                          lblTexto2.setText("" + milisegundos);
-                          milisegundos++;
-                          if (segundos == 10) {
-                              moodPanel.setBackground(Color.green);
-                               milisegundos = 0;
-                                segundos = 0;
-                                minutos = 0;
-                                horas = 0;
-                                lblmood.setText("00"+" : "+"00"+" : "+"00"+ " : ");
-                                lblTexto2.setText("0000");
-                          }
-                      } catch (Exception e) {
-                      }
-                  }else{
-                      break;
-                  }
-                   
-              }
-          }  
-        };
-        hilo.start();
-    }
-    
-    public void pomodoroDescanso(){
-        estado = true;
-            Thread hilo = new Thread(){
-          public void run(){
-              for (;;) {
-                  if (estado == true) {
-                      try {
-                          sleep(1);
-                          if (milisegundos >= 1000 ) {
-                             milisegundos = 0;
-                             segundos++;
-                          }
-                          if (segundos >= 60) {
-                             milisegundos = 0;
-                             segundos = 0;
-                             minutos++;
-                          }
-                          if (minutos >= 60) {
-                              milisegundos = 0;
-                              segundos = 0;
-                              minutos = 0;
-                              horas++;
-                          }
-                          lblmood.setText(horas + " : " + minutos + " : " + segundos);
-                          lblTexto2.setText("" + milisegundos);
-                          milisegundos++;
-                          if (segundos == 5) {
-                              moodPanel.setBackground(Color.red);
-                               milisegundos = 0;
-                                segundos = 0;
-                                minutos = 0;
-                                horas = 0;
-                                lblmood.setText("00"+" : "+"00"+" : "+"00"+ " : ");
-                                lblTexto2.setText("0000");
-                          }
-                      } catch (Exception e) {
-                      }
-                  }else{
-                      break;
-                  }
-                   
-              }
-          }  
-        };
-        hilo.start();
     }
     
     //Constructor para ver el mood de concetración
-    public frmDashboard(int moodstate) {
+    public frmDashboard(int moodstate, ResultSet datosAlumno) {
         initComponents();
-        custoObj.mainUtilities();
-        this.mood = moodstate;
+        custo.mainUtilities();
+        datosAlumnoLog = datosAlumno;
+        moodPanel.setVisible(false);
+        searchbar.putClientProperty("innerFocusWidth", 0);
+        searchbar.putClientProperty("focusWidth", 0);
+        CargarDatosAlumnoDashboard();
+        CargarPortafolios();
+        CargarTareasAlumnos();
+        CargarRecursos();
+        mood = moodstate;
         if (mood == 1) {
             moodPanel.setVisible(true);
-            estado = true;
-        Thread hilo = new Thread(){
-          public void run(){
-              for (;;) {
-                  if (estado == true) {
-                      try {
-                          sleep(1);
-                          if (milisegundos >= 1000 ) {
-                             milisegundos = 0;
-                             segundos++;
-                          }
-                          if (segundos >= 60) {
-                             milisegundos = 0;
-                             segundos = 0;
-                             minutos++;
-                          }
-                          if (minutos >= 60) {
-                              milisegundos = 0;
-                              segundos = 0;
-                              minutos = 0;
-                              horas++;
-                          }
-                          lblmood.setText(horas + " : " + minutos + " : " + segundos);
-                          lblTexto2.setText("" + milisegundos);
-                          milisegundos++;
-                      } catch (Exception e) {
-                      }
-                  }else{
-                      break;
-                  }
-                   
-              }
-          }  
-        };
-        hilo.start();
-        } else if(mood == 2){
+            EstudioLibre();
+        }else if (mood == 2){
             moodPanel.setVisible(true);
-            
-            int ciclos = 10;
-            
-            for (int i = 1; i <= ciclos; i++) {
-                if (ciclos % 2 == 0) {
-                    pomodoroDescanso();
-                }else{
-                    pomodoro();
-                }
-            }
-            
-        }else{
             moodPanel.setBackground(Color.red);
-            custoObj.changeIconlbl(moodPic, "/resources/Tomato-white.png");
+            custo.changeIconlbl(moodPic, "/resources/Tomato-white.png");
             lblmood.setForeground(Color.white);
             btnStopMood.setStyle(ButtonRound.ButtonStyle.NEGRO);
+            Pomodoro();
         }
     }
+    
+    
+    public void Pomodoro() {
+        minutos = 2;
+        segundos = 0;
+        timerP = new Timer();
+        taskP = new TimerTask() {
+            @Override
+            public void run() {
+                if (minutos == 0 && segundos == 0) {
+                    timerP.cancel();
+                    pomodoros++;
+                    notificacion("Muy buen trabajo, te mereces 5 minutos de descanso", 1, "Descanso");
+                    Descanso();
+                } else {
+                    if (segundos > 0) {
+                        segundos--;
+                    } else if (segundos == 0) {
+                        minutos--;
+                        segundos = 59;
+                    }
+                    if (minutos < 10 && segundos < 10) {
+                        lblmood.setText("0" + minutos + " : 0" + segundos);
+                    } else if (minutos < 10) {
+                        lblmood.setText("0" + minutos + " : " + segundos);
+                    } else if (segundos < 10) {
+                        lblmood.setText(minutos + " : 0" + segundos);
+                    } else {
+                        lblmood.setText(minutos + " : " + segundos);
+                    }
+                }
+            }
+        };
+        timerP.scheduleAtFixedRate(taskP, 0, 100);
+    }
+    
+    
+    public void Descanso(){
+        minutos = 2;
+        segundos = 0;
+        timerP = new Timer();
+        taskP = new TimerTask() {
+            @Override
+            public void run() {
+                if (minutos == 0 && segundos == 0) {
+                    if (JOptionPane.showConfirmDialog(null, "De vuelta a trabajar") == JOptionPane.OK_OPTION) {
+                        timerP.cancel();
+                        Pomodoro();
+                    } else{
+                        timerP.cancel();
+                        notificacion("Buen trabajo! Has logrado " + pomodoros + " pomodoros en esta sesión", 1, "Pomodoros");
+                    }
+                } else{ 
+                    if (segundos > 0) {
+                        segundos--;
+                    } else if (segundos == 0) {
+                        minutos--;
+                        segundos = 59;
+                    }
+                    if (minutos < 10 && segundos < 10) {
+                        lblmood.setText("0" + minutos + " : 0" + segundos);
+                    } else if (minutos < 10) {
+                        lblmood.setText("0" + minutos + " : " + segundos);
+                    } else if (segundos < 10) {
+                        lblmood.setText(minutos + " : 0" + segundos);
+                    } else {
+                        lblmood.setText(minutos + " : " + segundos);
+                    }
+                }
+            }
+        };
+        timerP.scheduleAtFixedRate(taskP, 0, 100);
+    }
+    
+    public void EstudioLibre(){
+        minutos = 0;
+        segundos = 0;
+        horas = 0;
+        timerP = new Timer();
+        taskP = new TimerTask() {
+            @Override
+            public void run() {
+                if (segundos < 60) {
+                    segundos++;
+                } else if (segundos == 60) {
+                    minutos++;
+                    segundos = 0;
+                } else if (minutos == 60)  {
+                    minutos = 0;
+                    horas++;
+                }              
+                if (horas < 10 && minutos < 10 && segundos < 10) {
+                    lblmood.setText("0" + horas +" : 0" + minutos + " : 0" + segundos);
+                } else if(horas < 10 && minutos < 10){
+                    lblmood.setText("0" + horas +" : 0" + minutos + " : " + segundos);
+                } else if(horas < 10 && segundos < 10){
+                    lblmood.setText("0" + horas +" : " + minutos + " : 0" + segundos);
+                } else if(horas < 10){
+                     lblmood.setText("0" + horas +" : " + minutos + " : " + segundos);
+                } else if (minutos < 10 && segundos < 10) {
+                    lblmood.setText(horas + " : 0" + minutos + " : 0" + segundos);
+                } else if (minutos < 10) {
+                    lblmood.setText(horas + " : 0" + minutos + " : " + segundos);
+                } else if (segundos < 10) {
+                    lblmood.setText(horas + " : " + minutos + " : 0" + segundos);
+                } else {
+                    lblmood.setText(horas + " : " + minutos + " : " + segundos);
+                }
+            }
+        };
+        timerP.scheduleAtFixedRate(taskP, 0, 100);
+    }
 
-//    public void AbrirBloc() {
-//        panContainer.removeAll();
-//        panContainer.repaint();
-//        panContainer.revalidate();
-//        panelRound4.setBackground(new Color(32, 32, 32));
-//        panelRound5.setBackground(new Color(32, 32, 32));
-//        panelRound6.setBackground(new Color(32, 32, 32));
-//        panelRound7.setBackground(new Color(32, 32, 32));
-//        panWhite.setBackground(new Color(32, 32, 32));
-//        panContainer.add(new panBlocMateria());
-//        panContainer.repaint();
-//        panContainer.revalidate();
-//
-//    }
 
     public void notificacion(String mensaje, int tipo_mensaje, String tipo_men) {
         try {
@@ -428,21 +362,21 @@ public int milisegundos = 0;
         //Cambio el estado de todos los botones a deseleccionados 
         //En cada uno tiene que ir la imagen en negro :P
         homeButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(homeButton, "/resources/home.png");
+        custo.changeIcon(homeButton, "/resources/home.png");
         calendarButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(calendarButton, "/resources/calendar.png");
+        custo.changeIcon(calendarButton, "/resources/calendar.png");
         briefcaseButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(briefcaseButton, "/resources/briefcase.png");
+        custo.changeIcon(briefcaseButton, "/resources/briefcase.png");
         pageButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(pageButton, "/resources/document-text.png");
+        custo.changeIcon(pageButton, "/resources/document-text.png");
         medalButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(medalButton, "/resources/medal.png");
+        custo.changeIcon(medalButton, "/resources/medal.png");
         bookButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(bookButton, "/resources/book-saved.png");
+        custo.changeIcon(bookButton, "/resources/book-saved.png");
 
         //Y justo al final cambio el boton que es al estado de seleccionado :P
         btn.setStyle(ButtonRound.ButtonStyle.BLANCO);
-        custoObj.changeIcon(btn, icono);
+        custo.changeIcon(btn, icono);
 
     }
 
@@ -490,7 +424,6 @@ public int milisegundos = 0;
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         panelRound11 = new customizeObjects.PanelRound();
-        lblTexto2 = new javax.swing.JLabel();
         primeraFila = new customizeObjects.PanelRound();
         jPanel2 = new javax.swing.JPanel();
         calendarPanel = new customizeObjects.PanelRound();
@@ -731,10 +664,6 @@ public int milisegundos = 0;
         panelRound11.setBackground(new java.awt.Color(32, 32, 32));
         panelRound11.setRoundBottomLeft(20);
         panelRound11.setRoundBottomRight(20);
-
-        lblTexto2.setText("0000");
-        panelRound11.add(lblTexto2);
-
         gradesPanel.add(panelRound11, java.awt.BorderLayout.CENTER);
 
         segundaFila.add(gradesPanel, java.awt.BorderLayout.EAST);
@@ -784,10 +713,11 @@ public int milisegundos = 0;
 
         calendarPanel.add(panelRound10, java.awt.BorderLayout.PAGE_START);
 
-        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setBackground(new java.awt.Color(32, 32, 32));
         jScrollPane3.setBorder(null);
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
+        recursosContainer.setBackground(new java.awt.Color(32, 32, 32));
         recursosContainer.setPreferredSize(new java.awt.Dimension(1000, 227));
         recursosContainer.setRoundBottomLeft(25);
         recursosContainer.setRoundBottomRight(25);
@@ -874,7 +804,7 @@ public int milisegundos = 0;
         tareasContainer.setPreferredSize(new java.awt.Dimension(349, 1000));
         tareasContainer.setRoundBottomLeft(25);
         tareasContainer.setRoundBottomRight(25);
-        tareasContainer.setLayout(new java.awt.GridLayout(10, 1));
+        tareasContainer.setLayout(new java.awt.GridLayout(10, 1, 5, 0));
         jScrollPane2.setViewportView(tareasContainer);
 
         taskPanel.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -1203,10 +1133,9 @@ public int milisegundos = 0;
 
     private void btnMoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoodActionPerformed
         // TODO add your handling code here:
-        frmMood mood = new frmMood();
-        mood.setVisible(true);
-        this.setState(Frame.ICONIFIED);
-        frmMood objmood = new frmMood();
+        
+        new frmMood(datosAlumnoLog).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnMoodActionPerformed
 
     private void buttonRound4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound4ActionPerformed
@@ -1215,14 +1144,15 @@ public int milisegundos = 0;
 
     private void btnStopMoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopMoodActionPerformed
         // TODO add your handling code here:
-        GuardarRegistroMood();
-        estado = false;
-        milisegundos = 0;
-        segundos = 0;
-        minutos = 0;
-        horas = 0;
-        lblmood.setText("00"+" : "+"00"+" : "+"00"+ " : ");
-        lblTexto2.setText("0000");
+        timerP.cancel();
+        taskP.cancel();
+        if (mood == 2) {
+            notificacion("Buen trabajo! Has logrado " + pomodoros + " pomodoros en esta sesión", 1, "Pomodoros");
+        } else{
+            GuardarRegistroMood();
+        }
+        lblmood.setText("00"+" : "+"00"+" : "+"00");
+        moodPanel.setVisible(false);
     }//GEN-LAST:event_btnStopMoodActionPerformed
 
     /**
@@ -1271,7 +1201,6 @@ public int milisegundos = 0;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lblTexto2;
     private javax.swing.JLabel lblmood;
     private javax.swing.JLabel lblnamedashboard;
     private javax.swing.JPanel mainPanel;

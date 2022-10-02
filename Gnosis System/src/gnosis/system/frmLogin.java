@@ -564,7 +564,7 @@ public class frmLogin extends javax.swing.JFrame {
                     }
                 }
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "donde");
+                JOptionPane.showMessageDialog(null, "Error al capturar los datos desde la base, vuelve a intentarlo");
             }
         }
 
