@@ -769,12 +769,12 @@ Select * from viewPortafolios
 USE dbGnosis;
 
 --Vista  MateriaDocente
-drop view MateriaDocente
+drop view viewPerfiles
 GO
 CREATE VIEW viewMateriaDocente AS
 SELECT b.apellidos_docente, b.nombres_docente, e.grado, c.materia, d.modulo, b.iddocente, a.idmateriadocente FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e WHERE a.iddocente = b.iddocente AND a.idmateria = c.idmateria AND a.idmodulo = d.idmodulo AND b.idgrado = e.idgrado
 
-SELECT * FROM viewMateriaDocente
+SELECT * FROM viewPerfiles
 
 SELECT b.apellidos_docente, b.nombres_docente, e.grado, d.modulo, c.materia
 FROM tbMateriaDocentes a, tbDocentes b, tbMaterias c, tbModulos d, tbGrados e
@@ -804,10 +804,11 @@ select * from viewPerfiles;
 drop view viewPerfiles;
 go
 
+
 CREATE VIEW viewPerfiles
-AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.porcentajeValoracion, a.fechainicio, a.fechavencimiento, d.estadoperfil, b.tipoperfil, c.grado
-FROM tbPerfiles a, tbTipoPerfiles b, tbGrados c, tbEstadoPerfiles d
-WHERE a.idtipoperfil = b.idtipoperfil AND a.idgrados = c.idgrado AND a.idestadoperfil = d.idestadoperfil; 
+AS SELECT a.idperfil,a.nombreperfil, a.descripcion, a.porcentajeValoracion, a.fechainicio, a.fechavencimiento, d.estadoperfil, b.tipoperfil, c.grado, e.idmateriadocente
+FROM tbPerfiles a, tbTipoPerfiles b, tbGrados c, tbEstadoPerfiles d, tbMateriaDocentes e
+WHERE a.idtipoperfil = b.idtipoperfil AND a.idgrados = c.idgrado AND a.idestadoperfil = d.idestadoperfil AND a.idmateriadocente = e.idmateriadocente; 
 Go
 
 Select * from viewTareas

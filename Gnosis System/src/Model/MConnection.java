@@ -52,7 +52,7 @@ public class MConnection {
             //Valores de conexión
             String url = "jdbc:sqlserver://localhost:1433;"
                     + "database = dbGnosis;"
-                    + "user = sa;"
+                    + "user = inicio_sesion;"
                     + "password = itr2022;"
                     + "loginTimeOut = 10";
             //Assigning values to connection object
@@ -61,7 +61,7 @@ public class MConnection {
             return con;
         } catch (Exception e) {
             //Error message in case a connection is not established correctly
-            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos, E001   " + e.toString());
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos, E001   " + e.toString());   
             return null;
         }
     }

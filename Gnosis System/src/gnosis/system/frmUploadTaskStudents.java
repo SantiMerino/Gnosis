@@ -499,7 +499,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         if (respuesta == true) {
             customization.notificacion("La tarea fue subida exitosamente", 1, "Confirmación");
         }else{
-            JOptionPane.showInternalMessageDialog(null, "La tarea no pudo ser subida correctamente, intentalo de nuevo", "Error", JOptionPane.ERROR);
+            JOptionPane.showInternalMessageDialog(null, "La tarea no pudo ser subida correctamente, intentalo de nuevo");
         }
     }//GEN-LAST:event_btnSubirTareaActionPerformed
 
