@@ -5,22 +5,18 @@
  */
 package gnosis.system;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.sql.Connection;
 import javax.swing.JOptionPane;
 import Controller.*;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.geom.RoundRectangle2D;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.TimerTask;
+import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+
 /**
  *
  * @author santi
@@ -32,32 +28,37 @@ public class frmLogin extends javax.swing.JFrame {
      */
     int xMouse;
     int yMouse;
-    
+    int intentos = 5;
+    int cntdwn = 30;
+    Timer timer;
     int niveldeusuario;
     String username;
-    
     JFrame framepornivel;
     ArrayList datosuser;
     DefaultListModel<String> modelodatos;
-    
+
     customization objCusto = new customization();
-    
+
     public frmLogin() {
         initComponents();
+        lblContador.setVisible(false);
         returnLogin.setVisible(false);
         returnConfig.setVisible(false);
-        customization.centrarFrame(this);  
-      
+        customization.centrarFrame(this);
+        objCusto.changeIconlbl(labelGIF, "/resources/animation-tools.gif");
     }
-    
-    public void retornarPantallaPrincipal(){
-        
+
+
+
+    public void retornarPantallaPrincipal() {
+
         if (panConfig.retornarLogin() == true) {
             loginWhitePan.removeAll();
             loginWhitePan.repaint();
             loginWhitePan.revalidate();
         }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,10 +81,11 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        buttonRound4 = new customizeObjects.ButtonRound();
+        btnForget = new customizeObjects.ButtonRound();
+        lblContador = new javax.swing.JLabel();
         wContainer = new customizeObjects.PanelRound();
         loginWhitePan = new customizeObjects.PanelRound();
-        jLabel5 = new javax.swing.JLabel();
+        labelGIF = new javax.swing.JLabel();
         topGap = new customizeObjects.PanelRound();
         returnConfig = new customizeObjects.ButtonRound();
         panelRound1 = new customizeObjects.PanelRound();
@@ -93,7 +95,6 @@ public class frmLogin extends javax.swing.JFrame {
         returnLogin = new customizeObjects.ButtonRound();
         controlsPanel = new customizeObjects.PanelRound();
         buttonRound1 = new customizeObjects.ButtonRound();
-        buttonRound3 = new customizeObjects.ButtonRound();
         buttonRound2 = new customizeObjects.ButtonRound();
         southGap = new customizeObjects.PanelRound();
         rightGap = new customizeObjects.PanelRound();
@@ -114,11 +115,11 @@ public class frmLogin extends javax.swing.JFrame {
         container.setLayout(new java.awt.CardLayout());
 
         LoginPanel.setBackground(new java.awt.Color(32, 32, 32));
+        LoginPanel.setPreferredSize(new java.awt.Dimension(700, 560));
         LoginPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 0, 5));
 
         bContainer.setBackground(new java.awt.Color(32, 32, 32));
         bContainer.setPreferredSize(new java.awt.Dimension(440, 550));
-        bContainer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnLogin.setText("Iniciar sesión");
         btnLogin.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
@@ -127,15 +128,12 @@ public class frmLogin extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
-        bContainer.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 131, 48));
 
         jLabel1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel1.setForeground(java.awt.Color.white);
         jLabel1.setText("Username:");
-        bContainer.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
 
         txtUsername.setPreferredSize(new java.awt.Dimension(150, 30));
-        bContainer.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 228, -1));
 
         buttonRound5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/eye.png"))); // NOI18N
         buttonRound5.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -149,35 +147,102 @@ public class frmLogin extends javax.swing.JFrame {
                 buttonRound5MouseExited(evt);
             }
         });
-        bContainer.add(buttonRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, -1));
+        buttonRound5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound5ActionPerformed(evt);
+            }
+        });
 
         txtPassword.setPreferredSize(new java.awt.Dimension(150, 30));
-        bContainer.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 228, -1));
 
         jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel2.setForeground(java.awt.Color.white);
         jLabel2.setText("Password:");
-        bContainer.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Poppins Black", 0, 48)); // NOI18N
         jLabel4.setForeground(java.awt.Color.white);
         jLabel4.setText("GNOSIS");
-        bContainer.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, 60));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/brainLogin.png"))); // NOI18N
-        bContainer.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
 
-        buttonRound4.setText("Olvidaste tu contraseña?");
-        buttonRound4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        buttonRound4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        buttonRound4.setRound(15);
-        buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-        buttonRound4.addActionListener(new java.awt.event.ActionListener() {
+        btnForget.setText("Olvidaste tu contraseña?");
+        btnForget.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        btnForget.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnForget.setRound(15);
+        btnForget.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        btnForget.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRound4ActionPerformed(evt);
+                btnForgetActionPerformed(evt);
             }
         });
-        bContainer.add(buttonRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 170, 30));
+
+        lblContador.setBackground(new java.awt.Color(32, 32, 32));
+        lblContador.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        lblContador.setForeground(new java.awt.Color(255, 51, 51));
+        lblContador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblContador.setText("jLabel5");
+
+        javax.swing.GroupLayout bContainerLayout = new javax.swing.GroupLayout(bContainer);
+        bContainer.setLayout(bContainerLayout);
+        bContainerLayout.setHorizontalGroup(
+            bContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bContainerLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addGroup(bContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bContainerLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel4))
+                    .addComponent(jLabel3)))
+            .addGroup(bContainerLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jLabel1))
+            .addGroup(bContainerLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bContainerLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jLabel2))
+            .addGroup(bContainerLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bContainerLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(lblContador, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bContainerLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(btnForget, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bContainerLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        bContainerLayout.setVerticalGroup(
+            bContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bContainerLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(bContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bContainerLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
+                .addComponent(jLabel1)
+                .addGap(11, 11, 11)
+                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2)
+                .addGap(11, 11, 11)
+                .addGroup(bContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(lblContador, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(btnForget, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
 
         LoginPanel.add(bContainer);
 
@@ -194,10 +259,10 @@ public class frmLogin extends javax.swing.JFrame {
         loginWhitePan.setPreferredSize(new java.awt.Dimension(420, 430));
         loginWhitePan.setLayout(new java.awt.CardLayout());
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/animation-tools.gif"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        loginWhitePan.add(jLabel5, "card2");
+        labelGIF.setBackground(new java.awt.Color(247, 198, 19));
+        labelGIF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelGIF.setOpaque(true);
+        loginWhitePan.add(labelGIF, "card2");
 
         wContainer.add(loginWhitePan, java.awt.BorderLayout.CENTER);
 
@@ -309,16 +374,6 @@ public class frmLogin extends javax.swing.JFrame {
         });
         controlsPanel.add(buttonRound1);
 
-        buttonRound3.setPreferredSize(new java.awt.Dimension(10, 10));
-        buttonRound3.setRound(20);
-        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
-        buttonRound3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRound3ActionPerformed(evt);
-            }
-        });
-        controlsPanel.add(buttonRound3);
-
         buttonRound2.setPreferredSize(new java.awt.Dimension(10, 10));
         buttonRound2.setRound(20);
         buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
@@ -342,7 +397,7 @@ public class frmLogin extends javax.swing.JFrame {
         southGap.setLayout(southGapLayout);
         southGapLayout.setHorizontalGroup(
             southGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1225, Short.MAX_VALUE)
+            .addGap(0, 899, Short.MAX_VALUE)
         );
         southGapLayout.setVerticalGroup(
             southGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +417,7 @@ public class frmLogin extends javax.swing.JFrame {
         );
         rightGapLayout.setVerticalGroup(
             rightGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 671, Short.MAX_VALUE)
+            .addGap(0, 571, Short.MAX_VALUE)
         );
 
         mainJPanel.add(rightGap, java.awt.BorderLayout.LINE_END);
@@ -378,7 +433,7 @@ public class frmLogin extends javax.swing.JFrame {
         );
         leftGapLayout.setVerticalGroup(
             leftGapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 671, Short.MAX_VALUE)
+            .addGap(0, 571, Short.MAX_VALUE)
         );
 
         mainJPanel.add(leftGap, java.awt.BorderLayout.LINE_START);
@@ -402,7 +457,7 @@ public class frmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        
+
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_menuBarPanelMouseDragged
 
@@ -410,14 +465,8 @@ public class frmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         xMouse = evt.getX();
         yMouse = evt.getY();
-        
-    }//GEN-LAST:event_menuBarPanelMousePressed
 
-    private void buttonRound3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound3ActionPerformed
-        // TODO add your handling code here:
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
-    }//GEN-LAST:event_buttonRound3ActionPerformed
+    }//GEN-LAST:event_menuBarPanelMousePressed
 
     private void returnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnConfigActionPerformed
         // TODO add your handling code here:
@@ -431,16 +480,16 @@ public class frmLogin extends javax.swing.JFrame {
 //         TODO add your handling code here:
         if (CConnection.getConnectionControllerWithoutParameters() == null) {
             JOptionPane.showMessageDialog(null, "Cagaste");
-        }else{
+        } else {
             customization.notificacion("Conexión establecida exitosamente", 1, "Conexión");
         }
-        
+
 
     }//GEN-LAST:event_btnConnectionActionPerformed
 
     private void buttonRound5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonRound5MouseEntered
         // TODO add your handling code here:
-        txtPassword.setEchoChar((char)0);  
+        txtPassword.setEchoChar((char) 0);
     }//GEN-LAST:event_buttonRound5MouseEntered
 
     private void buttonRound5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonRound5MouseExited
@@ -458,37 +507,71 @@ public class frmLogin extends javax.swing.JFrame {
             CLogin constructor = new CLogin(txtUsername.getText(), clave);
             ResultSet datosusuarioResultSet = constructor.CIniciarSesion();
             try {
-                niveldeusuario = datosusuarioResultSet.getInt(2);
-                System.out.println(niveldeusuario);
-                switch (niveldeusuario) {
-                    case 1:
-                        framepornivel = new frmDashboard(datosusuarioResultSet);
-                        framepornivel.setVisible(true);
-                        this.dispose();
-                        break;
-                    case 2:
-                        framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
-                        framepornivel.setVisible(true);
-                        this.dispose();
-                        break;
-                    case 3:
-                        framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
-                        framepornivel.setVisible(true);
-                        this.dispose();
-                        break;
-                    default:
-                        break;
+                if (datosusuarioResultSet != null) {
+                    niveldeusuario = datosusuarioResultSet.getInt(2);
+                    System.out.println(niveldeusuario);
+                    switch (niveldeusuario) {
+                        case 1:
+                            framepornivel = new frmDashboard(datosusuarioResultSet);
+                            framepornivel.setVisible(true);
+                            this.dispose();
+                            break;
+                        case 2:
+                            framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
+                            framepornivel.setVisible(true);
+                            this.dispose();
+                            break;
+                        case 3:
+                            framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
+                            framepornivel.setVisible(true);
+                            this.dispose();
+                            break;
+                        default:
+                            break;
+                    } 
+                } else{
+                    intentos--;
+                    System.out.println(intentos);
+                    if (intentos == 0) {
+                        txtPassword.setEnabled(false);
+                        txtUsername.setEnabled(false);
+                        btnForget.setEnabled(false);
+                        btnLogin.setEnabled(false);
+                        lblContador.setVisible(true);
+                        Timer timer = new Timer();
+                        TimerTask task = new TimerTask() {
+                            @Override
+                            public void run() {
+                                if (cntdwn > 0) {
+//                    System.err.println(cntdwn + " seconds");
+                                    lblContador.setText("<html>" + "Muchos intentos incorrectos, vuelve a intentarlo en: " + cntdwn + " segundos" + "</html>");
+                                    cntdwn--;
+                                } else {
+//                    System.out.println("Done");
+                          intentos = 5;
+                                    txtPassword.setEnabled(true);
+                                    txtUsername.setEnabled(true);
+                                    btnForget.setEnabled(true);
+                                    btnLogin.setEnabled(true);
+                                    lblContador.setVisible(false);
+                                    timer.cancel();
+                                }
+                            }
+                        };
+                        //p1 = task - p2 = delay, p3 = intervalo
+                        timer.scheduleAtFixedRate(task, 0, 1000);
+                        
+                    }
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "donde");
             }
         }
-        
-        
+
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void buttonRound4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound4ActionPerformed
+    private void btnForgetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgetActionPerformed
         // TODO add your handling code here:
         LoginPanel.removeAll();
         LoginPanel.add(new panPasswordRecover());
@@ -499,54 +582,34 @@ public class frmLogin extends javax.swing.JFrame {
         returnLogin.setVisible(true);
         northGap.setSize(100, 40);
 
-    }//GEN-LAST:event_buttonRound4ActionPerformed
+    }//GEN-LAST:event_btnForgetActionPerformed
 
     private void returnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnLoginActionPerformed
         // TODO add your handling code here:
         LoginPanel.removeAll();
         LoginPanel.repaint();
         LoginPanel.revalidate();
-        
+
         LoginPanel.add(bContainer);
         LoginPanel.add(wContainer);
-        
+
 //        btnConfig.setVisible(true);
         btnConnection.setVisible(true);
         returnLogin.setVisible(false);
-        
+
     }//GEN-LAST:event_returnLoginActionPerformed
+
+    private void buttonRound5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRound5ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        
         customization.mainUtilities();
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -559,11 +622,10 @@ public class frmLogin extends javax.swing.JFrame {
     private customizeObjects.PanelRound LoginPanel;
     private customizeObjects.PanelRound bContainer;
     private customizeObjects.ButtonRound btnConnection;
+    private customizeObjects.ButtonRound btnForget;
     private customizeObjects.ButtonRound btnLogin;
     private customizeObjects.ButtonRound buttonRound1;
     private customizeObjects.ButtonRound buttonRound2;
-    private customizeObjects.ButtonRound buttonRound3;
-    private customizeObjects.ButtonRound buttonRound4;
     private customizeObjects.ButtonRound buttonRound5;
     private customizeObjects.PanelRound container;
     private customizeObjects.PanelRound controlsPanel;
@@ -571,7 +633,8 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel labelGIF;
+    private javax.swing.JLabel lblContador;
     private customizeObjects.PanelRound leftGap;
     private customizeObjects.PanelRound loginWhitePan;
     private customizeObjects.PanelRound mainJPanel;
