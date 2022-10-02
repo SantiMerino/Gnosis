@@ -39,6 +39,8 @@ public class panCalendar extends javax.swing.JPanel {
     public panCalendar() {
         initComponents();
         dtpFechaFinal.setVisible(false);
+        lblHasta.setVisible(false);
+        lblDesde.setVisible(false);
 //        custo.CrearComponenteEventos(ContenedorEventos);
         customization.mainUtilitiesWhite();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
@@ -72,6 +74,8 @@ public class panCalendar extends javax.swing.JPanel {
         buttonRound1 = new customizeObjects.ButtonRound();
         buttonRound3 = new customizeObjects.ButtonRound();
         btnBuscar = new customizeObjects.ButtonRound();
+        lblDesde = new javax.swing.JLabel();
+        lblHasta = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         panelRound1 = new customizeObjects.PanelRound();
@@ -128,6 +132,16 @@ public class panCalendar extends javax.swing.JPanel {
         jPanel4.setBackground(java.awt.Color.white);
         jPanel4.setPreferredSize(new java.awt.Dimension(300, 100));
 
+        dtpFechaInicial.setText("Fecha Inicial");
+        dtpFechaInicial.setBackground(new java.awt.Color(32, 32, 32));
+        dtpFechaInicial.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        dtpFechaInicial.setForeground(new java.awt.Color(0, 0, 0));
+
+        dtpFechaFinal.setText("Fecha Final");
+        dtpFechaFinal.setBackground(new java.awt.Color(32, 32, 32));
+        dtpFechaFinal.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        dtpFechaFinal.setForeground(new java.awt.Color(0, 0, 0));
+
         texto.setText("Selecciona una fecha para consultar si hay eventos:");
         texto.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         texto.setForeground(new java.awt.Color(32, 32, 32));
@@ -164,37 +178,56 @@ public class panCalendar extends javax.swing.JPanel {
             }
         });
 
+        lblDesde.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        lblDesde.setForeground(new java.awt.Color(32, 32, 32));
+        lblDesde.setText("Desde:");
+
+        lblHasta.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        lblHasta.setForeground(new java.awt.Color(32, 32, 32));
+        lblHasta.setText("Hasta:");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dtpFechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dtpFechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE))
-                        .addGap(19, 19, 19))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                             .addComponent(buttonRound3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonRound1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(buttonRound1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(lblDesde)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(lblHasta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dtpFechaFinal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dtpFechaInicial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))))
+                .addGap(20, 20, 20))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(texto)
-                .addGap(18, 18, 18)
-                .addComponent(dtpFechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dtpFechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dtpFechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblDesde))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dtpFechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblHasta))
+                .addGap(26, 26, 26)
+                .addComponent(buttonRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -339,9 +372,13 @@ public class panCalendar extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (dtpFechaFinal.isVisible()) {
             dtpFechaFinal.setVisible(false);
+            lblHasta.setVisible(false);
+            lblDesde.setVisible(false);
             texto.setText("<html><center>"+"Selecciona una fecha para consultar si hay eventos:" + "</center></html>");
         } else {
+            lblHasta.setVisible(true);
             dtpFechaFinal.setVisible(true);
+            lblDesde.setVisible(true);
             texto.setText("<html><center>"+"Selecciona un rango de fechas a consultar: " + "</center></html>");
         }
 
@@ -368,6 +405,8 @@ public class panCalendar extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDesde;
+    private javax.swing.JLabel lblHasta;
     private javax.swing.JLabel numEventos;
     private customizeObjects.PanelRound panelRound1;
     private javax.swing.JLabel texto;

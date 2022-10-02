@@ -1374,11 +1374,11 @@ public class customization {
         btnAbrir.setPreferredSize(new Dimension(180, 40));
         
         panelSuperior.add(BorderLayout.NORTH, lblmateria);
-        lblmateria.setPreferredSize(new Dimension(180, 80));
+        lblmateria.setPreferredSize(new Dimension(180, 40));
         panelSuperior.add(BorderLayout.CENTER, lblgrado);
-        lblgrado.setPreferredSize(new Dimension(180, 60));
+        lblgrado.setPreferredSize(new Dimension(180, 40));
         panelSuperior.add(BorderLayout.SOUTH, lbldocente);
-        lbldocente.setPreferredSize(new Dimension(180, 60));
+        lbldocente.setPreferredSize(new Dimension(180, 40));
         
 //        panelInferior.add(BorderLayout.CENTER, lblnumpag);
 //        lblnumpag.setPreferredSize(new Dimension(220, 40));

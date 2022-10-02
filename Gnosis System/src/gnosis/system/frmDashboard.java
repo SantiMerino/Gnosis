@@ -17,6 +17,10 @@ import javax.swing.JOptionPane;
 import Controller.CMood;
 import Controller.CPortfolios;
 import Controller.CTasks;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -35,6 +39,8 @@ public class frmDashboard extends javax.swing.JFrame {
     int horas;
     private int mood = 0;
     
+     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+    
     //Objeto de la clase customization
     customization custo = new customization();
 
@@ -52,6 +58,8 @@ public class frmDashboard extends javax.swing.JFrame {
      */
     public frmDashboard() {
         initComponents();
+        LocalDateTime now = LocalDateTime.now();
+        lblHoy.setText("   " + dtf.format(now));
         customization.mainUtilities();
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
@@ -64,6 +72,8 @@ public class frmDashboard extends javax.swing.JFrame {
     public frmDashboard(ResultSet datosusuario) {
         customization.mainUtilities();
         initComponents();     
+        LocalDateTime now = LocalDateTime.now();
+        lblHoy.setText("   " + dtf.format(now));
         datosAlumnoLog = datosusuario;
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
@@ -422,8 +432,9 @@ public class frmDashboard extends javax.swing.JFrame {
         gradesPanel = new customizeObjects.PanelRound();
         panelRound12 = new customizeObjects.PanelRound();
         jLabel12 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblHoy = new javax.swing.JLabel();
         panelRound11 = new customizeObjects.PanelRound();
+        jLabel1 = new javax.swing.JLabel();
         primeraFila = new customizeObjects.PanelRound();
         jPanel2 = new javax.swing.JPanel();
         calendarPanel = new customizeObjects.PanelRound();
@@ -652,18 +663,38 @@ public class frmDashboard extends javax.swing.JFrame {
         jLabel12.setPreferredSize(new java.awt.Dimension(80, 40));
         panelRound12.add(jLabel12);
 
-        jLabel11.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel11.setForeground(java.awt.Color.white);
-        jLabel11.setText("    Hoy: ");
-        jLabel11.setToolTipText("");
-        jLabel11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panelRound12.add(jLabel11);
+        lblHoy.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        lblHoy.setForeground(java.awt.Color.white);
+        lblHoy.setText("    Hoy: ");
+        lblHoy.setToolTipText("");
+        lblHoy.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelRound12.add(lblHoy);
 
         gradesPanel.add(panelRound12, java.awt.BorderLayout.PAGE_START);
 
         panelRound11.setBackground(new java.awt.Color(32, 32, 32));
         panelRound11.setRoundBottomLeft(20);
         panelRound11.setRoundBottomRight(20);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/calendar-dashboard.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelRound11Layout = new javax.swing.GroupLayout(panelRound11);
+        panelRound11.setLayout(panelRound11Layout);
+        panelRound11Layout.setHorizontalGroup(
+            panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound11Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addContainerGap(308, Short.MAX_VALUE))
+        );
+        panelRound11Layout.setVerticalGroup(
+            panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound11Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jLabel1)
+                .addContainerGap(86, Short.MAX_VALUE))
+        );
+
         gradesPanel.add(panelRound11, java.awt.BorderLayout.CENTER);
 
         segundaFila.add(gradesPanel, java.awt.BorderLayout.EAST);
@@ -1149,11 +1180,13 @@ public class frmDashboard extends javax.swing.JFrame {
         taskP.cancel();
         if (mood == 2) {
             notificacion("Buen trabajo! Has logrado " + pomodoros + " pomodoros en esta sesión", 1, "Pomodoros");
+            moodPanel.setVisible(false);
         } else{
             GuardarRegistroMood();
+            moodPanel.setVisible(false);
         }
         lblmood.setText("00"+" : "+"00"+" : "+"00");
-        moodPanel.setVisible(false);
+        
     }//GEN-LAST:event_btnStopMoodActionPerformed
 
     /**
@@ -1185,8 +1218,8 @@ public class frmDashboard extends javax.swing.JFrame {
     private customizeObjects.PanelRound gradesPanel;
     private customizeObjects.ButtonRound homeButton;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -1202,6 +1235,7 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblHoy;
     private javax.swing.JLabel lblmood;
     private javax.swing.JLabel lblnamedashboard;
     private javax.swing.JPanel mainPanel;
