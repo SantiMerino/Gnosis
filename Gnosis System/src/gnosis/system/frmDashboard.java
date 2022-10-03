@@ -282,6 +282,9 @@ public class frmDashboard extends javax.swing.JFrame {
                         Pomodoro();
                     } else{
                         timerP.cancel();
+                        double tiempo = pomodoros * 25;
+                        String tiempojeje = String.valueOf(tiempo);
+                        GuardarRegistroMood();
                         notificacion("Buen trabajo! Has logrado " + pomodoros + " pomodoros en esta sesión", 1, "Pomodoros");
                     }
                 } else{ 
