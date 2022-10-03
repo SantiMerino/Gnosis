@@ -506,78 +506,75 @@ public class frmLogin extends javax.swing.JFrame {
             String clave = CValidaciones.getMD5(String.valueOf(txtPassword.getPassword()));
             CLogin constructor = new CLogin(txtUsername.getText(), clave);
             if (intentos == 0) {
-                boolean res = constructor.Bloquear();
-                if (res == true) {
-                    JOptionPane.showMessageDialog(null, "Este usuario esta bloqueado indefinidamente, porfavor consulta a un administrador", "Bloqueo", JOptionPane.ERROR_MESSAGE);
-                    intentos = 5;
-                }
-            }
-            ResultSet datosusuarioResultSet = constructor.CIniciarSesion();
-            try {
-                if (datosusuarioResultSet != null) {
-                    niveldeusuario = datosusuarioResultSet.getInt(2);
-                    int estadousuario = datosusuarioResultSet.getInt(6);
-                    if (estadousuario == 3) {
-                        JOptionPane.showMessageDialog(null, "Este usuario esta bloqueado indefinidamente, porfavor consulta a un administrador", "Bloqueo" , JOptionPane.ERROR_MESSAGE);
+                constructor.Bloquear();
+                JOptionPane.showMessageDialog(null, "Este usuario esta bloqueado indefinidamente, porfavor consulta a un administrador", "Bloqueo", JOptionPane.ERROR_MESSAGE);
+                intentos = 5;
+            } else {
+                ResultSet datosusuarioResultSet = constructor.CIniciarSesion();
+                try {
+                    if (datosusuarioResultSet != null) {
+                        niveldeusuario = datosusuarioResultSet.getInt(2);
+                        int estadousuario = datosusuarioResultSet.getInt(6);
+                        if (estadousuario == 3) {
+                            JOptionPane.showMessageDialog(null, "Este usuario esta bloqueado indefinidamente, porfavor consulta a un administrador", "Bloqueo", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            switch (niveldeusuario) {
+                                case 1:
+                                    framepornivel = new frmDashboard(datosusuarioResultSet);
+                                    framepornivel.setVisible(true);
+                                    this.dispose();
+                                    break;
+                                case 2:
+                                    framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
+                                    framepornivel.setVisible(true);
+                                    this.dispose();
+                                    break;
+                                case 3:
+                                    framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
+                                    framepornivel.setVisible(true);
+                                    this.dispose();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+
                     } else {
-                        switch (niveldeusuario) {
-                            case 1:
-                                framepornivel = new frmDashboard(datosusuarioResultSet);
-                                framepornivel.setVisible(true);
-                                this.dispose();
-                                break;
-                            case 2:
-                                framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
-                                framepornivel.setVisible(true);
-                                this.dispose();
-                                break;
-                            case 3:
-                                framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
-                                framepornivel.setVisible(true);
-                                this.dispose();
-                                break;
-                            default:
-                                break;
+                        intentos--;
+                        System.out.println(intentos);
+                        if (intentos == 2) {
+                            txtPassword.setEnabled(false);
+                            txtUsername.setEnabled(false);
+                            btnForget.setEnabled(false);
+                            btnLogin.setEnabled(false);
+                            lblContador.setVisible(true);
+                            Timer timer = new Timer();
+                            TimerTask task = new TimerTask() {
+                                @Override
+                                public void run() {
+                                    if (cntdwn > 0) {
+//                    System.err.println(cntdwn + " seconds");
+                                        lblContador.setText("<html>" + "Muchos intentos incorrectos, vuelve a intentarlo en: " + cntdwn + " segundos" + "</html>");
+                                        cntdwn--;
+                                    } else {
+                                        txtPassword.setEnabled(true);
+                                        txtUsername.setEnabled(true);
+                                        btnForget.setEnabled(true);
+                                        btnLogin.setEnabled(true);
+                                        lblContador.setVisible(false);
+                                        timer.cancel();
+                                    }
+                                }
+                            };
+                            //p1 = task - p2 = delay, p3 = intervalo
+                            timer.scheduleAtFixedRate(task, 0, 1000);
                         }
                     }
- 
-                } else{
-                    intentos--;
-                    System.out.println(intentos);
-                    if (intentos == 2) {
-                        txtPassword.setEnabled(false);
-                        txtUsername.setEnabled(false);
-                        btnForget.setEnabled(false);
-                        btnLogin.setEnabled(false);
-                        lblContador.setVisible(true);
-                        Timer timer = new Timer();
-                        TimerTask task = new TimerTask() {
-                            @Override
-                            public void run() {
-                                if (cntdwn > 0) {
-//                    System.err.println(cntdwn + " seconds");
-                                    lblContador.setText("<html>" + "Muchos intentos incorrectos, vuelve a intentarlo en: " + cntdwn + " segundos" + "</html>");
-                                    cntdwn--;
-                                } else {
-                                    txtPassword.setEnabled(true);
-                                    txtUsername.setEnabled(true);
-                                    btnForget.setEnabled(true);
-                                    btnLogin.setEnabled(true);
-                                    lblContador.setVisible(false);
-                                    timer.cancel();
-                                }
-                            }
-                        };
-                        //p1 = task - p2 = delay, p3 = intervalo
-                        timer.scheduleAtFixedRate(task, 0, 1000);
-                    }
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error al capturar los datos desde la base, vuelve a intentarlo");
                 }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error al capturar los datos desde la base, vuelve a intentarlo");
             }
         }
-
-
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnForgetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgetActionPerformed
