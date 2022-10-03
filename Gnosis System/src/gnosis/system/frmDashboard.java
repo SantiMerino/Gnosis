@@ -456,6 +456,7 @@ public class frmDashboard extends javax.swing.JFrame {
         recursosContainer = new customizeObjects.PanelRound();
         stadisticPanel = new customizeObjects.PanelRound();
         panelRound13 = new customizeObjects.PanelRound();
+        jLabel19 = new javax.swing.JLabel();
         panelRound14 = new customizeObjects.PanelRound();
         jLabel13 = new javax.swing.JLabel();
         taskPanel = new customizeObjects.PanelRound();
@@ -877,6 +878,27 @@ public class frmDashboard extends javax.swing.JFrame {
         panelRound13.setBackground(new java.awt.Color(217, 217, 217));
         panelRound13.setRoundBottomLeft(20);
         panelRound13.setRoundBottomRight(20);
+
+        jLabel19.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel19.setText("jLabel19");
+
+        javax.swing.GroupLayout panelRound13Layout = new javax.swing.GroupLayout(panelRound13);
+        panelRound13.setLayout(panelRound13Layout);
+        panelRound13Layout.setHorizontalGroup(
+            panelRound13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound13Layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(jLabel19)
+                .addContainerGap(106, Short.MAX_VALUE))
+        );
+        panelRound13Layout.setVerticalGroup(
+            panelRound13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound13Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel19)
+                .addContainerGap(181, Short.MAX_VALUE))
+        );
+
         stadisticPanel.add(panelRound13, java.awt.BorderLayout.CENTER);
 
         panelRound14.setBackground(new java.awt.Color(217, 217, 217));
@@ -1335,6 +1357,7 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

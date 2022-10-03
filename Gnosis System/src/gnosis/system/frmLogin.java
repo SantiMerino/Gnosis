@@ -509,30 +509,35 @@ public class frmLogin extends javax.swing.JFrame {
             try {
                 if (datosusuarioResultSet != null) {
                     niveldeusuario = datosusuarioResultSet.getInt(2);
-                    System.out.println(niveldeusuario);
-                    switch (niveldeusuario) {
-                        case 1:
-                            framepornivel = new frmDashboard(datosusuarioResultSet);
-                            framepornivel.setVisible(true);
-                            this.dispose();
-                            break;
-                        case 2:
-                            framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
-                            framepornivel.setVisible(true);
-                            this.dispose();
-                            break;
-                        case 3:
-                            framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
-                            framepornivel.setVisible(true);
-                            this.dispose();
-                            break;
-                        default:
-                            break;
-                    } 
+                    int estadousuario = datosusuarioResultSet.getInt(6);
+                    if (estadousuario == 3) {
+                        JOptionPane.showMessageDialog(null, "Este usuario esta bloqueado indefinidamente, porfavor consulta a un administrador", "Bloqueo" , JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        switch (niveldeusuario) {
+                            case 1:
+                                framepornivel = new frmDashboard(datosusuarioResultSet);
+                                framepornivel.setVisible(true);
+                                this.dispose();
+                                break;
+                            case 2:
+                                framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
+                                framepornivel.setVisible(true);
+                                this.dispose();
+                                break;
+                            case 3:
+                                framepornivel = new frmDashboardTeacher(datosusuarioResultSet);
+                                framepornivel.setVisible(true);
+                                this.dispose();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+ 
                 } else{
                     intentos--;
                     System.out.println(intentos);
-                    if (intentos == 0) {
+                    if (intentos == 3) {
                         txtPassword.setEnabled(false);
                         txtUsername.setEnabled(false);
                         btnForget.setEnabled(false);
@@ -547,8 +552,6 @@ public class frmLogin extends javax.swing.JFrame {
                                     lblContador.setText("<html>" + "Muchos intentos incorrectos, vuelve a intentarlo en: " + cntdwn + " segundos" + "</html>");
                                     cntdwn--;
                                 } else {
-//                    System.out.println("Done");
-                          intentos = 5;
                                     txtPassword.setEnabled(true);
                                     txtUsername.setEnabled(true);
                                     btnForget.setEnabled(true);
@@ -561,6 +564,8 @@ public class frmLogin extends javax.swing.JFrame {
                         //p1 = task - p2 = delay, p3 = intervalo
                         timer.scheduleAtFixedRate(task, 0, 1000);
                         
+                    } else if(intentos == 0){
+                        intentos = 5;
                     }
                 }
             } catch (SQLException ex) {
