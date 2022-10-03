@@ -39,7 +39,8 @@ public class frmDashboard extends javax.swing.JFrame {
     int horas;
     private int mood = 0;
     
-     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMMM");  
+    DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("dd");
     
     //Objeto de la clase customization
     customization custo = new customization();
@@ -59,7 +60,8 @@ public class frmDashboard extends javax.swing.JFrame {
     public frmDashboard() {
         initComponents();
         LocalDateTime now = LocalDateTime.now();
-        lblHoy.setText("   " + dtf.format(now));
+        lblMes.setText(dtf.format(now));
+        lblFecha.setText(dtf2.format(now));
         customization.mainUtilities();
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
@@ -73,7 +75,8 @@ public class frmDashboard extends javax.swing.JFrame {
         customization.mainUtilities();
         initComponents();     
         LocalDateTime now = LocalDateTime.now();
-        lblHoy.setText("   " + dtf.format(now));
+        lblMes.setText(dtf.format(now));
+        lblFecha.setText(dtf2.format(now));
         datosAlumnoLog = datosusuario;
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
@@ -432,9 +435,18 @@ public class frmDashboard extends javax.swing.JFrame {
         gradesPanel = new customizeObjects.PanelRound();
         panelRound12 = new customizeObjects.PanelRound();
         jLabel12 = new javax.swing.JLabel();
-        lblHoy = new javax.swing.JLabel();
         panelRound11 = new customizeObjects.PanelRound();
         jLabel1 = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
+        lblMes = new javax.swing.JLabel();
+        panEventToday2 = new customizeObjects.PanelRound();
+        jLabel11 = new javax.swing.JLabel();
+        panEventToday1 = new customizeObjects.PanelRound();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         primeraFila = new customizeObjects.PanelRound();
         jPanel2 = new javax.swing.JPanel();
         calendarPanel = new customizeObjects.PanelRound();
@@ -654,21 +666,14 @@ public class frmDashboard extends javax.swing.JFrame {
         panelRound12.setPreferredSize(new java.awt.Dimension(100, 60));
         panelRound12.setRoundTopLeft(20);
         panelRound12.setRoundTopRight(20);
-        panelRound12.setLayout(new javax.swing.BoxLayout(panelRound12, javax.swing.BoxLayout.Y_AXIS));
+        panelRound12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel12.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         jLabel12.setForeground(java.awt.Color.white);
         jLabel12.setText("  Calendario");
         jLabel12.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel12.setPreferredSize(new java.awt.Dimension(80, 40));
+        jLabel12.setPreferredSize(new java.awt.Dimension(150, 40));
         panelRound12.add(jLabel12);
-
-        lblHoy.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        lblHoy.setForeground(java.awt.Color.white);
-        lblHoy.setText("    Hoy: ");
-        lblHoy.setToolTipText("");
-        lblHoy.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panelRound12.add(lblHoy);
 
         gradesPanel.add(panelRound12, java.awt.BorderLayout.PAGE_START);
 
@@ -678,21 +683,123 @@ public class frmDashboard extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/calendar-dashboard.png"))); // NOI18N
 
+        lblFecha.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
+        lblFecha.setForeground(new java.awt.Color(255, 255, 255));
+        lblFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFecha.setText("00");
+
+        lblMes.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblMes.setForeground(java.awt.Color.white);
+        lblMes.setText(" Hoy: ");
+        lblMes.setToolTipText("");
+        lblMes.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        panEventToday2.setBackground(new java.awt.Color(255, 255, 255));
+        panEventToday2.setToolTipText("");
+        panEventToday2.setPreferredSize(new java.awt.Dimension(60, 60));
+        panEventToday2.setRoundBottomLeft(20);
+        panEventToday2.setRoundBottomRight(20);
+        panEventToday2.setRoundTopLeft(20);
+        panEventToday2.setRoundTopRight(20);
+        panEventToday2.setLayout(new java.awt.BorderLayout());
+
+        jLabel11.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("00");
+        jLabel11.setPreferredSize(new java.awt.Dimension(20, 20));
+        jLabel11.setRequestFocusEnabled(false);
+        panEventToday2.add(jLabel11, java.awt.BorderLayout.CENTER);
+
+        panEventToday1.setBackground(new java.awt.Color(255, 255, 255));
+        panEventToday1.setToolTipText("");
+        panEventToday1.setPreferredSize(new java.awt.Dimension(60, 60));
+        panEventToday1.setRoundBottomLeft(20);
+        panEventToday1.setRoundBottomRight(20);
+        panEventToday1.setRoundTopLeft(20);
+        panEventToday1.setRoundTopRight(20);
+        panEventToday1.setLayout(new java.awt.BorderLayout());
+
+        jLabel14.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("00");
+        jLabel14.setPreferredSize(new java.awt.Dimension(20, 20));
+        jLabel14.setRequestFocusEnabled(false);
+        panEventToday1.add(jLabel14, java.awt.BorderLayout.CENTER);
+
+        jLabel15.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Hoy tienes programados:");
+
+        jLabel16.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Para mañana, tienes programados:");
+
+        jLabel17.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Eventos o actividades");
+
+        jLabel18.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Eventos o actividades");
+
         javax.swing.GroupLayout panelRound11Layout = new javax.swing.GroupLayout(panelRound11);
         panelRound11.setLayout(panelRound11Layout);
         panelRound11Layout.setHorizontalGroup(
             panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound11Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1)
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRound11Layout.createSequentialGroup()
+                        .addComponent(lblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(27, 27, 27))
+                    .addGroup(panelRound11Layout.createSequentialGroup()
+                        .addGroup(panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMes)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16)
+                    .addGroup(panelRound11Layout.createSequentialGroup()
+                        .addComponent(panEventToday1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel18))
+                    .addGroup(panelRound11Layout.createSequentialGroup()
+                        .addComponent(panEventToday2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel17))
+                    .addComponent(jLabel15))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         panelRound11Layout.setVerticalGroup(
             panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound11Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLabel1)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addGroup(panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMes)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRound11Layout.createSequentialGroup()
+                        .addComponent(lblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1))
+                    .addGroup(panelRound11Layout.createSequentialGroup()
+                        .addGroup(panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panEventToday2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelRound11Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabel17)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel16)
+                        .addGroup(panelRound11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRound11Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(panEventToday1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRound11Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel18)))))
+                .addGap(27, 27, 27))
         );
 
         gradesPanel.add(panelRound11, java.awt.BorderLayout.CENTER);
@@ -1220,8 +1327,14 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1235,7 +1348,8 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lblHoy;
+    private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblMes;
     private javax.swing.JLabel lblmood;
     private javax.swing.JLabel lblnamedashboard;
     private javax.swing.JPanel mainPanel;
@@ -1247,6 +1361,8 @@ public class frmDashboard extends javax.swing.JFrame {
     private customizeObjects.PanelRound panBlack;
     private customizeObjects.PanelRound panContainer;
     private customizeObjects.PanelRound panDashboard;
+    private customizeObjects.PanelRound panEventToday1;
+    private customizeObjects.PanelRound panEventToday2;
     private customizeObjects.PanelRound panWhite;
     private customizeObjects.PanelRound panelRound1;
     private customizeObjects.PanelRound panelRound10;
