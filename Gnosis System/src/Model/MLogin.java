@@ -41,22 +41,17 @@ public class MLogin {
         }
     }
     
-    public static ResultSet BloquearUsuario (String user){
+    public static boolean BloquearUsuario (String user){
         Connection conexion = MConnection.getConnectionWithoutParameters();
         PreparedStatement ps;
         try {
-            ps = conexion.prepareStatement("SELECT * FROM tbUsuario WHERE username = ? AND clave = ?");
+            ps = conexion.prepareStatement("UPDATE tbUsuario SET idestadousuario = 3 WHERE username = ?");
             ps.setString(1, user);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                return rs;
-            }else {
-                JOptionPane.showMessageDialog(null, "Las credenciales  son incorrectas o no existen", "Creedenciales", JOptionPane.ERROR_MESSAGE);
-                return null;
-            }
+            boolean rs = ps.execute();
+            return rs;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error " + e.toString());
-            return null;
+            JOptionPane.showMessageDialog(null, "Error al bloquear al usuario " + e.toString());
+            return false;
         }
     }
 }

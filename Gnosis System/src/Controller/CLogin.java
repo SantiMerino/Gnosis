@@ -52,5 +52,9 @@ public class CLogin {
     public ResultSet CIniciarSesion(){
         return MLogin.InciarSesion(usuario, password);
     }
+    
+    public boolean Bloquear(){
+        return MLogin.BloquearUsuario(usuario);
+    }
         
 }

@@ -505,6 +505,13 @@ public class frmLogin extends javax.swing.JFrame {
         } else {
             String clave = CValidaciones.getMD5(String.valueOf(txtPassword.getPassword()));
             CLogin constructor = new CLogin(txtUsername.getText(), clave);
+            if (intentos == 0) {
+                boolean res = constructor.Bloquear();
+                if (res == true) {
+                    JOptionPane.showMessageDialog(null, "Este usuario esta bloqueado indefinidamente, porfavor consulta a un administrador", "Bloqueo", JOptionPane.ERROR_MESSAGE);
+                    intentos = 5;
+                }
+            }
             ResultSet datosusuarioResultSet = constructor.CIniciarSesion();
             try {
                 if (datosusuarioResultSet != null) {
@@ -537,7 +544,7 @@ public class frmLogin extends javax.swing.JFrame {
                 } else{
                     intentos--;
                     System.out.println(intentos);
-                    if (intentos == 3) {
+                    if (intentos == 2) {
                         txtPassword.setEnabled(false);
                         txtUsername.setEnabled(false);
                         btnForget.setEnabled(false);
@@ -563,9 +570,6 @@ public class frmLogin extends javax.swing.JFrame {
                         };
                         //p1 = task - p2 = delay, p3 = intervalo
                         timer.scheduleAtFixedRate(task, 0, 1000);
-                        
-                    } else if(intentos == 0){
-                        intentos = 5;
                     }
                 }
             } catch (SQLException ex) {
