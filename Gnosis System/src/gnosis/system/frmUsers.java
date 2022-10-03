@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  * @author josec
  */
 public class frmUsers extends javax.swing.JFrame {
-
+    
     CUsers obj = new CUsers();
     DefaultTableModel TablaUsersModelo;
     DefaultComboBoxModel<String> EstadoUsuariocombo;
@@ -35,6 +35,8 @@ public class frmUsers extends javax.swing.JFrame {
     private List AlumnosList;
     private List DocentesList;
     
+    int iduserloggeado;
+    
     private int idnivelusuario = 0;
     private int idestadousuario = 0;
     private int idalumno = 0;
@@ -45,7 +47,32 @@ public class frmUsers extends javax.swing.JFrame {
      * Creates new form frmUsers
      */
     public frmUsers() {
+        customization.mainUtilitiesWhite();
         initComponents();
+        txtId.setVisible(false);
+        txtNivelUsuario.setVisible(false);
+        txtEstadoUsuario.setVisible(false);
+        txtAlumno.setVisible(false);
+        txtDocente.setVisible(false);
+        
+        CargarCmbEstadoUsuario();
+        CargarCmbNivelUsuario();
+        CargarCmbDocentes();
+        CargarCmbAlumnos();
+        
+        //Tabla
+        String[] TitulosUsuarios = {"ID", "Nivel Usuario", "Usuario", "Clave", "PIN", "Estado Usuario", "Alumno", "Docente"};
+        TablaUsersModelo = new DefaultTableModel(null, TitulosUsuarios);
+        tbUsers.setModel(TablaUsersModelo);
+        //Ocultar columnas
+        tbUsers.getColumnModel().getColumn(6).setMaxWidth(0);
+        tbUsers.getColumnModel().getColumn(7).setMaxWidth(0);
+        CargarTabla();
+    }
+    
+    public frmUsers(int iduser) {
+        initComponents();
+        iduserloggeado = iduser;
         customization.mainUtilitiesWhite();
         txtId.setVisible(false);
         txtNivelUsuario.setVisible(false);
@@ -657,16 +684,21 @@ public class frmUsers extends javax.swing.JFrame {
         if (txtId.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Seleccione un registro", "Informacion incompleta", JOptionPane.WARNING_MESSAGE);
         } else {
-            int confirmacion = JOptionPane.YES_NO_OPTION;
-            JOptionPane.showMessageDialog(this, "Esta seguro de eliminar este registro?", "Confirmar Accion", confirmacion);
-            if (confirmacion == JOptionPane.YES_OPTION) {
-                CUsers objcontrolusersdelete = new CUsers(Integer.parseInt(txtId.getText()));
-
-                boolean valor = objcontrolusersdelete.EliminarUsuario();
-                if (valor == true) {
-                    JOptionPane.showMessageDialog(this, "Usuario eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
-                    CargarTabla();
-                    LimpiarCampos();
+            if (iduserloggeado == Integer.parseInt(txtId.getText())) {
+                System.out.println(iduserloggeado);
+                System.out.println(txtId.getText());
+                JOptionPane.showMessageDialog(null, "No puedes eliminar tu mismo usuario", "Error de Eliminación",JOptionPane.ERROR_MESSAGE);
+            } else {
+                int confirmacion = JOptionPane.YES_NO_OPTION;
+                JOptionPane.showMessageDialog(this, "Esta seguro de eliminar este registro?", "Confirmar Accion", confirmacion);
+                if (confirmacion == JOptionPane.YES_OPTION) {
+                     CUsers objcontrolusersdelete = new CUsers(Integer.parseInt(txtId.getText()));
+                    boolean valor = objcontrolusersdelete.EliminarUsuario();
+                    if (valor == true) {
+                        JOptionPane.showMessageDialog(this, "Usuario eliminado exitosamente", "Proceso completado", JOptionPane.INFORMATION_MESSAGE);
+                        CargarTabla();
+                        LimpiarCampos();
+                    }
                 }
             }
         }

@@ -34,6 +34,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 
     private int niveluser;
     int iddocente;
+    int iduserlog;
     String usernamelog;
        
     public customization custoObj = new customization();
@@ -54,6 +55,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         initComponents();
         
         try {
+            iduserlog = datosusuario.getInt(1);
             usernamelog = datosusuario.getString(3);
             niveluser = datosusuario.getInt(2);
             iddocente = datosusuario.getInt(8);
@@ -831,20 +833,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
             }
      
         }
-//        if (new frmTeachersCRUD()!= null ) {
-//            frmStudentsCRUD frame = new frmStudentsCRUD();
-//            Container c = frame.getContentPane();
-//            panContainer.removeAll();
-//            panContainer.repaint();
-//            panContainer.revalidate();
-//            panContainer.add(BorderLayout.CENTER,c);
-//            panContainer.repaint();
-//            panContainer.revalidate();
-////            new frmTeachersCRUD().setVisible(true);
-////            this.setState(JFrame.ICONIFIED);
-//        } else{
-//            JOptionPane.showMessageDialog(null, "Ya esta abierta esta interfazz");
-//        }
           
     }//GEN-LAST:event_studentsButtonActionPerformed
 
@@ -950,7 +938,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 
     private void btnUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsersActionPerformed
         // TODO add your handling code here:
-        new frmUsers().setVisible(true);
+        new frmUsers(iduserlog).setVisible(true);
     }//GEN-LAST:event_btnUsersActionPerformed
 
     /**

@@ -72,6 +72,8 @@ public class panBlocMateria extends javax.swing.JPanel {
         buttonRound18 = new customizeObjects.ButtonRound();
         jPanel6 = new javax.swing.JPanel();
         panelRound1 = new customizeObjects.PanelRound();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(32, 32, 32));
         setLayout(new java.awt.BorderLayout());
@@ -237,7 +239,7 @@ public class panBlocMateria extends javax.swing.JPanel {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 497, Short.MAX_VALUE)
+            .addGap(0, 502, Short.MAX_VALUE)
         );
 
         add(jPanel5, java.awt.BorderLayout.WEST);
@@ -457,15 +459,28 @@ public class panBlocMateria extends javax.swing.JPanel {
         panelRound1.setRoundTopLeft(20);
         panelRound1.setRoundTopRight(20);
 
+        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(32, 32, 32));
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
         panelRound1Layout.setHorizontalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 631, Short.MAX_VALUE)
+            .addGroup(panelRound1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 497, Short.MAX_VALUE)
+            .addGroup(panelRound1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         add(panelRound1, java.awt.BorderLayout.CENTER);
@@ -511,6 +526,8 @@ public class panBlocMateria extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private customizeObjects.PanelRound panelRound1;
     private customizeObjects.PanelRound panelRound2;
     private customizeObjects.PanelRound panelRound4;
