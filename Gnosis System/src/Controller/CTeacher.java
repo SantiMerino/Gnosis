@@ -3,19 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controller;
+
 import Model.MTeacher;
 import java.sql.Connection;
 import java.sql.ResultSet;
+
 /**
- *Controller to create, delete, modify and read data methods of Teacher
+ * Controller of Methods of creating, deleting, modifying and reading data on Teachers. This class contains everything from the resource Teachers.
+ *
  * @author santi
  */
 public class CTeacher {
-    /*El mero matatan llego*/
-    
+
     Connection con = CConnection.getConnectionControllerWithoutParameters();
     private MTeacher mdlDocen = new MTeacher();
-    
+
     protected int ID;
     private String apellidosdocente;
     private String nombresdocente;
@@ -156,12 +158,18 @@ public class CTeacher {
         this.modeloDocentesC = modeloDocentesC;
     }
 
-    
-    
-    public boolean DocenteNuevoController() {
-        return mdlDocen.RegistrarDocenteModel(apellidosdocente, nombresdocente, direccion, dui, correo, fecha_nac, idgrado, idgenero, contacto, con);
-    }
-
+    /**
+     * Data insertion controller.
+     * @param apellidosdocente
+     * @param nombresdocente
+     * @param direccion
+     * @param dui
+     * @param correo
+     * @param fecha_nac
+     * @param idgrado
+     * @param idgenero
+     * @param contacto 
+     */
     public CTeacher(String apellidosdocente, String nombresdocente, String direccion, String dui, String correo, String fecha_nac, int idgrado, int idgenero, String contacto) {
         this.apellidosdocente = apellidosdocente;
         this.nombresdocente = nombresdocente;
@@ -173,21 +181,20 @@ public class CTeacher {
         this.idgenero = idgenero;
         this.contacto = contacto;
     }
-    
-    
-    
-    public boolean EliminarDocenteController() {
-        return mdlDocen.EliminarDocenteModel(ID, con);
-    }
-
-    public CTeacher(int ID) {
-        this.ID = ID;
-    }
-
-    public boolean ActualizarDocente() {
-        return mdlDocen.ActualizarDocenteModel(ID, apellidosdocente, nombresdocente, direccion, dui, correo, fecha_nac, idgrado, idgenero, contacto, con);
-    } 
-
+  
+    /**
+     * Controller for data update.
+     * @param ID
+     * @param apellidosdocente
+     * @param nombresdocente
+     * @param direccion
+     * @param dui
+     * @param correo
+     * @param fecha_nac
+     * @param idgrado
+     * @param idgenero
+     * @param contacto 
+     */
     public CTeacher(int ID, String apellidosdocente, String nombresdocente, String direccion, String dui, String correo, String fecha_nac, int idgrado, int idgenero, String contacto) {
         this.ID = ID;
         this.apellidosdocente = apellidosdocente;
@@ -200,27 +207,58 @@ public class CTeacher {
         this.idgenero = idgenero;
         this.contacto = contacto;
     }
+
+    /**
+     * Controller for data deletion.
+     * @param ID 
+     */
+    public CTeacher(int ID) {
+        this.ID = ID;
+    }
     
+    /**
+     * Controller Teacher
+     */
+    public CTeacher() {
+    }
+
     MTeacher modeloGeneros = new MTeacher();
     MTeacher modeloUsuarios = new MTeacher();
     MTeacher modeloDocentesC = new MTeacher();
-    
-    public ResultSet CCargarGeneros(){
-       return modeloGeneros.MCargarGenero(con);
+
+    public ResultSet CCargarGeneros() {
+        return modeloGeneros.MCargarGenero(con);
     }
-    
+
     public ResultSet CCargarUsuarios() {
         return modeloUsuarios.MCargarUsuarios(con);
     }
-    
-    public ResultSet CCargarDocentes(){
+
+    public ResultSet CCargarDocentes() {
         return modeloDocentesC.mostrarDocentes(con);
     }
-
-    public CTeacher() {
+    
+    /**
+     * Teachers controller for teachers insertion.
+     * @return 
+     */
+    public boolean DocenteNuevoController() {
+        return mdlDocen.RegistrarDocenteModel(apellidosdocente, nombresdocente, direccion, dui, correo, fecha_nac, idgrado, idgenero, contacto, con);
     }
-    
-    
-    
-    
+
+    /**
+     * Teachers Controller for updating the teachers.
+     * @return 
+     */
+    public boolean ActualizarDocente() {
+        return mdlDocen.ActualizarDocenteModel(ID, apellidosdocente, nombresdocente, direccion, dui, correo, fecha_nac, idgrado, idgenero, contacto, con);
+    }
+
+    /**
+     * Teachers Controller for the removal of the teachers in the Teachers.
+     * @return 
+     */
+    public boolean EliminarDocenteController() {
+        return mdlDocen.EliminarDocenteModel(ID, con);
+    }
 }

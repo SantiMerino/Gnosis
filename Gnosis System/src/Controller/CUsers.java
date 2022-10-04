@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
- *
+ * Controller of Methods of creating, deleting, modifying and reading data on Users. This class contains everything from the resource Users.
  * @author josec
  */
 public class CUsers {
@@ -88,6 +88,16 @@ public class CUsers {
         this.iddocente = iddocente;
     }
 
+    /**
+     * Data insertion controller.
+     * @param idnivelusuario
+     * @param username
+     * @param clave
+     * @param pin
+     * @param idestadousuario
+     * @param idalumno
+     * @param iddocente 
+     */
     public CUsers(int idnivelusuario, String username, String clave, int pin, int idestadousuario, int idalumno, int iddocente) {
         this.idnivelusuario = idnivelusuario;
         this.username = username;
@@ -98,6 +108,17 @@ public class CUsers {
         this.iddocente = iddocente;
     }
 
+    /**
+     * Controller for data update.
+     * @param ID
+     * @param idnivelusuario
+     * @param username
+     * @param clave
+     * @param pin
+     * @param idestadousuario
+     * @param idalumno
+     * @param iddocente 
+     */
     public CUsers(int ID, int idnivelusuario, String username, String clave, int pin, int idestadousuario, int idalumno, int iddocente) {
         this.ID = ID;
         this.idnivelusuario = idnivelusuario;
@@ -109,10 +130,17 @@ public class CUsers {
         this.iddocente = iddocente;
     }
 
+    /**
+     * Controller for data deletion.
+     * @param ID 
+     */
     public CUsers(int ID) {
         this.ID = ID;
     }
 
+    /**
+     * Controller Users
+     */
     public CUsers() {
     }
     
@@ -139,15 +167,27 @@ public class CUsers {
         return mdlUsers.mostrarUsuarios(con);
     }
     
+    /**
+     * Users controller for users insertion with the encryption of the pasword.
+     * @return 
+     */
     public boolean UsuarioNuevo() {
         String claveMD5 = CValidaciones.getMD5(clave);
         return mdlUsers.RegistrarUsuariosModel(idnivelusuario, username, claveMD5, pin, idestadousuario, idalumno, iddocente, con);
     }
 
+    /**
+     * Users Controller for updating the users.
+     * @return 
+     */
     public boolean ActualizarUsuario() {
         return mdlUsers.ActualizarUsuariosModel(ID, idnivelusuario, username, clave, pin, idestadousuario, idalumno, iddocente, con);
     }
 
+    /**
+     * Users Controller for the removal of the users.
+     * @return 
+     */
     public boolean EliminarUsuario() {
         return mdlUsers.EliminarUsuarioModel(ID, con);
     }

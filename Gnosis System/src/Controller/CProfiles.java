@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
- *
+ * Controller of Methods of creating, deleting, modifying and reading data on Profiles. This class contains everything from the resource Profiles.
  * @author santi
  */
 public class CProfiles {
@@ -106,6 +106,18 @@ public class CProfiles {
         this.idmateriadocente = idmateriadocente;
     }
 
+    /**
+     * Data insertion controller.
+     * @param nombre
+     * @param rubricadeevaluacion
+     * @param fechadeinicio
+     * @param fechadevencimiento
+     * @param porcentajedevaloracion
+     * @param descripcion
+     * @param idperfil
+     * @param idmateriadocente
+     * @param idgrado 
+     */
     public CProfiles(String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int idperfil, int idmateriadocente, int idgrado) {
         this.nombre = nombre;
         this.rubricadeevaluacion = rubricadeevaluacion;
@@ -118,6 +130,18 @@ public class CProfiles {
         this.idgrado = idgrado;
     }
 
+    /**
+     * Controller for data update.
+     * @param ID
+     * @param nombre
+     * @param rubricadeevaluacion
+     * @param fechadeinicio
+     * @param fechadevencimiento
+     * @param porcentajedevaloracion
+     * @param descripcion
+     * @param idperfil
+     * @param idgrado 
+     */
     public CProfiles(int ID, String nombre, String rubricadeevaluacion, String fechadeinicio, String fechadevencimiento, String porcentajedevaloracion, String descripcion, int idperfil, int idgrado) {
         this.ID = ID;
         this.nombre = nombre;
@@ -130,10 +154,17 @@ public class CProfiles {
         this.idgrado = idgrado;
     }
 
+    /**
+     * Controller for data deletion.
+     * @param ID 
+     */
     public CProfiles(int ID) {
         this.ID = ID;
     }
     
+    /**
+     * Controller Profiles
+     */
     public CProfiles() {
     }
     
@@ -156,14 +187,26 @@ public class CProfiles {
         return mdlPerfil.mostrarPerfiles(con);
     }
     
+    /**
+     * Profiles controller for resource insertion.
+     * @return 
+     */
     public boolean PerfilNuevaResultSet() {
         return mdlPerfil.SubirPerfilesModel(nombre, descripcion, porcentajedevaloracion, fechadeinicio, fechadevencimiento, idperfil,idmateriadocente, con);
     }
 
+    /**
+     * Profiles Controller for updating the profile resource.
+     * @return 
+     */
     public boolean ActualizarPerfil() {
         return mdlPerfil.ActualizarProfilesModel(ID, nombre, descripcion, porcentajedevaloracion, fechadeinicio, fechadevencimiento, idperfil, con);
     }
 
+    /**
+     * Profile Controller for the removal of the resource in the profile.
+     * @return 
+     */
     public boolean EliminarTareaController() {
         return mdlPerfil.EliminarProfileModel(ID, con);
     }

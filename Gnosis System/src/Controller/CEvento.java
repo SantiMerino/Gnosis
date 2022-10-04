@@ -10,7 +10,8 @@ import java.sql.ResultSet;
 import java.util.Date;
 
 /**
- *
+ *  Controller of Methods of creating, deleting, modifying and reading data on Library. This class contains everything from the resource Library.
+ * 
  * @author josec
  */
 public class CEvento {
@@ -109,7 +110,7 @@ public class CEvento {
     }
 
     /**
-     * Driver for data update.
+     * Controller for data update.
      * @param ID
      * @param nombreevento
      * @param fechaevento
@@ -169,7 +170,7 @@ public class CEvento {
     }
     
     /**
-     * Event Handler to register a new event.
+     * Event Controller to register a new event.
      * @return 
      */
     public boolean EventoNuevoResultSet(){
@@ -185,7 +186,7 @@ public class CEvento {
     }
     
     /**
-     * Event Handler for deleting an event.
+     * Event Controller for deleting an event.
      * @return 
      */
     public boolean EliminarEventoResultSet(){

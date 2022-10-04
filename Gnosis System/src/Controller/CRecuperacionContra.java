@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
- *Controller to create, delete, modify and read data methods of RecoveryAgainst
+ * Controller of of Methods reading data on Password recovery. This class contains everything from the resource Password recovery.
  * @author santi
  */
 public class CRecuperacionContra {

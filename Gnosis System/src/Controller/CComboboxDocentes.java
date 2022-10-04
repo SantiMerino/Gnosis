@@ -10,7 +10,7 @@ import Model.MTeacher;
 import java.sql.ResultSet;
 
 /**
- * Controller of Methods of creating, deleting, modifying and reading data on Teachers
+ * Controller of of Methods reading data on Teachers. This class contains everything from the resource Teachers.
  * @author Usuario
  */
 

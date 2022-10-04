@@ -10,7 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
- *
+ * Controller of of Methods insertion and reading data on Mood. This class contains everything from the resource Mood.
+ * 
  * @author PC
  */
 public class CMood {

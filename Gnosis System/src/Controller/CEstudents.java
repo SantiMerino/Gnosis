@@ -8,6 +8,7 @@ import Model.MEstudents;
 import java.sql.Connection;
 import java.sql.ResultSet;
 /**
+ *  Controller of Methods of creating, deleting, modifying and reading data on Students. This class contains everything from the resource Students.
  *
  * @author PC
  */
@@ -175,7 +176,7 @@ public class CEstudents {
     }
     
     /**
-     * Driver for data update.
+     * Controller for data update.
      * @param ID
      * @param apellidosalumno
      * @param nombresalumno

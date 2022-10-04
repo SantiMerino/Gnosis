@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 
 
 /**
- * Handler to create, delete, modify and read data methods on launch in notes
+ * Controller of Methods of creating, deleting, modifying and reading data on Grades. This class contains everything from the resource Grades.
  * @author Usuario
  */
 public class CNotas {
@@ -17,13 +17,12 @@ public class CNotas {
     private MNotas mdlnotas = new MNotas();
     
     
-    /*Encapsulamiento*/
+    //Potting
     protected int ID;
     private int idperfil;
     private int idalumno;
     
     /*Getter and Setter*/
-
     public Connection getCon() {
         return con;
     }
@@ -63,44 +62,61 @@ public class CNotas {
     public void setIdalumno(int idalumno) {
         this.idalumno = idalumno;
     }
-    
-    /*Data insertion*/
-    
-    public boolean RegistroNuevoController(){
-        return mdlnotas.RegistrarRegistroNotas(idperfil, idalumno, con);
-    }
-    
-    /*insert constructor*/
-
+      
+    /**
+     * Data insertion controller.
+     * 
+     * @param idperfil
+     * @param idalumno 
+     */
     public CNotas(int idperfil, int idalumno) {
         this.idperfil = idperfil;
         this.idalumno = idalumno;
     }
-    
-    /*Update*/
-    
-    public boolean ActualizarRegistroController(){
-        return mdlnotas.ActualizarRegistroNotas(ID, idperfil, idalumno, con);
-    }
-    
-    /*update builder*/
 
+    /**
+     * Controller for data update.
+     * 
+     * @param ID
+     * @param idperfil
+     * @param idalumno 
+     */
     public CNotas(int ID, int idperfil, int idalumno) {
         this.ID = ID;
         this.idperfil = idperfil;
         this.idalumno = idalumno;
     }
-    
-    /*data deletion*/
-    
-    public boolean EliminarRegistroController(){
-        return mdlnotas.EliminarEstudianteModel(ID, con);
-    }
-    
-    /*delete constructor*/
-
+  
+    /**
+     * Controller for data deletion.
+     * 
+     * @param ID 
+     */
     public CNotas(int ID) {
         this.ID = ID;
     }
     
+    /**
+     * Grades controller for grades insertion.
+     * @return 
+     */
+    public boolean RegistroNuevoController(){
+        return mdlnotas.RegistrarRegistroNotas(idperfil, idalumno, con);
+    }
+     
+    /**
+     * Grades Controller for updating the Grades resource.
+     * @return 
+     */
+    public boolean ActualizarRegistroController(){
+        return mdlnotas.ActualizarRegistroNotas(ID, idperfil, idalumno, con);
+    }
+
+    /**
+     * Grades Controller for the removal of the grades in the Grades.
+     * @return 
+     */
+    public boolean EliminarRegistroController(){
+        return mdlnotas.EliminarEstudianteModel(ID, con);
+    }  
 }

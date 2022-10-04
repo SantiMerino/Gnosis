@@ -7,7 +7,8 @@ import Model.MNotas;
 import java.sql.Connection;
 import java.sql.ResultSet;
 /**
- *controller of methods of creating, deleting, modifying and reading data on Notes
+ * Controller of of Methods reading data on Grades. This class contains everything from the resource Grades.
+ *
  * @author PC
  */
 public class CComboboxNotas {

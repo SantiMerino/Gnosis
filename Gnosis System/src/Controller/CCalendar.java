@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
- * This class contains everything from the resource library
+ * Controller of Methods of creating, deleting, modifying and reading data on Calendar. This class contains everything from the resource Calendar.
  * @author devro
  */
 public class CCalendar {

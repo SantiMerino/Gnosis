@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
- *Controller to create, delete, modify and read data methods of takss
+ * Controller of Methods of creating, deleting, modifying and reading data on Task. This class contains everything from the resource Task.
  * @author santi
  */
 public class CTasks {
@@ -80,6 +80,15 @@ public class CTasks {
         this.idtipotarea = idtipotarea;
     }
 
+    /**
+     * Data insertion controller.
+     * @param nombretarea
+     * @param fechadeinicio
+     * @param fechavencimiento
+     * @param idperfil
+     * @param rubrica
+     * @param idtipotarea 
+     */
     public CTasks(String nombretarea, String fechadeinicio, String fechavencimiento, int idperfil, String rubrica, int idtipotarea) {
         this.nombretarea = nombretarea;
         this.fechadeinicio = fechadeinicio;
@@ -89,6 +98,16 @@ public class CTasks {
         this.idtipotarea = idtipotarea;
     }
 
+    /**
+     * Controller for data update.
+     * @param ID
+     * @param nombretarea
+     * @param fechadeinicio
+     * @param fechavencimiento
+     * @param idperfil
+     * @param rubrica
+     * @param idtipotarea 
+     */
     public CTasks(int ID, String nombretarea, String fechadeinicio, String fechavencimiento, int idperfil, String rubrica, int idtipotarea) {
         this.ID = ID;
         this.nombretarea = nombretarea;
@@ -99,17 +118,24 @@ public class CTasks {
         this.idtipotarea = idtipotarea;
     }
 
+    /**
+     * Controller for data deletion.
+     * @param ID 
+     */
     public CTasks(int ID) {
         this.ID = ID;
     }
 
+    /**
+     * Controller Tasks
+     */
     public CTasks() {
     }
   
     MTasks mdlTask = new MTasks();
     private Connection con = CConnection.getConnectionControllerWithoutParameters();
-    
-     public ResultSet Search(String letra){
+
+    public ResultSet Search(String letra) {
         return mdlTask.Search(letra, con);
     }
     
@@ -125,14 +151,26 @@ public class CTasks {
         return mdlTask.mostrarTareas(con);
     }
     
+    /**
+     * Tasks controller for resource insertion.
+     * @return 
+     */
     public boolean TareaNuevaResultSet(){
         return mdlTask.SubirTareasModel(nombretarea, fechadeinicio, fechavencimiento, idperfil, rubrica, idtipotarea, con);
     }
     
+    /**
+     * Tasks Controller for updating the library resource.
+     * @return 
+     */
     public boolean ActualizarTareaController(){
         return mdlTask.ActualizarTareasModel(ID, nombretarea, fechadeinicio, fechavencimiento, idperfil, rubrica, idtipotarea, con);
     }
     
+    /**
+     * Tasks Controller for the removal of the task in the Tasks.
+     * @return 
+     */
     public boolean EliminarTareaController() {
         return mdlTask.EliminarTareaModel(ID, con);
     }
@@ -153,14 +191,24 @@ public class CTasks {
         return mdlTask.BuscarTareasEstudiantes(iddocente,idtarea, con);
     }
     
-    
-    //Controlador para subir la tarea - Estudiante
-    
+    /**
+     * Controller to upload the task - Student
+     * @param idtarea
+     * @param idalumno
+     * @param pdf
+     * @param link
+     * @return 
+     */
     public boolean UploadTaskStudents(int idtarea, int idalumno ,String pdf, String link){
         return mdlTask.UploadTaskStudent(link, pdf, idalumno, idtarea, con);
     }
     
-    
+    /**}
+     * Controller to qualify the task
+     * @param nota
+     * @param idtareaalumno
+     * @return 
+     */
     public boolean CalificarTask(double nota,int idtareaalumno){
         return mdlTask.CalificarTask(nota, idtareaalumno, con);
     }

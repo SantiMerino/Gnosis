@@ -6,6 +6,7 @@
 package Controller;
 
 /**
+ * Controller of of Methods reading data on Configuration. This class contains everything from the resource Configuration.
  * 
  * @author Usuario
  */

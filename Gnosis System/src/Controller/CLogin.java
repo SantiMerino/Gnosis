@@ -8,7 +8,8 @@ import Model.MLogin;
 import java.sql.ResultSet;
 
 /**
- *Handler for creating, deleting, modifying, and reading data methods on login
+ * Controller of of Methods insertion and reading data on Login. This class contains everything from the resource Login.
+ *
  * @author santi
  */
 public class CLogin {

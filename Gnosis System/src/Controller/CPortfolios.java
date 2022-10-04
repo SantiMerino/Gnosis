@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
- *Controller for create, delete, modify and read profile data methods
+ * Controller of Methods of reading data on Portfolio. This class contains everything from the resource Portfolio.
  * @author santi
  */
 public class CPortfolios {

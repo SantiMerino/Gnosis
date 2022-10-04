@@ -9,7 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- *Controller to create, delete, modify and read data methods of Validations
+ * Controller of of Methods reading and validations data on Validations. This class contains everything from the resource Validations.
  * @author santi
  */
 public class CValidaciones {

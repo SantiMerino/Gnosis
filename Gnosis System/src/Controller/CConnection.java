@@ -9,7 +9,7 @@ import Model.MConnection;
 import java.sql.Connection;
 
 /**
- *
+ * Controller of of Methods reading data on Connection. This class contains everything from the resource Connection.
  * @author santi
  */
 public class CConnection {

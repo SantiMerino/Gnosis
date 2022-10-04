@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 
 
 /**
- * controller of methods of creation, deletion, modification and reading of data on library
+ * Controller of Methods of creating, deleting, modifying and reading data on Library. This class contains everything from the resource Library.
  * @author Usuario
  */
 public class CBiblioteca {
@@ -33,10 +33,7 @@ public class CBiblioteca {
     public String getNombrerecurso() {
         return nombrerecurso;
     }
-/**
- * name controller library courses
- * @param nombrerecurso 
- */
+    
     public void setNombrerecurso(String nombrerecurso) {
         this.nombrerecurso = nombrerecurso;
     }
@@ -49,10 +46,6 @@ public class CBiblioteca {
         this.idtiporecurso = idtiporecurso;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public int getIdclasificacion() {
         return idclasificacion;
     }
@@ -95,7 +88,7 @@ public class CBiblioteca {
     }
 
     /**
-     * Controlador para la actualizacion de datos.
+     * Controller for data update.
      *
      * @param ID
      * @param nombrerecurso
@@ -114,7 +107,7 @@ public class CBiblioteca {
     }
 
     /**
-     * Controlador para la eliminacion de datos.
+     * Controller for data deletion.
      *
      * @param ID
      */
@@ -123,7 +116,7 @@ public class CBiblioteca {
     }
 
     /**
-     * Controlador Biblioteca
+     * Library Controller
      */
     public CBiblioteca() {
     }
@@ -132,7 +125,7 @@ public class CBiblioteca {
     private Connection con = CConnection.getConnectionControllerWithoutParameters();
 
     /**
-     * Controlador Biblioteca para la busqueda de datos.
+     * Library controller for data search.
      *
      * @param letra
      * @return
@@ -154,7 +147,7 @@ public class CBiblioteca {
     }
 
     /**
-     * Controlador Biblioteca para la inserción de recursos.
+     * Library controller for resource insertion.
      *
      * @return
      */
@@ -163,7 +156,7 @@ public class CBiblioteca {
     }
 
     /**
-     * Controlador Biblioteca para al actualizacion de el recurso de la biblioteca.
+     * Library Controller for updating the library resource.
      *
      * @return
      */
@@ -172,7 +165,7 @@ public class CBiblioteca {
     }
 
     /**
-     * Controlador Biblioteca para la eliminacion de el recurso en la biblioteca.
+     * Library Controller for the removal of the resource in the library.
      *
      * @return
      */

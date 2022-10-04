@@ -8,7 +8,8 @@ import Model.MEstudents;
 import java.sql.Connection;
 import java.sql.ResultSet;
 /**
- *controller of methods of creating, deleting, modifying and reading data about Students
+ * Controller of of Methods reading data on Students. This class contains everything from the resource Students.
+ *
  * @author PC
  */
 public class CComboboxEstudiantes {
