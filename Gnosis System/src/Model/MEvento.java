@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
+ * Model of Methods of creating, deleting, modifying and reading data on Events. This class contains everything from the resource Events.
  * @author josec
  */
 public class MEvento {

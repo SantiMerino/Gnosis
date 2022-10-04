@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Model of Methods of reading data on Portfolio. This class contains everything from the resource Portfolio.
  * @author santi
  */
 public class MPortfolios {

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Model of Methods of creating, deleting, modifying and reading data on Profile. This class contains everything from the resource ProfilesS.
  * @author santi
  */
 public class MProfiles {

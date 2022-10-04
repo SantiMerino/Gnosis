@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Model of Methods of reading data on Connection. This class contains everything from the resource Cnnnection.
  * @author santi
  */
 public class MConnection {

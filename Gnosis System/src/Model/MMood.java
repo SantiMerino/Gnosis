@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Model of Methods of creating, deleting, modifying and reading data on Mood. This class contains everything from the resource Mood.
  * @author PC
  */
 public class MMood {
@@ -30,6 +30,14 @@ public class MMood {
         }
     }
     
+    /**
+     * Method in the Mood Model to register the time spent.
+     * @param enfoque
+     * @param tiempo
+     * @param idmateria
+     * @param con
+     * @return 
+     */
     public boolean RegistrarEventoModel(String enfoque, String tiempo, int idmateria, Connection con) {
         try {           
             String query = "INSERT INTO tbEnfoque VALUES (?,?,?)";

@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Model of Methods reading data on Password recovery. This class contains everything from the resource Password recovery.
  * @author santi
  */
 public class MRecuperacionContra {

@@ -11,12 +11,15 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
+ * Model of Methods of creating, deleting, modifying and reading data on Users.
+ * This class contains everything from the resource Users.
  *
  * @author josec
  */
 public class MUsers {
+
     PreparedStatement ps;
-    
+
     public ResultSet CargaCmbEstadoUsuario() {
         Connection con;
         try {
@@ -30,7 +33,7 @@ public class MUsers {
             return null;
         }
     }
-    
+
     public ResultSet CargaCmbAlumnos() {
         Connection con;
         try {
@@ -44,7 +47,7 @@ public class MUsers {
             return null;
         }
     }
-    
+
     public ResultSet CargaCmbDocentes() {
         Connection con;
         try {
@@ -58,7 +61,7 @@ public class MUsers {
             return null;
         }
     }
-    
+
     public ResultSet CargaCmbNivelUsuario() {
         Connection con;
         try {
@@ -72,8 +75,8 @@ public class MUsers {
             return null;
         }
     }
-    
-    public ResultSet mostrarUsuarios(Connection con){
+
+    public ResultSet mostrarUsuarios(Connection con) {
         try {
             String query = "SELECT * FROM tbUsuario;";
             ps = con.prepareStatement(query);
@@ -84,13 +87,25 @@ public class MUsers {
             return null;
         }
     }
-    
+
+    /**
+     * Method in the Users Model of data insertion to register a user.
+     * @param nivelusuario
+     * @param username
+     * @param clave
+     * @param pin
+     * @param estadousuario
+     * @param alumno
+     * @param docente
+     * @param con
+     * @return 
+     */
     public boolean RegistrarUsuariosModel(int nivelusuario, String username, String clave, int pin, int estadousuario, int alumno, int docente, Connection con) {
-        try {        
+        try {
             if (alumno == 0) {
                 alumno = 10;
-            } 
-            if(docente == 0){
+            }
+            if (docente == 0) {
                 docente = 114;
             }
             String query = "INSERT INTO tbUsuario VALUES (?,?,?,?,?,?,?)";
@@ -102,22 +117,35 @@ public class MUsers {
             ps.setInt(5, estadousuario);
             ps.setInt(6, alumno);
             ps.setInt(7, docente);
-            if (ps.executeUpdate () == 1) {
+            if (ps.executeUpdate() == 1) {
                 return true;
             } else {
                 return false;
-            }            
-         } catch (SQLException e) {
+            }
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al ingresar los datos, verifique la conexion. " + e.toString());
             return false;
-        } catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro critico. " + ex.toString());
             return false;
         }
     }
-    
-    public boolean ActualizarUsuariosModel(int ID, int nivelusuario, String username, String clave, int pin, int estadousuario, int alumno, int docente, Connection con){
-         try {
+
+    /**
+     * Method in the Users Model for updating a user.
+     * @param ID
+     * @param nivelusuario
+     * @param username
+     * @param clave
+     * @param pin
+     * @param estadousuario
+     * @param alumno
+     * @param docente
+     * @param con
+     * @return 
+     */
+    public boolean ActualizarUsuariosModel(int ID, int nivelusuario, String username, String clave, int pin, int estadousuario, int alumno, int docente, Connection con) {
+        try {
             String query = "UPDATE tbUsuario SET idnivelusuario = ?, username = ?, clave = ?, pin = ?, idestadousuario = ?, idalumno = ?, iddocente = ? WHERE idusuario = ?";
             ps = con.prepareStatement(query);
             ps.setInt(1, nivelusuario);
@@ -135,17 +163,23 @@ public class MUsers {
             return false;
         }
     }
-    
-    public boolean EliminarUsuarioModel(int ID, Connection con) {     
+
+    /**
+     * Method in the Users Model for the elimination of a user.
+     * @param ID
+     * @param con
+     * @return 
+     */
+    public boolean EliminarUsuarioModel(int ID, Connection con) {
         try {
-             String query = "DELETE tbUsuario WHERE idusuario = ?";
-             ps = con.prepareStatement(query);
-             ps.setInt(1, ID);
-             ps.execute();
-             return true;
+            String query = "DELETE tbUsuario WHERE idusuario = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, ID);
+            ps.execute();
+            return true;
         } catch (SQLException e) {
-             JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion" + e.toString());
-             return false;
-        }        
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion" + e.toString());
+            return false;
+        }
     }
 }

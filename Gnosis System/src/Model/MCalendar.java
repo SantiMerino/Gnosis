@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Model of Methods of creating, deleting, modifying and reading data on Calendar. This class contains everything from the resource Calendar.
  * @author devro
  */
 public class MCalendar {

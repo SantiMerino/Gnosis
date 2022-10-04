@@ -12,14 +12,16 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
+ * Model of Methods of creating, deleting, modifying and reading data on Students. This class contains everything from the resource Students.
  *
  * @author PC
  */
 public class MEstudents {
+
     /*Llenar combobox*/
     PreparedStatement ps;
-    
-    public ResultSet MCargarGenero(Connection con){
+
+    public ResultSet MCargarGenero(Connection con) {
         try {
             String query = "SELECT * FROM tbGeneros";
             ps = con.prepareStatement(query);
@@ -30,8 +32,8 @@ public class MEstudents {
             return null;
         }
     }
-    
-    public ResultSet MCargarGrados(Connection con){
+
+    public ResultSet MCargarGrados(Connection con) {
         try {
             String query = "SELECT * FROM tbGrados";
             ps = con.prepareStatement(query);
@@ -42,8 +44,8 @@ public class MEstudents {
             return null;
         }
     }
-    
-    public ResultSet MCargarUsuarios(Connection con){
+
+    public ResultSet MCargarUsuarios(Connection con) {
         try {
             String query = "SELECT * FROM tbUsuario";
             ps = con.prepareStatement(query);
@@ -54,9 +56,8 @@ public class MEstudents {
             return null;
         }
     }
-    
-    /*Cargar tabla de registros*/
-     public ResultSet mostrarEstudiantes(Connection con){
+
+    public ResultSet mostrarEstudiantes(Connection con) {
         try {
             String query = "SELECT * FROM tbAlumnos";
             ps = con.prepareStatement(query);
@@ -67,8 +68,8 @@ public class MEstudents {
             return null;
         }
     }
-     
-    public ResultSet idAlumnoParaUsuario(String correo,Connection con){
+
+    public ResultSet idAlumnoParaUsuario(String correo, Connection con) {
         try {
             String query = "SELECT (idalumno) FROM tbAlumnos WHERE correo = ?";
             ps = con.prepareStatement(query);
@@ -80,8 +81,8 @@ public class MEstudents {
             return null;
         }
     }
-    
-    public ResultSet DatosAlumnoLog(int idalumno, Connection con){
+
+    public ResultSet DatosAlumnoLog(int idalumno, Connection con) {
         try {
             String query = "SELECT * FROM viewAlumnos WHERE idalumno = ?";
             ps = con.prepareStatement(query);
@@ -89,20 +90,21 @@ public class MEstudents {
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No fue posible cargar los datos de los alumnos "+e.toString());
+            JOptionPane.showMessageDialog(null, "No fue posible cargar los datos de los alumnos " + e.toString());
             return null;
         }
     }
-    
+
     /**
-     * Metedo en el Modelo Estudiantes para registrar el usuario del alumno.
+     * Method in the Student Model to register the student's user.
+     *
      * @param nivel
      * @param correo
      * @param idalumno
      * @param clavedefault
      * @param con
-     * @return 
-     */ 
+     * @return
+     */
     public boolean RegistrarUsuarioAlumno(int nivel, String correo, int idalumno, String clavedefault, Connection con) {
         int estadouser = 2;
         int pindefault = 12345;
@@ -127,9 +129,10 @@ public class MEstudents {
             return false;
         }
     }
-     
+
     /**
-     * Metedo en el Modelo Estudiantes para registrar un alumno.
+     * Method in the Student Model to register a student.
+     *
      * @param ApellidosAlumno
      * @param NombresAlumno
      * @param idgenero
@@ -141,7 +144,7 @@ public class MEstudents {
      * @param fecha_nac
      * @param codigocarnet
      * @param con
-     * @return 
+     * @return
      */
     public boolean RegistrarAlumnoModel(String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, String codigocarnet, Connection con) {
         try {
@@ -172,9 +175,10 @@ public class MEstudents {
             return false;
         }
     }
-     
+
     /**
-     * Metedo en el Modelo Estudiantes para actualizar un estudiante.
+     * Method in the Student Model to update a student.
+     *
      * @param ID
      * @param ApellidosAlumno
      * @param NombresAlumno
@@ -187,35 +191,35 @@ public class MEstudents {
      * @param fecha_nac
      * @param codigocarnet
      * @param con
-     * @return 
-     */ 
-     public boolean ActualizarEstudianteModel(int ID, String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, String codigocarnet, Connection con){
-         try {
+     * @return
+     */
+    public boolean ActualizarEstudianteModel(int ID, String ApellidosAlumno, String NombresAlumno, int idgenero, int idgrado, String correo, String direccion, String contacto, String dui, String fecha_nac, String codigocarnet, Connection con) {
+        try {
 //             JOptionPane.showMessageDialog(null, idgenero);
-             String query = "UPDATE tbAlumnos SET apellidos_alumno = ?, nombres_alumno = ?, idgenero = ?, idgrado = ?, correo = ?, direccion = ?, contacto = ?, dui = ?, fecha_nac = ? WHERE idalumno = ?";
+            String query = "UPDATE tbAlumnos SET apellidos_alumno = ?, nombres_alumno = ?, idgenero = ?, idgrado = ?, correo = ?, direccion = ?, contacto = ?, dui = ?, fecha_nac = ? WHERE idalumno = ?";
             ps = con.prepareStatement(query);
-             ps.setString(1, ApellidosAlumno);
-             ps.setString(2, NombresAlumno);
-             ps.setInt(3, idgenero);
-             ps.setInt(4, idgrado);
-             ps.setString(5, correo);
-             ps.setString(6, direccion);
-             ps.setString(7, contacto);
-             ps.setString(8, dui);
-             ps.setString(9, fecha_nac);
+            ps.setString(1, ApellidosAlumno);
+            ps.setString(2, NombresAlumno);
+            ps.setInt(3, idgenero);
+            ps.setInt(4, idgrado);
+            ps.setString(5, correo);
+            ps.setString(6, direccion);
+            ps.setString(7, contacto);
+            ps.setString(8, dui);
+            ps.setString(9, fecha_nac);
 //             ps.setInt(10, idusuario);
 //             ps.setString(10, codigocarnet);
-             ps.setInt(10, ID);
-             ps.execute();
-             return true;
-         } catch (Exception e) {
-             JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar el registro" + e.toString());
-             return false;
-         }
-     }
+            ps.setInt(10, ID);
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar el registro" + e.toString());
+            return false;
+        }
+    }
 
     /**
-     * Metedo en el Modelo Estudiante para eliminar un estudiante.
+     * Method in the Student Model to remove a student.
      *
      * @param ID
      * @param con
@@ -233,12 +237,13 @@ public class MEstudents {
             return false;
         }
     }
-     
+
     /**
-     * Metedo en el Modelo Estudiantes para buscar un alumno mediante su codigo de carnet o su nombre.
+     * Method in the Student Model to search for a student using their card code or name.
+     *
      * @param carnet
      * @param con
-     * @return 
+     * @return
      */
     public ResultSet SearchCrnt(String carnet, Connection con) {
         try {
@@ -252,5 +257,5 @@ public class MEstudents {
         } catch (Exception e) {
             return null;
         }
-    }  
+    }
 }

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Model of Methods of creating, deleting, modifying and reading data on Library. This class contains everything from the resource Library.
  * @author josec
  */
 public class MBiblioteca {
@@ -59,7 +59,7 @@ public class MBiblioteca {
     }
     
     /**
-     * Metedo en el Modelo Biblioteca para subir un recurso en la biblioteca.
+     * Method in the Library Model to isnert a resource in the library.
      * @param nombrerecurso
      * @param idtiporecurso
      * @param idclasificacion
@@ -161,7 +161,12 @@ public class MBiblioteca {
         }
     }
      
-     
+     /**
+      * Method in the Library Model to load the view of the library.
+      * @param id
+      * @param con
+      * @return 
+      */
     public ResultSet CargarRecursosVista(int id, Connection con){
         try {
             String query = "SELECT * FROM viewBiblioteca WHERE idalumno = ?";

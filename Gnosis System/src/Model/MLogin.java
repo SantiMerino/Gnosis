@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Model of Methods of creating, deleting, modifying and reading data on Login. This class contains everything from the resource Login.
  * @author santi
  */
 public class MLogin {
@@ -41,6 +41,11 @@ public class MLogin {
         }
     }
     
+    /**
+     * Method in the Login Module to block a user in the system.
+     * @param user
+     * @return 
+     */
     public static boolean BloquearUsuario (String user){
         Connection conexion = MConnection.getConnectionWithoutParameters();
         PreparedStatement ps;

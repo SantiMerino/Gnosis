@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Model of Methods of creating, deleting, modifying and reading data on Grades. This class contains everything from the resource Grades.
  * @author PC
  */
 public class MNotas {
@@ -123,7 +123,7 @@ public class MNotas {
     
     /*Elimination*/
     /**
-     * Metodo en el Modelo Notas para la eliminacion de una nota. 
+     * Method in the Notes Model for deleting a note. 
      * @param ID
      * @param con
      * @return 

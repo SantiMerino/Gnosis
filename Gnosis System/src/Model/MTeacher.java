@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Model of Methods of creating, deleting, modifying and reading data on Teacher. This class contains everything from the resource Teacher.
  * @author santi
  */
 public class MTeacher {
@@ -68,7 +68,7 @@ public class MTeacher {
     
     
     /**
-     * Metodo en el Modelo Profesores de insercion de datos para registrar un docente.
+     * Method in the Teachers Model of data insertion to register a teacher.
      * @param apellidosdocente
      * @param nombresdocente
      * @param direccion
@@ -113,7 +113,7 @@ public class MTeacher {
     }
      
     /**
-     *Method in the Teachers Model for updating teachers.
+     * Method in the Teachers Model for updating teachers.
      * @param ID
      * @param apellidosdocente
      * @param nombresdocente

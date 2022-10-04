@@ -12,13 +12,15 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- * This java class is for all the methods for tasks managment
+ * Model of Methods of creating, deleting, modifying and reading data on Tasks.
+ * This class contains everything from the resource Tasks.
+ *
  * @author santi
  */
 public class MTasks {
 
     PreparedStatement ps;
-    
+
     public ResultSet CargaCmbTipoPerfil() {
         Connection con;
         try {
@@ -32,7 +34,7 @@ public class MTasks {
             return null;
         }
     }
-    
+
     public ResultSet CargaCmbTipoTarea() {
         Connection con;
         try {
@@ -46,8 +48,8 @@ public class MTasks {
             return null;
         }
     }
-    
-    public ResultSet CargarTareasPrev(){
+
+    public ResultSet CargarTareasPrev() {
         Connection con;
         try {
             con = MConnection.getConnectionWithoutParameters();
@@ -60,9 +62,8 @@ public class MTasks {
             return null;
         }
     }
-    
-        
-    public ResultSet CargarTareasPrevDocente(int id){
+
+    public ResultSet CargarTareasPrevDocente(int id) {
         Connection con;
         try {
             con = MConnection.getConnectionWithoutParameters();
@@ -76,10 +77,8 @@ public class MTasks {
             return null;
         }
     }
-    
-    
-        
-    public ResultSet CargarTareasFull(int idtarea){
+
+    public ResultSet CargarTareasFull(int idtarea) {
         Connection con;
         try {
             con = MConnection.getConnectionWithoutParameters();
@@ -89,18 +88,17 @@ public class MTasks {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return rs;
-            } else{
+            } else {
                 return null;
             }
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
             return null;
         }
     }
-    
-    
-    public ResultSet mostrarTareas(Connection con){
+
+    public ResultSet mostrarTareas(Connection con) {
         try {
             String query = "SELECT * FROM tbTareas";
             ps = con.prepareStatement(query);
@@ -111,9 +109,10 @@ public class MTasks {
             return null;
         }
     }
-    
+
     /**
      * Method in the Tasks Model to upload tasks assigned to a profile.
+     *
      * @param nombretarea
      * @param fechainicio
      * @param fechavencimiento
@@ -121,10 +120,10 @@ public class MTasks {
      * @param rubrica
      * @param idtipotarea
      * @param con
-     * @return 
+     * @return
      */
     public boolean SubirTareasModel(String nombretarea, String fechainicio, String fechavencimiento, int idperfil, String rubrica, int idtipotarea, Connection con) {
-        try {            
+        try {
             String query = "INSERT INTO tbTareas VALUES (?,?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, nombretarea);
@@ -137,18 +136,19 @@ public class MTasks {
                 return true;
             } else {
                 return false;
-            }            
-         } catch (SQLException e) {
+            }
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al ingresar los datos, verifique la conexion. " + e.toString());
             return false;
-        } catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro critico. " + ex.toString());
             return false;
         }
     }
-    
+
     /**
      * Method in the Tasks Model to update the tasks.
+     *
      * @param ID
      * @param nombretarea
      * @param fechadeinicio
@@ -157,9 +157,9 @@ public class MTasks {
      * @param rubrica
      * @param idtipotarea
      * @param con
-     * @return 
+     * @return
      */
-    public boolean ActualizarTareasModel(int ID, String nombretarea, String fechadeinicio, String fechavencimiento, int idperfil, String rubrica, int idtipotarea, Connection con){
+    public boolean ActualizarTareasModel(int ID, String nombretarea, String fechadeinicio, String fechavencimiento, int idperfil, String rubrica, int idtipotarea, Connection con) {
         try {
             String query = "UPDATE tbTareas SET nombretarea = ?, fechadeinicio = ?, fechavencimiento = ?, idperfil = ?, rubrica = ?, idtipotarea = ? WHERE idtarea = ?";
             ps = con.prepareStatement(query);
@@ -177,12 +177,13 @@ public class MTasks {
             return false;
         }
     }
-    
+
     /**
      * Method in the Tasks Model to delete tasks
+     *
      * @param ID
      * @param con
-     * @return 
+     * @return
      */
     public boolean EliminarTareaModel(int ID, Connection con) {
         try {
@@ -196,7 +197,7 @@ public class MTasks {
             return false;
         }
     }
-    
+
     public ResultSet Search(String nombre, Connection con) {
         try {
             String query = "select * from tbTareas where nombretarea like(?) or fechadeinicio like(?)";
@@ -206,31 +207,48 @@ public class MTasks {
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {
-            return  null;
-        }        
+            return null;
+        }
     }
-    
-    
-    public boolean UploadTaskStudent(String link, String pdf, int idalumno,int idtarea, Connection con){
-            try {
-                String query = "INSERT INTO tbTareasAlumnos VALUES (?,?,?,?)";
-                ps = con.prepareStatement(query);
-                ps.setInt(1, idtarea);
-                ps.setInt(2, idalumno);
-                ps.setString(3, pdf);
-                ps.setString(4, link);
-                if (ps.executeUpdate() == 1) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } catch (SQLException ex) {
-               JOptionPane.showMessageDialog(null, "Hubo un error en al subir la tarea " + ex.toString());
-               return false;
+
+    /**
+     * Method in the Tasks model to upload an assignment as a student.
+     *
+     * @param link
+     * @param pdf
+     * @param idalumno
+     * @param idtarea
+     * @param con
+     * @return
+     */
+    public boolean UploadTaskStudent(String link, String pdf, int idalumno, int idtarea, Connection con) {
+        try {
+            String query = "INSERT INTO tbTareasAlumnos VALUES (?,?,?,?)";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, idtarea);
+            ps.setInt(2, idalumno);
+            ps.setString(3, pdf);
+            ps.setString(4, link);
+            if (ps.executeUpdate() == 1) {
+                return true;
+            } else {
+                return false;
             }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Hubo un error en al subir la tarea " + ex.toString());
+            return false;
+        }
     }
-    
-    public boolean CalificarTask(double nota,int idtareaalumno,Connection con){
+
+    /**
+     * Method in the Tasks model to grade the task uploaded by the student.
+     *
+     * @param nota
+     * @param idtareaalumno
+     * @param con
+     * @return
+     */
+    public boolean CalificarTask(double nota, int idtareaalumno, Connection con) {
         try {
             String query = "UPDATE tbTareasAlumnos SET nota = ? WHERE idtareaalumno = ?";
             ps = con.prepareStatement(query);
@@ -239,19 +257,19 @@ public class MTasks {
             ps.execute();
             return true;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Surgio un problema al calificar la tarea "+ e.toString());
+            JOptionPane.showMessageDialog(null, "Surgio un problema al calificar la tarea " + e.toString());
             return false;
         }
     }
-    
-     public ResultSet BuscarTipoPerfil(String clasificacion,int iddocente,Connection con){
+
+    public ResultSet BuscarTipoPerfil(String clasificacion, int iddocente, Connection con) {
         try {
             ResultSet rs;
             String sentencia = "";
             if (iddocente == 0) {
-                sentencia = "SELECT * FROM viewTareas WHERE Estado LIKE '"+clasificacion+"%'";
-            } else{
-                sentencia = "SELECT * FROM viewTareasDocentes WHERE iddocente = "+iddocente +"AND Estado LIKE '"+clasificacion+"%'";
+                sentencia = "SELECT * FROM viewTareas WHERE Estado LIKE '" + clasificacion + "%'";
+            } else {
+                sentencia = "SELECT * FROM viewTareasDocentes WHERE iddocente = " + iddocente + "AND Estado LIKE '" + clasificacion + "%'";
             }
             ps = con.prepareStatement(sentencia);
             rs = ps.executeQuery();
@@ -261,8 +279,8 @@ public class MTasks {
             return null;
         }
     }
-     
-     public ResultSet Estado(String clasificacion, int iddocente,Connection con){
+
+    public ResultSet Estado(String clasificacion, int iddocente, Connection con) {
         try {
             ResultSet rs;
             String sentencia = "";
@@ -279,22 +297,28 @@ public class MTasks {
             return null;
         }
     }
-     
-    public ResultSet CargarDatosAlumnoTarea(int idtarea,  int idalumno, Connection con) {
+
+    public ResultSet CargarDatosAlumnoTarea(int idtarea, int idalumno, Connection con) {
         try {
-            String query = "SELECT * FROM tbTareasAlumnos WHERE idtarea = "+idtarea+" AND idalumno =" +idalumno;
+            String query = "SELECT * FROM tbTareasAlumnos WHERE idtarea = " + idtarea + " AND idalumno =" + idalumno;
             System.out.println(query);
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
-            return  null;
-        }        
+            return null;
+        }
     }
     
-     
-    public ResultSet BuscarTareasEstudiantes(int docente,  int tarea, Connection con) {
+    /**
+     * Method in the Tasks model for loading student assignments using the same method as a view.
+     * @param docente
+     * @param tarea
+     * @param con
+     * @return 
+     */
+    public ResultSet BuscarTareasEstudiantes(int docente, int tarea, Connection con) {
         try {
             String query = "SELECT CONCAT(e.nombres_alumno,' ',e.apellidos_alumno) AS Alumno, b.nombretarea , a.archivo, a.link,  a.nota, a.idtareaalumno FROM tbTareasAlumnos a, tbTareas b, tbPerfiles c, tbMateriaDocentes d, tbAlumnos e, tbDocentes f, tbGrados g WHERE  a.idtarea = b.idtarea AND a.idalumno = e.idalumno AND b.idperfil = c.idperfil AND c.idgrados = g.idgrado AND c.idmateriadocente = d.idmateriadocente AND d.iddocente = f.iddocente  AND d.iddocente = ? AND a.idtarea = ?";
             ps = con.prepareStatement(query);
@@ -303,8 +327,8 @@ public class MTasks {
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {
-            return  null;
-        }        
+            return null;
+        }
     }
-     
+
 }
