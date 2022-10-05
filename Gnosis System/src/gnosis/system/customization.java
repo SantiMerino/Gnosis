@@ -263,7 +263,7 @@ public class customization {
                 tareaframe.setVisible(true);
                 break;
             case 2:
-                Frame frame2 = new frmUploadTaskTeacher(idtarea, iddocente);
+                Frame frame2 = new frmUploadTaskTeacher(idtarea, iddocente, materiamoduloColor);
                 frame2.setVisible(true);
                 break;
         }
@@ -537,7 +537,7 @@ public class customization {
                 tareaframe.setVisible(true);
                 break;
             case 2:
-                Frame frame2 = new frmUploadTaskTeacher(idtarea, iddocente);
+                Frame frame2 = new frmUploadTaskTeacher(idtarea, iddocente, materiamoduloColor);
                 frame2.setVisible(true);
                 break;
         }

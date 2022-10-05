@@ -159,7 +159,8 @@ public class panTasks extends javax.swing.JPanel {
         filtersPan.setPreferredSize(new java.awt.Dimension(500, 50));
         filtersPan.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 15, 10));
 
-        buttonRound1.setText("Recargar");
+        buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
+        buttonRound1.setPreferredSize(new java.awt.Dimension(40, 40));
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
@@ -301,6 +302,9 @@ public class panTasks extends javax.swing.JPanel {
 
     private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
         // TODO add your handling code here:
+        mainPan.removeAll();
+        mainPan.repaint();
+        mainPan.revalidate();
         CargarTareasAlumnos();
     }//GEN-LAST:event_buttonRound1ActionPerformed
 

@@ -214,6 +214,7 @@ public class panGrades extends javax.swing.JPanel {
         });
 
         AgregarPerfil.setText("Gestionar Perfiles");
+        AgregarPerfil.setRound(20);
         AgregarPerfil.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         AgregarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

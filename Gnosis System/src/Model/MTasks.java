@@ -221,9 +221,9 @@ public class MTasks {
      * @param con
      * @return
      */
-    public boolean UploadTaskStudent(String link, String pdf, int idalumno, int idtarea, Connection con) {
+    public boolean UploadTaskStudent(int idtarea, int idalumno ,String link, String pdf,  Connection con) {
         try {
-            String query = "INSERT INTO tbTareasAlumnos VALUES (?,?,?,?)";
+            String query = "INSERT INTO tbTareasAlumnos VALUES (?,?,?,?,00.0)";
             ps = con.prepareStatement(query);
             ps.setInt(1, idtarea);
             ps.setInt(2, idalumno);

@@ -6,7 +6,8 @@ package gnosis.system;
 
 import Controller.CConnection;
 import Controller.CTasks;
-import static gnosis.system.customization.notificacion;
+import customizeObjects.ButtonRound;
+import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -50,7 +51,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         initComponents();
     }
     
-    public frmUploadTaskTeacher(int idtarea, int iddocente){
+    public frmUploadTaskTeacher(int idtarea, int iddocente, String materimodulo){
         initComponents();
         lblIDTareaAlumno.setVisible(false);
         iddocentelog = iddocente;
@@ -58,8 +59,10 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         String [] TitulosDocentes = {"Alumno", "Tarea", "Archivo", "Link", "Nota", "ID"};
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tablaTareas.setModel(tablaModel);
-        tablaTareas.getColumnModel().getColumn(5).setMinWidth(0);
         CargarTabla();
+        MateriaColor(materimodulo);
+        tablaTareas.getColumnModel().getColumn(5).setMaxWidth(0);
+        tablaTareas.getColumnModel().getColumn(5).setMinWidth(0);
         lblTarea64.setVisible(false);
         lblTareaLink.setVisible(false);
     }
@@ -79,6 +82,48 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se cargo la tabla");
         }
+    }
+    
+    void MateriaColor(String materiamodulo){
+        Color mainColor;
+        Color secondColor;
+        Color fontColor;
+        
+        switch (materiamodulo) {
+            case "Sociales":
+                mainColor = new Color(98, 148, 244);
+                secondColor = new Color(149, 184, 252);
+                fontColor = new Color(32,32,32);
+                break;
+            case "Matemáticas":
+                mainColor = new Color(255, 153, 0);
+                secondColor = new Color(255, 182, 73);
+                fontColor = new Color(32,32,32);
+                break;
+            case "Ingles":
+                mainColor = new Color(255, 189, 62);
+                secondColor = new Color(255, 198, 87);
+                fontColor = new Color(32,32,32);
+                break;
+            case "Ciencias":
+                mainColor = new Color(127, 211, 106);
+                secondColor = new Color(152, 215, 136);
+                fontColor = new Color(32,32,32);
+                break;
+            case "Lenguaje":
+                mainColor = new Color(227, 63, 63);
+                secondColor = new Color(231, 87, 87);
+                fontColor = new Color(255,255,255);
+                break;
+            default:
+                mainColor = new Color(32,32,32);
+                secondColor = new Color(90,90,90);
+                fontColor = new Color(255,255,255);
+                break;
+        }
+        
+        pantareaColor.setBackground(mainColor);
+        lblTarea.setForeground(fontColor);
     }
     
     void AbrirLinks(String link) {
@@ -129,10 +174,9 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         lblIDTareaAlumno = new javax.swing.JLabel();
         buttonRound1 = new customizeObjects.ButtonRound();
         jPanel3 = new javax.swing.JPanel();
-        panelRound1 = new customizeObjects.PanelRound();
+        pantareaColor = new customizeObjects.PanelRound();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        buttonRound4 = new customizeObjects.ButtonRound();
+        lblTarea = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -141,7 +185,6 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         jPanel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(803, 530));
 
-        tablaTareas.setBackground(java.awt.Color.white);
         tablaTareas.setForeground(new java.awt.Color(32, 32, 32));
         tablaTareas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -182,7 +225,6 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
             }
         });
 
-        txtGrade.setBackground(java.awt.Color.white);
         txtGrade.setForeground(new java.awt.Color(32, 32, 32));
         txtGrade.setText("00.0");
 
@@ -191,6 +233,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         jLabel5.setText("Calificación: ");
 
         buttonRound5.setText("Calificar");
+        buttonRound5.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         buttonRound5.setRound(20);
         buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
         buttonRound5.addActionListener(new java.awt.event.ActionListener() {
@@ -213,6 +256,9 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         lblIDTareaAlumno.setText("jLabel3");
 
         buttonRound1.setText("Generar Reporte");
+        buttonRound1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        buttonRound1.setRound(20);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
@@ -292,44 +338,37 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(860, 60));
 
-        panelRound1.setBackground(new java.awt.Color(77, 77, 77));
-        panelRound1.setRoundBottomLeft(30);
-        panelRound1.setRoundBottomRight(30);
-        panelRound1.setRoundTopLeft(30);
-        panelRound1.setRoundTopRight(30);
-        panelRound1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+        pantareaColor.setBackground(new java.awt.Color(77, 77, 77));
+        pantareaColor.setRoundBottomLeft(30);
+        pantareaColor.setRoundBottomRight(30);
+        pantareaColor.setRoundTopLeft(30);
+        pantareaColor.setRoundTopRight(30);
+        pantareaColor.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("    Tareas >");
-        panelRound1.add(jLabel1);
+        pantareaColor.add(jLabel1);
 
-        jLabel2.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Tarea a revisar");
-        panelRound1.add(jLabel2);
-
-        buttonRound4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-left.png"))); // NOI18N
-        buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
+        lblTarea.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblTarea.setForeground(new java.awt.Color(255, 255, 255));
+        lblTarea.setText("Tarea a revisar");
+        pantareaColor.add(lblTarea);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(buttonRound4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(pantareaColor, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonRound4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pantareaColor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
 
@@ -443,10 +482,8 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
     private customizeObjects.ButtonRound buttonRound1;
     private customizeObjects.ButtonRound buttonRound2;
     private customizeObjects.ButtonRound buttonRound3;
-    private customizeObjects.ButtonRound buttonRound4;
     private customizeObjects.ButtonRound buttonRound5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
@@ -455,9 +492,10 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblEstudiante;
     private javax.swing.JLabel lblIDTareaAlumno;
+    private javax.swing.JLabel lblTarea;
     private javax.swing.JLabel lblTarea64;
     private javax.swing.JLabel lblTareaLink;
-    private customizeObjects.PanelRound panelRound1;
+    private customizeObjects.PanelRound pantareaColor;
     private javax.swing.JTable tablaTareas;
     private javax.swing.JTextField txtGrade;
     // End of variables declaration//GEN-END:variables

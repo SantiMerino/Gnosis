@@ -103,7 +103,11 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     final void CargarDatosAlumno(int idtarea, int idalumno){
         datosAlumno = controlador.CargarDatosAlumnoTarea(idtarea, idalumno);
         try {
-            txtNota.setText(String.valueOf(datosAlumno.getDouble(1)));
+            while (datosAlumno.next()) {     
+                lblArchivo64.setText(datosAlumno.getString(4));
+                lblLinkStore.setText(datosAlumno.getString(5));
+                txtNota.setText(String.valueOf(datosAlumno.getDouble(6)));
+            }
         } catch (Exception e) {
             customization.notificacion("La tarea no ha sido subida, compartela con tu profesor", 2, "Advertencia");
         }
@@ -496,7 +500,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     private void btnSubirTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirTareaActionPerformed
         // TODO add your handling code here:
         boolean respuesta = controlador.UploadTaskStudents(idtareaSelec, idalumnolog, pdf, link);
-        System.out.println(idalumnolog);
+//        System.out.println(idalumnolog);
         if (respuesta == true) {
             customization.notificacion("La tarea fue subida exitosamente", 1, "Confirmación");
         }else{
