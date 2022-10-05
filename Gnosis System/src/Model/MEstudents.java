@@ -125,7 +125,7 @@ public class MEstudents {
                 return false;
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error" + e.toString());
+            
             return false;
         }
     }

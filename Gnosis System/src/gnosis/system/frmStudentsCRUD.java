@@ -905,13 +905,13 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
             boolean respuesta = objEstu.AlumnoNuevoController();
             if (respuesta == true) {
             JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente");
+            txtDui.setEditable(false);
             boolean usuariores = false;
                 CargarTabla();
                 ResultSet idalumno = objEstu.idAlumnoforUsuario();
                 try {
                     if (idalumno.next()) {
                         CEstudents.idalumno = idalumno.getInt("idalumno");
-                        JOptionPane.showMessageDialog(null, CEstudents.idalumno);
                         usuariores = objEstu.CrearUsuarioAlumnoController();
                     }
                 } catch (SQLException ex) {
@@ -937,13 +937,13 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
             boolean respuesta = objEstu.AlumnoNuevoController();
             if (respuesta == true) {
             JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente");
+            txtDui.setEditable(false);
             boolean usuariores = false;
                 CargarTabla();
                 ResultSet idalumno = objEstu.idAlumnoforUsuario();
                 try {
                     if (idalumno.next()) {
                         CEstudents.idalumno = idalumno.getInt("idalumno");
-                        JOptionPane.showMessageDialog(null, CEstudents.idalumno);
                         usuariores = objEstu.CrearUsuarioAlumnoController();
                     }
                 } catch (SQLException ex) {
