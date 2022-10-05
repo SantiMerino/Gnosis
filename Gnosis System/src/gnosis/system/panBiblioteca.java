@@ -223,6 +223,9 @@ public class panBiblioteca extends javax.swing.JPanel {
 
     private void buttonRound2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound2ActionPerformed
         // TODO add your handling code here:
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
         CargarRecursos();
     }//GEN-LAST:event_buttonRound2ActionPerformed
 

@@ -305,14 +305,9 @@ public class MTasks {
     public ResultSet CargarDatosAlumnoTarea(int idtarea, int idalumno, Connection con) {
         try {
             String query = "SELECT * FROM tbTareasAlumnos WHERE idtarea = " + idtarea + " AND idalumno =" + idalumno;
-            System.out.println(query);
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                return rs;
-            } else {
-                return null;
-            }
+            return rs;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
             return null;

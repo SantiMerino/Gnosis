@@ -48,6 +48,7 @@ public class frmDashboard extends javax.swing.JFrame {
     String usernamelog;
     ResultSet datosAlumnoLog;
     String nombreAlumno;
+    int nivelusuario;
     
     //id de la tarea
     int tareaidOpen;
@@ -90,6 +91,7 @@ public class frmDashboard extends javax.swing.JFrame {
             usernamelog = datosAlumnoLog.getString(3);
             //Es el id del estudiante :P
             iduserlog = datosAlumnoLog.getInt(7);
+            nivelusuario = datosAlumnoLog.getInt(2);
             lblnamedashboard.setText(usernamelog + "'s Dashboard");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No fue posible conseguir los datos del usuario", "Conflicto de datos", JOptionPane.ERROR);
@@ -417,6 +419,7 @@ public class frmDashboard extends javax.swing.JFrame {
         portafoliosContain = new javax.swing.JPanel();
         titlePortfolios = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        BtnVolverAcargar = new customizeObjects.ButtonRound();
         gradesPanel = new customizeObjects.PanelRound();
         panelRound12 = new customizeObjects.PanelRound();
         jLabel12 = new javax.swing.JLabel();
@@ -437,6 +440,7 @@ public class frmDashboard extends javax.swing.JFrame {
         calendarPanel = new customizeObjects.PanelRound();
         panelRound10 = new customizeObjects.PanelRound();
         jLabel9 = new javax.swing.JLabel();
+        buttonRound3 = new customizeObjects.ButtonRound();
         jScrollPane3 = new javax.swing.JScrollPane();
         recursosContainer = new customizeObjects.PanelRound();
         stadisticPanel = new customizeObjects.PanelRound();
@@ -447,6 +451,7 @@ public class frmDashboard extends javax.swing.JFrame {
         taskPanel = new customizeObjects.PanelRound();
         panelRound8 = new customizeObjects.PanelRound();
         jLabel2 = new javax.swing.JLabel();
+        btnRecargar = new customizeObjects.ButtonRound();
         jScrollPane2 = new javax.swing.JScrollPane();
         tareasContainer = new customizeObjects.PanelRound();
         panelRound4 = new customizeObjects.PanelRound();
@@ -620,20 +625,48 @@ public class frmDashboard extends javax.swing.JFrame {
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         portafoliosContain.setBackground(java.awt.Color.white);
-        portafoliosContain.setLayout(new java.awt.GridLayout(1, 0, 10, 5));
+        portafoliosContain.setLayout(new java.awt.GridLayout(1, 10, 10, 5));
         jScrollPane1.setViewportView(portafoliosContain);
 
         protfoliosPanel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         titlePortfolios.setBackground(java.awt.Color.white);
         titlePortfolios.setPreferredSize(new java.awt.Dimension(100, 40));
-        titlePortfolios.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
         jLabel10.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(32, 32, 32));
         jLabel10.setText("Portafolios");
         jLabel10.setPreferredSize(new java.awt.Dimension(100, 30));
-        titlePortfolios.add(jLabel10);
+
+        BtnVolverAcargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
+        BtnVolverAcargar.setPreferredSize(new java.awt.Dimension(40, 40));
+        BtnVolverAcargar.setRound(20);
+        BtnVolverAcargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnVolverAcargarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout titlePortfoliosLayout = new javax.swing.GroupLayout(titlePortfolios);
+        titlePortfolios.setLayout(titlePortfoliosLayout);
+        titlePortfoliosLayout.setHorizontalGroup(
+            titlePortfoliosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titlePortfoliosLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 495, Short.MAX_VALUE)
+                .addComponent(BtnVolverAcargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        titlePortfoliosLayout.setVerticalGroup(
+            titlePortfoliosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titlePortfoliosLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(titlePortfoliosLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(BtnVolverAcargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         protfoliosPanel.add(titlePortfolios, java.awt.BorderLayout.PAGE_START);
 
@@ -817,6 +850,14 @@ public class frmDashboard extends javax.swing.JFrame {
         jLabel9.setForeground(java.awt.Color.white);
         jLabel9.setText("Recursos");
 
+        buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
+        buttonRound3.setPreferredSize(new java.awt.Dimension(40, 40));
+        buttonRound3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRound10Layout = new javax.swing.GroupLayout(panelRound10);
         panelRound10.setLayout(panelRound10Layout);
         panelRound10Layout.setHorizontalGroup(
@@ -824,13 +865,19 @@ public class frmDashboard extends javax.swing.JFrame {
             .addGroup(panelRound10Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel9)
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
+                .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         panelRound10Layout.setVerticalGroup(
             panelRound10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound10Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel9)
+                .addGap(12, 12, 12))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -841,10 +888,10 @@ public class frmDashboard extends javax.swing.JFrame {
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         recursosContainer.setBackground(new java.awt.Color(32, 32, 32));
-        recursosContainer.setPreferredSize(new java.awt.Dimension(1000, 227));
+        recursosContainer.setPreferredSize(new java.awt.Dimension(2000, 227));
         recursosContainer.setRoundBottomLeft(25);
         recursosContainer.setRoundBottomRight(25);
-        recursosContainer.setLayout(new java.awt.GridLayout(1, 10, 10, 0));
+        recursosContainer.setLayout(new java.awt.GridLayout(1, 20, 5, 0));
         jScrollPane3.setViewportView(recursosContainer);
 
         calendarPanel.add(jScrollPane3, java.awt.BorderLayout.CENTER);
@@ -921,6 +968,15 @@ public class frmDashboard extends javax.swing.JFrame {
         jLabel2.setText("Tareas");
         jLabel2.setPreferredSize(new java.awt.Dimension(120, 25));
 
+        btnRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
+        btnRecargar.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnRecargar.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        btnRecargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecargarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRound8Layout = new javax.swing.GroupLayout(panelRound8);
         panelRound8.setLayout(panelRound8Layout);
         panelRound8Layout.setHorizontalGroup(
@@ -928,14 +984,21 @@ public class frmDashboard extends javax.swing.JFrame {
             .addGroup(panelRound8Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
+                .addComponent(btnRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         panelRound8Layout.setVerticalGroup(
             panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound8Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addGroup(panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRound8Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelRound8Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         taskPanel.add(panelRound8, java.awt.BorderLayout.PAGE_START);
@@ -1268,6 +1331,30 @@ public class frmDashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnStopMoodActionPerformed
 
+    private void BtnVolverAcargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverAcargarActionPerformed
+        // TODO add your handling code here:
+        portafoliosContain.removeAll();
+        portafoliosContain.repaint();
+        portafoliosContain.revalidate();
+        CargarPortafolios();
+    }//GEN-LAST:event_BtnVolverAcargarActionPerformed
+
+    private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
+        // TODO add your handling code here:
+        tareasContainer.removeAll();
+        tareasContainer.repaint();
+        tareasContainer.revalidate();
+            CargarTareasAlumnos();
+    }//GEN-LAST:event_btnRecargarActionPerformed
+
+    private void buttonRound3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound3ActionPerformed
+        // TODO add your handling code here:
+        recursosContainer.removeAll();
+        recursosContainer.repaint();
+        recursosContainer.revalidate();
+        CargarRecursos();
+    }//GEN-LAST:event_buttonRound3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1284,11 +1371,14 @@ public class frmDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private customizeObjects.ButtonRound BtnVolverAcargar;
     private customizeObjects.ButtonRound bookButton;
     private customizeObjects.ButtonRound briefcaseButton;
     private customizeObjects.ButtonRound btnMood;
+    private customizeObjects.ButtonRound btnRecargar;
     private customizeObjects.ButtonRound btnStopMood;
     private customizeObjects.ButtonRound buttonRound2;
+    private customizeObjects.ButtonRound buttonRound3;
     private customizeObjects.ButtonRound buttonRound4;
     private javax.swing.JPanel buttonsPan;
     private customizeObjects.ButtonRound calendarButton;

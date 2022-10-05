@@ -52,11 +52,8 @@ public class MPortfolios {
             ps.setString(1, contenido);
             ps.setInt(2, idalumno);
             ps.setInt(3, idmateriadocente);
-            if (ps.execute() == true) {
-                return true;
-            } else{
-                return false;
-            }
+            ps.execute();
+            return true;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
             return false;
@@ -78,4 +75,36 @@ public class MPortfolios {
             return null;
         }
     }
+        
+        public ResultSet ObtenerMateriaDocente(int idgrado, Connection con){
+            try {
+                ResultSet rs;
+                String sentencia = "";
+                sentencia = "SELECT a.idmateriadocente FROM tbMateriaDocentes a, tbDocentes b WHERE b.idgrado = ? AND a.iddocente = b.iddocente;";
+                ps = con.prepareStatement(sentencia);
+                ps.setInt(1, idgrado);
+                rs = ps.executeQuery();
+                return rs;
+            } catch (Exception e) {
+//                JOptionPane.showMessageDialog(null, e.toString());
+                return null;
+            }
+        }
+        
+        public boolean CrearPortafoliosAlumno(int idmateriadocente, Connection con){
+            try {
+                ResultSet rs;
+                String sentencia = "EXEC CrearPortafolios ?, ?, ?";
+                ps = con.prepareStatement(sentencia);
+                ps.setEscapeProcessing(true);
+                ps.setInt(1, idmateriadocente);
+                ps.setInt(2, 1);
+                ps.setInt(3, 1);
+                rs = ps.executeQuery();
+                return true;
+            } catch (Exception e) {
+//                JOptionPane.showMessageDialog(null, e.toString());
+                return false;
+            }
+        }
 }

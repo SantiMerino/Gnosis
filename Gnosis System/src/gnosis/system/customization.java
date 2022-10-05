@@ -315,7 +315,7 @@ public class customization {
                 mainColor = new Color(227, 63, 63);
                 secondColor = new Color(231, 87, 87);
                 fontColor = new Color(255,255,255);
-                btnCarpeta.setStyle(ButtonRound.ButtonStyle.VERDE);
+                btnCarpeta.setStyle(ButtonRound.ButtonStyle.ROJO);
                 changeIcon(btnCarpeta, "/resources/folder-open-white.png");
                 break;
             default:
@@ -589,7 +589,7 @@ public class customization {
                 mainColor = new Color(227, 63, 63);
                 secondColor = new Color(231, 87, 87);
                 fontColor = new Color(255,255,255);
-                btnCarpeta.setStyle(ButtonRound.ButtonStyle.VERDE);
+                btnCarpeta.setStyle(ButtonRound.ButtonStyle.ROJO);
                 changeIcon(btnCarpeta, "/resources/folder-open-white.png");
                 break;
             default:

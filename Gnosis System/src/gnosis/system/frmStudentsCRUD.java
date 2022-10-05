@@ -5,11 +5,8 @@
  */
 package gnosis.system;
 
-import Controller.CComboboxEstudiantes;
-import Controller.CConnection;
-import Controller.CEstudents;
+import Controller.*;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
-import com.formdev.flatlaf.intellijthemes.FlatMonocaiIJTheme;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Insets;
@@ -62,6 +59,8 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     private Calendar c;
     
     private String nacimiento;
+    
+    CPortfolios portafolio = new CPortfolios();
     
     /**
      * Creates new form FrmEstudiantes
@@ -891,41 +890,42 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         int años = mayoriadeedad();
-//        if (txtNombres.getText().trim().isEmpty() || txtApellidos.getText().trim().isEmpty() || txtDireccion.getText().trim().isEmpty() || txtTelefono.getText().trim().isEmpty() || 
-//                txtCorreo.getText().trim().isEmpty() || txtCodigo.getText().trim().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-//        }else if (cmbGenero.getSelectedIndex() == 0 || cmbGrado.getSelectedIndex() == 0) {
-//            JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
-//        }else 
-            if (años < 18) {
+        if (txtNombres.getText().trim().isEmpty() || txtApellidos.getText().trim().isEmpty() || txtDireccion.getText().trim().isEmpty() || txtTelefono.getText().trim().isEmpty() || 
+                txtCorreo.getText().trim().isEmpty() || txtCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else if (cmbGenero.getSelectedIndex() == 0 || cmbGrado.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        } else if (años < 18) {
             JOptionPane.showMessageDialog(null, "El estudiante es menor de edad, no es necesario agregar un numero de documento");
             String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.DAY_OF_MONTH));
-            CEstudents objEstu = new CEstudents(txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario, 
+            CEstudents objEstu = new CEstudents(txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario,
                     txtCodigo.getText());
             boolean respuesta = objEstu.AlumnoNuevoController();
             if (respuesta == true) {
-            JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente");
-            txtDui.setEditable(false);
-            boolean usuariores = false;
-                CargarTabla();
-                ResultSet idalumno = objEstu.idAlumnoforUsuario();
+                JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente");
+                txtDui.setEditable(false);
+                boolean usuariores = false;
                 try {
+                    ResultSet idalumno = objEstu.idAlumnoforUsuario();
                     if (idalumno.next()) {
                         CEstudents.idalumno = idalumno.getInt("idalumno");
                         usuariores = objEstu.CrearUsuarioAlumnoController();
+                        ResultSet materiasDocente = portafolio.MateriaDocenteResult(idGrado);
+                        while (materiasDocente.next()) {
+                            portafolio.CrearPortafoliosEXEC(materiasDocente.getInt(1));
+                        }
                     }
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Error" + ex.toString());
-                }           
-                if ( usuariores == true ) {
+                    JOptionPane.showMessageDialog(null, ex.toString());
+                }
+                if (usuariores == true) {
+                    JOptionPane.showMessageDialog(null, "Usuario ingresado");
+                } else {
                     JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
                 }
-                else{
-                    JOptionPane.showMessageDialog(null, "Usuario ingresado");
-                }
-        }  else {
+            } else {
                 JOptionPane.showMessageDialog(this, "Estudiante no pudo ser ingresado");
-            }        
+            }      
         }else{
             txtDui.setEditable(true);
             if (txtDui.getText().trim().isEmpty()) {
@@ -945,15 +945,19 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                     if (idalumno.next()) {
                         CEstudents.idalumno = idalumno.getInt("idalumno");
                         usuariores = objEstu.CrearUsuarioAlumnoController();
+                        ResultSet materiasDocente = portafolio.MateriaDocenteResult(idGrado);
+                        while (materiasDocente.next()) {
+                            portafolio.CrearPortafoliosEXEC(materiasDocente.getInt(1));
+                        }
                     }
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, "Error" + ex.toString());
                 }           
                 if ( usuariores == true ) {
-                    JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
+                    JOptionPane.showMessageDialog(null, "Usuario Ingresado");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Usuario ingresado");
+                    JOptionPane.showMessageDialog(null, "El usuario no pudo ser ingresado");
                 }
         }  else {
                 JOptionPane.showMessageDialog(this, "Estudiante no pudo ser ingresado");

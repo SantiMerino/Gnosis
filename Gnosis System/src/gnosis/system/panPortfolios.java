@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.sql.ResultSet;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -54,6 +55,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 custo.CrearPortafolio(materiamodulo, datos.getString(2), datos.getString(4), datos.getString(1), contenendorPortafolios, idalumnolog, datos.getInt(6));
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
         }
         
     }

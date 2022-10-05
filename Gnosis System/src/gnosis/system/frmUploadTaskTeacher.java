@@ -60,6 +60,7 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         tablaTareas.setModel(tablaModel);
         CargarTabla();
         MateriaColor(materimodulo);
+        lblTarea.setText(materimodulo);
         tablaTareas.getColumnModel().getColumn(5).setMaxWidth(0);
         tablaTareas.getColumnModel().getColumn(5).setMinWidth(0);
         lblTarea64.setVisible(false);

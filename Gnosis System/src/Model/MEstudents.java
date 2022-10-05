@@ -119,13 +119,8 @@ public class MEstudents {
             ps.setInt(5, estadouser);
             ps.setInt(6, idalumno);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                return true;
-            } else {
-                return false;
-            }
+            return true;
         } catch (SQLException e) {
-            
             return false;
         }
     }

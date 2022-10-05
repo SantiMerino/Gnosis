@@ -53,10 +53,8 @@
                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="buttonRound2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnRecargar" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnRecargar" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="buttonRound2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>

@@ -66,11 +66,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         lblRubrica64.setVisible(false);
         CargarDatos(idtarea, idalumno);
         CargarDatosAlumno(idtarea, idalumno);
-        if (lblRubrica64.getText().equals("No disponible")) {
-            btnDescargarRubrica.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
-        } else{
-            btnDescargarRubrica.setStyle(ButtonRound.ButtonStyle.ROJO);
-        }    
+        btnSubirPDF.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
         btnLink.setStyle(ButtonRound.ButtonStyle.GRIS_CLARO);
     }
     
@@ -103,17 +99,15 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     final void CargarDatosAlumno(int idtarea, int idalumno){
         datosAlumno = controlador.CargarDatosAlumnoTarea(idtarea, idalumno);
         try {
-            if (datosAlumno != null) {
-                while (datosAlumno.next()) {     
+            while (datosAlumno.next()) {
                 lblArchivo64.setText(datosAlumno.getString(4));
                 lblLinkStore.setText(datosAlumno.getString(5));
                 txtNota.setText(String.valueOf(datosAlumno.getDouble(6)));
-            }
-            } else{
-                customization.notificacion("La tarea no ha sido subida, compartela con tu profesor", 2, "Advertencia");
+                System.out.println(datosAlumno.getString(6));
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error de consulta " + e.toString());
+//            JOptionPane.showMessageDialog(null, "Error de consulta " + e.toString());
+            customization.notificacion("La tarea no ha sido subida, compartela con tu profesor", 2, "Advertencia");
         }
     }
     
@@ -222,6 +216,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
 
         txtNota.setBackground(java.awt.Color.white);
         txtNota.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        txtNota.setForeground(new java.awt.Color(32, 32, 32));
         txtNota.setEnabled(false);
 
         panelRound2.setBackground(new java.awt.Color(32, 32, 32));
@@ -388,8 +383,8 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(lblRubrica64, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblFechaVencimiento, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnDescargarRubrica, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(btnDescargarRubrica, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lblFechaVencimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(1, 1, 1))
                                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)

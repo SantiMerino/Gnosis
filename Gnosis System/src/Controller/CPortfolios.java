@@ -35,4 +35,12 @@ public class CPortfolios {
         return mdlPortfolios.GuardarPortafolio(idalumno, idmateria, contenido, con);
     }
     
+    public ResultSet MateriaDocenteResult (int idgrado){
+        return mdlPortfolios.ObtenerMateriaDocente(idgrado, con);
+    }
+    
+    public boolean CrearPortafoliosEXEC (int idmateriadocente){
+        return mdlPortfolios.CrearPortafoliosAlumno(idmateriadocente, con);
+    }
+    
 }
