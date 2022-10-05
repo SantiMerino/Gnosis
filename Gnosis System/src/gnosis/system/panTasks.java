@@ -117,7 +117,7 @@ public class panTasks extends javax.swing.JPanel {
         namePan = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         filtersPan = new javax.swing.JPanel();
-        buttonRound1 = new customizeObjects.ButtonRound();
+        btnRecargar = new customizeObjects.ButtonRound();
         jLabel2 = new javax.swing.JLabel();
         cmbTipo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -159,14 +159,14 @@ public class panTasks extends javax.swing.JPanel {
         filtersPan.setPreferredSize(new java.awt.Dimension(500, 50));
         filtersPan.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 15, 10));
 
-        buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
-        buttonRound1.setPreferredSize(new java.awt.Dimension(40, 40));
-        buttonRound1.addActionListener(new java.awt.event.ActionListener() {
+        btnRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
+        btnRecargar.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnRecargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRound1ActionPerformed(evt);
+                btnRecargarActionPerformed(evt);
             }
         });
-        filtersPan.add(buttonRound1);
+        filtersPan.add(btnRecargar);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(32, 32, 32));
@@ -300,18 +300,22 @@ public class panTasks extends javax.swing.JPanel {
         CargarTareasEstado();
     }//GEN-LAST:event_cmbEstadoItemStateChanged
 
-    private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
+    private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
         // TODO add your handling code here:
         mainPan.removeAll();
         mainPan.repaint();
         mainPan.revalidate();
-        CargarTareasAlumnos();
-    }//GEN-LAST:event_buttonRound1ActionPerformed
+        if (nivelusuario == 1) {
+            CargarTareasAlumnos();
+        } else {
+            CargarTareasDocente(iddocente);
+        }
+    }//GEN-LAST:event_btnRecargarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.ButtonRound btnAgregarTarea;
-    private customizeObjects.ButtonRound buttonRound1;
+    private customizeObjects.ButtonRound btnRecargar;
     private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JPanel filtersPan;
