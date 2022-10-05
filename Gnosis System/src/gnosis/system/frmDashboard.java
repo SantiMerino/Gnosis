@@ -385,8 +385,8 @@ public class frmDashboard extends javax.swing.JFrame {
         custo.changeIcon(briefcaseButton, "/resources/briefcase.png");
         pageButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
         custo.changeIcon(pageButton, "/resources/document-text.png");
-        medalButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custo.changeIcon(medalButton, "/resources/medal.png");
+//        medalButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
+//        custo.changeIcon(medalButton, "/resources/medal.png");
         bookButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
         custo.changeIcon(bookButton, "/resources/book-saved.png");
 
@@ -480,7 +480,6 @@ public class frmDashboard extends javax.swing.JFrame {
         pageButton = new customizeObjects.ButtonRound();
         calendarButton = new customizeObjects.ButtonRound();
         bookButton = new customizeObjects.ButtonRound();
-        medalButton = new customizeObjects.ButtonRound();
         moodPanel = new customizeObjects.PanelRound();
         moodPic = new javax.swing.JLabel();
         lblmood = new javax.swing.JLabel();
@@ -1083,17 +1082,6 @@ public class frmDashboard extends javax.swing.JFrame {
         });
         sideBar.add(bookButton);
 
-        medalButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/medal.png"))); // NOI18N
-        medalButton.setPreferredSize(new java.awt.Dimension(60, 60));
-        medalButton.setRound(15);
-        medalButton.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-        medalButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medalButtonActionPerformed(evt);
-            }
-        });
-        sideBar.add(medalButton);
-
         moodPanel.setBackground(new java.awt.Color(120, 220, 90));
         moodPanel.setPreferredSize(new java.awt.Dimension(75, 140));
         moodPanel.setRoundBottomLeft(20);
@@ -1255,29 +1243,6 @@ public class frmDashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bookButtonActionPerformed
 
-    private void medalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medalButtonActionPerformed
-        // TODO add your handling code here:
-        if (panContainer.getComponentCount() == 0) {
-            cambiarColorBotonesMenu(medalButton, "/resources/medal-black.png");
-            panContainer.add(new panGrades());
-            panContainer.repaint();
-            panContainer.revalidate();
-        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panGrades()) {
-            if (medalButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
-                cambiarColorBotonesMenu(medalButton, "/resources/medal-black.png");
-                panContainer.removeAll();
-                panContainer.repaint();
-                panContainer.revalidate();
-
-                panContainer.add(new panGrades());
-                panContainer.repaint();
-                panContainer.revalidate();
-            } else {
-                notificacion("Ya tienes abierta esta ventana", 2, "Menu abierto");
-            }
-        }
-    }//GEN-LAST:event_medalButtonActionPerformed
-
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:
         if (panContainer.getComponentCount() == 0) {
@@ -1379,7 +1344,6 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblmood;
     private javax.swing.JLabel lblnamedashboard;
     private javax.swing.JPanel mainPanel;
-    private customizeObjects.ButtonRound medalButton;
     private customizeObjects.PanelRound moodPanel;
     private javax.swing.JLabel moodPic;
     private javax.swing.JPanel namePan;

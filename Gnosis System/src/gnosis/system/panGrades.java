@@ -117,8 +117,8 @@ public class panGrades extends javax.swing.JPanel {
         cmbGrado = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
         txtIdPerfil = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         AgregarPerfil = new customizeObjects.ButtonRound();
+        buttonRound1 = new customizeObjects.ButtonRound();
         jPanel4 = new javax.swing.JPanel();
         panelRound1 = new customizeObjects.PanelRound();
         lblTipoPerfil = new javax.swing.JLabel();
@@ -201,19 +201,8 @@ public class panGrades extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Buscar por filtro");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jButton1KeyReleased(evt);
-            }
-        });
-
         AgregarPerfil.setText("Gestionar Perfiles");
+        AgregarPerfil.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         AgregarPerfil.setRound(20);
         AgregarPerfil.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         AgregarPerfil.addActionListener(new java.awt.event.ActionListener() {
@@ -222,26 +211,36 @@ public class panGrades extends javax.swing.JPanel {
             }
         });
 
+        buttonRound1.setText("Filtrar");
+        buttonRound1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        buttonRound1.setRound(20);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        buttonRound1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
                     .addComponent(cmbTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 317, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtIdPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(AgregarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jButton1)))
+                    .addComponent(AgregarPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -256,8 +255,8 @@ public class panGrades extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbTipoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(AgregarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AgregarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -440,7 +439,7 @@ public class panGrades extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel10)
-                .addGap(0, 920, Short.MAX_VALUE))
+                .addGap(0, 953, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -607,32 +606,25 @@ public class panGrades extends javax.swing.JPanel {
         
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-       buscarPerfil();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButton1KeyReleased
-
     private void AgregarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarPerfilActionPerformed
         // TODO add your handling code here:
         frmProfiles Profiles = new frmProfiles(iddocentelog);
         Profiles.setVisible(true);
     }//GEN-LAST:event_AgregarPerfilActionPerformed
 
+    private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
+        // TODO add your handling code here:
+        buscarPerfil();
+    }//GEN-LAST:event_buttonRound1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.ButtonRound AgregarPerfil;
+    private customizeObjects.ButtonRound buttonRound1;
     private javax.swing.JComboBox<String> cmbGrado;
     private javax.swing.JComboBox<String> cmbTipoPerfil;
     private com.toedter.calendar.JDateChooser dtCierre;
     private com.toedter.calendar.JDateChooser dtInicio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;

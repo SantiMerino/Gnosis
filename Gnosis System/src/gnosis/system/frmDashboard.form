@@ -1426,23 +1426,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="customizeObjects.ButtonRound" name="medalButton">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/medal.png"/>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[60, 60]"/>
-                </Property>
-                <Property name="round" type="int" value="15"/>
-                <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-                  <Value id="NEGRO"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="medalButtonActionPerformed"/>
-              </Events>
-            </Component>
             <Container class="customizeObjects.PanelRound" name="moodPanel">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

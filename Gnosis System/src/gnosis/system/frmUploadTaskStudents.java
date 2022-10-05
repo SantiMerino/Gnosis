@@ -103,13 +103,17 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
     final void CargarDatosAlumno(int idtarea, int idalumno){
         datosAlumno = controlador.CargarDatosAlumnoTarea(idtarea, idalumno);
         try {
-            while (datosAlumno.next()) {     
+            if (datosAlumno != null) {
+                while (datosAlumno.next()) {     
                 lblArchivo64.setText(datosAlumno.getString(4));
                 lblLinkStore.setText(datosAlumno.getString(5));
                 txtNota.setText(String.valueOf(datosAlumno.getDouble(6)));
             }
+            } else{
+                customization.notificacion("La tarea no ha sido subida, compartela con tu profesor", 2, "Advertencia");
+            }
         } catch (Exception e) {
-            customization.notificacion("La tarea no ha sido subida, compartela con tu profesor", 2, "Advertencia");
+            JOptionPane.showMessageDialog(null, "Error de consulta " + e.toString());
         }
     }
     
