@@ -103,7 +103,7 @@ public class frmUsers extends javax.swing.JFrame {
         try {
             ResultSet rs = Usuario.CargarUsuariosResultSet();
             while (rs.next()) {                
-                Object [] oValores = {rs.getInt("idusuario"), rs.getString("idnivelusuario"), rs.getString("username"), rs.getString("clave"), rs.getString("pin"), rs.getString("idestadousuario"), rs.getString("idalumno"), rs.getString("iddocente")};
+                Object [] oValores = {rs.getInt("idusuario"), rs.getInt("idnivelusuario"), rs.getString("username"), rs.getString("clave"), rs.getInt("pin"), rs.getInt("idestadousuario"), rs.getInt("idalumno"), rs.getInt("iddocente")};
                 TablaUsersModelo.addRow(oValores);
             }
         } catch (Exception e) {
@@ -617,7 +617,7 @@ public class frmUsers extends javax.swing.JFrame {
                         idestadousuario = (int) EstadoUsuarioList.get(i);
                     }
                 }
-            }          
+            }
         }
     }//GEN-LAST:event_cmbEstadoUsuarioItemStateChanged
 
@@ -781,7 +781,7 @@ public class frmUsers extends javax.swing.JFrame {
             int respuesta3 = BuscarAlumnoSeleccionado(idalumno);
             int respuesta4 = BuscarDocenteSeleccionado(iddocente);
             
-            cmbNivelUsuario.setSelectedIndex(respuesta);
+            cmbNivelUsuario.setSelectedIndex(respuesta + 1);
             cmbEstadoUsuario.setSelectedIndex(respuesta2 + 1);
             CmbAlumno.setSelectedIndex(respuesta3 + 1);
             CmbDocente.setSelectedIndex(respuesta4 + 1);
