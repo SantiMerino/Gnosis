@@ -1056,7 +1056,7 @@ public class customization {
           }
     }
     
-    public void CrearPortafolio(String materiamodulo, String Grado, String docente, String contenido, JPanel contenedor, int idalumno ){
+    public void CrearPortafolio(String materiamodulo, String Grado, String docente, String contenido, JPanel contenedor, int idalumno, int idmateriadocente){
         //Crear paneles contenedores
         PanelRound portafolio = new PanelRound();
         PanelRound panelSuperior = new PanelRound();
@@ -1216,7 +1216,7 @@ public class customization {
         btnAbrir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new frmBlocMateria(idalumno, materiamodulo, contenido).setVisible(true);
+                new frmBlocMateria(idalumno, materiamodulo, idmateriadocente,contenido).setVisible(true);
             }
         });
         
@@ -1225,7 +1225,7 @@ public class customization {
         contenedor.revalidate(); 
     }
     
-    public void CrearPortafolioDashboard(String materiamodulo, String Grado, String docente, String contenido, JPanel contenedor, int idalumno){
+    public void CrearPortafolioDashboard(String materiamodulo, String Grado, String docente, String contenido, JPanel contenedor, int idalumno, int idmateriadocente){
         //Crear paneles contenedores
         PanelRound portafolio = new PanelRound();
         PanelRound panelSuperior = new PanelRound();
@@ -1385,7 +1385,7 @@ public class customization {
         btnAbrir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new frmBlocMateria(idalumno, materiamodulo, contenido).setVisible(true);
+                new frmBlocMateria(idalumno, materiamodulo, idmateriadocente,contenido).setVisible(true);
             }
         });
         

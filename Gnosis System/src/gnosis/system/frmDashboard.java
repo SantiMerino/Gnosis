@@ -19,8 +19,6 @@ import Controller.CPortfolios;
 import Controller.CTasks;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -116,14 +114,14 @@ public class frmDashboard extends javax.swing.JFrame {
         try {
             while (datos.next()) {                
                 String materiamodulo;
-                String cadena = datos.getString(6);
+                String cadena = datos.getString(5);
                 String[] palabras = cadena.split(" ", 2);
                 if (palabras[0].equals("Ninguno")) {
                     materiamodulo = palabras[1];
                 } else {
                     materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
                 }
-                custo.CrearPortafolioDashboard(materiamodulo, datos.getString(3), datos.getString(5), "44 páginas", portafoliosContain, iduserlog);
+                custo.CrearPortafolioDashboard(materiamodulo, datos.getString(2), datos.getString(4), datos.getString(1), portafoliosContain, iduserlog, datos.getInt(6));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());

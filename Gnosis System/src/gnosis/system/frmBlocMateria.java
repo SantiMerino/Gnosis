@@ -4,12 +4,14 @@
  */
 package gnosis.system;
 
+import Controller.CPortfolios;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.ResultSet;
 import javax.swing.JFileChooser;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -31,16 +33,34 @@ public class frmBlocMateria extends javax.swing.JFrame {
     JList fontFamilyList, fontStyleList, fontSizeList;
     String[] fontStyleValues = {"PLAIN", "BOLD", "ITALIC"};
      
+    ResultSet datosportafolios;
+    int idalumnolog;
+    int materiadocente;
+    String contenidotxt;
      
     public frmBlocMateria() {
         initComponents();
 
     }
     
-    public frmBlocMateria(int idalumno, String materiamodulo, String contenido){
+    public frmBlocMateria(int idalumno, String materiamodulo,int idmateriadocente,  String contenido){
         initComponents();
+        materiadocente = idmateriadocente;
+        idalumnolog = idalumno;
+        contenidotxt = contenido;
+        area.setText(contenidotxt);
         MateriaColor(materiamodulo);
         lblPortafolio.setText("Portafolios > " + materiamodulo);
+    }
+    
+    
+    final void CargarPortafolio(){
+        CPortfolios controlador = new CPortfolios();
+        datosportafolios = controlador.CargarContenido(idalumnolog, materiadocente);
+        try {
+            area.setText(datosportafolios.getString(2));
+        } catch (Exception e) {
+        }
     }
     
     final void GuardarArchivoTXT(){
@@ -567,8 +587,14 @@ void MateriaColor(String materiamodulo){
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        
-        
+        CPortfolios controlador = new CPortfolios();
+        contenidotxt = area.getText();
+        boolean res = controlador.GuardarPortafolio(idalumnolog,materiadocente, contenidotxt);
+        if (res == true) {
+            customization.notificacion("Portafolio guardado exitosamente", 1, "Confirmación");
+        } else {
+            customization.notificacion("Error, no fue posible guardar tu portafolio", 3, "Error de ingreso");
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     

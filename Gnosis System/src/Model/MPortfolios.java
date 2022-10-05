@@ -45,21 +45,37 @@ public class MPortfolios {
         }
     }
     
-    public boolean GuardarPortafolio(int idalumno, int idmateria, String contenido){
-        boolean res;
+    public boolean GuardarPortafolio(int idalumno, int idmateriadocente, String contenido, Connection con){
         try {
-           String query = "INSERT INTO tbPortafolios VALUES (?, ?, ?, ?)";
-           Connection con = MConnection.getConnectionWithoutParameters();
-           ps = con.prepareStatement(query);
-            res = ps.execute();
-            if (res == true) {
-               return res;
-            } else {
-               return false;
+            String query = "UPDATE tbPortafolio SET contenido = ? WHERE idalumno = ? AND idmateriadocente = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, contenido);
+            ps.setInt(2, idalumno);
+            ps.setInt(3, idmateriadocente);
+            if (ps.execute() == true) {
+                return true;
+            } else{
+                return false;
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
             return false;
+        }
+    }
+    
+        public ResultSet CargarPortafolio(int idalumno,int idmateriadocente,Connection con){
+        try {
+            ResultSet rs;
+            String sentencia = "";
+            sentencia = "SELECT * FROM tbPortafolio WHERE idalumno = ? AND idmateriadocente = ?";
+            ps = con.prepareStatement(sentencia);
+            ps.setInt(1, idalumno);
+            ps.setInt(2, idmateriadocente);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
         }
     }
 }

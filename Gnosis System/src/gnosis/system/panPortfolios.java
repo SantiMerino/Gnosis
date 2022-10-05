@@ -44,14 +44,14 @@ public class panPortfolios extends javax.swing.JPanel {
         try {
             while (datos.next()) {                
                 String materiamodulo;
-                String cadena = datos.getString(6);
+                String cadena = datos.getString(5);
                 String[] palabras = cadena.split(" ", 2);
                 if (palabras[0].equals("Ninguno")) {
                     materiamodulo = palabras[1];
                 } else {
                     materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
                 }
-                custo.CrearPortafolio(materiamodulo, datos.getString(3), datos.getString(5), "44 páginas", contenendorPortafolios, idalumnolog);
+                custo.CrearPortafolio(materiamodulo, datos.getString(2), datos.getString(4), datos.getString(1), contenendorPortafolios, idalumnolog, datos.getInt(6));
             }
         } catch (Exception e) {
         }
@@ -169,7 +169,10 @@ public class panPortfolios extends javax.swing.JPanel {
 
     private void BtnVolverAcargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverAcargarActionPerformed
         // TODO add your handling code here:
-         CargarPortafolios();
+        contenendorPortafolios.removeAll();
+        contenendorPortafolios.repaint();
+        contenendorPortafolios.revalidate();
+        CargarPortafolios();
     }//GEN-LAST:event_BtnVolverAcargarActionPerformed
 
 
