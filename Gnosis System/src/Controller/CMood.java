@@ -55,8 +55,8 @@ public class CMood {
     Connection con = CConnection.getConnectionControllerWithoutParameters();
     private MMood mdlMood = new MMood();
     
-    public boolean RegistrarMood(String enfoque, String Tiempo, int idmateria){
-        return mdlMood.RegistrarEventoModel(enfoque, Tiempo, idmateria, con);
+    public boolean RegistrarMood(String tiempo, int enfoque, int idmateria){
+        return mdlMood.RegistrarEventoModel(tiempo, enfoque, idmateria, con);
     }
 
     public CMood(String enfoque, String Tiempo, int idmateria) {
@@ -67,6 +67,10 @@ public class CMood {
 
     public ResultSet CcargarMaterias(){
         return mdlMood.MCargarMaterias(con);
+    }
+    
+    public ResultSet CargarUltimaEstadistica(int idalumno){
+        return mdlMood.UltimaEstadistica(idalumno, con);
     }
     
     public CMood(){

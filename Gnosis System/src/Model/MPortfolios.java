@@ -17,12 +17,13 @@ public class MPortfolios {
     
     PreparedStatement ps;
     
-    public ResultSet CargarPortafoliosPrev(){
+    public ResultSet CargarPortafoliosPrev(String nombreAlumno){
         Connection con;
         try {
             con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT * FROM viewPortafolios";
+            String query = "SELECT * FROM viewPortafolios WHERE Alumno = ?";
             ps = con.prepareStatement(query);
+            ps.setString(1, nombreAlumno);
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {

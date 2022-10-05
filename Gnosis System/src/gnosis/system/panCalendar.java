@@ -5,14 +5,8 @@
 package gnosis.system;
 
 import Controller.CEvento;
-import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
-import customizeObjects.PanelRound;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Insets;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.UIManager;
 
 /**
  *
@@ -20,9 +14,6 @@ import javax.swing.UIManager;
  */
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 public class panCalendar extends javax.swing.JPanel {
 
@@ -286,8 +277,8 @@ public class panCalendar extends javax.swing.JPanel {
         jPanel5.add(jPanel7, java.awt.BorderLayout.NORTH);
 
         ContenedorEventos.setBackground(java.awt.Color.white);
-        ContenedorEventos.setPreferredSize(new java.awt.Dimension(100, 700));
-        ContenedorEventos.setLayout(new java.awt.GridLayout(10, 1, 10, 10));
+        ContenedorEventos.setPreferredSize(new java.awt.Dimension(100, 1500));
+        ContenedorEventos.setLayout(new java.awt.GridLayout(20, 1, 10, 10));
         jScrollPane1.setViewportView(ContenedorEventos);
 
         jPanel5.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -318,7 +309,7 @@ public class panCalendar extends javax.swing.JPanel {
 
     final void CargarEventosDia(){
         CEvento controller = new CEvento();
-        ResultSet datos = controller.ConsultarEvento(fechafinal, fechafinal);
+        ResultSet datos = controller.ConsultarEvento();
         int contador = 0;
         try {
             while (datos.next()) {

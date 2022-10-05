@@ -945,20 +945,20 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                     if (idalumno.next()) {
                         CEstudents.idalumno = idalumno.getInt("idalumno");
                         usuariores = objEstu.CrearUsuarioAlumnoController();
+                        if (usuariores == true) {
+                            JOptionPane.showMessageDialog(null, "El usuario  pudo ser ingresado");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El usuario no se ingreso ");
+                        }
                         ResultSet materiasDocente = portafolio.MateriaDocenteResult(idGrado);
                         while (materiasDocente.next()) {
                             portafolio.CrearPortafoliosEXEC(materiasDocente.getInt(1));
+                            customization.notificacion("Se agrego un portafolio", 1, "Confirmación");
                         }
                     }
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, "Error" + ex.toString());
                 }           
-                if ( usuariores == true ) {
-                    JOptionPane.showMessageDialog(null, "Usuario Ingresado");
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "El usuario no pudo ser ingresado");
-                }
         }  else {
                 JOptionPane.showMessageDialog(this, "Estudiante no pudo ser ingresado");
             }        

@@ -30,8 +30,9 @@ public class panTasks extends javax.swing.JPanel {
     int nivelusuario;
     int iddocente;
     int idalumno;
-    
-    public panTasks(int nivel) {
+    String nombreAlumno;
+    public panTasks(int nivel, String nombrealumno) {
+        nombreAlumno = nombrealumno;
         initComponents();
         nivelusuario = nivel;
         iddocente = 0;

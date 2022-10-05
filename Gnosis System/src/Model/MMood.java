@@ -38,24 +38,34 @@ public class MMood {
      * @param con
      * @return 
      */
-    public boolean RegistrarEventoModel(String enfoque, String tiempo, int idmateria, Connection con) {
+    public boolean RegistrarEventoModel(String tiempo, int enfoque, int alumno,  Connection con) {
         try {           
-            String query = "INSERT INTO tbEnfoque VALUES (?,?,?)";
+            String query = "INSERT INTO tbEstadisticasEnfoque VALUES (?,?,?)";
             ps = con.prepareStatement(query);
-            ps.setString(1, enfoque);
-            ps.setString(2, tiempo);
-            ps.setInt(3, idmateria);
-            if (ps.executeUpdate () == 1) {
-                return true;
-            }else {
-                return false;
-            }
+            ps.setString(1, tiempo);
+            ps.setInt(2, enfoque);
+            ps.setInt(3, alumno);
+            ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al ingresar los datos, verifique la conexion. " + e.toString());
             return false;
         } catch (Exception ex){
             JOptionPane.showMessageDialog(null, "Erro critico. " + ex.toString());
             return false;
+        }
+    }
+    
+    public ResultSet UltimaEstadistica(int idalumno, Connection con){
+        try {
+            String query = "SELECT * FROM tbEstadisticasEnfoque WHERE idalumno = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, idalumno);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No fue posible cargar las estadisticas del alumno");
+            return null;
         }
     }
 }

@@ -7,6 +7,7 @@ package gnosis.system;
 
 import Controller.CBiblioteca;
 import Controller.CEstudents;
+import Controller.CEvento;
 import java.awt.*;
 import customizeObjects.ButtonRound;
 import java.sql.ResultSet;
@@ -39,6 +40,8 @@ public class frmDashboard extends javax.swing.JFrame {
     
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMMM");  
     DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("dd");
+    DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    LocalDateTime now;
     
     //Objeto de la clase customization
     customization custo = new customization();
@@ -49,6 +52,7 @@ public class frmDashboard extends javax.swing.JFrame {
     ResultSet datosAlumnoLog;
     String nombreAlumno;
     int nivelusuario;
+    String fechahoy;
     
     //id de la tarea
     int tareaidOpen;
@@ -58,7 +62,7 @@ public class frmDashboard extends javax.swing.JFrame {
      */
     public frmDashboard() {
         initComponents();
-        LocalDateTime now = LocalDateTime.now();
+        now = LocalDateTime.now();
         lblMes.setText(dtf.format(now));
         lblFecha.setText(dtf2.format(now));
         customization.mainUtilities();
@@ -76,14 +80,19 @@ public class frmDashboard extends javax.swing.JFrame {
         LocalDateTime now = LocalDateTime.now();
         lblMes.setText(dtf.format(now));
         lblFecha.setText(dtf2.format(now));
+        fechahoy = dtf3.format(now);
+        System.out.println(fechahoy);
         datosAlumnoLog = datosusuario;
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
         CargarDatosAlumnoDashboard();
+        ObtenerDatosAlumnoLoggeado(iduserlog);
         CargarPortafolios();
         CargarTareasAlumnos();
         CargarRecursos();
+        CargarEventosDia();
+        CargarUltimaEstadistica();
     }
     
     public void CargarDatosAlumnoDashboard(){
@@ -112,7 +121,7 @@ public class frmDashboard extends javax.swing.JFrame {
     
     final void CargarPortafolios(){
         CPortfolios controlador = new CPortfolios();
-        ResultSet datos = controlador.CargarPortafolios();
+        ResultSet datos = controlador.CargarPortafolios(nombreAlumno);
         try {
             while (datos.next()) {                
                 String materiamodulo;
@@ -161,7 +170,12 @@ public class frmDashboard extends javax.swing.JFrame {
         CEstudents controller = new CEstudents();
         datosAlumnoLog = controller.DatosAlumnoLog(id);
         try {
-            nombreAlumno = datosAlumnoLog.getString(3);
+            while (datosAlumnoLog.next()) {                
+                nombreAlumno = datosAlumnoLog.getString(3) + " " + datosAlumnoLog.getString(2);
+                lblNombreEstadistica.setText(datosAlumnoLog.getString(3));
+                lblApellidos.setText(datosAlumnoLog.getString(2));
+//                System.out.println(nombreAlumno);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(frmDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -181,13 +195,16 @@ public class frmDashboard extends javax.swing.JFrame {
 
     //Arreglar este metodo
     void GuardarRegistroMood(){
-        String variable1 = "Modo Libre";
-        CMood obj = new CMood(variable1, lblmood.getText(), 1);
-        boolean respuesta = obj.RegistrarMood(variable1, lblmood.getText(), 1);
-        if (respuesta == true) {
+        int variable1 = 2;
+        CMood obj = new CMood();
+        boolean respuesta;
+        if (moodPanel.getBackground() == Color.red) {
+            variable1 = 1;
+            respuesta = obj.RegistrarMood("00:"+lblmood.getText(), variable1, iduserlog);
             notificacion("Se han ingresado tus datos de enfoque exitosamente", 1, "Confirmación");
-        }else {
-            notificacion("No se ha podido ingresar tus datos de enfoque", 3, "Error");
+        } else {
+            respuesta = obj.RegistrarMood(lblmood.getText(), variable1, iduserlog);
+            notificacion("Se han ingresado tus datos de enfoque exitosamente", 1, "Confirmación");
         }
     }
     
@@ -357,6 +374,41 @@ public class frmDashboard extends javax.swing.JFrame {
             System.err.print(ex);
         }
     }
+    
+    final void CargarEventosDia() {
+        CEvento controller = new CEvento(); 
+
+        ResultSet datos = controller.ConsultarEventoHoy(fechahoy);
+        int contador = 0;
+        try {
+            while (datos.next()) {
+                contador++;
+            }
+            numEventos.setText(String.valueOf(contador));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar los eventos de el día de hoy");
+        }
+
+    }
+    
+    final void CargarUltimaEstadistica(){
+        CMood controllermood = new CMood();
+        ResultSet stdst = controllermood.CargarUltimaEstadistica(iduserlog);
+        try {
+            while (stdst.next()) {              
+                String tiempo = stdst.getString(2);
+                lblTiempoUltimoEnfoque.setText("Tiempo: " + tiempo.substring(0, 8));
+                if (stdst.getInt(3) == 1 ) {
+                    lblModoEnfoqueEst.setText("Enfoque Pomodoro");
+                    custo.changeIconlbl(lblIconoEnfoque, "/resources/Tomato.png");
+                } else{
+                    lblModoEnfoqueEst.setText("Enfoque Libre");
+                }
+            }
+        } catch (Exception e) {
+        }
+    }
+//    
 
     public void cambiarColorBotonesMenu(ButtonRound btn, String icono) {
         //Cambio el estado de todos los botones a deseleccionados 
@@ -428,7 +480,7 @@ public class frmDashboard extends javax.swing.JFrame {
         lblFecha = new javax.swing.JLabel();
         lblMes = new javax.swing.JLabel();
         panEventToday2 = new customizeObjects.PanelRound();
-        jLabel11 = new javax.swing.JLabel();
+        numEventos = new javax.swing.JLabel();
         panEventToday1 = new customizeObjects.PanelRound();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -440,14 +492,19 @@ public class frmDashboard extends javax.swing.JFrame {
         calendarPanel = new customizeObjects.PanelRound();
         panelRound10 = new customizeObjects.PanelRound();
         jLabel9 = new javax.swing.JLabel();
-        buttonRound3 = new customizeObjects.ButtonRound();
+        buttonRound5 = new customizeObjects.ButtonRound();
         jScrollPane3 = new javax.swing.JScrollPane();
         recursosContainer = new customizeObjects.PanelRound();
         stadisticPanel = new customizeObjects.PanelRound();
-        panelRound13 = new customizeObjects.PanelRound();
-        jLabel19 = new javax.swing.JLabel();
         panelRound14 = new customizeObjects.PanelRound();
         jLabel13 = new javax.swing.JLabel();
+        buttonRound3 = new customizeObjects.ButtonRound();
+        lblIconoEnfoque = new javax.swing.JLabel();
+        lblTiempoUltimoEnfoque = new javax.swing.JLabel();
+        lblNombreEstadistica = new javax.swing.JLabel();
+        lblModoEnfoqueEst = new javax.swing.JLabel();
+        lblApellidos = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         taskPanel = new customizeObjects.PanelRound();
         panelRound8 = new customizeObjects.PanelRound();
         jLabel2 = new javax.swing.JLabel();
@@ -721,13 +778,13 @@ public class frmDashboard extends javax.swing.JFrame {
         panEventToday2.setRoundTopRight(20);
         panEventToday2.setLayout(new java.awt.BorderLayout());
 
-        jLabel11.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("00");
-        jLabel11.setPreferredSize(new java.awt.Dimension(20, 20));
-        jLabel11.setRequestFocusEnabled(false);
-        panEventToday2.add(jLabel11, java.awt.BorderLayout.CENTER);
+        numEventos.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        numEventos.setForeground(new java.awt.Color(32, 32, 32));
+        numEventos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numEventos.setText("00");
+        numEventos.setPreferredSize(new java.awt.Dimension(20, 20));
+        numEventos.setRequestFocusEnabled(false);
+        panEventToday2.add(numEventos, java.awt.BorderLayout.CENTER);
 
         panEventToday1.setBackground(new java.awt.Color(255, 255, 255));
         panEventToday1.setToolTipText("");
@@ -850,11 +907,11 @@ public class frmDashboard extends javax.swing.JFrame {
         jLabel9.setForeground(java.awt.Color.white);
         jLabel9.setText("Recursos");
 
-        buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
-        buttonRound3.setPreferredSize(new java.awt.Dimension(40, 40));
-        buttonRound3.addActionListener(new java.awt.event.ActionListener() {
+        buttonRound5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
+        buttonRound5.setPreferredSize(new java.awt.Dimension(40, 40));
+        buttonRound5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRound3ActionPerformed(evt);
+                buttonRound5ActionPerformed(evt);
             }
         });
 
@@ -865,9 +922,12 @@ public class frmDashboard extends javax.swing.JFrame {
             .addGroup(panelRound10Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
-                .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addContainerGap(345, Short.MAX_VALUE))
+            .addGroup(panelRound10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound10Layout.createSequentialGroup()
+                    .addContainerGap(396, Short.MAX_VALUE)
+                    .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(4, 4, 4)))
         );
         panelRound10Layout.setVerticalGroup(
             panelRound10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -875,10 +935,11 @@ public class frmDashboard extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel9)
                 .addGap(12, 12, 12))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(panelRound10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound10Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         calendarPanel.add(panelRound10, java.awt.BorderLayout.PAGE_START);
@@ -904,47 +965,113 @@ public class frmDashboard extends javax.swing.JFrame {
         stadisticPanel.setRoundBottomRight(20);
         stadisticPanel.setRoundTopLeft(20);
         stadisticPanel.setRoundTopRight(20);
-        stadisticPanel.setLayout(new java.awt.BorderLayout());
-
-        panelRound13.setBackground(new java.awt.Color(217, 217, 217));
-        panelRound13.setRoundBottomLeft(20);
-        panelRound13.setRoundBottomRight(20);
-
-        jLabel19.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel19.setText("jLabel19");
-
-        javax.swing.GroupLayout panelRound13Layout = new javax.swing.GroupLayout(panelRound13);
-        panelRound13.setLayout(panelRound13Layout);
-        panelRound13Layout.setHorizontalGroup(
-            panelRound13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound13Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(jLabel19)
-                .addContainerGap(106, Short.MAX_VALUE))
-        );
-        panelRound13Layout.setVerticalGroup(
-            panelRound13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound13Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel19)
-                .addContainerGap(181, Short.MAX_VALUE))
-        );
-
-        stadisticPanel.add(panelRound13, java.awt.BorderLayout.CENTER);
 
         panelRound14.setBackground(new java.awt.Color(217, 217, 217));
         panelRound14.setPreferredSize(new java.awt.Dimension(100, 50));
         panelRound14.setRoundTopLeft(20);
         panelRound14.setRoundTopRight(20);
-        panelRound14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel13.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel13.setText("Estadisticas");
+        jLabel13.setText("Estadistícas");
         jLabel13.setPreferredSize(new java.awt.Dimension(107, 30));
-        panelRound14.add(jLabel13);
 
-        stadisticPanel.add(panelRound14, java.awt.BorderLayout.PAGE_START);
+        buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
+        buttonRound3.setPreferredSize(new java.awt.Dimension(40, 40));
+        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        buttonRound3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRound14Layout = new javax.swing.GroupLayout(panelRound14);
+        panelRound14.setLayout(panelRound14Layout);
+        panelRound14Layout.setHorizontalGroup(
+            panelRound14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound14Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+        panelRound14Layout.setVerticalGroup(
+            panelRound14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelRound14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5))
+        );
+
+        lblIconoEnfoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/glasses.png"))); // NOI18N
+
+        lblTiempoUltimoEnfoque.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        lblTiempoUltimoEnfoque.setForeground(new java.awt.Color(32, 32, 32));
+        lblTiempoUltimoEnfoque.setText("Tiempo");
+
+        lblNombreEstadistica.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        lblNombreEstadistica.setForeground(new java.awt.Color(32, 32, 32));
+        lblNombreEstadistica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNombreEstadistica.setText("jLabel19");
+
+        lblModoEnfoqueEst.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        lblModoEnfoqueEst.setForeground(new java.awt.Color(32, 32, 32));
+        lblModoEnfoqueEst.setText("Modo de enfoque:");
+
+        lblApellidos.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        lblApellidos.setForeground(new java.awt.Color(32, 32, 32));
+        lblApellidos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblApellidos.setText("jLabel11");
+
+        jLabel11.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(32, 32, 32));
+        jLabel11.setText("Tu ultimo enfoque:");
+
+        javax.swing.GroupLayout stadisticPanelLayout = new javax.swing.GroupLayout(stadisticPanel);
+        stadisticPanel.setLayout(stadisticPanelLayout);
+        stadisticPanelLayout.setHorizontalGroup(
+            stadisticPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stadisticPanelLayout.createSequentialGroup()
+                .addGroup(stadisticPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelRound14, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(stadisticPanelLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(stadisticPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblModoEnfoqueEst, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTiempoUltimoEnfoque, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(stadisticPanelLayout.createSequentialGroup()
+                                .addComponent(lblIconoEnfoque)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(stadisticPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblNombreEstadistica, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                                    .addComponent(lblApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(132, 132, 132))
+        );
+        stadisticPanelLayout.setVerticalGroup(
+            stadisticPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stadisticPanelLayout.createSequentialGroup()
+                .addComponent(panelRound14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addGroup(stadisticPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(stadisticPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblIconoEnfoque, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(stadisticPanelLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(lblNombreEstadistica, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(lblTiempoUltimoEnfoque)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblModoEnfoqueEst)
+                .addContainerGap())
+        );
 
         jPanel2.add(stadisticPanel, java.awt.BorderLayout.EAST);
 
@@ -1009,10 +1136,10 @@ public class frmDashboard extends javax.swing.JFrame {
 
         tareasContainer.setBackground(new java.awt.Color(217, 217, 217));
         tareasContainer.setOpaque(true);
-        tareasContainer.setPreferredSize(new java.awt.Dimension(349, 1000));
+        tareasContainer.setPreferredSize(new java.awt.Dimension(349, 1500));
         tareasContainer.setRoundBottomLeft(25);
         tareasContainer.setRoundBottomRight(25);
-        tareasContainer.setLayout(new java.awt.GridLayout(10, 1, 5, 0));
+        tareasContainer.setLayout(new java.awt.GridLayout(15, 1, 5, 0));
         jScrollPane2.setViewportView(tareasContainer);
 
         taskPanel.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -1219,17 +1346,17 @@ public class frmDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (panContainer.getComponentCount() == 0) {
             cambiarColorBotonesMenu(pageButton, "/resources/document-text-black.png");
-            panContainer.add(new panPortfolios());
+            panContainer.add(new panPortfolios(iduserlog, nombreAlumno));
             panContainer.repaint();
             panContainer.revalidate();
-        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panPortfolios()) {
+        } else if (panContainer.getComponentCount() == 1 && panContainer.getComponent(0) != new panPortfolios(iduserlog, nombreAlumno)) {
             if (pageButton.getStyle() == ButtonRound.ButtonStyle.NEGRO) {
                 cambiarColorBotonesMenu(pageButton, "/resources/document-text-black.png");
                 panContainer.removeAll();
                 panContainer.repaint();
                 panContainer.revalidate();
 
-                panContainer.add(new panPortfolios());
+                panContainer.add(new panPortfolios(iduserlog, nombreAlumno));
                 panContainer.repaint();
                 panContainer.revalidate();
             } else {
@@ -1320,8 +1447,9 @@ public class frmDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         timerP.cancel();
         taskP.cancel();
-        if (mood == 2) {
+        if (mood == 1) {
             notificacion("Buen trabajo! Has logrado " + pomodoros + " pomodoros en esta sesión", 1, "Pomodoros");
+            GuardarRegistroMood();
             moodPanel.setVisible(false);
         } else{
             GuardarRegistroMood();
@@ -1352,8 +1480,12 @@ public class frmDashboard extends javax.swing.JFrame {
         recursosContainer.removeAll();
         recursosContainer.repaint();
         recursosContainer.revalidate();
-        CargarRecursos();
+        CargarUltimaEstadistica();
     }//GEN-LAST:event_buttonRound3ActionPerformed
+
+    private void buttonRound5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRound5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1380,6 +1512,7 @@ public class frmDashboard extends javax.swing.JFrame {
     private customizeObjects.ButtonRound buttonRound2;
     private customizeObjects.ButtonRound buttonRound3;
     private customizeObjects.ButtonRound buttonRound4;
+    private customizeObjects.ButtonRound buttonRound5;
     private javax.swing.JPanel buttonsPan;
     private customizeObjects.ButtonRound calendarButton;
     private customizeObjects.PanelRound calendarPanel;
@@ -1397,7 +1530,6 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1411,14 +1543,20 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblIconoEnfoque;
     private javax.swing.JLabel lblMes;
+    private javax.swing.JLabel lblModoEnfoqueEst;
+    private javax.swing.JLabel lblNombreEstadistica;
+    private javax.swing.JLabel lblTiempoUltimoEnfoque;
     private javax.swing.JLabel lblmood;
     private javax.swing.JLabel lblnamedashboard;
     private javax.swing.JPanel mainPanel;
     private customizeObjects.PanelRound moodPanel;
     private javax.swing.JLabel moodPic;
     private javax.swing.JPanel namePan;
+    private javax.swing.JLabel numEventos;
     private customizeObjects.ButtonRound pageButton;
     private customizeObjects.PanelRound panBlack;
     private customizeObjects.PanelRound panContainer;
@@ -1430,7 +1568,6 @@ public class frmDashboard extends javax.swing.JFrame {
     private customizeObjects.PanelRound panelRound10;
     private customizeObjects.PanelRound panelRound11;
     private customizeObjects.PanelRound panelRound12;
-    private customizeObjects.PanelRound panelRound13;
     private customizeObjects.PanelRound panelRound14;
     private customizeObjects.PanelRound panelRound2;
     private customizeObjects.PanelRound panelRound4;

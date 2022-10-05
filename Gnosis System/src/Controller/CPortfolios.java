@@ -19,8 +19,8 @@ public class CPortfolios {
     
     MPortfolios mdlPortfolios = new MPortfolios();
     
-    public ResultSet CargarPortafolios(){
-        return mdlPortfolios.CargarPortafoliosPrev();
+    public ResultSet CargarPortafolios(String nombrealumno){
+        return mdlPortfolios.CargarPortafoliosPrev(nombrealumno);
     }
     
     public ResultSet CargarPortafoliosFiltro(String clasificacion){

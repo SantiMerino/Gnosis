@@ -158,20 +158,30 @@ public class MEvento {
     
     /**
      * Method in the Event Model to query the selected events.
-     * @param fechainicio
-     * @param fechafinal
+     * 
      * @return 
      */
-    public ResultSet ConsultarEventosSeleccionadas(String fechainicio, String fechafinal){
+    public ResultSet ConsultarEventosSeleccionadas(){
         try {
             ResultSet rs;
             Connection con = MConnection.getConnectionWithoutParameters();
             String query = "SELECT * FROM viewEventos";
             ps = con.prepareStatement(query);
-//            ps.setString(1, fechainicio);
-//            ps.setString(2,  fechafinal);
-//            ps.setString(3, fechainicio);
-//            ps.setString(4,  fechafinal);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }
+    
+        public ResultSet ConsultarEventosHoy(String fecha){
+        try {
+            ResultSet rs;
+            Connection con = MConnection.getConnectionWithoutParameters();
+            String query = "SELECT * FROM viewEventos WHERE fechaevento = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, fecha);
             rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {

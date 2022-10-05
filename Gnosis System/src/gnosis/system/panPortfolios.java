@@ -23,6 +23,8 @@ public class panPortfolios extends javax.swing.JPanel {
      * Creates new form frmBlocNotas
      */
     
+    String nombrealumnolog;
+    
     CPortfolios controlador = new CPortfolios();
     customization custo = new customization();
     int idalumnolog;
@@ -32,8 +34,9 @@ public class panPortfolios extends javax.swing.JPanel {
         CargarPortafolios();
     }
     
-    public panPortfolios(int idal){
+    public panPortfolios(int idal, String nombreAl){
         initComponents();
+        nombrealumnolog = nombreAl;
         customization.mainUtilities();
         idalumnolog = idal;
         CargarPortafolios();
@@ -41,7 +44,7 @@ public class panPortfolios extends javax.swing.JPanel {
     
     final void CargarPortafolios(){
         CPortfolios controlador = new CPortfolios();
-        ResultSet datos = controlador.CargarPortafolios();
+        ResultSet datos = controlador.CargarPortafolios(nombrealumnolog);
         try {
             while (datos.next()) {                
                 String materiamodulo;

@@ -53,7 +53,7 @@ public class MTasks {
         Connection con;
         try {
             con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT * FROM viewTareas";
+            String query = "SELECT * FROM viewTareas;";
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             return rs;

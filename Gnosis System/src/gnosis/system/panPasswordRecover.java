@@ -807,7 +807,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         if (txtNConfirmar.getText().isEmpty() && txtNueva.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null,"vacio como tu corazón");
+            JOptionPane.showMessageDialog(null,"Campos vacios");
         } else{
             if (txtNueva.getText().equals(txtNConfirmar.getText())) {
                 CRecuperacionContra control = new CRecuperacionContra();
@@ -818,7 +818,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
 //                    new frmLogin().setVisible(true);
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "algo salio mal :P");
+                    JOptionPane.showMessageDialog(null, "algo salio mal");
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Las contraseñas no coninciden");
@@ -857,7 +857,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
 //                    new frmLogin().setVisible(true);
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "algo salio mal :P");
+                    JOptionPane.showMessageDialog(null, "algo salio mal");
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Las contraseñas no coninciden");
@@ -886,7 +886,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
 //                    new frmLogin().setVisible(true);
             }
             else {
-                JOptionPane.showMessageDialog(null, "algo salio mal :P");
+                JOptionPane.showMessageDialog(null, "algo salio mal");
             }
     }
     }//GEN-LAST:event_btnConfirmarADMINActionPerformed
@@ -895,7 +895,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         if (txtNuevaADMIN.getText().isEmpty() && txtNConfirmarADMIN.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null,"vacio como tu corazón");
+            JOptionPane.showMessageDialog(null,"Campos vacios");
         } else{
             if (txtNuevaADMIN.getText().equals(txtNConfirmarADMIN.getText())) {
                 CRecuperacionContra control = new CRecuperacionContra();
@@ -906,7 +906,7 @@ public class panPasswordRecover extends javax.swing.JPanel {
 //                    new frmLogin().setVisible(true);
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "algo salio mal :P");
+                    JOptionPane.showMessageDialog(null, "algo salio mal");
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Las contraseñas no coninciden");

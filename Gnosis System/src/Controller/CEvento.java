@@ -194,10 +194,14 @@ public class CEvento {
     }
     
     
-    public ResultSet ConsultarEvento(String fechain, String fechafin){
-        return mdlEvento.ConsultarEventosSeleccionadas(fechain, fechafin);
+    public ResultSet ConsultarEvento(){
+        return mdlEvento.ConsultarEventosSeleccionadas();
     }
     
+    
+    public ResultSet ConsultarEventoHoy(String fechaevento){
+        return mdlEvento.ConsultarEventosHoy(fechaevento);
+    }
     /**
      * Method to search for date ranges
      * @param Fecha1
