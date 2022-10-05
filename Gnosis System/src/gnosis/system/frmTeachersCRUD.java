@@ -82,6 +82,7 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
         txtIdUsuario.setVisible(false);
         txtIdGrado.setVisible(false);      
         
+        
         //Titulos de la tabla 
         String [] TitulosDocentes = {"ID", "Apellidos", "Nombres", "Direccion", "Dui", "Correo",  "Nacimiento", "Grado", "Genero", "Contacto"};
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
@@ -864,23 +865,35 @@ public class frmTeachersCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscarKeyReleased
 
     
+    public int  mayoriadeedad (){
+        Date  date = dtNacimiento.getDate();
+        c = new GregorianCalendar();
+        c.setTime(date);
+        Calendar hoy = Calendar.getInstance();
+        int difAnio = hoy.get(Calendar.YEAR) - c.get(Calendar.YEAR);
+        int difMes = hoy.get(Calendar.MONTH) - c.get(Calendar.MONTH);
+        int difDia = hoy.get(Calendar.DAY_OF_MONTH) - c.get(Calendar.DAY_OF_MONTH);
+        if (difMes < 0 || (difMes == 0 && difDia < 0)) {
+            difAnio = difAnio - 1;
+        }
+        return difAnio;
+    }
+    
 /**
  * Method to save the teacher in the database
  * @param evt 
  */
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        validacionfecha();
+        int años = mayoriadeedad();
         if (txtNombres.getText().trim().isEmpty() || txtApellidos.getText().trim().isEmpty() || txtDireccion.getText().trim().isEmpty() || txtTelefono.getText().trim().isEmpty() || txtDui.getText().trim().isEmpty() || txtCorreo.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
         }else if(cmbGenero.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Seleccione un genero", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else if (años < 18) {
+            JOptionPane.showMessageDialog(null, "Verifica la fecha de nacimiento, el docente no puede ser menor de edad", "error de fecha", JOptionPane.WARNING_MESSAGE);
         }
          else {
-            validacionfecha();
-            Date date = dtNacimiento.getDate();
-            c = new GregorianCalendar();
-            c.setTime(date);
             String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.DAY_OF_MONTH));
             CTeacher objDocente = new CTeacher(txtApellidos.getText(), txtNombres.getText(), txtDireccion.getText(), txtDui.getText(), txtCorreo.getText(), nacimiento, idGrado, idGenero, txtTelefono.getText());
             boolean respuesta = objDocente.DocenteNuevoController();

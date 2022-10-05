@@ -72,6 +72,9 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         txtId.setEditable(false);
         txtIdGenero.setVisible(false);
         txtIdGrado.setVisible(false);
+        
+        txtDui.setEditable(false);
+        
 //        txtIdUsuario.setVisible(false);
         for(Component c : dtNacimiento.getComponents()){
             ((JComponent)c).setBackground(new Color (217,217,217));
@@ -865,6 +868,21 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         }
     }
     
+        
+    public int  mayoriadeedad (){
+        Date  date = dtNacimiento.getDate();
+        c = new GregorianCalendar();
+        c.setTime(date);
+        Calendar hoy = Calendar.getInstance();
+        int difAnio = hoy.get(Calendar.YEAR) - c.get(Calendar.YEAR);
+        int difMes = hoy.get(Calendar.MONTH) - c.get(Calendar.MONTH);
+        int difDia = hoy.get(Calendar.DAY_OF_MONTH) - c.get(Calendar.DAY_OF_MONTH);
+        if (difMes < 0 || (difMes == 0 && difDia < 0)) {
+            difAnio = difAnio - 1;
+        }
+        return difAnio;
+    }
+    
     /**
      * Guardado de datos en la base de datos
      * @param evt 
@@ -872,10 +890,15 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
     
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        validacionfecha();
-        Date date = dtNacimiento.getDate();
-            c = new GregorianCalendar();
-            c.setTime(date);
+        int años = mayoriadeedad();
+//        if (txtNombres.getText().trim().isEmpty() || txtApellidos.getText().trim().isEmpty() || txtDireccion.getText().trim().isEmpty() || txtTelefono.getText().trim().isEmpty() || 
+//                txtCorreo.getText().trim().isEmpty() || txtCodigo.getText().trim().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+//        }else if (cmbGenero.getSelectedIndex() == 0 || cmbGrado.getSelectedIndex() == 0) {
+//            JOptionPane.showMessageDialog(this, "Llene todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
+//        }else 
+            if (años < 18) {
+            JOptionPane.showMessageDialog(null, "El estudiante es menor de edad, no es necesario agregar un numero de documento");
             String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.DAY_OF_MONTH));
             CEstudents objEstu = new CEstudents(txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario, 
                     txtCodigo.getText());
@@ -892,7 +915,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                         usuariores = objEstu.CrearUsuarioAlumnoController();
                     }
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "adios id" + ex.toString());
+                    JOptionPane.showMessageDialog(null, "Error" + ex.toString());
                 }           
                 if ( usuariores == true ) {
                     JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
@@ -902,7 +925,42 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                 }
         }  else {
                 JOptionPane.showMessageDialog(this, "Estudiante no pudo ser ingresado");
-            }                                     
+            }        
+        }else{
+            txtDui.setEditable(true);
+            if (txtDui.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Por favor llene el campo de dui");
+            }else{
+                 String nacimiento = String.valueOf(c.get(Calendar.YEAR) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.DAY_OF_MONTH));
+            CEstudents objEstu = new CEstudents(txtApellidos.getText(), txtNombres.getText(), idGenero, idGrado, txtCorreo.getText(), txtDireccion.getText(), txtTelefono.getText(), txtDui.getText(), nacimiento, idUsuario, 
+                    txtCodigo.getText());
+            boolean respuesta = objEstu.AlumnoNuevoController();
+            if (respuesta == true) {
+            JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente");
+            boolean usuariores = false;
+                CargarTabla();
+                ResultSet idalumno = objEstu.idAlumnoforUsuario();
+                try {
+                    if (idalumno.next()) {
+                        CEstudents.idalumno = idalumno.getInt("idalumno");
+                        JOptionPane.showMessageDialog(null, CEstudents.idalumno);
+                        usuariores = objEstu.CrearUsuarioAlumnoController();
+                    }
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error" + ex.toString());
+                }           
+                if ( usuariores == true ) {
+                    JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Usuario ingresado");
+                }
+        }  else {
+                JOptionPane.showMessageDialog(this, "Estudiante no pudo ser ingresado");
+            }        
+            }
+        }
+                             
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
