@@ -12,8 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.TimerTask;
 import java.util.Timer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 
@@ -541,7 +539,7 @@ public class frmLogin extends javax.swing.JFrame {
 
                     } else {
                         intentos--;
-                        System.out.println(intentos);
+//                        System.out.println(intentos);
                         if (intentos == 2) {
                             txtPassword.setEnabled(false);
                             txtUsername.setEnabled(false);

@@ -98,22 +98,6 @@ public class frmDashboard extends javax.swing.JFrame {
         }
     }
     
-    
-    public frmDashboard(String materiaString){
-        initComponents();
-        customization.mainUtilities();
-        moodPanel.setVisible(false);
-        searchbar.putClientProperty("innerFocusWidth", 0);
-        searchbar.putClientProperty("focusWidth", 0);
-        panContainer.removeAll();
-        panContainer.repaint();
-        panContainer.revalidate();
-        panContainer.add(new panBlocMateria());
-        panContainer.repaint();
-        panContainer.revalidate();
-        cambiarColorBotonesMenu(pageButton, "/resources/home-selec.png");
-    }
-    
     final void CargarRecursos(){
         CBiblioteca controlador = new CBiblioteca();
         ResultSet datosrecursos = controlador.CargarRecursosVista(iduserlog);
@@ -139,7 +123,7 @@ public class frmDashboard extends javax.swing.JFrame {
                 } else {
                     materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
                 }
-                custo.CrearPortafolioDashboard(materiamodulo, datos.getString(3), datos.getString(5), "44 páginas", portafoliosContain);
+                custo.CrearPortafolioDashboard(materiamodulo, datos.getString(3), datos.getString(5), "44 páginas", portafoliosContain, iduserlog);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());

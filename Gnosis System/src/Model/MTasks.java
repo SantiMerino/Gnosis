@@ -71,7 +71,11 @@ public class MTasks {
             ps = con.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            return rs;
+            if (rs.next()) {
+               return rs; 
+            } else{
+                return null;
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
             return null;

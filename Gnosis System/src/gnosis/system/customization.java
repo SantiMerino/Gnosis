@@ -531,16 +531,16 @@ public class customization {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-            switch (niveluser) {
-            case 1:
-                Frame tareaframe = new frmUploadTaskStudents(idtarea, idalumno);
-                tareaframe.setVisible(true);
-                break;
-            case 2:
-                Frame frame2 = new frmUploadTaskTeacher(idtarea, iddocente, materiamoduloColor);
-                frame2.setVisible(true);
-                break;
-        }
+                switch (niveluser) {
+                    case 1:
+                        Frame tareaframe = new frmUploadTaskStudents(idtarea, idalumno);
+                        tareaframe.setVisible(true);
+                        break;
+                    case 2:
+                        Frame frame2 = new frmUploadTaskTeacher(idtarea, iddocente, materiamoduloColor);
+                        frame2.setVisible(true);
+                        break;
+                }
             }
         });
         
@@ -1225,7 +1225,7 @@ public class customization {
         contenedor.revalidate(); 
     }
     
-    public void CrearPortafolioDashboard(String materiamodulo, String Grado, String docente, String contenido, JPanel contenedor ){
+    public void CrearPortafolioDashboard(String materiamodulo, String Grado, String docente, String contenido, JPanel contenedor, int idalumno){
         //Crear paneles contenedores
         PanelRound portafolio = new PanelRound();
         PanelRound panelSuperior = new PanelRound();
@@ -1385,9 +1385,7 @@ public class customization {
         btnAbrir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new frmDashboard(materiamodulo).setVisible(true);
-                JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(contenedor);
-        dashboardopen.dispose();
+                new frmBlocMateria(idalumno, materiamodulo, contenido).setVisible(true);
             }
         });
         

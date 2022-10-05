@@ -6,13 +6,14 @@
 package gnosis.system;
 
 import Controller.CLogin;
+import Controller.CTasks;
 import java.awt.*;
-import javax.swing.JOptionPane;
 import customizeObjects.ButtonRound;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,12 +33,14 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         return niveluser;
     }
 
+        
+        
     private int niveluser;
     int iddocente;
     int iduserlog;
     String usernamelog;
        
-    public customization custoObj = new customization();
+    public customization custo = new customization();
     panGrades grades = new panGrades(iddocente);
     CLogin log = new CLogin();
     
@@ -60,8 +63,9 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
             niveluser = datosusuario.getInt(2);
             iddocente = datosusuario.getInt(8);
         } catch (SQLException ex) {
-            Logger.getLogger(frmDashboardTeacher.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al cargar los datos del docente " + ex.toString());
         }
+       
         btnUsers.setVisible(false);
         lblDashboard.setText(usernamelog + "'s Dashboard");
         moodPanel.setVisible(false);
@@ -78,9 +82,34 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
             calendarButton.setVisible(false);
             bookButton.setVisible(false);
             btnUsers.setVisible(true);
-//           pageButton.setVisible(false);
         }
+        CargarTareasDocente(iddocente);
     }   
+    
+    final void CargarTareasDocente(int iddocente) {        
+        CTasks controller = new CTasks();
+        ResultSet datos = controller.CargarTareasPreviewDocente(iddocente);
+        if (datos == null) {
+            JOptionPane.showMessageDialog(null, "error ");
+        }
+        try {
+            while (datos.next()) {
+                //Forma de corroborar si es una materia o un modulo :3
+                String materiamodulo;
+                String cadena = datos.getString(4);                
+                String[] palabras = cadena.split(" ", 2);
+                if (palabras[0].equals("Ninguno")) {
+                    materiamodulo = palabras[1];
+                } else {
+                    materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
+                }                
+                custo.CrearTareaDashboard(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), panelTareas, materiamodulo, datos.getInt(10), niveluser, iddocente, 0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas " + e.toString());
+        }
+        
+    }
     
     public void notificacion(String mensaje,int tipo_mensaje, String tipo_men){
         try{
@@ -111,25 +140,25 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         //Cambio el estado de todos los botones a deseleccionados 
         //En cada uno tiene que ir la imagen en negro :P
         homeButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(homeButton, "/resources/home.png");
+        custo.changeIcon(homeButton, "/resources/home.png");
         calendarButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(calendarButton, "/resources/calendar.png");
+        custo.changeIcon(calendarButton, "/resources/calendar.png");
         briefcaseButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(briefcaseButton, "/resources/briefcase.png");
+        custo.changeIcon(briefcaseButton, "/resources/briefcase.png");
         pageButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(pageButton, "/resources/document-text.png");
+        custo.changeIcon(pageButton, "/resources/document-text.png");
         teachersButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(teachersButton, "/resources/admindocente.png");
+        custo.changeIcon(teachersButton, "/resources/admindocente.png");
         studentsButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(studentsButton, "/resources/teacher-white.png");
+        custo.changeIcon(studentsButton, "/resources/teacher-white.png");
         medalButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(medalButton, "/resources/medal.png");
+        custo.changeIcon(medalButton, "/resources/medal.png");
         bookButton.setStyle(ButtonRound.ButtonStyle.NEGRO);
-        custoObj.changeIcon(bookButton, "/resources/book-saved.png");
+        custo.changeIcon(bookButton, "/resources/book-saved.png");
         
         //Y justo al final cambio el boton que es al estado de seleccionado :P
         btn.setStyle(ButtonRound.ButtonStyle.BLANCO);
-        custoObj.changeIcon(btn, icono);
+        custo.changeIcon(btn, icono);
         
     }
 
@@ -188,7 +217,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         panelRound14 = new customizeObjects.PanelRound();
         jLabel13 = new javax.swing.JLabel();
         taskPanel = new customizeObjects.PanelRound();
-        panelRound3 = new customizeObjects.PanelRound();
+        panelTareas = new customizeObjects.PanelRound();
         panelRound8 = new customizeObjects.PanelRound();
         jLabel14 = new javax.swing.JLabel();
         panelRound4 = new customizeObjects.PanelRound();
@@ -492,10 +521,11 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         taskPanel.setRoundTopRight(20);
         taskPanel.setLayout(new java.awt.BorderLayout());
 
-        panelRound3.setBackground(new java.awt.Color(217, 217, 217));
-        panelRound3.setRoundBottomLeft(20);
-        panelRound3.setRoundBottomRight(20);
-        taskPanel.add(panelRound3, java.awt.BorderLayout.CENTER);
+        panelTareas.setBackground(new java.awt.Color(217, 217, 217));
+        panelTareas.setRoundBottomLeft(20);
+        panelTareas.setRoundBottomRight(20);
+        panelTareas.setLayout(new java.awt.GridLayout(20, 1));
+        taskPanel.add(panelTareas, java.awt.BorderLayout.CENTER);
 
         panelRound8.setBackground(new java.awt.Color(217, 217, 217));
         panelRound8.setPreferredSize(new java.awt.Dimension(100, 50));
@@ -1006,13 +1036,13 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private customizeObjects.PanelRound panelRound13;
     private customizeObjects.PanelRound panelRound14;
     private customizeObjects.PanelRound panelRound2;
-    private customizeObjects.PanelRound panelRound3;
     private customizeObjects.PanelRound panelRound4;
     private customizeObjects.PanelRound panelRound5;
     private customizeObjects.PanelRound panelRound6;
     private customizeObjects.PanelRound panelRound7;
     private customizeObjects.PanelRound panelRound8;
     private customizeObjects.PanelRound panelRound9;
+    private customizeObjects.PanelRound panelTareas;
     private customizeObjects.PanelRound primeraFila;
     private customizeObjects.PanelRound protfoliosPanel;
     private javax.swing.JPanel rightGap;

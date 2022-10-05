@@ -793,7 +793,7 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
                               <SubComponents>
-                                <Container class="customizeObjects.PanelRound" name="panelRound3">
+                                <Container class="customizeObjects.PanelRound" name="panelTareas">
                                   <Properties>
                                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                       <Color blue="d9" green="d9" red="d9" type="rgb"/>
@@ -807,7 +807,10 @@
                                     </Constraint>
                                   </Constraints>
 
-                                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+                                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                                    <Property name="columns" type="int" value="1"/>
+                                    <Property name="rows" type="int" value="20"/>
+                                  </Layout>
                                 </Container>
                                 <Container class="customizeObjects.PanelRound" name="panelRound8">
                                   <Properties>

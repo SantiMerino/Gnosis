@@ -78,21 +78,21 @@ public class panTasks extends javax.swing.JPanel {
         
     }
     
-        final void CargarTareasDocente(int iddocente){   
+        final void CargarTareasDocente(int iddocente) {        
         controller = new CTasks();
         ResultSet datos = controller.CargarTareasPreviewDocente(iddocente);
         try {
-            while (datos.next()) {  
+            while (datos.next()) {
                 //Forma de corroborar si es una materia o un modulo :3
                 int fila = datos.getRow();
                 String materiamodulo;
-                String cadena = datos.getString(4);     
+                String cadena = datos.getString(4);                
                 String[] palabras = cadena.split(" ", 2);
                 if (palabras[0].equals("Ninguno")) {
                     materiamodulo = palabras[1];
                 } else {
                     materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
-                }               
+                }                
                 custo.CrearTarea(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), mainPan, materiamodulo, datos.getInt(10), nivelusuario, iddocente, idalumno);
 //                System.out.println(datos.absolute(fila));
             }
