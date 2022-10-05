@@ -39,7 +39,8 @@ public class frmBlocMateria extends javax.swing.JFrame {
     
     public frmBlocMateria(int idalumno, String materiamodulo, String contenido){
         initComponents();
-        lblPortafolio.setText(materiamodulo);
+        MateriaColor(materiamodulo);
+        lblPortafolio.setText("Portafolios > " + materiamodulo);
     }
     
     final void GuardarArchivoTXT(){
@@ -60,19 +61,45 @@ public class frmBlocMateria extends javax.swing.JFrame {
             }
     }
     
-    void SwtichColor(){
-        String portafolio = lblPortafolio.getText();
-        if (portafolio.contains("Sociales")) {
-            
-        } else if(portafolio.contains("Matemáticas")){
-            
-        } else if(portafolio.contains("Lenguaje")){
-            
-        } else if(portafolio.contains("Ciencias")){
-            
-        } else if(portafolio.contains("Ingles")){
-            
+void MateriaColor(String materiamodulo){
+        Color mainColor;
+        Color secondColor;
+        Color fontColor;
+        
+        switch (materiamodulo) {
+            case "Sociales":
+                mainColor = new Color(98, 148, 244);
+                secondColor = new Color(149, 184, 252);
+                fontColor = new Color(32,32,32);
+                break;
+            case "Matemáticas":
+                mainColor = new Color(255, 153, 0);
+                secondColor = new Color(255, 182, 73);
+                fontColor = new Color(32,32,32);
+                break;
+            case "Ingles":
+                mainColor = new Color(255, 189, 62);
+                secondColor = new Color(255, 198, 87);
+                fontColor = new Color(32,32,32);
+                break;
+            case "Ciencias":
+                mainColor = new Color(127, 211, 106);
+                secondColor = new Color(152, 215, 136);
+                fontColor = new Color(32,32,32);
+                break;
+            case "Lenguaje":
+                mainColor = new Color(227, 63, 63);
+                secondColor = new Color(231, 87, 87);
+                fontColor = new Color(255,255,255);
+                break;
+            default:
+                mainColor = new Color(32,32,32);
+                secondColor = new Color(90,90,90);
+                fontColor = new Color(255,255,255);
+                break;
         }
+        namePan.setBackground(mainColor);
+        lblPortafolio.setForeground(fontColor);
     }
     
     
@@ -126,7 +153,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
         panelRound3 = new customizeObjects.PanelRound();
         panelRound4 = new customizeObjects.PanelRound();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(32, 32, 32));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -204,7 +231,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
+            .addGap(0, 594, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel5, java.awt.BorderLayout.WEST);
@@ -372,8 +399,11 @@ public class frmBlocMateria extends javax.swing.JFrame {
                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(buttonRound17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(buttonRound16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -412,7 +442,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonRound16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -471,7 +501,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
         );
         panelRound5Layout.setVerticalGroup(
             panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
+            .addGap(0, 574, Short.MAX_VALUE)
         );
 
         panelRound1.add(panelRound5, java.awt.BorderLayout.LINE_END);
@@ -487,7 +517,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
         );
         panelRound6Layout.setVerticalGroup(
             panelRound6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
+            .addGap(0, 574, Short.MAX_VALUE)
         );
 
         panelRound1.add(panelRound6, java.awt.BorderLayout.LINE_START);
@@ -501,7 +531,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
         panelRound3.setLayout(panelRound3Layout);
         panelRound3Layout.setHorizontalGroup(
             panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 644, Short.MAX_VALUE)
+            .addGap(0, 591, Short.MAX_VALUE)
         );
         panelRound3Layout.setVerticalGroup(
             panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -519,7 +549,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
         panelRound4.setLayout(panelRound4Layout);
         panelRound4Layout.setHorizontalGroup(
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 644, Short.MAX_VALUE)
+            .addGap(0, 591, Short.MAX_VALUE)
         );
         panelRound4Layout.setVerticalGroup(
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

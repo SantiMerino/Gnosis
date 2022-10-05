@@ -91,8 +91,8 @@ public class panBiblioteca extends javax.swing.JPanel {
         northPanel = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        buttonRound2 = new customizeObjects.ButtonRound();
         jPanel5 = new javax.swing.JPanel();
+        buttonRound2 = new customizeObjects.ButtonRound();
         jLabel2 = new javax.swing.JLabel();
         cmbOrden = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -117,21 +117,22 @@ public class panBiblioteca extends javax.swing.JPanel {
         jLabel1.setText("Biblioteca");
         jPanel4.add(jLabel1, java.awt.BorderLayout.CENTER);
 
-        buttonRound2.setText("Recargar");
+        northPanel.add(jPanel4);
+
+        jPanel5.setBackground(java.awt.Color.white);
+        jPanel5.setPreferredSize(new java.awt.Dimension(620, 100));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 10);
+        flowLayout1.setAlignOnBaseline(true);
+        jPanel5.setLayout(flowLayout1);
+
+        buttonRound2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
+        buttonRound2.setPreferredSize(new java.awt.Dimension(40, 40));
         buttonRound2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound2ActionPerformed(evt);
             }
         });
-        jPanel4.add(buttonRound2, java.awt.BorderLayout.LINE_END);
-
-        northPanel.add(jPanel4);
-
-        jPanel5.setBackground(java.awt.Color.white);
-        jPanel5.setPreferredSize(new java.awt.Dimension(600, 100));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 10);
-        flowLayout1.setAlignOnBaseline(true);
-        jPanel5.setLayout(flowLayout1);
+        jPanel5.add(buttonRound2);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(32, 32, 32));

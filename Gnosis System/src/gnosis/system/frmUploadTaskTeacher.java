@@ -6,7 +6,6 @@ package gnosis.system;
 
 import Controller.CConnection;
 import Controller.CTasks;
-import customizeObjects.ButtonRound;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;

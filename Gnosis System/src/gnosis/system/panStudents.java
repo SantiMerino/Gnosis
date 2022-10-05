@@ -78,8 +78,6 @@ public class panStudents extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         txtCarnet = new javax.swing.JTextField();
         btnAgregar = new customizeObjects.ButtonRound();
-        btnModificar = new customizeObjects.ButtonRound();
-        btnEliminar = new customizeObjects.ButtonRound();
         btnNomina = new customizeObjects.ButtonRound();
         btnReporteEsc = new customizeObjects.ButtonRound();
         jPanel2 = new javax.swing.JPanel();
@@ -127,25 +125,16 @@ public class panStudents extends javax.swing.JPanel {
         txtCarnet.setForeground(new java.awt.Color(0, 0, 0));
         txtCarnet.setPreferredSize(new java.awt.Dimension(100, 30));
 
-        btnAgregar.setText("Agregar");
+        btnAgregar.setText("Gestionar Alumnos");
+        btnAgregar.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         btnAgregar.setPreferredSize(new java.awt.Dimension(100, 40));
         btnAgregar.setRound(20);
-        btnAgregar.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
+        btnAgregar.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
-
-        btnModificar.setText("Modificar");
-        btnModificar.setPreferredSize(new java.awt.Dimension(100, 40));
-        btnModificar.setRound(20);
-        btnModificar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
-
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setPreferredSize(new java.awt.Dimension(100, 40));
-        btnEliminar.setRound(20);
-        btnEliminar.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
 
         btnNomina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text.png"))); // NOI18N
         btnNomina.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -171,14 +160,10 @@ public class panStudents extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(183, 183, 183)
                 .addComponent(txtCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReporteEsc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -194,9 +179,7 @@ public class panStudents extends javax.swing.JPanel {
                     .addComponent(btnReporteEsc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -228,14 +211,6 @@ public class panStudents extends javax.swing.JPanel {
 
     private void tbEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEstudiantesMouseClicked
         // TODO add your handling code here:
-        if (evt.getClickCount() == 1) {
-            JTable rcp = (JTable) evt.getSource();
-            txtCarnet.setText(rcp.getModel().getValueAt(rcp.getSelectedRow(), 10).toString());
-            carnetal = txtCarnet.getText();
-//            btnModificar.setEnabled(true);
-//            btnEliminar.setEnabled(true);
-//            btnAgregar.setEnabled(false);
-        }
     }//GEN-LAST:event_tbEstudiantesMouseClicked
 
     private void btnNominaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNominaActionPerformed
@@ -285,8 +260,6 @@ public class panStudents extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.ButtonRound btnAgregar;
-    private customizeObjects.ButtonRound btnEliminar;
-    private customizeObjects.ButtonRound btnModificar;
     private customizeObjects.ButtonRound btnNomina;
     private customizeObjects.ButtonRound btnReporteEsc;
     private javax.swing.JLabel jLabel1;

@@ -89,9 +89,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     final void CargarTareasDocente(int iddocente) {        
         CTasks controller = new CTasks();
         ResultSet datos = controller.CargarTareasPreviewDocente(iddocente);
-        if (datos == null) {
-            JOptionPane.showMessageDialog(null, "error ");
-        }
         try {
             while (datos.next()) {
                 //Forma de corroborar si es una materia o un modulo :3
@@ -106,7 +103,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
                 custo.CrearTareaDashboard(datos.getString(1), materiamodulo, datos.getString(5), datos.getString(2), datos.getString(3), datos.getString(6), panelTareas, materiamodulo, datos.getInt(10), niveluser, iddocente, 0);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudieron cargar las tareas " + e.toString());
+            notificacion("No existen tareas por cargar", 2, "Registros vacios");
         }
         
     }

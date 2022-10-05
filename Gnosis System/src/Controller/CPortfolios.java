@@ -27,8 +27,8 @@ public class CPortfolios {
         return mdlPortfolios.BuscarCategoria(clasificacion, con);
     }
     
-//    public boolean GuardarPortafolio(){
-//        return mdlPortfolios.
-//    }
+    public boolean GuardarPortafolio(int idalumno, int idmateria, String contenido){
+        return mdlPortfolios.GuardarPortafolio(idalumno, idmateria, contenido);
+    }
     
 }

@@ -60,9 +60,8 @@ public class panTeachers extends javax.swing.JPanel {
         tbDocentes = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
         buttonRound1 = new customizeObjects.ButtonRound();
-        buttonRound2 = new customizeObjects.ButtonRound();
-        buttonRound3 = new customizeObjects.ButtonRound();
         buttonRound4 = new customizeObjects.ButtonRound();
         buttonRound5 = new customizeObjects.ButtonRound();
         jPanel2 = new javax.swing.JPanel();
@@ -91,45 +90,37 @@ public class panTeachers extends javax.swing.JPanel {
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setPreferredSize(new java.awt.Dimension(741, 50));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
         jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Gestión de Docentes.");
         jPanel1.add(jLabel1);
 
-        buttonRound1.setText("Agregar");
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setPreferredSize(new java.awt.Dimension(100, 50));
+
+        buttonRound1.setText("Gestionar Docentes");
+        buttonRound1.setToolTipText("");
+        buttonRound1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         buttonRound1.setPreferredSize(new java.awt.Dimension(100, 40));
         buttonRound1.setRound(20);
-        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.VERDE);
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonRound1);
-
-        buttonRound2.setText("Modificar");
-        buttonRound2.setPreferredSize(new java.awt.Dimension(100, 40));
-        buttonRound2.setRound(20);
-        buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
-        jPanel1.add(buttonRound2);
-
-        buttonRound3.setText("Eliminar");
-        buttonRound3.setPreferredSize(new java.awt.Dimension(100, 40));
-        buttonRound3.setRound(20);
-        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
-        jPanel1.add(buttonRound3);
 
         buttonRound4.setBackground(new java.awt.Color(255, 0, 51));
         buttonRound4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square.png"))); // NOI18N
         buttonRound4.setPreferredSize(new java.awt.Dimension(40, 40));
         buttonRound4.setRound(20);
         buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
-        jPanel1.add(buttonRound4);
 
         buttonRound5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text.png"))); // NOI18N
-        buttonRound5.setPreferredSize(new java.awt.Dimension(45, 45));
+        buttonRound5.setPreferredSize(new java.awt.Dimension(40, 40));
+        buttonRound5.setRequestFocusEnabled(false);
         buttonRound5.setRound(20);
         buttonRound5.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_ROJO);
         buttonRound5.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +128,30 @@ public class panTeachers extends javax.swing.JPanel {
                 buttonRound5ActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonRound5);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(378, 378, 378)
+                .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        jPanel1.add(jPanel5);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -148,7 +162,7 @@ public class panTeachers extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 787, Short.MAX_VALUE)
+            .addGap(0, 920, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +182,7 @@ public class panTeachers extends javax.swing.JPanel {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 333, Short.MAX_VALUE)
+            .addGap(0, 424, Short.MAX_VALUE)
         );
 
         add(jPanel3, java.awt.BorderLayout.LINE_END);
@@ -184,7 +198,7 @@ public class panTeachers extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 333, Short.MAX_VALUE)
+            .addGap(0, 424, Short.MAX_VALUE)
         );
 
         add(jPanel4, java.awt.BorderLayout.LINE_START);
@@ -202,8 +216,6 @@ public class panTeachers extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.ButtonRound buttonRound1;
-    private customizeObjects.ButtonRound buttonRound2;
-    private customizeObjects.ButtonRound buttonRound3;
     private customizeObjects.ButtonRound buttonRound4;
     private customizeObjects.ButtonRound buttonRound5;
     private javax.swing.JLabel jLabel1;
@@ -211,6 +223,7 @@ public class panTeachers extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbDocentes;
     // End of variables declaration//GEN-END:variables

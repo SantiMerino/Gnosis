@@ -103,7 +103,9 @@ public class panPortfolios extends javax.swing.JPanel {
         filtersPan.setPreferredSize(new java.awt.Dimension(555, 50));
         filtersPan.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 15, 5));
 
-        BtnVolverAcargar.setText("Recargar");
+        BtnVolverAcargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
+        BtnVolverAcargar.setPreferredSize(new java.awt.Dimension(40, 40));
+        BtnVolverAcargar.setRound(20);
         BtnVolverAcargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnVolverAcargarActionPerformed(evt);

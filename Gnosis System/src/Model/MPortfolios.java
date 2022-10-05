@@ -45,7 +45,7 @@ public class MPortfolios {
         }
     }
     
-    public boolean GuardarPortafolio(int idalumno, int materia, String contenido){
+    public boolean GuardarPortafolio(int idalumno, int idmateria, String contenido){
         boolean res;
         try {
            String query = "INSERT INTO tbPortafolios VALUES (?, ?, ?, ?)";
