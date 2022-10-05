@@ -27,4 +27,8 @@ public class CPortfolios {
         return mdlPortfolios.BuscarCategoria(clasificacion, con);
     }
     
+//    public boolean GuardarPortafolio(){
+//        return mdlPortfolios.
+//    }
+    
 }

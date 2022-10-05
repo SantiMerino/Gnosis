@@ -1056,7 +1056,7 @@ public class customization {
           }
     }
     
-    public void CrearPortafolio(String materiamodulo, String Grado, String docente, String contenido, JPanel contenedor ){
+    public void CrearPortafolio(String materiamodulo, String Grado, String docente, String contenido, JPanel contenedor, int idalumno ){
         //Crear paneles contenedores
         PanelRound portafolio = new PanelRound();
         PanelRound panelSuperior = new PanelRound();
@@ -1216,9 +1216,7 @@ public class customization {
         btnAbrir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new frmDashboard(materiamodulo).setVisible(true);
-                JFrame dashboardopen = (JFrame) SwingUtilities.getWindowAncestor(contenedor);
-        dashboardopen.dispose();
+                new frmBlocMateria(idalumno, materiamodulo, contenido).setVisible(true);
             }
         });
         

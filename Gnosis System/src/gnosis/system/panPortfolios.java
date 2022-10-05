@@ -23,11 +23,18 @@ public class panPortfolios extends javax.swing.JPanel {
      */
     
     CPortfolios controlador = new CPortfolios();
-    
     customization custo = new customization();
+    int idalumnolog;
     public panPortfolios() {
         customization.mainUtilities();
         initComponents();
+        CargarPortafolios();
+    }
+    
+    public panPortfolios(int idal){
+        initComponents();
+        customization.mainUtilities();
+        idalumnolog = idal;
         CargarPortafolios();
     }
     
@@ -44,7 +51,7 @@ public class panPortfolios extends javax.swing.JPanel {
                 } else {
                     materiamodulo = cadena.substring(0, cadena.lastIndexOf(" "));
                 }
-                custo.CrearPortafolio(materiamodulo, datos.getString(3), datos.getString(5), "44 páginas", contenendorPortafolios);
+                custo.CrearPortafolio(materiamodulo, datos.getString(3), datos.getString(5), "44 páginas", contenendorPortafolios, idalumnolog);
             }
         } catch (Exception e) {
         }

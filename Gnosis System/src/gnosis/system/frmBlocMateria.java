@@ -4,6 +4,7 @@
  */
 package gnosis.system;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -24,16 +25,57 @@ public class frmBlocMateria extends javax.swing.JFrame {
      */
     String fontFamily, fontSize, fontStyle;
     Font newFont;
-     int fstyle;
-     int fsize = 12;
-     int[] stylevalue = {Font.PLAIN, Font.BOLD, Font.ITALIC};
-     JList fontFamilyList, fontStyleList, fontSizeList;
-     String[] fontStyleValues = {"PLAIN", "BOLD", "ITALIC"};
+    int fstyle;
+    int fsize = 12;
+    int[] stylevalue = {Font.PLAIN, Font.BOLD, Font.ITALIC};
+    JList fontFamilyList, fontStyleList, fontSizeList;
+    String[] fontStyleValues = {"PLAIN", "BOLD", "ITALIC"};
      
      
     public frmBlocMateria() {
         initComponents();
+
     }
+    
+    public frmBlocMateria(int idalumno, String materiamodulo, String contenido){
+        initComponents();
+        lblPortafolio.setText(materiamodulo);
+    }
+    
+    final void GuardarArchivoTXT(){
+            final JFileChooser SaveAs = new JFileChooser();
+            SaveAs.setApproveButtonText("Save");
+            //Opening the dialog and asking from user where to save the file.
+            int actionDialog = SaveAs.showOpenDialog(this);
+            if (actionDialog != JFileChooser.APPROVE_OPTION) {
+                return;
+            }
+            File fileName = new File(SaveAs.getSelectedFile() + ".txt");
+            BufferedWriter outFile = null;
+            try {
+                outFile = new BufferedWriter(new FileWriter(fileName));
+                area.write(outFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
+    
+    void SwtichColor(){
+        String portafolio = lblPortafolio.getText();
+        if (portafolio.contains("Sociales")) {
+            
+        } else if(portafolio.contains("Matemáticas")){
+            
+        } else if(portafolio.contains("Lenguaje")){
+            
+        } else if(portafolio.contains("Ciencias")){
+            
+        } else if(portafolio.contains("Ingles")){
+            
+        }
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,7 +89,8 @@ public class frmBlocMateria extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        panelRound2 = new customizeObjects.PanelRound();
+        namePan = new customizeObjects.PanelRound();
+        lblPortafolio = new javax.swing.JLabel();
         buttonRound1 = new customizeObjects.ButtonRound();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -95,21 +138,31 @@ public class frmBlocMateria extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(32, 32, 32));
         jPanel4.setPreferredSize(new java.awt.Dimension(775, 40));
 
-        panelRound2.setBackground(new java.awt.Color(90, 90, 90));
-        panelRound2.setRoundBottomLeft(25);
-        panelRound2.setRoundBottomRight(25);
-        panelRound2.setRoundTopLeft(25);
-        panelRound2.setRoundTopRight(25);
+        namePan.setBackground(new java.awt.Color(90, 90, 90));
+        namePan.setRoundBottomLeft(25);
+        namePan.setRoundBottomRight(25);
+        namePan.setRoundTopLeft(25);
+        namePan.setRoundTopRight(25);
 
-        javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
-        panelRound2.setLayout(panelRound2Layout);
-        panelRound2Layout.setHorizontalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        lblPortafolio.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        lblPortafolio.setForeground(new java.awt.Color(255, 255, 255));
+        lblPortafolio.setText("Nombre del Portafolio Sociales");
+
+        javax.swing.GroupLayout namePanLayout = new javax.swing.GroupLayout(namePan);
+        namePan.setLayout(namePanLayout);
+        namePanLayout.setHorizontalGroup(
+            namePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(namePanLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(lblPortafolio, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelRound2Layout.setVerticalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+        namePanLayout.setVerticalGroup(
+            namePanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(namePanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblPortafolio)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         buttonRound1.setText("buttonRound1");
@@ -121,7 +174,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(namePan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 711, Short.MAX_VALUE)))
@@ -131,7 +184,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(namePan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -151,7 +204,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 587, Short.MAX_VALUE)
+            .addGap(0, 588, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel5, java.awt.BorderLayout.WEST);
@@ -355,7 +408,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonRound12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonRound18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -399,6 +452,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
 
         area.setBackground(new java.awt.Color(255, 255, 255));
         area.setColumns(20);
+        area.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         area.setForeground(new java.awt.Color(32, 32, 32));
         area.setLineWrap(true);
         area.setRows(5);
@@ -417,7 +471,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
         );
         panelRound5Layout.setVerticalGroup(
             panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 567, Short.MAX_VALUE)
+            .addGap(0, 568, Short.MAX_VALUE)
         );
 
         panelRound1.add(panelRound5, java.awt.BorderLayout.LINE_END);
@@ -433,7 +487,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
         );
         panelRound6Layout.setVerticalGroup(
             panelRound6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 567, Short.MAX_VALUE)
+            .addGap(0, 568, Short.MAX_VALUE)
         );
 
         panelRound1.add(panelRound6, java.awt.BorderLayout.LINE_START);
@@ -483,23 +537,12 @@ public class frmBlocMateria extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-         final JFileChooser SaveAs = new JFileChooser();
-            SaveAs.setApproveButtonText("Save");
-            //Opening the dialog and asking from user where to save the file.
-            int actionDialog = SaveAs.showOpenDialog(this);
-            if (actionDialog != JFileChooser.APPROVE_OPTION) {
-                return;
-            }
-            File fileName = new File(SaveAs.getSelectedFile() + ".txt");
-            BufferedWriter outFile = null;
-            try {
-                outFile = new BufferedWriter(new FileWriter(fileName));
-                area.write(outFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    
+    
     private void buttonRound6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound6ActionPerformed
         // TODO add your handling code here:
         fontStyleList = new JList(fontStyleValues);
@@ -555,8 +598,9 @@ public class frmBlocMateria extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblPortafolio;
+    private customizeObjects.PanelRound namePan;
     private customizeObjects.PanelRound panelRound1;
-    private customizeObjects.PanelRound panelRound2;
     private customizeObjects.PanelRound panelRound3;
     private customizeObjects.PanelRound panelRound4;
     private customizeObjects.PanelRound panelRound5;

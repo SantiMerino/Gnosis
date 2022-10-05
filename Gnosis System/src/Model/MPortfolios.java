@@ -7,6 +7,7 @@ package Model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,4 +46,21 @@ public class MPortfolios {
         }
     }
     
+    public boolean GuardarPortafolio(int idalumno, int materia, String contenido){
+        boolean res;
+        try {
+           String query = "INSERT INTO tbPortafolios VALUES (?, ?, ?, ?)";
+           Connection con = MConnection.getConnectionWithoutParameters();
+           ps = con.prepareStatement(query);
+            res = ps.execute();
+            if (res == true) {
+               return res;
+            } else {
+               return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return false;
+        }
+    }
 }
