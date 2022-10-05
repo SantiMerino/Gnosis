@@ -91,6 +91,7 @@ public class panBiblioteca extends javax.swing.JPanel {
         northPanel = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        buttonRound2 = new customizeObjects.ButtonRound();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         cmbOrden = new javax.swing.JComboBox<>();
@@ -116,11 +117,19 @@ public class panBiblioteca extends javax.swing.JPanel {
         jLabel1.setText("Biblioteca");
         jPanel4.add(jLabel1, java.awt.BorderLayout.CENTER);
 
+        buttonRound2.setText("Recargar");
+        buttonRound2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(buttonRound2, java.awt.BorderLayout.LINE_END);
+
         northPanel.add(jPanel4);
 
         jPanel5.setBackground(java.awt.Color.white);
         jPanel5.setPreferredSize(new java.awt.Dimension(600, 100));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(2, 10, 10);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 10);
         flowLayout1.setAlignOnBaseline(true);
         jPanel5.setLayout(flowLayout1);
 
@@ -185,7 +194,7 @@ public class panBiblioteca extends javax.swing.JPanel {
 
         mainPanel.setBackground(java.awt.Color.white);
         mainPanel.setPreferredSize(new java.awt.Dimension(900, 950));
-        mainPanel.setLayout(new java.awt.FlowLayout(0));
+        mainPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
         jScrollPane1.setViewportView(mainPanel);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -211,9 +220,15 @@ public class panBiblioteca extends javax.swing.JPanel {
         CargarRecursosFiltroClas();
     }//GEN-LAST:event_cmbCategoriaItemStateChanged
 
+    private void buttonRound2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound2ActionPerformed
+        // TODO add your handling code here:
+        CargarRecursos();
+    }//GEN-LAST:event_buttonRound2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customizeObjects.ButtonRound buttonRound1;
+    private customizeObjects.ButtonRound buttonRound2;
     private javax.swing.JComboBox<String> cmbCategoria;
     private javax.swing.JComboBox<String> cmbOrden;
     private javax.swing.JLabel jLabel1;

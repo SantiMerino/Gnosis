@@ -126,6 +126,14 @@
             <Property name="verticalGap" type="int" value="10"/>
           </Layout>
           <SubComponents>
+            <Component class="customizeObjects.ButtonRound" name="buttonRound1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Recargar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRound1ActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

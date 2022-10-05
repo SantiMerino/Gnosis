@@ -83,15 +83,12 @@
             <Property name="horizontalGap" type="int" value="15"/>
           </Layout>
           <SubComponents>
-            <Component class="customizeObjects.ButtonRound" name="buttonRound1">
+            <Component class="customizeObjects.ButtonRound" name="BtnVolverAcargar">
               <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Generar reporte"/>
+                <Property name="text" type="java.lang.String" value="Recargar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRound1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnVolverAcargarActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">

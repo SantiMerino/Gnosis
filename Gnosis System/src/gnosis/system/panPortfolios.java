@@ -72,6 +72,7 @@ public class panPortfolios extends javax.swing.JPanel {
         namePan = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         filtersPan = new javax.swing.JPanel();
+        BtnVolverAcargar = new customizeObjects.ButtonRound();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -101,6 +102,14 @@ public class panPortfolios extends javax.swing.JPanel {
         filtersPan.setForeground(new java.awt.Color(32, 32, 32));
         filtersPan.setPreferredSize(new java.awt.Dimension(555, 50));
         filtersPan.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 15, 5));
+
+        BtnVolverAcargar.setText("Recargar");
+        BtnVolverAcargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnVolverAcargarActionPerformed(evt);
+            }
+        });
+        filtersPan.add(BtnVolverAcargar);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(32, 32, 32));
@@ -156,8 +165,14 @@ public class panPortfolios extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
+    private void BtnVolverAcargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverAcargarActionPerformed
+        // TODO add your handling code here:
+         CargarPortafolios();
+    }//GEN-LAST:event_BtnVolverAcargarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private customizeObjects.ButtonRound BtnVolverAcargar;
     private javax.swing.JPanel contenendorPortafolios;
     private javax.swing.JPanel filtersPan;
     private javax.swing.JComboBox<String> jComboBox1;
