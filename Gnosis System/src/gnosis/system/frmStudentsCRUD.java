@@ -933,9 +933,10 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                         usuariores = objEstu.CrearUsuarioAlumnoController();
                         ResultSet materiasDocente = portafolio.MateriaDocenteResult(idGrado);
                         if (usuariores == true) {
-                            JOptionPane.showMessageDialog(null, "Usuario ingresado");
-                        } else {
                             JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Usuario ingresado");
+                            CargarTabla();
                         }
                         while (materiasDocente.next()) {
                             portafolio.CrearPortafoliosEXEC(materiasDocente.getInt(1));
