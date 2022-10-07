@@ -1,29 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1200" pageHeight="842" columnWidth="1160" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d98a830a-c8f5-4c81-ac9e-73a57efc6201">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="319"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbDocentes."iddocente" AS tbDocentes_iddocente,
+     tbDocentes."apellidos_docente" AS tbDocentes_apellidos_docente,
+     tbDocentes."nombres_docente" AS tbDocentes_nombres_docente,
+     tbDocentes."direccion" AS tbDocentes_direccion,
+     tbDocentes."dui" AS tbDocentes_dui,
+     tbDocentes."correo" AS tbDocentes_correo,
+     tbDocentes."fecha_nac" AS tbDocentes_fecha_nac,
+     tbDocentes."contacto" AS tbDocentes_contacto,
+     tbGeneros."genero" AS tbGeneros_genero,
+     tbGrados."idgrado" AS tbGrados_idgrado,
+     tbGrados."grado" AS tbGrados_grado
+FROM
+     "dbo"."tbGeneros" tbGeneros INNER JOIN "dbo"."tbDocentes" tbDocentes ON tbGeneros."idgenero" = tbDocentes."idgenero"
+     INNER JOIN "dbo"."tbGrados" tbGrados ON tbDocentes."idgrado" = tbGrados."idgrado"]]>
+	</queryString>
+	<field name="tbDocentes_iddocente" class="java.lang.Integer"/>
+	<field name="tbDocentes_apellidos_docente" class="java.lang.String"/>
+	<field name="tbDocentes_nombres_docente" class="java.lang.String"/>
+	<field name="tbDocentes_direccion" class="java.lang.String"/>
+	<field name="tbDocentes_dui" class="java.lang.String"/>
+	<field name="tbDocentes_correo" class="java.lang.String"/>
+	<field name="tbDocentes_fecha_nac" class="java.lang.String"/>
+	<field name="tbDocentes_contacto" class="java.lang.String"/>
+	<field name="tbGeneros_genero" class="java.lang.String"/>
+	<field name="tbGrados_idgrado" class="java.lang.Integer"/>
+	<field name="tbGrados_grado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="505" y="28" width="144" height="20" uuid="62d69045-ec0c-455e-bdc5-cfd5ee3cac33"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Reporte de docentes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="11" y="2" width="100" height="20" uuid="07fd7a79-79ff-45a1-92f6-1d7ede220ace"/>
+				<text><![CDATA[Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="2" width="100" height="20" uuid="dce77fe9-8c1d-4d05-99df-15a8d98967ee"/>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="2" width="100" height="20" uuid="06f49621-eefd-4e8c-afe5-24db9a818f1f"/>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="2" width="100" height="20" uuid="4b9bbfd5-b4e2-4268-86bc-bd3d56569f05"/>
+				<text><![CDATA[Dui]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="529" y="2" width="100" height="20" uuid="0dce4a33-b604-4557-af0c-8f577f2d8955"/>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="663" y="2" width="100" height="20" uuid="5f58ab18-a626-4cbd-9e2e-52bdd4049e36"/>
+				<text><![CDATA[Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="791" y="2" width="100" height="20" uuid="38ce3abc-96de-420e-aa69-8f39414793d9"/>
+				<text><![CDATA[Contacto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="924" y="2" width="100" height="20" uuid="9d164dcf-030a-447c-9539-cb72765a9124"/>
+				<text><![CDATA[Genero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1062" y="2" width="100" height="20" uuid="970c225d-fd21-40e4-a4bd-309fa3606a6d"/>
+				<text><![CDATA[Grado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="11" y="32" width="100" height="20" uuid="7a97349e-0c99-4754-adab-490c66507c23"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_apellidos_docente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="137" y="32" width="100" height="20" uuid="583cce08-9bdf-4067-8b4e-b72f93dfa520"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_nombres_docente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="32" width="100" height="20" uuid="5364a5a1-36f4-4983-ba5b-9c85ef39c1b4"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="32" width="100" height="20" uuid="5cd6b9a6-f1e1-423c-a5f6-f0a732140d53"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_dui}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="529" y="32" width="100" height="20" uuid="68bfeb22-38d9-43cc-9377-39a02c7ed7cb"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="663" y="34" width="100" height="20" uuid="fb92a952-a339-42c8-886a-239e691fb190"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_fecha_nac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="791" y="34" width="100" height="20" uuid="f7b406b5-78f9-43d1-ba35-cd1702fdcf44"/>
+				<textFieldExpression><![CDATA[$F{tbDocentes_contacto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="924" y="34" width="100" height="20" uuid="6b962747-f70d-4cd1-9fec-595b9f14c078"/>
+				<textFieldExpression><![CDATA[$F{tbGeneros_genero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1062" y="34" width="100" height="20" uuid="b920d36e-7da2-4f57-bcab-5e72da3e7e00"/>
+				<textFieldExpression><![CDATA[$F{tbGrados_grado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="518" y="20" width="100" height="20" uuid="941dda42-d401-4a9d-91fe-5d3bda03b61c"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
 </jasperReport>

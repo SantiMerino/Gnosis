@@ -1,29 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1200" pageHeight="842" columnWidth="1160" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="29f9bccd-789e-4524-9df0-dc7ae3336572">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="318"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     viewPerfiles."idperfil" AS viewPerfiles_idperfil,
+     viewPerfiles."nombreperfil" AS viewPerfiles_nombreperfil,
+     viewPerfiles."descripcion" AS viewPerfiles_descripcion,
+     viewPerfiles."porcentajeValoracion" AS viewPerfiles_porcentajeValoracion,
+     viewPerfiles."fechainicio" AS viewPerfiles_fechainicio,
+     viewPerfiles."fechavencimiento" AS viewPerfiles_fechavencimiento,
+     viewPerfiles."estadoperfil" AS viewPerfiles_estadoperfil,
+     viewPerfiles."tipoperfil" AS viewPerfiles_tipoperfil,
+     viewPerfiles."grado" AS viewPerfiles_grado
+FROM
+     "dbo"."viewPerfiles" viewPerfiles]]>
+	</queryString>
+	<field name="viewPerfiles_idperfil" class="java.lang.Integer"/>
+	<field name="viewPerfiles_nombreperfil" class="java.lang.String"/>
+	<field name="viewPerfiles_descripcion" class="java.lang.String"/>
+	<field name="viewPerfiles_porcentajeValoracion" class="java.math.BigDecimal"/>
+	<field name="viewPerfiles_fechainicio" class="java.lang.String"/>
+	<field name="viewPerfiles_fechavencimiento" class="java.lang.String"/>
+	<field name="viewPerfiles_estadoperfil" class="java.lang.String"/>
+	<field name="viewPerfiles_tipoperfil" class="java.lang.String"/>
+	<field name="viewPerfiles_grado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="530" y="27" width="118" height="20" uuid="1c5c0544-393b-4ec5-9cf6-c9795a6233a9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Reporte Perfiles]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="16" y="2" width="100" height="20" uuid="0ffce5e4-8b70-46a4-8f1f-81e085342557"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="2" width="100" height="20" uuid="f561a31b-8d39-4e79-922d-4a6434eb2987"/>
+				<text><![CDATA[Nombre Perfil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="2" width="100" height="20" uuid="5ab478ef-bc3d-40c0-91d0-3041ac2a50f6"/>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="2" width="100" height="20" uuid="48cf68b6-6e8e-404b-938e-27a15302e8f1"/>
+				<text><![CDATA[Porcentaje]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="2" width="100" height="20" uuid="fe108833-8b15-456f-ae3a-9a2114f65d05"/>
+				<text><![CDATA[Fecha de inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="611" y="2" width="100" height="20" uuid="a6232b6a-092a-473e-8af7-e0fbf8eeaeb2"/>
+				<text><![CDATA[Fecha de vencimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="742" y="2" width="100" height="20" uuid="01e5df83-e2b0-4ff5-a5f8-6f5b9373ef3f"/>
+				<text><![CDATA[Estado del perfil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="868" y="2" width="100" height="20" uuid="044098fb-5393-49ce-a55c-5563ac1834bb"/>
+				<text><![CDATA[Tipo de perfil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="994" y="2" width="100" height="20" uuid="bc41d6e2-86b3-490a-ab40-50465bfdd357"/>
+				<text><![CDATA[Grado asignado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<textField>
+				<reportElement x="16" y="13" width="100" height="20" uuid="84311e52-22fd-43b7-beb6-7609ba943e1b"/>
+				<textFieldExpression><![CDATA[$F{viewPerfiles_idperfil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="13" width="100" height="20" uuid="7aad4f28-b3b5-4328-9a11-cd7b9d7ac56c"/>
+				<textFieldExpression><![CDATA[$F{viewPerfiles_nombreperfil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="13" width="100" height="20" uuid="427c5efa-8cd2-4959-9a7e-022c2de9f419"/>
+				<textFieldExpression><![CDATA[$F{viewPerfiles_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="369" y="13" width="100" height="20" uuid="1bba0770-05d4-4f62-8c34-138e0611145d"/>
+				<textFieldExpression><![CDATA[$F{viewPerfiles_porcentajeValoracion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="13" width="100" height="20" uuid="2667b37f-34cf-470a-b941-1bae90062604"/>
+				<textFieldExpression><![CDATA[$F{viewPerfiles_fechainicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="611" y="13" width="100" height="20" uuid="fa60d715-2f3e-44f9-91f5-366dcd5c59cb"/>
+				<textFieldExpression><![CDATA[$F{viewPerfiles_fechavencimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="742" y="13" width="100" height="20" uuid="b4d638bd-95a5-472b-852b-c4718dff59a6"/>
+				<textFieldExpression><![CDATA[$F{viewPerfiles_estadoperfil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="868" y="13" width="100" height="20" uuid="dc1b8515-3d57-4d62-ab0e-dde8d1b18193"/>
+				<textFieldExpression><![CDATA[$F{viewPerfiles_tipoperfil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="994" y="13" width="100" height="20" uuid="e57074dd-21a0-4a43-9889-ed3ca799dfe4"/>
+				<textFieldExpression><![CDATA[$F{viewPerfiles_grado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="530" y="20" width="100" height="20" uuid="d7602027-611d-4d18-95a5-6dd887423226"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
 </jasperReport>

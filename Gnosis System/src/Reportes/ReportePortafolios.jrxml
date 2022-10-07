@@ -1,29 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="850" pageHeight="842" columnWidth="810" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9998f2ec-ac99-4ba2-b8a7-c1d94039fc15">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     viewPortafolios."Contenido" AS viewPortafolios_Contenido,
+     viewPortafolios."Categoria" AS viewPortafolios_Categoria,
+     viewPortafolios."Grado" AS viewPortafolios_Grado,
+     viewPortafolios."Alumno" AS viewPortafolios_Alumno,
+     viewPortafolios."Docente" AS viewPortafolios_Docente,
+     viewPortafolios."Materia" AS viewPortafolios_Materia
+FROM
+     "dbo"."viewPortafolios" viewPortafolios]]>
+	</queryString>
+	<field name="viewPortafolios_Contenido" class="java.lang.String"/>
+	<field name="viewPortafolios_Categoria" class="java.lang.String"/>
+	<field name="viewPortafolios_Grado" class="java.lang.String"/>
+	<field name="viewPortafolios_Alumno" class="java.lang.String"/>
+	<field name="viewPortafolios_Docente" class="java.lang.String"/>
+	<field name="viewPortafolios_Materia" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="23" y="2" width="100" height="20" uuid="f270af7d-4510-4835-af6d-316c60c6f7fc"/>
+				<text><![CDATA[Contenido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="2" width="100" height="20" uuid="8df3f6d0-dd29-4af7-97b7-c28e25ba3ec7"/>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="291" y="2" width="100" height="20" uuid="877ffcc7-72be-4564-b23b-b06dd582402a"/>
+				<text><![CDATA[Grado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="2" width="100" height="20" uuid="d597e625-64d5-4836-aeb4-a39465d43b29"/>
+				<text><![CDATA[Alumno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="554" y="2" width="100" height="20" uuid="2a5998fc-cf98-4300-a240-6145ff29b0a7"/>
+				<text><![CDATA[Docente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="695" y="2" width="100" height="20" uuid="aaf58b06-aade-482c-bfd1-710617f6261e"/>
+				<text><![CDATA[Materia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="58" splitType="Stretch">
+			<textField>
+				<reportElement x="23" y="10" width="100" height="20" uuid="26347687-f94d-42f2-914e-8d5f794e460b"/>
+				<textFieldExpression><![CDATA[$F{viewPortafolios_Contenido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="10" width="100" height="20" uuid="25da3b51-46bf-4435-aeea-e08e2c34d149"/>
+				<textFieldExpression><![CDATA[$F{viewPortafolios_Categoria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="12" width="100" height="20" uuid="06e48bc9-a8f2-493e-a621-2bcad694c3bb"/>
+				<textFieldExpression><![CDATA[$F{viewPortafolios_Grado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="12" width="100" height="20" uuid="2161b908-694e-4d91-8920-e181e5db47ef"/>
+				<textFieldExpression><![CDATA[$F{viewPortafolios_Alumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="554" y="12" width="100" height="20" uuid="5045969f-d540-4fe2-81e9-37f8fc9d7483"/>
+				<textFieldExpression><![CDATA[$F{viewPortafolios_Docente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="695" y="12" width="100" height="20" uuid="dc1981cd-55a4-481e-b75b-571732b7bcad"/>
+				<textFieldExpression><![CDATA[$F{viewPortafolios_Materia}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
 </jasperReport>
