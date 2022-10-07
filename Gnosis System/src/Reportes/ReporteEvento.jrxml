@@ -1,29 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="670" pageHeight="842" columnWidth="630" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="851a26ae-d376-4641-8ab6-c15618a5cb6c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="5"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     viewEventos."nombreevento" AS viewEventos_nombreevento,
+     viewEventos."tipoevento" AS viewEventos_tipoevento,
+     viewEventos."grado" AS viewEventos_grado,
+     viewEventos."fechaevento" AS viewEventos_fechaevento,
+     viewEventos."fechafinalevento" AS viewEventos_fechafinalevento
+FROM
+     "dbo"."viewEventos" viewEventos]]>
+	</queryString>
+	<field name="viewEventos_nombreevento" class="java.lang.String"/>
+	<field name="viewEventos_tipoevento" class="java.lang.String"/>
+	<field name="viewEventos_grado" class="java.lang.String"/>
+	<field name="viewEventos_fechaevento" class="java.lang.String"/>
+	<field name="viewEventos_fechafinalevento" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="212" y="25" width="126" height="20" uuid="7c15940a-02c7-4989-9662-ce745afe8e9e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Reporte de eventos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="23" y="2" width="100" height="20" uuid="ca8cad5f-511a-4595-8fc4-e38a13bef633"/>
+				<text><![CDATA[Nombre evento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="2" width="100" height="20" uuid="cde6b6b3-ca61-4f81-98cd-048e31483786"/>
+				<text><![CDATA[Tipo evento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="2" width="100" height="20" uuid="fd0deac1-74d6-4a25-8773-76b59ba2bc22"/>
+				<text><![CDATA[Grado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="2" width="100" height="20" uuid="e9d55d2b-af8f-43f6-aaeb-8178332c2793"/>
+				<text><![CDATA[Fecha de inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="520" y="2" width="110" height="20" uuid="f2fe8738-9911-4dc6-ab08-842d33a9649b"/>
+				<text><![CDATA[Fecha de finalizacion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="23" y="26" width="100" height="20" uuid="b328fdfc-a57d-426c-a3e5-66c050bddf33"/>
+				<textFieldExpression><![CDATA[$F{viewEventos_nombreevento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="26" width="100" height="20" uuid="3e36668a-8018-453c-9c51-d721f37b2519"/>
+				<textFieldExpression><![CDATA[$F{viewEventos_tipoevento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="26" width="100" height="20" uuid="a8b94c8f-adbc-439a-854a-c13aa9c26e1f"/>
+				<textFieldExpression><![CDATA[$F{viewEventos_grado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="409" y="26" width="100" height="20" uuid="30e2a764-3131-4bad-8f93-37f98f36741d"/>
+				<textFieldExpression><![CDATA[$F{viewEventos_fechaevento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="26" width="100" height="20" uuid="dfef90cc-48d6-4a5f-a19b-f3966a3f9f17"/>
+				<textFieldExpression><![CDATA[$F{viewEventos_fechafinalevento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="238" y="15" width="100" height="20" uuid="64ed2229-8d9b-4291-870b-97e381fae9bb"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
 </jasperReport>

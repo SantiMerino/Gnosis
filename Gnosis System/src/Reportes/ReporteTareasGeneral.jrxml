@@ -1,29 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1050" pageHeight="842" columnWidth="1010" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d86d2b5f-367f-493c-8b86-828d8dfb548a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="228"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     viewTareas."Tarea" AS viewTareas_Tarea,
+     viewTareas."Fecha I" AS viewTareas_Fecha_I,
+     viewTareas."Fecha V" AS viewTareas_Fecha_V,
+     viewTareas."Materia_Modulo" AS viewTareas_Materia_Modulo,
+     viewTareas."Docente" AS viewTareas_Docente,
+     viewTareas."Estado" AS viewTareas_Estado,
+     viewTareas."Rúbrica" AS viewTareas_Rúbrica,
+     viewTareas."Tipo Perfil" AS viewTareas_Tipo_Perfil,
+     viewTareas."grado" AS viewTareas_grado
+FROM
+     "dbo"."viewTareas" viewTareas]]>
+	</queryString>
+	<field name="viewTareas_Tarea" class="java.lang.String"/>
+	<field name="viewTareas_Fecha_I" class="java.lang.String"/>
+	<field name="viewTareas_Fecha_V" class="java.lang.String"/>
+	<field name="viewTareas_Materia_Modulo" class="java.lang.String"/>
+	<field name="viewTareas_Docente" class="java.lang.String"/>
+	<field name="viewTareas_Estado" class="java.lang.String"/>
+	<field name="viewTareas_Rúbrica" class="java.lang.String"/>
+	<field name="viewTareas_Tipo_Perfil" class="java.lang.String"/>
+	<field name="viewTareas_grado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="434" y="26" width="132" height="20" uuid="058ad2e4-560c-45b2-bc72-b315ee0d8711"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Reporte de tareas ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="23" y="2" width="100" height="20" uuid="be786e5b-a043-4918-9330-e22beb45aa49"/>
+				<text><![CDATA[viewTareas_Tarea]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="2" width="100" height="20" uuid="6ef37064-f0cf-454f-a681-13c3dcb32bcb"/>
+				<text><![CDATA[viewTareas_Fecha_I]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="2" width="100" height="20" uuid="aeecdefb-4b77-43c8-bfb7-8f4f5ab3aa66"/>
+				<text><![CDATA[viewTareas_Fecha_V]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="2" width="100" height="20" uuid="ae465d5d-454c-4168-81f1-98e8be861d7e"/>
+				<text><![CDATA[viewTareas_Materia_Modulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="524" y="2" width="100" height="20" uuid="79a57311-fdbb-43fa-b038-86e5f8080f61"/>
+				<text><![CDATA[viewTareas_Docente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="648" y="2" width="100" height="20" uuid="ff02c9e4-b58a-4024-bc4e-837ad66da8cb"/>
+				<text><![CDATA[viewTareas_Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="785" y="2" width="100" height="20" uuid="1f4b3599-9115-41f1-99fc-2d31d52359cb"/>
+				<text><![CDATA[viewTareas_Tipo_Perfil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="916" y="2" width="100" height="20" uuid="9d1be291-da81-4b42-b89a-6429ba651914"/>
+				<text><![CDATA[viewTareas_grado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="68" splitType="Stretch">
+			<textField>
+				<reportElement x="23" y="32" width="100" height="20" uuid="bfc7992f-956e-4efb-8a9a-6f110c184b03"/>
+				<textFieldExpression><![CDATA[$F{viewTareas_Tarea}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="32" width="100" height="20" uuid="c2e33b7b-bfad-4830-84d9-c38840512166"/>
+				<textFieldExpression><![CDATA[$F{viewTareas_Fecha_I}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="278" y="32" width="100" height="20" uuid="0331bd31-af63-4386-8ff1-0d5f1980abea"/>
+				<textFieldExpression><![CDATA[$F{viewTareas_Fecha_V}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="32" width="100" height="20" uuid="035f456f-dc84-4618-ae28-a39779c03b38"/>
+				<textFieldExpression><![CDATA[$F{viewTareas_Materia_Modulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="524" y="32" width="100" height="20" uuid="2b2ae1a5-5d63-469e-8991-fab841fd63ff"/>
+				<textFieldExpression><![CDATA[$F{viewTareas_Docente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="648" y="32" width="100" height="20" uuid="75ab974f-896b-4d05-8d74-9f92f4dfe8f5"/>
+				<textFieldExpression><![CDATA[$F{viewTareas_Estado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="785" y="35" width="100" height="20" uuid="e7ba27af-0d32-4ec9-ad33-0959fc9a409b"/>
+				<textFieldExpression><![CDATA[$F{viewTareas_Tipo_Perfil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="916" y="35" width="100" height="20" uuid="244867c9-62be-4887-9dcb-2ff9c63ff55e"/>
+				<textFieldExpression><![CDATA[$F{viewTareas_grado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="454" y="19" width="100" height="20" uuid="05587faf-3f37-472d-b87a-7d562e128bf1"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
 </jasperReport>

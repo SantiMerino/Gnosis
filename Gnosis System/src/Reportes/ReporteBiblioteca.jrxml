@@ -1,29 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="630" pageHeight="842" columnWidth="590" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="35d21924-ee03-4c8c-b057-b6ecaa695671">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     viewBiblioteca."nombrerecurso" AS viewBiblioteca_nombrerecurso,
+     viewBiblioteca."tiporecurso" AS viewBiblioteca_tiporecurso,
+     viewBiblioteca."clasificacion" AS viewBiblioteca_clasificacion,
+     viewBiblioteca."link" AS viewBiblioteca_link,
+     viewBiblioteca."pdf" AS viewBiblioteca_pdf
+FROM
+     "dbo"."viewBiblioteca" viewBiblioteca]]>
+	</queryString>
+	<field name="viewBiblioteca_nombrerecurso" class="java.lang.String"/>
+	<field name="viewBiblioteca_tiporecurso" class="java.lang.String"/>
+	<field name="viewBiblioteca_clasificacion" class="java.lang.String"/>
+	<field name="viewBiblioteca_link" class="java.lang.String"/>
+	<field name="viewBiblioteca_pdf" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="25" width="138" height="20" uuid="cbffb072-13da-4bbb-8a3f-1186bc236f1e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Reporte de recursos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="26" y="2" width="100" height="20" uuid="92860a34-c20a-426f-9822-f8ca04f3aa1c"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="2" width="100" height="20" uuid="0dff744f-592d-496c-974b-649a52e866c8"/>
+				<text><![CDATA[Tipo de recurso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="2" width="100" height="20" uuid="bea9db74-1c3f-4dbe-adc6-36e8e4d687c9"/>
+				<text><![CDATA[Clasificacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="2" width="100" height="20" uuid="6332fe8a-7c1e-4abc-ba1f-d3e2c67dbd04"/>
+				<text><![CDATA[Link]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="510" y="2" width="100" height="20" uuid="ce9b8638-7386-4b6c-acc4-93f2059550e1"/>
+				<text><![CDATA[PDF]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="60" splitType="Stretch">
+			<textField>
+				<reportElement x="26" y="26" width="100" height="20" uuid="3b55b310-a607-45d4-befe-669c92df94f1"/>
+				<textFieldExpression><![CDATA[$F{viewBiblioteca_nombrerecurso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="147" y="26" width="100" height="20" uuid="1c2da2b2-1f49-44c2-9a10-fc184dcaa7ed"/>
+				<textFieldExpression><![CDATA[$F{viewBiblioteca_tiporecurso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="26" width="100" height="20" uuid="9734dab3-4ca1-48ab-ad3f-f745aee0801c"/>
+				<textFieldExpression><![CDATA[$F{viewBiblioteca_clasificacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="384" y="26" width="100" height="20" uuid="a5cf2fa3-9faa-4078-be8d-736889f3cbc2"/>
+				<textFieldExpression><![CDATA[$F{viewBiblioteca_link}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="26" width="100" height="20" uuid="7e3d5f4e-66c5-490f-ac63-9ba40b785265"/>
+				<textFieldExpression><![CDATA[$F{viewBiblioteca_pdf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="247" y="14" width="100" height="20" uuid="28b89589-d1c8-43df-875c-fa4141882c28"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
 </jasperReport>
