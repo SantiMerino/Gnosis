@@ -175,13 +175,28 @@ public class MEvento {
         }
     }
     
-        public ResultSet ConsultarEventosHoy(String fecha){
+    public ResultSet ConsultarEventosHoy(String fecha){
         try {
             ResultSet rs;
             Connection con = MConnection.getConnectionWithoutParameters();
-            String query = "SELECT * FROM viewEventos WHERE fechaevento = ?";
+            String query = "SELECT * FROM viewEventos WHERE fechaevento = ? OR fechafinalevento = ?";
             ps = con.prepareStatement(query);
             ps.setString(1, fecha);
+            ps.setString(2, fecha);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    }    public ResultSet ConsultarEventosMañana(String fecha){
+        try {
+            ResultSet rs;
+            Connection con = MConnection.getConnectionWithoutParameters();
+            String query = "SELECT * FROM viewEventos WHERE fechaevento = ? OR fechafinalevento = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, fecha);
+            ps.setString(2, fecha);
             rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {

@@ -54,6 +54,7 @@ public class frmDashboard extends javax.swing.JFrame {
     String nombreAlumno;
     int nivelusuario;
     String fechahoy;
+    String fechamañana;
     
     //id de la tarea
     int tareaidOpen;
@@ -80,6 +81,7 @@ public class frmDashboard extends javax.swing.JFrame {
         lblMes.setText(dtf.format(now));
         lblFecha.setText(dtf2.format(now));
         fechahoy = dtf3.format(now);
+        fechamañana = (now.plusDays(1)).format(dtf3);
 //        System.out.println(fechahoy);
         datosAlumnoLog = datosusuario;
         moodPanel.setVisible(false);
@@ -397,12 +399,18 @@ public class frmDashboard extends javax.swing.JFrame {
         CEvento controller = new CEvento(); 
 
         ResultSet datos = controller.ConsultarEventoHoy(fechahoy);
+        ResultSet datos2 = controller.ConsultarEventoMañana(fechamañana);
         int contador = 0;
+        int contador2 = 0;
         try {
             while (datos.next()) {
                 contador++;
             }
+            while (datos2.next()) {                
+                contador++;
+            }
             numEventos.setText(String.valueOf(contador));
+            numEventosMañana.setText(String.valueOf(contador2));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar los eventos de el día de hoy");
         }
@@ -417,10 +425,10 @@ public class frmDashboard extends javax.swing.JFrame {
                 String tiempo = stdst.getString(2);
                 lblTiempoUltimoEnfoque.setText("Tiempo: " + tiempo.substring(0, 8));
                 if (stdst.getInt(3) == 1 ) {
+                    lblModoEnfoqueEst.setText("Enfoque Libre");     
+                } else{
                     lblModoEnfoqueEst.setText("Enfoque Pomodoro");
                     custo.changeIconlbl(lblIconoEnfoque, "/resources/Tomato.png");
-                } else{
-                    lblModoEnfoqueEst.setText("Enfoque Libre");
                 }
             }
         } catch (Exception e) {
@@ -488,7 +496,7 @@ public class frmDashboard extends javax.swing.JFrame {
         panEventToday2 = new customizeObjects.PanelRound();
         numEventos = new javax.swing.JLabel();
         panEventToday1 = new customizeObjects.PanelRound();
-        jLabel14 = new javax.swing.JLabel();
+        numEventosMañana = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -734,13 +742,13 @@ public class frmDashboard extends javax.swing.JFrame {
         panEventToday1.setRoundTopRight(20);
         panEventToday1.setLayout(new java.awt.BorderLayout());
 
-        jLabel14.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("00");
-        jLabel14.setPreferredSize(new java.awt.Dimension(20, 20));
-        jLabel14.setRequestFocusEnabled(false);
-        panEventToday1.add(jLabel14, java.awt.BorderLayout.CENTER);
+        numEventosMañana.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        numEventosMañana.setForeground(new java.awt.Color(32, 32, 32));
+        numEventosMañana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numEventosMañana.setText("00");
+        numEventosMañana.setPreferredSize(new java.awt.Dimension(20, 20));
+        numEventosMañana.setRequestFocusEnabled(false);
+        panEventToday1.add(numEventosMañana, java.awt.BorderLayout.CENTER);
 
         jLabel15.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -888,7 +896,7 @@ public class frmDashboard extends javax.swing.JFrame {
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         recursosContainer.setBackground(new java.awt.Color(32, 32, 32));
-        recursosContainer.setPreferredSize(new java.awt.Dimension(2000, 227));
+        recursosContainer.setPreferredSize(new java.awt.Dimension(1500, 227));
         recursosContainer.setRoundBottomLeft(25);
         recursosContainer.setRoundBottomRight(25);
         recursosContainer.setLayout(new java.awt.GridLayout(1, 20, 5, 0));
@@ -1075,10 +1083,10 @@ public class frmDashboard extends javax.swing.JFrame {
 
         tareasContainer.setBackground(new java.awt.Color(217, 217, 217));
         tareasContainer.setOpaque(true);
-        tareasContainer.setPreferredSize(new java.awt.Dimension(349, 1500));
+        tareasContainer.setPreferredSize(new java.awt.Dimension(100, 2000));
         tareasContainer.setRoundBottomLeft(25);
         tareasContainer.setRoundBottomRight(25);
-        tareasContainer.setLayout(new java.awt.GridLayout(15, 1, 5, 0));
+        tareasContainer.setLayout(new java.awt.GridLayout(20, 1, 5, 0));
         jScrollPane2.setViewportView(tareasContainer);
 
         taskPanel.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -1470,7 +1478,6 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1496,6 +1503,7 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel moodPic;
     private javax.swing.JPanel namePan;
     private javax.swing.JLabel numEventos;
+    private javax.swing.JLabel numEventosMañana;
     private customizeObjects.ButtonRound pageButton;
     private customizeObjects.PanelRound panBlack;
     private customizeObjects.PanelRound panContainer;

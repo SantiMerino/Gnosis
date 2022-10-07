@@ -239,8 +239,10 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/brainLogin.png"))); // NOI18N
 
+        jLabel1.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
-        jLabel1.setText("Login");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Bienvenido!");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -260,7 +262,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(313, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
 
         panDashboard.add(mainPanel, java.awt.BorderLayout.CENTER);

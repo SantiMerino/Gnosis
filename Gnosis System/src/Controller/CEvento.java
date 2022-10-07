@@ -202,6 +202,10 @@ public class CEvento {
     public ResultSet ConsultarEventoHoy(String fechaevento){
         return mdlEvento.ConsultarEventosHoy(fechaevento);
     }
+    
+    public ResultSet ConsultarEventoMañana(String fechaevento){
+        return mdlEvento.ConsultarEventosMañana(fechaevento);
+    }
     /**
      * Method to search for date ranges
      * @param Fecha1

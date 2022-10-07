@@ -216,7 +216,7 @@
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="313" max="32767" attributes="0"/>
+                                  <EmptySpace pref="292" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -232,10 +232,14 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Poppins Black" size="24" style="0"/>
+                            </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="20" green="20" red="20" type="rgb"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Login"/>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                            <Property name="text" type="java.lang.String" value="Bienvenido!"/>
                           </Properties>
                         </Component>
                       </SubComponents>
