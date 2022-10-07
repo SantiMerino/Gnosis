@@ -378,7 +378,6 @@ public class frmBiblioteca extends javax.swing.JFrame {
         lblLink.setText("jLabel10");
         jPanel1.add(lblLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
 
-        buttonRound1.setForeground(new java.awt.Color(255, 255, 255));
         buttonRound1.setText("Ingresar Link");
         buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.SOCIALES);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {

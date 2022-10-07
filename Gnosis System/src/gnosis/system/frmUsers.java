@@ -469,6 +469,11 @@ public class frmUsers extends javax.swing.JFrame {
         });
 
         txtPin.setBackground(new java.awt.Color(204, 204, 204));
+        txtPin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPinKeyTyped(evt);
+            }
+        });
 
         CmbAlumno.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -839,6 +844,24 @@ public class frmUsers extends javax.swing.JFrame {
             }          
         }
     }//GEN-LAST:event_CmbDocenteItemStateChanged
+
+    private void txtPinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPinKeyTyped
+        // TODO add your handling code here:
+        
+         int key = evt.getKeyChar();
+
+    boolean numeros = key >= 48 && key <= 57;
+        
+    if (!numeros)
+    {
+        evt.consume();
+    }
+
+    if (txtPin.getText().trim().length() == 10) {
+        evt.consume();
+    }
+        
+    }//GEN-LAST:event_txtPinKeyTyped
 
     /**
      * @param args the command line arguments
