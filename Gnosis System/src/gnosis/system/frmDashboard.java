@@ -256,7 +256,7 @@ public class frmDashboard extends javax.swing.JFrame {
 
     
     public void Pomodoro() {
-        minutos = 2;
+        minutos = 25;
         segundos = 0;
         timerP = new Timer();
         taskP = new TimerTask() {
@@ -286,7 +286,7 @@ public class frmDashboard extends javax.swing.JFrame {
                 }
             }
         };
-        timerP.scheduleAtFixedRate(taskP, 0, 100);
+        timerP.scheduleAtFixedRate(taskP, 0, 1000);
     }
     
     
@@ -489,6 +489,7 @@ public class frmDashboard extends javax.swing.JFrame {
         gradesPanel = new customizeObjects.PanelRound();
         panelRound12 = new customizeObjects.PanelRound();
         jLabel12 = new javax.swing.JLabel();
+        btnCalendarioRecharge = new customizeObjects.ButtonRound();
         panelRound11 = new customizeObjects.PanelRound();
         jLabel1 = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
@@ -512,7 +513,7 @@ public class frmDashboard extends javax.swing.JFrame {
         stadisticPanel = new customizeObjects.PanelRound();
         panelRound14 = new customizeObjects.PanelRound();
         jLabel13 = new javax.swing.JLabel();
-        buttonRound3 = new customizeObjects.ButtonRound();
+        btnEstadisticasRecharge = new customizeObjects.ButtonRound();
         lblIconoEnfoque = new javax.swing.JLabel();
         lblTiempoUltimoEnfoque = new javax.swing.JLabel();
         lblNombreEstadistica = new javax.swing.JLabel();
@@ -689,14 +690,41 @@ public class frmDashboard extends javax.swing.JFrame {
         panelRound12.setPreferredSize(new java.awt.Dimension(100, 60));
         panelRound12.setRoundTopLeft(20);
         panelRound12.setRoundTopRight(20);
-        panelRound12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel12.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
         jLabel12.setForeground(java.awt.Color.white);
         jLabel12.setText("  Calendario");
         jLabel12.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel12.setPreferredSize(new java.awt.Dimension(150, 40));
-        panelRound12.add(jLabel12);
+
+        btnCalendarioRecharge.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
+        btnCalendarioRecharge.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnCalendarioRecharge.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        btnCalendarioRecharge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalendarioRechargeActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRound12Layout = new javax.swing.GroupLayout(panelRound12);
+        panelRound12.setLayout(panelRound12Layout);
+        panelRound12Layout.setHorizontalGroup(
+            panelRound12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound12Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                .addComponent(btnCalendarioRecharge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+        );
+        panelRound12Layout.setVerticalGroup(
+            panelRound12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound12Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(panelRound12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCalendarioRecharge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         gradesPanel.add(panelRound12, java.awt.BorderLayout.PAGE_START);
 
@@ -924,12 +952,12 @@ public class frmDashboard extends javax.swing.JFrame {
         jLabel13.setText("Estadistícas");
         jLabel13.setPreferredSize(new java.awt.Dimension(107, 30));
 
-        buttonRound3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
-        buttonRound3.setPreferredSize(new java.awt.Dimension(40, 40));
-        buttonRound3.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
-        buttonRound3.addActionListener(new java.awt.event.ActionListener() {
+        btnEstadisticasRecharge.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh-square-2.png"))); // NOI18N
+        btnEstadisticasRecharge.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnEstadisticasRecharge.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
+        btnEstadisticasRecharge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRound3ActionPerformed(evt);
+                btnEstadisticasRechargeActionPerformed(evt);
             }
         });
 
@@ -940,16 +968,16 @@ public class frmDashboard extends javax.swing.JFrame {
             .addGroup(panelRound14Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addComponent(btnEstadisticasRecharge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelRound14Layout.setVerticalGroup(
             panelRound14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound14Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelRound14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEstadisticasRecharge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
         );
@@ -1441,13 +1469,10 @@ public class frmDashboard extends javax.swing.JFrame {
             CargarTareasAlumnos();
     }//GEN-LAST:event_btnRecargarActionPerformed
 
-    private void buttonRound3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound3ActionPerformed
+    private void btnEstadisticasRechargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasRechargeActionPerformed
         // TODO add your handling code here:
-        recursosContainer.removeAll();
-        recursosContainer.repaint();
-        recursosContainer.revalidate();
         CargarUltimaEstadistica();
-    }//GEN-LAST:event_buttonRound3ActionPerformed
+    }//GEN-LAST:event_btnEstadisticasRechargeActionPerformed
 
     private void buttonRound5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound5ActionPerformed
         // TODO add your handling code here:
@@ -1459,6 +1484,11 @@ public class frmDashboard extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonRound1ActionPerformed
+
+    private void btnCalendarioRechargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalendarioRechargeActionPerformed
+        // TODO add your handling code here:
+        CargarEventosDia();
+    }//GEN-LAST:event_btnCalendarioRechargeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1479,12 +1509,13 @@ public class frmDashboard extends javax.swing.JFrame {
     private customizeObjects.ButtonRound BtnVolverAcargar;
     private customizeObjects.ButtonRound bookButton;
     private customizeObjects.ButtonRound briefcaseButton;
+    private customizeObjects.ButtonRound btnCalendarioRecharge;
+    private customizeObjects.ButtonRound btnEstadisticasRecharge;
     private customizeObjects.ButtonRound btnMood;
     private customizeObjects.ButtonRound btnRecargar;
     private customizeObjects.ButtonRound btnStopMood;
     private customizeObjects.ButtonRound buttonRound1;
     private customizeObjects.ButtonRound buttonRound2;
-    private customizeObjects.ButtonRound buttonRound3;
     private customizeObjects.ButtonRound buttonRound5;
     private javax.swing.JPanel buttonsPan;
     private customizeObjects.ButtonRound calendarButton;

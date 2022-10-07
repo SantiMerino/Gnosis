@@ -59,6 +59,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
 
     public frmUploadTaskStudents(int idtarea, int idalumno) {
         initComponents();
+        customization.mainUtilitiesWhite();
         idalumnolog = idalumno;
         idtareaSelec = idtarea;
         lblArchivo64.setVisible(false);

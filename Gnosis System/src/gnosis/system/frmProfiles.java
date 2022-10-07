@@ -90,7 +90,7 @@ public final class frmProfiles extends javax.swing.JFrame {
             datosDocente = Perfil.CargarDatosDocente(iddocentelog);
             while (datosDocente.next()) {        
                 idmateriadocentelog = datosDocente.getInt(7);
-                txtDocente.setText(datosDocente.getString(1) +  datosDocente.getString(2));
+                txtDocente.setText(datosDocente.getString(1) + " " +datosDocente.getString(2));
                 
                 txtGrado.setText(datosDocente.getString(3));
                 if (datosDocente.getString(4).equals("Ninguno")) {

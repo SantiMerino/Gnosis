@@ -199,7 +199,7 @@ FROM
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="55" splitType="Stretch">
 			<textField>
 				<reportElement x="518" y="20" width="100" height="20" uuid="941dda42-d401-4a9d-91fe-5d3bda03b61c"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>

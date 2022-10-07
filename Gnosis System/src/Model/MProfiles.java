@@ -45,13 +45,14 @@ public class MProfiles {
         }
     }
     
-    public ResultSet mostrarPerfiles(Connection con){
-        int idmateriadocente = 1;
+    public ResultSet mostrarPerfiles(Connection con){    
         try {
+            int idmateriadocente = 2;
             String query = "SELECT * FROM viewPerfiles WHERE idmateriadocente = ?";
             ps = con.prepareStatement(query);
             ps.setInt(1, idmateriadocente);
-            ResultSet rs = ps.executeQuery();    return rs;
+            ResultSet rs = ps.executeQuery();    
+            return rs;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se cargaron los perfiles: " + e.toString());
             return null;
