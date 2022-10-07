@@ -85,16 +85,19 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tbEstudiantes.setModel(tablaModel);
         CargarTabla();
-        int numAlumnos = tbEstudiantes.getRowCount() + 1;
-        String tamaño = String.valueOf(numAlumnos);
+        int numAlumnos = tbEstudiantes.getRowCount();
+        
+         Object valor = tbEstudiantes.getValueAt(numAlumnos - 1,0);
+        int codigo = (int) valor + 1;
+        String tamaño = valor.toString();
         if (tamaño.length() == 1) {
-            txtCodigo.setText("2022" + "000" + numAlumnos);
-        } else if(tamaño.length() == 2){
-            txtCodigo.setText("2022" + "00" + numAlumnos);
-        } else if(tamaño.length() == 3){
-            txtCodigo.setText("2022" + "0" + numAlumnos);
-        } else {
-            txtCodigo.setText("2022" + numAlumnos);
+            txtCodigo.setText("2022" + "000" + codigo);
+        }else  if (tamaño.length() == 2){
+            txtCodigo.setText("2022" + "00" + codigo);
+        }else if (tamaño.length() == 3){
+            txtCodigo.setText("2022" + "0" + codigo);
+        }else {
+            txtCodigo.setText("2022" + codigo);
         }
         
         btnActualizar.setEnabled(false);
@@ -352,9 +355,9 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(32, 32, 32));
         jLabel8.setText("Codigo de carnet:");
 
+        txtCodigo.setEditable(false);
         txtCodigo.setBackground(new java.awt.Color(217, 217, 217));
         txtCodigo.setForeground(new java.awt.Color(50, 50, 50));
-        txtCodigo.setText("20220009");
         txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodigoKeyTyped(evt);
@@ -433,9 +436,9 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                                     .addComponent(jLabel10)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
+                                .addGap(18, 18, 18)
                                 .addComponent(txtIdGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(26, 26, 26)
                                 .addComponent(txtIdGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -447,7 +450,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                                         .addGap(30, 30, 30)
                                         .addComponent(jLabel11))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 57, Short.MAX_VALUE)))))
                 .addContainerGap())
@@ -497,19 +500,15 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                     .addComponent(cmbGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIdGrado)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtIdGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(42, Short.MAX_VALUE))))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtIdGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIdGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         dtNacimiento.setForeground(java.awt.Color.white);
