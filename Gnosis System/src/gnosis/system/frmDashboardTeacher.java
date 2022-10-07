@@ -152,9 +152,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         lblDashboard = new javax.swing.JLabel();
         buttonsPan = new javax.swing.JPanel();
         buttonRound2 = new customizeObjects.ButtonRound();
-        panelRound2 = new customizeObjects.PanelRound();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        buttonRound4 = new customizeObjects.ButtonRound();
         mainPanel = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -232,27 +229,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         buttonRound2.setPreferredSize(new java.awt.Dimension(40, 40));
         buttonRound2.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
         buttonsPan.add(buttonRound2);
-
-        panelRound2.setBackground(new java.awt.Color(32, 32, 32));
-        panelRound2.setPreferredSize(new java.awt.Dimension(80, 40));
-        panelRound2.setRoundBottomLeft(20);
-        panelRound2.setRoundBottomRight(20);
-        panelRound2.setRoundTopLeft(20);
-        panelRound2.setRoundTopRight(20);
-        panelRound2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 5, 0));
-
-        jComboBox1.setBackground(new java.awt.Color(32, 32, 32));
-        jComboBox1.setForeground(new java.awt.Color(32, 32, 32));
-        jComboBox1.setToolTipText("");
-        jComboBox1.setPreferredSize(new java.awt.Dimension(23, 26));
-        panelRound2.add(jComboBox1);
-
-        buttonRound4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user-square.png"))); // NOI18N
-        buttonRound4.setPreferredSize(new java.awt.Dimension(40, 40));
-        buttonRound4.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-        panelRound2.add(buttonRound4);
-
-        buttonsPan.add(panelRound2);
 
         upperPanel.add(buttonsPan, java.awt.BorderLayout.EAST);
 
@@ -720,12 +696,10 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private customizeObjects.ButtonRound btnStopMood;
     private customizeObjects.ButtonRound btnUsers;
     private customizeObjects.ButtonRound buttonRound2;
-    private customizeObjects.ButtonRound buttonRound4;
     private javax.swing.JPanel buttonsPan;
     private customizeObjects.ButtonRound calendarButton;
     private javax.swing.JPanel downGap;
     private customizeObjects.ButtonRound homeButton;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
@@ -740,7 +714,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private customizeObjects.PanelRound panContainer;
     private customizeObjects.PanelRound panDashboard;
     private customizeObjects.PanelRound panWhite;
-    private customizeObjects.PanelRound panelRound2;
     private customizeObjects.PanelRound panelRound4;
     private customizeObjects.PanelRound panelRound5;
     private customizeObjects.PanelRound panelRound6;

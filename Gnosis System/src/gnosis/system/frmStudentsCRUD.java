@@ -85,6 +85,17 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
         tablaModel = new DefaultTableModel(null, TitulosDocentes);
         tbEstudiantes.setModel(tablaModel);
         CargarTabla();
+        int numAlumnos = tbEstudiantes.getRowCount() + 1;
+        String tamaño = String.valueOf(numAlumnos);
+        if (tamaño.length() == 1) {
+            txtCodigo.setText("2022" + "000" + numAlumnos);
+        } else if(tamaño.length() == 2){
+            txtCodigo.setText("2022" + "00" + numAlumnos);
+        } else if(tamaño.length() == 3){
+            txtCodigo.setText("2022" + "0" + numAlumnos);
+        } else {
+            txtCodigo.setText("2022" + numAlumnos);
+        }
         
         btnActualizar.setEnabled(false);
         btnEliminar.setEnabled(false);
