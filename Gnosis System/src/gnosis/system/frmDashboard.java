@@ -542,6 +542,7 @@ public class frmDashboard extends javax.swing.JFrame {
         moodPic = new javax.swing.JLabel();
         lblmood = new javax.swing.JLabel();
         btnStopMood = new customizeObjects.ButtonRound();
+        buttonRound1 = new customizeObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1231,6 +1232,16 @@ public class frmDashboard extends javax.swing.JFrame {
 
         sideBar.add(moodPanel);
 
+        buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        buttonRound1.setPreferredSize(new java.awt.Dimension(60, 60));
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        buttonRound1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound1ActionPerformed(evt);
+            }
+        });
+        sideBar.add(buttonRound1);
+
         panBlack.add(sideBar, java.awt.BorderLayout.WEST);
 
         getContentPane().add(panBlack, java.awt.BorderLayout.CENTER);
@@ -1442,6 +1453,13 @@ public class frmDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonRound5ActionPerformed
 
+    private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
+        // TODO add your handling code here:
+        frmLogin login = new frmLogin();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buttonRound1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1464,6 +1482,7 @@ public class frmDashboard extends javax.swing.JFrame {
     private customizeObjects.ButtonRound btnMood;
     private customizeObjects.ButtonRound btnRecargar;
     private customizeObjects.ButtonRound btnStopMood;
+    private customizeObjects.ButtonRound buttonRound1;
     private customizeObjects.ButtonRound buttonRound2;
     private customizeObjects.ButtonRound buttonRound3;
     private customizeObjects.ButtonRound buttonRound5;
