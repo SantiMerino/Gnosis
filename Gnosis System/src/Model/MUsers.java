@@ -182,4 +182,18 @@ public class MUsers {
             return false;
         }
     }
+    
+     public boolean EliminarUsuarioModelU(int ID, Connection con) {
+        try {
+            String query = "DELETE tbUsuario WHERE idalumno = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1, ID);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar el registro seleccionado, verifique la conexion" + e.toString());
+            return false;
+        }
+    }
+    
 }

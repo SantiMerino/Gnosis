@@ -191,4 +191,9 @@ public class CUsers {
     public boolean EliminarUsuario() {
         return mdlUsers.EliminarUsuarioModel(ID, con);
     }
+    
+    public boolean EliminarUsuario(int id) {
+        return mdlUsers.EliminarUsuarioModelU(id, con);
+    }
+    
 }
