@@ -68,8 +68,6 @@ public class frmDashboard extends javax.swing.JFrame {
         lblFecha.setText(dtf2.format(now));
         customization.mainUtilities();
         moodPanel.setVisible(false);
-        searchbar.putClientProperty("innerFocusWidth", 0);
-        searchbar.putClientProperty("focusWidth", 0);
     }
     /**
      * Constructor with the student data from a ResultSet obtained previously in the Login
@@ -85,8 +83,6 @@ public class frmDashboard extends javax.swing.JFrame {
 //        System.out.println(fechahoy);
         datosAlumnoLog = datosusuario;
         moodPanel.setVisible(false);
-        searchbar.putClientProperty("innerFocusWidth", 0);
-        searchbar.putClientProperty("focusWidth", 0);
         CargarDatosAlumnoDashboard();
         ObtenerDatosAlumnoLoggeado(iduserlog);
         CargarPortafolios();
@@ -221,8 +217,6 @@ public class frmDashboard extends javax.swing.JFrame {
         fechahoy = dtf3.format(now);
 //        System.out.println(fechahoy);
 //        moodPanel.setVisible(false);
-        searchbar.putClientProperty("innerFocusWidth", 0);
-        searchbar.putClientProperty("focusWidth", 0);
         CargarDatosAlumnoDashboard();
         ObtenerDatosAlumnoLoggeado(iduserlog);
         CargarPortafolios();
@@ -474,15 +468,6 @@ public class frmDashboard extends javax.swing.JFrame {
         upperPanel = new javax.swing.JPanel();
         namePan = new javax.swing.JPanel();
         lblnamedashboard = new javax.swing.JLabel();
-        searchPan = new javax.swing.JPanel();
-        panelRound1 = new customizeObjects.PanelRound();
-        jLabel8 = new javax.swing.JLabel();
-        searchbar = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         buttonsPan = new javax.swing.JPanel();
         buttonRound2 = new customizeObjects.ButtonRound();
         btnMood = new customizeObjects.ButtonRound();
@@ -598,48 +583,6 @@ public class frmDashboard extends javax.swing.JFrame {
         namePan.add(lblnamedashboard);
 
         upperPanel.add(namePan, java.awt.BorderLayout.WEST);
-
-        searchPan.setBackground(java.awt.Color.white);
-        searchPan.setLayout(new java.awt.BorderLayout());
-
-        panelRound1.setBackground(new java.awt.Color(32, 32, 32));
-        panelRound1.setPreferredSize(new java.awt.Dimension(300, 30));
-        panelRound1.setRoundBottomLeft(20);
-        panelRound1.setRoundBottomRight(20);
-        panelRound1.setRoundTopLeft(20);
-        panelRound1.setRoundTopRight(20);
-        panelRound1.setLayout(new javax.swing.BoxLayout(panelRound1, javax.swing.BoxLayout.LINE_AXIS));
-
-        jLabel8.setPreferredSize(new java.awt.Dimension(10, 0));
-        panelRound1.add(jLabel8);
-
-        searchbar.setBackground(new java.awt.Color(32, 32, 32));
-        searchbar.setForeground(new java.awt.Color(200, 200, 200));
-        searchbar.setBorder(null);
-        panelRound1.add(searchbar);
-
-        jLabel3.setBackground(new java.awt.Color(32, 32, 32));
-        jLabel3.setForeground(new java.awt.Color(60, 63, 65));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/search-normal.png"))); // NOI18N
-        jLabel3.setText("i");
-        jLabel3.setToolTipText("");
-        panelRound1.add(jLabel3);
-
-        searchPan.add(panelRound1, java.awt.BorderLayout.CENTER);
-
-        jLabel4.setPreferredSize(new java.awt.Dimension(0, 10));
-        searchPan.add(jLabel4, java.awt.BorderLayout.PAGE_START);
-
-        jLabel5.setPreferredSize(new java.awt.Dimension(0, 10));
-        searchPan.add(jLabel5, java.awt.BorderLayout.PAGE_END);
-
-        jLabel6.setPreferredSize(new java.awt.Dimension(20, 0));
-        searchPan.add(jLabel6, java.awt.BorderLayout.LINE_END);
-
-        jLabel7.setPreferredSize(new java.awt.Dimension(20, 0));
-        searchPan.add(jLabel7, java.awt.BorderLayout.LINE_START);
-
-        upperPanel.add(searchPan, java.awt.BorderLayout.CENTER);
 
         buttonsPan.setBackground(new java.awt.Color(255, 255, 255));
         buttonsPan.setPreferredSize(new java.awt.Dimension(300, 100));
@@ -1041,7 +984,7 @@ public class frmDashboard extends javax.swing.JFrame {
         lblNombreEstadistica.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblNombreEstadistica.setForeground(new java.awt.Color(32, 32, 32));
         lblNombreEstadistica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNombreEstadistica.setText("jLabel19");
+        lblNombreEstadistica.setText("Nombres");
 
         lblModoEnfoqueEst.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         lblModoEnfoqueEst.setForeground(new java.awt.Color(32, 32, 32));
@@ -1050,7 +993,7 @@ public class frmDashboard extends javax.swing.JFrame {
         lblApellidos.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         lblApellidos.setForeground(new java.awt.Color(32, 32, 32));
         lblApellidos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblApellidos.setText("jLabel11");
+        lblApellidos.setText("Apellidos");
 
         jLabel11.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(32, 32, 32));
@@ -1569,12 +1512,6 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1602,7 +1539,6 @@ public class frmDashboard extends javax.swing.JFrame {
     private customizeObjects.PanelRound panEventToday1;
     private customizeObjects.PanelRound panEventToday2;
     private customizeObjects.PanelRound panWhite;
-    private customizeObjects.PanelRound panelRound1;
     private customizeObjects.PanelRound panelRound10;
     private customizeObjects.PanelRound panelRound11;
     private customizeObjects.PanelRound panelRound12;
@@ -1618,8 +1554,6 @@ public class frmDashboard extends javax.swing.JFrame {
     private customizeObjects.PanelRound protfoliosPanel;
     private customizeObjects.PanelRound recursosContainer;
     private javax.swing.JPanel rightGap;
-    private javax.swing.JPanel searchPan;
-    private javax.swing.JTextField searchbar;
     private customizeObjects.PanelRound segundaFila;
     private javax.swing.JPanel sideBar;
     private customizeObjects.PanelRound stadisticPanel;
