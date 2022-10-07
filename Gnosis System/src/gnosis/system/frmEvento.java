@@ -339,13 +339,13 @@ public class frmEvento extends javax.swing.JFrame {
         });
         jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 200, -1));
 
-        jButton1.setText("Generar Reporte");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text-black.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, -1, -1));
 
         panelRound1.add(jPanel1, java.awt.BorderLayout.WEST);
 

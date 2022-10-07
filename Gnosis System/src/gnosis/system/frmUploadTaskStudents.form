@@ -151,7 +151,7 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="btnDescargarRubrica" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          <Component id="lblRubrica64" pref="32" max="32767" attributes="0"/>
+                          <Component id="lblRubrica64" pref="43" max="32767" attributes="0"/>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btnModificar" max="32767" attributes="0"/>
@@ -159,8 +159,8 @@
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnSubirTarea" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="buttonRound1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSubirTarea" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonRound1" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -228,9 +228,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtNota">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Poppins" size="14" style="1"/>
             </Property>
@@ -487,14 +484,13 @@
         </Component>
         <Component class="customizeObjects.ButtonRound" name="buttonRound1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Generar Reporte"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/document-text-black.png"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Poppins" size="12" style="1"/>
             </Property>
             <Property name="round" type="int" value="20"/>
-            <Property name="style" type="customizeObjects.ButtonRound$ButtonStyle" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="GRIS_OSCURO"/>
-            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRound1ActionPerformed"/>

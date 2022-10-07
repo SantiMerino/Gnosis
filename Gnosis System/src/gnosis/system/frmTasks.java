@@ -422,7 +422,7 @@ JFileChooser browseImageFile = new JFileChooser();        //Filter image extensi
         lblarchivo64.setText("jLabel6");
         jPanel1.add(lblarchivo64, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 40, -1));
 
-        buttonRound1.setText("Generar reporte");
+        buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text-black.png"))); // NOI18N
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
@@ -434,7 +434,7 @@ JFileChooser browseImageFile = new JFileChooser();        //Filter image extensi
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

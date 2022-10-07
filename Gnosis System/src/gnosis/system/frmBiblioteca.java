@@ -83,6 +83,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
 //        customization.centrarFrame(this);
 //        jLabel7.setVisible(false);
         lblLink.setVisible(false);
+        jLabel8.setVisible(false);
     }
     
     void LimpiarCampos(){
@@ -366,17 +367,20 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
         btnAbrirLink.setBackground(new java.awt.Color(204, 204, 204));
         btnAbrirLink.setText("Abrir Link");
+        btnAbrirLink.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
         btnAbrirLink.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbrirLinkActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAbrirLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 314, -1, -1));
+        jPanel1.add(btnAbrirLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 90, -1));
 
         lblLink.setText("jLabel10");
         jPanel1.add(lblLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
 
+        buttonRound1.setForeground(new java.awt.Color(255, 255, 255));
         buttonRound1.setText("Ingresar Link");
+        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.SOCIALES);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
@@ -384,13 +388,13 @@ public class frmBiblioteca extends javax.swing.JFrame {
         });
         jPanel1.add(buttonRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 212, 237, -1));
 
-        btnReporte.setText("Generar Reporte");
+        btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text-black.png"))); // NOI18N
         btnReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReporteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 268, 137, -1));
+        jPanel1.add(btnReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, 50, -1));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 

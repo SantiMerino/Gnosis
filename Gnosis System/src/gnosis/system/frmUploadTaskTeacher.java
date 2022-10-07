@@ -255,10 +255,9 @@ public class frmUploadTaskTeacher extends javax.swing.JFrame {
         lblIDTareaAlumno.setForeground(new java.awt.Color(32, 32, 32));
         lblIDTareaAlumno.setText("jLabel3");
 
-        buttonRound1.setText("Generar Reporte");
+        buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text-black.png"))); // NOI18N
         buttonRound1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         buttonRound1.setRound(20);
-        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
         buttonRound1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRound1ActionPerformed(evt);
