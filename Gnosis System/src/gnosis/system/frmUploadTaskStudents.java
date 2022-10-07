@@ -395,7 +395,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                                                 .addGap(6, 6, 6)
                                                 .addComponent(buttonRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                             .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(67, 67, 67))))
+                        .addContainerGap(67, Short.MAX_VALUE))))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

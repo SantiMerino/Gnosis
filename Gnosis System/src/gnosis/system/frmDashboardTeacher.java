@@ -78,6 +78,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
             calendarButton.setVisible(false);
             bookButton.setVisible(false);
             btnUsers.setVisible(true);
+            logout.setVisible(true);
         }
     }
     
@@ -176,7 +177,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         moodPic = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnStopMood = new customizeObjects.ButtonRound();
-        buttonRound1 = new customizeObjects.ButtonRound();
+        logout = new customizeObjects.ButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -441,15 +442,15 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
 
         sideBar.add(moodPanel);
 
-        buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
-        buttonRound1.setPreferredSize(new java.awt.Dimension(60, 60));
-        buttonRound1.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
-        buttonRound1.addActionListener(new java.awt.event.ActionListener() {
+        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        logout.setPreferredSize(new java.awt.Dimension(60, 60));
+        logout.setStyle(customizeObjects.ButtonRound.ButtonStyle.NEGRO);
+        logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRound1ActionPerformed(evt);
+                logoutActionPerformed(evt);
             }
         });
-        sideBar.add(buttonRound1);
+        sideBar.add(logout);
 
         panBlack.add(sideBar, java.awt.BorderLayout.WEST);
 
@@ -687,12 +688,12 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
         new frmUsers(iduserlog).setVisible(true);
     }//GEN-LAST:event_btnUsersActionPerformed
 
-    private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         // TODO add your handling code here:
         frmLogin login = new frmLogin();
         login.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_buttonRound1ActionPerformed
+    }//GEN-LAST:event_logoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -715,7 +716,6 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private customizeObjects.ButtonRound briefcaseButton;
     private customizeObjects.ButtonRound btnStopMood;
     private customizeObjects.ButtonRound btnUsers;
-    private customizeObjects.ButtonRound buttonRound1;
     private customizeObjects.ButtonRound buttonRound2;
     private javax.swing.JPanel buttonsPan;
     private customizeObjects.ButtonRound calendarButton;
@@ -725,6 +725,7 @@ public class frmDashboardTeacher extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblDashboard;
+    private customizeObjects.ButtonRound logout;
     private javax.swing.JPanel mainPanel;
     private customizeObjects.ButtonRound medalButton;
     private customizeObjects.PanelRound moodPanel;
