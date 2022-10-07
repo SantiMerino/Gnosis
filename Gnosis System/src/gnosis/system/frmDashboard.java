@@ -8,6 +8,7 @@ package gnosis.system;
 import Controller.CBiblioteca;
 import Controller.CEstudents;
 import Controller.CEvento;
+import Controller.CLogin;
 import java.awt.*;
 import customizeObjects.ButtonRound;
 import java.sql.ResultSet;
@@ -81,7 +82,7 @@ public class frmDashboard extends javax.swing.JFrame {
         lblMes.setText(dtf.format(now));
         lblFecha.setText(dtf2.format(now));
         fechahoy = dtf3.format(now);
-        System.out.println(fechahoy);
+//        System.out.println(fechahoy);
         datosAlumnoLog = datosusuario;
         moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
@@ -103,7 +104,7 @@ public class frmDashboard extends javax.swing.JFrame {
             nivelusuario = datosAlumnoLog.getInt(2);
             lblnamedashboard.setText(usernamelog + "'s Dashboard");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No fue posible conseguir los datos del usuario", "Conflicto de datos", JOptionPane.ERROR);
+            JOptionPane.showMessageDialog(null, "No fue posible conseguir los datos del usuario", "Conflicto de datos", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -199,27 +200,36 @@ public class frmDashboard extends javax.swing.JFrame {
         CMood obj = new CMood();
         boolean respuesta;
         if (moodPanel.getBackground() == Color.red) {
-            variable1 = 1;
+            variable1 = 2;
             respuesta = obj.RegistrarMood("00:"+lblmood.getText(), variable1, iduserlog);
             notificacion("Se han ingresado tus datos de enfoque exitosamente", 1, "Confirmación");
         } else {
+            variable1 = 1;
             respuesta = obj.RegistrarMood(lblmood.getText(), variable1, iduserlog);
             notificacion("Se han ingresado tus datos de enfoque exitosamente", 1, "Confirmación");
         }
     }
     
     //Constructor para ver el mood de concetración
-    public frmDashboard(int moodstate, ResultSet datosAlumno) {
+    public frmDashboard(int moodstate, ResultSet datos) {
+        customization.mainUtilities();
         initComponents();
-        custo.mainUtilities();
-        datosAlumnoLog = datosAlumno;
-        moodPanel.setVisible(false);
+        datosAlumnoLog = datos;
+        LocalDateTime now = LocalDateTime.now();
+        lblMes.setText(dtf.format(now));
+        lblFecha.setText(dtf2.format(now));
+        fechahoy = dtf3.format(now);
+//        System.out.println(fechahoy);
+//        moodPanel.setVisible(false);
         searchbar.putClientProperty("innerFocusWidth", 0);
         searchbar.putClientProperty("focusWidth", 0);
         CargarDatosAlumnoDashboard();
+        ObtenerDatosAlumnoLoggeado(iduserlog);
         CargarPortafolios();
         CargarTareasAlumnos();
         CargarRecursos();
+        CargarEventosDia();
+        CargarUltimaEstadistica();
         mood = moodstate;
         if (mood == 1) {
             moodPanel.setVisible(true);
@@ -234,6 +244,22 @@ public class frmDashboard extends javax.swing.JFrame {
         }
     }
     
+    public void Enfoque(int moodstate){
+        mood = moodstate;
+        if (mood == 1) {
+            moodPanel.setVisible(true);
+            EstudioLibre();
+        }else if (mood == 2){
+            moodPanel.setVisible(true);
+            moodPanel.setBackground(Color.red);
+            custo.changeIconlbl(moodPic, "/resources/Tomato-white.png");
+            lblmood.setForeground(Color.white);
+            btnStopMood.setStyle(ButtonRound.ButtonStyle.NEGRO);
+            Pomodoro();
+        }
+    }
+    
+
     
     public void Pomodoro() {
         minutos = 2;
@@ -1433,10 +1459,22 @@ public class frmDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void btnMoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoodActionPerformed
-        // TODO add your handling code here:
-        
-        new frmMood(datosAlumnoLog).setVisible(true);
-        this.dispose();
+        // TODO add your handling code here:  
+        if (moodPanel.isVisible() == true) {
+            timerP.cancel();
+            taskP.cancel();
+            if (mood == 1) {
+                GuardarRegistroMood();
+                moodPanel.setVisible(false);
+            } else {
+                notificacion("Buen trabajo! Has logrado " + pomodoros + " pomodoros en esta sesión", 1, "Pomodoros");
+                GuardarRegistroMood();
+                moodPanel.setVisible(false);
+            }
+            lblmood.setText("00" + " : " + "00" + " : " + "00");
+        }
+        new frmMood(datosAlumnoLog, this).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnMoodActionPerformed
 
     private void buttonRound4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound4ActionPerformed
@@ -1447,11 +1485,11 @@ public class frmDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         timerP.cancel();
         taskP.cancel();
-        if (mood == 1) {
-            notificacion("Buen trabajo! Has logrado " + pomodoros + " pomodoros en esta sesión", 1, "Pomodoros");
+        if (mood == 1) {   
             GuardarRegistroMood();
             moodPanel.setVisible(false);
         } else{
+            notificacion("Buen trabajo! Has logrado " + pomodoros + " pomodoros en esta sesión", 1, "Pomodoros");
             GuardarRegistroMood();
             moodPanel.setVisible(false);
         }

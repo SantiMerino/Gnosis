@@ -911,6 +911,11 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                         CEstudents.idalumno = idalumno.getInt("idalumno");
                         usuariores = objEstu.CrearUsuarioAlumnoController();
                         ResultSet materiasDocente = portafolio.MateriaDocenteResult(idGrado);
+                        if (usuariores == true) {
+                            JOptionPane.showMessageDialog(null, "Usuario ingresado");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
+                        }
                         while (materiasDocente.next()) {
                             portafolio.CrearPortafoliosEXEC(materiasDocente.getInt(1));
                         }
@@ -918,11 +923,7 @@ public class frmStudentsCRUD extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, ex.toString());
                 }
-                if (usuariores == true) {
-                    JOptionPane.showMessageDialog(null, "Usuario ingresado");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se pudo ingresar el usuario");
-                }
+
             } else {
                 JOptionPane.showMessageDialog(this, "Estudiante no pudo ser ingresado");
             }      

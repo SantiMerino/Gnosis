@@ -55,8 +55,8 @@ public class CMood {
     Connection con = CConnection.getConnectionControllerWithoutParameters();
     private MMood mdlMood = new MMood();
     
-    public boolean RegistrarMood(String tiempo, int enfoque, int idmateria){
-        return mdlMood.RegistrarEventoModel(tiempo, enfoque, idmateria, con);
+    public boolean RegistrarMood(String tiempo, int enfoque, int idalumno){
+        return mdlMood.RegistrarEventoModel(tiempo, enfoque, idalumno, con);
     }
 
     public CMood(String enfoque, String Tiempo, int idmateria) {

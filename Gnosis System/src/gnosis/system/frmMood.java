@@ -17,6 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import jdk.internal.org.objectweb.asm.tree.analysis.Frame;
 
 
 /**
@@ -32,15 +33,17 @@ public class frmMood extends javax.swing.JFrame {
     
     static int moodSelect = 0;
     ResultSet datos;
-    JFrame dashboard;
+    frmDashboard dashboard = new frmDashboard();
 
     public frmMood() {
     }
     
     
     
-    public frmMood(ResultSet datosAlumno) {
+    public frmMood(ResultSet datosAlumno, frmDashboard frame) {
         initComponents();
+        customization.centrarFrame(this);
+        dashboard = frame;
         datos = datosAlumno;
     }
    
@@ -64,6 +67,7 @@ public class frmMood extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(java.awt.Color.white);
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(600, 400));
         setResizable(false);
 
@@ -182,30 +186,21 @@ public class frmMood extends javax.swing.JFrame {
         
     }//GEN-LAST:event_rbtnLibreActionPerformed
 
-    @Override
-    public void dispose(){
-        if (dashboard == null) {
-            dashboard = new frmDashboard(datos);
-        }
-        System.out.println(dashboard);
-        dashboard.setVisible(true);
-        this.setVisible(false);
-    }
-    
     
     private void btnActivarMoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarMoodActionPerformed
         // TODO add your handling code here:
         if (moodSelect == 0) {
             JOptionPane.showMessageDialog(null, "Escoge un modo de concetración", "Activar Modo", JOptionPane.WARNING_MESSAGE);
         }else{
-            dashboard = new frmDashboard(moodSelect, datos);
+            dashboard.setVisible(true);
+            dashboard.Enfoque(moodSelect);
             this.dispose();
         }      
     }//GEN-LAST:event_btnActivarMoodActionPerformed
 
     private void buttonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound1ActionPerformed
         // TODO add your handling code here:
-        dashboard = new frmDashboard(datos);
+        dashboard.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonRound1ActionPerformed
 

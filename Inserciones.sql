@@ -257,6 +257,8 @@ CREATE TABLE tbRegistroNotas (
 	idalumno int not null
 )
 
+select * from viewEventos;
+
 CREATE TABLE tbPerfiles (
 	idperfil int not null primary key identity (1,1),
 	nombreperfil varchar (100),
@@ -398,17 +400,18 @@ use dbGnosis
 go
 
 GO
-CREATE PROCEDURE crearUsuarioEstudiante
+CREATE PROCEDURE crearUsuarioEstudiantes
 @nivel int,
 @correo varchar (150),
 @clavedefault varchar (20),
 @b int, --12345
 @c int, --2
-@id int
+@id int,
+@iddoc int
 AS
 BEGIN
-INSERT INTO tbUsuario(idnivelusuario,username, clave, pin, idestadousuario, idalumno)
-VALUES  (@nivel, @correo, @clavedefault, @b , @c, @id);
+INSERT INTO tbUsuario(idnivelusuario,username, clave, pin, idestadousuario, idalumno, iddocente)
+VALUES  (@nivel, @correo, @clavedefault, @b , @c, @id, @iddoc);
 END
 GO
 
