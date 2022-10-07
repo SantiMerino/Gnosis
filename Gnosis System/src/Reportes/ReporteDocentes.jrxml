@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1200" pageHeight="842" columnWidth="1160" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d98a830a-c8f5-4c81-ac9e-73a57efc6201">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="319"/>
+	<property name="ireport.zoom" value="0.683013455365071"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -35,14 +35,33 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="141" splitType="Stretch">
 			<staticText>
-				<reportElement x="505" y="28" width="144" height="20" uuid="62d69045-ec0c-455e-bdc5-cfd5ee3cac33"/>
+				<reportElement x="454" y="41" width="247" height="36" uuid="62d69045-ec0c-455e-bdc5-cfd5ee3cac33"/>
 				<textElement>
-					<font size="14"/>
+					<font fontName="Poppins Black" size="20"/>
 				</textElement>
 				<text><![CDATA[Reporte de docentes]]></text>
 			</staticText>
+			<image>
+				<reportElement x="26" y="11" width="111" height="122" uuid="64bf5c66-ea0c-4bb8-a4fc-fbc2ad49eac1"/>
+				<imageExpression><![CDATA["C:\\Users\\santi\\OneDrive\\Documentos\\GitHub\\Gnosis\\Gnosis System\\src\\resources\\brainLogin.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="160" y="21" width="150" height="44" uuid="4a350ba0-5f9b-4da0-94a3-76921f125b5c"/>
+				<textElement>
+					<font fontName="Poppins Black" size="24"/>
+				</textElement>
+				<text><![CDATA[GNOSIS]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="160" y="77" width="150" height="20" uuid="e69d57a1-bd7b-4a43-838b-fe17f78bb577"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="1049" y="11" width="91" height="97" uuid="d5f4137c-7fa1-443b-aaf5-3bbc9256c8c3"/>
+				<imageExpression><![CDATA["C:\\Users\\santi\\OneDrive\\Documentos\\GitHub\\Gnosis\\Gnosis System\\src\\resources\\rical.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -52,38 +71,65 @@ FROM
 		<band height="61" splitType="Stretch">
 			<staticText>
 				<reportElement x="11" y="2" width="100" height="20" uuid="07fd7a79-79ff-45a1-92f6-1d7ede220ace"/>
+				<textElement>
+					<font fontName="Poppins" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Apellidos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="137" y="2" width="100" height="20" uuid="dce77fe9-8c1d-4d05-99df-15a8d98967ee"/>
+				<textElement>
+					<font fontName="Poppins" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Nombres]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="260" y="2" width="100" height="20" uuid="06f49621-eefd-4e8c-afe5-24db9a818f1f"/>
+				<textElement>
+					<font fontName="Poppins" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Direccion]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="395" y="2" width="100" height="20" uuid="4b9bbfd5-b4e2-4268-86bc-bd3d56569f05"/>
+				<textElement>
+					<font fontName="Poppins" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Dui]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="529" y="2" width="100" height="20" uuid="0dce4a33-b604-4557-af0c-8f577f2d8955"/>
+				<textElement>
+					<font fontName="Poppins" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Correo]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="663" y="2" width="100" height="20" uuid="5f58ab18-a626-4cbd-9e2e-52bdd4049e36"/>
+				<textElement>
+					<font fontName="Poppins" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Nacimiento]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="791" y="2" width="100" height="20" uuid="38ce3abc-96de-420e-aa69-8f39414793d9"/>
+				<textElement>
+					<font fontName="Poppins" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Contacto]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="924" y="2" width="100" height="20" uuid="9d164dcf-030a-447c-9539-cb72765a9124"/>
+				<textElement>
+					<font fontName="Poppins" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Genero]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1062" y="2" width="100" height="20" uuid="970c225d-fd21-40e4-a4bd-309fa3606a6d"/>
+				<textElement>
+					<font fontName="Poppins" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Grado]]></text>
 			</staticText>
 		</band>
@@ -96,30 +142,51 @@ FROM
 			</textField>
 			<textField>
 				<reportElement x="137" y="32" width="100" height="20" uuid="583cce08-9bdf-4067-8b4e-b72f93dfa520"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{tbDocentes_nombres_docente}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="260" y="32" width="100" height="20" uuid="5364a5a1-36f4-4983-ba5b-9c85ef39c1b4"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{tbDocentes_direccion}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="395" y="32" width="100" height="20" uuid="5cd6b9a6-f1e1-423c-a5f6-f0a732140d53"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{tbDocentes_dui}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="529" y="32" width="100" height="20" uuid="68bfeb22-38d9-43cc-9377-39a02c7ed7cb"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{tbDocentes_correo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="663" y="34" width="100" height="20" uuid="fb92a952-a339-42c8-886a-239e691fb190"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{tbDocentes_fecha_nac}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="791" y="34" width="100" height="20" uuid="f7b406b5-78f9-43d1-ba35-cd1702fdcf44"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{tbDocentes_contacto}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="924" y="34" width="100" height="20" uuid="6b962747-f70d-4cd1-9fec-595b9f14c078"/>
+				<textElement>
+					<font fontName="Poppins"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{tbGeneros_genero}]]></textFieldExpression>
 			</textField>
 			<textField>

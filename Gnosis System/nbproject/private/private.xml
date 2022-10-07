@@ -12,7 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/PC/Documents/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/frmStudentsCRUD.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/Model/MEvento.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/frmEvento.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/frmDashboardTeacher.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/Controller/CEvento.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/gnosis/system/frmDashboard.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documentos/GitHub/Gnosis/Gnosis%20System/src/Model/MConnection.java</file>
         </group>
     </open-files>
 </project-private>
