@@ -62,15 +62,6 @@ public class MEvento {
     
     /**
      * Method in the Event Model to register an event.
-     * @param nombreevento
-     * @param fechaevento
-     * @param horainicioevento
-     * @param fechafinalevento
-     * @param horafinalizarevento
-     * @param idtipoevento
-     * @param idgrado
-     * @param con
-     * @return 
      */
     public boolean RegistrarEventoModel(String nombreevento, String fechaevento, String horainicioevento, String fechafinalevento, String horafinalizarevento, int idtipoevento, int idgrado, Connection con) {
         try {           

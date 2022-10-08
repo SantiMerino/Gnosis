@@ -190,12 +190,14 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
         panelPrincipal.setRoundBottomRight(20);
         panelPrincipal.setRoundTopLeft(20);
         panelPrincipal.setRoundTopRight(20);
+        panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblEstado.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         lblEstado.setForeground(new java.awt.Color(32, 32, 32));
         lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/medal-estateprofile.png"))); // NOI18N
         lblEstado.setText("Estado :");
+        panelPrincipal.add(lblEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 186, -1, -1));
 
         btnSubirPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/send-square.png"))); // NOI18N
         btnSubirPDF.setRound(20);
@@ -205,6 +207,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                 btnSubirPDFActionPerformed(evt);
             }
         });
+        panelPrincipal.add(btnSubirPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 282, 283, 40));
 
         btnLink.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/link.png"))); // NOI18N
         btnLink.setRound(20);
@@ -214,10 +217,12 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                 btnLinkActionPerformed(evt);
             }
         });
+        panelPrincipal.add(btnLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 396, 283, 40));
 
         txtNota.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         txtNota.setForeground(new java.awt.Color(32, 32, 32));
         txtNota.setEnabled(false);
+        panelPrincipal.add(txtNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 118, 82, 40));
 
         panelRound2.setBackground(new java.awt.Color(32, 32, 32));
         panelRound2.setRoundBottomLeft(20);
@@ -242,7 +247,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                 .addComponent(lblTipoPerfil)
                 .addGap(44, 44, 44)
                 .addComponent(lblPorcentaje)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRound2Layout.setVerticalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,45 +259,57 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        panelPrincipal.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 29, 290, -1));
+
         lblMateriaModulo.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         lblMateriaModulo.setForeground(new java.awt.Color(32, 32, 32));
         lblMateriaModulo.setText("Materia / Modulo ");
+        panelPrincipal.add(lblMateriaModulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 78, -1, -1));
 
         lblDocente.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         lblDocente.setForeground(new java.awt.Color(32, 32, 32));
         lblDocente.setText("Docentes :");
+        panelPrincipal.add(lblDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 128, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(32, 32, 32));
         jLabel6.setText("Archivo :");
+        panelPrincipal.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 254, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(32, 32, 32));
         jLabel7.setText("Link :");
+        panelPrincipal.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 368, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(32, 32, 32));
         jLabel10.setText("Calificación:");
+        panelPrincipal.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 127, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(32, 32, 32));
         jLabel11.setText("/ 10");
+        panelPrincipal.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(646, 127, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 32, 32));
         jLabel1.setText("Tarea:");
+        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 23, -1, -1));
 
         lblnombreTarea.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         lblnombreTarea.setForeground(new java.awt.Color(32, 32, 32));
         lblnombreTarea.setText("Actividad de grupos ");
+        panelPrincipal.add(lblnombreTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 34, -1, -1));
 
         lblFechaVencimiento.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         lblFechaVencimiento.setForeground(new java.awt.Color(32, 32, 32));
         lblFechaVencimiento.setText("Fecha de vencimiento:");
+        panelPrincipal.add(lblFechaVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 191, 280, -1));
 
         jLabel13.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(32, 32, 32));
         jLabel13.setText("Instrumento de evaluacion:");
+        panelPrincipal.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 254, -1, -1));
 
         btnDescargarRubrica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/receive-square.png"))); // NOI18N
         btnDescargarRubrica.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_CLARO);
@@ -301,6 +318,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                 btnDescargarRubricaActionPerformed(evt);
             }
         });
+        panelPrincipal.add(btnDescargarRubrica, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 282, 270, 40));
 
         btnEliminarTarea.setText("Eliminar");
         btnEliminarTarea.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
@@ -310,10 +328,12 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                 btnEliminarTareaActionPerformed(evt);
             }
         });
+        panelPrincipal.add(btnEliminarTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 131, -1));
 
         btnModificar.setText("Modificar ");
         btnModificar.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         btnModificar.setStyle(customizeObjects.ButtonRound.ButtonStyle.AMARILLO);
+        panelPrincipal.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 350, 120, -1));
 
         btnSubirTarea.setText("Subir ");
         btnSubirTarea.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
@@ -323,13 +343,17 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                 btnSubirTareaActionPerformed(evt);
             }
         });
+        panelPrincipal.add(btnSubirTarea, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 131, -1));
 
         lblArchivo64.setForeground(java.awt.Color.white);
         lblArchivo64.setText("jLabel14");
+        panelPrincipal.add(lblArchivo64, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 340, 283, -1));
 
         lblLinkStore.setForeground(new java.awt.Color(32, 32, 32));
+        panelPrincipal.add(lblLinkStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 442, 283, 21));
 
         lblRubrica64.setForeground(new java.awt.Color(32, 32, 32));
+        panelPrincipal.add(lblRubrica64, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 323, 330, 20));
 
         buttonRound1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/document-text-black.png"))); // NOI18N
         buttonRound1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
@@ -339,119 +363,7 @@ public class frmUploadTaskStudents extends javax.swing.JFrame {
                 buttonRound1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
-        panelPrincipal.setLayout(panelPrincipalLayout);
-        panelPrincipalLayout.setHorizontalGroup(
-            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblnombreTarea))
-                    .addComponent(btnLink, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                    .addComponent(btnSubirPDF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblMateriaModulo)
-                    .addComponent(lblEstado)
-                    .addComponent(lblDocente)
-                    .addComponent(lblArchivo64, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblLinkStore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel11)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1))
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addGap(146, 146, 146)
-                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblRubrica64, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnDescargarRubrica, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblFechaVencimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(1, 1, 1))
-                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(btnSubirTarea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnEliminarTarea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(buttonRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addContainerGap(67, Short.MAX_VALUE))))
-        );
-        panelPrincipalLayout.setVerticalGroup(
-            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(lblnombreTarea))
-                        .addGap(18, 18, 18)
-                        .addComponent(lblMateriaModulo)
-                        .addGap(28, 28, 28)
-                        .addComponent(lblDocente))
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10))
-                        .addGap(28, 28, 28)
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFechaVencimiento)
-                            .addComponent(lblEstado))))
-                .addGap(36, 36, 36)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDescargarRubrica, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(lblRubrica64, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEliminarTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSubirTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSubirPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblArchivo64)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLink, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblLinkStore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(17, 17, 17))
-        );
+        panelPrincipal.add(buttonRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, 120, 38));
 
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
 

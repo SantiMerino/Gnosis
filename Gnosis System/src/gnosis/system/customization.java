@@ -1401,10 +1401,13 @@ public class customization {
             JLabel lblnombreevento = new JLabel(nombreevento);
             JLabel lbltipoevento = new JLabel(tipoevento);
             JLabel lblfechas = new JLabel(fechainicio + " | " +  fechafinal);
+            lblnombreevento.setPreferredSize(new Dimension(500,15));
+            lbltipoevento.setPreferredSize(new Dimension(500,15));
+            lblfechas.setPreferredSize(new Dimension(500,15));
 //            JLabel lblgrado = new JLabel(grado);
             
             Color fontcolor;
-            Font fuentepre = new Font("Poppins", Font.BOLD, 14);
+            Font fuentepre = new Font("Poppins Black", Font.PLAIN, 14);
             Font fuentepro = new Font("Poppins" , Font.PLAIN, 14);
             switch (tipoevento) {
                 case "Eventos salesianos":
@@ -1447,13 +1450,13 @@ public class customization {
             lblnombreevento.setForeground(fontcolor);
             lbltipoevento.setForeground(fontcolor);
             
-            evento.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+            evento.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 5));
 
-            evento.add(lblnombreevento);
-            evento.add(lbltipoevento);
-            evento.add(lblfechas);
+            evento.add(BorderLayout.NORTH,lblnombreevento);
+            evento.add(BorderLayout.CENTER,lbltipoevento);
+            evento.add(BorderLayout.SOUTH, lblfechas);
             
-            evento.setPreferredSize(new Dimension(100, 50));
+            evento.setPreferredSize(new Dimension(100, 70));
             evento.setRoundTopLeft(20);
             evento.setRoundTopRight(20);
             evento.setRoundBottomRight(20);

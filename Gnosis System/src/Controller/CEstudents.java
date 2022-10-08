@@ -224,7 +224,7 @@ public class CEstudents {
      * @return
      */
     public boolean CrearUsuarioAlumnoController() {
-        String clave = CValidaciones.getMD5("gnosis123");
+        String clave = "ed3790dfc272a2d836a7abd633fbf99d";
         return mdlEstu.RegistrarUsuarioAlumno(1, correo, idalumno, clave, con);
     }
 

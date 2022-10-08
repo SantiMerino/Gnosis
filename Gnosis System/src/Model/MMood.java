@@ -34,7 +34,7 @@ public class MMood {
      * Method in the Mood Model to register the time spent.
      * @param enfoque
      * @param tiempo
-     * @param idmateria
+
      * @param con
      * @return 
      */

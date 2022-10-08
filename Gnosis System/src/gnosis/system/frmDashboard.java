@@ -242,6 +242,9 @@ public class frmDashboard extends javax.swing.JFrame {
         mood = moodstate;
         if (mood == 1) {
             moodPanel.setVisible(true);
+            moodPanel.setBackground(new Color(120,220,90));
+            custo.changeIconlbl(moodPic, "/resources/glasses.png");
+            lblmood.setForeground(Color.black);
             EstudioLibre();
         }else if (mood == 2){
             moodPanel.setVisible(true);

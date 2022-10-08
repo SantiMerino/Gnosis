@@ -126,7 +126,6 @@ public class MProfiles {
      * @param fechadeinicio
      * @param fechadevencimiento
      * @param tipoperfil
-     * @param grado
      * @param con
      * @return 
      */

@@ -5,13 +5,18 @@
 package gnosis.system;
 
 import Controller.CPortfolios;
+import static gnosis.system.customization.notificacion;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
+import java.util.Base64;
 import javax.swing.JFileChooser;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -29,6 +34,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
     Font newFont;
     int fstyle;
     int fsize = 12;
+    String pdf;
     int[] stylevalue = {Font.PLAIN, Font.BOLD, Font.ITALIC};
     JList fontFamilyList, fontStyleList, fontSizeList;
     String[] fontStyleValues = {"PLAIN", "BOLD", "ITALIC"};
@@ -36,6 +42,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
     ResultSet datosportafolios;
     int idalumnolog;
     int materiadocente;
+    String materiamoduloOpen;
     String contenidotxt;
      
     public frmBlocMateria() {
@@ -49,6 +56,7 @@ public class frmBlocMateria extends javax.swing.JFrame {
         idalumnolog = idalumno;
         contenidotxt = contenido;
         area.setText(contenidotxt);
+        materiamoduloOpen = materiamodulo;
         MateriaColor(materiamodulo);
         lblPortafolio.setText("Portafolios > " + materiamodulo);
     }
@@ -321,11 +329,18 @@ void MateriaColor(String materiamodulo){
         buttonRound15.setStyle(customizeObjects.ButtonRound.ButtonStyle.GRIS_OSCURO);
 
         buttonRound16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/receive-square-white.png"))); // NOI18N
+        buttonRound16.setEnabled(false);
         buttonRound16.setPreferredSize(new java.awt.Dimension(114, 35));
         buttonRound16.setRound(20);
         buttonRound16.setStyle(customizeObjects.ButtonRound.ButtonStyle.ROJO);
+        buttonRound16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRound16ActionPerformed(evt);
+            }
+        });
 
         buttonRound17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/receive-square.png"))); // NOI18N
+        buttonRound17.setEnabled(false);
         buttonRound17.setPreferredSize(new java.awt.Dimension(114, 35));
         buttonRound17.setRound(20);
         buttonRound17.setStyle(customizeObjects.ButtonRound.ButtonStyle.SOCIALES);
@@ -606,6 +621,33 @@ void MateriaColor(String materiamodulo){
         area.setFont(newFont);
     }//GEN-LAST:event_buttonRound6ActionPerformed
 
+    private void buttonRound16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRound16ActionPerformed
+        // TODO add your handling code here:
+//        String selectedImagePath = area.getText();
+//            byte[] inFileBytes;
+//            try {
+//                inFileBytes = (byte[])selectedImagePath;
+//                byte[] encoded = java.util.Base64.getEncoder().encode(inFileBytes);
+//                pdf = Base64.getEncoder().encodeToString(inFileBytes);
+//                decodePdf(materiamoduloOpen);
+//            } catch (IOException ex) {
+//                JOptionPane.showMessageDialog(null, "No se pudo seleccionar el archivo");
+//            }
+    }//GEN-LAST:event_buttonRound16ActionPerformed
+
+//    private void decodePdf(String name) throws IOException {
+//        byte[] decoded = java.util.Base64.getDecoder().decode(pdf);
+//        String home = System.getProperty("user.home");
+//        String fileName = "Portafolio " + name + ".pdf";
+//        File rutaFile = new File(home + "/Downloads/" + fileName);
+//        FileOutputStream fos = new FileOutputStream(rutaFile);
+//        fos.write(decoded);
+//        fos.flush();
+//        fos.close();
+//        notificacion("Recurso descargado exitosamente", 1, "Confirmación de descarga" );
+////        AbrirLinks(rutaFile.toString());
+//    }
+//    
     /**
      * @param args the command line arguments
      */
